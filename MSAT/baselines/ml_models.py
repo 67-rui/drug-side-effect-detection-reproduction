@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
 from baselines.common import FoldSplit, compute_metrics, pair_features
+from reproduction_protocol import protocol_metadata
 
 try:
     from xgboost import XGBClassifier
@@ -71,6 +72,7 @@ def run_ml_cv(model_name: str, n_folds: int = 10) -> Dict:
 
     return {
         'model': model_name,
+        'protocol': protocol_metadata(),
         'feature_config': {
             'pair_features': 'concat(herb_x, adr_x)',
             'include_cmm_adr_edge_attr': False,

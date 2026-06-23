@@ -122,6 +122,7 @@ def main() -> None:
     if args.neg_ratio == 10:
         from config import DataConfig, TrainingConfig
         DataConfig.NEG_RATIO = 10
+        DataConfig.TEST_NEG_RATIO = 10
         TrainingConfig.USE_OPTIMAL_THRESHOLD = True
 
     if args.aggregate_only:

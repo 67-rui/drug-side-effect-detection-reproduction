@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rerun only the chains affected by ML leakage and checkpoint/result provenance fixes.
+# Partial rerun helper for legacy artifact/provenance fixes only.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -7,6 +7,13 @@ PY="${PY:-python}"
 LOG_DIR="${LOG_DIR:-results/phase8_logs}"
 CKPT="${CKPT:-saved_models/best_model_for_prediction.pt}"
 mkdir -p "$LOG_DIR" results
+
+if [[ "${ALLOW_PARTIAL_RERUN:-0}" != "1" ]]; then
+  echo "[ERROR] This partial helper is no longer sufficient after the validation-edge protocol fix."
+  echo "[ERROR] Run a full corrected retrain instead: PY=$PY bash scripts/server_paper_retrain.sh"
+  echo "[ERROR] To intentionally run only this legacy partial chain, set ALLOW_PARTIAL_RERUN=1."
+  exit 2
+fi
 
 echo "=== Rerun after artifact fix $(date) ==="
 echo "[INFO] python=$PY"

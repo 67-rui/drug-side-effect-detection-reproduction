@@ -125,7 +125,17 @@ These code fixes were made locally after synchronizing the remote result files. 
 - Prediction checkpoint overwrite fixed in code:
   - Main run still writes `saved_models/best_model_for_prediction.pt`.
   - Tagged runs now write `saved_models/best_model_for_prediction_<tag>.pt`.
-  - Future Fig.6, ablation, and other tagged runs should no longer overwrite the main predictor checkpoint used by Table 5 and the Zhishi case.
+  - Tagged fold checkpoints now write `saved_models/best_model_fold{fold}_{tag}.pt`; main fold checkpoints keep the legacy `saved_models/best_model_fold{fold}.pt`.
+  - Future Fig.6, ablation, and other tagged runs should no longer overwrite the main predictor checkpoint or the main fold checkpoints used for audit.
+  - Future predictor checkpoints are selected by validation AUC (`best_val_auc`) rather than test AUC.
+- Validation-edge protocol fixed in code:
+  - MSAT training now removes both validation and test positive CMM-ADR edges from the message-passing graph before early stopping, threshold selection, and test evaluation.
+  - GNN baselines use the same validation/test positive-edge removal in `baselines.common.prepare_fold()`.
+  - Local diagnostic after the fix on fold 0: train positives remaining `22005/22005`, validation positives remaining `0/2431`, test positives remaining `0/2626`.
+- Threshold and 1:10 configuration consistency fixed in code:
+  - Saved MSAT `predictions.y_pred` now uses the fold's actual evaluation threshold, not a hard-coded 0.5.
+  - GNN baselines use validation-F1 threshold selection when `TrainingConfig.USE_OPTIMAL_THRESHOLD` is enabled.
+  - `scripts/run_imbalanced.py` and `scripts/run_baselines.py --neg-ratio 10` now set both `DataConfig.NEG_RATIO = 10` and `DataConfig.TEST_NEG_RATIO = 10`.
 - Future MSAT/GNN summaries now include clearer protocol metadata:
   - MSAT summaries include `test_neg_ratio`.
   - GNN baseline summaries include data/model/training config fields.
@@ -134,17 +144,23 @@ These code fixes were made locally after synchronizing the remote result files. 
   - `run_table5_validation.py`, `run_case_zhishi.py`, `predict.py`, and `run_phase7.py` accept explicit `--checkpoint`.
   - Future Table 5, Table 6, and Zhishi JSON outputs include artifact status and input/checkpoint provenance.
   - Existing final-sync `table5_summary.json`, `table6_mapping.json`, and `case_zhishi_diarrhoea.json` are marked stale because they were generated before checkpoint provenance tracking and may have used an overwritten checkpoint.
-  - Server recovery script added: `scripts/rerun_after_artifact_fix.sh`.
+  - Server full-retrain script fixed: `scripts/server_paper_retrain.sh`.
+  - Legacy partial helper `scripts/rerun_after_artifact_fix.sh` now requires `ALLOW_PARTIAL_RERUN=1`; it is not sufficient after the validation-edge protocol fix.
 - Regression tests added:
   - `tests/test_baseline_leakage.py`
   - `tests/test_checkpoint_paths.py`
   - `tests/test_artifact_manifest.py`
+  - `tests/test_protocol_edge_isolation.py`
+  - `tests/test_threshold_protocol.py`
+  - `tests/test_script_protocol_config.py`
 
 Verification after these code changes:
 
-- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 9 passed.
+- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 20 passed.
 - `/Users/a67_2024/opt/anaconda3/bin/python -m py_compile inference/artifact_manifest.py scripts/run_table5_validation.py scripts/run_case_zhishi.py scripts/predict.py scripts/run_phase7.py scripts/run_table6_mapping.py`: passed.
 - A local one-fold LR numerical rerun was attempted but interrupted after more than 2.5 minutes on CPU; rerun corrected ML baselines on the GPU server instead.
+
+Important consequence: all old MSAT/GNN numeric outputs generated before the validation-edge protocol fix should be treated as stale until rerun. This includes `summary.json`, `summary_neg10.json`, `summary_testneg*.json`, GNN baseline JSON files, Fig.6 summaries, and any downstream Table 5/Table 6/Zhishi artifacts derived from those checkpoints or scores.
 
 ## Current Reports To Trust
 
@@ -180,14 +196,15 @@ No code-level pytest result is available from this inspection. Existing result f
 
 ## Recommended Next Steps
 
-1. Push the leakage/checkpoint fixes to the server and rerun corrected ML baselines.
+1. Push the leakage/checkpoint/protocol fixes to the server and rerun corrected main MSAT, 1:10 MSAT, GNN baselines, and corrected ML baselines.
    - Priority command target: 1:10 `lr`, `rf`, `xgb`, then regenerate `baseline_neg10_summary.json`.
-   - Do not cite old `baseline_lr_neg10.json`, `baseline_rf_neg10.json`, or `baseline_xgb_neg10.json`.
+   - Do not cite old `summary*.json`, `baseline_*_testneg*.json`, `baseline_lr_neg10.json`, `baseline_rf_neg10.json`, or `baseline_xgb_neg10.json`.
 2. Restore or regenerate a clean main-run predictor checkpoint.
    - Re-run the main Table 2 MSAT training or copy the intended main checkpoint to `saved_models/best_model_for_prediction.pt`.
    - Then regenerate Table 5 and the Zhishi case.
-3. Run `scripts/rerun_after_artifact_fix.sh` on the server once it is available.
-   - It reruns corrected 1:10 ML baselines and regenerates Table 5, Table 6, and the Zhishi case with explicit checkpoint provenance.
+3. Run the full corrected retrain on the server once it is available.
+   - Preferred command: `PY=/root/miniconda3/bin/python bash scripts/server_paper_retrain.sh`.
+   - It reruns main MSAT, Table 2 baselines, ablations, 1:10 experiments, Fig.6, Phase 9 downstream artifacts, and the final audit under the corrected protocol.
 4. Normalize Table 5 protocol and rerun Table 5 -> Table 6 in one pass.
    - Decide whether the final paper-aligned claim uses exclude-all-positives, FAERS-only exclusion, predictor mode, or paper-herb diagnostic mode.
    - Write the chosen protocol explicitly into result filenames or metadata.

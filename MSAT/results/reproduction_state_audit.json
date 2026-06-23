@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-23T17:43:20.607429",
+  "created_at": "2026-06-23T20:43:45.123798",
   "results_dir": "/Users/a67_2024/Desktop/drug-detect/MSAT/results",
   "summary": {
     "stale_artifacts": [
@@ -8,6 +8,46 @@
       "table6_mapping.json"
     ],
     "missing_artifacts": [],
+    "missing_protocol_metadata": [
+      "baseline_gat.json",
+      "baseline_gat_neg10.json",
+      "baseline_gat_testneg10.json",
+      "baseline_gat_testneg2.json",
+      "baseline_gat_testneg5.json",
+      "baseline_gcn.json",
+      "baseline_gcn_neg10.json",
+      "baseline_hetnn.json",
+      "baseline_hetnn_neg10.json",
+      "baseline_hgt.json",
+      "baseline_hgt_neg10.json",
+      "baseline_hgt_testneg10.json",
+      "baseline_hgt_testneg2.json",
+      "baseline_hgt_testneg5.json",
+      "baseline_lr.json",
+      "baseline_lr_neg10.json",
+      "baseline_rf.json",
+      "baseline_rf_neg10.json",
+      "baseline_rgcn.json",
+      "baseline_rgcn_neg10.json",
+      "baseline_simple_hgn.json",
+      "baseline_simple_hgn_neg10.json",
+      "baseline_simple_hgn_testneg10.json",
+      "baseline_simple_hgn_testneg2.json",
+      "baseline_simple_hgn_testneg5.json",
+      "baseline_xgb.json",
+      "baseline_xgb_neg10.json",
+      "summary.json",
+      "summary_neg10.json",
+      "summary_only_esa.json",
+      "summary_only_hci.json",
+      "summary_only_hsp.json",
+      "summary_testneg10.json",
+      "summary_testneg2.json",
+      "summary_testneg5.json",
+      "summary_wo_esa.json",
+      "summary_wo_hci.json",
+      "summary_wo_hsp.json"
+    ],
     "suspicious_ml_baselines": [
       {
         "model": "LR",
@@ -61,6 +101,234 @@
       "code": "stale_artifact",
       "file": "table6_mapping.json",
       "message": "Generated from the stale Table 5 output before input provenance tracking."
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_gat.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_gat_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_gat_testneg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_gat_testneg2.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_gat_testneg5.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_gcn.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_gcn_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_hetnn.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_hetnn_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_hgt.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_hgt_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_hgt_testneg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_hgt_testneg2.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_hgt_testneg5.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_lr.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_lr_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_rf.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_rf_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_rgcn.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_rgcn_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_simple_hgn.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_simple_hgn_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_simple_hgn_testneg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_simple_hgn_testneg2.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_simple_hgn_testneg5.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_xgb.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "baseline_xgb_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_neg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_only_esa.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_only_hci.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_only_hsp.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_testneg10.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_testneg2.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_testneg5.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_wo_esa.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_wo_hci.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
+    },
+    {
+      "severity": "error",
+      "code": "missing_protocol_metadata",
+      "file": "summary_wo_hsp.json",
+      "message": "model summary was not generated with the validation/test positive-edge hiding protocol"
     },
     {
       "severity": "error",

@@ -15,11 +15,13 @@ import train
 
 def main() -> None:
     DataConfig.NEG_RATIO = 10
+    DataConfig.TEST_NEG_RATIO = 10
     TrainingConfig.USE_OPTIMAL_THRESHOLD = True
 
     print('=' * 80)
     print('Phase 6 Task 6.1: 1:10 imbalanced experiment (Table 4)')
     print(f'  neg_ratio={DataConfig.NEG_RATIO}:1')
+    print(f'  test_neg_ratio={DataConfig.TEST_NEG_RATIO}:1')
     print(f'  use_optimal_threshold={TrainingConfig.USE_OPTIMAL_THRESHOLD}')
     print('  Expected MSAT AUC ~ 0.875 ± 0.005')
     print('=' * 80)

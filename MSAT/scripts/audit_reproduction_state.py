@@ -16,6 +16,9 @@ DOWNSTREAM_PROVENANCE = {
     'table6_mapping.json': ('input_manifest',),
 }
 ML_BASELINES = {'lr', 'rf', 'xgb'}
+SUMMARY_GLOBS = ('summary*.json', 'baseline_*.json')
+AGGREGATE_BASELINE_SUMMARIES = {'baseline_summary.json', 'baseline_neg10_summary.json'}
+ARCHIVE_NAME_PARTS = ('backup', 'stale', 'old')
 
 
 def load_json(path: Path) -> dict | None:
@@ -51,6 +54,28 @@ def has_any_provenance(payload: dict, keys: tuple[str, ...]) -> bool:
         if isinstance(value, dict) and value.get('exists') is not False:
             return True
     return False
+
+
+def has_correct_protocol_metadata(payload: dict) -> bool:
+    protocol = payload.get('protocol')
+    return (
+        isinstance(protocol, dict)
+        and protocol.get('validation_and_test_positive_edges_hidden') is True
+    )
+
+
+def model_summary_files(results_path: Path) -> list[Path]:
+    files: dict[str, Path] = {}
+    for pattern in SUMMARY_GLOBS:
+        for path in results_path.glob(pattern):
+            if any(part in path.stem for part in ARCHIVE_NAME_PARTS):
+                continue
+            if path.name in AGGREGATE_BASELINE_SUMMARIES:
+                continue
+            if path.name in DOWNSTREAM_PROVENANCE:
+                continue
+            files[path.name] = path
+    return [files[name] for name in sorted(files)]
 
 
 def fig6_winners(payload: dict | None) -> dict[str, dict]:
@@ -104,6 +129,24 @@ def audit_results(results_dir: str | Path) -> dict:
                 f'missing one of provenance keys: {", ".join(provenance_keys)}',
             )
 
+    missing_protocol_files: list[str] = []
+    for path in model_summary_files(results_path):
+        payload = load_json(path)
+        if payload is None:
+            continue
+        if '_json_error' in payload:
+            add_issue(issues, 'error', 'invalid_json', path.name, payload['_json_error'])
+            continue
+        if not has_correct_protocol_metadata(payload):
+            missing_protocol_files.append(path.name)
+            add_issue(
+                issues,
+                'error',
+                'missing_protocol_metadata',
+                path.name,
+                'model summary was not generated with the validation/test positive-edge hiding protocol',
+            )
+
     baseline = load_json(results_path / 'baseline_neg10_summary.json')
     suspicious_ml: list[dict] = []
     if isinstance(baseline, dict):
@@ -138,6 +181,7 @@ def audit_results(results_dir: str | Path) -> dict:
         'summary': {
             'stale_artifacts': stale_files,
             'missing_artifacts': missing_files,
+            'missing_protocol_metadata': missing_protocol_files,
             'suspicious_ml_baselines': suspicious_ml,
             'fig6_winners': winners,
         },

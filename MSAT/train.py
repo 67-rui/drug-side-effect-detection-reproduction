@@ -31,6 +31,7 @@ sys.path.insert(0, str(MSAT_ROOT))
 from experiments.feature_extractor import FeatureExtractor
 from model import MSATTCMFSFinal
 from config import ModelConfig, TrainingConfig, DataConfig
+from reproduction_protocol import protocol_metadata
 
 
 def _positive_pair_set(herb_indices, adr_indices, labels):
@@ -39,6 +40,14 @@ def _positive_pair_set(herb_indices, adr_indices, labels):
         (int(h), int(a))
         for h, a in zip(herb_indices[mask], adr_indices[mask])
     }
+
+
+def _evaluation_positive_pair_set(val_h, val_a, val_y, test_h, test_a, test_y):
+    """Positive CMM-ADR pairs hidden from the message-passing graph for eval."""
+    return (
+        _positive_pair_set(val_h, val_a, val_y)
+        | _positive_pair_set(test_h, test_a, test_y)
+    )
 
 
 def _remove_cmm_adr_pairs(data, pairs_to_remove):
@@ -63,11 +72,24 @@ def _remove_cmm_adr_pairs(data, pairs_to_remove):
     return data
 
 
+def _safe_experiment_tag(experiment_tag='') -> str:
+    return ''.join(c if c.isalnum() or c in ('-', '_') else '_' for c in str(experiment_tag))
+
+
 def prediction_checkpoint_path(experiment_tag='') -> Path:
     if not experiment_tag:
         return Path('saved_models/best_model_for_prediction.pt')
-    safe_tag = ''.join(c if c.isalnum() or c in ('-', '_') else '_' for c in str(experiment_tag))
-    return Path(f'saved_models/best_model_for_prediction_{safe_tag}.pt')
+    return Path(f'saved_models/best_model_for_prediction_{_safe_experiment_tag(experiment_tag)}.pt')
+
+
+def fold_checkpoint_path(fold_idx, experiment_tag='') -> Path:
+    if not experiment_tag:
+        return Path(f'saved_models/best_model_fold{fold_idx}.pt')
+    return Path(f'saved_models/best_model_fold{fold_idx}_{_safe_experiment_tag(experiment_tag)}.pt')
+
+
+def model_selection_score(fold_result):
+    return float(fold_result['best_val_auc'])
 
 
 def train_one_epoch(model, data, optimizer, train_edges, train_labels, device):
@@ -125,7 +147,16 @@ def evaluate(model, data, herb_indices, adr_indices, labels, device, threshold=0
     }, pred_probs
 
 
-def train_single_fold(fold_idx, device):
+def prediction_payload(labels, scores, threshold):
+    scores = np.asarray(scores)
+    return {
+        'y_true': np.asarray(labels).tolist(),
+        'y_score': scores.tolist(),
+        'y_pred': (scores >= threshold).astype(int).tolist(),
+    }
+
+
+def train_single_fold(fold_idx, device, experiment_tag=''):
     print(f"\n{'='*80}")
     print(f"Fold {fold_idx + 1}/{TrainingConfig.N_FOLDS}")
     print(f"{'='*80}")
@@ -172,11 +203,19 @@ def train_single_fold(fold_idx, device):
     val_sub = indices[:n_val]
     train_sub = indices[n_val:]
     
-    test_pos_pairs = _positive_pair_set(
-        test_data['herb_indices'], test_data['adr_indices'], test_data['labels']
+    hidden_eval_pos_pairs = _evaluation_positive_pair_set(
+        train_data['herb_indices'][val_sub],
+        train_data['adr_indices'][val_sub],
+        train_data['labels'][val_sub],
+        test_data['herb_indices'],
+        test_data['adr_indices'],
+        test_data['labels'],
     )
-    data = _remove_cmm_adr_pairs(data, test_pos_pairs)
-    print(f"  Excluded {len(test_pos_pairs)} test positive edges (paper §3.5.1 inductive)")
+    data = _remove_cmm_adr_pairs(data, hidden_eval_pos_pairs)
+    print(
+        f"  Excluded {len(hidden_eval_pos_pairs)} validation/test positive edges "
+        "(paper §3.5.1 inductive)"
+    )
     
    
     node_degrees_dict = {}
@@ -280,7 +319,7 @@ def train_single_fold(fold_idx, device):
         
         
         (MSAT_ROOT / 'saved_models').mkdir(parents=True, exist_ok=True)
-        torch.save(best_state, MSAT_ROOT / f'saved_models/best_model_fold{fold_idx}.pt')
+        torch.save(best_state, MSAT_ROOT / fold_checkpoint_path(fold_idx, experiment_tag))
     
    
     cpu_after = process.cpu_percent(interval=0.1)
@@ -329,11 +368,7 @@ def train_single_fold(fold_idx, device):
         'optimal_threshold': optimal_threshold,
         'val_f1_at_threshold': val_f1_at_threshold,
         'test_metrics': test_metrics,
-        'predictions': {
-            'y_true': test_data['labels'].tolist(),
-            'y_score': test_preds.tolist(),
-            'y_pred': (test_preds >= 0.5).astype(int).tolist()
-        },
+        'predictions': prediction_payload(test_data['labels'], test_preds, optimal_threshold),
         'training_history': train_history,
         'resource_usage': {
             'train_time_seconds': train_time,
@@ -363,19 +398,20 @@ def run_10fold_cv(experiment_tag=''):
     
     experiment_start = time.time()
     results = []
-    best_overall_auc = -1
+    best_overall_score = -1
     best_overall_fold = -1
     best_overall_state = None
     
     for fold in range(TrainingConfig.N_FOLDS):
-        fold_result = train_single_fold(fold, device)
+        fold_result = train_single_fold(fold, device, experiment_tag=experiment_tag)
         results.append(fold_result)
         
-        if fold_result['test_metrics']['auc'] > best_overall_auc:
-            best_overall_auc = fold_result['test_metrics']['auc']
+        selection_score = model_selection_score(fold_result)
+        if selection_score > best_overall_score:
+            best_overall_score = selection_score
             best_overall_fold = fold
            
-            state_path = MSAT_ROOT / f'saved_models/best_model_fold{fold}.pt'
+            state_path = MSAT_ROOT / fold_checkpoint_path(fold, experiment_tag)
             if os.path.exists(state_path):
                 best_overall_state = torch.load(state_path, map_location='cpu')
     
@@ -430,6 +466,7 @@ def run_10fold_cv(experiment_tag=''):
     summary = {
         'model_name': 'MSAT-TCMFS-Final',
         'experiment_tag': experiment_tag or 'full',
+        'protocol': protocol_metadata(),
         'model_info': {
             'architecture': 'MSAT with 3 core innovations',
             'innovations': [
@@ -495,8 +532,16 @@ def run_10fold_cv(experiment_tag=''):
     if best_overall_state is not None:
         prediction_ckpt = MSAT_ROOT / prediction_checkpoint_path(experiment_tag)
         torch.save(best_overall_state, prediction_ckpt)
-        print(f"[SAVED] {prediction_ckpt} (from fold {best_overall_fold})")
+        print(
+            f"[SAVED] {prediction_ckpt} "
+            f"(from fold {best_overall_fold}, best_val_auc={best_overall_score:.4f})"
+        )
         summary['prediction_checkpoint'] = str(prediction_ckpt)
+        summary['prediction_checkpoint_selection'] = {
+            'metric': 'best_val_auc',
+            'fold': best_overall_fold,
+            'score': float(best_overall_score),
+        }
 
     with open(summary_path, 'w') as f:
         json.dump(summary, f, indent=2)

@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 # Phase 9: paper-aligned downstream eval (§3.5.4–§3.5.6)
-set -uo pipefail
+set -euo pipefail
 cd "$(dirname "$0")/.."
 PY="${PY:-/root/miniconda3/bin/python}"
 LOG="${LOG:-results/phase8_logs/phase9.log}"
+CKPT="${CKPT:-saved_models/best_model_for_prediction.pt}"
 mkdir -p results/phase8_logs
 exec > >(tee -a "$LOG") 2>&1
 echo "=== Phase 9 started $(date) ==="
+echo "Python: $PY"
+echo "Checkpoint: $CKPT"
 
 echo "=== §4.5.1 case study ==="
-"$PY" scripts/run_case_zhishi.py
+"$PY" scripts/run_case_zhishi.py --checkpoint "$CKPT"
 
-echo "=== Table 5 global Top-15 (paper §3.5.6, exclude all 27062 positives) ==="
-"$PY" scripts/run_table5_validation.py
+echo "=== Table 5 predictor global Top-15 (exclude all graph positives) ==="
+"$PY" scripts/run_table5_validation.py --use-predictor --checkpoint "$CKPT"
 
 echo "=== Table 6 TCM mapping (paper Table 6 reference) ==="
 "$PY" scripts/run_table6_mapping.py

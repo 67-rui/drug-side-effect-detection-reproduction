@@ -14,6 +14,8 @@ from torch_geometric.data import HeteroData
 from torch_geometric.nn import GATConv, GraphConv, HGTConv, HeteroConv, Linear, SAGEConv
 
 from baselines.common import FoldSplit, compute_metrics
+from config import TrainingConfig
+from reproduction_protocol import protocol_metadata
 
 GNN_HIDDEN = 128
 GNN_LAYERS = 2
@@ -145,6 +147,33 @@ def _eval_scores(model, data, h, a, y, device) -> np.ndarray:
     return np.concatenate(scores)
 
 
+def _find_optimal_threshold(scores, labels):
+    best_threshold, best_f1 = 0.5, -1.0
+    for threshold in np.linspace(0.01, 0.99, 99):
+        metrics = compute_metrics(labels, scores, threshold=threshold)
+        if metrics['f1'] > best_f1:
+            best_threshold = float(threshold)
+            best_f1 = metrics['f1']
+    return best_threshold, best_f1
+
+
+def metrics_with_validation_threshold(
+    val_y,
+    val_scores,
+    test_y,
+    test_scores,
+    use_optimal_threshold: bool = False,
+) -> Dict[str, float]:
+    threshold = 0.5
+    val_f1_at_threshold = None
+    if use_optimal_threshold:
+        threshold, val_f1_at_threshold = _find_optimal_threshold(val_scores, val_y)
+    metrics = compute_metrics(test_y, test_scores, threshold=threshold)
+    metrics['threshold'] = float(threshold)
+    metrics['val_f1_at_threshold'] = val_f1_at_threshold
+    return metrics
+
+
 def train_eval_gnn(model_name: str, fold: FoldSplit, device: torch.device) -> Dict[str, float]:
     data = fold.data.clone().to(device)
     model = build_model(model_name, fold.data, device)
@@ -184,11 +213,19 @@ def train_eval_gnn(model_name: str, fold: FoldSplit, device: torch.device) -> Di
     if best_state:
         model.load_state_dict(best_state)
 
+    val_scores = _eval_scores(model, data, val_h, val_a, val_y, device)
     test_scores = _eval_scores(model, data, fold.test_h, fold.test_a, fold.test_y, device)
-    metrics = compute_metrics(fold.test_y, test_scores)
+    metrics = metrics_with_validation_threshold(
+        val_y,
+        val_scores,
+        fold.test_y,
+        test_scores,
+        use_optimal_threshold=TrainingConfig.USE_OPTIMAL_THRESHOLD,
+    )
     metrics['predictions'] = {
         'y_true': fold.test_y.tolist(),
         'y_score': test_scores.tolist(),
+        'y_pred': (test_scores >= metrics['threshold']).astype(int).tolist(),
         'herb_indices': fold.test_h.tolist(),
         'adr_indices': fold.test_a.tolist(),
     }
@@ -212,6 +249,7 @@ def run_gnn_cv(model_name: str, n_folds: int = 10, device=None) -> Dict:
 
     return {
         'model': model_name,
+        'protocol': protocol_metadata(),
         'data_config': {
             'n_folds': n_folds,
             'neg_ratio': DataConfig.NEG_RATIO,

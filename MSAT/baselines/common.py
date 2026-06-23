@@ -28,6 +28,14 @@ def positive_pair_set(herb_indices, adr_indices, labels) -> set[tuple[int, int]]
     }
 
 
+def evaluation_positive_pair_set(val_h, val_a, val_y, test_h, test_a, test_y) -> set[tuple[int, int]]:
+    """Positive CMM-ADR pairs hidden from the graph during validation/test."""
+    return (
+        positive_pair_set(val_h, val_a, val_y)
+        | positive_pair_set(test_h, test_a, test_y)
+    )
+
+
 def remove_cmm_adr_pairs(data, pairs_to_remove):
     pair_set = set(pairs_to_remove)
     for edge_index_key in [
@@ -89,7 +97,6 @@ def prepare_fold(fold_idx: int) -> FoldSplit:
         random_seed=DataConfig.RANDOM_SEED,
     )
     data = extractor.get_graph_data()
-    edge_attr_map = build_edge_attr_map(data)
     train_data, test_data = extractor.load_fold_data(fold_idx)
 
     rng = np.random.RandomState(TrainingConfig.RANDOM_STATE + fold_idx)
@@ -99,10 +106,16 @@ def prepare_fold(fold_idx: int) -> FoldSplit:
     val_sub = indices[:n_val]
     train_sub = indices[n_val:]
 
-    test_pos = positive_pair_set(
-        test_data['herb_indices'], test_data['adr_indices'], test_data['labels']
+    hidden_eval_pos = evaluation_positive_pair_set(
+        train_data['herb_indices'][val_sub],
+        train_data['adr_indices'][val_sub],
+        train_data['labels'][val_sub],
+        test_data['herb_indices'],
+        test_data['adr_indices'],
+        test_data['labels'],
     )
-    data = remove_cmm_adr_pairs(data, test_pos)
+    data = remove_cmm_adr_pairs(data, hidden_eval_pos)
+    edge_attr_map = build_edge_attr_map(data)
 
     pos_ei = data['herb', 'causes', 'adr'].edge_index
     herb_train_degree = np.bincount(

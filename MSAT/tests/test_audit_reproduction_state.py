@@ -69,3 +69,47 @@ def test_audit_requires_provenance_for_fresh_downstream_artifacts(tmp_path):
         'case_zhishi_diarrhoea.json',
         'table6_mapping.json',
     }
+
+
+def test_audit_flags_model_summaries_without_protocol_metadata(tmp_path):
+    results = tmp_path / 'results'
+    results.mkdir()
+    write_json(results / 'summary.json', {'overall_metrics': {}})
+    write_json(results / 'baseline_hgt.json', {'overall_metrics': {}})
+
+    audit = audit_results(results)
+
+    missing_protocol = [
+        issue for issue in audit['issues']
+        if issue['code'] == 'missing_protocol_metadata'
+    ]
+    assert {issue['file'] for issue in missing_protocol} == {
+        'summary.json',
+        'baseline_hgt.json',
+    }
+
+
+def test_audit_accepts_model_summaries_with_protocol_metadata(tmp_path):
+    results = tmp_path / 'results'
+    results.mkdir()
+    protocol = {'validation_and_test_positive_edges_hidden': True}
+    write_json(results / 'summary.json', {'protocol': protocol})
+    write_json(results / 'baseline_hgt.json', {'protocol': protocol})
+
+    audit = audit_results(results)
+
+    assert 'missing_protocol_metadata' not in [
+        issue['code'] for issue in audit['issues']
+    ]
+
+
+def test_audit_ignores_backup_model_summaries(tmp_path):
+    results = tmp_path / 'results'
+    results.mkdir()
+    write_json(results / 'summary_full_backup.json', {'overall_metrics': {}})
+
+    audit = audit_results(results)
+
+    assert 'missing_protocol_metadata' not in [
+        issue['code'] for issue in audit['issues']
+    ]
