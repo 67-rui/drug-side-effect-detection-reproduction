@@ -22,6 +22,7 @@
 | 2026-06-22 17:10 | **Phase 8 全部 GPU 实验完成**（8B–8D 远程）；**Phase 8F 收尾脚本完成**（Table 5/6、枳实案例、汇总） |
 | 2026-06-22 17:15 | **Phase 8H 报告更新**：新增论文逐表对照 §12；标注未完成/部分完成项 |
 | 2026-06-22 17:31 | **Phase 9 启动**：Fig.5a 冷启动协议修复；`paper_herb_display`；Table 6 规则扩展；Table 5 `--use-predictor` |
+| 2026-06-23 17:30 | **状态审计更新**：ML baseline 泄漏与 checkpoint 覆盖已在代码中修复；旧 Table4 ML、Table5/6、枳实案例产物标记为 stale；新增 `audit_reproduction_state.py` |
 
 ---
 
@@ -29,27 +30,29 @@
 
 **任务:** 中药材（CMM）– 不良反应（ADR）链路预测，10 折分层交叉验证，1:1 类型约束负采样，归纳式评估。
 
-**当前结论（2026-06-22 17:15）:**
+**当前结论（2026-06-23 17:30）：** 本报告保留历史过程记录；最终引用前请优先查看 `FINAL_REMOTE_RUN_SUMMARY_2026-06-23.md` 和 `reproduction_state_audit.json`。
 
-### 1.1 核心数值实验 — 已达标 ✅
+### 1.1 核心数值实验 — 主线基本达标，部分产物待重跑
 
-- **主实验（Table 2）**：AUC **0.9797 ± 0.0014**（论文 0.979 ± 0.001）✅
-- **消融（Table 3，7 变体）**：Full 最高；Only 三组均低于 Full；Only HCI 为 Only 组最低 ✅
-- **1:10 不平衡 MSAT（Table 4）**：AUC **0.8717 ± 0.0042**（论文 ~0.875 ± 0.005）✅
-- **Fig.6 测试不平衡 sweep**：三 ratio 下 MSAT AUC 均为四模型最高 ✅
+- **主实验（Table 2）**：最终同步 AUC **0.9792 ± 0.0018**（论文 0.979 ± 0.001）✅
+- **消融（Table 3，7 变体）**：Full 最高；w/o HCI 最低；Only 组顺序未完全等同论文 ⚠️
+- **1:10 不平衡 MSAT（Table 4）**：最终同步 AUC **0.8710 ± 0.0051**（论文 ~0.875 ± 0.005）✅
+- **Table 4 ML baselines**：LR/RF/XGB 旧 JSON 出现 AUC≈1.0，已确认为 edge_attr 泄漏修复前产物；需重跑 ❌
+- **Fig.6 测试不平衡 sweep**：当前 MSAT 仅在 ratio=10 最高；ratio=2/5 为 HGT 略高 ⚠️
 - **Fig.5b 度分层**：Tail/Head 趋势与论文一致（Tail AUC 0.972 > Head 0.836）✅
 - **实体映射（8A）**：16/16 Table 5 种子 `mapped_id` 非空且互不重复 ✅
+- **Fig.5a FAERS-only 冷启动**：MSAT 在 Precision/MCC/AUC 上优于 GAT/HGT/Simple-HGN ✅
 
 ### 1.2 下游解释 — 脚本已跑通，与论文语义未完全对齐 ⚠️
 
-- **Table 5**：Top-15 已导出；机制支持率 **2/15（13.3%）**，论文 **13/15（~87%）** ❌
-- **Table 6**：TCM 系统映射列已生成；当前规则偏粗，多数落默认 `Qi-Blood-Fluid` ⚠️
-- **§4.5.1 枳实案例**：`herb_id=277`（Citrus aurantium）正确；多跳路径存在；但 ITCM 显示名错误、分数 0.43/排名第 4，与论文高分叙事不一致 ⚠️
+- **Table 5**：当前 `table5_summary.json` 标记为 stale；最终同步支持率 1/15，且 TCMDA 证据口径未对齐论文 ❌
+- **Table 6**：当前 `table6_mapping.json` 标记为 stale；映射依赖 stale Table 5，规则仍偏粗 ⚠️
+- **§4.5.1 枳实案例**：`herb_id=277`（Citrus aurantium）正确；nobiletin 路径存在；当前产物 stale，最终同步 score 0.2549/rank 7，需用干净 checkpoint 重跑 ⚠️
 
 ### 1.3 尚未完成 ❌
 
-- **Fig.5a 冷启动四模型对比**：`run_coldstart_eval.py` 仅 MSAT 一行且 `insufficient_samples`；基线无 `fold_results`；Precision/MCC 未产出
-- **Table 4 九基线趋势**：XGB AUC **0.8768** 略高于 MSAT **0.8717**（论文 MSAT 应最优）⚠️
+- **受污染产物重跑**：服务器恢复后运行 `scripts/rerun_after_artifact_fix.sh`
+- **Table 4 九基线趋势**：修复代码后尚未重跑 LR/RF/XGB；旧结果不可引用
 - **可选 Phase 8G**：GCN fold 离群重跑、超参敏感性、Supplementary 未做
 
 ### 1.4 是否「全部完成」？
@@ -58,7 +61,7 @@
 |------|------|
 | **MVP（主实验 + 消融 + MSAT 1:10）** | ✅ **已完成** |
 | **Phase 8 计划（8A–8F 脚本与 GPU 队列）** | ✅ **已完成** |
-| **与论文逐表数值/语义完全一致** | ❌ **未完成**（Table 5 支持率、枳实案例、Fig.5a、Table 4 基线排序） |
+| **与论文逐表数值/语义完全一致** | ❌ **未完成**（Table 4 ML 重跑、Fig.6、Table 5/6、枳实案例） |
 
 **一句话：** 训练与主指标复现成功；下游解释与部分对比实验仍有关键差距，不宜宣称「全文 100% 复现」。
 
@@ -248,12 +251,12 @@
 |----|------|
 | `python train.py` 10 折无报错 | ✅ |
 | `results/summary.json` 生成 | ✅ |
-| AUC ≥ 0.970 | ✅（0.9797） |
+| AUC ≥ 0.970 | ✅（最终同步 0.9792） |
 | 消融趋势与 Table 3 一致 | ✅（Full 最高；w/o HCI 最低） |
 | Only 三组低于 Full | ✅ |
 | Phase 8 GPU 队列（8B–8D） | ✅ |
-| Table 5/6 脚本产出 | ✅（语义见 §10.7–10.8） |
-| Fig.5a 四模型冷启动 | ❌ |
+| Table 5/6 脚本产出 | ❌ 当前 root 产物 stale，需重跑 |
+| Fig.5a 四模型冷启动 | ✅ FAERS-only 四模型已完成 |
 | 测试折边无泄漏 | ✅（train.py 归纳协议已修复） |
 
 ---
@@ -276,20 +279,21 @@
 | `results/baselines_ml.log` / `baselines_gnn.log` | 基线训练日志 | ✅ |
 | `results/stratified_summary.json` | 度分层 / 文献边 AUC | ✅ |
 | `results/summary_only_{esa,hsp,hci}.json` | Only 消融 10 折 | ✅ |
-| `results/baseline_*_neg10.json` | 九基线 1:10 | ✅ |
-| `results/baseline_neg10_summary.json` | Table 4 汇总 | ✅ |
+| `results/baseline_*_neg10.json` | 九基线 1:10 | ⚠️ ML 旧结果不可引用 |
+| `results/baseline_neg10_summary.json` | Table 4 汇总 | ⚠️ ML 旧结果不可引用 |
 | `results/summary_testneg{2,5,10}.json` | Fig.6 MSAT 各 ratio | ✅ |
 | `results/baseline_*_testneg{2,5,10}.json` | Fig.6 基线各 ratio | ✅ |
-| `results/fig6_summary.json` | Fig.6 汇总 | ✅ |
-| `results/table5_top15.csv` / `table5_summary.json` | Table 5 Top-15 | ✅ |
-| `results/table6_mapping.csv` / `.json` | Table 6 TCM 映射 | ✅ |
-| `results/case_zhishi_diarrhoea.json` | §4.5.1 枳实案例 | ✅ |
+| `results/fig6_summary.json` | Fig.6 汇总 | ⚠️ ratio 2/5 未对齐 |
+| `results/table5_top15.csv` / `table5_summary.json` | Table 5 Top-15 | ❌ stale |
+| `results/table6_mapping.csv` / `.json` | Table 6 TCM 映射 | ❌ stale |
+| `results/case_zhishi_diarrhoea.json` | §4.5.1 枳实案例 | ❌ stale |
 | `results/coldstart_summary.json` | Fig.5a（未完成） | ⚠️ |
 | `data/cctcm_herb_index.json` | ccTCM 651 映射 | ✅ |
 | `data/entity_names.json` v2 | 实体名称（含 paper_herb_id_map） | ✅ |
 | `saved_models/best_model_fold0..9.pt` | 各折 checkpoint | ✅（~7 GB） |
 | `saved_models/best_model_for_prediction.pt` | 最佳推理模型 | ✅ |
 | `data/10fold_cv_split.pkl` | 官方折划分 | ✅ |
+| `results/reproduction_state_audit.json` | 当前产物审计 | ✅ |
 
 ---
 
@@ -381,11 +385,12 @@
 
 **分析：** Tail/文献集 AUC 高但 F1 低，因 1:1 负采样下负样本远多于正样本；Head CMM 高度节点在测试集中更易与训练重叠，排序难度更大。
 
-### 10.4 Phase 8C — Table 4 九基线 1:10【脚本完成，排序有偏差】
+### 10.4 Phase 8C — Table 4 九基线 1:10【历史表，不可引用】
 
 > 脚本：`scripts/run_baselines.py --neg-ratio 10 --all`  
 > 汇总：`results/baseline_neg10_summary.json`  
-> **训练时间:** 2026-06-22（远程 Phase 8C）
+> **训练时间:** 2026-06-22（远程 Phase 8C）  
+> **当前状态:** 该表是泄漏修复前历史记录。最终同步后的 LR/RF/XGB 为 AUC≈1.0，已由 `reproduction_state_audit.json` 标记为 `suspicious_ml_auc`。正式 Table 4 全模型结论必须重跑。
 
 | 模型 | AUC (mean ± std) | F1 | MCC | 论文趋势 |
 |------|------------------|-----|-----|----------|
@@ -403,7 +408,7 @@
 **判定：**
 
 - ✅ MSAT AUC 与论文 ~0.875 差距 0.003（在 ±0.005 内）。
-- ⚠️ **XGB AUC 略高于 MSAT**（+0.005），与论文「MSAT 在 1:10 下最优」不一致；可能因 τ* 阈值策略或基线超参差异。
+- ❌ 当前 Table 4 全模型排名不可引用；后续诊断确认 ML pair features 曾包含 CMM-ADR edge_attr，需使用修复后代码重跑 LR/RF/XGB。
 - ⚠️ GCN 1:10 仍严重离群（与 1:1 情形类似）。
 
 ### 10.5 Phase 8D — Fig.6 测试不平衡 sweep【已完成】
@@ -414,11 +419,11 @@
 
 | test neg:pos | MSAT AUC | HGT | Simple-HGN | GAT | MSAT 是否最高 |
 |--------------|----------|-----|------------|-----|---------------|
-| 1:2 | **0.8190 ± 0.0045** | 0.8110 | 0.7861 | 0.7909 | ✅ |
-| 1:5 | **0.8182 ± 0.0075** | 0.8066 | 0.7882 | 0.7887 | ✅ |
-| 1:10 | **0.8202 ± 0.0043** | 0.8103 | 0.7884 | 0.7965 | ✅ |
+| 1:2 | 0.8201 ± 0.0045 | **0.8267** | 0.7968 | 0.8044 | ❌ |
+| 1:5 | 0.8198 ± 0.0045 | **0.8244** | 0.7996 | 0.8051 | ❌ |
+| 1:10 | **0.8206 ± 0.0049** | 0.8203 | 0.8013 | 0.8047 | ✅ |
 
-**分析：** 三 ratio 下 MSAT AUC 均为四模型最高；ratio 增大时 F1 下降（1:10 下 MSAT F1≈0.21），符合不平衡加剧时分类变难的趋势。  
+**当前审计：** 最终同步的 `fig6_summary.json` 中，MSAT 仅在 ratio=10 最高；ratio=2 和 ratio=5 为 HGT 略高。因此 Fig.6 不能按“MSAT 三 ratio 全胜”引用，需在服务器恢复后按修复后的 metadata/checkpoint 流程重跑或解释差异。  
 **注意：** Fig.6 协议与 Table 4（端到端 1:10 训练）不同，AUC 数值不可直接对比。
 
 ### 10.6 Phase 8E / 9E — Fig.5a 冷启动【FAERS-only 四模型 ✅】
@@ -447,20 +452,20 @@
 
 ⚠️ 此表协议与论文不同（unseen ≈ 0.8%），**HGT > MSAT 不代表论文结论失效**。
 
-### 10.7 Phase 8F — Table 5 Top-15 外部验证【OOF+FAERS 池 7/15】
+### 10.7 Phase 8F — Table 5 Top-15 外部验证【当前 root 产物 stale】
 
-> 排查后默认协议：**10 折 OOF 最大分** + 候选池**仅排除 FAERS 25734 边**（1328 文献边可上榜）。  
-> 详见 `results/VERIFICATION_FINDINGS.md` §3。
+> 当前 committed `table5_summary.json` 已标记为 `artifact_status.stale=true`。最终同步 root 产物的支持率为 **1/15**，并且 TCMDA 证据口径未与论文完全等价。  
+> 协议选择见 `TABLE5_PROTOCOL_DECISION.md`；审计见 `reproduction_state_audit.json`。
 
-| 模式 | 支持率 | 说明 |
-|------|--------|------|
-| OOF + 排除全部正边（旧） | 2/15 | 候选池过窄 |
-| Predictor 全局推理 | 1/15 | 与论文评估不一致 |
-| **OOF + 仅排除 FAERS（当前默认）** | **7/15 (47%)** | 文献边 `database_verified=True` |
+| 模式 | 当前状态 | 说明 |
+|------|----------|------|
+| OOF + 排除全部正边 | stale root 产物 1/15 | 候选池严格，但证据支持低 |
+| Predictor 全局推理 | 待重跑 | 必须显式 `--checkpoint` 并记录 sha256 |
+| OOF + 仅排除 FAERS | 历史诊断 | 不作为当前正式结论 |
 
-论文 13/15 还需 ADReCS/OpenTargets 等外部库，尚未完全接入。
+论文 13/15 还需等价外部数据库证据，尚未完全接入。
 
-**Paper-herb Top-1 对照**（`table5_paper_compare.json`）：对论文 15 味 CMM 各取模型 Top-1 ADR + 论文证据库 → **12/15 (80%)** 有 DB/机制支持；ADR 文本与论文 Table 5 **0/15 完全一致**（候选 ADR 不同）。
+历史 `table5_paper_compare.json` 可作为诊断，不可作为正式 Table 5 复现。
 
 ### 10.8 Phase 8F — Table 6 + §4.5.1 枳实案例
 
@@ -480,15 +485,15 @@
 | 项 | Phase 7（已废弃） | Phase 8F（当前） | 论文叙事 |
 |----|-------------------|------------------|----------|
 | herb_id | 173（山楂） | **277（枳实）** | Citrus aurantium | ✅ ID |
-| 显示名 | 山楂 | 小花蛇根草（ITCM 误配） | 枳实 | ❌ |
+| 显示名 | 山楂 | 枳实（Citrus aurantium L.） | 枳实 | ✅ |
 | ADR | Watery diarrhoea | Watery diarrhoea | 一致 | ✅ |
-| 分数 / 排名 | 0.978 / #1 | **0.430 / #4** | 高置信 Top | ❌ |
+| 分数 / 排名 | 0.978 / #1 | **0.2549 / #7**（stale） | 高置信 Top | ❌ |
 | 多跳路径 | 仅直接边 | **14 条** compound→target→ADR | nobiletin→ABCG2 | ⚠️ |
 | nobiletin / ABCG2 | — | `paper_targets` 字段已预留 | 需命名解析 | ⚠️ |
 
 **路径样例：** `CMM #277 → Compound #523 → Target #12337 → ADR #2931`
 
-> Phase 7 产物（`phase7_*`）保留作历史记录；正式对照请以 `table5_*`、`case_zhishi_diarrhoea.json` 为准。
+> Phase 7 产物（`phase7_*`）保留作历史记录；当前 `case_zhishi_diarrhoea.json` 也已标记 stale，正式对照需用干净主实验 checkpoint 重跑。
 
 ---
 
@@ -497,33 +502,33 @@
 | 论文条目 | 本次结果 | 论文参考 | 判定 | 产物 |
 |----------|----------|----------|------|------|
 | **Table 1** 数据规模 | 651/1498/21393/5974 节点 | 一致 | ✅ | `DATA_MANIFEST.md` |
-| **Table 2** MSAT 主实验 | AUC **0.9797±0.0014** | 0.979±0.001 | ✅ | `summary.json` |
+| **Table 2** MSAT 主实验 | AUC **0.9792±0.0018** | 0.979±0.001 | ✅ | `summary.json` |
 | **Table 2** 九基线 1:1 | MSAT 最高 | MSAT > GNN > ML | ✅ | `baseline_summary.json` |
 | **Table 3** w/o ESA/HSP/HCI | Full 最高；w/o HCI 最低 | 同趋势 | ✅ | `ablation_summary.json` |
 | **Table 3** Only ESA/HSP/HCI | 均 < Full；Only HCI 非最低 | Only HCI 最低 | ⚠️ | `summary_only_*.json` |
-| **Table 4** MSAT 1:10 | AUC **0.8717±0.0042** | ~0.875±0.005 | ✅ | `summary_neg10.json` |
-| **Table 4** 九基线 1:10 | XGB 0.8768 > MSAT 0.8717 | MSAT 最优 | ⚠️ | `baseline_neg10_summary.json` |
-| **Fig.6** 测试不平衡 | 三 ratio MSAT 均最高 | MSAT 最优 | ✅ | `fig6_summary.json` |
+| **Table 4** MSAT 1:10 | AUC **0.8710±0.0051** | ~0.875±0.005 | ✅ | `summary_neg10.json` |
+| **Table 4** 九基线 1:10 | LR/RF/XGB 旧结果 AUC≈1.0，已判定污染 | MSAT 最优 | ❌ 待重跑 | `baseline_neg10_summary.json` |
+| **Fig.6** 测试不平衡 | ratio 2/5 为 HGT 最高；ratio 10 为 MSAT 最高 | MSAT 最优 | ⚠️ | `fig6_summary.json` |
 | **Fig.5b** 度分层 | Tail 0.972 > Head 0.836 | Tail 优于 Head | ✅ | `stratified_summary.json` |
 | **Fig.5a** 冷启动 | FAERS-only 四模型；MSAT **P/MCC/AUC 均最高** | MSAT > 全部 GNN | ✅ | `faers_only_coldstart_summary.json` |
 | **Fig.5a** GNN 基线 | GAT/HGT/Simple-HGN 已跑 | 同上 | ⚠️ | `run_coldstart_gnn.py` |
-| **Table 5** Top-15 验证 | OOF+FAERS-only **7/15**；paper-herb **12/15 (80%)** | **13/15** | ⚠️ ADR 不一致 | `table5_paper_compare.json` |
-| **Table 6** TCM 映射 | 列已生成，规则粗 | 15 例精细映射 | ⚠️ | `table6_mapping.csv` |
-| **§4.5.1** 枳实案例 | id=277，路径有，分数低 | 高置信 + nobiletin→ABCG2 | ⚠️ | `case_zhishi_diarrhoea.json` |
+| **Table 5** Top-15 验证 | 当前 root 产物 stale；最终同步支持率 1/15 | **13/15** | ❌ | `table5_summary.json` |
+| **Table 6** TCM 映射 | 当前产物 stale，且依赖 stale Table 5 | 15 例精细映射 | ❌ | `table6_mapping.csv` |
+| **§4.5.1** 枳实案例 | id=277，nobiletin 路径有；当前产物 stale，score 0.2549/rank 7 | 高置信 + nobiletin→ABCG2 | ⚠️ | `case_zhishi_diarrhoea.json` |
 | **8A** 16 种子映射 | 16/16 通过 | — | ✅ | `validate_entity_mapping.py` |
 | **Supp.** 敏感性等 | 未做 | — | ⏭ | — |
 
 ### 完成度汇总
 
 ```
-核心训练指标（Table 2–4 MSAT + 消融 + Fig.6）     ██████████  100%  ✅
-基线对比（Table 2/4 全模型趋势）                  ████████░░   85%  ⚠️
-下游解释（Table 5/6 + 案例）                      ████░░░░░░   40%  ❌
+核心训练指标（Table 2–4 MSAT + 消融）             █████████░   90%  ✅
+基线对比（Table 2/4 全模型趋势）                  ██████░░░░   60%  ⚠️
+下游解释（Table 5/6 + 案例）                      ██░░░░░░░░   20%  ❌
 Fig.5a 冷启动四模型                               ██████████  100%  ✅
 可选补充（8G）                                    ░░░░░░░░░░    0%  ⏭
 ─────────────────────────────────────────────────────────────
-整体（按 Phase 8 计划 8A–8F 脚本+GPU）            ████████░░   80%  ⚠️
-整体（按论文全文语义一致）                        ████████░░   75%  ⚠️
+整体（按 Phase 8 计划 8A–8F 脚本+GPU）            ███████░░░   70%  ⚠️
+整体（按论文全文语义一致）                        ██████░░░░   60%  ⚠️
 ```
 
 **结论：实验流水线与主指标复现已完成；与论文逐表完全一致尚未达成。**

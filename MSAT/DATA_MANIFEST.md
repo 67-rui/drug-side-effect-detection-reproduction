@@ -37,10 +37,13 @@
 | `MSAT/saved_models/best_model_*.pt` | 训练 checkpoint |
 | `MSAT/results/*.json` | 10 折 CV、基线、消融、分层、Phase 8 实验结果 |
 | `MSAT/results/table5_top15.csv` | Table 5 Top-15 预测 |
-| `MSAT/results/table6_mapping.csv` | Table 6 TCM 系统映射 |
-| `MSAT/results/case_zhishi_diarrhoea.json` | §4.5.1 枳实案例 |
+| `MSAT/results/table6_mapping.csv` | Table 6 TCM 系统映射（当前依赖 stale Table 5，需重跑） |
+| `MSAT/results/case_zhishi_diarrhoea.json` | §4.5.1 枳实案例（当前 stale，需 checkpoint provenance） |
 | `MSAT/results/fig6_summary.json` | Fig.6 不平衡 sweep |
-| `MSAT/results/baseline_neg10_summary.json` | Table 4 九基线 1:10 汇总 |
+| `MSAT/results/baseline_neg10_summary.json` | Table 4 九基线 1:10 汇总（ML baseline 旧结果不可引用） |
+| `MSAT/results/reproduction_state_audit.json` | 当前轻量产物审计 |
+| `MSAT/results/TABLE5_PROTOCOL_DECISION.md` | Table 5 协议选择 |
+| `MSAT/results/CHECKPOINT_RUNBOOK.md` | checkpoint 恢复与引用规则 |
 | `MSAT/results/REPRODUCTION_REPORT.md` | 复现报告（含论文逐表对照 §12） |
 | `experiments_data_clean_final/folds/` | 折内 dev/test npz（本地生成） |
 

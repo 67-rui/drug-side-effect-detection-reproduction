@@ -1,0 +1,96 @@
+{
+  "created_at": "2026-06-23T17:43:20.607429",
+  "results_dir": "/Users/a67_2024/Desktop/drug-detect/MSAT/results",
+  "summary": {
+    "stale_artifacts": [
+      "table5_summary.json",
+      "case_zhishi_diarrhoea.json",
+      "table6_mapping.json"
+    ],
+    "missing_artifacts": [],
+    "suspicious_ml_baselines": [
+      {
+        "model": "LR",
+        "auc": 0.9999998721375049,
+        "source": "baseline_lr_neg10.json"
+      },
+      {
+        "model": "RF",
+        "auc": 1.0,
+        "source": "baseline_rf_neg10.json"
+      },
+      {
+        "model": "XGB",
+        "auc": 1.0,
+        "source": "baseline_xgb_neg10.json"
+      }
+    ],
+    "fig6_winners": {
+      "2": {
+        "model": "hgt",
+        "auc": 0.8266722066864836,
+        "source": "baseline_hgt_testneg2.json"
+      },
+      "5": {
+        "model": "hgt",
+        "auc": 0.8244035137873988,
+        "source": "baseline_hgt_testneg5.json"
+      },
+      "10": {
+        "model": "msat",
+        "auc": 0.8206479473006288,
+        "source": "summary_testneg10.json"
+      }
+    }
+  },
+  "issues": [
+    {
+      "severity": "error",
+      "code": "stale_artifact",
+      "file": "table5_summary.json",
+      "message": "Generated before checkpoint/input provenance tracking; do not cite until regenerated after the leakage and checkpoint-isolation fixes."
+    },
+    {
+      "severity": "error",
+      "code": "stale_artifact",
+      "file": "case_zhishi_diarrhoea.json",
+      "message": "Generated before checkpoint provenance was recorded; final synced checkpoint may have been overwritten by tagged Fig.6 or ablation runs."
+    },
+    {
+      "severity": "error",
+      "code": "stale_artifact",
+      "file": "table6_mapping.json",
+      "message": "Generated from the stale Table 5 output before input provenance tracking."
+    },
+    {
+      "severity": "error",
+      "code": "suspicious_ml_auc",
+      "file": "baseline_neg10_summary.json",
+      "message": "LR AUC=1.000000; likely pre-fix leakage result"
+    },
+    {
+      "severity": "error",
+      "code": "suspicious_ml_auc",
+      "file": "baseline_neg10_summary.json",
+      "message": "RF AUC=1.000000; likely pre-fix leakage result"
+    },
+    {
+      "severity": "error",
+      "code": "suspicious_ml_auc",
+      "file": "baseline_neg10_summary.json",
+      "message": "XGB AUC=1.000000; likely pre-fix leakage result"
+    },
+    {
+      "severity": "warning",
+      "code": "fig6_msat_not_winner",
+      "file": "fig6_summary.json",
+      "message": "ratio 2 winner is hgt AUC=0.826672"
+    },
+    {
+      "severity": "warning",
+      "code": "fig6_msat_not_winner",
+      "file": "fig6_summary.json",
+      "message": "ratio 5 winner is hgt AUC=0.824404"
+    }
+  ]
+}

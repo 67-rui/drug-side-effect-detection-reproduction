@@ -45,6 +45,7 @@ ENV/
 results/*
 !results/
 !results/*.md
+!results/reproduction_state_audit.json
 logs/
 saved_models/
 checkpoints/

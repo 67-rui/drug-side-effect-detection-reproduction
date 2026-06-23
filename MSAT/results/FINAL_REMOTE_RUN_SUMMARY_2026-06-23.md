@@ -23,7 +23,7 @@ This summary records the AutoDL paper-aligned run that completed on 2026-06-23 1
 
 ## Critical Issues
 
-1. The 1:10 ML baselines are invalid until investigated. `baseline_neg10_summary.json` reports LR/RF/XGB AUC approximately 1.0, which is implausible and likely indicates target-edge evidence leakage or candidate-pair feature construction leakage.
+1. The synced 1:10 ML baseline JSON files are invalid until rerun. `baseline_neg10_summary.json` reports LR/RF/XGB AUC approximately 1.0; the code-level leakage source has been fixed, but the old result files still reflect the pre-fix run.
 
 2. Fig.6 is not fully aligned with the paper. In the synced run, HGT has slightly higher AUC than MSAT at negative ratios 2 and 5; MSAT is only first at ratio 10.
 
@@ -50,12 +50,16 @@ Verification:
 
 ## Recommended Next Steps
 
-1. Audit and fix ML baseline pair features under 1:10. Do not allow the CMM-ADR edge evidence vector or any direct known-positive indicator to separate labels.
+1. When the server is available, pull latest code and run `scripts/rerun_after_artifact_fix.sh`.
+   - This refreshes corrected 1:10 ML baselines and regenerates Table 5, Table 6, and the Zhishi case with provenance.
 
-2. Protect prediction checkpoints by experiment tag. Save Table 2 predictor checkpoints separately from Fig.6/test-negative checkpoints, then regenerate Table 5 and the Zhishi case from the intended main Table 2 predictor.
+2. Run `scripts/audit_reproduction_state.py --out results/reproduction_state_audit.json` after every result sync.
+   - Do not cite outputs with `stale_artifact`, `missing_provenance`, or `suspicious_ml_auc`.
 
-3. Re-run Fig.6 after checkpoint isolation and protocol audit. Compare HGT/MSAT settings, threshold handling, and whether the same train/test split and test-negative sampling are used.
+3. Re-run Fig.6 after checkpoint isolation and metadata fixes are deployed.
+   - Compare HGT/MSAT settings, threshold handling, and whether the same train/test split and test-negative sampling are used.
 
-4. Decide the Table 5 evidence protocol explicitly. If no faithful TCMDA validation source is available, report it as a reproduction gap rather than claiming the paper's 13/15.
+4. Follow `TABLE5_PROTOCOL_DECISION.md` for Table 5.
+   - If no faithful TCMDA validation source is available, report Table 5 as a reproduction gap rather than claiming the paper's 13/15.
 
-5. Regenerate `REPRODUCTION_REPORT.md` only after the above corrections, because several current prose sections are stale relative to the final synced JSON files.
+5. Regenerate `REPRODUCTION_REPORT.md` after corrected remote artifacts are synced back.
