@@ -135,10 +135,15 @@ def pair_features(
     a: np.ndarray,
     edge_attr_map: dict[tuple[int, int], np.ndarray] | None = None,
     edge_dim: int = 6,
+    include_edge_attr: bool = False,
 ) -> np.ndarray:
-    """Node concat + optional CMM–ADR edge features (paper §3.5.2 ML baselines)."""
+    """Node concat features for ML baselines.
+
+    CMM-ADR edge evidence is label-carrying for positive graph edges, so ML
+    baselines exclude it by default. It can be enabled only for diagnostics.
+    """
     node_part = np.concatenate([herb_x[h], adr_x[a]], axis=1)
-    if edge_attr_map is None:
+    if edge_attr_map is None or not include_edge_attr:
         return node_part
     edge_part = np.zeros((len(h), edge_dim), dtype=np.float32)
     for i, (hi, ai) in enumerate(zip(h, a)):

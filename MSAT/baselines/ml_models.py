@@ -71,6 +71,14 @@ def run_ml_cv(model_name: str, n_folds: int = 10) -> Dict:
 
     return {
         'model': model_name,
+        'feature_config': {
+            'pair_features': 'concat(herb_x, adr_x)',
+            'include_cmm_adr_edge_attr': False,
+            'leakage_note': (
+                'CMM-ADR edge_attr is excluded because its presence directly '
+                'identifies known positive CMM-ADR edges in sampled pairs.'
+            ),
+        },
         'fold_metrics': fold_metrics,
         'overall_metrics': aggregate_fold_metrics(fold_metrics),
     }

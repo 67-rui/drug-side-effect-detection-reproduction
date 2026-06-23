@@ -197,6 +197,7 @@ def train_eval_gnn(model_name: str, fold: FoldSplit, device: torch.device) -> Di
 
 def run_gnn_cv(model_name: str, n_folds: int = 10, device=None) -> Dict:
     from baselines.common import aggregate_fold_metrics, prepare_fold
+    from config import DataConfig, TrainingConfig
 
     if device is None:
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -211,6 +212,25 @@ def run_gnn_cv(model_name: str, n_folds: int = 10, device=None) -> Dict:
 
     return {
         'model': model_name,
+        'data_config': {
+            'n_folds': n_folds,
+            'neg_ratio': DataConfig.NEG_RATIO,
+            'test_neg_ratio': getattr(DataConfig, 'TEST_NEG_RATIO', DataConfig.NEG_RATIO),
+            'random_seed': DataConfig.RANDOM_SEED,
+        },
+        'model_config': {
+            'hidden': GNN_HIDDEN,
+            'layers': GNN_LAYERS,
+            'dropout': GNN_DROPOUT,
+        },
+        'training_config': {
+            'learning_rate': GNN_LR,
+            'weight_decay': GNN_WEIGHT_DECAY,
+            'max_epochs': GNN_MAX_EPOCHS,
+            'patience': GNN_PATIENCE,
+            'batch_size': GNN_BATCH_SIZE,
+            'use_optimal_threshold': TrainingConfig.USE_OPTIMAL_THRESHOLD,
+        },
         'fold_metrics': fold_metrics,
         'overall_metrics': aggregate_fold_metrics(fold_metrics),
     }

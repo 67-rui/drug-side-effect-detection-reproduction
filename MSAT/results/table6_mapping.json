@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-22T23:42:36.245615",
+  "created_at": "2026-06-23T16:11:15.576565",
   "input": "/root/autodl-tmp/MSAT/results/table5_top15.csv",
   "output": "/root/autodl-tmp/MSAT/results/table6_mapping.csv",
   "n_rows": 15

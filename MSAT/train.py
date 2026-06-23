@@ -63,6 +63,13 @@ def _remove_cmm_adr_pairs(data, pairs_to_remove):
     return data
 
 
+def prediction_checkpoint_path(experiment_tag='') -> Path:
+    if not experiment_tag:
+        return Path('saved_models/best_model_for_prediction.pt')
+    safe_tag = ''.join(c if c.isalnum() or c in ('-', '_') else '_' for c in str(experiment_tag))
+    return Path(f'saved_models/best_model_for_prediction_{safe_tag}.pt')
+
+
 def train_one_epoch(model, data, optimizer, train_edges, train_labels, device):
     model.train()
     optimizer.zero_grad()
@@ -442,6 +449,7 @@ def run_10fold_cv(experiment_tag=''):
             'n_folds': TrainingConfig.N_FOLDS,
             'random_seed': DataConfig.RANDOM_SEED,
             'neg_ratio': DataConfig.NEG_RATIO,
+            'test_neg_ratio': DataConfig.TEST_NEG_RATIO,
             'use_optimal_threshold': TrainingConfig.USE_OPTIMAL_THRESHOLD,
         },
         'model_config': {
@@ -483,15 +491,17 @@ def run_10fold_cv(experiment_tag=''):
     
     suffix = f'_{experiment_tag}' if experiment_tag else ''
     summary_path = MSAT_ROOT / f'results/summary{suffix}.json'
+
+    if best_overall_state is not None:
+        prediction_ckpt = MSAT_ROOT / prediction_checkpoint_path(experiment_tag)
+        torch.save(best_overall_state, prediction_ckpt)
+        print(f"[SAVED] {prediction_ckpt} (from fold {best_overall_fold})")
+        summary['prediction_checkpoint'] = str(prediction_ckpt)
+
     with open(summary_path, 'w') as f:
         json.dump(summary, f, indent=2)
-    
+
     print(f"\n[SAVED] {summary_path}")
-    
-  
-    if best_overall_state is not None:
-        torch.save(best_overall_state, MSAT_ROOT / 'saved_models/best_model_for_prediction.pt')
-        print(f"[SAVED] {MSAT_ROOT / 'saved_models/best_model_for_prediction.pt'} (from fold {best_overall_fold})")
     
     print(f"\n{'='*80}")
     print("Training Complete!")
@@ -500,4 +510,3 @@ def run_10fold_cv(experiment_tag=''):
 
 if __name__ == '__main__':
     run_10fold_cv()
-

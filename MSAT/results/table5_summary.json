@@ -1,10 +1,10 @@
 {
-  "created_at": "2026-06-22T23:43:21.127304",
+  "created_at": "2026-06-23T16:11:14.653375",
   "protocol": "paper_3.5.6_global_top15",
   "source_summary": "/root/autodl-tmp/MSAT/results/summary.json",
   "scoring_mode": "oof_pooled",
   "candidate_pool": "exclude_all_graph_positives",
-  "database_check": "TCMDA cache: data/tcmda_cache.json (found)",
+  "database_check": "TCMDA cache: /root/autodl-tmp/MSAT/data/tcmda_cache.json (found)",
   "top_k": 15,
   "support_rate": 0.06666666666666667,
   "supported_count": 1,

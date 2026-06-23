@@ -1,6 +1,6 @@
 # MSAT Project Memory
 
-Last inspected: 2026-06-23
+Last inspected: 2026-06-23 16:50 CST
 Latest external progress note: `resource_副本/MSAT_SESSION_PROGRESS_2026-06-23.md` (2026-06-23 11:45 CST)
 
 ## Purpose
@@ -35,7 +35,11 @@ The reproduction goal is not just to run the upstream code, but to match the pap
 - `MSAT/results/archive_pre_paper_align_2026-06-22/`: historical outputs before paper-protocol realignment; do not cite as final unless explicitly comparing history.
 - `docs/superpowers/plans/`: phase plans, especially Phase 8 and Phase 9 gap-closure notes.
 
-The repository root is not a git repo, and `MSAT/` is not a git repo either in this workspace.
+The workspace is now a git repository and has been pushed to GitHub:
+
+- Remote: `git@github.com:67-rui/drug-side-effect-detection-reproduction.git`
+- Public URL: `https://github.com/67-rui/drug-side-effect-detection-reproduction`
+- Initial pushed commit: `ee5e617 Initial reproduction project snapshot`
 
 ## Paper Protocol Anchors
 
@@ -74,35 +78,22 @@ Graph scale recorded in the report:
 
 ## Current Progress Snapshot
 
-The local `MSAT/results/` root currently contains outputs timestamped up to 2026-06-22 23:46, but Cursor's latest session note reports a newer AutoDL run that has not been fully pulled back locally. Treat `resource_副本/MSAT_SESSION_PROGRESS_2026-06-23.md` as the current progress source until the remote artifacts are synchronized.
+The full paper-aligned AutoDL resume completed on 2026-06-23 16:11 CST. Remote `results/` was synchronized back to local `MSAT/results/` at about 2026-06-23 16:50 CST.
 
-Remote AutoDL state from the Cursor note:
+Remote/local sync facts:
 
-- Full paper-aligned retrain started 2026-06-22 22:12 via `scripts/server_paper_retrain.sh`.
-- User paused the remote run at 2026-06-23 00:58; `scripts/server_paper_retrain_resume.sh` was uploaded.
-- Resume started 2026-06-23 10:34.
-- At 2026-06-23 11:45, the resume was still running at `run_baselines.py --neg-ratio 10 --model hgt`, fold 5/10.
-- Remote path: `/root/autodl-tmp/MSAT`.
-- Resume log: `results/phase8_logs/paper_retrain_resume.log`.
+- Remote path: `/root/autodl-tmp/MSAT/results`.
+- Local path: `MSAT/results/`.
+- Synced result payload: 103 files, about 328 MB.
+- Remote training processes had stopped and GPU was idle at the final check.
 
-New paper-aligned remote results already reported by Cursor:
-
-- New-protocol Table 2 MSAT 10-fold: `summary.json` AUC about 0.9792.
-- New-protocol Table 4 MSAT 1:10: `summary_neg10.json` AUC about 0.871.
-- Table 2 ML and GNN baselines are complete on remote.
-- Table 3 ablation is complete on remote.
-- Table 4 1:10 baselines are partially complete: lr/rf/xgb/gcn/gat/rgcn done; hgt running; hetnn and simple_hgn pending as of 11:45.
-- Fig.6 sweep and Phase 9 are still pending after the 1:10 baseline queue.
-- Fig.5a FAERS-only result should be kept; Phase 9 will skip FAERS-only because `faers_only_coldstart_summary.json` is already valid.
-
-Local snapshot before/around the remote sync:
+Final local snapshot after the remote sync:
 
 Strongly reproduced / effectively complete:
 
-- Table 2 MSAT main experiment: previous local archive AUC about 0.9797 +/- 0.0014; newer remote paper-aligned rerun reported AUC about 0.9792, matching paper about 0.979.
+- Table 2 MSAT main experiment: `summary.json` AUC 0.9792 +/- 0.0018, F1 0.9311, MCC 0.8616. This matches the paper's main MSAT AUC level.
 - Table 3 w/o ablations: Full is best; w/o HCI has lowest AUC among w/o variants.
-- Table 4 MSAT 1:10: previous local archive AUC about 0.8717 +/- 0.0042; newer remote paper-aligned rerun reported AUC about 0.871, close to paper about 0.875 +/- 0.005.
-- Fig.6 imbalance sweep: MSAT highest under tested ratios.
+- Table 4 MSAT 1:10: `summary_neg10.json` AUC 0.8710 +/- 0.0051, F1 0.5639, MCC 0.5221, close to the paper's reported 1:10 MSAT level.
 - Fig.5b degree stratification: tail/head trend aligns with paper.
 - Fig.5a paper-aligned FAERS-only cold-start: `faers_only_coldstart_summary.json` shows MSAT beats GAT, HGT, and Simple-HGN on Precision, MCC, and AUC, with unseen herb rate 164/170 = 96.47%.
 - Entity mapping sanity for paper seeds: recorded as 16/16 mapped.
@@ -110,16 +101,43 @@ Strongly reproduced / effectively complete:
 Partially reproduced / still problematic:
 
 - Table 3 Only variants: all below Full, but Only HCI is not the lowest as in the paper.
-- Table 4 all-model ranking: do not finalize until remote resume completes hgt/hetnn/simple_hgn and aggregates all 1:10 baselines. Previous local archive had XGB AUC 0.8768 slightly higher than MSAT 0.8717, but that was before the current remote resume finished.
+- Table 4 all-model ranking: GNN baselines are plausible and below MSAT, but ML baselines are invalid right now. LR/RF/XGB produce AUC approximately 1.0 under 1:10, which is a severe anomaly and likely indicates target-edge evidence leakage or pair-feature construction leakage. Do not cite ML baseline rows until fixed.
+- Fig.6 imbalance sweep: MSAT is best only at test negative ratio 10. HGT is slightly higher than MSAT at ratios 2 and 5, so the current Fig.6 result does not fully match the paper trend.
 - Table 5 Top-15: unresolved. Current files and report have version drift:
-  - Report section 10.7 mentions OOF + FAERS-only support 7/15 and paper-herb Top-1 support 12/15.
-  - Current root `table5_summary.json` is `exclude_all_graph_positives` with support 1/15.
+  - Current root `table5_summary.json` is `paper_3.5.6_global_top15` / `exclude_all_graph_positives` with support 1/15.
   - `archive_pre_paper_align_2026-06-22/table5_paper_compare.json` has paper-herb Top-1 support 12/15 but ADR text matches paper 0/15.
   - External database validation is incomplete because TCMDA has no public API in this workflow.
 - Table 6 TCM mapping: columns are generated, but mapping is still coarse and often defaults to `Qi-Blood-Fluid`; fine-grained paper mappings are not fully reproduced.
 - Zhishi case study:
-  - Current `case_zhishi_diarrhoea.json` is much improved: herb_id 277, label includes 枳实 / Citrus aurantium L., score 0.9628, rank 1, and nobiletin CID 72344 appears.
-  - Target names are still mostly numeric IDs; ABCG2/BCRP is recorded in `paper_targets` but not fully resolved in every displayed path.
+  - Current `case_zhishi_diarrhoea.json` still maps herb_id 277 and label includes 枳实 / Citrus aurantium L., with nobiletin CID 72344 paths.
+  - The final synced score is weaker than the earlier local run: score 0.2549, rank 7/5974. This may be caused by later Fig.6/test-negative runs overwriting `saved_models/best_model_for_prediction.pt`; verify checkpoint provenance before citing the case score.
+
+See `MSAT/results/FINAL_REMOTE_RUN_SUMMARY_2026-06-23.md` for the concise final synced result table and next actions.
+
+## Fixes Started After Final Sync
+
+These code fixes were made locally after synchronizing the remote result files. The old JSON metrics in `MSAT/results/` have not yet been regenerated after these fixes.
+
+- ML baseline leakage fixed in code:
+  - `baselines.common.pair_features()` now excludes CMM-ADR edge evidence by default.
+  - `baselines.ml_models.run_ml_cv()` records `include_cmm_adr_edge_attr: false` in future ML baseline outputs.
+  - Diagnostic before the fix showed fold 0 1:10 `has_edge_attr == label` accuracy was 1.0 for both train and test, explaining LR/RF/XGB AUC near 1.0.
+- Prediction checkpoint overwrite fixed in code:
+  - Main run still writes `saved_models/best_model_for_prediction.pt`.
+  - Tagged runs now write `saved_models/best_model_for_prediction_<tag>.pt`.
+  - Future Fig.6, ablation, and other tagged runs should no longer overwrite the main predictor checkpoint used by Table 5 and the Zhishi case.
+- Future MSAT/GNN summaries now include clearer protocol metadata:
+  - MSAT summaries include `test_neg_ratio`.
+  - GNN baseline summaries include data/model/training config fields.
+- Regression tests added:
+  - `tests/test_baseline_leakage.py`
+  - `tests/test_checkpoint_paths.py`
+
+Verification after these code changes:
+
+- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 7 passed.
+- `/Users/a67_2024/opt/anaconda3/bin/python -m py_compile baselines/common.py baselines/ml_models.py baselines/gnn_models.py train.py scripts/run_imbalance_sweep.py`: passed.
+- A local one-fold LR numerical rerun was attempted but interrupted after more than 2.5 minutes on CPU; rerun corrected ML baselines on the GPU server instead.
 
 ## Current Reports To Trust
 
@@ -137,8 +155,9 @@ Use these together; none is fully sufficient alone:
 
 There is a mismatch between some report prose and current root result files:
 
-- `REPRODUCTION_REPORT.md` still contains older statements that the Zhishi case had score 0.430/rank 4/display-name issues, but current `case_zhishi_diarrhoea.json` says score 0.9628/rank 1 and label includes 枳实.
-- Report Table 5 prose mentions 7/15 support under OOF + FAERS-only, but current root `table5_summary.json` records 1/15 under `exclude_all_graph_positives`.
+- `REPRODUCTION_REPORT.md` still contains older statements about the Zhishi case and Table 5 support. Current final synced files are authoritative until the report is regenerated.
+- Current `case_zhishi_diarrhoea.json` says score 0.2549/rank 7 and label includes 枳实.
+- Current root `table5_summary.json` records 1/15 support under `exclude_all_graph_positives`.
 - `table6_mapping.csv` appears generated from a different Table 5 input than current `table5_top15.csv`.
 
 Before publishing any final claim, regenerate Table 5 -> Table 6 in one controlled run and update the report.
@@ -154,24 +173,25 @@ No code-level pytest result is available from this inspection. Existing result f
 
 ## Recommended Next Steps
 
-1. Wait for / check remote resume completion.
-   - Do not restart `server_paper_retrain.sh`; use `server_paper_retrain_resume.sh` only if stopped.
-   - Expected remaining order from Cursor note: hgt -> hetnn -> simple_hgn -> Fig.6 -> Phase 9.
-2. Pull back/synchronize new remote artifacts.
-   - Especially new `summary.json`, all `baseline_*.json`, `baseline_summary.json`, `baseline_neg10_summary.json`, `fig6_summary.json`, Phase 9 outputs, and remote logs.
-3. Normalize Table 5 protocol and rerun Table 5 -> Table 6 in one pass if Phase 9 outputs still show drift.
+1. Push the leakage/checkpoint fixes to the server and rerun corrected ML baselines.
+   - Priority command target: 1:10 `lr`, `rf`, `xgb`, then regenerate `baseline_neg10_summary.json`.
+   - Do not cite old `baseline_lr_neg10.json`, `baseline_rf_neg10.json`, or `baseline_xgb_neg10.json`.
+2. Restore or regenerate a clean main-run predictor checkpoint.
+   - Re-run the main Table 2 MSAT training or copy the intended main checkpoint to `saved_models/best_model_for_prediction.pt`.
+   - Then regenerate Table 5 and the Zhishi case.
+3. Normalize Table 5 protocol and rerun Table 5 -> Table 6 in one pass.
    - Decide whether the final paper-aligned claim uses exclude-all-positives, FAERS-only exclusion, predictor mode, or paper-herb diagnostic mode.
    - Write the chosen protocol explicitly into result filenames or metadata.
-4. Improve Table 5 evidence validation.
+4. Re-run Fig.6 only after the checkpoint and metadata fixes are deployed.
+   - Current Fig.6 mismatch may be a real model/protocol result, but the regenerated summaries will be easier to audit.
+5. Improve Table 5 evidence validation.
    - TCMDA has no public API path here; use explicit manual cache entries or approved external evidence sources only.
    - Avoid claiming paper's 13/15 unless the same evidence definition is implemented.
-5. Fix Table 6 mapping.
+6. Fix Table 6 mapping.
    - Prefer `paper_table6_reference.json` for paper-comparison rows.
    - Expand PT/SOC rules for Stomach, Kidney, Liver, etc.
-6. Finish Zhishi readability.
+7. Finish Zhishi readability.
    - Map target IDs in the nobiletin paths to ABCG2/BCRP where supported.
    - Ensure report text is updated to current rank/score.
-7. Reconcile report drift.
+8. Reconcile report drift.
    - Update `REPRODUCTION_REPORT.md` sections 10.7, 10.8, 12, and 13 after remote results are pulled back.
-8. Install/test environment if code changes continue.
-   - Need pytest and project dependencies; current local Python lacks pytest.
