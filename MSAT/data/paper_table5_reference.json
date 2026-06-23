@@ -1,0 +1,21 @@
+{
+  "source": "Shi et al. 2026 Front. Pharmacol. 17:1774128 Table 5 (PMC12979427)",
+  "database": "TCMDA / organchem.csdb.cn (Section 3.5.6)",
+  "rows": [
+    {"pinyin": "Huzhang", "latin": "Polygonum cuspidatum Sieb. et Zucc.", "adr_pt": "Vomiting", "score_pct": 99.943, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Changshan", "latin": "Dichroa febrifuga Lour.", "adr_pt": "Vomiting", "score_pct": 99.941, "database_verified": false, "mechanistic_support": true},
+    {"pinyin": "Hongjingtian", "latin": "Rhodiola crenulata (Hook.f. et Thomson) H.Ohba", "adr_pt": "Palpitations", "score_pct": 99.893, "database_verified": false, "mechanistic_support": false},
+    {"pinyin": "Muzei", "latin": "Equisetum hyemale L.", "adr_pt": "Vomiting", "score_pct": 99.890, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Luole", "latin": "Ocimum basilicum L.", "adr_pt": "Acute pulmonary oedema", "score_pct": 99.868, "database_verified": true, "mechanistic_support": false},
+    {"pinyin": "Aiye", "latin": "Artemisia argyi Levl. et Vaniot", "adr_pt": "Drug-induced liver injury", "score_pct": 99.710, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Ezhu", "latin": "Curcuma phaeocaulis Valeton", "adr_pt": "Dermatitis", "score_pct": 99.593, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Niubanggen", "latin": "Arctium lappa L.", "adr_pt": "Acute pulmonary oedema", "score_pct": 99.473, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Shanglu", "latin": "Phytolacca acinosa Roxb.", "adr_pt": "Gastric haemorrhage", "score_pct": 99.393, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Bajiao Huixiang", "latin": "Illicium verum Hook.f.", "adr_pt": "Pulmonary embolism", "score_pct": 99.153, "database_verified": true, "mechanistic_support": false},
+    {"pinyin": "Yuanhua", "latin": "Daphne genkwa Sieb. et Zucc.", "adr_pt": "Small intestinal haemorrhage", "score_pct": 98.843, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Ciwujia", "latin": "Eleutherococcus senticosus (Rupr. et Maxim.) Maxim.", "adr_pt": "Tinnitus", "score_pct": 98.742, "database_verified": true, "mechanistic_support": true},
+    {"pinyin": "Hei Shengma", "latin": "Cimicifuga racemosa (L.) Nutt.", "adr_pt": "Dizziness", "score_pct": 98.291, "database_verified": false, "mechanistic_support": true},
+    {"pinyin": "Liangmianzhen", "latin": "Zanthoxylum nitidum (Roxb.) DC.", "adr_pt": "Hepatitis", "score_pct": 98.198, "database_verified": false, "mechanistic_support": false},
+    {"pinyin": "Xishu", "latin": "Camptotheca acuminata Decne.", "adr_pt": "Tremor", "score_pct": 97.923, "database_verified": true, "mechanistic_support": true}
+  ]
+}

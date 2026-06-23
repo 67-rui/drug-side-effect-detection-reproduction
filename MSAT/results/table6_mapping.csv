@@ -1,0 +1,16 @@
+rank,herb_id,pinyin,latin,chinese,adr_id,adr_pt,score_pct,database_verified,mechanistic_support,path_hint,tcm_system_mapping
+1,52,,Origani herba,,4997,Jaundice,99.939,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+2,237,YE CAO MEI,Fragaria vesca?L.,野草莓,3989,Altered state of consciousness,99.938,False,True,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness,Qi-Blood-Fluid
+3,526,LI SHU PI,Castanea mollissima,板栗,5766,Blood urea abnormal,99.937,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+4,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,2706,Drug-induced liver injury,99.935,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Liver+Qi-Blood-Fluid
+5,573,BA QIA,Smilax china [Syn. Smilax japonica ],菝契,1240,Eye pain,99.934,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+6,337,AI JI CHE ZHOU CAO,Trifolium alexandrinum,埃及三叶草,2706,Drug-induced liver injury,99.933,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Liver+Qi-Blood-Fluid
+7,526,LI SHU PI,Castanea mollissima,板栗,1804,Gastrointestinal fullness,99.931,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+8,339,BAO YE XIANG CHA CAI,Isodon melissoides,,2706,Drug-induced liver injury,99.931,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Liver+Qi-Blood-Fluid
+9,483,XIANG CHUAN PI,Cortex Citri,香椽皮,3989,Altered state of consciousness,99.93,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+10,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,3989,Altered state of consciousness,99.93,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+11,274,XIAN MAI XIANG CHA CAI,Rabdosia nervosa,显脉香茶菜,2706,Drug-induced liver injury,99.925,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Liver+Qi-Blood-Fluid
+12,508,GUI PI YOU,Oleum Corticis Cinnamomi,桂皮油,1400,Pelvic discomfort,99.925,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+13,539,YAN SUAN MA LIN GUA,Moroxydini Hydrochloridum,盐酸吗啉胍,3989,Altered state of consciousness,99.925,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+14,508,GUI PI YOU,Oleum Corticis Cinnamomi,桂皮油,3111,Dizzy spells,99.925,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Liver
+15,526,LI SHU PI,Castanea mollissima,板栗,4363,Vegetative dystonia,99.925,False,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid

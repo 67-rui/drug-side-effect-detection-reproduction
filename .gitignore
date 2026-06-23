@@ -1,0 +1,51 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python caches / test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local Cursor rule bundle not specific to this reproduction
+.cursor/
+
+# Unrelated local helper package
+agency-agents-zh-main/
+
+# Large datasets and generated training artifacts
+experiments_data_clean_final/
+MSAT/saved_models/
+MSAT/checkpoints/
+MSAT/logs/
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+
+# Generated caches
+MSAT/data/raw/
+MSAT/data/*_cache/
+
+# Keep selected lightweight result summaries by force-adding them; ignore logs/archives by default.
+MSAT/results/archive_pre_paper_align_2026-06-22/
+MSAT/results/phase8_logs/
+MSAT/results/**/*.log
+MSAT/results/**/*.tgz
+
+# Virtual environments / build outputs
+venv/
+env/
+ENV/
+.venv/
+build/
+dist/
+*.egg-info/

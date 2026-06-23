@@ -1,0 +1,294 @@
+{
+  "updated_at": "2026-06-22T23:21:32.367737",
+  "source": "paper_table5_reference.json (Shi et al. 2026 Table 5 TCMDA flags)",
+  "live_tcmda_login": false,
+  "instructions": "Replace with live TCMDA queries via: TCMDA_USER=... TCMDA_PASS=... python scripts/fetch_tcmda.py --write-cache",
+  "entries": [
+    {
+      "herb_query": "虎杖",
+      "herb_aliases": [
+        "虎杖",
+        "Huzhang",
+        "Polygonum cuspidatum",
+        "Polygonum cuspidatum Sieb. et Zucc."
+      ],
+      "adverse_phenotypes": [
+        "Vomiting",
+        "呕吐",
+        "恶心",
+        "Nausea"
+      ],
+      "predicted_adr_pt": "Vomiting",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "常山",
+      "herb_aliases": [
+        "常山",
+        "Changshan",
+        "Dichroa febrifuga Lour.",
+        "Dichroa febrifuga Lour."
+      ],
+      "adverse_phenotypes": [],
+      "predicted_adr_pt": "Vomiting",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; paper: not TCMDA-verified",
+      "paper_database_verified": false,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "红景天",
+      "herb_aliases": [
+        "红景天",
+        "Hongjingtian",
+        "Rhodiola crenulata",
+        "Rhodiola crenulata (Hook.f. et Thomson) H.Ohba"
+      ],
+      "adverse_phenotypes": [],
+      "predicted_adr_pt": "Palpitations",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; paper: not TCMDA-verified",
+      "paper_database_verified": false,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "木贼",
+      "herb_aliases": [
+        "木贼",
+        "Muzei",
+        "Equisetum hyemale",
+        "Equisetum hyemale L."
+      ],
+      "adverse_phenotypes": [
+        "Vomiting",
+        "呕吐",
+        "恶心",
+        "Nausea"
+      ],
+      "predicted_adr_pt": "Vomiting",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "罗勒",
+      "herb_aliases": [
+        "罗勒",
+        "Luole",
+        "Ocimum basilicum",
+        "Ocimum basilicum L."
+      ],
+      "adverse_phenotypes": [
+        "Acute pulmonary oedema",
+        "急性肺水肿",
+        "肺水肿",
+        "Pulmonary oedema"
+      ],
+      "predicted_adr_pt": "Acute pulmonary oedema",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "艾叶",
+      "herb_aliases": [
+        "艾叶",
+        "Aiye",
+        "Artemisia argyi Levl. et Vaniot",
+        "Artemisia argyi Levl. et Vaniot"
+      ],
+      "adverse_phenotypes": [
+        "Drug-induced liver injury",
+        "药物性肝损伤",
+        "肝损伤",
+        "Liver injury"
+      ],
+      "predicted_adr_pt": "Drug-induced liver injury",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "莪术",
+      "herb_aliases": [
+        "莪术",
+        "Ezhu",
+        "Curcuma phaeocaulis Valeton",
+        "Curcuma phaeocaulis Valeton"
+      ],
+      "adverse_phenotypes": [
+        "Dermatitis",
+        "皮炎",
+        "Skin reaction"
+      ],
+      "predicted_adr_pt": "Dermatitis",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "牛蒡根",
+      "herb_aliases": [
+        "牛蒡根",
+        "Niubanggen",
+        "Arctium lappa",
+        "Arctium lappa L."
+      ],
+      "adverse_phenotypes": [
+        "Acute pulmonary oedema",
+        "急性肺水肿",
+        "肺水肿",
+        "Pulmonary oedema"
+      ],
+      "predicted_adr_pt": "Acute pulmonary oedema",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "商陆",
+      "herb_aliases": [
+        "商陆",
+        "Shanglu",
+        "Phytolacca acinosa Roxb.",
+        "Phytolacca acinosa Roxb."
+      ],
+      "adverse_phenotypes": [
+        "Gastric haemorrhage",
+        "胃出血",
+        "Gastrointestinal haemorrhage"
+      ],
+      "predicted_adr_pt": "Gastric haemorrhage",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "八角茴香",
+      "herb_aliases": [
+        "八角茴香",
+        "Bajiao Huixiang",
+        "Illicium verum Hook.f.",
+        "Illicium verum Hook.f."
+      ],
+      "adverse_phenotypes": [
+        "Pulmonary embolism",
+        "肺栓塞"
+      ],
+      "predicted_adr_pt": "Pulmonary embolism",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "芫花",
+      "herb_aliases": [
+        "芫花",
+        "Yuanhua",
+        "Daphne genkwa",
+        "Daphne genkwa Sieb. et Zucc."
+      ],
+      "adverse_phenotypes": [
+        "Small intestinal haemorrhage",
+        "小肠出血",
+        "Intestinal haemorrhage"
+      ],
+      "predicted_adr_pt": "Small intestinal haemorrhage",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "刺五加",
+      "herb_aliases": [
+        "刺五加",
+        "Ciwujia",
+        "Eleutherococcus senticosus",
+        "Eleutherococcus senticosus (Rupr. et Maxim.) Maxim."
+      ],
+      "adverse_phenotypes": [
+        "Tinnitus",
+        "耳鸣"
+      ],
+      "predicted_adr_pt": "Tinnitus",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "黑升麻",
+      "herb_aliases": [
+        "黑升麻",
+        "Hei Shengma",
+        "Cimicifuga racemosa",
+        "Cimicifuga racemosa (L.) Nutt."
+      ],
+      "adverse_phenotypes": [],
+      "predicted_adr_pt": "Dizziness",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; paper: not TCMDA-verified",
+      "paper_database_verified": false,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "两面针",
+      "herb_aliases": [
+        "两面针",
+        "Liangmianzhen",
+        "Zanthoxylum nitidum",
+        "Zanthoxylum nitidum (Roxb.) DC."
+      ],
+      "adverse_phenotypes": [],
+      "predicted_adr_pt": "Hepatitis",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; paper: not TCMDA-verified",
+      "paper_database_verified": false,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    },
+    {
+      "herb_query": "喜树",
+      "herb_aliases": [
+        "喜树",
+        "Xishu",
+        "Camptotheca acuminata Decne.",
+        "Camptotheca acuminata Decne."
+      ],
+      "adverse_phenotypes": [
+        "Tremor",
+        "震颤"
+      ],
+      "predicted_adr_pt": "Tremor",
+      "source_url": "https://organchem.csdb.cn/scdb/Tcm_Multi/Tox_eff_query2.asp",
+      "notes": "Paper Table 5 database_verified flag; phenotypes from paper ADR PT + CN synonyms",
+      "paper_database_verified": true,
+      "verified_at": "2026-06-22",
+      "verified_by": "seed_tcmda_from_paper.py"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "source": "Shi et al. 2026 Front. Pharmacol. 17:1774128 Table 6 (PMC12979427)",
+  "rows": [
+    {"adr_pt": "Vomiting", "tcm_system_mapping": "Stomach"},
+    {"adr_pt": "Palpitations", "tcm_system_mapping": "Heart"},
+    {"adr_pt": "Acute pulmonary oedema", "tcm_system_mapping": "Lung+Qi-Blood-Fluid"},
+    {"adr_pt": "Drug-induced liver injury", "tcm_system_mapping": "Liver+Qi-Blood-Fluid"},
+    {"adr_pt": "Dermatitis", "tcm_system_mapping": "Body Surface"},
+    {"adr_pt": "Gastric haemorrhage", "tcm_system_mapping": "Stomach+Qi-Blood-Fluid"},
+    {"adr_pt": "Pulmonary embolism", "tcm_system_mapping": "Lung+Qi-Blood-Fluid"},
+    {"adr_pt": "Small intestinal haemorrhage", "tcm_system_mapping": "Small Intestine+Qi-Blood-Fluid"},
+    {"adr_pt": "Tinnitus", "tcm_system_mapping": "Kidney"},
+    {"adr_pt": "Dizziness", "tcm_system_mapping": "Liver"},
+    {"adr_pt": "Hepatitis", "tcm_system_mapping": "Liver+Qi-Blood-Fluid"},
+    {"adr_pt": "Tremor", "tcm_system_mapping": "Body Surface"}
+  ]
+}

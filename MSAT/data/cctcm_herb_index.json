@@ -1,0 +1,5861 @@
+[
+  {
+    "id": 0,
+    "primary": "Massa Fermentata Rhizpma Pinelliae",
+    "latin": "Massa Fermentata Rhizpma Pinelliae",
+    "chinese": "半夏曲",
+    "pinyin": "BAN XIA QU",
+    "confidence": 37.74378967285156,
+    "source": "itcm"
+  },
+  {
+    "id": 1,
+    "primary": "Uvaria scheffleri",
+    "latin": "Uvaria scheffleri",
+    "chinese": null,
+    "pinyin": "XIE FEI ZI YU PAN",
+    "confidence": 16.756135940551758,
+    "source": "itcm"
+  },
+  {
+    "id": 2,
+    "primary": "Gentiana crassicaulis",
+    "latin": "Gentiana crassicaulis",
+    "chinese": "粗茎秦艽",
+    "pinyin": "CU JING QIN JIAO",
+    "confidence": 70.53546905517578,
+    "source": "itcm"
+  },
+  {
+    "id": 3,
+    "primary": "Activated Carbon",
+    "latin": null,
+    "chinese": "活性碳",
+    "pinyin": "HUO XING TAN",
+    "confidence": 2.0588936805725098,
+    "source": "itcm"
+  },
+  {
+    "id": 4,
+    "primary": "Lac Regis Apis",
+    "latin": "Lac Regis Apis",
+    "chinese": "王浆",
+    "pinyin": "WANG JIANG",
+    "confidence": 36.343467712402344,
+    "source": "itcm"
+  },
+  {
+    "id": 5,
+    "primary": "TURMERIC RHIZOME",
+    "latin": "Curcumae longae rhizoma",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -4.661679267883301,
+    "source": "itcm"
+  },
+  {
+    "id": 6,
+    "primary": "Lythri herba",
+    "latin": "Lythri herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 71.693115234375,
+    "source": "itcm"
+  },
+  {
+    "id": 7,
+    "primary": "Malus domestica",
+    "latin": "Malus domestica",
+    "chinese": null,
+    "pinyin": "PING GUO HAI TANG",
+    "confidence": 96.49986267089844,
+    "source": "itcm"
+  },
+  {
+    "id": 8,
+    "primary": "Xanthium orientale",
+    "latin": "Xanthium orientale",
+    "chinese": null,
+    "pinyin": "DONG FANG CANG ER",
+    "confidence": 4.447506904602051,
+    "source": "itcm"
+  },
+  {
+    "id": 9,
+    "primary": "all-grass of Shepherdspurse",
+    "latin": "Herba Capsellae",
+    "chinese": "荠菜",
+    "pinyin": "Qi Cai",
+    "confidence": 10.901164054870605,
+    "source": "itcm"
+  },
+  {
+    "id": 10,
+    "primary": "Iotrochota baculifera XIAO BANG XIOU QIOU HAI MIAN",
+    "latin": "Iotrochota baculifera XIAO BANG XIOU QIOU HAI MIAN",
+    "chinese": null,
+    "pinyin": "SPONGE IOTROCHOTA BACULIFERA .",
+    "confidence": 59.624080657958984,
+    "source": "itcm"
+  },
+  {
+    "id": 11,
+    "primary": "Hippocampus",
+    "latin": "Hippocampus",
+    "chinese": "海马",
+    "pinyin": "HAI MA",
+    "confidence": 4.273365497589111,
+    "source": "itcm"
+  },
+  {
+    "id": 12,
+    "primary": "Delphinium consolida",
+    "latin": "Delphinium consolida",
+    "chinese": "琉璃飞燕草",
+    "pinyin": "QIANG GU FEI YAN CAO",
+    "confidence": 9.291055679321289,
+    "source": "itcm"
+  },
+  {
+    "id": 13,
+    "primary": "Notoginseng Flos",
+    "latin": null,
+    "chinese": "三七花",
+    "pinyin": "San Qi Hua",
+    "confidence": 5.490622520446777,
+    "source": "itcm"
+  },
+  {
+    "id": 14,
+    "primary": "Dichondra repens?Forst.",
+    "latin": "Dichondra repens?Forst.",
+    "chinese": "马蹄金",
+    "pinyin": "MA TI JIN",
+    "confidence": 16.093162536621094,
+    "source": "itcm"
+  },
+  {
+    "id": 15,
+    "primary": "Leucas zeylanica(L.)R.Br. Leucas aspera?(Will) Link",
+    "latin": "Leucas zeylanica(L.)R.Br. Leucas aspera?(Will) Link",
+    "chinese": "蜂窝草",
+    "pinyin": "FENG WO CAO",
+    "confidence": 12.000066757202148,
+    "source": "itcm"
+  },
+  {
+    "id": 16,
+    "primary": "Limonitum",
+    "latin": "Limonitum",
+    "chinese": "禹粮石",
+    "pinyin": "YU LIANG SHI",
+    "confidence": 2.223308563232422,
+    "source": "itcm"
+  },
+  {
+    "id": 17,
+    "primary": "Vigna umbeuata Ohwi et Ohashi;Vigna angularis Ohwi et Ohashi",
+    "latin": "Vigna umbeuata Ohwi et Ohashi;Vigna angularis Ohwi et Ohashi",
+    "chinese": "赤小豆",
+    "pinyin": "CHI XIAO DOU",
+    "confidence": 23.79024314880371,
+    "source": "itcm"
+  },
+  {
+    "id": 18,
+    "primary": "TORMENTIL TINCTURE",
+    "latin": "T ormentillae tinctura",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 18.133649826049805,
+    "source": "itcm"
+  },
+  {
+    "id": 19,
+    "primary": "Uvae ursi folium",
+    "latin": "Uvae ursi folium",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 61.2197265625,
+    "source": "itcm"
+  },
+  {
+    "id": 20,
+    "primary": "Thalictrum longistylum",
+    "latin": "Thalictrum longistylum",
+    "chinese": null,
+    "pinyin": "CHANG ZHU TANG SONG CAO",
+    "confidence": -6.798246383666992,
+    "source": "itcm"
+  },
+  {
+    "id": 21,
+    "primary": "Penis Cervi",
+    "latin": "Penis Cervi",
+    "chinese": "鹿鞭",
+    "pinyin": "LU BIAN",
+    "confidence": 18.310562133789062,
+    "source": "itcm"
+  },
+  {
+    "id": 22,
+    "primary": "Fibrofessite",
+    "latin": "Fibrofessite",
+    "chinese": "黄矾",
+    "pinyin": "HUANG FAN",
+    "confidence": -1.3061528205871582,
+    "source": "itcm"
+  },
+  {
+    "id": 23,
+    "primary": "Coptis omeiensis",
+    "latin": "Coptis omeiensis",
+    "chinese": null,
+    "pinyin": "E MEI YE HUANG LIAN",
+    "confidence": 22.664321899414062,
+    "source": "itcm"
+  },
+  {
+    "id": 24,
+    "primary": "PolygonumaviculareL.",
+    "latin": "PolygonumaviculareL.",
+    "chinese": "扁蓄",
+    "pinyin": "BIAN?XU",
+    "confidence": 2.820967435836792,
+    "source": "itcm"
+  },
+  {
+    "id": 25,
+    "primary": "Panax ginseng Steamed Root and Rhizome Dry Extract",
+    "latin": null,
+    "chinese": "人参蒸根干浸膏",
+    "pinyin": "Ren Shen Zheng Gen Gan Jin Gao",
+    "confidence": -15.030791282653809,
+    "source": "itcm"
+  },
+  {
+    "id": 26,
+    "primary": "PINELLIAE RHIZOMA PRAEPARATUM CUM ALUMINE",
+    "latin": "PINELLIAE RHIZOMA PRAEPARATUM CUM ALUMINE",
+    "chinese": "清半夏",
+    "pinyin": "QING BAN XIA",
+    "confidence": 16.43784523010254,
+    "source": "itcm"
+  },
+  {
+    "id": 27,
+    "primary": "Ambrosia polystachya",
+    "latin": "Ambrosia polystachya",
+    "chinese": null,
+    "pinyin": "DUO SUI TUN CAO",
+    "confidence": -6.79714298248291,
+    "source": "itcm"
+  },
+  {
+    "id": 28,
+    "primary": "Argyreia nervosa",
+    "latin": "Argyreia nervosa",
+    "chinese": "叶脉银背藤",
+    "pinyin": "YE MAI YIN BEI TENG",
+    "confidence": -6.292510986328125,
+    "source": "itcm"
+  },
+  {
+    "id": 29,
+    "primary": "Ipecacuanhae pulvis normatus",
+    "latin": "Ipecacuanhae pulvis normatus",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 47.077484130859375,
+    "source": "itcm"
+  },
+  {
+    "id": 30,
+    "primary": "Huechys sanguinea",
+    "latin": "Huechys sanguinea",
+    "chinese": null,
+    "pinyin": "HONG NIANG ZI",
+    "confidence": 62.50541687011719,
+    "source": "itcm"
+  },
+  {
+    "id": 31,
+    "primary": "Perilla frutescens var. crispa",
+    "latin": "Perilla frutescens var. crispa",
+    "chinese": "回回苏",
+    "pinyin": "HUI HUI SU",
+    "confidence": 14.73032283782959,
+    "source": "itcm"
+  },
+  {
+    "id": 32,
+    "primary": "Cudrania javanensis",
+    "latin": "Cudrania javanensis",
+    "chinese": "爪哇柘树",
+    "pinyin": "ZHAO WA ZHE SHU",
+    "confidence": 23.946029663085938,
+    "source": "itcm"
+  },
+  {
+    "id": 33,
+    "primary": "Potamogeton lucens",
+    "latin": "Potamogeton lucens",
+    "chinese": "光叶眼子菜",
+    "pinyin": "GUANG YE YAN ZI CAI",
+    "confidence": 66.5924072265625,
+    "source": "itcm"
+  },
+  {
+    "id": 34,
+    "primary": "Lavandulae aetheroleum",
+    "latin": "Lavandulae aetheroleum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 19.732263565063477,
+    "source": "itcm"
+  },
+  {
+    "id": 35,
+    "primary": "Hamamelis virginiana",
+    "latin": "Hamamelis virginiana",
+    "chinese": "美洲金缕梅",
+    "pinyin": "MEI ZHOU JIN LV MEI",
+    "confidence": 27.692768096923828,
+    "source": "itcm"
+  },
+  {
+    "id": 36,
+    "primary": "Lepus tolai pallas",
+    "latin": "Lepus tolai pallas",
+    "chinese": "兔心",
+    "pinyin": "TU XIN",
+    "confidence": 16.001718521118164,
+    "source": "itcm"
+  },
+  {
+    "id": 37,
+    "primary": "Castanea sativa",
+    "latin": "Castanea sativa",
+    "chinese": "欧洲栗",
+    "pinyin": "OU ZHOU LI",
+    "confidence": 74.77760314941406,
+    "source": "itcm"
+  },
+  {
+    "id": 38,
+    "primary": "Coix lacryma-jobi Seed Powder",
+    "latin": null,
+    "chinese": "薏苡仁粉",
+    "pinyin": "Yi Yi Ren Fen",
+    "confidence": 4.482894420623779,
+    "source": "itcm"
+  },
+  {
+    "id": 39,
+    "primary": "RodgersiasambucifoliaHemsl",
+    "latin": "RodgersiasambucifoliaHemsl",
+    "chinese": "岩陀",
+    "pinyin": "YAN TUO",
+    "confidence": 21.254554748535156,
+    "source": "itcm"
+  },
+  {
+    "id": 40,
+    "primary": "Myricaria laxiflora?(Franch.) P. Y. Zhang et Y. J. Zhang",
+    "latin": "Myricaria laxiflora?(Franch.) P. Y. Zhang et Y. J. Zhang",
+    "chinese": "水柏枝",
+    "pinyin": "SHUI?BAI?ZHI",
+    "confidence": 98.30475616455078,
+    "source": "itcm"
+  },
+  {
+    "id": 41,
+    "primary": "red lead，lead oxide",
+    "latin": null,
+    "chinese": "红丹",
+    "pinyin": "HONG?DAN",
+    "confidence": -2.592801570892334,
+    "source": "itcm"
+  },
+  {
+    "id": 42,
+    "primary": "Woodwardia virginica",
+    "latin": "Woodwardia virginica",
+    "chinese": null,
+    "pinyin": "FU JI NI YA GOU JI JUE",
+    "confidence": 20.35122299194336,
+    "source": "itcm"
+  },
+  {
+    "id": 43,
+    "primary": "Rubus swinhoei Hance",
+    "latin": "Rubus swinhoei Hance",
+    "chinese": "木莓",
+    "pinyin": "MU MEI",
+    "confidence": -7.86260461807251,
+    "source": "itcm"
+  },
+  {
+    "id": 44,
+    "primary": "Magnetitum Preparata",
+    "latin": "Magnetitum Preparata",
+    "chinese": "煅磁石",
+    "pinyin": "DUAN CI SHI",
+    "confidence": 2.8282647132873535,
+    "source": "itcm"
+  },
+  {
+    "id": 45,
+    "primary": "Manilkara indica",
+    "latin": "Manilkara indica",
+    "chinese": null,
+    "pinyin": "IN DU TIE XIAN ZI",
+    "confidence": 59.32707595825195,
+    "source": "itcm"
+  },
+  {
+    "id": 46,
+    "primary": "Delphinium carolinianum",
+    "latin": "Delphinium carolinianum",
+    "chinese": "卡罗来纳飞燕草",
+    "pinyin": "KA LUO LAI NA CUI QUE",
+    "confidence": 31.573604583740234,
+    "source": "itcm"
+  },
+  {
+    "id": 47,
+    "primary": "CARA W AY OIL",
+    "latin": "Carvi aetheroleum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 8.467909812927246,
+    "source": "itcm"
+  },
+  {
+    "id": 48,
+    "primary": "Asplenium trichomanesL.",
+    "latin": "Asplenium trichomanesL.",
+    "chinese": "铁角蕨",
+    "pinyin": "TIE?JIAO?JUE",
+    "confidence": -5.216413497924805,
+    "source": "itcm"
+  },
+  {
+    "id": 49,
+    "primary": "Cannabis sativa L.",
+    "latin": "Cannabis sativa L.",
+    "chinese": "火麻仁",
+    "pinyin": "HUO MA REN",
+    "confidence": 68.5359115600586,
+    "source": "itcm"
+  },
+  {
+    "id": 50,
+    "primary": "Swertia kouitchensis",
+    "latin": "Swertia kouitchensis",
+    "chinese": "贵州獐牙菜",
+    "pinyin": "GUI ZHOU ZHANG YA CAI",
+    "confidence": 30.687171936035156,
+    "source": "itcm"
+  },
+  {
+    "id": 51,
+    "primary": "flower of Common Trumpetcreeper",
+    "latin": "Flos Campsis",
+    "chinese": "凌霄花",
+    "pinyin": "Ling Xiao Hua",
+    "confidence": 41.638214111328125,
+    "source": "itcm"
+  },
+  {
+    "id": 52,
+    "primary": "OREGANO",
+    "latin": "Origani herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -4.58347225189209,
+    "source": "itcm"
+  },
+  {
+    "id": 53,
+    "primary": "Sulfur",
+    "latin": "Sulfur",
+    "chinese": "硫磺",
+    "pinyin": "LIU HUANG",
+    "confidence": 0.47887516021728516,
+    "source": "itcm"
+  },
+  {
+    "id": 54,
+    "primary": "Daphne genkwa",
+    "latin": "Daphne genkwa",
+    "chinese": "芫花根",
+    "pinyin": "YUAN HUA GEN",
+    "confidence": 21.73912811279297,
+    "source": "itcm"
+  },
+  {
+    "id": 55,
+    "primary": "SULFUR",
+    "latin": "SULFUR",
+    "chinese": "硫黄",
+    "pinyin": "LIU HUANG",
+    "confidence": 0.47887516021728516,
+    "source": "itcm"
+  },
+  {
+    "id": 56,
+    "primary": "Hunteria zeylanica",
+    "latin": "Hunteria zeylanica",
+    "chinese": "仔榄树",
+    "pinyin": "ZI LAN SHU",
+    "confidence": 22.102109909057617,
+    "source": "itcm"
+  },
+  {
+    "id": 57,
+    "primary": "Kaolinite",
+    "latin": null,
+    "chinese": "白石脂",
+    "pinyin": "BAI?SHI?ZHI",
+    "confidence": -1.093339443206787,
+    "source": "itcm"
+  },
+  {
+    "id": 58,
+    "primary": "Cucurbita pepo",
+    "latin": "Cucurbita pepo",
+    "chinese": "西葫芦",
+    "pinyin": "XI HU LU",
+    "confidence": 33.934112548828125,
+    "source": "itcm"
+  },
+  {
+    "id": 59,
+    "primary": "Tormentillae rhizoma",
+    "latin": "Tormentillae rhizoma",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 9.959379196166992,
+    "source": "itcm"
+  },
+  {
+    "id": 60,
+    "primary": "Sassafras tzumu",
+    "latin": "Sassafras tzumu",
+    "chinese": "檫树",
+    "pinyin": "CHA SHU",
+    "confidence": 8.35010814666748,
+    "source": "itcm"
+  },
+  {
+    "id": 61,
+    "primary": "Embryo Cervi",
+    "latin": "Embryo Cervi",
+    "chinese": "鹿胎",
+    "pinyin": "LU TAI",
+    "confidence": 17.914094924926758,
+    "source": "itcm"
+  },
+  {
+    "id": 62,
+    "primary": "GOLDENROD, EUROPEAN",
+    "latin": "Solidaginis virgaureae herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 20.600107192993164,
+    "source": "itcm"
+  },
+  {
+    "id": 63,
+    "primary": "CHAMOMILE FLOWER, ROMAN",
+    "latin": "Chamomillae romanae flos",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 20.63220977783203,
+    "source": "itcm"
+  },
+  {
+    "id": 64,
+    "primary": "MELILOT",
+    "latin": "Meliloti herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -13.407492637634277,
+    "source": "itcm"
+  },
+  {
+    "id": 65,
+    "primary": "Catechu",
+    "latin": "Catechu",
+    "chinese": "儿茶",
+    "pinyin": "Er Cha",
+    "confidence": -0.4475061893463135,
+    "source": "itcm"
+  },
+  {
+    "id": 66,
+    "primary": "Piper attenuatum",
+    "latin": "Piper attenuatum",
+    "chinese": "卵叶胡椒",
+    "pinyin": "LUAN YE HU JIAO",
+    "confidence": 3.599684715270996,
+    "source": "itcm"
+  },
+  {
+    "id": 67,
+    "primary": "Zanthoxylum clava- hercules",
+    "latin": "Zanthoxylum clava- hercules",
+    "chinese": null,
+    "pinyin": "MEI GUO CI JIAO",
+    "confidence": -7.36185884475708,
+    "source": "itcm"
+  },
+  {
+    "id": 68,
+    "primary": "Hibiscus elatus",
+    "latin": "Hibiscus elatus",
+    "chinese": "高红槿",
+    "pinyin": "GAO HONG JIN",
+    "confidence": 25.874893188476562,
+    "source": "itcm"
+  },
+  {
+    "id": 69,
+    "primary": "LINSEED",
+    "latin": "Lini semen",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 71.16447448730469,
+    "source": "itcm"
+  },
+  {
+    "id": 70,
+    "primary": "Phoebe nanmu",
+    "latin": "Phoebe nanmu",
+    "chinese": "润楠",
+    "pinyin": "NAN MU",
+    "confidence": 19.69840431213379,
+    "source": "itcm"
+  },
+  {
+    "id": 71,
+    "primary": "Sedum lineare [Syn. Sedum obtuso-lineare ]",
+    "latin": "Sedum lineare [Syn. Sedum obtuso-lineare ]",
+    "chinese": null,
+    "pinyin": "FO JIA CAO",
+    "confidence": 20.52494239807129,
+    "source": "itcm"
+  },
+  {
+    "id": 72,
+    "primary": "Qing jin shi",
+    "latin": "Qing jin shi",
+    "chinese": "青金石",
+    "pinyin": "QING JIN SHI",
+    "confidence": 68.76741027832031,
+    "source": "itcm"
+  },
+  {
+    "id": 73,
+    "primary": "Dendrobium nobile Lindl.;Dendrobium chrysotoxum Lindl.;Dendrobium fimbriatum Hook.",
+    "latin": "Dendrobium nobile Lindl.;Dendrobium chrysotoxum Lindl.;Dendrobium fimbriatum Hook.",
+    "chinese": "石斛",
+    "pinyin": "SHI HU",
+    "confidence": 27.88930892944336,
+    "source": "itcm"
+  },
+  {
+    "id": 74,
+    "primary": "Liparis nervosa",
+    "latin": "Liparis nervosa",
+    "chinese": "见血清",
+    "pinyin": "JIAN XUE QING",
+    "confidence": -7.288872241973877,
+    "source": "itcm"
+  },
+  {
+    "id": 75,
+    "primary": "Fortunella hindsii（Champ.）Swingle[Sclerostylis hindsii?Champion]",
+    "latin": "Fortunella hindsii（Champ.）Swingle[Sclerostylis hindsii?Champion]",
+    "chinese": "山橘",
+    "pinyin": "SHAN JU",
+    "confidence": 31.588661193847656,
+    "source": "itcm"
+  },
+  {
+    "id": 76,
+    "primary": "Rhodiola crenulata Root and Rhizome Dry Extract",
+    "latin": null,
+    "chinese": "红景天根茎干浸膏",
+    "pinyin": "Hong Jing Tian Gen Jing Gan Jin Gao",
+    "confidence": 48.853233337402344,
+    "source": "itcm"
+  },
+  {
+    "id": 77,
+    "primary": "Cola acuminata",
+    "latin": "Cola acuminata",
+    "chinese": "苏丹可乐果",
+    "pinyin": "SU DAN KE LE GUO",
+    "confidence": 36.36591339111328,
+    "source": "itcm"
+  },
+  {
+    "id": 78,
+    "primary": "Gelsemium elegans",
+    "latin": "Gelsemium elegans",
+    "chinese": "钩吻",
+    "pinyin": "GOU WEN",
+    "confidence": 16.438159942626953,
+    "source": "itcm"
+  },
+  {
+    "id": 79,
+    "primary": "Chrysanthemum coccineum",
+    "latin": "Chrysanthemum coccineum",
+    "chinese": null,
+    "pinyin": "HONG HUA CHU CHONG JU",
+    "confidence": -6.2743330001831055,
+    "source": "itcm"
+  },
+  {
+    "id": 80,
+    "primary": "Chondrodendron tomentosum",
+    "latin": "Chondrodendron tomentosum",
+    "chinese": null,
+    "pinyin": "NAN MEI FANG JI.",
+    "confidence": 28.868682861328125,
+    "source": "itcm"
+  },
+  {
+    "id": 81,
+    "primary": "Smilax glabra Roxb.",
+    "latin": "Smilax glabra Roxb.",
+    "chinese": "土茯苓",
+    "pinyin": "TU FU LING",
+    "confidence": 40.65503692626953,
+    "source": "itcm"
+  },
+  {
+    "id": 82,
+    "primary": "Helenium arizonicum",
+    "latin": "Helenium arizonicum",
+    "chinese": null,
+    "pinyin": "YA LI SANG NA DUI XIN JU",
+    "confidence": 0.24448394775390625,
+    "source": "itcm"
+  },
+  {
+    "id": 83,
+    "primary": "Hyperici herba",
+    "latin": "Hyperici herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 65.79972839355469,
+    "source": "itcm"
+  },
+  {
+    "id": 84,
+    "primary": "Eugenia jambolana [Syn. Syzygium cumin",
+    "latin": "Eugenia jambolana [Syn. Syzygium cumin",
+    "chinese": null,
+    "pinyin": "MYRTUS CUMINI] (MYRTACEAE)",
+    "confidence": 42.15542984008789,
+    "source": "itcm"
+  },
+  {
+    "id": 85,
+    "primary": "BUTCHER’S BROOM",
+    "latin": "Rusci rhizoma",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -6.5001091957092285,
+    "source": "itcm"
+  },
+  {
+    "id": 86,
+    "primary": "Poria cocos(Schw.)Wolf",
+    "latin": "Poria cocos(Schw.)Wolf",
+    "chinese": "茯苓",
+    "pinyin": "FU LING",
+    "confidence": 42.14755630493164,
+    "source": "itcm"
+  },
+  {
+    "id": 87,
+    "primary": "Ephedrinum Hydrochloridum",
+    "latin": "Ephedrinum Hydrochloridum",
+    "chinese": "盐酸麻黄碱",
+    "pinyin": "YAN SUAN HUANG MA JIAN",
+    "confidence": -1.5597741603851318,
+    "source": "itcm"
+  },
+  {
+    "id": 88,
+    "primary": "Datura stramonium Linn.",
+    "latin": "Datura stramonium Linn.",
+    "chinese": "曼陀罗叶",
+    "pinyin": "MAN TUO LUO?YE",
+    "confidence": -2.130415439605713,
+    "source": "itcm"
+  },
+  {
+    "id": 89,
+    "primary": "Archidendron?clypearia?(Jack) I.C.Nielsen",
+    "latin": "Archidendron?clypearia?(Jack) I.C.Nielsen",
+    "chinese": "猴耳环",
+    "pinyin": "HOU ER HUAN",
+    "confidence": 21.01316261291504,
+    "source": "itcm"
+  },
+  {
+    "id": 90,
+    "primary": "Tuber indicum YIN DU KUAI JUN",
+    "latin": "Tuber indicum YIN DU KUAI JUN",
+    "chinese": null,
+    "pinyin": "INDIAN TRUFFLE.",
+    "confidence": 40.90703582763672,
+    "source": "itcm"
+  },
+  {
+    "id": 91,
+    "primary": "Daphne giraldii Nitsche",
+    "latin": "Daphne giraldii Nitsche",
+    "chinese": "祖师麻",
+    "pinyin": "ZU SHI MA",
+    "confidence": 31.01655387878418,
+    "source": "itcm"
+  },
+  {
+    "id": 92,
+    "primary": "Equus asinus?Linnaeus",
+    "latin": "Equus asinus?Linnaeus",
+    "chinese": "驴鞭",
+    "pinyin": "L? BIAN",
+    "confidence": 23.043102264404297,
+    "source": "itcm"
+  },
+  {
+    "id": 93,
+    "primary": "Jungermannia sp.",
+    "latin": "Jungermannia sp.",
+    "chinese": "新西兰叶苔",
+    "pinyin": "XIN XI LAN YE TAI.",
+    "confidence": 38.93977355957031,
+    "source": "itcm"
+  },
+  {
+    "id": 94,
+    "primary": "Chrysanthemum vulgare",
+    "latin": "Chrysanthemum vulgare",
+    "chinese": null,
+    "pinyin": "AI JU",
+    "confidence": -6.33852481842041,
+    "source": "itcm"
+  },
+  {
+    "id": 95,
+    "primary": "Potentilla reptans var. sericophylla",
+    "latin": "Potentilla reptans var. sericophylla",
+    "chinese": "绢毛匍匐委陵菜",
+    "pinyin": "JIN JIN BANG",
+    "confidence": 21.34056854248047,
+    "source": "itcm"
+  },
+  {
+    "id": 96,
+    "primary": "Spatholobus suberectus Dunn",
+    "latin": "Spatholobus suberectus Dunn",
+    "chinese": "鸡血藤",
+    "pinyin": "JI XUE TENG",
+    "confidence": 8.458353042602539,
+    "source": "itcm"
+  },
+  {
+    "id": 97,
+    "primary": "Octopus vulgaris",
+    "latin": "Octopus vulgaris",
+    "chinese": null,
+    "pinyin": "ZHANG YU",
+    "confidence": 69.93431854248047,
+    "source": "itcm"
+  },
+  {
+    "id": 98,
+    "primary": "Gypsum Fibrosum",
+    "latin": "Gypsum Fibrosum",
+    "chinese": "石膏",
+    "pinyin": "SHI GAO",
+    "confidence": 31.748538970947266,
+    "source": "itcm"
+  },
+  {
+    "id": 99,
+    "primary": "Antiaris welwitschii",
+    "latin": "Antiaris welwitschii",
+    "chinese": "刚果见血封喉",
+    "pinyin": "GANG GUO JIAN XUE FENG HOU",
+    "confidence": 15.036102294921875,
+    "source": "itcm"
+  },
+  {
+    "id": 100,
+    "primary": "Eucalyptus dives",
+    "latin": "Eucalyptus dives",
+    "chinese": null,
+    "pinyin": "FU AN",
+    "confidence": 14.904827117919922,
+    "source": "itcm"
+  },
+  {
+    "id": 101,
+    "primary": "Michelia yunnanensis",
+    "latin": "Michelia yunnanensis",
+    "chinese": "云南含笑",
+    "pinyin": "YUN NAN HAN XIAO",
+    "confidence": 27.232357025146484,
+    "source": "itcm"
+  },
+  {
+    "id": 102,
+    "primary": "SUIS FELLIS PUL VIS",
+    "latin": "SUIS FELLIS PUL VIS",
+    "chinese": "猪胆粉",
+    "pinyin": "ZHU DAN FEN",
+    "confidence": 49.33295440673828,
+    "source": "itcm"
+  },
+  {
+    "id": 103,
+    "primary": "Potentilla chinensis Ser.",
+    "latin": "Potentilla chinensis Ser.",
+    "chinese": "委陵菜",
+    "pinyin": "WEI LING CAI",
+    "confidence": 42.97395706176758,
+    "source": "itcm"
+  },
+  {
+    "id": 104,
+    "primary": "Adhatoda vasica",
+    "latin": "Adhatoda vasica",
+    "chinese": "大驳骨",
+    "pinyin": "DA BO GU",
+    "confidence": 26.33196258544922,
+    "source": "itcm"
+  },
+  {
+    "id": 105,
+    "primary": "Sus scrofa",
+    "latin": "Sus scrofa",
+    "chinese": null,
+    "pinyin": "YE ZHU DAN",
+    "confidence": 42.89970016479492,
+    "source": "itcm"
+  },
+  {
+    "id": 106,
+    "primary": "Rhododendron anthopogonoides?maxim.",
+    "latin": "Rhododendron anthopogonoides?maxim.",
+    "chinese": "小叶枇杷",
+    "pinyin": "XIAO?YE?PI PA",
+    "confidence": 75.5386962890625,
+    "source": "itcm"
+  },
+  {
+    "id": 107,
+    "primary": "Curcuma phaeocaulis Val.;Curcuma kwangsiensis S.G.Lee et C.F.Liang;Curcuma wenyujin Y.H.Chen et C.Ling",
+    "latin": "Curcuma phaeocaulis Val.;Curcuma kwangsiensis S.G.Lee et C.F.Liang;Curcuma wenyujin Y.H.Chen et C.Ling",
+    "chinese": "莪术",
+    "pinyin": "E ZHU",
+    "confidence": 28.113603591918945,
+    "source": "itcm"
+  },
+  {
+    "id": 108,
+    "primary": "Amylum",
+    "latin": "Amylum",
+    "chinese": "淀粉",
+    "pinyin": "DIAN FEN",
+    "confidence": -7.820865154266357,
+    "source": "itcm"
+  },
+  {
+    "id": 109,
+    "primary": "Woodfordia fruticosa",
+    "latin": "Woodfordia fruticosa",
+    "chinese": "虾子花",
+    "pinyin": "XIA ZI HUA",
+    "confidence": 18.446420669555664,
+    "source": "itcm"
+  },
+  {
+    "id": 110,
+    "primary": "Herba Sambuci Chinensis",
+    "latin": "Herba Sambuci Chinensis",
+    "chinese": "陆英",
+    "pinyin": "LU YING",
+    "confidence": 19.79290199279785,
+    "source": "itcm"
+  },
+  {
+    "id": 111,
+    "primary": "Silver sheet",
+    "latin": "Silver sheet",
+    "chinese": "银箔",
+    "pinyin": "YIN BO",
+    "confidence": -2.7232725620269775,
+    "source": "itcm"
+  },
+  {
+    "id": 112,
+    "primary": "Selaginella omeiensis",
+    "latin": "Selaginella omeiensis",
+    "chinese": null,
+    "pinyin": "E MEI JUAN BAI",
+    "confidence": 31.355789184570312,
+    "source": "itcm"
+  },
+  {
+    "id": 113,
+    "primary": "H. dolichocarpa、H. omeiensis、H. gigantha、H. sphaerocarpa、H.?chinensis",
+    "latin": "H. dolichocarpa、H. omeiensis、H. gigantha、H. sphaerocarpa、H.?chinensis",
+    "chinese": "雪胆",
+    "pinyin": "XUE DAN",
+    "confidence": -24.85353660583496,
+    "source": "itcm"
+  },
+  {
+    "id": 114,
+    "primary": "Glycyrrhiza pallidiflora",
+    "latin": "Glycyrrhiza pallidiflora",
+    "chinese": "刺果甘草",
+    "pinyin": "CI GUO GAN CAO",
+    "confidence": 58.647796630859375,
+    "source": "itcm"
+  },
+  {
+    "id": 115,
+    "primary": "Oroxylum indicum",
+    "latin": "Oroxylum indicum",
+    "chinese": "木瑚蝶树皮",
+    "pinyin": "MU HU DIE SHU PI",
+    "confidence": 61.542293548583984,
+    "source": "itcm"
+  },
+  {
+    "id": 116,
+    "primary": "Desmodium caudatum",
+    "latin": "Desmodium caudatum",
+    "chinese": "小槐花",
+    "pinyin": "XIAO HUAI HUA",
+    "confidence": 23.353561401367188,
+    "source": "itcm"
+  },
+  {
+    "id": 117,
+    "primary": "Melia toosendan Sieb.et Zucc.;Meliaazedarach L.",
+    "latin": "Melia toosendan Sieb.et Zucc.;Meliaazedarach L.",
+    "chinese": "苦楝皮",
+    "pinyin": "KU LIAN PI",
+    "confidence": 75.53398132324219,
+    "source": "itcm"
+  },
+  {
+    "id": 118,
+    "primary": "PsychotriaserpensL.",
+    "latin": "PsychotriaserpensL.",
+    "chinese": "穿根藤",
+    "pinyin": "CHUAN GEN TENG",
+    "confidence": -5.480588912963867,
+    "source": "itcm"
+  },
+  {
+    "id": 119,
+    "primary": "Picrorhiza scrophulariiflora",
+    "latin": "Picrorhiza scrophulariiflora",
+    "chinese": "胡黄连",
+    "pinyin": "XI ZANG HU HUANG LIAN",
+    "confidence": 56.4890022277832,
+    "source": "itcm"
+  },
+  {
+    "id": 120,
+    "primary": "Tagetes maxima",
+    "latin": "Tagetes maxima",
+    "chinese": null,
+    "pinyin": "ZUI DA WAN SHOU JU",
+    "confidence": 45.71759796142578,
+    "source": "itcm"
+  },
+  {
+    "id": 121,
+    "primary": "Bufo bufo gargarizans, Bufo melanostictus",
+    "latin": "Bufo bufo gargarizans, Bufo melanostictus",
+    "chinese": "蟾酥",
+    "pinyin": "CHAN SU",
+    "confidence": -7.389225482940674,
+    "source": "itcm"
+  },
+  {
+    "id": 122,
+    "primary": "Sium latifolium",
+    "latin": "Sium latifolium",
+    "chinese": "欧泽芹",
+    "pinyin": "OU ZE QIN",
+    "confidence": 12.971928596496582,
+    "source": "itcm"
+  },
+  {
+    "id": 123,
+    "primary": "Cupressus macrocarpa",
+    "latin": "Cupressus macrocarpa",
+    "chinese": null,
+    "pinyin": "DA GUO BAI MU",
+    "confidence": 2.7091498374938965,
+    "source": "itcm"
+  },
+  {
+    "id": 124,
+    "primary": "Polygonum polystachyum",
+    "latin": "Polygonum polystachyum",
+    "chinese": "多穗蓼",
+    "pinyin": "DUO SUI LIAO",
+    "confidence": -8.294243812561035,
+    "source": "itcm"
+  },
+  {
+    "id": 125,
+    "primary": "Scutellaria hypericifolia",
+    "latin": "Scutellaria hypericifolia",
+    "chinese": "连翘叶黄芩",
+    "pinyin": "CHUAN HUANG QIN",
+    "confidence": 34.085079193115234,
+    "source": "itcm"
+  },
+  {
+    "id": 126,
+    "primary": "Crotalaria intermedia",
+    "latin": "Crotalaria intermedia",
+    "chinese": "细叶猪屎豆",
+    "pinyin": "XI YE ZHU SHI DOU",
+    "confidence": -8.038379669189453,
+    "source": "itcm"
+  },
+  {
+    "id": 127,
+    "primary": "Thalictrum sessile",
+    "latin": "Thalictrum sessile",
+    "chinese": null,
+    "pinyin": "WU BING TANG SONG CAO",
+    "confidence": -7.43157434463501,
+    "source": "itcm"
+  },
+  {
+    "id": 128,
+    "primary": "Davallia mariesii",
+    "latin": "Davallia mariesii",
+    "chinese": "骨碎补",
+    "pinyin": "HAI ZHOU GU SUI BU",
+    "confidence": 65.42086791992188,
+    "source": "itcm"
+  },
+  {
+    "id": 129,
+    "primary": "Aster tataricus.L.f.",
+    "latin": "Aster tataricus.L.f.",
+    "chinese": "紫菀",
+    "pinyin": "ZI WAN",
+    "confidence": 13.742586135864258,
+    "source": "itcm"
+  },
+  {
+    "id": 130,
+    "primary": "LAVENDER OIL",
+    "latin": "Lavandulae aetheroleum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -10.330696105957031,
+    "source": "itcm"
+  },
+  {
+    "id": 131,
+    "primary": "Erythroxylum coca",
+    "latin": "Erythroxylum coca",
+    "chinese": "谷壳",
+    "pinyin": "GU KE",
+    "confidence": 27.319061279296875,
+    "source": "itcm"
+  },
+  {
+    "id": 132,
+    "primary": "Thalictrum rugosum",
+    "latin": "Thalictrum rugosum",
+    "chinese": "绉纹唐松草",
+    "pinyin": "ZOU WEN TANG SONG CAO",
+    "confidence": -7.219137668609619,
+    "source": "itcm"
+  },
+  {
+    "id": 133,
+    "primary": "Aminopyrinum",
+    "latin": "Aminopyrinum",
+    "chinese": "氨基比林",
+    "pinyin": "AN JI BI LIN",
+    "confidence": -2.7239484786987305,
+    "source": "itcm"
+  },
+  {
+    "id": 134,
+    "primary": "Milingtonia hortensis",
+    "latin": "Milingtonia hortensis",
+    "chinese": "铜罗汉",
+    "pinyin": "TONG LUO HAN.",
+    "confidence": 30.57459831237793,
+    "source": "itcm"
+  },
+  {
+    "id": 135,
+    "primary": "Anodendron affine",
+    "latin": "Anodendron affine",
+    "chinese": "鳝藤",
+    "pinyin": "SHAN TENG",
+    "confidence": 14.333951950073242,
+    "source": "itcm"
+  },
+  {
+    "id": 136,
+    "primary": "Delphinium cashmerianum",
+    "latin": "Delphinium cashmerianum",
+    "chinese": null,
+    "pinyin": "KE SHEN MI ER CUI QUE",
+    "confidence": 37.331172943115234,
+    "source": "itcm"
+  },
+  {
+    "id": 137,
+    "primary": "Bupleurum chinense DC.;Buplrurum scorzonerifolium Willd.",
+    "latin": "Bupleurum chinense DC.;Buplrurum scorzonerifolium Willd.",
+    "chinese": "柴胡",
+    "pinyin": "CHAI HU",
+    "confidence": 78.91492462158203,
+    "source": "itcm"
+  },
+  {
+    "id": 138,
+    "primary": "Zanthoxylum echinocarpum?Hemsl.",
+    "latin": "Zanthoxylum echinocarpum?Hemsl.",
+    "chinese": "单面针",
+    "pinyin": "DAN?MIAN ZHEN",
+    "confidence": 49.680641174316406,
+    "source": "itcm"
+  },
+  {
+    "id": 139,
+    "primary": "Dracocephalum tanguticum?Maxim",
+    "latin": "Dracocephalum tanguticum?Maxim",
+    "chinese": "甘青青兰",
+    "pinyin": "GAN QING QING LAN",
+    "confidence": 32.05055236816406,
+    "source": "itcm"
+  },
+  {
+    "id": 140,
+    "primary": "Polycarpon prostratum",
+    "latin": "Polycarpon prostratum",
+    "chinese": null,
+    "pinyin": "DUO JIA CAO",
+    "confidence": -3.546232223510742,
+    "source": "itcm"
+  },
+  {
+    "id": 141,
+    "primary": "Illigera cordata Dunn",
+    "latin": "Illigera cordata Dunn",
+    "chinese": "黄鳝藤",
+    "pinyin": "HUANG SHAN TENG",
+    "confidence": 26.3239688873291,
+    "source": "itcm"
+  },
+  {
+    "id": 142,
+    "primary": "Codonopsis tangshen",
+    "latin": "Codonopsis tangshen",
+    "chinese": "川党参",
+    "pinyin": "CHUAN DANG SHEN",
+    "confidence": 35.22780227661133,
+    "source": "itcm"
+  },
+  {
+    "id": 143,
+    "primary": "Peridinium bipes",
+    "latin": "Peridinium bipes",
+    "chinese": null,
+    "pinyin": "ER JIAO DUO JIA ZAO.",
+    "confidence": 0.6038990020751953,
+    "source": "itcm"
+  },
+  {
+    "id": 144,
+    "primary": "Eurycoma longifolia",
+    "latin": "Eurycoma longifolia",
+    "chinese": null,
+    "pinyin": "CHANG YE KUAN MU.",
+    "confidence": -9.989402770996094,
+    "source": "itcm"
+  },
+  {
+    "id": 145,
+    "primary": "Cynara cardunculus",
+    "latin": "Cynara cardunculus",
+    "chinese": "刺菜蓟",
+    "pinyin": "CI CAI JI",
+    "confidence": -7.325122833251953,
+    "source": "itcm"
+  },
+  {
+    "id": 146,
+    "primary": "Datura stramonium",
+    "latin": "Datura stramonium",
+    "chinese": "曼陀罗根",
+    "pinyin": "WAN TAO HUA ZI",
+    "confidence": -3.0120747089385986,
+    "source": "itcm"
+  },
+  {
+    "id": 147,
+    "primary": "Parabenzoin trilobum",
+    "latin": "Parabenzoin trilobum",
+    "chinese": "假山胡椒",
+    "pinyin": "JIA SHAN HU JIAO.",
+    "confidence": 29.82082176208496,
+    "source": "itcm"
+  },
+  {
+    "id": 148,
+    "primary": "Lilium speciosum x L . nobilissimum",
+    "latin": "Lilium speciosum x L . nobilissimum",
+    "chinese": null,
+    "pinyin": "ZA JIAO BAI HEX",
+    "confidence": 11.88364028930664,
+    "source": "itcm"
+  },
+  {
+    "id": 149,
+    "primary": "LygoJiun japonicum(Thunb. )Sw.",
+    "latin": "LygoJiun japonicum(Thunb. )Sw.",
+    "chinese": "海金沙",
+    "pinyin": "HAI JIN SHA",
+    "confidence": 35.67470932006836,
+    "source": "itcm"
+  },
+  {
+    "id": 150,
+    "primary": "Cortex Tooe Sinensis",
+    "latin": "Cortex Tooe Sinensis",
+    "chinese": "椿皮",
+    "pinyin": "Chun Pi",
+    "confidence": 35.53733444213867,
+    "source": "itcm"
+  },
+  {
+    "id": 151,
+    "primary": "Capra hircus, Ovis aries",
+    "latin": "Capra hircus, Ovis aries",
+    "chinese": "羊乳",
+    "pinyin": "YANG RU",
+    "confidence": 35.716739654541016,
+    "source": "itcm"
+  },
+  {
+    "id": 152,
+    "primary": "Extractum Uncariae Gambieris",
+    "latin": "Extractum Uncariae Gambieris",
+    "chinese": "方儿茶",
+    "pinyin": "FANG ER CHA",
+    "confidence": 30.45292091369629,
+    "source": "itcm"
+  },
+  {
+    "id": 153,
+    "primary": "Haematitum",
+    "latin": "Haematitum",
+    "chinese": "代赭石",
+    "pinyin": "DAI ZHE SHI",
+    "confidence": -3.031766653060913,
+    "source": "itcm"
+  },
+  {
+    "id": 154,
+    "primary": "Prangos pabularia",
+    "latin": "Prangos pabularia",
+    "chinese": null,
+    "pinyin": "SHUAN CHI QIN",
+    "confidence": 31.378520965576172,
+    "source": "itcm"
+  },
+  {
+    "id": 155,
+    "primary": "Leucothoe grayana",
+    "latin": "Leucothoe grayana",
+    "chinese": "木藜芦",
+    "pinyin": "MU LI LU",
+    "confidence": 60.840660095214844,
+    "source": "itcm"
+  },
+  {
+    "id": 156,
+    "primary": "Melastoma dodecandrumLour.?",
+    "latin": "Melastoma dodecandrumLour.?",
+    "chinese": "地稔",
+    "pinyin": "DI?REN",
+    "confidence": 39.56338119506836,
+    "source": "itcm"
+  },
+  {
+    "id": 157,
+    "primary": "Trichocolea mollissima",
+    "latin": "Trichocolea mollissima",
+    "chinese": null,
+    "pinyin": "JI RUAN RONG TAI.",
+    "confidence": -5.836447715759277,
+    "source": "itcm"
+  },
+  {
+    "id": 158,
+    "primary": "Coronilla varia",
+    "latin": "Coronilla varia",
+    "chinese": "多变小冠花",
+    "pinyin": "DUO BIAN XIAO GUAN HUA",
+    "confidence": 36.00706100463867,
+    "source": "itcm"
+  },
+  {
+    "id": 159,
+    "primary": "Cephalotaxus harringtonia",
+    "latin": "Cephalotaxus harringtonia",
+    "chinese": null,
+    "pinyin": "RI BEN CU FEI",
+    "confidence": -11.384714126586914,
+    "source": "itcm"
+  },
+  {
+    "id": 160,
+    "primary": "Swertia pseudochinensis Hara",
+    "latin": "Swertia pseudochinensis Hara",
+    "chinese": "当药",
+    "pinyin": "DANG YAO",
+    "confidence": 10.562532424926758,
+    "source": "itcm"
+  },
+  {
+    "id": 161,
+    "primary": "Anemone altaica Fisch.",
+    "latin": "Anemone altaica Fisch.",
+    "chinese": "九节菖蒲",
+    "pinyin": "JIU JIE CHANG PU",
+    "confidence": -3.95674467086792,
+    "source": "itcm"
+  },
+  {
+    "id": 162,
+    "primary": "Vespertilio superans",
+    "latin": "Vespertilio superans",
+    "chinese": "夜明砂",
+    "pinyin": "YE MING SHA",
+    "confidence": 61.571109771728516,
+    "source": "itcm"
+  },
+  {
+    "id": 163,
+    "primary": "Rhododendron cinnabarinum",
+    "latin": "Rhododendron cinnabarinum",
+    "chinese": "朱砂杜鹃",
+    "pinyin": "ZHU SHA DU JUAN",
+    "confidence": -3.599431037902832,
+    "source": "itcm"
+  },
+  {
+    "id": 164,
+    "primary": "Sphenomorphus indicus",
+    "latin": "Sphenomorphus indicus",
+    "chinese": "铜石龙子",
+    "pinyin": "TONG?SHI?LONG ZI",
+    "confidence": 65.28455352783203,
+    "source": "itcm"
+  },
+  {
+    "id": 165,
+    "primary": "Hopea utilis",
+    "latin": "Hopea utilis",
+    "chinese": "有用坡垒",
+    "pinyin": "YOU YONG PO LEI",
+    "confidence": 22.469545364379883,
+    "source": "itcm"
+  },
+  {
+    "id": 166,
+    "primary": "Flatstem Milkvetch Seed",
+    "latin": "Semen Astragali Complati",
+    "chinese": "沙苑子",
+    "pinyin": "Sha Yuan Zi",
+    "confidence": 18.564273834228516,
+    "source": "itcm"
+  },
+  {
+    "id": 167,
+    "primary": "Fritillaria cirrhosa D.Don;Fritillaria unibracteata Hsiao et K. C. Hsia.;Fritillaria przewalskii Maxim, Fritillaria delavayi Franch.;Fritillaria taipaiensis P.Y.Li;Fritillaria unibracteata Hsiao et K. C. Hsia var.wabuensis(S. Y. Tang et S. C. Yue)Z. D. LiU,S. Wanget S.C.Chen",
+    "latin": "Fritillaria cirrhosa D.Don;Fritillaria unibracteata Hsiao et K. C. Hsia.;Fritillaria przewalskii Maxim, Fritillaria delavayi Franch.;Fritillaria taipaiensis P.Y.Li;Fritillaria unibracteata Hsiao et K. C. Hsia var.wabuensis(S. Y. Tang et S. C. Yue)Z. D. LiU,S. Wanget S.C.Chen",
+    "chinese": "川贝母",
+    "pinyin": "CHUAN BEI MU",
+    "confidence": 47.419925689697266,
+    "source": "itcm"
+  },
+  {
+    "id": 168,
+    "primary": "Pig's Brain",
+    "latin": "Medulla sus domestica",
+    "chinese": "猪脑",
+    "pinyin": "ZHU NAO",
+    "confidence": 22.29383659362793,
+    "source": "itcm"
+  },
+  {
+    "id": 169,
+    "primary": "Chartolepis intermedia",
+    "latin": "Chartolepis intermedia",
+    "chinese": "薄鳞菊",
+    "pinyin": "BO LIN JU",
+    "confidence": 47.34569549560547,
+    "source": "itcm"
+  },
+  {
+    "id": 170,
+    "primary": "Deeringia amaranthoides [Syn. Cladostachys frutescens ]",
+    "latin": "Deeringia amaranthoides [Syn. Cladostachys frutescens ]",
+    "chinese": null,
+    "pinyin": "JIANG GUO XIAN",
+    "confidence": 15.15218448638916,
+    "source": "itcm"
+  },
+  {
+    "id": 171,
+    "primary": "Baicalinum",
+    "latin": "Baicalinum",
+    "chinese": "黄芩甙",
+    "pinyin": "HUANG QIN DAI",
+    "confidence": -3.245574712753296,
+    "source": "itcm"
+  },
+  {
+    "id": 172,
+    "primary": "Hydrastis rhizoma",
+    "latin": "Hydrastis rhizoma",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -9.7957124710083,
+    "source": "itcm"
+  },
+  {
+    "id": 173,
+    "primary": "Crataegus pinnatifida Bge. var.major N.E.Br.;Crataegus pinnatifida Bge.",
+    "latin": "Crataegus pinnatifida Bge. var.major N.E.Br.;Crataegus pinnatifida Bge.",
+    "chinese": "山楂",
+    "pinyin": "SHAN ZHA",
+    "confidence": 184.49411010742188,
+    "source": "itcm"
+  },
+  {
+    "id": 174,
+    "primary": "DiospyroskakiThunb.",
+    "latin": "DiospyroskakiThunb.",
+    "chinese": "柿霜",
+    "pinyin": "SHI SHUANG",
+    "confidence": 17.296323776245117,
+    "source": "itcm"
+  },
+  {
+    "id": 175,
+    "primary": "Livistona chinensis（Jacq.）R.Br.",
+    "latin": "Livistona chinensis（Jacq.）R.Br.",
+    "chinese": "蒲葵子",
+    "pinyin": "PU KUI ZI",
+    "confidence": 75.22936248779297,
+    "source": "itcm"
+  },
+  {
+    "id": 176,
+    "primary": "Minium",
+    "latin": "Minium",
+    "chinese": "铅丹",
+    "pinyin": "QIAN DAN",
+    "confidence": 39.67997741699219,
+    "source": "itcm"
+  },
+  {
+    "id": 177,
+    "primary": "Pterocarpus santalinus",
+    "latin": "Pterocarpus santalinus",
+    "chinese": "似紫檀",
+    "pinyin": "SI ZI TAN",
+    "confidence": 32.842079162597656,
+    "source": "itcm"
+  },
+  {
+    "id": 178,
+    "primary": "Uncaria nervosa",
+    "latin": "Uncaria nervosa",
+    "chinese": null,
+    "pinyin": "DUO MAI GOU TENG",
+    "confidence": -7.984729766845703,
+    "source": "itcm"
+  },
+  {
+    "id": 179,
+    "primary": "Chlorpheniramini Maleas",
+    "latin": "Chlorpheniramini Maleas",
+    "chinese": "扑尔敏",
+    "pinyin": "PU ER MIN",
+    "confidence": -0.21175527572631836,
+    "source": "itcm"
+  },
+  {
+    "id": 180,
+    "primary": "Euodia rutaecarpa (Juss.) Benth;Euodia rutaecarpa (Juss.) Benth var. officinalis (Dode) Huang;Euodia rutaecarpa (Juss.) Benth. var. bodinieri  (Dode) Huang",
+    "latin": "Euodia rutaecarpa (Juss.) Benth;Euodia rutaecarpa (Juss.) Benth var. officinalis (Dode) Huang;Euodia rutaecarpa (Juss.) Benth. var. bodinieri  (Dode) Huang",
+    "chinese": "吴茱萸",
+    "pinyin": "WU ZHU YU",
+    "confidence": 32.70072937011719,
+    "source": "itcm"
+  },
+  {
+    "id": 181,
+    "primary": "THYME",
+    "latin": "Thymi herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -4.935774326324463,
+    "source": "itcm"
+  },
+  {
+    "id": 182,
+    "primary": "Opuntia stricta?(Haw.) Haw. var.?dillenii?(Ker-Gawl.) Benson  Opuntia monacantha?(Willd.) Haw.",
+    "latin": "Opuntia stricta?(Haw.) Haw. var.?dillenii?(Ker-Gawl.) Benson  Opuntia monacantha?(Willd.) Haw.",
+    "chinese": "仙人掌",
+    "pinyin": "XIAN REN ZHANG",
+    "confidence": 63.474822998046875,
+    "source": "itcm"
+  },
+  {
+    "id": 183,
+    "primary": "Monostroma nitidum",
+    "latin": "Monostroma nitidum",
+    "chinese": "礁膜",
+    "pinyin": "JIAO MO.",
+    "confidence": -8.00562858581543,
+    "source": "itcm"
+  },
+  {
+    "id": 184,
+    "primary": "Forsythia suspensa (Thunb.) Vahl",
+    "latin": "Forsythia suspensa (Thunb.) Vahl",
+    "chinese": "连翘",
+    "pinyin": "LIAN QIAO",
+    "confidence": 16.771015167236328,
+    "source": "itcm"
+  },
+  {
+    "id": 185,
+    "primary": "Corium Erinacei Seu Hemiechianus",
+    "latin": "Corium Erinacei Seu Hemiechianus",
+    "chinese": "刺猬皮",
+    "pinyin": "CI WEI PI",
+    "confidence": 31.100948333740234,
+    "source": "itcm"
+  },
+  {
+    "id": 186,
+    "primary": "Citrus medica",
+    "latin": "Citrus medica",
+    "chinese": "香橼",
+    "pinyin": "JU YUAN YE",
+    "confidence": 63.45400619506836,
+    "source": "itcm"
+  },
+  {
+    "id": 187,
+    "primary": "Hedera helix",
+    "latin": "Hedera helix",
+    "chinese": "洋常春藤",
+    "pinyin": "YANG CHANG CHUN TENG",
+    "confidence": -4.611412048339844,
+    "source": "itcm"
+  },
+  {
+    "id": 188,
+    "primary": "Mesembryanthemum expansum",
+    "latin": "Mesembryanthemum expansum",
+    "chinese": null,
+    "pinyin": "KUO ZHANG SONG YE JU",
+    "confidence": -8.135261535644531,
+    "source": "itcm"
+  },
+  {
+    "id": 189,
+    "primary": "Acidum Benzoicum",
+    "latin": "Acidum Benzoicum",
+    "chinese": "醋酸",
+    "pinyin": "CU SUAN",
+    "confidence": -4.395857810974121,
+    "source": "itcm"
+  },
+  {
+    "id": 190,
+    "primary": "GINSENG",
+    "latin": "Ginseng radix",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 56.93708801269531,
+    "source": "itcm"
+  },
+  {
+    "id": 191,
+    "primary": "Calcitum",
+    "latin": "Calcitum",
+    "chinese": "寒水石",
+    "pinyin": "HAN SHUI SHI",
+    "confidence": -3.9099535942077637,
+    "source": "itcm"
+  },
+  {
+    "id": 192,
+    "primary": "Xanthoceras sorbifolia",
+    "latin": "Xanthoceras sorbifolia",
+    "chinese": "文冠果",
+    "pinyin": "WEN GUAN MU",
+    "confidence": 56.85249328613281,
+    "source": "itcm"
+  },
+  {
+    "id": 193,
+    "primary": "Ta xus ma i rei",
+    "latin": "Ta xus ma i rei",
+    "chinese": null,
+    "pinyin": "MEI LI HONG DOU SHAN",
+    "confidence": 63.809967041015625,
+    "source": "itcm"
+  },
+  {
+    "id": 194,
+    "primary": "Potentilla griffithii var. velutina",
+    "latin": "Potentilla griffithii var. velutina",
+    "chinese": "长柔毛委陵菜",
+    "pinyin": "CHANG ROU MAO WEI LING CAI",
+    "confidence": 20.902732849121094,
+    "source": "itcm"
+  },
+  {
+    "id": 195,
+    "primary": "Brassica napus",
+    "latin": "Brassica napus",
+    "chinese": "欧洲油菜",
+    "pinyin": "OW ZHOU YOU CAI",
+    "confidence": 59.161808013916016,
+    "source": "itcm"
+  },
+  {
+    "id": 196,
+    "primary": "Isodon liangshanica",
+    "latin": "Isodon liangshanica",
+    "chinese": null,
+    "pinyin": "LIANG SHAN XIANG CHA CAI",
+    "confidence": 33.25697326660156,
+    "source": "itcm"
+  },
+  {
+    "id": 197,
+    "primary": "Selaginella Doederleinii Hieron",
+    "latin": null,
+    "chinese": "石上柏",
+    "pinyin": "Shi Shang Bai",
+    "confidence": 12.069073677062988,
+    "source": "itcm"
+  },
+  {
+    "id": 198,
+    "primary": "Rehmannia glutinosa Libosch",
+    "latin": "Rehmannia glutinosa Libosch",
+    "chinese": "地黄",
+    "pinyin": "DI HUANG",
+    "confidence": 14.897005081176758,
+    "source": "itcm"
+  },
+  {
+    "id": 199,
+    "primary": "Microula sikkimensis",
+    "latin": "Microula sikkimensis",
+    "chinese": "微孔草",
+    "pinyin": "WEI KONG CAO",
+    "confidence": 31.26465606689453,
+    "source": "itcm"
+  },
+  {
+    "id": 200,
+    "primary": "Extractum Piri Laiyanensis",
+    "latin": "Extractum Piri Laiyanensis",
+    "chinese": "莱阳梨清膏",
+    "pinyin": "LAI YANG LI QING GAO",
+    "confidence": 44.09856033325195,
+    "source": "itcm"
+  },
+  {
+    "id": 201,
+    "primary": "Niter",
+    "latin": "Niter",
+    "chinese": "硝石",
+    "pinyin": "XIAO SHI",
+    "confidence": -3.9506025314331055,
+    "source": "itcm"
+  },
+  {
+    "id": 202,
+    "primary": "Massa fermentata medicinalis Preparata",
+    "latin": "Massa fermentata medicinalis Preparata",
+    "chinese": "炒神曲",
+    "pinyin": "CHAO SHEN QU",
+    "confidence": 10.697912216186523,
+    "source": "itcm"
+  },
+  {
+    "id": 203,
+    "primary": "Trochodendron aralioides",
+    "latin": "Trochodendron aralioides",
+    "chinese": "昆栏树",
+    "pinyin": "KUN LAN SHU",
+    "confidence": 9.857522964477539,
+    "source": "itcm"
+  },
+  {
+    "id": 204,
+    "primary": "Gonystylus keithii",
+    "latin": "Gonystylus keithii",
+    "chinese": null,
+    "pinyin": "KAI TE LENG ZHU MU",
+    "confidence": 39.69342041015625,
+    "source": "itcm"
+  },
+  {
+    "id": 205,
+    "primary": "Cordyceps sinensis(Berk.)Sae. and Synnematum sinense Yin et Shen sp.now",
+    "latin": "Cordyceps sinensis(Berk.)Sae. and Synnematum sinense Yin et Shen sp.now",
+    "chinese": "发酵虫草菌",
+    "pinyin": "FA JIAO CHONG CAO JUN",
+    "confidence": 31.92871856689453,
+    "source": "itcm"
+  },
+  {
+    "id": 206,
+    "primary": "Medicago sativa",
+    "latin": "Medicago sativa",
+    "chinese": "苜蓿",
+    "pinyin": "MU XU",
+    "confidence": 51.80077362060547,
+    "source": "itcm"
+  },
+  {
+    "id": 207,
+    "primary": "Orobanche coerulescens",
+    "latin": "Orobanche coerulescens",
+    "chinese": "列当",
+    "pinyin": "LIE DANG",
+    "confidence": 70.36102294921875,
+    "source": "itcm"
+  },
+  {
+    "id": 208,
+    "primary": "GEI HERBA",
+    "latin": "GEI HERBA",
+    "chinese": "蓝布正",
+    "pinyin": "LAN BU ZHENG",
+    "confidence": 61.4269905090332,
+    "source": "itcm"
+  },
+  {
+    "id": 209,
+    "primary": "Thalictrum filamentosum",
+    "latin": "Thalictrum filamentosum",
+    "chinese": "花唐松草",
+    "pinyin": "HUA TANG SONG CAO",
+    "confidence": -8.2266845703125,
+    "source": "itcm"
+  },
+  {
+    "id": 210,
+    "primary": "Ampelopsis japonica ( Thunb. ) Makino",
+    "latin": "Ampelopsis japonica ( Thunb. ) Makino",
+    "chinese": "白蔹",
+    "pinyin": "BAI LIAN",
+    "confidence": 35.08448028564453,
+    "source": "itcm"
+  },
+  {
+    "id": 211,
+    "primary": "flower of Hyacinth Dolichos",
+    "latin": "Flos Dolichoris",
+    "chinese": "扁豆花",
+    "pinyin": "Bian Dou Hua",
+    "confidence": 24.466007232666016,
+    "source": "itcm"
+  },
+  {
+    "id": 212,
+    "primary": "Swertia swertiopsis",
+    "latin": "Swertia swertiopsis",
+    "chinese": null,
+    "pinyin": "PU TONG ZHANG YA CAI",
+    "confidence": 58.179908752441406,
+    "source": "itcm"
+  },
+  {
+    "id": 213,
+    "primary": "Brachystemma calycinum",
+    "latin": "Brachystemma calycinum",
+    "chinese": "短瓣花",
+    "pinyin": "DUAN BAN HUA",
+    "confidence": 34.16979217529297,
+    "source": "itcm"
+  },
+  {
+    "id": 214,
+    "primary": "Rhodiola atuntsuensis",
+    "latin": "Rhodiola atuntsuensis",
+    "chinese": "德钦红景天",
+    "pinyin": "DE QIN HONG JING TIAN",
+    "confidence": 98.26528930664062,
+    "source": "itcm"
+  },
+  {
+    "id": 215,
+    "primary": "Miscanthus sinensis",
+    "latin": "Miscanthus sinensis",
+    "chinese": "芒",
+    "pinyin": "MANG JING",
+    "confidence": 48.43439483642578,
+    "source": "itcm"
+  },
+  {
+    "id": 216,
+    "primary": "Watermelon frost",
+    "latin": null,
+    "chinese": "西瓜霜",
+    "pinyin": "XI GUA SHUANG",
+    "confidence": 2.9409539699554443,
+    "source": "itcm"
+  },
+  {
+    "id": 217,
+    "primary": "IPECACUANHA TINCTURE, STANDARDISED",
+    "latin": "Ipecacuanhae tinctura normata",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 32.820594787597656,
+    "source": "itcm"
+  },
+  {
+    "id": 218,
+    "primary": "Bidens tripartita",
+    "latin": "Bidens tripartita",
+    "chinese": "狼杷草",
+    "pinyin": "LANG PA CAO",
+    "confidence": -4.201282024383545,
+    "source": "itcm"
+  },
+  {
+    "id": 219,
+    "primary": "Pteris kiuschiuensis",
+    "latin": "Pteris kiuschiuensis",
+    "chinese": "平羽凤尾蕨",
+    "pinyin": "PING YU FENG WEI JUE",
+    "confidence": 49.741310119628906,
+    "source": "itcm"
+  },
+  {
+    "id": 220,
+    "primary": "Pinus cembra",
+    "latin": "Pinus cembra",
+    "chinese": "瑞士石松",
+    "pinyin": "RUI SHI SHI SONG",
+    "confidence": 23.266773223876953,
+    "source": "itcm"
+  },
+  {
+    "id": 221,
+    "primary": "Hierochloe odorata",
+    "latin": "Hierochloe odorata",
+    "chinese": "茅香",
+    "pinyin": "MAO XIANG H UA",
+    "confidence": -4.132017135620117,
+    "source": "itcm"
+  },
+  {
+    "id": 222,
+    "primary": "Cyclea barbata",
+    "latin": "Cyclea barbata",
+    "chinese": "银不换",
+    "pinyin": "YIN BU HUAN",
+    "confidence": 13.680038452148438,
+    "source": "itcm"
+  },
+  {
+    "id": 223,
+    "primary": "Astilbe chinensis?(Maxim.) Franch. & Sav.",
+    "latin": "Astilbe chinensis?(Maxim.) Franch. & Sav.",
+    "chinese": "红升麻",
+    "pinyin": "HONG?SHENG MA",
+    "confidence": 93.56153869628906,
+    "source": "itcm"
+  },
+  {
+    "id": 224,
+    "primary": "Costus spicatus",
+    "latin": "Costus spicatus",
+    "chinese": "穗状闭鞘姜",
+    "pinyin": "SUI ZHUANG BI QIAO JIANG",
+    "confidence": 17.573041915893555,
+    "source": "itcm"
+  },
+  {
+    "id": 225,
+    "primary": "Osmunda japonice Thunb.",
+    "latin": "Osmunda japonice Thunb.",
+    "chinese": "紫箕贯众",
+    "pinyin": "ZI JI GUAN ZHONG",
+    "confidence": 41.54969787597656,
+    "source": "itcm"
+  },
+  {
+    "id": 226,
+    "primary": "Dianella nigra",
+    "latin": "Dianella nigra",
+    "chinese": "黑桔梗兰",
+    "pinyin": "HEI JIE GENG LAN",
+    "confidence": -8.407184600830078,
+    "source": "itcm"
+  },
+  {
+    "id": 227,
+    "primary": "Poria cum Ligno Hospite",
+    "latin": "Poria cum Ligno Hospite",
+    "chinese": "朱茯神",
+    "pinyin": "ZHU FU SHEN",
+    "confidence": 54.53982162475586,
+    "source": "itcm"
+  },
+  {
+    "id": 228,
+    "primary": "Pinus yunnanensis?Franch.、Pinus kesiya?Royle ex Gord.var.langbianensis(A.Chev.)Gaussen、Pinus massoniana?Lamb.",
+    "latin": "Pinus yunnanensis?Franch.、Pinus kesiya?Royle ex Gord.var.langbianensis(A.Chev.)Gaussen、Pinus massoniana?Lamb.",
+    "chinese": "松树笔",
+    "pinyin": "SONG SHU BI",
+    "confidence": 79.27191162109375,
+    "source": "itcm"
+  },
+  {
+    "id": 229,
+    "primary": "COLOPHONY",
+    "latin": "Colophonium",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -8.549784660339355,
+    "source": "itcm"
+  },
+  {
+    "id": 230,
+    "primary": "Capra hircus?Linnaeus or Ovis aries?Linnaeus",
+    "latin": "Capra hircus?Linnaeus or Ovis aries?Linnaeus",
+    "chinese": "羊脂",
+    "pinyin": "YANG ZHI",
+    "confidence": 41.038848876953125,
+    "source": "itcm"
+  },
+  {
+    "id": 231,
+    "primary": "Paullinia cupana",
+    "latin": "Paullinia cupana",
+    "chinese": "巴西香无患子",
+    "pinyin": "BA XI XIANG WU HUAN ZI",
+    "confidence": 31.004270553588867,
+    "source": "itcm"
+  },
+  {
+    "id": 232,
+    "primary": "Brassica rapa?L.",
+    "latin": "Brassica rapa?L.",
+    "chinese": "蔓菁",
+    "pinyin": "MAN?JING",
+    "confidence": 29.941335678100586,
+    "source": "itcm"
+  },
+  {
+    "id": 233,
+    "primary": "Potentilla kleiniana",
+    "latin": "Potentilla kleiniana",
+    "chinese": "蛇含委陵菜",
+    "pinyin": "SHE HAN WEI LING CAI",
+    "confidence": 20.33895492553711,
+    "source": "itcm"
+  },
+  {
+    "id": 234,
+    "primary": "Anemone obtusiloba",
+    "latin": "Anemone obtusiloba",
+    "chinese": null,
+    "pinyin": "DUN LIE YIN LIAN HUA",
+    "confidence": -8.535736083984375,
+    "source": "itcm"
+  },
+  {
+    "id": 235,
+    "primary": "Calophyllum cordato-oblongum",
+    "latin": "Calophyllum cordato-oblongum",
+    "chinese": "长圆心形胡桐",
+    "pinyin": "CHANG YUAN XIN XING HU TONG",
+    "confidence": 38.683109283447266,
+    "source": "itcm"
+  },
+  {
+    "id": 236,
+    "primary": "Cudrania fruticosa",
+    "latin": "Cudrania fruticosa",
+    "chinese": "柘藤",
+    "pinyin": "ZHE TENG",
+    "confidence": 13.794995307922363,
+    "source": "itcm"
+  },
+  {
+    "id": 237,
+    "primary": "Fragaria vesca?L.",
+    "latin": "Fragaria vesca?L.",
+    "chinese": "野草莓",
+    "pinyin": "YE CAO MEI",
+    "confidence": 61.80613708496094,
+    "source": "itcm"
+  },
+  {
+    "id": 238,
+    "primary": "Armadillidium vulgare（Latreille）or Porcellio scaber?Latreille",
+    "latin": "Armadillidium vulgare（Latreille）or Porcellio scaber?Latreille",
+    "chinese": "鼠妇虫",
+    "pinyin": "SHU FU CHONG",
+    "confidence": 35.900413513183594,
+    "source": "itcm"
+  },
+  {
+    "id": 239,
+    "primary": "BENZOIN TINCTURE, SIAM",
+    "latin": "Benzois tonkinensis tinctura",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 20.213430404663086,
+    "source": "itcm"
+  },
+  {
+    "id": 240,
+    "primary": "Scabiosa tschiliensis",
+    "latin": "Scabiosa tschiliensis",
+    "chinese": "华北蓝盆花",
+    "pinyin": "HUA BEI LAN PEN HUA",
+    "confidence": 51.73771667480469,
+    "source": "itcm"
+  },
+  {
+    "id": 241,
+    "primary": "Pelargonium zonale",
+    "latin": "Pelargonium zonale",
+    "chinese": "马蹄纹天竺葵",
+    "pinyin": "MA TI WEN TIAN ZHU KUI",
+    "confidence": 32.851295471191406,
+    "source": "itcm"
+  },
+  {
+    "id": 242,
+    "primary": "Xanthium sibiricum [Syn. Xanthium strumarium ]",
+    "latin": "Xanthium sibiricum [Syn. Xanthium strumarium ]",
+    "chinese": "苍耳",
+    "pinyin": "CANG ER",
+    "confidence": 57.06269454956055,
+    "source": "itcm"
+  },
+  {
+    "id": 243,
+    "primary": "Aurantii dulcis aetheroleum",
+    "latin": "Aurantii dulcis aetheroleum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 12.07021427154541,
+    "source": "itcm"
+  },
+  {
+    "id": 244,
+    "primary": "Polytrichum ohioense",
+    "latin": "Polytrichum ohioense",
+    "chinese": null,
+    "pinyin": "DUO XING JIN FA XIAN",
+    "confidence": 65.29363250732422,
+    "source": "itcm"
+  },
+  {
+    "id": 245,
+    "primary": "Garcinia polyantha",
+    "latin": "Garcinia polyantha",
+    "chinese": null,
+    "pinyin": "DUO HUA TENG HUANG",
+    "confidence": 25.10738754272461,
+    "source": "itcm"
+  },
+  {
+    "id": 246,
+    "primary": "Pimpinella candolleana?Wight et Arn.",
+    "latin": "Pimpinella candolleana?Wight et Arn.",
+    "chinese": "杏叶防风",
+    "pinyin": "XING?YE?FANG FENG",
+    "confidence": 79.7083740234375,
+    "source": "itcm"
+  },
+  {
+    "id": 247,
+    "primary": "Haplophyllum acutifolium",
+    "latin": "Haplophyllum acutifolium",
+    "chinese": "尖叶芸香草",
+    "pinyin": "JIAN YE YUN XIANG CAO",
+    "confidence": -4.52528715133667,
+    "source": "itcm"
+  },
+  {
+    "id": 248,
+    "primary": "Kandelia candel",
+    "latin": "Kandelia candel",
+    "chinese": "秋茄树",
+    "pinyin": "QIU QIE SHU",
+    "confidence": 19.777433395385742,
+    "source": "itcm"
+  },
+  {
+    "id": 249,
+    "primary": "Cortex dictamni",
+    "latin": "Cortex dictamni",
+    "chinese": "白藓皮",
+    "pinyin": "BAI XIAN PI",
+    "confidence": 22.19327163696289,
+    "source": "itcm"
+  },
+  {
+    "id": 250,
+    "primary": "Dolichos tenuicaulis?（Baker） Craib",
+    "latin": "Dolichos tenuicaulis?（Baker） Craib",
+    "chinese": "大麻药",
+    "pinyin": "DA?MA YAO",
+    "confidence": 4.1255269050598145,
+    "source": "itcm"
+  },
+  {
+    "id": 251,
+    "primary": "crystal sugar",
+    "latin": "crystal sugar",
+    "chinese": "冰糖",
+    "pinyin": "BING TANG",
+    "confidence": -4.377497673034668,
+    "source": "itcm"
+  },
+  {
+    "id": 252,
+    "primary": "Microtoena insuavis?(Hance) Prain ex Briq. Dunn",
+    "latin": "Microtoena insuavis?(Hance) Prain ex Briq. Dunn",
+    "chinese": "广藿香",
+    "pinyin": "GUANG?HUO XIANG",
+    "confidence": 26.303321838378906,
+    "source": "itcm"
+  },
+  {
+    "id": 253,
+    "primary": "Pulsatilla cernua",
+    "latin": "Pulsatilla cernua",
+    "chinese": "朝鲜白头翁",
+    "pinyin": "CHAO XIAN BAI TOU WENG",
+    "confidence": 47.27949523925781,
+    "source": "itcm"
+  },
+  {
+    "id": 254,
+    "primary": "Mangifera indica?L.",
+    "latin": "Mangifera indica?L.",
+    "chinese": "芒果叶",
+    "pinyin": "MANG GUO?YE",
+    "confidence": 49.87586212158203,
+    "source": "itcm"
+  },
+  {
+    "id": 255,
+    "primary": "Rhododendron anthopogonoides",
+    "latin": "Rhododendron anthopogonoides",
+    "chinese": null,
+    "pinyin": "XIAO YE PI PA",
+    "confidence": 11.700953483581543,
+    "source": "itcm"
+  },
+  {
+    "id": 256,
+    "primary": "Os Sepiae seu SepiellaeZoological Name",
+    "latin": "Os Sepiae seu SepiellaeZoological Name",
+    "chinese": "乌贼骨",
+    "pinyin": "WU ZEI GU",
+    "confidence": 84.92878723144531,
+    "source": "itcm"
+  },
+  {
+    "id": 257,
+    "primary": "Knema globularia",
+    "latin": "Knema globularia",
+    "chinese": "小叶红光树",
+    "pinyin": "XIAO YE HONG GUANG SHU",
+    "confidence": -10.670463562011719,
+    "source": "itcm"
+  },
+  {
+    "id": 258,
+    "primary": "Clerodendron inerme",
+    "latin": "Clerodendron inerme",
+    "chinese": null,
+    "pinyin": "SHUI HU MAN",
+    "confidence": -8.603971481323242,
+    "source": "itcm"
+  },
+  {
+    "id": 259,
+    "primary": "Melaleucae aetheroleum",
+    "latin": "Melaleucae aetheroleum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 29.03301239013672,
+    "source": "itcm"
+  },
+  {
+    "id": 260,
+    "primary": "PatriniavillosaJuss.",
+    "latin": "PatriniavillosaJuss.",
+    "chinese": "白花败酱草",
+    "pinyin": "BAI HUA BAI JIANG CAO",
+    "confidence": -4.51652717590332,
+    "source": "itcm"
+  },
+  {
+    "id": 261,
+    "primary": "Juniperus chinensis var. kaizuka",
+    "latin": "Juniperus chinensis var. kaizuka",
+    "chinese": null,
+    "pinyin": "LONG BAI",
+    "confidence": 29.58013916015625,
+    "source": "itcm"
+  },
+  {
+    "id": 262,
+    "primary": "Crneate Lespedeza",
+    "latin": "Herba Lespedezae Cuneatae",
+    "chinese": "夜关门",
+    "pinyin": "YE GUAN MEN",
+    "confidence": 18.87527084350586,
+    "source": "itcm"
+  },
+  {
+    "id": 263,
+    "primary": "Lunulatae Herba",
+    "latin": null,
+    "chinese": "猫眼草",
+    "pinyin": "Mao Yan Cao",
+    "confidence": 75.52613830566406,
+    "source": "itcm"
+  },
+  {
+    "id": 264,
+    "primary": "Glycyrrhiza yunnanensis",
+    "latin": "Glycyrrhiza yunnanensis",
+    "chinese": "云南甘草",
+    "pinyin": "YUN NAN GAN CAO",
+    "confidence": 55.337623596191406,
+    "source": "itcm"
+  },
+  {
+    "id": 265,
+    "primary": "Ardisia gigantifolia?Stapf",
+    "latin": "Ardisia gigantifolia?Stapf",
+    "chinese": "走马胎",
+    "pinyin": "ZOU MA TAI",
+    "confidence": -7.599314212799072,
+    "source": "itcm"
+  },
+  {
+    "id": 266,
+    "primary": "Herba Violae seu Gueldenstaedtiae",
+    "latin": "Herba Violae seu Gueldenstaedtiae",
+    "chinese": "地丁",
+    "pinyin": "DI DING",
+    "confidence": 27.701473236083984,
+    "source": "itcm"
+  },
+  {
+    "id": 267,
+    "primary": "Pulvis Coris Bovis seu Bubali",
+    "latin": "Pulvis Coris Bovis seu Bubali",
+    "chinese": "牛心粉",
+    "pinyin": "NIU XIN FEN",
+    "confidence": 21.059825897216797,
+    "source": "itcm"
+  },
+  {
+    "id": 268,
+    "primary": "Panax notoginseng Root and Rhizome Dry Extract",
+    "latin": null,
+    "chinese": "三七干浸膏",
+    "pinyin": "San Qi Gan Jin Gao",
+    "confidence": -16.63510513305664,
+    "source": "itcm"
+  },
+  {
+    "id": 269,
+    "primary": "Cornu Cervi",
+    "latin": "Cornu Cervi",
+    "chinese": "鹿角",
+    "pinyin": "LU JIAO",
+    "confidence": 16.210718154907227,
+    "source": "itcm"
+  },
+  {
+    "id": 270,
+    "primary": "Ilex rotunda Thunb.",
+    "latin": "Ilex rotunda Thunb.",
+    "chinese": "碎骨木",
+    "pinyin": "SUI GU MU",
+    "confidence": 21.036569595336914,
+    "source": "itcm"
+  },
+  {
+    "id": 271,
+    "primary": "Fouquieria splendens HUA LAI CI SHU",
+    "latin": "Fouquieria splendens HUA LAI CI SHU",
+    "chinese": "福贵树",
+    "pinyin": "FOUQUIERIA SPLENDENS.",
+    "confidence": 40.21143341064453,
+    "source": "itcm"
+  },
+  {
+    "id": 272,
+    "primary": "Penis Caprae seu Ovis",
+    "latin": "Penis Caprae seu Ovis",
+    "chinese": "羊鞭",
+    "pinyin": "YANG BIAN",
+    "confidence": 55.45030212402344,
+    "source": "itcm"
+  },
+  {
+    "id": 273,
+    "primary": "Pyrolusite;Manganite",
+    "latin": "Pyrolusite;Manganite",
+    "chinese": "无名异",
+    "pinyin": "WU?MING YI",
+    "confidence": 8.182836532592773,
+    "source": "itcm"
+  },
+  {
+    "id": 274,
+    "primary": "Rabdosia nervosa",
+    "latin": "Rabdosia nervosa",
+    "chinese": "显脉香茶菜",
+    "pinyin": "XIAN MAI XIANG CHA CAI",
+    "confidence": -8.797823905944824,
+    "source": "itcm"
+  },
+  {
+    "id": 275,
+    "primary": "Sinomenium (Thunb.)Rehd. et Wils.;Sinomenium( Thunb.) Rehd.et Wils. var. ciinereum Rehd. et Wils.",
+    "latin": "Sinomenium (Thunb.)Rehd. et Wils.;Sinomenium( Thunb.) Rehd.et Wils. var. ciinereum Rehd. et Wils.",
+    "chinese": "青风藤",
+    "pinyin": "QING FENG TENG",
+    "confidence": 36.8181037902832,
+    "source": "itcm"
+  },
+  {
+    "id": 276,
+    "primary": "Alumen",
+    "latin": "Alumen",
+    "chinese": "明矾",
+    "pinyin": "MING FAN",
+    "confidence": -4.946600914001465,
+    "source": "itcm"
+  },
+  {
+    "id": 277,
+    "primary": "Ophiorrhiza liukiuensis",
+    "latin": "Ophiorrhiza liukiuensis",
+    "chinese": "小花蛇根草",
+    "pinyin": "LIU QIU SHE GEN CAO",
+    "confidence": 124.91813659667969,
+    "source": "itcm"
+  },
+  {
+    "id": 278,
+    "primary": "Cortex Eucommiae",
+    "latin": "Cortex Eucommiae",
+    "chinese": "川杜仲",
+    "pinyin": "CHUAN DU ZHONG",
+    "confidence": 41.41010284423828,
+    "source": "itcm"
+  },
+  {
+    "id": 279,
+    "primary": "Schisandra sphenantheraRehd.et Wils.",
+    "latin": "Schisandra sphenantheraRehd.et Wils.",
+    "chinese": "南五味子",
+    "pinyin": "NAN WU WEI ZI",
+    "confidence": 34.9866943359375,
+    "source": "itcm"
+  },
+  {
+    "id": 280,
+    "primary": "Sinopodophyllum hexandrum?(Royle) Ying",
+    "latin": "Sinopodophyllum hexandrum?(Royle) Ying",
+    "chinese": "桃儿七",
+    "pinyin": "TAO ER QI",
+    "confidence": 29.848623275756836,
+    "source": "itcm"
+  },
+  {
+    "id": 281,
+    "primary": "Tamarindus indica",
+    "latin": "Tamarindus indica",
+    "chinese": null,
+    "pinyin": "SUAN JIAO",
+    "confidence": 62.025001525878906,
+    "source": "itcm"
+  },
+  {
+    "id": 282,
+    "primary": "Gold",
+    "latin": "Gold",
+    "chinese": "金灰",
+    "pinyin": "JIN HUI",
+    "confidence": 84.89685821533203,
+    "source": "itcm"
+  },
+  {
+    "id": 283,
+    "primary": "methyl salicylate",
+    "latin": null,
+    "chinese": "冬青油",
+    "pinyin": "DONG QING YOU",
+    "confidence": 7.102670669555664,
+    "source": "itcm"
+  },
+  {
+    "id": 284,
+    "primary": "Coptis gulinensis",
+    "latin": "Coptis gulinensis",
+    "chinese": "古蔺野连",
+    "pinyin": "GU LIN YE LIAN",
+    "confidence": 30.403076171875,
+    "source": "itcm"
+  },
+  {
+    "id": 285,
+    "primary": "WILLOW BARK",
+    "latin": "Salicis cortex",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -1.2676994800567627,
+    "source": "itcm"
+  },
+  {
+    "id": 286,
+    "primary": "Nauclea officinalis?Pierre. ex Pitard",
+    "latin": "Nauclea officinalis?Pierre. ex Pitard",
+    "chinese": "胆木",
+    "pinyin": "DAN MU",
+    "confidence": 31.553569793701172,
+    "source": "itcm"
+  },
+  {
+    "id": 287,
+    "primary": "Herba Polygalae telephioidis,Herba Polygalae chinensis",
+    "latin": "Herba Polygalae telephioidis,Herba Polygalae chinensis",
+    "chinese": "金牛草",
+    "pinyin": "JIN NIU CAO",
+    "confidence": 52.254390716552734,
+    "source": "itcm"
+  },
+  {
+    "id": 288,
+    "primary": "Cortex erythrie",
+    "latin": "Cortex erythrie",
+    "chinese": "海桐皮",
+    "pinyin": "Hai Tong Pi",
+    "confidence": 0.3844430446624756,
+    "source": "itcm"
+  },
+  {
+    "id": 289,
+    "primary": "Cyclea sutchuenensis",
+    "latin": "Cyclea sutchuenensis",
+    "chinese": "四川轮环藤",
+    "pinyin": "SI CHUAN LUN HUAN TENG",
+    "confidence": 29.322914123535156,
+    "source": "itcm"
+  },
+  {
+    "id": 290,
+    "primary": "Bupleurum bicaule, ZHUI YE CHAI HU",
+    "latin": "Bupleurum bicaule, ZHUI YE CHAI HU",
+    "chinese": "锥叶柴胡",
+    "pinyin": "ACICULAR THOROWAX.",
+    "confidence": 72.83815002441406,
+    "source": "itcm"
+  },
+  {
+    "id": 291,
+    "primary": "Ornithogalum caudatum",
+    "latin": "Ornithogalum caudatum",
+    "chinese": "虎眼万年青",
+    "pinyin": "HU YAN WAN NIAN QING",
+    "confidence": -8.855423927307129,
+    "source": "itcm"
+  },
+  {
+    "id": 292,
+    "primary": "Stillingia sylvatica [Syn. Sapium sylvatica]",
+    "latin": "Stillingia sylvatica [Syn. Sapium sylvatica]",
+    "chinese": null,
+    "pinyin": "CAO WU JIU",
+    "confidence": 7.731378555297852,
+    "source": "itcm"
+  },
+  {
+    "id": 293,
+    "primary": "Amomun kravanh Pierre ex Gagnep.;Amomum compactum Soland ex Maton",
+    "latin": "Amomun kravanh Pierre ex Gagnep.;Amomum compactum Soland ex Maton",
+    "chinese": "豆蔻",
+    "pinyin": "DOU KOU",
+    "confidence": 33.81166458129883,
+    "source": "itcm"
+  },
+  {
+    "id": 294,
+    "primary": "Folium Caryophylli",
+    "latin": "Folium Caryophylli",
+    "chinese": "丁香叶",
+    "pinyin": "DING XIANG YE",
+    "confidence": -9.30858039855957,
+    "source": "itcm"
+  },
+  {
+    "id": 295,
+    "primary": "Herba Artemisiae Scopariae",
+    "latin": "Herba Artemisiae Scopariae",
+    "chinese": "陈蒿",
+    "pinyin": "CHEN HAO",
+    "confidence": 20.760189056396484,
+    "source": "itcm"
+  },
+  {
+    "id": 296,
+    "primary": "Mastix",
+    "latin": "Mastix",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -4.867839813232422,
+    "source": "itcm"
+  },
+  {
+    "id": 297,
+    "primary": "Trillium tschonoskii",
+    "latin": "Trillium tschonoskii",
+    "chinese": "延龄草",
+    "pinyin": "YAN LING CAO",
+    "confidence": 16.456409454345703,
+    "source": "itcm"
+  },
+  {
+    "id": 298,
+    "primary": "CINCHONA BARK",
+    "latin": "Cinchonae cortex",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 74.66265106201172,
+    "source": "itcm"
+  },
+  {
+    "id": 299,
+    "primary": "Pyritum",
+    "latin": "Pyritum",
+    "chinese": "自然铜",
+    "pinyin": "ZI RAN TONG",
+    "confidence": 11.335095405578613,
+    "source": "itcm"
+  },
+  {
+    "id": 300,
+    "primary": "Diospyros ebenum",
+    "latin": "Diospyros ebenum",
+    "chinese": null,
+    "pinyin": "WU MU XIE",
+    "confidence": 1.0135562419891357,
+    "source": "itcm"
+  },
+  {
+    "id": 301,
+    "primary": "Aconitum austroyunnanense W. T. Wang",
+    "latin": "Aconitum austroyunnanense W. T. Wang",
+    "chinese": "滇草乌",
+    "pinyin": "DIAN CAO WU",
+    "confidence": 51.19475555419922,
+    "source": "itcm"
+  },
+  {
+    "id": 302,
+    "primary": "Walsura yunnanensis",
+    "latin": "Walsura yunnanensis",
+    "chinese": null,
+    "pinyin": "YUN NAN GE SHE SHU",
+    "confidence": 25.872146606445312,
+    "source": "itcm"
+  },
+  {
+    "id": 303,
+    "primary": "Abrus cantoniensis Hance",
+    "latin": "Abrus cantoniensis Hance",
+    "chinese": "鸡骨草",
+    "pinyin": "JI GU CAO",
+    "confidence": 7.7034196853637695,
+    "source": "itcm"
+  },
+  {
+    "id": 304,
+    "primary": "Chrysanthemum segetum",
+    "latin": "Chrysanthemum segetum",
+    "chinese": "南茼蒿",
+    "pinyin": "NAN TONG HAO",
+    "confidence": -9.12110710144043,
+    "source": "itcm"
+  },
+  {
+    "id": 305,
+    "primary": "Chrysannthremum morifolium Ramat.",
+    "latin": "Chrysannthremum morifolium Ramat.",
+    "chinese": "菊花",
+    "pinyin": "JU HUA",
+    "confidence": -4.801982402801514,
+    "source": "itcm"
+  },
+  {
+    "id": 306,
+    "primary": "Ungernia trisphaera",
+    "latin": "Ungernia trisphaera",
+    "chinese": null,
+    "pinyin": "SAN QIU BO SI SHI SUAN",
+    "confidence": 17.763587951660156,
+    "source": "itcm"
+  },
+  {
+    "id": 307,
+    "primary": "Amomum villosum Lour.;Amomum villosum Lour.var.xanthioides T.L.Wu et Senjen;Amomum longiligulare T.L.Wu",
+    "latin": "Amomum villosum Lour.;Amomum villosum Lour.var.xanthioides T.L.Wu et Senjen;Amomum longiligulare T.L.Wu",
+    "chinese": "砂仁",
+    "pinyin": "SHA REN",
+    "confidence": 36.72749328613281,
+    "source": "itcm"
+  },
+  {
+    "id": 308,
+    "primary": "Ficus carica",
+    "latin": "Ficus carica",
+    "chinese": "无花果",
+    "pinyin": "WU HUA GUO",
+    "confidence": 9.608596801757812,
+    "source": "itcm"
+  },
+  {
+    "id": 309,
+    "primary": "(Codonopsis pilosula ( Frnnch. ) Nannf.;Codonopsis pilosula Nannf.var.modesta(Nannf).L.Shen;Codonopsis tangshen Oliv.",
+    "latin": "(Codonopsis pilosula ( Frnnch. ) Nannf.;Codonopsis pilosula Nannf.var.modesta(Nannf).L.Shen;Codonopsis tangshen Oliv.",
+    "chinese": "党参",
+    "pinyin": "DANG SHEN",
+    "confidence": 60.764930725097656,
+    "source": "itcm"
+  },
+  {
+    "id": 310,
+    "primary": "Magnolia officinalis Rehd. et Wils. ;Magnolia officinalis Rehd. et Wils. var.biloba Rehd.et Wils.",
+    "latin": "Magnolia officinalis Rehd. et Wils. ;Magnolia officinalis Rehd. et Wils. var.biloba Rehd.et Wils.",
+    "chinese": "厚朴",
+    "pinyin": "HOU PU",
+    "confidence": 35.19757843017578,
+    "source": "itcm"
+  },
+  {
+    "id": 311,
+    "primary": "Rauvolfia verticillata var. hainanensis",
+    "latin": "Rauvolfia verticillata var. hainanensis",
+    "chinese": null,
+    "pinyin": "HAI NAN LUO FU MU",
+    "confidence": 26.01183319091797,
+    "source": "itcm"
+  },
+  {
+    "id": 312,
+    "primary": "Polygonum multiflorum Thunb.",
+    "latin": "Polygonum multiflorum Thunb.",
+    "chinese": "何首乌",
+    "pinyin": "HE SHOU WU",
+    "confidence": -4.847577095031738,
+    "source": "itcm"
+  },
+  {
+    "id": 313,
+    "primary": "Aspidosperma quebracho - blanco",
+    "latin": "Aspidosperma quebracho - blanco",
+    "chinese": null,
+    "pinyin": "PU TONG BAI JIAN MU",
+    "confidence": 10.68918514251709,
+    "source": "itcm"
+  },
+  {
+    "id": 314,
+    "primary": "Polysaccharides",
+    "latin": "Irpex lacteus?(Fr.) Fr.",
+    "chinese": "耙齿菌多糖",
+    "pinyin": "PA?CHI JUN DUO TANG",
+    "confidence": -0.585634708404541,
+    "source": "itcm"
+  },
+  {
+    "id": 315,
+    "primary": "Malvae sylvestris flos",
+    "latin": "Malvae sylvestris flos",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 63.451881408691406,
+    "source": "itcm"
+  },
+  {
+    "id": 316,
+    "primary": "Rosa davurica?Pall.",
+    "latin": "Rosa davurica?Pall.",
+    "chinese": "山刺玫",
+    "pinyin": "SHAN CI MEI",
+    "confidence": 59.687461853027344,
+    "source": "itcm"
+  },
+  {
+    "id": 317,
+    "primary": "Kalimeris indica（L.）Sch.-Bip.[Aster indicus L.，Boltonia indica Benth.，Asteromaea indica （L.）Blume]",
+    "latin": "Kalimeris indica（L.）Sch.-Bip.[Aster indicus L.，Boltonia indica Benth.，Asteromaea indica （L.）Blume]",
+    "chinese": "马兰草",
+    "pinyin": "MA LAN CAO",
+    "confidence": 29.697341918945312,
+    "source": "itcm"
+  },
+  {
+    "id": 318,
+    "primary": "Quisqualis indica",
+    "latin": "Quisqualis indica",
+    "chinese": "使君子叶",
+    "pinyin": "SHI JUN ZI YE",
+    "confidence": 58.5965576171875,
+    "source": "itcm"
+  },
+  {
+    "id": 319,
+    "primary": "Ilex hainanensis?Merr.",
+    "latin": "Ilex hainanensis?Merr.",
+    "chinese": "海南冬青",
+    "pinyin": "HAI?NAN?DONG QING",
+    "confidence": 23.156024932861328,
+    "source": "itcm"
+  },
+  {
+    "id": 320,
+    "primary": "Balsamum tolutanum",
+    "latin": "Balsamum tolutanum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 13.005958557128906,
+    "source": "itcm"
+  },
+  {
+    "id": 321,
+    "primary": "SPIKE LAVENDER OIL",
+    "latin": "Spicae aetheroleum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 16.535049438476562,
+    "source": "itcm"
+  },
+  {
+    "id": 322,
+    "primary": "Nemacystus decipiens [Syn. Mesogloea decipiens",
+    "latin": "Nemacystus decipiens [Syn. Mesogloea decipiens",
+    "chinese": null,
+    "pinyin": "CLADOSIPHON DECIPIENS ] (SPERMATOCHNACEAE)",
+    "confidence": 41.14360809326172,
+    "source": "itcm"
+  },
+  {
+    "id": 323,
+    "primary": "Ganoderma lucidum (Leyss. ex Fr.) Karst;Ganoderma sinense Zhao，Xu et Zhang",
+    "latin": "Ganoderma lucidum (Leyss. ex Fr.) Karst;Ganoderma sinense Zhao，Xu et Zhang",
+    "chinese": "灵芝",
+    "pinyin": "LING ZHI",
+    "confidence": 52.74519729614258,
+    "source": "itcm"
+  },
+  {
+    "id": 324,
+    "primary": "Thalictrum polygamum",
+    "latin": "Thalictrum polygamum",
+    "chinese": null,
+    "pinyin": "ZA XING TANG SONG CAO",
+    "confidence": -10.566448211669922,
+    "source": "itcm"
+  },
+  {
+    "id": 325,
+    "primary": "Glycine max",
+    "latin": "Glycine max",
+    "chinese": "豆油",
+    "pinyin": "DOU YOU",
+    "confidence": -10.75578498840332,
+    "source": "itcm"
+  },
+  {
+    "id": 326,
+    "primary": "Chrysanthemum frutescens",
+    "latin": "Chrysanthemum frutescens",
+    "chinese": "木茼蒿",
+    "pinyin": "MU TONG HAO",
+    "confidence": -9.373821258544922,
+    "source": "itcm"
+  },
+  {
+    "id": 327,
+    "primary": "Xanthium occidentale",
+    "latin": "Xanthium occidentale",
+    "chinese": null,
+    "pinyin": "XI FANG CANG ER",
+    "confidence": -4.955010890960693,
+    "source": "itcm"
+  },
+  {
+    "id": 328,
+    "primary": "Aconitum umbrosum",
+    "latin": "Aconitum umbrosum",
+    "chinese": "草地乌头",
+    "pinyin": "CAO DI WU TOU",
+    "confidence": 76.7398910522461,
+    "source": "itcm"
+  },
+  {
+    "id": 329,
+    "primary": "Romalea microptera HUANG CHONG",
+    "latin": "Romalea microptera HUANG CHONG",
+    "chinese": "蝗虫",
+    "pinyin": "GRASSHOPPER.",
+    "confidence": 39.07349395751953,
+    "source": "itcm"
+  },
+  {
+    "id": 330,
+    "primary": "Ainsliaea pertyoides?Franch.var.albo-tomentosaBeauverd",
+    "latin": "Ainsliaea pertyoides?Franch.var.albo-tomentosaBeauverd",
+    "chinese": "叶下花",
+    "pinyin": "YE?XIA HUA",
+    "confidence": 61.456504821777344,
+    "source": "itcm"
+  },
+  {
+    "id": 331,
+    "primary": "Ziziphus jujuba Mill.",
+    "latin": "Ziziphus jujuba Mill.",
+    "chinese": "大枣",
+    "pinyin": "DA ZAO",
+    "confidence": 34.810062408447266,
+    "source": "itcm"
+  },
+  {
+    "id": 332,
+    "primary": "l-BORNEOLUM",
+    "latin": "l-BORNEOLUM",
+    "chinese": "艾片（左旋龙脑）",
+    "pinyin": "AI?PIAN （ ZUO XUAN LONG NAO ）",
+    "confidence": 4.25780725479126,
+    "source": "itcm"
+  },
+  {
+    "id": 333,
+    "primary": "Delphinium pentagynum",
+    "latin": "Delphinium pentagynum",
+    "chinese": null,
+    "pinyin": "WU ZHU FEI YAN CAO",
+    "confidence": 30.335966110229492,
+    "source": "itcm"
+  },
+  {
+    "id": 334,
+    "primary": "Dillenia pentagyna",
+    "latin": "Dillenia pentagyna",
+    "chinese": "小花五桠果",
+    "pinyin": "XIAO HUA WU YA GUO",
+    "confidence": 26.753273010253906,
+    "source": "itcm"
+  },
+  {
+    "id": 335,
+    "primary": "Ziziphus jujuba Mill. var. spinosa (Bunge) Hu ex H.F.Chou",
+    "latin": "Ziziphus jujuba Mill. var. spinosa (Bunge) Hu ex H.F.Chou",
+    "chinese": "酸枣仁",
+    "pinyin": "SUAN ZAO REN",
+    "confidence": 49.71892166137695,
+    "source": "itcm"
+  },
+  {
+    "id": 336,
+    "primary": "Os Sepiellae seu Sepiae",
+    "latin": "Os Sepiellae seu Sepiae",
+    "chinese": "海螵蛸",
+    "pinyin": "HAI PIAO XIAO",
+    "confidence": 59.97492218017578,
+    "source": "itcm"
+  },
+  {
+    "id": 337,
+    "primary": "Trifolium alexandrinum",
+    "latin": "Trifolium alexandrinum",
+    "chinese": "埃及三叶草",
+    "pinyin": "AI JI CHE ZHOU CAO",
+    "confidence": -3.821483612060547,
+    "source": "itcm"
+  },
+  {
+    "id": 338,
+    "primary": "SENNA PODS, TINNEVELLY",
+    "latin": "Sennae fructus angustifoliae",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 39.66218185424805,
+    "source": "itcm"
+  },
+  {
+    "id": 339,
+    "primary": "Isodon melissoides",
+    "latin": "Isodon melissoides",
+    "chinese": null,
+    "pinyin": "BAO YE XIANG CHA CAI",
+    "confidence": -6.40185546875,
+    "source": "itcm"
+  },
+  {
+    "id": 340,
+    "primary": "Semino-dermis Arachidis",
+    "latin": "Testa Arachidis Hypogaeae",
+    "chinese": "花生衣",
+    "pinyin": "Hua Sheng Yi",
+    "confidence": -13.276029586791992,
+    "source": "itcm"
+  },
+  {
+    "id": 341,
+    "primary": "Solanum surattense?",
+    "latin": "Solanum surattense?",
+    "chinese": null,
+    "pinyin": "YE DIAN QIE",
+    "confidence": 31.271800994873047,
+    "source": "itcm"
+  },
+  {
+    "id": 342,
+    "primary": "Trifolium subterraneum",
+    "latin": "Trifolium subterraneum",
+    "chinese": "地三叶草",
+    "pinyin": "DI XIA CHE ZHOU CAO",
+    "confidence": 4.659265995025635,
+    "source": "itcm"
+  },
+  {
+    "id": 343,
+    "primary": "Agathis dammara",
+    "latin": "Agathis dammara",
+    "chinese": "贝壳杉",
+    "pinyin": "BEI KE SHAN",
+    "confidence": 10.39798355102539,
+    "source": "itcm"
+  },
+  {
+    "id": 344,
+    "primary": "Turquoise",
+    "latin": "Turquoise",
+    "chinese": "绿松石",
+    "pinyin": "L??SONG?SHI",
+    "confidence": -5.092437744140625,
+    "source": "itcm"
+  },
+  {
+    "id": 345,
+    "primary": "Piper nigrurmL.",
+    "latin": "Piper nigrurmL.",
+    "chinese": "胡椒",
+    "pinyin": "HU JIAO",
+    "confidence": 24.37374496459961,
+    "source": "itcm"
+  },
+  {
+    "id": 346,
+    "primary": "Glycosmis citrifolia",
+    "latin": "Glycosmis citrifolia",
+    "chinese": "小花山小橘",
+    "pinyin": "SHAN XIAO JU",
+    "confidence": 40.21247482299805,
+    "source": "itcm"
+  },
+  {
+    "id": 347,
+    "primary": "Actinidia arguta",
+    "latin": "Actinidia arguta",
+    "chinese": "猕猴桃",
+    "pinyin": "MI HOU LI",
+    "confidence": 16.549560546875,
+    "source": "itcm"
+  },
+  {
+    "id": 348,
+    "primary": "Croton macrostachys",
+    "latin": "Croton macrostachys",
+    "chinese": "长穗巴豆",
+    "pinyin": "CHANG SUI BA DOU",
+    "confidence": -9.60989761352539,
+    "source": "itcm"
+  },
+  {
+    "id": 349,
+    "primary": "Sideritis moorei",
+    "latin": "Sideritis moorei",
+    "chinese": null,
+    "pinyin": "MU ER DU MA CAO",
+    "confidence": 32.39610290527344,
+    "source": "itcm"
+  },
+  {
+    "id": 350,
+    "primary": "Ligularia stenocephala",
+    "latin": "Ligularia stenocephala",
+    "chinese": "窄头橐吾",
+    "pinyin": "ZHAI TOU TUO WU",
+    "confidence": 14.621078491210938,
+    "source": "itcm"
+  },
+  {
+    "id": 351,
+    "primary": "all-grass of Spanishneedles",
+    "latin": "Herba Bidentis",
+    "chinese": "鬼针草",
+    "pinyin": "Gui Zhen Cao",
+    "confidence": 11.164769172668457,
+    "source": "itcm"
+  },
+  {
+    "id": 352,
+    "primary": "Perilla arguta",
+    "latin": "Perilla arguta",
+    "chinese": null,
+    "pinyin": "RUI ZI SU",
+    "confidence": 9.57943344116211,
+    "source": "itcm"
+  },
+  {
+    "id": 353,
+    "primary": "Asarum heterotropoides Fr.Schmidt var.mandshuricum(Maxim.)Kitag.;Asarum sieboldii Miq.var.seoulense Nakai;Asarum sieboldii Miq.",
+    "latin": "Asarum heterotropoides Fr.Schmidt var.mandshuricum(Maxim.)Kitag.;Asarum sieboldii Miq.var.seoulense Nakai;Asarum sieboldii Miq.",
+    "chinese": "细辛",
+    "pinyin": "XI XIN",
+    "confidence": 57.735382080078125,
+    "source": "itcm"
+  },
+  {
+    "id": 354,
+    "primary": "Medicago falcata",
+    "latin": "Medicago falcata",
+    "chinese": "野苜蓿",
+    "pinyin": "YE MU XU",
+    "confidence": 63.45737075805664,
+    "source": "itcm"
+  },
+  {
+    "id": 355,
+    "primary": "Tupistra chinensis Bak.",
+    "latin": "Tupistra chinensis Bak.",
+    "chinese": "竹根七",
+    "pinyin": "ZHU GEN QI",
+    "confidence": 23.403770446777344,
+    "source": "itcm"
+  },
+  {
+    "id": 356,
+    "primary": "Ampelopsis brevipedunculata var. hancei",
+    "latin": "Ampelopsis brevipedunculata var. hancei",
+    "chinese": "光叶蛇葡萄",
+    "pinyin": "GUANG YE SHE PU TAO",
+    "confidence": 47.34559631347656,
+    "source": "itcm"
+  },
+  {
+    "id": 357,
+    "primary": "Panax pseudo-ginseng var. notoginseng [Syn. Panax notoginseng ]",
+    "latin": "Panax pseudo-ginseng var. notoginseng [Syn. Panax notoginseng ]",
+    "chinese": "假人参",
+    "pinyin": "SAN QI HUA LEI",
+    "confidence": 30.388742446899414,
+    "source": "itcm"
+  },
+  {
+    "id": 358,
+    "primary": "Centipedaminima(L.)A.BraunetAschers.",
+    "latin": "Centipedaminima(L.)A.BraunetAschers.",
+    "chinese": "鹅不食草",
+    "pinyin": "E BU SHI CAO",
+    "confidence": -5.473075866699219,
+    "source": "itcm"
+  },
+  {
+    "id": 359,
+    "primary": "Origani herba",
+    "latin": "Origani herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 71.53121948242188,
+    "source": "itcm"
+  },
+  {
+    "id": 360,
+    "primary": "Sedum sarmentosum",
+    "latin": "Sedum sarmentosum",
+    "chinese": "垂盆草",
+    "pinyin": "SHI ZHI JIA",
+    "confidence": 37.49298095703125,
+    "source": "itcm"
+  },
+  {
+    "id": 361,
+    "primary": "Halite",
+    "latin": "Halite",
+    "chinese": "光明盐",
+    "pinyin": "GUANG MING YAN",
+    "confidence": -5.447138786315918,
+    "source": "itcm"
+  },
+  {
+    "id": 362,
+    "primary": "Panax ginseng [Syn. Panax schinseng ]",
+    "latin": "Panax ginseng [Syn. Panax schinseng ]",
+    "chinese": "人参芦",
+    "pinyin": "REN SHEN LU",
+    "confidence": 51.64152145385742,
+    "source": "itcm"
+  },
+  {
+    "id": 363,
+    "primary": "Embelia oblongifolia",
+    "latin": "Embelia oblongifolia",
+    "chinese": null,
+    "pinyin": "MA GUI HUA",
+    "confidence": -10.37346363067627,
+    "source": "itcm"
+  },
+  {
+    "id": 364,
+    "primary": "Vladimiria souliei ( Franch. ) Ling;Vladimiria  souliei ( Franch. )Ling var.Cinerea Ling",
+    "latin": "Vladimiria souliei ( Franch. ) Ling;Vladimiria  souliei ( Franch. )Ling var.Cinerea Ling",
+    "chinese": "川木香",
+    "pinyin": "CHUAN MU XIANG",
+    "confidence": 38.09122848510742,
+    "source": "itcm"
+  },
+  {
+    "id": 365,
+    "primary": "Thalictrum atriplex",
+    "latin": "Thalictrum atriplex",
+    "chinese": "狭序唐松草",
+    "pinyin": "XI A XU TANG SONG CAO",
+    "confidence": -13.297229766845703,
+    "source": "itcm"
+  },
+  {
+    "id": 366,
+    "primary": "Camellia sinensis (L.) O.Kuntze",
+    "latin": "Camellia sinensis (L.) O.Kuntze",
+    "chinese": "大红袍",
+    "pinyin": "DA?HONG?PAO",
+    "confidence": 36.75918960571289,
+    "source": "itcm"
+  },
+  {
+    "id": 367,
+    "primary": "Cordyline strcta",
+    "latin": "Cordyline strcta",
+    "chinese": null,
+    "pinyin": "JIAN YE TIE SHU YE",
+    "confidence": -10.031063079833984,
+    "source": "itcm"
+  },
+  {
+    "id": 368,
+    "primary": "Millingtonia hortensis",
+    "latin": "Millingtonia hortensis",
+    "chinese": null,
+    "pinyin": "ZI MEI SHU",
+    "confidence": 26.698280334472656,
+    "source": "itcm"
+  },
+  {
+    "id": 369,
+    "primary": "Clerodendron serratum",
+    "latin": "Clerodendron serratum",
+    "chinese": "三台红花",
+    "pinyin": "SAN TAI HONG HUA",
+    "confidence": -5.4955315589904785,
+    "source": "itcm"
+  },
+  {
+    "id": 370,
+    "primary": "Absinthii herba",
+    "latin": "Absinthii herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 49.564815521240234,
+    "source": "itcm"
+  },
+  {
+    "id": 371,
+    "primary": "Ve r b a s ci flos",
+    "latin": "Ve r b a s ci flos",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 60.78053283691406,
+    "source": "itcm"
+  },
+  {
+    "id": 372,
+    "primary": "Oplopanax elatus",
+    "latin": "Oplopanax elatus",
+    "chinese": "刺参",
+    "pinyin": "DONG BEI CI REN SHEN",
+    "confidence": 48.92461395263672,
+    "source": "itcm"
+  },
+  {
+    "id": 373,
+    "primary": "Polypodium glycyrrhiza",
+    "latin": "Polypodium glycyrrhiza",
+    "chinese": "甜根多足蕨",
+    "pinyin": "TIAN GEN DUO ZU JUE",
+    "confidence": 13.865890502929688,
+    "source": "itcm"
+  },
+  {
+    "id": 374,
+    "primary": "Myrica nagi [Syn. Podocarpus nagi]",
+    "latin": "Myrica nagi [Syn. Podocarpus nagi]",
+    "chinese": null,
+    "pinyin": "ZHU BAI",
+    "confidence": 62.151275634765625,
+    "source": "itcm"
+  },
+  {
+    "id": 375,
+    "primary": "Prismatomeris tetrandra",
+    "latin": "Prismatomeris tetrandra",
+    "chinese": "四蕊三角瓣花",
+    "pinyin": "NAN SHAN HUA",
+    "confidence": -12.396493911743164,
+    "source": "itcm"
+  },
+  {
+    "id": 376,
+    "primary": "Diphasiastrumcomplanatum(L.)Holub",
+    "latin": "Diphasiastrumcomplanatum(L.)Holub",
+    "chinese": "过江龙",
+    "pinyin": "GUO JIANG LONG",
+    "confidence": -0.5255787372589111,
+    "source": "itcm"
+  },
+  {
+    "id": 377,
+    "primary": "Glycyrrhiza aspera",
+    "latin": "Glycyrrhiza aspera",
+    "chinese": "粗毛甘草",
+    "pinyin": "CU MAO GAN CAO",
+    "confidence": 45.89162826538086,
+    "source": "itcm"
+  },
+  {
+    "id": 378,
+    "primary": "Methyl Salicylatum",
+    "latin": "Methyl Salicylatum",
+    "chinese": "水杨酸甲酯",
+    "pinyin": "SHUI YANG SUAN JIA ZHI",
+    "confidence": 2.9797801971435547,
+    "source": "itcm"
+  },
+  {
+    "id": 379,
+    "primary": "Tripterospermum cordatum（Marq．）H．Smith[Gentiana cordata?Marq.;Tripterospermum affine auct. non（Wall．）H．Smith」",
+    "latin": "Tripterospermum cordatum（Marq．）H．Smith[Gentiana cordata?Marq.;Tripterospermum affine auct. non（Wall．）H．Smith」",
+    "chinese": "青鱼胆草",
+    "pinyin": "QING YU DAN CAO",
+    "confidence": 60.24359893798828,
+    "source": "itcm"
+  },
+  {
+    "id": 380,
+    "primary": "LagotisglaucaGaertn.、Lagotis clarkeiHook. f.、Lagotis integraW. W. Smith、Lagotis ramalanaBatalin、Lagotis brevitubaMaxim.",
+    "latin": "LagotisglaucaGaertn.、Lagotis clarkeiHook. f.、Lagotis integraW. W. Smith、Lagotis ramalanaBatalin、Lagotis brevitubaMaxim.",
+    "chinese": "兔耳草",
+    "pinyin": "TU ER CAO",
+    "confidence": 40.21339416503906,
+    "source": "itcm"
+  },
+  {
+    "id": 381,
+    "primary": "Sinocalamus oldhami",
+    "latin": "Sinocalamus oldhami",
+    "chinese": null,
+    "pinyin": "LV SUN PIAN",
+    "confidence": -10.078645706176758,
+    "source": "itcm"
+  },
+  {
+    "id": 382,
+    "primary": "Piper taiwanense",
+    "latin": "Piper taiwanense",
+    "chinese": "台湾胡椒",
+    "pinyin": "TAI WAN HU JIAO",
+    "confidence": 75.5984878540039,
+    "source": "itcm"
+  },
+  {
+    "id": 383,
+    "primary": "Scrophularia ningpoensis Hemsl.",
+    "latin": "Scrophularia ningpoensis Hemsl.",
+    "chinese": "玄参",
+    "pinyin": "XUAN SHEN",
+    "confidence": 48.57032012939453,
+    "source": "itcm"
+  },
+  {
+    "id": 384,
+    "primary": "Ophioglossum pedunculosum?Desv.",
+    "latin": "Ophioglossum pedunculosum?Desv.",
+    "chinese": "一支箭",
+    "pinyin": "YI ZHI JIAN",
+    "confidence": 80.66346740722656,
+    "source": "itcm"
+  },
+  {
+    "id": 385,
+    "primary": "BELLADONNA, PREPARED",
+    "latin": "Belladonnae pulvis normatus",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 30.118030548095703,
+    "source": "itcm"
+  },
+  {
+    "id": 386,
+    "primary": "Pterocarpus osun",
+    "latin": "Pterocarpus osun",
+    "chinese": "娥孙紫檀",
+    "pinyin": "E SUN ZI TAN",
+    "confidence": 21.981277465820312,
+    "source": "itcm"
+  },
+  {
+    "id": 387,
+    "primary": "Radix Platycodi",
+    "latin": "Radix Platycodi",
+    "chinese": "苦桔梗",
+    "pinyin": "KU JIE GENG",
+    "confidence": -13.431297302246094,
+    "source": "itcm"
+  },
+  {
+    "id": 388,
+    "primary": "Heliotropium ramosissimum",
+    "latin": "Heliotropium ramosissimum",
+    "chinese": null,
+    "pinyin": "DUO ZHI TIAN JIE CAI",
+    "confidence": 22.571989059448242,
+    "source": "itcm"
+  },
+  {
+    "id": 389,
+    "primary": "Hylomecon japonica",
+    "latin": "Hylomecon japonica",
+    "chinese": "荷青花",
+    "pinyin": "HE QING HUA",
+    "confidence": 67.28099060058594,
+    "source": "itcm"
+  },
+  {
+    "id": 390,
+    "primary": "Piper hancei?Maxim.",
+    "latin": "Piper hancei?Maxim.",
+    "chinese": "山蒟",
+    "pinyin": "SHAN JU",
+    "confidence": 35.351409912109375,
+    "source": "itcm"
+  },
+  {
+    "id": 391,
+    "primary": "Ethylnipagin",
+    "latin": "Ethylnipagin",
+    "chinese": "尼泊金乙酯",
+    "pinyin": "NI BO JIN YI ZHI",
+    "confidence": -5.716639518737793,
+    "source": "itcm"
+  },
+  {
+    "id": 392,
+    "primary": "Fluoritum",
+    "latin": "Fluoritum",
+    "chinese": "紫石英",
+    "pinyin": "ZI SHI YING",
+    "confidence": -5.747721195220947,
+    "source": "itcm"
+  },
+  {
+    "id": 393,
+    "primary": "Lannea grandis [Syn. Lannea coromandelica]",
+    "latin": "Lannea grandis [Syn. Lannea coromandelica]",
+    "chinese": null,
+    "pinyin": "HOU PI SHU",
+    "confidence": 38.93842697143555,
+    "source": "itcm"
+  },
+  {
+    "id": 394,
+    "primary": "Piptanthus nanus",
+    "latin": "Piptanthus nanus",
+    "chinese": null,
+    "pinyin": "XIAO SHA DONG QING",
+    "confidence": 35.096885681152344,
+    "source": "itcm"
+  },
+  {
+    "id": 395,
+    "primary": "Uncaria rhynchophylla(Miq.)Miq.ex Havil.;Uncaria macrophyllu Wall.;Uncaria hirsuta Havil.;Uncaria sinesis(Oliv.)Havil.;Uncaria sessilifructus Roxb.",
+    "latin": "Uncaria rhynchophylla(Miq.)Miq.ex Havil.;Uncaria macrophyllu Wall.;Uncaria hirsuta Havil.;Uncaria sinesis(Oliv.)Havil.;Uncaria sessilifructus Roxb.",
+    "chinese": "钩藤",
+    "pinyin": "GOU TENG",
+    "confidence": 38.704124450683594,
+    "source": "itcm"
+  },
+  {
+    "id": 396,
+    "primary": "Coffea arabica",
+    "latin": "Coffea arabica",
+    "chinese": null,
+    "pinyin": "XIAO GUO KA FEI",
+    "confidence": 20.166248321533203,
+    "source": "itcm"
+  },
+  {
+    "id": 397,
+    "primary": "Lonicera hypoglauca",
+    "latin": "Lonicera hypoglauca",
+    "chinese": null,
+    "pinyin": "XIAN YE REN DONG",
+    "confidence": 13.098615646362305,
+    "source": "itcm"
+  },
+  {
+    "id": 398,
+    "primary": "Vinca minor",
+    "latin": "Vinca minor",
+    "chinese": "蔓卡春花",
+    "pinyin": "MAN CHANG CHUN HUA",
+    "confidence": 61.91964340209961,
+    "source": "itcm"
+  },
+  {
+    "id": 399,
+    "primary": "Gnetum gnemon",
+    "latin": "Gnetum gnemon",
+    "chinese": "显轴买麻藤",
+    "pinyin": "XIAN ZHOU MAI MA TENG",
+    "confidence": 1.9607360363006592,
+    "source": "itcm"
+  },
+  {
+    "id": 400,
+    "primary": "Acer platanoides",
+    "latin": "Acer platanoides",
+    "chinese": "挪威槭",
+    "pinyin": "NUO WEI QI",
+    "confidence": 10.37954330444336,
+    "source": "itcm"
+  },
+  {
+    "id": 401,
+    "primary": "BENZOIN, SIAM",
+    "latin": "Benzoe tonkinensis",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -13.013679504394531,
+    "source": "itcm"
+  },
+  {
+    "id": 402,
+    "primary": "Cimicifuga racemosa (L.) Nutt.",
+    "latin": "Cimicifuga racemosa (L.) Nutt.",
+    "chinese": "黑升麻",
+    "pinyin": "Hei Shengma",
+    "confidence": 6.894327163696289,
+    "source": "paper_table5"
+  },
+  {
+    "id": 403,
+    "primary": "Cortex Toonae Sinensis",
+    "latin": "Cortex Toonae Sinensis",
+    "chinese": "椿根皮",
+    "pinyin": "CHUN GEN PI",
+    "confidence": 35.73002624511719,
+    "source": "itcm"
+  },
+  {
+    "id": 404,
+    "primary": "Lasiosphaera seu Calvatia",
+    "latin": "Lasiosphaera seu Calvatia",
+    "chinese": "马勃",
+    "pinyin": "Ma Bo",
+    "confidence": 22.297346115112305,
+    "source": "itcm"
+  },
+  {
+    "id": 405,
+    "primary": "RESINA DRACONIS.",
+    "latin": "RESINA DRACONIS.",
+    "chinese": "龙血竭",
+    "pinyin": "LONG?XUE?JIE",
+    "confidence": -5.84418249130249,
+    "source": "itcm"
+  },
+  {
+    "id": 406,
+    "primary": "Mallotus anomalus",
+    "latin": "Mallotus anomalus",
+    "chinese": "锈毛野桐",
+    "pinyin": "XIU MAO YE TONG",
+    "confidence": -3.1250109672546387,
+    "source": "itcm"
+  },
+  {
+    "id": 407,
+    "primary": "Hemsleya penxianensis var. gulinensis",
+    "latin": "Hemsleya penxianensis var. gulinensis",
+    "chinese": null,
+    "pinyin": "GU LIN XUE DAN",
+    "confidence": 31.57743263244629,
+    "source": "itcm"
+  },
+  {
+    "id": 408,
+    "primary": "Glycyrrhiza kansuensis",
+    "latin": "Glycyrrhiza kansuensis",
+    "chinese": "黄甘草",
+    "pinyin": "HUANG GAN CAO",
+    "confidence": 69.58003234863281,
+    "source": "itcm"
+  },
+  {
+    "id": 409,
+    "primary": "Soft-shell Turtle",
+    "latin": "Trionyx Sinensis",
+    "chinese": "鳖甲胶（中华鳖）",
+    "pinyin": "BIE JIA JIAO （ ZHONG HUA BIE ）",
+    "confidence": 13.902915954589844,
+    "source": "itcm"
+  },
+  {
+    "id": 410,
+    "primary": "Delphinium trifoliolatum",
+    "latin": "Delphinium trifoliolatum",
+    "chinese": null,
+    "pinyin": "SAN XIAO YE CUI QUE HUA",
+    "confidence": 7.609919548034668,
+    "source": "itcm"
+  },
+  {
+    "id": 411,
+    "primary": "Cyathula officinalis Kuan",
+    "latin": "Cyathula officinalis Kuan",
+    "chinese": "川牛膝",
+    "pinyin": "CHUAN NIU XI",
+    "confidence": 31.532230377197266,
+    "source": "itcm"
+  },
+  {
+    "id": 412,
+    "primary": "Phytolacca acinosa Roxb.;Phytolacca americana L.",
+    "latin": "Phytolacca acinosa Roxb.;Phytolacca americana L.",
+    "chinese": "商陆",
+    "pinyin": "SHANG LU",
+    "confidence": 108.11199951171875,
+    "source": "itcm"
+  },
+  {
+    "id": 413,
+    "primary": "Tribulus terrestris",
+    "latin": "Tribulus terrestris",
+    "chinese": "蒺藜",
+    "pinyin": "CI JI LI",
+    "confidence": -10.380020141601562,
+    "source": "itcm"
+  },
+  {
+    "id": 414,
+    "primary": "Sageretia theezans [Syn. Sageretia thea ]",
+    "latin": "Sageretia theezans [Syn. Sageretia thea ]",
+    "chinese": null,
+    "pinyin": "QUE MEI TENG",
+    "confidence": 10.994447708129883,
+    "source": "itcm"
+  },
+  {
+    "id": 415,
+    "primary": "Corydalis yanhusuo W.T.Wang",
+    "latin": "Corydalis yanhusuo W.T.Wang",
+    "chinese": "延胡索",
+    "pinyin": "YAN HU SUO",
+    "confidence": 39.086917877197266,
+    "source": "itcm"
+  },
+  {
+    "id": 416,
+    "primary": "Pinellia pedatisecta Schott",
+    "latin": "Pinellia pedatisecta Schott",
+    "chinese": "虎掌南星",
+    "pinyin": "HU ZHANG?NAN?XING",
+    "confidence": 21.178895950317383,
+    "source": "itcm"
+  },
+  {
+    "id": 417,
+    "primary": "Angelica dahurica ( Fisch.ex Hoffm. ) Benth. et Hook.f.;Angelica dahurica (Fisch.ex Hoffm.)Benth .et Hook.f.var.formosana(Boiss.）Shsn et Yuan",
+    "latin": "Angelica dahurica ( Fisch.ex Hoffm. ) Benth. et Hook.f.;Angelica dahurica (Fisch.ex Hoffm.)Benth .et Hook.f.var.formosana(Boiss.）Shsn et Yuan",
+    "chinese": "白芷",
+    "pinyin": "BAI ZHI",
+    "confidence": 55.44273376464844,
+    "source": "itcm"
+  },
+  {
+    "id": 418,
+    "primary": "Desmodium heterophyllum?（Willd.） DC.",
+    "latin": "Desmodium heterophyllum?（Willd.） DC.",
+    "chinese": "铁线草",
+    "pinyin": "TIE XIAN CAO",
+    "confidence": 22.862693786621094,
+    "source": "itcm"
+  },
+  {
+    "id": 419,
+    "primary": "Thalictrum alpinum",
+    "latin": "Thalictrum alpinum",
+    "chinese": "高山唐松草",
+    "pinyin": "GAO SHAN TANG SONG CAO",
+    "confidence": -10.382668495178223,
+    "source": "itcm"
+  },
+  {
+    "id": 420,
+    "primary": "Geum japonicum",
+    "latin": "Geum japonicum",
+    "chinese": "水杨梅",
+    "pinyin": "SHUI YANG MEI",
+    "confidence": 68.32100677490234,
+    "source": "itcm"
+  },
+  {
+    "id": 421,
+    "primary": "Thalictrum flavum",
+    "latin": "Thalictrum flavum",
+    "chinese": "黄唐松草",
+    "pinyin": "HUANG TANG SONG CAO",
+    "confidence": -10.442750930786133,
+    "source": "itcm"
+  },
+  {
+    "id": 422,
+    "primary": "Morus allba L.",
+    "latin": "Morus allba L.",
+    "chinese": "桑白皮",
+    "pinyin": "SANG BAI PI",
+    "confidence": 36.96992492675781,
+    "source": "itcm"
+  },
+  {
+    "id": 423,
+    "primary": "Mansonia gagei",
+    "latin": "Mansonia gagei",
+    "chinese": null,
+    "pinyin": "MAN SUO NI YA XIN CAI",
+    "confidence": 30.388328552246094,
+    "source": "itcm"
+  },
+  {
+    "id": 424,
+    "primary": "Haloxylon salicornicum",
+    "latin": "Haloxylon salicornicum",
+    "chinese": null,
+    "pinyin": "YAN JIAO CAO SUO SUO.",
+    "confidence": -6.433263301849365,
+    "source": "itcm"
+  },
+  {
+    "id": 425,
+    "primary": "[Citrus unshiu x Citrus sinensis] x Citrus iyo",
+    "latin": "[Citrus unshiu x Citrus sinensis] x Citrus iyo",
+    "chinese": "三种菊杂交种",
+    "pinyin": "SAN ZHONG JU ZA JIAO ZHONG",
+    "confidence": 17.455429077148438,
+    "source": "itcm"
+  },
+  {
+    "id": 426,
+    "primary": "Apis mellifera ligustica",
+    "latin": "Apis mellifera ligustica",
+    "chinese": null,
+    "pinyin": "FENG JIAO",
+    "confidence": 21.215822219848633,
+    "source": "itcm"
+  },
+  {
+    "id": 427,
+    "primary": "Medulla Tetrapacis",
+    "latin": "Medulla Tetrapacis",
+    "chinese": "通草",
+    "pinyin": "Tong Cao",
+    "confidence": -13.122264862060547,
+    "source": "itcm"
+  },
+  {
+    "id": 428,
+    "primary": "Gleditsia fera",
+    "latin": "Gleditsia fera",
+    "chinese": "华南皂荚",
+    "pinyin": "HUA NAN ZAO JIA",
+    "confidence": 25.946212768554688,
+    "source": "itcm"
+  },
+  {
+    "id": 429,
+    "primary": "Siraitia grosvenorii (Swingle) C.Jeffery ex A.M.Lu et Z.Y. Zhang",
+    "latin": "Siraitia grosvenorii (Swingle) C.Jeffery ex A.M.Lu et Z.Y. Zhang",
+    "chinese": "罗汉果",
+    "pinyin": "LUO HAN GUO",
+    "confidence": 48.67631912231445,
+    "source": "itcm"
+  },
+  {
+    "id": 430,
+    "primary": "Rhododendron mucronulatum",
+    "latin": "Rhododendron mucronulatum",
+    "chinese": "迎山红",
+    "pinyin": "YING SHAN HONG",
+    "confidence": -6.052237033843994,
+    "source": "itcm"
+  },
+  {
+    "id": 431,
+    "primary": "Glaucium oxylobum",
+    "latin": "Glaucium oxylobum",
+    "chinese": null,
+    "pinyin": "JIAN LIE HAI YING SU",
+    "confidence": -10.576309204101562,
+    "source": "itcm"
+  },
+  {
+    "id": 432,
+    "primary": "Erysimum perofskianum",
+    "latin": "Erysimum perofskianum",
+    "chinese": "阿富汗糖芥",
+    "pinyin": "A FU HAN TANG JIE",
+    "confidence": 20.039424896240234,
+    "source": "itcm"
+  },
+  {
+    "id": 433,
+    "primary": "SEMEN GINKGO",
+    "latin": "Ginkgo biloba",
+    "chinese": "白果仁",
+    "pinyin": "BAI GUO REN",
+    "confidence": 6.906706809997559,
+    "source": "itcm"
+  },
+  {
+    "id": 434,
+    "primary": "Erodium stephanianum",
+    "latin": "Erodium stephanianum",
+    "chinese": "牻牛儿苗",
+    "pinyin": "MANG NIU ER MIAO",
+    "confidence": -6.207868576049805,
+    "source": "itcm"
+  },
+  {
+    "id": 435,
+    "primary": "Liquidambar formosana?Hance",
+    "latin": "Liquidambar formosana?Hance",
+    "chinese": "枫香树叶",
+    "pinyin": "FENG XIANG SHU?YE",
+    "confidence": 20.318384170532227,
+    "source": "itcm"
+  },
+  {
+    "id": 436,
+    "primary": "Caragana chamlagu",
+    "latin": "Caragana chamlagu",
+    "chinese": "锦鸡儿",
+    "pinyin": "JIN JI ER",
+    "confidence": 39.78477478027344,
+    "source": "itcm"
+  },
+  {
+    "id": 437,
+    "primary": "Desmodium cephalotes",
+    "latin": "Desmodium cephalotes",
+    "chinese": null,
+    "pinyin": "JIA MU DOU",
+    "confidence": 15.550692558288574,
+    "source": "itcm"
+  },
+  {
+    "id": 438,
+    "primary": "Inula helenium L.",
+    "latin": "Inula helenium L.",
+    "chinese": "土木香",
+    "pinyin": "TU MU XIANG",
+    "confidence": 71.08976745605469,
+    "source": "itcm"
+  },
+  {
+    "id": 439,
+    "primary": "Piper methysticum Root and Rhizome",
+    "latin": null,
+    "chinese": "胡椒根及根茎",
+    "pinyin": "Hu Jiao Gen Ji Gen Jing",
+    "confidence": -18.795551300048828,
+    "source": "itcm"
+  },
+  {
+    "id": 440,
+    "primary": "Alpinia officinarum Hanc",
+    "latin": "Alpinia officinarum Hanc",
+    "chinese": "髙良姜",
+    "pinyin": "GAO LIANG JIANG",
+    "confidence": 19.388885498046875,
+    "source": "itcm"
+  },
+  {
+    "id": 441,
+    "primary": "all-grass of japanese hop",
+    "latin": "Herba Humuli Scandentis",
+    "chinese": "葎草",
+    "pinyin": "Lv Cao",
+    "confidence": 21.94544219970703,
+    "source": "itcm"
+  },
+  {
+    "id": 442,
+    "primary": "Catalpa speciosa",
+    "latin": "Catalpa speciosa",
+    "chinese": "黄金树",
+    "pinyin": "HUANG JIN SHU",
+    "confidence": 33.49113082885742,
+    "source": "itcm"
+  },
+  {
+    "id": 443,
+    "primary": "Adiantum caudatum",
+    "latin": "Adiantum caudatum",
+    "chinese": "鞭叶铁线蕨",
+    "pinyin": "BIAN YE TIE XIAN JUE",
+    "confidence": -6.255605220794678,
+    "source": "itcm"
+  },
+  {
+    "id": 444,
+    "primary": "Craibiodendron stellatum (Pierre) W. W. Sm.",
+    "latin": "Craibiodendron stellatum (Pierre) W. W. Sm.",
+    "chinese": "金叶子",
+    "pinyin": "JIN?YE?ZI",
+    "confidence": 17.851104736328125,
+    "source": "itcm"
+  },
+  {
+    "id": 445,
+    "primary": "Costus afer",
+    "latin": "Costus afer",
+    "chinese": "非洲闭鞘姜",
+    "pinyin": "FEI ZHOU BI QIAO JIANG",
+    "confidence": -1.6186938285827637,
+    "source": "itcm"
+  },
+  {
+    "id": 446,
+    "primary": "Bifidobacterium",
+    "latin": "Bifidobacterium",
+    "chinese": "双歧杆菌",
+    "pinyin": "SHUANG QI GAN JUN",
+    "confidence": -6.2313551902771,
+    "source": "itcm"
+  },
+  {
+    "id": 447,
+    "primary": "Argemone platyceras",
+    "latin": "Argemone platyceras",
+    "chinese": "阔果蓟罂粟",
+    "pinyin": "KUO GUO JI YING SU",
+    "confidence": 1.01051664352417,
+    "source": "itcm"
+  },
+  {
+    "id": 448,
+    "primary": "Usnea diffracta",
+    "latin": "Usnea diffracta",
+    "chinese": "松萝",
+    "pinyin": "HUAN JIE SONG LUO",
+    "confidence": 4.993609428405762,
+    "source": "itcm"
+  },
+  {
+    "id": 449,
+    "primary": "Quisqualis indica L.",
+    "latin": "Quisqualis indica L.",
+    "chinese": "使君子",
+    "pinyin": "SHI JUN ZI",
+    "confidence": 84.05838012695312,
+    "source": "itcm"
+  },
+  {
+    "id": 450,
+    "primary": "Ganoderma lucidum Fruiting Body Dry Extract",
+    "latin": null,
+    "chinese": "灵芝子实体干浸膏",
+    "pinyin": "Ling Zhi Zi Shi Ti Gan Jin Gao",
+    "confidence": -10.235403060913086,
+    "source": "itcm"
+  },
+  {
+    "id": 451,
+    "primary": "Butter",
+    "latin": null,
+    "chinese": "黄油",
+    "pinyin": "HUANG YOU",
+    "confidence": 15.896108627319336,
+    "source": "itcm"
+  },
+  {
+    "id": 452,
+    "primary": "Semen Torreyae",
+    "latin": "Semen Torreyae",
+    "chinese": "榧子",
+    "pinyin": "FEI ZI",
+    "confidence": 25.471391677856445,
+    "source": "itcm"
+  },
+  {
+    "id": 453,
+    "primary": "Anisomeles indica [Syn. Epimeredi indica]",
+    "latin": "Anisomeles indica [Syn. Epimeredi indica]",
+    "chinese": null,
+    "pinyin": "GUANG FANG FENG",
+    "confidence": 105.5641098022461,
+    "source": "itcm"
+  },
+  {
+    "id": 454,
+    "primary": "GREATER CELANDINE",
+    "latin": "Chelidonii herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -19.016353607177734,
+    "source": "itcm"
+  },
+  {
+    "id": 455,
+    "primary": "Kleinhovia hospita",
+    "latin": "Kleinhovia hospita",
+    "chinese": "鹧鸪麻",
+    "pinyin": "MIAN TOU YE",
+    "confidence": 10.502161026000977,
+    "source": "itcm"
+  },
+  {
+    "id": 456,
+    "primary": "Cymbopogon flexuosus",
+    "latin": "Cymbopogon flexuosus",
+    "chinese": null,
+    "pinyin": "WAN YAN XIANG MAO",
+    "confidence": -11.481313705444336,
+    "source": "itcm"
+  },
+  {
+    "id": 457,
+    "primary": "Viola tricolor",
+    "latin": "Viola tricolor",
+    "chinese": "三色堇",
+    "pinyin": "SAN SE JIN",
+    "confidence": 4.671715259552002,
+    "source": "itcm"
+  },
+  {
+    "id": 458,
+    "primary": "Arsenicum",
+    "latin": "Arsenicum",
+    "chinese": "信石",
+    "pinyin": "XIN SHI",
+    "confidence": -10.659086227416992,
+    "source": "itcm"
+  },
+  {
+    "id": 459,
+    "primary": "Piper banksii",
+    "latin": "Piper banksii",
+    "chinese": null,
+    "pinyin": "BAN KE HU JIAO",
+    "confidence": 33.34307098388672,
+    "source": "itcm"
+  },
+  {
+    "id": 460,
+    "primary": "Maytenus krukovii",
+    "latin": "Maytenus krukovii",
+    "chinese": null,
+    "pinyin": "KE SHI MEI DENG MU",
+    "confidence": 14.903459548950195,
+    "source": "itcm"
+  },
+  {
+    "id": 461,
+    "primary": "Gnetum gnemonoides",
+    "latin": "Gnetum gnemonoides",
+    "chinese": "马来西亚买麻藤",
+    "pinyin": "MA LAI XI YA MAI MA TENG",
+    "confidence": -2.376286029815674,
+    "source": "itcm"
+  },
+  {
+    "id": 462,
+    "primary": "Adiantum sulphureum",
+    "latin": "Adiantum sulphureum",
+    "chinese": "硫磺铁线蕨",
+    "pinyin": "LIU HUANG TIE XIAN JUE",
+    "confidence": -6.284718990325928,
+    "source": "itcm"
+  },
+  {
+    "id": 463,
+    "primary": "Siegesbeckia orientalis var. pubescens [Syn. Siegesbeckia pubescens ]",
+    "latin": "Siegesbeckia orientalis var. pubescens [Syn. Siegesbeckia pubescens ]",
+    "chinese": "腺梗豨莶",
+    "pinyin": "XIAN GENG XI XIAN",
+    "confidence": 17.585205078125,
+    "source": "itcm"
+  },
+  {
+    "id": 464,
+    "primary": "Fermented Soybean",
+    "latin": "Semen Sojae Praeparata",
+    "chinese": "淡豆豉",
+    "pinyin": "Dan Dou Chi",
+    "confidence": 47.483890533447266,
+    "source": "itcm"
+  },
+  {
+    "id": 465,
+    "primary": "Bupleurum polyclonum",
+    "latin": "Bupleurum polyclonum",
+    "chinese": null,
+    "pinyin": "DUO ZHI CHAI HU",
+    "confidence": -11.182998657226562,
+    "source": "itcm"
+  },
+  {
+    "id": 466,
+    "primary": "Curcuma wenyujin Y.H.Chen et C.Ling;Curcuma longa L;Curcuma kwangsiensis S.G.Lee et C.F.Liang;Curcuma phaeocaulis Val.",
+    "latin": "Curcuma wenyujin Y.H.Chen et C.Ling;Curcuma longa L;Curcuma kwangsiensis S.G.Lee et C.F.Liang;Curcuma phaeocaulis Val.",
+    "chinese": "郁金",
+    "pinyin": "YU JIN",
+    "confidence": 73.66314697265625,
+    "source": "itcm"
+  },
+  {
+    "id": 467,
+    "primary": "Schisandra micrantha",
+    "latin": "Schisandra micrantha",
+    "chinese": "小花五味子根",
+    "pinyin": "XIAO HUA WU WEI ZI",
+    "confidence": 58.36054611206055,
+    "source": "itcm"
+  },
+  {
+    "id": 468,
+    "primary": "Azorella cryptantha",
+    "latin": "Azorella cryptantha",
+    "chinese": null,
+    "pinyin": "YIN HUA YAO XIAO YING QIN",
+    "confidence": 9.323183059692383,
+    "source": "itcm"
+  },
+  {
+    "id": 469,
+    "primary": "Thalictrum squarrosum",
+    "latin": "Thalictrum squarrosum",
+    "chinese": "展枝唐松草",
+    "pinyin": "ZHAN ZHI TANG SONG CAO",
+    "confidence": -10.738179206848145,
+    "source": "itcm"
+  },
+  {
+    "id": 470,
+    "primary": "MASTIC",
+    "latin": "Mastix",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -6.340263843536377,
+    "source": "itcm"
+  },
+  {
+    "id": 471,
+    "primary": "Buxus sinica?(Rehd. et Wils.) Cheng subsp.?sinica?var.?parvifolia?M. Cheng",
+    "latin": "Buxus sinica?(Rehd. et Wils.) Cheng subsp.?sinica?var.?parvifolia?M. Cheng",
+    "chinese": "小叶黄杨",
+    "pinyin": "XIAO?YE?HUANG YANG",
+    "confidence": 47.97425842285156,
+    "source": "itcm"
+  },
+  {
+    "id": 472,
+    "primary": "Ixeris polycephala?Cass.",
+    "latin": "Ixeris polycephala?Cass.",
+    "chinese": "苦荬菜",
+    "pinyin": "KU MAI CAI",
+    "confidence": 19.33517837524414,
+    "source": "itcm"
+  },
+  {
+    "id": 473,
+    "primary": "Eleutherococcus senticosus (Rupr. et Maxim.) Maxim.",
+    "latin": "Eleutherococcus senticosus (Rupr. et Maxim.) Maxim.",
+    "chinese": "刺五加",
+    "pinyin": "Ciwujia",
+    "confidence": 3.2318553924560547,
+    "source": "paper_table5"
+  },
+  {
+    "id": 474,
+    "primary": "Scutellaria baicalensis Georgi",
+    "latin": "Scutellaria baicalensis Georgi",
+    "chinese": "黄芩",
+    "pinyin": "HUANG QIN",
+    "confidence": 28.948440551757812,
+    "source": "itcm"
+  },
+  {
+    "id": 475,
+    "primary": "Derris malaccensis",
+    "latin": "Derris malaccensis",
+    "chinese": "马六甲鱼藤",
+    "pinyin": "MA LIU JIA YU TENG",
+    "confidence": 21.523902893066406,
+    "source": "itcm"
+  },
+  {
+    "id": 476,
+    "primary": "Actinodaphne lancifolia",
+    "latin": "Actinodaphne lancifolia",
+    "chinese": "披针叶黄肉楠",
+    "pinyin": "PI ZHEN YE HUANG ROU NAN",
+    "confidence": -10.7578125,
+    "source": "itcm"
+  },
+  {
+    "id": 477,
+    "primary": "FUMITORY",
+    "latin": "Fumariae herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 7.098024368286133,
+    "source": "itcm"
+  },
+  {
+    "id": 478,
+    "primary": "Lethariella zahlbruckneri",
+    "latin": "Lethariella zahlbruckneri",
+    "chinese": null,
+    "pinyin": "JIN YAO DAI",
+    "confidence": 28.954010009765625,
+    "source": "itcm"
+  },
+  {
+    "id": 479,
+    "primary": "Chlorophytum malayense",
+    "latin": "Chlorophytum malayense",
+    "chinese": "大叶吊兰",
+    "pinyin": "DA YE DIAO LAN",
+    "confidence": 33.25454330444336,
+    "source": "itcm"
+  },
+  {
+    "id": 480,
+    "primary": "Geum aleppicum?Jacq.",
+    "latin": "Geum aleppicum?Jacq.",
+    "chinese": "五气朝阳草",
+    "pinyin": "WU QI?CHAO?YANG CAO",
+    "confidence": 75.38703155517578,
+    "source": "itcm"
+  },
+  {
+    "id": 481,
+    "primary": "Sonchus transcaspicus?Nevski",
+    "latin": "Sonchus transcaspicus?Nevski",
+    "chinese": "全叶苦苣菜",
+    "pinyin": "QUAN?YE?KU?JU?CAI",
+    "confidence": 30.078325271606445,
+    "source": "itcm"
+  },
+  {
+    "id": 482,
+    "primary": "Ta xus x media",
+    "latin": "Ta xus x media",
+    "chinese": null,
+    "pinyin": "ZA JIAO JIE ZHI HONG DOU SHAN",
+    "confidence": 2.622772455215454,
+    "source": "itcm"
+  },
+  {
+    "id": 483,
+    "primary": "Cortex Citri",
+    "latin": "Cortex Citri",
+    "chinese": "香椽皮",
+    "pinyin": "XIANG CHUAN PI",
+    "confidence": 4.016861915588379,
+    "source": "itcm"
+  },
+  {
+    "id": 484,
+    "primary": "Kadsurae Coccineae Radix Et Caulis",
+    "latin": null,
+    "chinese": "黑老虎",
+    "pinyin": "Hei Lao Hu",
+    "confidence": 11.805099487304688,
+    "source": "itcm"
+  },
+  {
+    "id": 485,
+    "primary": "Maackia amurensis",
+    "latin": "Maackia amurensis",
+    "chinese": "朝鲜槐",
+    "pinyin": "CHAO XIAN HUAI",
+    "confidence": 39.31167221069336,
+    "source": "itcm"
+  },
+  {
+    "id": 486,
+    "primary": "Helenium aromaticum",
+    "latin": "Helenium aromaticum",
+    "chinese": "芳香堆新菊",
+    "pinyin": "FANG XIANG DUI XIN JU",
+    "confidence": -3.9864463806152344,
+    "source": "itcm"
+  },
+  {
+    "id": 487,
+    "primary": "Euphorbia hyberna",
+    "latin": "Euphorbia hyberna",
+    "chinese": null,
+    "pinyin": "HAI BO NA DA JI",
+    "confidence": -18.182430267333984,
+    "source": "itcm"
+  },
+  {
+    "id": 488,
+    "primary": "Chrysanthemum indicum",
+    "latin": "Chrysanthemum indicum",
+    "chinese": null,
+    "pinyin": "YE JU",
+    "confidence": -10.774635314941406,
+    "source": "itcm"
+  },
+  {
+    "id": 489,
+    "primary": "Delphinium excelsum",
+    "latin": "Delphinium excelsum",
+    "chinese": "高大翠雀花",
+    "pinyin": "GAO DA CUI QUE HUA",
+    "confidence": 39.94863510131836,
+    "source": "itcm"
+  },
+  {
+    "id": 490,
+    "primary": "Glycosmis chlorosperma",
+    "latin": "Glycosmis chlorosperma",
+    "chinese": null,
+    "pinyin": "LV ZI SHAN XIAO JU.",
+    "confidence": -10.84058666229248,
+    "source": "itcm"
+  },
+  {
+    "id": 491,
+    "primary": "Flos Hibisci",
+    "latin": "Flos Hibisci",
+    "chinese": "白槿花",
+    "pinyin": "BAI JIN HUA",
+    "confidence": -6.429035186767578,
+    "source": "itcm"
+  },
+  {
+    "id": 492,
+    "primary": "Dicranostigma franchetianum [Syn. Dicranostigma leptopodum]",
+    "latin": "Dicranostigma franchetianum [Syn. Dicranostigma leptopodum]",
+    "chinese": null,
+    "pinyin": "TU CHUANG HUA",
+    "confidence": 32.37416076660156,
+    "source": "itcm"
+  },
+  {
+    "id": 493,
+    "primary": "Asarum sieboldii var. seoulensis",
+    "latin": "Asarum sieboldii var. seoulensis",
+    "chinese": null,
+    "pinyin": "HAN CHENG XI XIN",
+    "confidence": 35.14527130126953,
+    "source": "itcm"
+  },
+  {
+    "id": 494,
+    "primary": "Glenhnia littoralis Fr.Schmidtex Miq.",
+    "latin": "Glenhnia littoralis Fr.Schmidtex Miq.",
+    "chinese": "北沙参",
+    "pinyin": "BEI SHA SHEN",
+    "confidence": 35.18767547607422,
+    "source": "itcm"
+  },
+  {
+    "id": 495,
+    "primary": "Crocus antalyensis cv",
+    "latin": "Crocus antalyensis cv",
+    "chinese": "荷兰种植番红花",
+    "pinyin": "HE LAN ZHONG ZHI FAN HONG HUA",
+    "confidence": 55.6602783203125,
+    "source": "itcm"
+  },
+  {
+    "id": 496,
+    "primary": "Canis familiaris",
+    "latin": "Canis familiaris",
+    "chinese": "狗肉",
+    "pinyin": "GOU ROU",
+    "confidence": 32.253517150878906,
+    "source": "itcm"
+  },
+  {
+    "id": 497,
+    "primary": "Magnolia biondii Pamp. ;Magnolia denudata Desr;Magnolia sprengeri Pamp.",
+    "latin": "Magnolia biondii Pamp. ;Magnolia denudata Desr;Magnolia sprengeri Pamp.",
+    "chinese": "辛夷",
+    "pinyin": "XIN YI",
+    "confidence": 97.48824310302734,
+    "source": "itcm"
+  },
+  {
+    "id": 498,
+    "primary": "PLatycladus orientalis（L.）Franco",
+    "latin": "PLatycladus orientalis（L.）Franco",
+    "chinese": "侧柏",
+    "pinyin": "CE?BAI",
+    "confidence": 16.762357711791992,
+    "source": "itcm"
+  },
+  {
+    "id": 499,
+    "primary": "Myrrha",
+    "latin": "Myrrha",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -11.219694137573242,
+    "source": "itcm"
+  },
+  {
+    "id": 500,
+    "primary": "Lespedeza homoloba",
+    "latin": "Lespedeza homoloba",
+    "chinese": "同形裂片胡枝子",
+    "pinyin": "TONG XING LIE PIAN HU ZHI ZI",
+    "confidence": 13.532297134399414,
+    "source": "itcm"
+  },
+  {
+    "id": 501,
+    "primary": "Thalictrum acutifolium",
+    "latin": "Thalictrum acutifolium",
+    "chinese": "尖叶唐松草",
+    "pinyin": "JIAN YE TANG SONG CAO",
+    "confidence": -10.985204696655273,
+    "source": "itcm"
+  },
+  {
+    "id": 502,
+    "primary": "Chloranthus japonicus",
+    "latin": "Chloranthus japonicus",
+    "chinese": "银线草",
+    "pinyin": "YIN XIAN CAO",
+    "confidence": -10.87266731262207,
+    "source": "itcm"
+  },
+  {
+    "id": 503,
+    "primary": "Dexamethasoni Acetas",
+    "latin": "Dexamethasoni Acetas",
+    "chinese": "醋酸地塞米松",
+    "pinyin": "CU SUAN DI SAI MI SONG",
+    "confidence": -1.3353252410888672,
+    "source": "itcm"
+  },
+  {
+    "id": 504,
+    "primary": "Red Coral",
+    "latin": "Corallium rubrum",
+    "chinese": "红珊瑚",
+    "pinyin": "HONG?SHAN HU",
+    "confidence": 56.19839859008789,
+    "source": "itcm"
+  },
+  {
+    "id": 505,
+    "primary": "Guajacum officinale",
+    "latin": "Guajacum officinale",
+    "chinese": null,
+    "pinyin": "YU CHUANG MU",
+    "confidence": 70.38882446289062,
+    "source": "itcm"
+  },
+  {
+    "id": 506,
+    "primary": "Radix Notoginseng",
+    "latin": "Radix Notoginseng",
+    "chinese": "汉三七",
+    "pinyin": "HAN SAN QI",
+    "confidence": 53.907901763916016,
+    "source": "itcm"
+  },
+  {
+    "id": 507,
+    "primary": "CORYDALIS RHIZOMA",
+    "latin": "CORYDALIS RHIZOMA",
+    "chinese": "延胡索（元胡）",
+    "pinyin": "YAN HU SUO （ YUAN HU ）",
+    "confidence": -10.891767501831055,
+    "source": "itcm"
+  },
+  {
+    "id": 508,
+    "primary": "Oleum Corticis Cinnamomi",
+    "latin": "Oleum Corticis Cinnamomi",
+    "chinese": "桂皮油",
+    "pinyin": "GUI PI YOU",
+    "confidence": 19.686397552490234,
+    "source": "itcm"
+  },
+  {
+    "id": 509,
+    "primary": "Siegesbeckia orientalis var. glabrescens [Syn. Siegesbeckia glabrescens ]",
+    "latin": "Siegesbeckia orientalis var. glabrescens [Syn. Siegesbeckia glabrescens ]",
+    "chinese": null,
+    "pinyin": "MAO GENG XI XIAN",
+    "confidence": 24.119733810424805,
+    "source": "itcm"
+  },
+  {
+    "id": 510,
+    "primary": "Diospyros rhombifolia",
+    "latin": "Diospyros rhombifolia",
+    "chinese": "老鸦柿",
+    "pinyin": "LAO YA SHI",
+    "confidence": -6.457957744598389,
+    "source": "itcm"
+  },
+  {
+    "id": 511,
+    "primary": "Apocynum cannabinum",
+    "latin": "Apocynum cannabinum",
+    "chinese": "夹竹桃麻",
+    "pinyin": "JIA ZHU TAO MA",
+    "confidence": -6.547802925109863,
+    "source": "itcm"
+  },
+  {
+    "id": 512,
+    "primary": "Chloranthus holostegius (Hand.-Mazz.) Pei et Shan var. trichoneurus K. F. Wu",
+    "latin": "Chloranthus holostegius (Hand.-Mazz.) Pei et Shan var. trichoneurus K. F. Wu",
+    "chinese": "四块瓦",
+    "pinyin": "SI KUAI WA",
+    "confidence": 38.08319854736328,
+    "source": "itcm"
+  },
+  {
+    "id": 513,
+    "primary": "Xanthium sibrium Patr.",
+    "latin": "Xanthium sibrium Patr.",
+    "chinese": "苍耳子",
+    "pinyin": "CANG ER ZI",
+    "confidence": -6.566026210784912,
+    "source": "itcm"
+  },
+  {
+    "id": 514,
+    "primary": "Salvia miltiorrhiza Root and Rhizome Dry Extract",
+    "latin": null,
+    "chinese": "丹参根及根茎干浸膏",
+    "pinyin": "Dan Shen Gen Ji Gen Jing Gan Jin Gao",
+    "confidence": 41.217681884765625,
+    "source": "itcm"
+  },
+  {
+    "id": 515,
+    "primary": "Blepharostoma trichophyllum",
+    "latin": "Blepharostoma trichophyllum",
+    "chinese": null,
+    "pinyin": "JIE MAO TAI",
+    "confidence": -6.596056938171387,
+    "source": "itcm"
+  },
+  {
+    "id": 516,
+    "primary": "Fimbristylis dichotoma",
+    "latin": "Fimbristylis dichotoma",
+    "chinese": null,
+    "pinyin": "PIAO FU CAO",
+    "confidence": -11.18084716796875,
+    "source": "itcm"
+  },
+  {
+    "id": 517,
+    "primary": "CORIANDER",
+    "latin": "Coriandri fructus",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -6.6277756690979,
+    "source": "itcm"
+  },
+  {
+    "id": 518,
+    "primary": "Delphinium tricorne",
+    "latin": "Delphinium tricorne",
+    "chinese": null,
+    "pinyin": "SAN JU AI CUI QUE",
+    "confidence": 12.530122756958008,
+    "source": "itcm"
+  },
+  {
+    "id": 519,
+    "primary": "Maytenus heterophylla",
+    "latin": "Maytenus heterophylla",
+    "chinese": "异叶美登木",
+    "pinyin": "YI YE MEI DENG MU",
+    "confidence": -11.054401397705078,
+    "source": "itcm"
+  },
+  {
+    "id": 520,
+    "primary": "Glycyrrhiza glabra",
+    "latin": "Glycyrrhiza glabra",
+    "chinese": "光果甘草",
+    "pinyin": "GUANG GUO GAN CAO",
+    "confidence": 65.6085205078125,
+    "source": "itcm"
+  },
+  {
+    "id": 521,
+    "primary": "HOP STROBILE",
+    "latin": "Lupuli flos",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 4.930572509765625,
+    "source": "itcm"
+  },
+  {
+    "id": 522,
+    "primary": "Rhododendron ovatum",
+    "latin": "Rhododendron ovatum",
+    "chinese": "马银花",
+    "pinyin": "MA YIN HUA",
+    "confidence": 31.917871475219727,
+    "source": "itcm"
+  },
+  {
+    "id": 523,
+    "primary": "Gentiana cephalantha",
+    "latin": "Gentiana cephalantha",
+    "chinese": "头花龙胆",
+    "pinyin": "TOU HUA LONG DAN",
+    "confidence": 49.50896072387695,
+    "source": "itcm"
+  },
+  {
+    "id": 524,
+    "primary": "Hymenoxys grandiflora",
+    "latin": "Hymenoxys grandiflora",
+    "chinese": null,
+    "pinyin": "MO ZHI JU.",
+    "confidence": 62.126792907714844,
+    "source": "itcm"
+  },
+  {
+    "id": 525,
+    "primary": "Cipangopaludina chinensis（Gray）and Cipangopaludina carthayensis（Heude）",
+    "latin": "Cipangopaludina chinensis（Gray）and Cipangopaludina carthayensis（Heude）",
+    "chinese": "田螺厣",
+    "pinyin": "TIAN LUO YAN",
+    "confidence": 19.104141235351562,
+    "source": "itcm"
+  },
+  {
+    "id": 526,
+    "primary": "Castanea mollissima",
+    "latin": "Castanea mollissima",
+    "chinese": "板栗",
+    "pinyin": "LI SHU PI",
+    "confidence": -6.6872992515563965,
+    "source": "itcm"
+  },
+  {
+    "id": 527,
+    "primary": "BELLADONNA LEAF TINCTURE,STANDARDISED",
+    "latin": "Belladonnae folii tinctura normata",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 21.880321502685547,
+    "source": "itcm"
+  },
+  {
+    "id": 528,
+    "primary": "Michelia champaca",
+    "latin": "Michelia champaca",
+    "chinese": "黄兰",
+    "pinyin": "HUANG MIAN GUI",
+    "confidence": 18.997346878051758,
+    "source": "itcm"
+  },
+  {
+    "id": 529,
+    "primary": "TRICHOSANTHIS PERICARPIUM",
+    "latin": "TRICHOSANTHIS PERICARPIUM",
+    "chinese": "瓜蒌皮",
+    "pinyin": "GUA LOU PI",
+    "confidence": -11.100287437438965,
+    "source": "itcm"
+  },
+  {
+    "id": 530,
+    "primary": "Berberis soulieana Schneid.;Berberis wilsonae Hemsl.;Berberis poiretii Schneid.;Berberis vernae Schneid.",
+    "latin": "Berberis soulieana Schneid.;Berberis wilsonae Hemsl.;Berberis poiretii Schneid.;Berberis vernae Schneid.",
+    "chinese": "三颗针",
+    "pinyin": "SAN KE ZHEN",
+    "confidence": 20.783645629882812,
+    "source": "itcm"
+  },
+  {
+    "id": 531,
+    "primary": "Chloranthus serratus",
+    "latin": "Chloranthus serratus",
+    "chinese": "及己",
+    "pinyin": "JI JI",
+    "confidence": -11.175495147705078,
+    "source": "itcm"
+  },
+  {
+    "id": 532,
+    "primary": "Eriocheir Sinensis seu Poramon",
+    "latin": "Eriocheir Sinensis seu Poramon",
+    "chinese": "方海",
+    "pinyin": "FANG HAI",
+    "confidence": 19.34945297241211,
+    "source": "itcm"
+  },
+  {
+    "id": 533,
+    "primary": "Prince's-feather Fruit",
+    "latin": "Fructus Polygoni Orientalis",
+    "chinese": "水红花子",
+    "pinyin": "Shui Hong Hua Zi",
+    "confidence": 17.399370193481445,
+    "source": "itcm"
+  },
+  {
+    "id": 534,
+    "primary": "Helenium puberulum",
+    "latin": "Helenium puberulum",
+    "chinese": "柔毛堆心菊",
+    "pinyin": "WEI MAO DUI XIN JU",
+    "confidence": 12.674165725708008,
+    "source": "itcm"
+  },
+  {
+    "id": 535,
+    "primary": "GOLDENSEAL RHIZOME",
+    "latin": "Hydrastis rhizoma",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -18.79303550720215,
+    "source": "itcm"
+  },
+  {
+    "id": 536,
+    "primary": "Oryza sativa",
+    "latin": "Oryza sativa",
+    "chinese": "粳米",
+    "pinyin": "JING MI",
+    "confidence": 60.998497009277344,
+    "source": "itcm"
+  },
+  {
+    "id": 537,
+    "primary": "Isodon amethystoides",
+    "latin": "Isodon amethystoides",
+    "chinese": null,
+    "pinyin": "XIANG CHA CAI",
+    "confidence": -6.710684299468994,
+    "source": "itcm"
+  },
+  {
+    "id": 538,
+    "primary": "Prunus persica（L.）Batsch",
+    "latin": "Prunus persica（L.）Batsch",
+    "chinese": "桃枝",
+    "pinyin": "TAO ZHI",
+    "confidence": 44.912750244140625,
+    "source": "itcm"
+  },
+  {
+    "id": 539,
+    "primary": "Moroxydini Hydrochloridum",
+    "latin": "Moroxydini Hydrochloridum",
+    "chinese": "盐酸吗啉胍",
+    "pinyin": "YAN SUAN MA LIN GUA",
+    "confidence": -6.892558574676514,
+    "source": "itcm"
+  },
+  {
+    "id": 540,
+    "primary": "Gentiana triflora",
+    "latin": "Gentiana triflora",
+    "chinese": "三花龙胆",
+    "pinyin": "SAN HUA LONG DAN",
+    "confidence": 61.689491271972656,
+    "source": "itcm"
+  },
+  {
+    "id": 541,
+    "primary": "Ziziphora bungeana?Juz.",
+    "latin": "Ziziphora bungeana?Juz.",
+    "chinese": "新塔花",
+    "pinyin": "XIN TA HUA",
+    "confidence": 88.97758483886719,
+    "source": "itcm"
+  },
+  {
+    "id": 542,
+    "primary": "Mesembryanthemum tortuosum",
+    "latin": "Mesembryanthemum tortuosum",
+    "chinese": null,
+    "pinyin": "NIU QU SONG YE JU",
+    "confidence": -9.652596473693848,
+    "source": "itcm"
+  },
+  {
+    "id": 543,
+    "primary": "Lablab niger",
+    "latin": "Lablab niger",
+    "chinese": "扁豆",
+    "pinyin": "BIAN DOU",
+    "confidence": 62.13622283935547,
+    "source": "itcm"
+  },
+  {
+    "id": 544,
+    "primary": "Galium spurium?L.",
+    "latin": "Galium spurium?L.",
+    "chinese": "猪殃殃",
+    "pinyin": "ZHU YANG YANG",
+    "confidence": 74.50244903564453,
+    "source": "itcm"
+  },
+  {
+    "id": 545,
+    "primary": "Adenosma indianum?（Lour.） Merr.",
+    "latin": "Adenosma indianum?（Lour.） Merr.",
+    "chinese": "大头陈",
+    "pinyin": "DA?TOU CHEN",
+    "confidence": 30.572147369384766,
+    "source": "itcm"
+  },
+  {
+    "id": 546,
+    "primary": "Theobroma cacao",
+    "latin": "Theobroma cacao",
+    "chinese": "可可",
+    "pinyin": "KE KE",
+    "confidence": 55.28873062133789,
+    "source": "itcm"
+  },
+  {
+    "id": 547,
+    "primary": "Meconopsis quintuplinervia Regel",
+    "latin": "Meconopsis quintuplinervia Regel",
+    "chinese": "五脉绿绒蒿",
+    "pinyin": "WU?MAI?L??RONG HAO",
+    "confidence": 46.770729064941406,
+    "source": "itcm"
+  },
+  {
+    "id": 548,
+    "primary": "Dianthus versicolor",
+    "latin": "Dianthus versicolor",
+    "chinese": "石竹",
+    "pinyin": "BIAN SE SHI ZHU",
+    "confidence": 57.264015197753906,
+    "source": "itcm"
+  },
+  {
+    "id": 549,
+    "primary": "Swertia randainensis",
+    "latin": "Swertia randainensis",
+    "chinese": null,
+    "pinyin": "LUAN DA SHAN ZHANG YA CAI",
+    "confidence": 30.27163314819336,
+    "source": "itcm"
+  },
+  {
+    "id": 550,
+    "primary": "Pueraria omeiensis",
+    "latin": "Pueraria omeiensis",
+    "chinese": "峨嵋葛",
+    "pinyin": "E MEI GE",
+    "confidence": 45.73186492919922,
+    "source": "itcm"
+  },
+  {
+    "id": 551,
+    "primary": "HAWTHORN LEAF AND FLOWER LIQUID EXTRACT , QUANTIFIED",
+    "latin": "Crataegi folii cum flore extractum fluidum quantificatum",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -9.816969871520996,
+    "source": "itcm"
+  },
+  {
+    "id": 552,
+    "primary": "Adonis mongolica",
+    "latin": "Adonis mongolica",
+    "chinese": "蒙股侧金盏花",
+    "pinyin": "MENG GU CE JIN ZHAN HUA",
+    "confidence": 41.60009002685547,
+    "source": "itcm"
+  },
+  {
+    "id": 553,
+    "primary": "Origanum syriacum",
+    "latin": "Origanum syriacum",
+    "chinese": "叙利亚牛至",
+    "pinyin": "XU LI YA NIU ZHI",
+    "confidence": 38.013248443603516,
+    "source": "itcm"
+  },
+  {
+    "id": 554,
+    "primary": "Sal",
+    "latin": "Sal",
+    "chinese": "食盐",
+    "pinyin": "SHI YAN",
+    "confidence": -6.768131256103516,
+    "source": "itcm"
+  },
+  {
+    "id": 555,
+    "primary": "Corydalis sewerzowi",
+    "latin": "Corydalis sewerzowi",
+    "chinese": null,
+    "pinyin": "XIE SHI ZI JIN",
+    "confidence": 14.53525161743164,
+    "source": "itcm"
+  },
+  {
+    "id": 556,
+    "primary": "Ferri",
+    "latin": "Ferri",
+    "chinese": "铁片",
+    "pinyin": "TIE PIAN",
+    "confidence": -6.860892295837402,
+    "source": "itcm"
+  },
+  {
+    "id": 557,
+    "primary": "Rhododendron japonicum",
+    "latin": "Rhododendron japonicum",
+    "chinese": null,
+    "pinyin": "RI BEN DU JUAN HUA",
+    "confidence": -6.817193031311035,
+    "source": "itcm"
+  },
+  {
+    "id": 558,
+    "primary": "Jasminum grandiflorum",
+    "latin": "Jasminum grandiflorum",
+    "chinese": "素馨花",
+    "pinyin": "SU XIN HUA",
+    "confidence": -11.373581886291504,
+    "source": "itcm"
+  },
+  {
+    "id": 559,
+    "primary": "Bupleurum wenchuanense",
+    "latin": "Bupleurum wenchuanense",
+    "chinese": "汶川柴胡",
+    "pinyin": "WEN CHUAN CHAI HU",
+    "confidence": 72.73931884765625,
+    "source": "itcm"
+  },
+  {
+    "id": 560,
+    "primary": "Rheum wittrocki",
+    "latin": "Rheum wittrocki",
+    "chinese": null,
+    "pinyin": "TIAN SHAN DA HUANG",
+    "confidence": 26.639297485351562,
+    "source": "itcm"
+  },
+  {
+    "id": 561,
+    "primary": "FENNEL, SWEET",
+    "latin": "Foeniculi dulcis fructus",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 43.32160949707031,
+    "source": "itcm"
+  },
+  {
+    "id": 562,
+    "primary": "Veronica persica",
+    "latin": "Veronica persica",
+    "chinese": "阿拉伯婆婆纳",
+    "pinyin": "A LA BO PO PO NA",
+    "confidence": 13.551490783691406,
+    "source": "itcm"
+  },
+  {
+    "id": 563,
+    "primary": "Prunus persica",
+    "latin": "Prunus persica",
+    "chinese": "桃根",
+    "pinyin": "TAO GEN",
+    "confidence": 42.540130615234375,
+    "source": "itcm"
+  },
+  {
+    "id": 564,
+    "primary": "Thalictrum isopyroides",
+    "latin": "Thalictrum isopyroides",
+    "chinese": "紫堇叶唐松草",
+    "pinyin": "ZI JIN YE TANG SONG CAO",
+    "confidence": -7.139379501342773,
+    "source": "itcm"
+  },
+  {
+    "id": 565,
+    "primary": "Cyclea tonkinensis",
+    "latin": "Cyclea tonkinensis",
+    "chinese": "南轮环藤",
+    "pinyin": "NAN LUN HUAN TENG",
+    "confidence": 26.85243034362793,
+    "source": "itcm"
+  },
+  {
+    "id": 566,
+    "primary": "Rheum hotaoense",
+    "latin": "Rheum hotaoense",
+    "chinese": "河套大黄",
+    "pinyin": "HE TAO DA HUANG",
+    "confidence": 71.66812896728516,
+    "source": "itcm"
+  },
+  {
+    "id": 567,
+    "primary": "Caro caprae seu ovis",
+    "latin": "Caro caprae seu ovis",
+    "chinese": "羊肉",
+    "pinyin": "YANG ROU",
+    "confidence": 54.81475067138672,
+    "source": "itcm"
+  },
+  {
+    "id": 568,
+    "primary": "Malvae folium",
+    "latin": "Malvae folium",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 85.6876220703125,
+    "source": "itcm"
+  },
+  {
+    "id": 569,
+    "primary": "LysimachiaparidiformisFranch. var.stenophyllaFranch.",
+    "latin": "LysimachiaparidiformisFranch. var.stenophyllaFranch.",
+    "chinese": "追风伞",
+    "pinyin": "ZHUI FENG SAN",
+    "confidence": 27.466407775878906,
+    "source": "itcm"
+  },
+  {
+    "id": 570,
+    "primary": "Hedychium coronarium",
+    "latin": "Hedychium coronarium",
+    "chinese": "姜花果实",
+    "pinyin": "TU QIANG HUO",
+    "confidence": -6.887482166290283,
+    "source": "itcm"
+  },
+  {
+    "id": 571,
+    "primary": "Schoenocaulon officinale",
+    "latin": "Schoenocaulon officinale",
+    "chinese": "苇茎百合",
+    "pinyin": "WEI JING BAI HE",
+    "confidence": 66.0475082397461,
+    "source": "itcm"
+  },
+  {
+    "id": 572,
+    "primary": "Gentiana olgae",
+    "latin": "Gentiana olgae",
+    "chinese": null,
+    "pinyin": "AO LIE GE LONG DAN",
+    "confidence": 46.494293212890625,
+    "source": "itcm"
+  },
+  {
+    "id": 573,
+    "primary": "Smilax china [Syn. Smilax japonica ]",
+    "latin": "Smilax china [Syn. Smilax japonica ]",
+    "chinese": "菝契",
+    "pinyin": "BA QIA",
+    "confidence": 52.2538948059082,
+    "source": "itcm"
+  },
+  {
+    "id": 574,
+    "primary": "Gypsophila acutifolia",
+    "latin": "Gypsophila acutifolia",
+    "chinese": null,
+    "pinyin": "HUANG JIE GU DAN",
+    "confidence": -11.34011173248291,
+    "source": "itcm"
+  },
+  {
+    "id": 575,
+    "primary": "Eugenol",
+    "latin": "Eugenia caryophμllataThunb.",
+    "chinese": "丁香酚",
+    "pinyin": "DING?XIANG FEN",
+    "confidence": -6.904407501220703,
+    "source": "itcm"
+  },
+  {
+    "id": 576,
+    "primary": "Gentiana japonica",
+    "latin": "Gentiana japonica",
+    "chinese": "日本龙胆",
+    "pinyin": "RI BEN LONG DAN",
+    "confidence": 60.0389404296875,
+    "source": "itcm"
+  },
+  {
+    "id": 577,
+    "primary": "Seabuckthorn flavone",
+    "latin": "Hippophae rhamnoides?L.",
+    "chinese": "沙棘黄酮",
+    "pinyin": "SHA JI HUANG TONG",
+    "confidence": -4.191718578338623,
+    "source": "itcm"
+  },
+  {
+    "id": 578,
+    "primary": "Thalictrum revolutum",
+    "latin": "Thalictrum revolutum",
+    "chinese": null,
+    "pinyin": "WAI JUAN TANG SONG CAO",
+    "confidence": -11.33792495727539,
+    "source": "itcm"
+  },
+  {
+    "id": 579,
+    "primary": "Aeginetia indica",
+    "latin": "Aeginetia indica",
+    "chinese": "野菰",
+    "pinyin": "YE GU",
+    "confidence": 72.87921142578125,
+    "source": "itcm"
+  },
+  {
+    "id": 580,
+    "primary": "Alpinia officinarum Hance",
+    "latin": "Alpinia officinarum Hance",
+    "chinese": "高良姜",
+    "pinyin": "GAO LIANG JIANG",
+    "confidence": 16.223644256591797,
+    "source": "itcm"
+  },
+  {
+    "id": 581,
+    "primary": "Magnolia liliflora",
+    "latin": "Magnolia liliflora",
+    "chinese": "辛荑",
+    "pinyin": "XIN YI",
+    "confidence": 55.99120330810547,
+    "source": "itcm"
+  },
+  {
+    "id": 582,
+    "primary": "Monascus kaoliang",
+    "latin": "Monascus kaoliang",
+    "chinese": "高粱红曲",
+    "pinyin": "RED KOJI",
+    "confidence": 29.390483856201172,
+    "source": "itcm"
+  },
+  {
+    "id": 583,
+    "primary": "Rhododendron chrysanthum",
+    "latin": "Rhododendron chrysanthum",
+    "chinese": null,
+    "pinyin": "NIU PI CHA",
+    "confidence": -6.418965816497803,
+    "source": "itcm"
+  },
+  {
+    "id": 584,
+    "primary": "Siphonostegia chinensis Benth.",
+    "latin": "Siphonostegia chinensis Benth.",
+    "chinese": "北刘寄奴",
+    "pinyin": "BEI LIU JI NU",
+    "confidence": 40.85312271118164,
+    "source": "itcm"
+  },
+  {
+    "id": 585,
+    "primary": "Panax notoginseng Root and Rhizome",
+    "latin": null,
+    "chinese": "三七根茎",
+    "pinyin": "San Qi Gen Jing",
+    "confidence": -18.894733428955078,
+    "source": "itcm"
+  },
+  {
+    "id": 586,
+    "primary": "Phalaris arundinacea L. var. picta L.",
+    "latin": "Phalaris arundinacea L. var. picta L.",
+    "chinese": "玉带草",
+    "pinyin": "YU DAI CAO",
+    "confidence": 63.412933349609375,
+    "source": "itcm"
+  },
+  {
+    "id": 587,
+    "primary": "Raphanus sativusL.?",
+    "latin": "Raphanus sativusL.?",
+    "chinese": "萝卜",
+    "pinyin": "LUO?BO",
+    "confidence": 34.40967559814453,
+    "source": "itcm"
+  },
+  {
+    "id": 588,
+    "primary": "Zingiber?montanum?(J.Koenig) Link ex A.Dietr.",
+    "latin": "Zingiber?montanum?(J.Koenig) Link ex A.Dietr.",
+    "chinese": "紫色姜",
+    "pinyin": "ZI?SE?JIANG",
+    "confidence": 18.353612899780273,
+    "source": "itcm"
+  },
+  {
+    "id": 589,
+    "primary": "Souliea vaginata",
+    "latin": "Souliea vaginata",
+    "chinese": "黄三七",
+    "pinyin": "HUANG SAN QI",
+    "confidence": 63.091285705566406,
+    "source": "itcm"
+  },
+  {
+    "id": 590,
+    "primary": "Caulis Genkwa",
+    "latin": "Caulis Genkwa",
+    "chinese": "芫花条",
+    "pinyin": "YUAN HUA TIAO",
+    "confidence": 21.018516540527344,
+    "source": "itcm"
+  },
+  {
+    "id": 591,
+    "primary": "Creosote",
+    "latin": "Fagus longipetiolata",
+    "chinese": "木馏油",
+    "pinyin": "MU LIU YOU",
+    "confidence": -11.3570556640625,
+    "source": "itcm"
+  },
+  {
+    "id": 592,
+    "primary": "Strychnos froesii",
+    "latin": "Strychnos froesii",
+    "chinese": null,
+    "pinyin": "FU SHI MA QIAN ZI",
+    "confidence": 57.68550109863281,
+    "source": "itcm"
+  },
+  {
+    "id": 593,
+    "primary": "Gentiana lutea",
+    "latin": "Gentiana lutea",
+    "chinese": "黄龙胆",
+    "pinyin": "HUANG LONG DAN",
+    "confidence": 66.00234985351562,
+    "source": "itcm"
+  },
+  {
+    "id": 594,
+    "primary": "Amomum tsao-ko Crevost et Lemaire",
+    "latin": "Amomum tsao-ko Crevost et Lemaire",
+    "chinese": "草果",
+    "pinyin": "CAO GUO",
+    "confidence": 58.125701904296875,
+    "source": "itcm"
+  },
+  {
+    "id": 595,
+    "primary": "Vatica rassak",
+    "latin": "Vatica rassak",
+    "chinese": null,
+    "pinyin": "QING MEI",
+    "confidence": 22.90935516357422,
+    "source": "itcm"
+  },
+  {
+    "id": 596,
+    "primary": "Polyalthia longifolia",
+    "latin": "Polyalthia longifolia",
+    "chinese": "变种长叶暗罗",
+    "pinyin": "CHANG YE AN LUO",
+    "confidence": -11.359132766723633,
+    "source": "itcm"
+  },
+  {
+    "id": 597,
+    "primary": "Rhododendron arboreum",
+    "latin": "Rhododendron arboreum",
+    "chinese": "树形杜鹃",
+    "pinyin": "SHU XING DU JUAN",
+    "confidence": -4.560946941375732,
+    "source": "itcm"
+  },
+  {
+    "id": 598,
+    "primary": "Colophonium",
+    "latin": "Colophonium",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": -2.628171682357788,
+    "source": "itcm"
+  },
+  {
+    "id": 599,
+    "primary": "Acronychia pedunculata?（L.） Miq.",
+    "latin": "Acronychia pedunculata?（L.） Miq.",
+    "chinese": "沙糖木",
+    "pinyin": "SHA TANG MU",
+    "confidence": 42.226200103759766,
+    "source": "itcm"
+  },
+  {
+    "id": 600,
+    "primary": "Ambrosia psilostachya",
+    "latin": "Ambrosia psilostachya",
+    "chinese": "裸穗豚草",
+    "pinyin": "LUO SUI TUN CAO",
+    "confidence": -11.413034439086914,
+    "source": "itcm"
+  },
+  {
+    "id": 601,
+    "primary": "qing ke beer",
+    "latin": "Hordeum vulgare?L. var.?nudum?Hook.f.",
+    "chinese": "青稞酒",
+    "pinyin": "QING KE JIU",
+    "confidence": 29.74425506591797,
+    "source": "itcm"
+  },
+  {
+    "id": 602,
+    "primary": "Rhododendron huianum?Fang?",
+    "latin": "Rhododendron huianum?Fang?",
+    "chinese": "凉山杜鹃",
+    "pinyin": "LIANG SHAN DU JUAN",
+    "confidence": 95.88037872314453,
+    "source": "itcm"
+  },
+  {
+    "id": 603,
+    "primary": "Ulmus americana",
+    "latin": "Ulmus americana",
+    "chinese": null,
+    "pinyin": "MEI ZHOU YU",
+    "confidence": 63.15437316894531,
+    "source": "itcm"
+  },
+  {
+    "id": 604,
+    "primary": "Potentilla multifida",
+    "latin": "Potentilla multifida",
+    "chinese": "多裂委陵菜",
+    "pinyin": "DUO LIE WEI LING CAI",
+    "confidence": 16.48916244506836,
+    "source": "itcm"
+  },
+  {
+    "id": 605,
+    "primary": "Bupleurum aureum",
+    "latin": "Bupleurum aureum",
+    "chinese": "金黄柴胡",
+    "pinyin": "JIN HUANG CHAI HU",
+    "confidence": -7.129654884338379,
+    "source": "itcm"
+  },
+  {
+    "id": 606,
+    "primary": "Manis pentadactyla",
+    "latin": "Manis pentadactyla",
+    "chinese": "穿山甲",
+    "pinyin": "CHUAN SHAN JIA",
+    "confidence": -10.056303024291992,
+    "source": "itcm"
+  },
+  {
+    "id": 607,
+    "primary": "CALLICARPAE CAULIS ET FOLIUMI",
+    "latin": "CALLICARPAE CAULIS ET FOLIUMI",
+    "chinese": "广东紫珠",
+    "pinyin": "GUANG?DONG ZI ZHU",
+    "confidence": 32.169586181640625,
+    "source": "itcm"
+  },
+  {
+    "id": 608,
+    "primary": "Myrica nagi [Syn. Podocarpus nagi ]",
+    "latin": "Myrica nagi [Syn. Podocarpus nagi ]",
+    "chinese": null,
+    "pinyin": "ZHU BAI GEN",
+    "confidence": 49.261085510253906,
+    "source": "itcm"
+  },
+  {
+    "id": 609,
+    "primary": "TESTUDINIS CARAPACIS ET PLASTRI COLLA",
+    "latin": "TESTUDINIS CARAPACIS ET PLASTRI COLLA",
+    "chinese": "龟甲胶",
+    "pinyin": "GUI?JIA JIAO",
+    "confidence": 11.062393188476562,
+    "source": "itcm"
+  },
+  {
+    "id": 610,
+    "primary": "Impatiens balsamina L.",
+    "latin": "Impatiens balsamina L.",
+    "chinese": "急性子",
+    "pinyin": "JI XING ZI",
+    "confidence": 96.50575256347656,
+    "source": "itcm"
+  },
+  {
+    "id": 611,
+    "primary": "Raphanus sativus.L.",
+    "latin": "Raphanus sativus.L.",
+    "chinese": "莱菔子",
+    "pinyin": "LAI FU ZI",
+    "confidence": 12.07699966430664,
+    "source": "itcm"
+  },
+  {
+    "id": 612,
+    "primary": "Callicarpa kwangtungensis?Chun",
+    "latin": "Callicarpa kwangtungensis?Chun",
+    "chinese": "广东紫珠",
+    "pinyin": "GUANG?DONG ZI ZHU",
+    "confidence": 54.28113555908203,
+    "source": "itcm"
+  },
+  {
+    "id": 613,
+    "primary": "Cassia fistula",
+    "latin": "Cassia fistula",
+    "chinese": null,
+    "pinyin": "PO LUO MEN ZAO JIA",
+    "confidence": -10.959217071533203,
+    "source": "itcm"
+  },
+  {
+    "id": 614,
+    "primary": "Genipa americana",
+    "latin": "Genipa americana",
+    "chinese": null,
+    "pinyin": "JING NI PING",
+    "confidence": 78.13067626953125,
+    "source": "itcm"
+  },
+  {
+    "id": 615,
+    "primary": "YARROW",
+    "latin": "Millefolii herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 5.010192394256592,
+    "source": "itcm"
+  },
+  {
+    "id": 616,
+    "primary": "Thunder Ball",
+    "latin": "omphalia",
+    "chinese": "雷丸",
+    "pinyin": "Lei Wan",
+    "confidence": 11.5482177734375,
+    "source": "itcm"
+  },
+  {
+    "id": 617,
+    "primary": "Scutellaria indica",
+    "latin": "Scutellaria indica",
+    "chinese": "韩信草",
+    "pinyin": "HAN XIN CAO",
+    "confidence": 62.820674896240234,
+    "source": "itcm"
+  },
+  {
+    "id": 618,
+    "primary": "Marchantia polymorpha",
+    "latin": "Marchantia polymorpha",
+    "chinese": "地钱",
+    "pinyin": "DI SUO LUO.",
+    "confidence": 8.988519668579102,
+    "source": "itcm"
+  },
+  {
+    "id": 619,
+    "primary": "Calculus Equi",
+    "latin": "Calculus Equi",
+    "chinese": "马宝",
+    "pinyin": "MA BAO",
+    "confidence": 7.064670562744141,
+    "source": "itcm"
+  },
+  {
+    "id": 620,
+    "primary": "Radix chuanxiong；Rhizoma Chuanxiong",
+    "latin": "Radix chuanxiong；Rhizoma Chuanxiong",
+    "chinese": "西川芎",
+    "pinyin": "XI CHUAN XIONG",
+    "confidence": 17.948057174682617,
+    "source": "itcm"
+  },
+  {
+    "id": 621,
+    "primary": "Cladostachys amaranthoides",
+    "latin": "Cladostachys amaranthoides",
+    "chinese": null,
+    "pinyin": "JIU CENG FENG.",
+    "confidence": 31.396484375,
+    "source": "itcm"
+  },
+  {
+    "id": 622,
+    "primary": "OPhiopogon japonicus ( L.f) Ker-Gawl.",
+    "latin": "OPhiopogon japonicus ( L.f) Ker-Gawl.",
+    "chinese": "麦冬",
+    "pinyin": "MAI DONG",
+    "confidence": 21.41407585144043,
+    "source": "itcm"
+  },
+  {
+    "id": 623,
+    "primary": "Mangifera indica L.",
+    "latin": "Mangifera indica L.",
+    "chinese": "芒果核",
+    "pinyin": "MANG GUO?HE",
+    "confidence": 72.2109375,
+    "source": "itcm"
+  },
+  {
+    "id": 624,
+    "primary": "SENNA PODS, ALEXANDRIAN",
+    "latin": "Sennae fructus acutifoliae",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 19.982927322387695,
+    "source": "itcm"
+  },
+  {
+    "id": 625,
+    "primary": "Magnetitum",
+    "latin": "Magnetitum",
+    "chinese": "磁石",
+    "pinyin": "CI SHI",
+    "confidence": 12.864288330078125,
+    "source": "itcm"
+  },
+  {
+    "id": 626,
+    "primary": "LOOSESTRIFE",
+    "latin": "Lythri herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 0.3578367233276367,
+    "source": "itcm"
+  },
+  {
+    "id": 627,
+    "primary": "Rubus chingii Hu",
+    "latin": "Rubus chingii Hu",
+    "chinese": "覆盆子",
+    "pinyin": "FU PEN ZI",
+    "confidence": 43.83984375,
+    "source": "itcm"
+  },
+  {
+    "id": 628,
+    "primary": "Aloe spp.",
+    "latin": "Aloe spp.",
+    "chinese": null,
+    "pinyin": "DUO ZHONG LU HUI TI QU WU",
+    "confidence": 34.077308654785156,
+    "source": "itcm"
+  },
+  {
+    "id": 629,
+    "primary": "Vicia sativa",
+    "latin": "Vicia sativa",
+    "chinese": "春箭筈豌豆",
+    "pinyin": "DA CHAO CAI",
+    "confidence": 63.28173065185547,
+    "source": "itcm"
+  },
+  {
+    "id": 630,
+    "primary": "Passer",
+    "latin": "Passer",
+    "chinese": "麻雀",
+    "pinyin": "MA?QUE",
+    "confidence": -7.145576477050781,
+    "source": "itcm"
+  },
+  {
+    "id": 631,
+    "primary": "Bupleurum spinosum",
+    "latin": "Bupleurum spinosum",
+    "chinese": null,
+    "pinyin": "DUO CI CHAI HU",
+    "confidence": 26.232166290283203,
+    "source": "itcm"
+  },
+  {
+    "id": 632,
+    "primary": "Solanum lyratum",
+    "latin": "Solanum lyratum",
+    "chinese": "白英",
+    "pinyin": "BAI MAO TENG",
+    "confidence": -7.157285690307617,
+    "source": "itcm"
+  },
+  {
+    "id": 633,
+    "primary": "Anthemis cretica ssp. cretica [Syn. Anthemis montana]",
+    "latin": "Anthemis cretica ssp. cretica [Syn. Anthemis montana]",
+    "chinese": null,
+    "pinyin": "MENG DA NA CHUN HUANG JU",
+    "confidence": 60.16868209838867,
+    "source": "itcm"
+  },
+  {
+    "id": 634,
+    "primary": "Dendropanax dentiger?(Harms) Merr.",
+    "latin": "Dendropanax dentiger?(Harms) Merr.",
+    "chinese": "树参",
+    "pinyin": "SHU?CAN",
+    "confidence": 29.595104217529297,
+    "source": "itcm"
+  },
+  {
+    "id": 635,
+    "primary": "FEVERFEW",
+    "latin": "Tanaceti parthenii herba",
+    "chinese": null,
+    "pinyin": null,
+    "confidence": 38.32844924926758,
+    "source": "itcm"
+  },
+  {
+    "id": 636,
+    "primary": "Cortex Fraxini",
+    "latin": "Cortex Fraxini",
+    "chinese": "秦皮",
+    "pinyin": "Qin Pi",
+    "confidence": 14.821592330932617,
+    "source": "itcm"
+  },
+  {
+    "id": 637,
+    "primary": "Orthodon hadai",
+    "latin": "Orthodon hadai",
+    "chinese": null,
+    "pinyin": "HA DA SHI JI NING",
+    "confidence": 12.960445404052734,
+    "source": "itcm"
+  },
+  {
+    "id": 638,
+    "primary": "Chincmys reevesii",
+    "latin": "Chincmys reevesii",
+    "chinese": "乌龟",
+    "pinyin": "WU?GUI",
+    "confidence": 36.22027587890625,
+    "source": "itcm"
+  },
+  {
+    "id": 639,
+    "primary": "ALlium saticum L.",
+    "latin": "ALlium saticum L.",
+    "chinese": "大蒜",
+    "pinyin": "DA SUAN",
+    "confidence": 41.494873046875,
+    "source": "itcm"
+  },
+  {
+    "id": 640,
+    "primary": "Crotalaria tetragona",
+    "latin": "Crotalaria tetragona",
+    "chinese": null,
+    "pinyin": "HUA JIN DAN",
+    "confidence": -11.490232467651367,
+    "source": "itcm"
+  },
+  {
+    "id": 641,
+    "primary": "Flower of Operculate Cleistocalyx",
+    "latin": "Flower of Operculate Cleistocalyx",
+    "chinese": "水翁花",
+    "pinyin": "SHUI WENG HUA",
+    "confidence": -4.449405193328857,
+    "source": "itcm"
+  },
+  {
+    "id": 642,
+    "primary": "Mesembryanthemum anatomicum",
+    "latin": "Mesembryanthemum anatomicum",
+    "chinese": "明松叶菊",
+    "pinyin": "MING SONG YE JU",
+    "confidence": -11.50639820098877,
+    "source": "itcm"
+  },
+  {
+    "id": 643,
+    "primary": "Commiphora kua var. gowlello",
+    "latin": "Commiphora kua var. gowlello",
+    "chinese": null,
+    "pinyin": "KEN NI YA MO YAO",
+    "confidence": 16.44779396057129,
+    "source": "itcm"
+  },
+  {
+    "id": 644,
+    "primary": "Piper spp.",
+    "latin": "Piper spp.",
+    "chinese": null,
+    "pinyin": "PIPER SPP.",
+    "confidence": 26.463520050048828,
+    "source": "itcm"
+  },
+  {
+    "id": 645,
+    "primary": "Aristolochia kwangsiensis Chun et How[A.shukangiiChunetHow]",
+    "latin": "Aristolochia kwangsiensis Chun et How[A.shukangiiChunetHow]",
+    "chinese": "大百解薯",
+    "pinyin": "DA?BAI?JIE?SHU",
+    "confidence": 43.706748962402344,
+    "source": "itcm"
+  },
+  {
+    "id": 646,
+    "primary": "Artabotrys maingayi",
+    "latin": "Artabotrys maingayi",
+    "chinese": null,
+    "pinyin": "MAN GE YING ZHAO",
+    "confidence": 27.689838409423828,
+    "source": "itcm"
+  },
+  {
+    "id": 647,
+    "primary": "Plumbago indica",
+    "latin": "Plumbago indica",
+    "chinese": "紫雪花",
+    "pinyin": "ZI XUE HUA",
+    "confidence": 80.3189468383789,
+    "source": "itcm"
+  },
+  {
+    "id": 648,
+    "primary": "Mosla chinensis Maxim.;Mosla chinensis ‘jiangxiangru’",
+    "latin": "Mosla chinensis Maxim.;Mosla chinensis ‘jiangxiangru’",
+    "chinese": "香薷",
+    "pinyin": "XIANG RU",
+    "confidence": 66.30386352539062,
+    "source": "itcm"
+  },
+  {
+    "id": 649,
+    "primary": "Pithecellobium clypearia Benth.",
+    "latin": "Pithecellobium clypearia Benth.",
+    "chinese": "蛟龙木",
+    "pinyin": "JIAO LONG MU",
+    "confidence": -7.1866559982299805,
+    "source": "itcm"
+  },
+  {
+    "id": 650,
+    "primary": "Rabdosia neruosa (Hemsl.) C. Y. Wu et H. W. Li Plectranthus neruosa Hemsl.; Isodon neruosurs (Hemsl.) Kudo",
+    "latin": "Rabdosia neruosa (Hemsl.) C. Y. Wu et H. W. Li Plectranthus neruosa Hemsl.; Isodon neruosurs (Hemsl.) Kudo",
+    "chinese": "蓝花柴胡",
+    "pinyin": "LAN HUA CHAI HU",
+    "confidence": 19.57338523864746,
+    "source": "itcm"
+  }
+]
