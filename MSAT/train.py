@@ -92,6 +92,13 @@ def model_selection_score(fold_result):
     return float(fold_result['best_val_auc'])
 
 
+def _state_dict_to_cpu(state_dict):
+    return {
+        key: value.detach().cpu().clone() if torch.is_tensor(value) else copy.deepcopy(value)
+        for key, value in state_dict.items()
+    }
+
+
 def train_one_epoch(model, data, optimizer, train_edges, train_labels, device):
     model.train()
     optimizer.zero_grad()
@@ -314,12 +321,15 @@ def train_single_fold(fold_idx, device, experiment_tag=''):
     train_time = time.time() - train_start_time
     
     
+    best_state_cpu = None
     if best_state:
         model.load_state_dict(best_state)
+        best_state_cpu = _state_dict_to_cpu(best_state)
         
         
-        (MSAT_ROOT / 'saved_models').mkdir(parents=True, exist_ok=True)
-        torch.save(best_state, MSAT_ROOT / fold_checkpoint_path(fold_idx, experiment_tag))
+        if TrainingConfig.SAVE_FOLD_CHECKPOINTS:
+            (MSAT_ROOT / 'saved_models').mkdir(parents=True, exist_ok=True)
+            torch.save(best_state_cpu, MSAT_ROOT / fold_checkpoint_path(fold_idx, experiment_tag))
     
    
     cpu_after = process.cpu_percent(interval=0.1)
@@ -362,6 +372,7 @@ def train_single_fold(fold_idx, device, experiment_tag=''):
     print(f"    Time:      {fold_time:.1f}s")
     
     return {
+        '_best_state': best_state_cpu,
         'fold': fold_idx,
         'best_epoch': best_epoch,
         'best_val_auc': best_val_auc,
@@ -404,6 +415,7 @@ def run_10fold_cv(experiment_tag=''):
     
     for fold in range(TrainingConfig.N_FOLDS):
         fold_result = train_single_fold(fold, device, experiment_tag=experiment_tag)
+        fold_state = fold_result.pop('_best_state', None)
         results.append(fold_result)
         
         selection_score = model_selection_score(fold_result)
@@ -411,9 +423,12 @@ def run_10fold_cv(experiment_tag=''):
             best_overall_score = selection_score
             best_overall_fold = fold
            
-            state_path = MSAT_ROOT / fold_checkpoint_path(fold, experiment_tag)
-            if os.path.exists(state_path):
-                best_overall_state = torch.load(state_path, map_location='cpu')
+            if fold_state is not None:
+                best_overall_state = fold_state
+            elif TrainingConfig.SAVE_FOLD_CHECKPOINTS:
+                state_path = MSAT_ROOT / fold_checkpoint_path(fold, experiment_tag)
+                if os.path.exists(state_path):
+                    best_overall_state = torch.load(state_path, map_location='cpu')
     
     total_experiment_time = time.time() - experiment_start
     
@@ -502,7 +517,8 @@ def run_10fold_cv(experiment_tag=''):
             'weight_decay': TrainingConfig.WEIGHT_DECAY,
             'num_epochs': TrainingConfig.NUM_EPOCHS,
             'patience': TrainingConfig.PATIENCE,
-            'gradient_clip': TrainingConfig.GRADIENT_CLIP
+            'gradient_clip': TrainingConfig.GRADIENT_CLIP,
+            'save_fold_checkpoints': TrainingConfig.SAVE_FOLD_CHECKPOINTS,
         },
         'overall_metrics': overall_metrics,
         'statistical_tests': {

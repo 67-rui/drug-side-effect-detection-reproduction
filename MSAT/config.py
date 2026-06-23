@@ -49,6 +49,9 @@ class TrainingConfig:
   
     RANDOM_STATE = 42
     USE_OPTIMAL_THRESHOLD = False  # True for 1:10 imbalanced (Phase 6)
+    SAVE_FOLD_CHECKPOINTS = os.environ.get('MSAT_SAVE_FOLD_CHECKPOINTS', '').lower() in {
+        '1', 'true', 'yes'
+    }
 
 
 class DataConfig:
@@ -68,4 +71,3 @@ class DataConfig:
     
  
     INDUCTIVE_MODE = True
-

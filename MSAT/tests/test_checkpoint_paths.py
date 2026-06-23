@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import train
+from config import TrainingConfig
 
 
 def test_prediction_checkpoint_path_uses_legacy_default_for_main_run():
@@ -32,3 +33,7 @@ def test_model_selection_score_uses_validation_auc_not_test_auc():
     }
 
     assert train.model_selection_score(fold_result) == 0.42
+
+
+def test_fold_checkpoints_are_disabled_by_default():
+    assert TrainingConfig.SAVE_FOLD_CHECKPOINTS is False
