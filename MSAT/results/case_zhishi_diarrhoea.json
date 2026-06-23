@@ -1,5 +1,9 @@
 {
   "created_at": "2026-06-23T16:11:11.027298",
+  "artifact_status": {
+    "stale": true,
+    "reason": "Generated before checkpoint provenance was recorded; final synced checkpoint may have been overwritten by tagged Fig.6 or ablation runs."
+  },
   "herb_id": 277,
   "herb_latin": "Citrus aurantium L.",
   "herb_label": "枳实（Citrus aurantium L.）",

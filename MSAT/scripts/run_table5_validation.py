@@ -16,6 +16,7 @@ MSAT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(MSAT_ROOT))
 
 from config import DataConfig
+from inference.artifact_manifest import artifact_status, file_manifest
 from experiments.feature_extractor import FeatureExtractor
 from inference.entity_mapping import EntityNames
 from inference.graph_utils import build_known_herb_adr_map, explain_herb_adr
@@ -39,10 +40,10 @@ def faers_positive_pairs() -> set[tuple[int, int]]:
     }
 
 
-def collect_predictor_scores() -> dict[tuple[int, int], float]:
+def collect_predictor_scores(checkpoint: Path | None = None) -> dict[tuple[int, int], float]:
     from inference.predictor import MSATPredictor
 
-    predictor = MSATPredictor()
+    predictor = MSATPredictor(checkpoint=checkpoint)
     scores: dict[tuple[int, int], float] = {}
     for h in range(predictor.n_herb):
         arr = predictor.score_herb_all_adrs(h)
@@ -97,6 +98,12 @@ def main() -> None:
         help='Non-paper: score all herb×adr with best_model_for_prediction.pt',
     )
     parser.add_argument(
+        '--checkpoint',
+        type=Path,
+        default=None,
+        help='Checkpoint for --use-predictor. Defaults to saved_models/best_model_for_prediction.pt',
+    )
+    parser.add_argument(
         '--exclude-faers-only',
         action='store_true',
         help='Non-paper legacy pool: exclude FAERS 25734 edges only',
@@ -108,6 +115,8 @@ def main() -> None:
         help='TCMDA manual verification cache (paper §3.5.6 channel i)',
     )
     args = parser.parse_args()
+    if args.checkpoint is not None and not args.use_predictor:
+        parser.error('--checkpoint is only valid together with --use-predictor')
 
     names = EntityNames.load()
     if args.exclude_faers_only:
@@ -118,13 +127,16 @@ def main() -> None:
         pool_label = 'exclude_all_graph_positives'
 
     if args.use_predictor:
-        scores = collect_predictor_scores()
-        source = 'MSATPredictor/best_model_for_prediction.pt'
+        scores = collect_predictor_scores(args.checkpoint)
+        checkpoint = args.checkpoint or (MSAT_ROOT / 'saved_models' / 'best_model_for_prediction.pt')
+        source = str(checkpoint)
         scoring_mode = 'predictor'
+        checkpoint_manifest = file_manifest(checkpoint)
     else:
         scores = collect_oof_scores(args.summary)
         source = str(args.summary)
         scoring_mode = 'oof_pooled'
+        checkpoint_manifest = None
 
     candidates = [(pair, sc) for pair, sc in scores.items() if pair not in excluded]
     candidates.sort(key=lambda x: x[1], reverse=True)
@@ -176,6 +188,9 @@ def main() -> None:
         'protocol': 'paper_3.5.6_global_top15',
         'source_summary': source,
         'scoring_mode': scoring_mode,
+        'artifact_status': artifact_status(stale=False),
+        'checkpoint': checkpoint_manifest,
+        'input_summary': file_manifest(args.summary) if not args.use_predictor else None,
         'candidate_pool': pool_label,
         'database_check': (
             f'TCMDA cache: {args.tcmda_cache} '

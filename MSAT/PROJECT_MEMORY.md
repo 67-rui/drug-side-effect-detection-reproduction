@@ -129,14 +129,21 @@ These code fixes were made locally after synchronizing the remote result files. 
 - Future MSAT/GNN summaries now include clearer protocol metadata:
   - MSAT summaries include `test_neg_ratio`.
   - GNN baseline summaries include data/model/training config fields.
+- Artifact provenance and stale marking are now in place:
+  - `inference/artifact_manifest.py` records path, existence, size, mtime, and SHA-256 for checkpoint/input files.
+  - `run_table5_validation.py`, `run_case_zhishi.py`, `predict.py`, and `run_phase7.py` accept explicit `--checkpoint`.
+  - Future Table 5, Table 6, and Zhishi JSON outputs include artifact status and input/checkpoint provenance.
+  - Existing final-sync `table5_summary.json`, `table6_mapping.json`, and `case_zhishi_diarrhoea.json` are marked stale because they were generated before checkpoint provenance tracking and may have used an overwritten checkpoint.
+  - Server recovery script added: `scripts/rerun_after_artifact_fix.sh`.
 - Regression tests added:
   - `tests/test_baseline_leakage.py`
   - `tests/test_checkpoint_paths.py`
+  - `tests/test_artifact_manifest.py`
 
 Verification after these code changes:
 
-- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 7 passed.
-- `/Users/a67_2024/opt/anaconda3/bin/python -m py_compile baselines/common.py baselines/ml_models.py baselines/gnn_models.py train.py scripts/run_imbalance_sweep.py`: passed.
+- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 9 passed.
+- `/Users/a67_2024/opt/anaconda3/bin/python -m py_compile inference/artifact_manifest.py scripts/run_table5_validation.py scripts/run_case_zhishi.py scripts/predict.py scripts/run_phase7.py scripts/run_table6_mapping.py`: passed.
 - A local one-fold LR numerical rerun was attempted but interrupted after more than 2.5 minutes on CPU; rerun corrected ML baselines on the GPU server instead.
 
 ## Current Reports To Trust
@@ -179,19 +186,21 @@ No code-level pytest result is available from this inspection. Existing result f
 2. Restore or regenerate a clean main-run predictor checkpoint.
    - Re-run the main Table 2 MSAT training or copy the intended main checkpoint to `saved_models/best_model_for_prediction.pt`.
    - Then regenerate Table 5 and the Zhishi case.
-3. Normalize Table 5 protocol and rerun Table 5 -> Table 6 in one pass.
+3. Run `scripts/rerun_after_artifact_fix.sh` on the server once it is available.
+   - It reruns corrected 1:10 ML baselines and regenerates Table 5, Table 6, and the Zhishi case with explicit checkpoint provenance.
+4. Normalize Table 5 protocol and rerun Table 5 -> Table 6 in one pass.
    - Decide whether the final paper-aligned claim uses exclude-all-positives, FAERS-only exclusion, predictor mode, or paper-herb diagnostic mode.
    - Write the chosen protocol explicitly into result filenames or metadata.
-4. Re-run Fig.6 only after the checkpoint and metadata fixes are deployed.
+5. Re-run Fig.6 only after the checkpoint and metadata fixes are deployed.
    - Current Fig.6 mismatch may be a real model/protocol result, but the regenerated summaries will be easier to audit.
-5. Improve Table 5 evidence validation.
+6. Improve Table 5 evidence validation.
    - TCMDA has no public API path here; use explicit manual cache entries or approved external evidence sources only.
    - Avoid claiming paper's 13/15 unless the same evidence definition is implemented.
-6. Fix Table 6 mapping.
+7. Fix Table 6 mapping.
    - Prefer `paper_table6_reference.json` for paper-comparison rows.
    - Expand PT/SOC rules for Stomach, Kidney, Liver, etc.
-7. Finish Zhishi readability.
+8. Finish Zhishi readability.
    - Map target IDs in the nobiletin paths to ABCG2/BCRP where supported.
    - Ensure report text is updated to current rank/score.
-8. Reconcile report drift.
+9. Reconcile report drift.
    - Update `REPRODUCTION_REPORT.md` sections 10.7, 10.8, 12, and 13 after remote results are pulled back.

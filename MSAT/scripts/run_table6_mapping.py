@@ -15,6 +15,7 @@ MSAT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(MSAT_ROOT))
 
 from inference.tcm_mapping import map_adr_to_tcm_systems
+from inference.artifact_manifest import artifact_status, file_manifest
 
 
 def main() -> None:
@@ -37,6 +38,8 @@ def main() -> None:
 
     summary = {
         'created_at': datetime.now().isoformat(),
+        'artifact_status': artifact_status(stale=False),
+        'input_manifest': file_manifest(args.input),
         'input': str(args.input),
         'output': str(args.out),
         'n_rows': len(df),

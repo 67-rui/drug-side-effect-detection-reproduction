@@ -16,6 +16,12 @@ from inference.predictor import MSATPredictor
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='MSAT CMM–ADR link prediction')
+    parser.add_argument(
+        '--checkpoint',
+        type=Path,
+        default=None,
+        help='Prediction checkpoint. Defaults to saved_models/best_model_for_prediction.pt',
+    )
     sub = parser.add_subparsers(dest='cmd', required=True)
 
     p_herb = sub.add_parser('herb', help='Top-K ADR for one CMM')
@@ -33,7 +39,7 @@ def main() -> None:
     p_formula.add_argument('--top-k', type=int, default=15)
 
     args = parser.parse_args()
-    predictor = MSATPredictor()
+    predictor = MSATPredictor(checkpoint=args.checkpoint)
 
     if args.cmd == 'herb':
         out = predictor.predict_herb(args.herb_id, top_k=args.top_k, threshold=args.threshold)

@@ -38,12 +38,15 @@ These fixes are in local code, but the result JSON files above still reflect the
 - ML baseline leakage fix: classical ML pair features now exclude CMM-ADR `edge_attr` by default. Before the fix, fold 0 1:10 diagnostics showed edge-attribute presence separated labels with accuracy 1.0.
 - Checkpoint isolation fix: tagged MSAT runs now save to `saved_models/best_model_for_prediction_<tag>.pt`, while the main run keeps `saved_models/best_model_for_prediction.pt`.
 - Metadata fix: future MSAT summaries include `test_neg_ratio`; future GNN baseline JSON files include data/model/training config.
+- Artifact provenance fix: future Table 5, Table 6, Zhishi case, prediction, and Phase 7 outputs can use explicit checkpoints and record file manifests.
+- Stale marking: current final-sync Table 5, Table 6, and Zhishi JSON files are marked stale until regenerated with explicit checkpoint provenance.
+- Server rerun helper: `scripts/rerun_after_artifact_fix.sh`.
 - Regression tests added for pair-feature leakage and checkpoint paths.
 
 Verification:
 
-- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 7 passed.
-- `/Users/a67_2024/opt/anaconda3/bin/python -m py_compile baselines/common.py baselines/ml_models.py baselines/gnn_models.py train.py scripts/run_imbalance_sweep.py`: passed.
+- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 9 passed.
+- `/Users/a67_2024/opt/anaconda3/bin/python -m py_compile inference/artifact_manifest.py scripts/run_table5_validation.py scripts/run_case_zhishi.py scripts/predict.py scripts/run_phase7.py scripts/run_table6_mapping.py`: passed.
 
 ## Recommended Next Steps
 

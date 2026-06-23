@@ -1,5 +1,9 @@
 {
   "created_at": "2026-06-23T16:11:14.653375",
+  "artifact_status": {
+    "stale": true,
+    "reason": "Generated before checkpoint/input provenance tracking; do not cite until regenerated after the leakage and checkpoint-isolation fixes."
+  },
   "protocol": "paper_3.5.6_global_top15",
   "source_summary": "/root/autodl-tmp/MSAT/results/summary.json",
   "scoring_mode": "oof_pooled",

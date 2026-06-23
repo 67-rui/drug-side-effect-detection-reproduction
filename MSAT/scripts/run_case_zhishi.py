@@ -16,6 +16,7 @@ MSAT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(MSAT_ROOT))
 
 from config import DataConfig
+from inference.artifact_manifest import artifact_status, file_manifest
 from inference.entity_mapping import EntityNames
 from inference.paper_herbs import ZHISHI_LATIN
 from inference.graph_utils import explain_herb_adr
@@ -58,6 +59,12 @@ def main() -> None:
         type=Path,
         default=MSAT_ROOT / 'results' / 'case_zhishi_diarrhoea.json',
     )
+    parser.add_argument(
+        '--checkpoint',
+        type=Path,
+        default=None,
+        help='Prediction checkpoint. Defaults to saved_models/best_model_for_prediction.pt',
+    )
     args = parser.parse_args()
 
     names = EntityNames.load()
@@ -67,7 +74,8 @@ def main() -> None:
             '枳实 herb_id not found in paper_herb_id_map; run build_entity_mapping.py first'
         )
 
-    predictor = MSATPredictor()
+    predictor = MSATPredictor(checkpoint=args.checkpoint)
+    checkpoint = args.checkpoint or MSATPredictor.DEFAULT_CHECKPOINT
     scores = predictor.score_herb_all_adrs(herb_id)
     adr_id, score = max(
         ((a, float(scores[a])) for a in range(predictor.n_adr) if DIARRHEA_RE.search(predictor.adr_label(a))),
@@ -89,6 +97,8 @@ def main() -> None:
     rank = int((scores >= score).sum())
     payload = {
         'created_at': datetime.now().isoformat(),
+        'artifact_status': artifact_status(stale=False),
+        'checkpoint': file_manifest(checkpoint),
         'herb_id': herb_id,
         'herb_latin': ZHISHI_LATIN,
         'herb_label': names.herb_display(herb_id),

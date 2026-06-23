@@ -17,6 +17,7 @@ sys.path.insert(0, str(MSAT_ROOT))
 
 from inference.paper_herbs import ZHISHI_LATIN
 from inference.predictor import MSATPredictor
+from inference.artifact_manifest import file_manifest
 
 
 DEFAULT_KEYWORDS = ['枳实', 'Citrus aurantium']
@@ -74,9 +75,15 @@ def main() -> None:
         default=MSAT_ROOT / 'results',
         help='Output directory for phase7 artifacts',
     )
+    parser.add_argument(
+        '--checkpoint',
+        type=Path,
+        default=None,
+        help='Prediction checkpoint. Defaults to saved_models/best_model_for_prediction.pt',
+    )
     args = parser.parse_args()
 
-    predictor = MSATPredictor()
+    predictor = MSATPredictor(checkpoint=args.checkpoint)
     out_dir = args.out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -120,6 +127,7 @@ def main() -> None:
 
     summary = {
         'created_at': datetime.now().isoformat(),
+        'checkpoint': file_manifest(args.checkpoint or MSATPredictor.DEFAULT_CHECKPOINT),
         'herb_keywords': args.keywords,
         'resolved_herb_ids': herb_ids,
         'topk': args.top_k,
