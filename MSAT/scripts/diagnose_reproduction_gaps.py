@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import tarfile
 from pathlib import Path
 
 import numpy as np
@@ -63,6 +64,70 @@ def checkpoint_provenance(
         'local_checkpoint_sha256': local_sha,
         'local_checkpoint_matches_expected': matches,
         'warning': warning,
+    }
+
+
+def checkpoint_recovery_inventory(
+    expected_sha256: str | None = None,
+    model_dir: Path | None = None,
+    result_bundle: Path | None = None,
+) -> dict:
+    table5_summary = load_summary('table5_summary.json')
+    expected_sha = expected_sha256 or (table5_summary.get('checkpoint') or {}).get('sha256')
+    models = model_dir or (MSAT_ROOT / 'saved_models')
+    bundle = result_bundle or (
+        MSAT_ROOT / 'server_results_2026-06-24' / 'phase9_results_bundle.tgz'
+    )
+
+    matching_paths = []
+    scanned = []
+    if models.is_dir() and expected_sha:
+        for path in sorted(models.glob('*.pt')):
+            manifest = file_manifest(path)
+            scanned.append(
+                {
+                    'path': str(path),
+                    'sha256': manifest.get('sha256'),
+                    'size_bytes': manifest.get('size_bytes'),
+                    'matches_expected': manifest.get('sha256') == expected_sha,
+                }
+            )
+            if manifest.get('sha256') == expected_sha:
+                matching_paths.append(str(path))
+
+    bundle_contains_checkpoint = False
+    bundle_error = None
+    if bundle.is_file():
+        try:
+            with tarfile.open(bundle, 'r:*') as tf:
+                names = tf.getnames()
+            bundle_contains_checkpoint = any(
+                name.endswith('.pt') or name.endswith('.pth') or name.endswith('.ckpt')
+                for name in names
+            )
+        except tarfile.TarError as exc:
+            bundle_error = f'{type(exc).__name__}: {exc}'
+    else:
+        bundle_error = 'bundle missing'
+
+    return {
+        'expected_checkpoint_sha256': expected_sha,
+        'model_dir': str(models),
+        'scanned_local_checkpoints': scanned,
+        'matching_local_checkpoints': matching_paths,
+        'result_bundle': str(bundle),
+        'result_bundle_exists': bundle.is_file(),
+        'result_bundle_contains_checkpoint': bundle_contains_checkpoint,
+        'result_bundle_error': bundle_error,
+        'can_restore_from_current_local_state': bool(
+            matching_paths or bundle_contains_checkpoint
+        ),
+        'minimum_supplemental_materials': [
+            f'Original predictor checkpoint with sha256 {expected_sha}',
+            'Exact Table 5 export script/notebook used after model training',
+            'Exact candidate-pool definition for "not included among labeled positives"',
+            'TCMDA/literature evidence records for each accepted Top-15 row',
+        ],
     }
 
 
@@ -322,6 +387,7 @@ def main() -> None:
                 'unseen_cmm': unseen,
                 'table5': t5,
                 'checkpoint_provenance': checkpoint_provenance(),
+                'checkpoint_recovery_inventory': checkpoint_recovery_inventory(),
                 'coldstart_reported': [
                     {k: row[k] for k in ('model', 'precision', 'mcc', 'auc') if k in row}
                     for row in json.loads(cold.read_text()).get('models', [])

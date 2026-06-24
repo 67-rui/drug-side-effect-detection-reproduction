@@ -1,7 +1,11 @@
 import json
 from pathlib import Path
 
-from scripts.diagnose_reproduction_gaps import checkpoint_provenance, table5_diagnostics
+from scripts.diagnose_reproduction_gaps import (
+    checkpoint_provenance,
+    checkpoint_recovery_inventory,
+    table5_diagnostics,
+)
 
 
 def test_table5_diagnostics_runs_and_flags_paper_seed_mode_as_diagnostic_only():
@@ -49,3 +53,24 @@ def test_checkpoint_provenance_detects_local_hash_mismatch(tmp_path: Path):
     assert provenance['local_checkpoint_exists'] is True
     assert provenance['local_checkpoint_matches_expected'] is False
     assert 'not the checkpoint that generated Table 5' in provenance['warning']
+
+
+def test_checkpoint_recovery_inventory_finds_local_match_and_reports_bundle_absence(tmp_path: Path):
+    model_dir = tmp_path / 'saved_models'
+    model_dir.mkdir()
+    match = model_dir / 'best_model_for_prediction.pt'
+    match.write_bytes(b'target')
+    other = model_dir / 'best_model_fold0.pt'
+    other.write_bytes(b'other')
+    bundle = tmp_path / 'results_only.tgz'
+    bundle.write_bytes(b'not-a-tar')
+
+    inventory = checkpoint_recovery_inventory(
+        expected_sha256='34a04005bcaf206eec990bd9637d9fdb6725e0a0c0d4aebf003f17f4c956eb5c',
+        model_dir=model_dir,
+        result_bundle=bundle,
+    )
+
+    assert inventory['matching_local_checkpoints'] == [str(match)]
+    assert inventory['result_bundle_contains_checkpoint'] is False
+    assert inventory['minimum_supplemental_materials'][0].startswith('Original predictor checkpoint')

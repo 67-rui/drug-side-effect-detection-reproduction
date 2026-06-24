@@ -30,6 +30,27 @@ The current evidence indicates that the gap is not only missing external validat
 | Current OOF space | `results/reproduction_gap_diagnosis.json` maps 14/15 paper rows to local IDs, but only 1/15 appears in OOF fold predictions | OOF pooled predictions cannot reproduce the paper Table 5 list |
 | Paper-seed diagnostic | `paper_seed_top1_oof` reaches 13/15 support but has `adr_match_paper: 0` | This mode explains the paper evidence labels but is not a Table 5 pair reproduction |
 | Checkpoint provenance | Local `saved_models/best_model_for_prediction.pt` sha256 differs from the server checkpoint sha256 recorded in `results/table5_summary.json` | Do not use the current local checkpoint to diagnose server-generated Table 5 rankings |
+| Recovery inventory | `checkpoint_recovery_inventory.can_restore_from_current_local_state` is `false`; 13 local `.pt` files were scanned and the synced server bundle contains no checkpoint | The exact Table 5 predictor checkpoint is not recoverable from the current local workspace/results bundle |
+
+## Current Reproducibility Decision
+
+With the currently available public code, official split/data, synced result bundle, and local checkpoints, Table 5 cannot be reproduced as a paper-equivalent artifact.
+
+This decision is based on four independent checks:
+
+1. The released official code does not include the Table 5 export script/notebook.
+2. OOF fold predictions do not contain the paper Table 5 candidate space: only 1/15 mapped paper pairs appears in OOF scores.
+3. The local predictor checkpoint does not match the server checkpoint that generated the current Table 5 output.
+4. The synced server result bundle contains result files only, not the missing predictor checkpoint.
+
+Minimum supplemental material required to reopen reproduction:
+
+| Required material | Why it is needed |
+| --- | --- |
+| Predictor checkpoint with sha256 `506e7fd3a1d81e1fd97651542494e51019be351fb39e73a3d8dd32c335283e95` | Recompute and inspect the current server-generated Table 5 ranking |
+| Exact Table 5 export script or notebook used by the authors | Resolve candidate enumeration, filtering, and sorting details omitted from the paper text |
+| Exact definition of "not included among labeled positives" | Determine whether the pool excludes FAERS positives only, all graph positives, fold positives, or another label subset |
+| Row-level TCMDA/literature evidence records | Verify the 13/15 support claim without relying on paper labels alone |
 
 ## Accepted Table 5 Modes
 

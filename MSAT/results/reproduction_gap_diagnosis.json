@@ -106,6 +106,102 @@
     "local_checkpoint_matches_expected": false,
     "warning": "Local checkpoint is not the checkpoint that generated Table 5; do not use it for Table 5 ranking diagnosis."
   },
+  "checkpoint_recovery_inventory": {
+    "expected_checkpoint_sha256": "506e7fd3a1d81e1fd97651542494e51019be351fb39e73a3d8dd32c335283e95",
+    "model_dir": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models",
+    "scanned_local_checkpoints": [
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/._best_model_fold0.pt",
+        "sha256": "ee38363907b79f7b026991224cc156259910188f258b3ee07ac61bfd987f71ef",
+        "size_bytes": 163,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold0.pt",
+        "sha256": "fe84d1baaa3a9d8244e57defd1fd73360935c9d928822934ebe2d8d7937c9708",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold1.pt",
+        "sha256": "182887fff922282ff4154ecf07d8543b440fd76abe0f884c78714d143c969167",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold2.pt",
+        "sha256": "7611ad4af65dfd2a467f1e18a3634a2c0501c9124081c4a628cb3cb93d6d9301",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold3.pt",
+        "sha256": "f1575347b70062f4ac00433ee0092de47bb2591277b2dbf1605fb87551fed882",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold4.pt",
+        "sha256": "0b008f76c1cc884e1c76b224c69f8c0c95dabb0121844bbf0c5ff15bb3554203",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold5.pt",
+        "sha256": "6fab9589f3d5106ea83e8a0c8dea07c1de359839eb9bfe538a54ed637ae0257e",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold6.pt",
+        "sha256": "ba7d52e4c771ccbb551155e1dd389fb693682a05e1042ca9da071c9c74960b58",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold7.pt",
+        "sha256": "09304c2117d32217b2e402368fd17ab60e0e04c7269acf3268a3e38e841a86f0",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold8.pt",
+        "sha256": "afd482050989b62158dc6ee2bddd4cf45dd3843f22fd498df44880ee3eb68e59",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_fold9.pt",
+        "sha256": "008a2c2c898f4fad6619e524c38769f661cc0c6a423d224c3e7259126dd3aa5e",
+        "size_bytes": 678479831,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt",
+        "sha256": "26d65adad1ffe275b938aa89326c113e4bb70b5770f35df5e40ce7a145484e19",
+        "size_bytes": 678475403,
+        "matches_expected": false
+      },
+      {
+        "path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/faers_only_coldstart.pt",
+        "sha256": "e71967b20665297278a1005534bc4291a074f9fbc90a96fd631cc416f89c442b",
+        "size_bytes": 678470759,
+        "matches_expected": false
+      }
+    ],
+    "matching_local_checkpoints": [],
+    "result_bundle": "/Users/a67_2024/Desktop/drug-detect/MSAT/server_results_2026-06-24/phase9_results_bundle.tgz",
+    "result_bundle_exists": true,
+    "result_bundle_contains_checkpoint": false,
+    "result_bundle_error": null,
+    "can_restore_from_current_local_state": false,
+    "minimum_supplemental_materials": [
+      "Original predictor checkpoint with sha256 506e7fd3a1d81e1fd97651542494e51019be351fb39e73a3d8dd32c335283e95",
+      "Exact Table 5 export script/notebook used after model training",
+      "Exact candidate-pool definition for \"not included among labeled positives\"",
+      "TCMDA/literature evidence records for each accepted Top-15 row"
+    ]
+  },
   "coldstart_reported": [
     {
       "model": "MSAT",
