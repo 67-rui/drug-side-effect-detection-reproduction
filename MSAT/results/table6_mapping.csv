@@ -1,16 +1,16 @@
 rank,herb_id,pinyin,latin,chinese,adr_id,adr_pt,score_pct,database_verified,tcmda_evidence,mechanistic_support,path_hint,tcm_system_mapping
-1,196,LIANG SHAN XIANG CHA CAI,Isodon liangshanica,,4872,Decreased appetite,99.913,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Stomach
-2,191,HAN SHUI SHI,Calcitum,寒水石,2566,Acute liver injury,99.894,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Liver+Qi-Blood-Fluid
-3,191,HAN SHUI SHI,Calcitum,寒水石,1040,Feeling sad,99.873,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-4,613,PO LUO MEN ZAO JIA,Cassia fistula,,2216,Pars planitis,99.865,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-5,52,,Origani herba,,5969,Hyperhemoglobinemia,99.855,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-6,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,2902,Mental disability,99.85,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-7,339,BAO YE XIANG CHA CAI,Isodon melissoides,,1768,Acute febrile illness,99.835,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-8,500,TONG XING LIE PIAN HU ZHI ZI,Lespedeza homoloba,同形裂片胡枝子,2850,Dementia,99.821,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-9,333,WU ZHU FEI YAN CAO,Delphinium pentagynum,,5367,Exostosis,99.809,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-10,573,BA QIA,Smilax china [Syn. Smilax japonica ],菝契,666,Vitreous disorder,99.8,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-11,495,HE LAN ZHONG ZHI FAN HONG HUA,Crocus antalyensis cv,荷兰种植番红花,2562,Nicotinic acid deficiency,99.8,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-12,3,HUO XING TAN,,活性碳,5965,Atrioventricular dissociation,99.798,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-13,363,MA GUI HUA,Embelia oblongifolia,,4719,Knee pain,99.785,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-14,333,WU ZHU FEI YAN CAO,Delphinium pentagynum,,2087,Blood cholesterol increased,99.782,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
-15,495,HE LAN ZHONG ZHI FAN HONG HUA,Crocus antalyensis cv,荷兰种植番红花,3387,Light anaesthesia,99.78,False,,True,成分介导：荷兰种植番红花（Crocus antalyensis cv） → Compound #821 → Target #20703 ← Light anaesthesia,Qi-Blood-Fluid
+1,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,3989,Altered state of consciousness,99.946,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+2,237,YE CAO MEI,Fragaria vesca?L.,野草莓,3989,Altered state of consciousness,99.939,False,,True,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness,Qi-Blood-Fluid
+3,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,3698,Spermatogenesis arrest,99.937,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+4,526,LI SHU PI,Castanea mollissima,板栗,3698,Spermatogenesis arrest,99.935,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+5,483,XIANG CHUAN PI,Cortex Citri,香椽皮,3989,Altered state of consciousness,99.934,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+6,237,YE CAO MEI,Fragaria vesca?L.,野草莓,1323,Haemoglobin increased,99.928,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+7,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,4535,Flushing,99.928,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+8,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,4363,Vegetative dystonia,99.926,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+9,526,LI SHU PI,Castanea mollissima,板栗,4363,Vegetative dystonia,99.923,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+10,539,YAN SUAN MA LIN GUA,Moroxydini Hydrochloridum,盐酸吗啉胍,3989,Altered state of consciousness,99.922,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+11,145,CI CAI JI,Cynara cardunculus,刺菜蓟,4535,Flushing,99.922,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+12,237,YE CAO MEI,Fragaria vesca?L.,野草莓,4363,Vegetative dystonia,99.921,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+13,337,AI JI CHE ZHOU CAO,Trifolium alexandrinum,埃及三叶草,3989,Altered state of consciousness,99.921,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+14,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,2453,Spina bifida,99.92,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid
+15,339,BAO YE XIANG CHA CAI,Isodon melissoides,,3989,Altered state of consciousness,99.92,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,Qi-Blood-Fluid

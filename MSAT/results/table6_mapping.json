@@ -1,10 +1,16 @@
 {
-  "created_at": "2026-06-23T16:11:15.576565",
+  "created_at": "2026-06-24T02:10:26.050331",
   "artifact_status": {
-    "stale": true,
-    "reason": "Generated from the stale Table 5 output before input provenance tracking."
+    "stale": false
   },
-  "input": "/root/autodl-tmp/MSAT/results/table5_top15.csv",
-  "output": "/root/autodl-tmp/MSAT/results/table6_mapping.csv",
+  "input_manifest": {
+    "path": "/root/autodl-tmp/drug-detect-fix/MSAT/results/table5_top15.csv",
+    "exists": true,
+    "size_bytes": 2989,
+    "mtime": "2026-06-23T18:10:23.837689+00:00",
+    "sha256": "f6350cf9d43d438d36d80d271327c17d52d0b5f04ec0aa89925959c5416ed530"
+  },
+  "input": "/root/autodl-tmp/drug-detect-fix/MSAT/results/table5_top15.csv",
+  "output": "/root/autodl-tmp/drug-detect-fix/MSAT/results/table6_mapping.csv",
   "n_rows": 15
 }

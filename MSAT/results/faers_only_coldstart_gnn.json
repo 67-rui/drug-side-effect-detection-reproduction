@@ -5,20 +5,20 @@
       "model_key": "gat",
       "protocol": "paper_3.5.4_faers_train_literature_eval",
       "test_metrics_full": {
-        "precision": 0.7695214105793451,
-        "recall": 0.9201807228915663,
-        "f1": 0.8381344307270233,
-        "auc": 0.9097570628901146,
-        "mcc": 0.657298875486034
+        "precision": 0.7814696485623003,
+        "recall": 0.920933734939759,
+        "f1": 0.8454891116488075,
+        "auc": 0.9140545616199738,
+        "mcc": 0.6742273445657595
       },
       "fig5a_literature_holdout": {
         "status": "ok",
         "n": 2656,
         "n_pos": 1328,
         "n_neg": 1328,
-        "precision": 0.7695214105793451,
-        "mcc": 0.657298875486034,
-        "auc": 0.9097570628901146,
+        "precision": 0.7814696485623003,
+        "mcc": 0.6742273445657595,
+        "auc": 0.9140545616199738,
         "unseen_herb_rate": 0.9647058823529412,
         "unique_lit_herbs": 170,
         "unique_unseen_herbs": 164
@@ -29,20 +29,20 @@
       "model_key": "hgt",
       "protocol": "paper_3.5.4_faers_train_literature_eval",
       "test_metrics_full": {
-        "precision": 0.8031914893617021,
-        "recall": 0.9096385542168675,
-        "f1": 0.8531073446327684,
-        "auc": 0.9208030351829003,
-        "mcc": 0.6928587096149992
+        "precision": 0.8111988513998565,
+        "recall": 0.8509036144578314,
+        "f1": 0.830576993752297,
+        "auc": 0.9035903591776746,
+        "mcc": 0.6536448804303963
       },
       "fig5a_literature_holdout": {
         "status": "ok",
         "n": 2656,
         "n_pos": 1328,
         "n_neg": 1328,
-        "precision": 0.8031914893617021,
-        "mcc": 0.6928587096149992,
-        "auc": 0.9208030351829003,
+        "precision": 0.8111988513998565,
+        "mcc": 0.6536448804303963,
+        "auc": 0.9035903591776746,
         "unseen_herb_rate": 0.9647058823529412,
         "unique_lit_herbs": 170,
         "unique_unseen_herbs": 164
@@ -53,20 +53,20 @@
       "model_key": "simple_hgn",
       "protocol": "paper_3.5.4_faers_train_literature_eval",
       "test_metrics_full": {
-        "precision": 0.7762991128010139,
-        "recall": 0.9224397590361446,
-        "f1": 0.8430832759807295,
-        "auc": 0.9108236409493395,
-        "mcc": 0.6685803450988335
+        "precision": 0.8090349075975359,
+        "recall": 0.8900602409638554,
+        "f1": 0.847615632843313,
+        "auc": 0.9132405941537234,
+        "mcc": 0.6834058462794972
       },
       "fig5a_literature_holdout": {
         "status": "ok",
         "n": 2656,
         "n_pos": 1328,
         "n_neg": 1328,
-        "precision": 0.7762991128010139,
-        "mcc": 0.6685803450988335,
-        "auc": 0.9108236409493395,
+        "precision": 0.8090349075975359,
+        "mcc": 0.6834058462794972,
+        "auc": 0.9132405941537234,
         "unseen_herb_rate": 0.9647058823529412,
         "unique_lit_herbs": 170,
         "unique_unseen_herbs": 164

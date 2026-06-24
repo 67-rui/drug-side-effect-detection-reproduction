@@ -1,16 +1,22 @@
 {
-  "created_at": "2026-06-23T16:11:11.027298",
+  "created_at": "2026-06-24T02:05:29.542132",
   "artifact_status": {
-    "stale": true,
-    "reason": "Generated before checkpoint provenance was recorded; final synced checkpoint may have been overwritten by tagged Fig.6 or ablation runs."
+    "stale": false
+  },
+  "checkpoint": {
+    "path": "/root/autodl-tmp/drug-detect-fix/MSAT/saved_models/best_model_for_prediction.pt",
+    "exists": true,
+    "size_bytes": 678475403,
+    "mtime": "2026-06-23T13:07:43.927162+00:00",
+    "sha256": "506e7fd3a1d81e1fd97651542494e51019be351fb39e73a3d8dd32c335283e95"
   },
   "herb_id": 277,
   "herb_latin": "Citrus aurantium L.",
   "herb_label": "枳实（Citrus aurantium L.）",
   "adr_id": 2931,
   "adr_label": "Watery diarrhoea",
-  "score": 0.2548621594905853,
-  "rank": 7,
+  "score": 0.6849409937858582,
+  "rank": 1,
   "rank_total": 5974,
   "paths": [
     "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8967 → Watery diarrhoea",

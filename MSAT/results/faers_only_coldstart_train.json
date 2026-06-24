@@ -1,30 +1,30 @@
 {
-  "created_at": "2026-06-22T21:46:45.285360",
+  "created_at": "2026-06-24T02:11:56.968913",
   "protocol": "paper_3.5.4_faers_train_literature_eval",
   "train_faers_pos": 25734,
   "train_samples": 46322,
   "val_samples": 5146,
   "test_literature_pos": 1328,
   "test_samples": 2656,
-  "best_val_auc": 0.8887047758502636,
-  "optimal_threshold": 0.38,
+  "best_val_auc": 0.8902438232299332,
+  "optimal_threshold": 0.31,
   "test_metrics_full": {
-    "precision": 0.7831858407079646,
-    "recall": 0.9329819277108434,
-    "f1": 0.8515463917525773,
-    "auc": 0.9280899010197416,
-    "auprc": 0.9340951594482529,
-    "mcc": 0.6873890813172844,
-    "threshold": 0.38
+    "precision": 0.7651048088779285,
+    "recall": 0.9344879518072289,
+    "f1": 0.8413559322033898,
+    "auc": 0.9328982912069966,
+    "auprc": 0.9391295227923306,
+    "mcc": 0.6640683117709314,
+    "threshold": 0.31
   },
   "fig5a_literature_holdout": {
     "status": "ok",
     "n": 2656,
     "n_pos": 1328,
     "n_neg": 1328,
-    "precision": 0.8259109311740891,
-    "mcc": 0.7323504894357484,
-    "auc": 0.9280899010197416,
+    "precision": 0.8333333333333334,
+    "mcc": 0.7388242670210217,
+    "auc": 0.9328982912069966,
     "unseen_herb_rate": 0.9647058823529412,
     "unique_lit_herbs": 170,
     "unique_unseen_herbs": 164
@@ -39,6 +39,6 @@
     "unseen_pairs": 1280,
     "paper_target_unseen_pct": 0.965
   },
-  "train_seconds": 77.0695161819458,
-  "checkpoint": "/root/autodl-tmp/MSAT/saved_models/faers_only_coldstart.pt"
+  "train_seconds": 78.50462698936462,
+  "checkpoint": "/root/autodl-tmp/drug-detect-fix/MSAT/saved_models/faers_only_coldstart.pt"
 }

@@ -15,7 +15,7 @@ import torch
 MSAT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(MSAT_ROOT))
 
-from baselines.common import FoldSplit
+from baselines.common import FoldSplit, build_edge_attr_map
 from baselines.gnn_models import train_eval_gnn
 from inference.coldstart import literature_pairs
 from scripts.run_faers_only_coldstart_train import (
@@ -52,6 +52,7 @@ def prepare_faers_only_fold() -> tuple[FoldSplit, set[tuple[int, int]], set[int]
     test_data = sample_pairs(lit_pos, num_adr, all_pos_set, seed=44, neg_ratio=1)
 
     data = faers_only_graph(lit_pairs)
+    edge_attr_map = build_edge_attr_map(data)
     pos_ei = data['herb', 'causes', 'adr'].edge_index
     herb_train_degree = np.bincount(
         pos_ei[0].numpy(), minlength=data['herb'].x.size(0)
@@ -72,6 +73,7 @@ def prepare_faers_only_fold() -> tuple[FoldSplit, set[tuple[int, int]], set[int]
         herb_x=data['herb'].x.numpy(),
         adr_x=data['adr'].x.numpy(),
         herb_train_degree=herb_train_degree,
+        edge_attr_map=edge_attr_map,
     )
     faers_herbs = set(faers_pos[:, 0].tolist())
     return fold, lit_pairs, faers_herbs
