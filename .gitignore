@@ -40,6 +40,7 @@ MSAT/results/archive_pre_paper_align_2026-06-22/
 MSAT/results/phase8_logs/
 MSAT/results/**/*.log
 MSAT/results/**/*.tgz
+MSAT/server_results_*/
 
 # Virtual environments / build outputs
 venv/
