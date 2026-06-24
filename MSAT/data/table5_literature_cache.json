@@ -1,0 +1,892 @@
+{
+  "queries": {
+    "pubmed::\"Anemone obtusiloba\" \"Altered state of consciousness\"": {
+      "provider": "pubmed",
+      "query": "\"Anemone obtusiloba\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:02:57.463416"
+    },
+    "openalex::\"Anemone obtusiloba\" \"Altered state of consciousness\"": {
+      "provider": "openalex",
+      "query": "\"Anemone obtusiloba\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:00.488384"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Altered state of consciousness\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:02.851938"
+    },
+    "openalex::\"Fragaria vesca L.\" \"Altered state of consciousness\"": {
+      "provider": "openalex",
+      "query": "\"Fragaria vesca L.\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:05.446986"
+    },
+    "pubmed::\"Anemone obtusiloba\" \"Spermatogenesis arrest\"": {
+      "provider": "pubmed",
+      "query": "\"Anemone obtusiloba\" \"Spermatogenesis arrest\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:10.208859"
+    },
+    "openalex::\"Anemone obtusiloba\" \"Spermatogenesis arrest\"": {
+      "provider": "openalex",
+      "query": "\"Anemone obtusiloba\" \"Spermatogenesis arrest\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:13.062741"
+    },
+    "pubmed::\"Castanea mollissima\" \"Spermatogenesis arrest\"": {
+      "provider": "pubmed",
+      "query": "\"Castanea mollissima\" \"Spermatogenesis arrest\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:16.237774"
+    },
+    "openalex::\"Castanea mollissima\" \"Spermatogenesis arrest\"": {
+      "provider": "openalex",
+      "query": "\"Castanea mollissima\" \"Spermatogenesis arrest\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:19.073773"
+    },
+    "pubmed::\"Cortex Citri\" \"Altered state of consciousness\"": {
+      "provider": "pubmed",
+      "query": "\"Cortex Citri\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:21.987998"
+    },
+    "openalex::\"Cortex Citri\" \"Altered state of consciousness\"": {
+      "provider": "openalex",
+      "query": "\"Cortex Citri\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:23.771200"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Haemoglobin increased\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Haemoglobin increased\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:26.273045"
+    },
+    "openalex::\"Fragaria vesca L.\" \"Haemoglobin increased\"": {
+      "provider": "openalex",
+      "query": "\"Fragaria vesca L.\" \"Haemoglobin increased\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:29.124385"
+    },
+    "pubmed::\"Anemone obtusiloba\" \"Flushing\"": {
+      "provider": "pubmed",
+      "query": "\"Anemone obtusiloba\" \"Flushing\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:32.504067"
+    },
+    "openalex::\"Anemone obtusiloba\" \"Flushing\"": {
+      "provider": "openalex",
+      "query": "\"Anemone obtusiloba\" \"Flushing\"",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Risk assessment in the plateau pika (Ochotona curzoniae): intensity of behavioral response differs with predator species",
+          "url": "https://openalex.org/W3043080796",
+          "year": "2020",
+          "source": "BMC Ecology",
+          "doi": "10.1186/s12898-020-00309-3",
+          "pmid": null,
+          "abstract": "BACKGROUND: The ability of a prey species to assess the risk that a predator poses can have important fitness advantages for the prey species. To better understand predator-prey interactions, more species need to be observed to determine how prey behavioral responses differ in intensity when approached by different types of predators. The plateau pika (Ochotona curzoniae) is preyed upon by all predators occurring in its distribution area. Therefore, it is an ideal species to study anti-predator behavior. In this study, we investigated the intensity of anti-predator behavior of pikas in response to visual cues by using four predator species models in Maqu County on the eastern Qinghai-Tibetan Plateau. RESULTS: The behavioral response metrics, such as Flight Initiation Distance (FID), the hiding time and the percentage of vigilance were significantly different when exposed to a Tibetan fox, a wolf, a Saker falcon and a large-billed crow, respectively. Pikas showed a stronger response to Saker falcons compared to any of the other predators. CONCLUSIONS: Our results showed that pikas alter their behavioral (such as FID, the hiding time and the vigilance) response intensity to optimally balance the benefits when exposed to different taxidermy predator species models. We conclude that pikas are able to assess their actual risk of predation and show a threat-sensitive behavioral response."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:36.007807"
+    },
+    "pubmed::\"Anemone obtusiloba\" \"Vegetative dystonia\"": {
+      "provider": "pubmed",
+      "query": "\"Anemone obtusiloba\" \"Vegetative dystonia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:38.227374"
+    },
+    "openalex::\"Anemone obtusiloba\" \"Vegetative dystonia\"": {
+      "provider": "openalex",
+      "query": "\"Anemone obtusiloba\" \"Vegetative dystonia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:41.502088"
+    },
+    "pubmed::\"Castanea mollissima\" \"Vegetative dystonia\"": {
+      "provider": "pubmed",
+      "query": "\"Castanea mollissima\" \"Vegetative dystonia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:44.113939"
+    },
+    "openalex::\"Castanea mollissima\" \"Vegetative dystonia\"": {
+      "provider": "openalex",
+      "query": "\"Castanea mollissima\" \"Vegetative dystonia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:46.806734"
+    },
+    "pubmed::\"Moroxydini Hydrochloridum\" \"Altered state of consciousness\"": {
+      "provider": "pubmed",
+      "query": "\"Moroxydini Hydrochloridum\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:49.402684"
+    },
+    "openalex::\"Moroxydini Hydrochloridum\" \"Altered state of consciousness\"": {
+      "provider": "openalex",
+      "query": "\"Moroxydini Hydrochloridum\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:51.020328"
+    },
+    "pubmed::\"Cynara cardunculus\" \"Flushing\"": {
+      "provider": "pubmed",
+      "query": "\"Cynara cardunculus\" \"Flushing\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:53.525086"
+    },
+    "openalex::\"Cynara cardunculus\" \"Flushing\"": {
+      "provider": "openalex",
+      "query": "\"Cynara cardunculus\" \"Flushing\"",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Integrated Weed Management in Herbaceous Field Crops",
+          "url": "https://openalex.org/W3013143790",
+          "year": "2020",
+          "source": "Agronomy",
+          "doi": "10.3390/agronomy10040466",
+          "pmid": null,
+          "abstract": "Current awareness about the environmental impact of intensive agriculture, mainly pesticides and herbicides, has driven the research community and the government institutions to program and develop new eco-friendly agronomic practices for pest control. In this scenario, integrated pest management and integrated weed management (IWM) have become mandatory. Weeds are commonly recognized as the most important biotic factor affecting crop production, especially in organic farming and low-input agriculture. In herbaceous field crops, comprising a wide diversity of plant species playing a significant economic importance, a compendium of the specific IWM systems is missing, that, on the contrary, have been developed for single species. The main goal of this review is to fill such gap by discussing the general principles and basic aspects of IWM to develop the most appropriate strategy for herbaceous field crops. In particular, a 4-step approach is proposed: (i) prevention, based on the management of the soil seedbank and the improvement of the crop competitiveness against weeds, (ii) weed mapping, aiming at knowing the biological and ecological characteristics of weeds present in the field, (iii) the decision-making process on the basis of the critical period of weed control and weed thresholds and iv) direct control (mechanical, physical, biological and chemical). Moreover, the last paragraph discusses and suggests possible integrations of allelopathic mechanisms in IWM systems."
+        },
+        {
+          "provider": "openalex",
+          "title": "Ginger in gastrointestinal disorders: A systematic review of clinical trials",
+          "url": "https://openalex.org/W2899591997",
+          "year": "2018",
+          "source": "Food Science & Nutrition",
+          "doi": "10.1002/fsn3.807",
+          "pmid": null,
+          "abstract": "Ginger, the rhizome of Zingiber officinale, which is used as a spice globally has a long history of medicinal use that stimulates investigators to assess its potential roles as an adjuvant therapy or alternative medicine in a range of diseases. Anti-inflammatory, antioxidant, antitumor, and antiulcer effects of ginger have been proven in many scientific studies, and some of the ancient applications of ginger as a home remedy has been confirmed in human. In this review, we summarized the current evidence on the effects of ginger consumption on gastrointestinal disorders based on clinical trials. Our data indicate that divided lower daily dosage of 1500 mg ginger is beneficial for nausea relief. Because of limited number of studies on some other gastrointestinal disorders, the results may not be as much powered as to find significant results. Therefore, more extensive and well-controlled human studies of ginger or its standard extracts are required to demonstrate its efficacy as a gastroprotective agent. Dose-finding studies should be undertaken to accurately determine the effective dose and preparation of ginger in further clinical trials protocol."
+        },
+        {
+          "provider": "openalex",
+          "title": "Microbial diversity and cover plants in de-sealed urban soil as strategies for mitigating anthropogenic volatile organic compounds",
+          "url": "https://openalex.org/W4404904593",
+          "year": "2024",
+          "source": "Discover Soil.",
+          "doi": "10.1007/s44378-024-00022-3",
+          "pmid": null,
+          "abstract": "Abstract Urbanization exacerbates soil degradation, compromising global soil health and biodiversity. To reduce this, strategies for soil de-sealing and bioremediation are necessary. In a mesocosm experiment using a de-sealed soil from an urban site as substrate, an inoculum of arbuscular mycorrhizal fungi (AMF) and two cover plants, Cynara cardunculus L. and Trifolium repens L., were utilized to assess their effects on volatile organic compound (VOC) emissions and soil microbial community dynamics. The soil status was investigated employing soil VOC and metabarcoding analyses. Our results showed that the soil VOC emission was mainly composed by anthropogenic derived VOCs, especially arene and furan classes. These two classes were shown to be less concentrated in C. cardunculus soils, with and without AM fungal inoculation, suggesting a positive impact of these conditions on soil health restoration. Additionally, AM fungal inoculation of C. cardunculus resulted in increased bacterial alpha diversity, with enhanced Proteobacteria/Acidobacteria, Cyanobacteria/Chloroflexi, and Fungi/Bacteria ratios, suggesting an improvement in soil quality conditions. In our experimental conditions, order Chloroflexales and specific bacterial genera, including Ralstonia , Delftia , Ramlibacter , were identified as contributors to VOC degradation, highlighting their adaptability in contaminated environments. Overall, this study provided evidence on the importance of integrating AM fungal inoculation and specific flowerbed/ornamental plants in urban soil management after de-sealing processes."
+        },
+        {
+          "provider": "openalex",
+          "title": "High Fiber Cakes from Mediterranean Multipurpose Oilseeds as Protein Sources for Ruminants",
+          "url": "https://openalex.org/W2988690296",
+          "year": "2019",
+          "source": "Animals",
+          "doi": "10.3390/ani9110918",
+          "pmid": null,
+          "abstract": "Fifteen oilseed cakes from sunflower, pomegranate, cardoon, tobacco and hemp were characterized with regard to chemical composition, Cornell Net Carbohydrate and Protein System (CNCPS) fractionation, in vitro digestibility of dry matter, neutral detergent fiber, and crude protein. All the cakes presented low moisture, rather variable ether extract contents and medium to high levels of crude protein and neutral detergent fiber. The cakes significantly differed in terms of CNCPS partitioning and in vitro digestibility. Tobacco and hemp cakes presented high contents of slow degradable fractions of crude protein and carbohydrate joined to good post-ruminal protein digestibility. Cardoon cakes presented the highest rumen protein degradability. Based on crude protein content and intestinal digestibility of rumen undegraded protein, cakes of tobacco and hemp showed the better potential as alternative protein supplements for ruminants, while pomegranate appears to be the least suitable for ruminant feeding."
+        },
+        {
+          "provider": "openalex",
+          "title": "Characterization of Various Biomass Feedstock Suitable for Small-Scale Energy Plants as Preliminary Activity of Biocheaper Project",
+          "url": "https://openalex.org/W3053387680",
+          "year": "2020",
+          "source": "Sustainability",
+          "doi": "10.3390/su12166678",
+          "pmid": null,
+          "abstract": "The PRIN (Research Project with Relevant National Interest) project “Biocheaper—biomasses circular holistic economy approach to energy equipments” started in September 2019 and involves several universities: Palermo as the university coordinator, Perugia, Cassino, Enna, Pavia and Bolzano. The main goal of the project is to increase the energy efficiency and reduce the pollutants emissions in small-scale biomass plant for energy (heat and power) production. The project focuses on residual lignocellulosic feedstocks from the agriculture and forestry sector, from energy crops in marginal lands and residues from rivers maintenance. Starting from the selection and characterization of potential feedstocks, the project aims at developing some prototypes for retrofit applications in existing biomass boilers, like a mini-cyclone for the reduction of particulate emissions and an exhaust air-water condensing system for the recovery of water and the reuse in agriculture. This work presents the first results of the project, in particular regarding the selection and the chemical–physical characterization of different biomass, available in different zones of Italy; in particular the authors investigated cardoon chips, carthamus chips, olive and wine pruning, residues from rivers maintenance. Each biomass sample was characterized in terms of moisture content, ashes content, volatile substances, fixed carbon, low and high heating value, content of carbon, nitrogen, hydrogen and main metals."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:56.260422"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Vegetative dystonia\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Vegetative dystonia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:03:58.220675"
+    },
+    "openalex::\"Fragaria vesca L.\" \"Vegetative dystonia\"": {
+      "provider": "openalex",
+      "query": "\"Fragaria vesca L.\" \"Vegetative dystonia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:04:00.523230"
+    },
+    "pubmed::\"Trifolium alexandrinum\" \"Altered state of consciousness\"": {
+      "provider": "pubmed",
+      "query": "\"Trifolium alexandrinum\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:04:04.193489"
+    },
+    "openalex::\"Trifolium alexandrinum\" \"Altered state of consciousness\"": {
+      "provider": "openalex",
+      "query": "\"Trifolium alexandrinum\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:04:07.063855"
+    },
+    "pubmed::\"Anemone obtusiloba\" \"Spina bifida\"": {
+      "provider": "pubmed",
+      "query": "\"Anemone obtusiloba\" \"Spina bifida\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:04:08.462078"
+    },
+    "openalex::\"Anemone obtusiloba\" \"Spina bifida\"": {
+      "provider": "openalex",
+      "query": "\"Anemone obtusiloba\" \"Spina bifida\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:04:11.362849"
+    },
+    "pubmed::\"Isodon melissoides\" \"Altered state of consciousness\"": {
+      "provider": "pubmed",
+      "query": "\"Isodon melissoides\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:04:14.715637"
+    },
+    "openalex::\"Isodon melissoides\" \"Altered state of consciousness\"": {
+      "provider": "openalex",
+      "query": "\"Isodon melissoides\" \"Altered state of consciousness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:04:17.552078"
+    },
+    "pubmed::\"Anemone obtusiloba\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Anemone obtusiloba\" toxicity adverse effects",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:06:31.118852"
+    },
+    "openalex::\"Anemone obtusiloba\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Anemone obtusiloba\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Challenges and opportunities for traditional herbal medicine today with special reference to its status in India",
+          "url": "https://openalex.org/W3118952456",
+          "year": "2020",
+          "source": "Annals of Phytomedicine An International Journal",
+          "doi": "10.21276/ap.2020.9.2.8",
+          "pmid": null,
+          "abstract": "As per the definition approved by the World Health Organization (WHO), the term herbal medicine applies to all those medicines that occur in the form of plants, plant parts (such as roots, rhizomes, stem, bark, wood, leaves, flowers, fruits, seeds or their active ingredients), herbal preparations, or the finished products containing these materials singly or in combinations. The major strengths of herbal medicine include absence of adverse side effects in general, long-lasting curative impact and, sometimes, cost-effectiveness. However, duration of treatment is relatively long and, in some cases, herbal drugs may react with modern medicine, if taken together. The cause of herbal medicine is currently suffering from (a) decline in species richness, (b) negligence towards plant systematics in higher education, (c) lack of cultivation practices and agro-technology for majority of medicinal and aromatic plants, (d) little financial support for research in conservation biology, (e) and shortage of sophisticated research facilities for quality control. Immediate steps required to be taken for protection and promotion of herbal medicine include (a) in situ and ex situ conservation of the fast-dwindling wealth of medicinal plants; (b) their large-scale cultivation, possibly under buy-back agreement with farmers; (c) authentication and characterization of medicinal plant species based on scientific parameters; (d) standardization and quality control of herbal products under preparation, and (e) generation of data on clinical evidence for efficacy and safety of herbal drugs. All these aspects are discussed in this review with special emphasis on the status and scope of traditional herbal medicine in the Indian sub-continent."
+        },
+        {
+          "provider": "openalex",
+          "title": "A REVIEW ON ANTIVIRAL PLANTS EFFECTIVE AGAINST DIFFERENT VIRUS TYPES",
+          "url": "https://openalex.org/W4377031612",
+          "year": "2023",
+          "source": "Prospects in Pharmaceutical Sciences",
+          "doi": "10.56782/pps.128",
+          "pmid": null,
+          "abstract": "The treatment of microbial infections has proven challenging for humans in recent years. Synthetic medications, such as antimicrobial agents, are used for treating these infections. Antimicrobials derived from natural sources have gained popularity as an alternative to manufactured medications due to their lack of adverse effects. Plants, which play a significant role in this setting, have historically served as a reliable natural defence against several pathogens. In this study, studies on plants used against viral diseases are mentioned. Studies on viruses that cause disease have been compiled in the literature. According to the findings, it has been reported in the literature that many different plant species are effective against herpes simplex virus (HSV-1, HSV-2), human immunodeficiency virus (HIV), influenza virus (A, B) and parainfluenza, Poliovirus, Astrovirus, Parvovirus, Sindbis virus (SINV), Feline calicivirus (FCV), Rhinovirus, Echovirus, Rotavirus, Bovine alphaherpesvirus 1 (BoHV-1), Reovirus, Vaccinia virus (VACV), Cardiovirus A (Encephalomyocarditis virus; EMCV), Coxsackie virus, Semliki forest, Measles virus, Newcastle disease virus (NDV), Coronavirus, Adenovirus (ADV-3, ADV-5, ADV-8, ADV -11), Canine distemper virus (CDV), Lumpy skin disease virus (LSDV), Hepatitis A, B, C virus and Enterovirus. To combat viruses, plants can be considered a potentially invaluable natural resource."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:06:34.919062"
+    },
+    "pubmed::\"Fragaria vesca L.\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "pubmed",
+          "title": "Assessment of the Nutraceutical Properties of Wild Strawberry (Fragaria vesca L.) Extracts on Human Colorectal Cell Lines.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40207736/",
+          "year": "2025",
+          "source": "Molecular nutrition & food research",
+          "doi": "10.1002/mnfr.70018",
+          "pmid": "40207736",
+          "abstract": "Colorectal cancer is the third most common cancer worldwide; its higher incidence in the Western world, compared to rural areas of Africa and Asia, led to its classification among the so-called Westernized diseases. The wild strawberry Fragaria vesca L. is endowed with several bioactive components, such as polyphenols, vitamins, terpenes, and organic acids that can contribute to cancer prevention. In this study, we chemically characterized a wild strawberry extract through high-resolution mass spectrometry and evaluated its antioxidant properties on two human colorectal cancer cell lines: KRAS mutated SW480 cells and E705 cells. We found that treatment with the extract induced cell cycle arrest in the G2 phase in SW480 cells, while it led E705 cells to apoptosis through a significant increase in the reactive oxygen species level. Wild strawberry extract is a promising dietary supplement for both wild-type and KRAS-mutated patients who exhibit a more aggressive cancer phenotype. In addition, the lack of toxicity of wild strawberry extract toward healthy colorectal cells makes this food a promising chemopreventive nutritional supplement."
+        },
+        {
+          "provider": "pubmed",
+          "title": "A comparative study on the radioprotective potential of the polyphenolic glycoconjugates from medicinal plants of Rosaceae and Asteraceae families versus their aglycones.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28475935/",
+          "year": "2017",
+          "source": "Journal of photochemistry and photobiology. B, Biology",
+          "doi": "10.1016/j.jphotobiol.2017.04.027",
+          "pmid": "28475935",
+          "abstract": "Radioprotective potential of the polyphenolic glycoconjugates, isolated from flowers of Sanguisorba officinalis L. (So) and Erigeron canadensis L. (Ec), and from leaves of Fragaria vesca L. (Fv) and Rubus plicatus Whe. Et N. E. (Rp) as well as their aglycones (SoA, EcA, FvA and RpA, respectively), against γ-radiation-induced lipid peroxidation in human plasma and DNA damage in lymphocytes, were investigated in vitro. These properties were assessed by measuring the concentration of thiobarbituric acid reactive substances (TBARS) and using the alkaline comet assay, and were compared to the protective effects of rutin (R) and quercetin (Q). Cytotoxicity of the glycoconjugates/aglycones towards L929 mouse fibroblasts and human lymphocytes were also measured. Plant products from S. officinalis, similar to Q, were able to reduce the most radiation-induced lipid peroxidation as well as DNA damage and extent of oxidative damage to the DNA basis. Contrary to the pure flavonoids, where Q was shown to be significantly more effective than its glycoside R, the results did not show more benefit with application of SoA/EcA over So/Ec in terms of lipid peroxidation inhibition. Moreover, glycoconjugates Ec and So showed much higher capacity in protecting lymphocytes against radiation-induced genotoxicity which may suggest that between the polyphenolic and polysaccharide parts exist some synergistic effects. There were no significant differences between Fv versus FvA or Rp versus RpA in terms of the provided radioprotection. Summarizing, plant glycoconjugates isolated by the multi-step method offered sufficient radioprotection. In addition, they possess many advantages, compared to the synthetic polyphenolic compounds or the plant extracts, such as water-solubility and minor toxicity."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Effect of fruit extract of Fragaria vesca L. on experimentally induced inflammatory bowel disease in albino rats.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/21455415/",
+          "year": "2011",
+          "source": "Indian journal of pharmacology",
+          "doi": "10.4103/0253-7613.75660",
+          "pmid": "21455415",
+          "abstract": "Ulcerative colitis and Crohn's disease are chronic recurrent inflammatory bowel disease (IBD) of unknown origin. Oxidative stress is believed to be a key factor in the pathogenesis and perpetuation of the mucosal damage in IBD. Ethanolic extract of Fragaria vesca (EFFV) fruits was prepared by percolation method and subjected to oral toxicity testing using OECD guidelines. Albino rats were pretreated orally for 5 days with 3% gum acacia in control, EFFV 500 mg/kg in test and 5-aminosalisylic acid (5-ASA) 100 mg/kg in standard groups. Colitis was induced by transrectal administration of 4% acetic acid on 5(th) day. All the animals were sacrificed with ether overdose 48 hours after colitis induction, and 10 cm colon segment was resected from proximal end. Colon was weighed (for disease activity index) and scored macroscopically and microscopically after histological staining. Biochemical assessments included myeloperoxidase (MPO) and tissue catalase (CAT), glutathione (GSH) and superoxide dismutase (SOD) measurements. Statistical analysis was done using one-way analysis of variance (ANOVA) followed by Dunnett's \"t\" test. EFFV showed significant (P < 0.05) prevention of increase in colon weight and disease activity index along with decrease in macroscopic and microscopic lesion score as compared to control group. Significant improvement was observed in the levels of MPO, CAT and SOD, except GSH (P < 0.05). However, the effect of EFFV was significantly less than 5-ASA (P < 0.05). EFFV at 500 mg/kg showed significant amelioration of experimentally induced IBD, which may be attributed to its antioxidant and anti-inflammatory properties."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Polyphenolic glycoconjugates from medical plants of Rosaceae/Asteraceae family protect human lymphocytes against γ-radiation-induced damage.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27769934/",
+          "year": "2016",
+          "source": "International journal of biological macromolecules",
+          "doi": "10.1016/j.ijbiomac.2016.10.053",
+          "pmid": "27769934",
+          "abstract": "Radioprotective effects of the water-soluble polyphenolic glycoconjugates, isolated from flowers of Sanguisorba officinalis L.(SO) and Erigeron canadensis L.(EC), and from leaves of Fragaria vesca L. (FV) and Rubus plicatus Whe. Et N. E. (RP), against γ-radiation-induced toxicity in human peripheral blood lymphocytes were investigated. Cell treatment with glycoconjugates (1, 5 and 25μg/mL) prior exposure to 10/15Gy radiation resulted in concentration-dependent reduction of DNA damage including oxidative DNA lesions (comet assay), substantial inhibition of lipid peroxidation (TBARS) and restoration of superoxide dismutase and S-glutathione transferase activities. Glycoconjugates isolated from SO and EC ensured better protection versus these from RP and FV, with the SO product potential comparable to that of the reference quercetin. Strong antioxidant/radioprotective activity of the SO and EC glycoconjugates could be attributed to high abundance of syringol-type and ferulic acid units in their matrices, respectively. Moreover, polyphenolic glycoconjugates (25μg/mL), including RP and FV products, significantly decreased DNA damage when applied post-radiation suggesting their modulating effects on DNA repair pathways. Preliminary data on the glycoconjugate phenolic structural units, based on GLC/MS of the products of pyrolysis and in situ methylation, in relation to application of plant products as potential radioprotectors is promising and deserves further investigation."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Development, photosynthetic activity and habitat selection of the clonal plant Fragaria vesca growing in copper-polluted soil.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32689306/",
+          "year": "2006",
+          "source": "Functional plant biology : FPB",
+          "doi": "10.1071/FP06018",
+          "pmid": "32689306",
+          "abstract": "The ability of clonal systems to spread by ramet production may expose the clone to spatial heterogeneity. This study explored the physiological and morphological responses in the clonal plant Fragaria vesca L. growing in homogeneous (Cu-contaminated or uncontaminated) or in heterogeneous environments with patches of contrasting quality (Cu-contaminated or uncontaminated). We also investigated the potential of this species to selectively establish ramets within a heterogeneous environment. In heterogeneous environments, plants expanded ramets randomly, but selectively established ramets in the favourable patches. We discuss whether the selective establishment of ramets is a consequence of direct suppression of plant growth due to copper toxicity. The assimilate demand from offspring ramets in unfavourable environments increased the chlorophyll content and photosynthetic efficiency of parents by a feedback regulation process. Integration ameliorated the effects of copper on the photochemical efficiency of the offspring ramets. We did not observe integration costs, in terms of total biomass, for parents supporting ramets in Cu-contaminated environments, although we did detect costs in terms of ramet production. Parents with offspring ramets in Cu-contaminated environments produced 25 times more reproductive biomass than parents with offspring ramets in uncontaminated environments. We interpret this as a strategy for escaping from stressful environments. In this study, we extend the concept of physiological integration in clonal plants to include photochemical responses."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:06:39.761966"
+    },
+    "openalex::\"Fragaria vesca L.\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Fragaria vesca L.\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Polyphenol Content, Mineral Compounds Composition, Antimicrobial and Antioxidant Activities of Selected Medicinal Herbs from Slovak Republic",
+          "url": "https://openalex.org/W4319020443",
+          "year": "2023",
+          "source": "Applied Sciences",
+          "doi": "10.3390/app13031918",
+          "pmid": null,
+          "abstract": "The aim of this study was to determine antioxidant activity (DPPH and phosphomolybdenum method), polyphenols content (total polyphenols, flavonoids, and phenolic acids), mineral compounds composition (Cu, Zn, Mn, Fe, Cr, Ni, Co, Pb and Cd) and antimicrobial activity (with disc diffusion method) of medicinal herbs traditionally used in the Slovak republic. The tested plants belonged to the Primulaceae, Urticaceae, Grossulariaceae, Rosaceae, Lamiaceae, Asteraceae, Equisetaceae, Tropaeolaceae, and Plantaginaceae families. The highest antioxidant activities were found in samples of Rosa canina L. (DPPH—29.43 ± 0.11 mg TE/g; TE—Trolox equivalent) and Fragaria vesca L. (phosphomolybdenum method—679.56 ± 3.06 mg TE/g), both from the Rosaceae family. Total polyphenols (determined using the Folin–Ciocâlteu-reagent) were most abundant in a sample of Fragaria vesca L.—124.51 ± 5.05 mg GAE/g (GAE—gallic acid equivalent), total flavonoids (determined using the aluminum chloride method)—in a sample of Primula veris L.—48.35 ± 3.77 mg QE/g (QE—quercetin equivalent), and total phenolic acids (determined using Arnova reagent)—in a sample of Thymus serpyllum L.—102.31 ± 2.89 mg CAE/g (CAE—caffeic acid equivalent). Regarding mineral compounds composition, samples of Fragaria vesca L. and Thymus serpyllum L. showed the highest levels of iron. In samples of Calendula officinalis L. and Trapaeolum majus L., the highest amounts of zinc were determined, while copper was the most abundant in samples of Urtica dioica L. and Melissa officinalis L. The amounts of heavy metals were within legally acceptable limits. The extract of Equisetum arvense L. showed the strongest inhibitory activity towards Clostridium perfringens CCM 4991 (6 mm), while the one from Mentha piperita L.—towards Candida glabrata CCM 8270 (4.83 mm) and Candida tropicalis CCM 8223 (4.33 mm)."
+        },
+        {
+          "provider": "openalex",
+          "title": "Effect of salt stress on concentration of nitrogen and phosphorus in root and leaf of strawberry plant",
+          "url": "https://openalex.org/W2758113625",
+          "year": "2017",
+          "source": "EURASIAN JOURNAL OF SOIL SCIENCE (EJSS)",
+          "doi": "10.18393/ejss.319198",
+          "pmid": null,
+          "abstract": "In this study the effect of salt stress on the concentrations of nitrogen (N) and phosphorus (P) in the leaves and the roots of two strawberry ( Fragaria vesca L.) cultivars (Camarosa and Sweet Charlie) was investigated on cold stored bare-rooted seedlings grown in buckets filled with coarse sand. The treatments consisting of no-NaCl control, 1760, 2400, and 3040 mg L -1 of NaCl in half-strength Hoagland nutrient solution were applied to the plants for six months. During the experiment, leaf and root sampling were performed two times with five months interval. Roots and leaves of the plants were analyzed for Na, Cl, N and P. Analysis of variance (ANOVA) procedures was performed in Three Factors Completely Randomized Design for plant analysis results. Additionally orthogonal comparison was applied to the significant salinity effects. Cultivar and sampling time affected N, P, Na and Cl concentrations of the roots significantly. Cultivar-sampling time and sampling time-salinity interactions were significant for the N, P and Na concentrations of the roots. Salinity solely affected Cl concentrations of the roots significantly. All the treatments affected the concentrations of P, Na and Cl of the leaves significantly. The N concentrations of the leaves were affected significantly by only sampling time. Cultivar-salinity and sampling time-salinity interactions were found significant in the leaf N concentrations of the plants. The results show that the cultivars probably have different strategies in arrangement of N and P composition under salinity."
+        },
+        {
+          "provider": "openalex",
+          "title": "Medical Species Used in Russia for the Management of Diabetes and Related Disorders",
+          "url": "https://openalex.org/W3186548516",
+          "year": "2021",
+          "source": "Frontiers in Pharmacology",
+          "doi": "10.3389/fphar.2021.697411",
+          "pmid": null,
+          "abstract": "Background: Polyherbal mixtures called “medical species” are part of traditional and officinal medicine in Russia. This review aimed to analyze medical species used in Russia for the treatment of diabetes and related disorders. The information relevant to medical species, diabetes, and obesity was collected from local libraries, the online service E-library.ru, and Google Scholar. The prediction of the antidiabetic activity for the principal compounds identified in plants was performed using the free web resource PASS Online. Results: We collected and analyzed information about the compositions, specificities of use, and posology of 227 medical species. The medical species represent mixtures of 2–15 plants, while the most frequently mentioned in the literature are species comprising 3–6 plants. The top 10 plants among the 158 mentioned in the literature include Vaccinium myrtillus L., Phaseolus vulgaris L., Taraxacum campylodes G.E. Haglund., Urtica dioica L., Rosa spp., Hypericum spp ., Galega officinalis L., Mentha × piperita L., Arctium spp, and Fragaria vesca L. The leading binary combination found in medical species comprises the leaves of V. myrtillus and pericarp of P. vulgaris ; leaves of V. myrtillus and leaves of U. dioica ; and leaves of V. myrtillus and aerial parts of G. officinalis . In triple combinations, in addition to the above-mentioned components, the roots of T. campylodes are often used. These combinations can be regarded as basic mixtures. Other plants are added to improve the efficacy, treat associated disorders, improve gastrointestinal function, prevent allergic reactions, etc. Meanwhile, an increase in plants in the mixture necessitates advanced techniques for quality control. A feature of medical species in Russia is the addition of fresh juices, birch sap, seaweeds, and adaptogenic plants. Modern studies of the mechanisms of action and predicted activities of the principal compounds from medicinal plants support the rationality of polyherbal mixtures. Nevertheless, the mechanisms are not well studied and reported due to the limited number of compounds. Further investigations with calculations of synergistic or additive indices are important for strengthening the scientific fundamentals for the wider use of medical species in the therapy of diabetes. Two medical species, “Arfazetin” (7 medicinal plants) and “Myrphasinum” (12 medicinal plants), are approved for use in officinal medicine. The efficacy of these species was confirmed in several in vivo experiments and clinical trials. According to modern regulatory rules, additional experiments and clinical trials are required for more detailed investigations of the mechanisms of action and confirmation of efficacy. Conclusion: We believe that the scientifically based utilization of rich plant resources and knowledge of Russian herbal medicine can significantly contribute to the local economy as well as to the sectors seeking natural healing products."
+        },
+        {
+          "provider": "openalex",
+          "title": "Aloe Barbadensis Miller (Aloe Vera)",
+          "url": "https://openalex.org/W4388228746",
+          "year": "2023",
+          "source": "International Journal for Vitamin and Nutrition Research",
+          "doi": "10.1024/0300-9831/a000797",
+          "pmid": null,
+          "abstract": "Aloe Barbadensis Miller (Aloe Vera, AV) is a widely recognized for its diverse health-promoting, skin care, and medicinal properties. This narrative review provides a comprehensive overview of AV's bioactive compounds, pharmacological activities, potential applications, its toxic and adverse effects, as well as the clinical evidence supporting AV's efficacy in disease prevention. AV contains over 200 bioactive compounds, with the inner clear gel of the leaves containing the majority of these compounds. These include phenolic acids (274.5-307.5 mg/100 g), flavonoids. (3.63-4.70 g/kg), polysaccharides (3.82-6.55 g/kg), saponins, alkaloids, terpenoids, and anthraquinone derivatives. Findings from clinical studies involving both humans and animals highlight the therapeutic potential of AV across diverse health domains. The studies demonstrate AV's efficacy in reducing blood glucose levels, exhibiting antioxidant and immunomodulatory effects, inducing apoptosis in cancer cells, protecting the liver from damage, and displaying antimicrobial properties. In the fields of dermatology and dentistry, AV has also been observed to promote skin and oral health. However, it is imperative to acknowledge potential risks, adhere to recommended dosages, and seek guidance from healthcare experts before employing AV as a natural therapeutic option. Moreover, considering safety concerns, further well-designed randomized controlled trials are necessary to substantiate the potential benefits of AV and comprehensively assess any associated risks."
+        },
+        {
+          "provider": "openalex",
+          "title": "Effects of cadmium and glufosinate ammonium contaminated water on wild strawberry plants",
+          "url": "https://openalex.org/W4380354562",
+          "year": "2023",
+          "source": "Plant Growth Regulation",
+          "doi": "10.1007/s10725-023-01024-x",
+          "pmid": null,
+          "abstract": "Abstract Fragaria vesca L. (cv. Annabelle) plants were cultivated in hydroponic system and treated for 28 days with control (Hoagland solution), 1 mg L −1 of Cd, 10 µg L −1 of glufosinate ammonium and the mix of glufosinate ammonium and Cd. Cd and glufosinate influenced the photosynthetic parameters starting from day 18. Cd influenced the fruit fresh weight after 28 days of exposure. The accumulation of Cd in roots was highest among all plant organs and was estimated being 200 µg g −1 DW followed by leaves at &lt; 15 µg g −1 DW and reaching the lowest concentrations in fruits at &lt; 3 µg g −1 DW . Only the metabolite 3-(hydroxymethylphosphinyl) propionic acid (MPP) of glufosinate was detected over the detection limit in each organ analysed. Glufosinate exposure reduced Ca uptake (− 35% compared to control) in fruits while Cd reduced the uptake of Fe and Ca in leaves and Zn, Mn and Ca in fruits. Thus, residual Cd and glufosinate ammonium, that could be present in wastewater used for irrigation, may affect wild strawberry physiology. The data indicates that at the concentrations mentioned above, the consumers have a low risk of Cd exposure but can be exposed to glufosinate metabolite MPP through consumption of fruits that are grown in contaminated wastewater."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:06:42.102456"
+    },
+    "pubmed::\"Castanea mollissima\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Castanea mollissima\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "pubmed",
+          "title": "New Record of Potential Tyrosinase Inhibitory, Antioxidant, and Photoprotective Effects of Vietnamese Castanea mollissima Extracts.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40267250/",
+          "year": "2025",
+          "source": "Chemistry & biodiversity",
+          "doi": "10.1002/cbdv.202500994",
+          "pmid": "40267250",
+          "abstract": "In this study, the potential anti-tyrosinase, antioxidant, and ultraviolet (UV) absorption efficiency of the extracts of different parts of Castanea mollissima were evaluated. The leaf extract exhibited the most potential antioxidant effect with 2,2-diphenyl-1-picrylhydrazyl and 2,2'-azino-bis(3-ethylbenzothiazoline-6-sulfonic acid) radical scavenging abilities of >90%. C. mollissima extracts showed high UV-A and UV-B absorption efficiency. In addition, screening of the leaf extract demonstrated C. mollissima leaves as a rich source of tyrosinase inhibitors with maximum inhibitory activity and half-maximal inhibitory concentration values of 96% and 336.43 µg/mL, respectively. This is the first-ever report of screening of leaf extract for its potential activities. Eighteen phyto-compounds were identified from the C. mollissima leaf extract using gas chromatography-mass spectrometry and high-performance liquid chromatography techniques. Of these, the content of compounds 10, 11, 12, 13, 14, and 16 in the C. mollissima leaf extract was significantly high (14.35-88.42 µg/g). The molecular docking, absorption, distribution, metabolism, excretion, and toxicity, and Lipinski's rule of five analyses indicated high interaction efficacy of all the major compounds (docking score values of -6.75 to -8.89 kcal/mol) with the target enzyme tyrosinase, had drug properties, and were non-toxic for human use."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Genome-wide identification of the CmHDZ gene family in Chinese chestnut (Castanea mollissima) and analysis of their expression patterns under different types of abiotic stress.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42147302/",
+          "year": "2026",
+          "source": "Frontiers in plant science",
+          "doi": "10.3389/fpls.2026.1778593",
+          "pmid": "42147302",
+          "abstract": "The members of the homologous homeodomain-leucine zipper (HDZ) family of transcription factors play important roles in the ability of plants to cope with adverse conditions. In this study, we analyzed the genome of the Chinese chestnut (Castanea mollissima) to identify the CmHDZ genes involved in stress response. In total, 25 CmHDZ genes were identified, of which 24 were distributed across 12 chromosomes. Evolutionary analysis indicated that the 25 CmHDZ genes were divided into four subfamilies: HDZ I, II, III, and IV, comprising 13, 7, 4, and 1 members, respectively. All CmHDZ protein sequences contained highly conserved homeodomains (motif1). Subcellular localization prediction indicated that most of the CmHDZ members were localized to the nucleus, except for CmHDZ13, which was localized to the chloroplast. Further experiments confirmed the nuclear localization of CmHDZ15. Collinearity analysis revealed that 12 CmHDZ members formed eight pairs of homologous genes. Chinese chestnut shared the least number of gene pairs with rice and maize (10 and 9, respectively) and the highest number with Arabidopsis thaliana (up to 34 pairs). Cis-acting element prediction analysis indicated that the promoters of all 25 CmHDZ genes contained hormone and stress response elements. Moreover, the tissue-specific expression patterns of the CmHDZ genes varied under different types of stress. In particular, the CmHDZ15 expression level changed significantly in response to shading, low-temperature, and high-temperature treatments. The quantitative analysis results confirmed the reliability of the transcriptome data. This study provides a genetic resource for screening resistance genes and for the molecular breeding of Chinese chestnuts."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Effect of boron toxicity on pollen tube cell wall architecture and the relationship of cell wall components of Castanea mollissima Blume.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35958218/",
+          "year": "2022",
+          "source": "Frontiers in plant science",
+          "doi": "10.3389/fpls.2022.946781",
+          "pmid": "35958218",
+          "abstract": "Boron (B) is essential to plant development. However, excessive B is toxic to plants. This research was performed to evaluate the effects of B toxicity on cell wall architecture of Chinese chestnut (Castanea mollissima Blume) pollen tubes with emphasis on the relationship among pectins, cellulose, and callose. Results showed that 0.8 mM H3BO3 inhibited pollen germination and led to abnormal morphology of the pollen tubes. B toxicity also affected the distribution of cell wall components of the pollen tube. In control pollen tube, esterified and acid pectins were distributed unevenly, with the former mainly at the tip and the latter on the distal region. Cellulose was distributed uniformly on the surface with less at the tip; callose reduced gradually from base to sub-tip of the pollen tubes and no callose at the tip of the tube was detected. B toxicity led to the deposition of esterified and acid pectins, cellulose, and callose at the tip of the pollen tube. Results from scanning electron microscopy and transmission electron microscopy showed that B toxicity also altered pollen tube wall ultrastructure. The results from enzymatic treatment illustrated that there existed a close relationship among pectins, cellulose, and callose. B toxicity also altered the relationship. In a word, B toxicity altered deposition and relationship of pectins, cellulose, and callose of pollen tube wall."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Synthesis and cytotoxicity of selenium nanoparticles stabilized by α-D-glucan from Castanea mollissima Blume.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30776437/",
+          "year": "2019",
+          "source": "International journal of biological macromolecules",
+          "doi": "10.1016/j.ijbiomac.2019.02.085",
+          "pmid": "30776437",
+          "abstract": "A 1,6-α-D-glucan (CPA) with a high molecular weight of 2.0 × 103 kDa was isolated from the fruits of Castanea mollissima Blume. CPA showed good water solubility, low side effects on normal cells, and moderate cytotoxicity on cancer cells. Selenium nanoparticles (SeNPs) possess significant anticancer effects, but poor water solubility and dispersity. Therefore, an effective nanocomposite was designed in order to enhance the stability and anticancer effects of SeNPs decorated with CPA. Water soluble and dispersed selenium nanoparticles (CPA-SeNPs) were fabricated using CPA and Na2SeO3 by redox reaction with ascorbic acid. The average diameter of CPA-SeNPs was 53.7 ± 4.0 with a Se content of approximately 171.4 mg/g. CPA-SeNPs showed a significant anti-proliferative effect on HeLa cells in vitro. Since these NPs could induce apoptosis and S phase arrest. The apoptotic pathway triggered by CPA-SeNPs on HeLa cells was also characterized as induced by reactive oxygen species (ROS) overproduction, mitochondrial dysfunction and activation of caspase-3. This study suggested that CPA-SeNPs could be developed as a potential candidate in cancer treatment, especially against human cervical cancer."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Evaluation of In Vivo and In Vitro Toxicity of Chestnut (Castanea mollissima Blume) Plant: Developmental Toxicity in Zebrafish Embryos Cytotoxicity, Antioxidant Activity, and Phytochemical Composition by LC-ESI-MS/MS.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40501503/",
+          "year": "2025",
+          "source": "Food science & nutrition",
+          "doi": "10.1002/fsn3.70387",
+          "pmid": "40501503",
+          "abstract": "The search for novel therapeutic agents has led to increasing interest in natural products, driven by the recognition that they may offer safer and more sustainable alternatives to synthetic drugs. This study aims to fill the gap in knowledge regarding the biological activity and safety of the water extract of chestnut (Castanea mollissima) (chestnut), a plant species with a long history of use in traditional medicine, by conducting a comprehensive evaluation of its antioxidant, antidiabetic, and neuroprotective properties. This study presents a comprehensive analysis of the water extract of chestnut for the first time using various bioanalytical antioxidant methods. The extract's inhibitory effects on key enzymes like acetylcholinesterase (AChE), butyrylcholinesterase (BChE), and α-glycosidase were evaluated due to their relevance in metabolic and neurodegenerative disorders such as diabetes and Alzheimer's disease. Developmental toxicity and cytotoxicity were assessed using zebrafish (Danio rerio) embryos to evaluate the extract's biological safety. The major phenolic compounds present in the extract were identified by liquid chromatography-electrospray ionization tandem mass spectrometry (LC-ESI-MS/MS), revealing catechin, gallic acid, taxifolin, and epicatechin as the predominant constituents. Antioxidant capacity was determined through radical scavenging assays using 2,2-diphenyl-1-picrylhydrazyl (DPPH•) and 2,2'-azino-bis(3-ethylbenzothiazoline-6-sulfonic acid) (ABTS•+), alongside ferric (Fe3+), cupric (Cu2+), and Fe3+-TPTZ (ferric-tripyridyltriazine) reducing power assays. The findings highlight the significant antioxidant, antidiabetic, and neuroprotective potential of the chestnut water extract, supporting its prospective use in pharmaceutical and nutraceutical applications."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:06:52.035025"
+    },
+    "openalex::\"Castanea mollissima\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Castanea mollissima\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Root Distribution and Mineral Uptake of Coarse-rooted Trees Grown in Cupric Hydroxide-treated Containers",
+          "url": "https://openalex.org/W1911338624",
+          "year": "1993",
+          "source": "HortScience",
+          "doi": "10.21273/hortsci.28.10.988",
+          "pmid": null,
+          "abstract": "Seedlings of nine coarse-rooted species–sawtooth oak (Quercus acutissima Carruth), white oak (Q. alba L.), cherrybark oak (Q. falcata var. pagodifolia Elliott), post oak (Q. stellata Wangenh.), black walnut (Juglans nigra L.), pignut hickory [Carya glabra (Mill.) Sweet], pecan [C. illinoinensis (Wangenh.) C. Koch], Chinese chestnut (Castanea mollissima Blume), and common baldcypress [Taxodium distichum (L.) L. Rich]—were grown for one growing season in nontreated containers or in containers treated on their interior surfaces with white interior latex paint containing 100 g Cu(OH) 2 /liter. Seedlings of each species and container treatment were harvested twice: once after being transplanted from 3.2- to 15.0-liter containers and at the end of the growing season. Cupric hydroxide-treated containers decreased the amount of circled, kinked, and matted roots formed at the container wall-medium interface in all species tested. Plants grown in Cu(OH) 2 -treated containers also had altered root dry-weight partitioning. The partitioning patterns were species specific and included 6% to 20% increases in the percentage of root dry weight in interior vs. exterior portions of the rootball (white oak, black walnut, Chinese chestnut, and baldcypress), 10% to 21% increases in the percentage of root dry weight in upper vs. lower halves of the rootball (sawtooth oak, cherrybark oak, black walnut, and baldcypress), and an increase in the percentage of primary lateral roots (lateral roots originating from taproots or roots functioning as taproots) on the upper (proximal) half of taproots (cherrybark oak, pecan, and baldcypress). Nutrients in leaves, stems, and roots of sawtooth oak seedlings were analyzed at both harvests. Seedlings grown in Cu(OH) 2 -treated containers had more Cu in most plant tissues than nontreated seedlings. Also, seedlings grown in Cu(OH) 2 -treated containers had higher total Ca and Mg concentrations at transplanting and higher total N and Zn concentrations at the end of the growing season than nontreated seedlings."
+        },
+        {
+          "provider": "openalex",
+          "title": "Pilot Study of the Effects of Polyphenols from Chestnut Involucre on Methane Production, Volatile Fatty Acids, and Ammonia Concentration during In Vitro Rumen Fermentation",
+          "url": "https://openalex.org/W3119169890",
+          "year": "2021",
+          "source": "Animals",
+          "doi": "10.3390/ani11010108",
+          "pmid": null,
+          "abstract": "Nutritional strategies can be employed to mitigate greenhouse emissions from ruminants. This article investigates the effects of polyphenols extracted from the involucres of Castanea mollissima Blume (PICB) on in vitro rumen fermentation. Three healthy Angus bulls (350 ± 50 kg), with permanent rumen fistula, were used as the donors of rumen fluids. A basic diet was supplemented with five doses of PICB (0%–0.5% dry matter (DM)), replicated thrice for each dose. Volatile fatty acids (VFAs), ammonia nitrogen concentration (NH3-N), and methane (CH4) yield were measured after 24 h of in vitro fermentation, and gas production was monitored for 96 h. The trial was carried out over three runs. The results showed that the addition of PICB significantly reduced NH3-N (p &lt; 0.05) compared to control. The 0.1%–0.4% PICB significantly decreased acetic acid content (p &lt; 0.05). Addition of 0.2% and 0.3% PICB significantly increased the propionic acid content (p &lt; 0.05) and reduced the acetic acid/propionic acid ratio, CH4 content, and yield (p &lt; 0.05). A highly significant quadratic response was shown, with increasing PICB levels for all the parameters abovementioned (p &lt; 0.01). The increases in PICB concentration resulted in a highly significant linear and quadratic response by 96-h dynamic fermentation parameters (p &lt; 0.01). Our results indicate that 0.2% PICB had the best effect on in-vitro rumen fermentation efficiency and reduced greenhouse gas production."
+        },
+        {
+          "provider": "openalex",
+          "title": "Storage and Modified-atmosphere Packaging of Chinese Chestnuts (Castanea mollissima)",
+          "url": "https://openalex.org/W2240422261",
+          "year": "1995",
+          "source": "HortScience",
+          "doi": "10.21273/hortsci.30.4.815e",
+          "pmid": null,
+          "abstract": "The shelf life of chestnuts is limited by water loss. Polymeric packages have been used to prevent dehydration, although little specific information is available on the use and design of MA packaging for extending shelf life. To investigate the product response to MA conditions, a range of O 2 levels were generated inside low-density polyethylene (LDPE) packages containing chestnuts. The respiration rate decreased with decreasing O 2 levels below 16 kPa at 0C. A rapid increase in RQ and ethanol were noticed when the chestnuts were exposed to O 2 levels below 1 kPa at 0C, indicating a shift to fermentative metabolism. In a flow-through system, the respiration rate at 0C and the Q10 were measured as 108 nmol·kg –1 ·s –1 and 2.5, respectively. Chestnuts were stored at –2, 0, 5, and 20C in LDPE packages for 6 months and quality was periodically evaluated. Off-flavors were noticed from chestnuts stored in O 2 levels below 1 kPa at 0C on day 38. Chestnuts stored at 0C but at higher O 2 levels were acceptable for 5 months. Chestnuts stored at –2C were still acceptable after 6 months of storage."
+        },
+        {
+          "provider": "openalex",
+          "title": "Evaluation of In Vivo and In Vitro Toxicity of Chestnut ( <i>Castanea mollissima</i> Blume) Plant: Developmental Toxicity in Zebrafish Embryos Cytotoxicity, Antioxidant Activity, and Phytochemical Composition by <scp>LC</scp> ‐ <scp>ESI</scp> ‐ <scp>MS</scp> / <scp>MS</scp>",
+          "url": "https://openalex.org/W4411215329",
+          "year": "2025",
+          "source": "Food Science & Nutrition",
+          "doi": "10.1002/fsn3.70387",
+          "pmid": null,
+          "abstract": "ABSTRACT The search for novel therapeutic agents has led to increasing interest in natural products, driven by the recognition that they may offer safer and more sustainable alternatives to synthetic drugs. This study aims to fill the gap in knowledge regarding the biological activity and safety of the water extract of chestnut ( Castanea mollissima ) (chestnut), a plant species with a long history of use in traditional medicine, by conducting a comprehensive evaluation of its antioxidant, antidiabetic, and neuroprotective properties. This study presents a comprehensive analysis of the water extract of chestnut for the first time using various bioanalytical antioxidant methods. The extract's inhibitory effects on key enzymes like acetylcholinesterase (AChE), butyrylcholinesterase (BChE), and α‐glycosidase were evaluated due to their relevance in metabolic and neurodegenerative disorders such as diabetes and Alzheimer's disease. Developmental toxicity and cytotoxicity were assessed using zebrafish ( Danio rerio ) embryos to evaluate the extract's biological safety. The major phenolic compounds present in the extract were identified by liquid chromatography‐electrospray ionization tandem mass spectrometry (LC‐ESI‐MS/MS), revealing catechin, gallic acid, taxifolin, and epicatechin as the predominant constituents. Antioxidant capacity was determined through radical scavenging assays using 2,2‐diphenyl‐1‐picrylhydrazyl (DPPH • ) and 2,2′‐azino‐bis(3‐ethylbenzothiazoline‐6‐sulfonic acid) (ABTS •+ ), alongside ferric (Fe 3+ ), cupric (Cu 2+ ), and Fe 3+ ‐TPTZ (ferric‐tripyridyltriazine) reducing power assays. The findings highlight the significant antioxidant, antidiabetic, and neuroprotective potential of the chestnut water extract, supporting its prospective use in pharmaceutical and nutraceutical applications."
+        },
+        {
+          "provider": "openalex",
+          "title": "An insight into biofabrication of selenium nanostructures and their biomedical application",
+          "url": "https://openalex.org/W4319661917",
+          "year": "2023",
+          "source": "3 Biotech",
+          "doi": "10.1007/s13205-023-03476-4",
+          "pmid": null,
+          "abstract": null
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:06:55.458949"
+    },
+    "pubmed::\"Cortex Citri\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Cortex Citri\" toxicity adverse effects",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:06:57.714273"
+    },
+    "openalex::\"Cortex Citri\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Cortex Citri\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Emergency Protective Measures and Strategies of COVID-19: From Lifestyle to Traditional Chinese Medicine",
+          "url": "https://openalex.org/W4362670721",
+          "year": "2023",
+          "source": "Clinical Complementary Medicine and Pharmacology",
+          "doi": "10.1016/j.ccmp.2023.100089",
+          "pmid": null,
+          "abstract": "This article reviews various aspects of COVID-19, including its current status, its side-effects, emergency protective measures and strategies from lifestyle to traditional Chinese medicine (TCM) for fighting against the SARS-CoV-2, and its major variants (Delta and Omicron), with the ongoing global COVID-19 pandemic, which include \"Carassius auratus lifestyle\" for high effective isolation, social and high-tech medical strategies, traditional Chinese herbs \"Bark-Flower-Fruit-Grass-Leaf-Nucleolus(seed)-Root (BFFGLNR)\", and the combination of Chinese and western medicine. As a choice, little is known whether the Chinese acupuncture is an effective method for confirming and suspecting COVID-19 patients, which include imported and asymptomatic cases. Definitely, acupuncture has been proven effective treatment for the recovery of COVID-19 cases. However, further animal experiments and clinical trials are required to confirm its effects and disclose underlying mechanisms. In conclusion, these emergency protective measures and strategies for COVID-19 will help to effectively combat the SARS-CoV-2 and its variants during the pandemic and post-COVID-19 era."
+        },
+        {
+          "provider": "openalex",
+          "title": "Efficacy and safety of Jinhuang ointment in treating acute gouty arthritis: a retrospective cohort study",
+          "url": "https://openalex.org/W4417221132",
+          "year": "2025",
+          "source": "Frontiers in Pharmacology",
+          "doi": "10.3389/fphar.2025.1728414",
+          "pmid": null,
+          "abstract": "Objective: Non-steroidal anti-inflammatory drugs (NSAIDs) for acute gout often carry risks of gastrointestinal adverse effects and hepatic, renal, and cardiovascular toxicity. To explore safer treatment options and reduce the use of these drugs and associated risks, this study aimed to evaluate the clinical efficacy and safety of external application of Jinhuang Ointment in the treatment of acute gouty arthritis, providing evidence for optimizing clinical management strategies. Methods: A total of 104 patients with acute gouty arthritis (July 2023-June 2024) were retrospectively assigned to three groups: the control group (n = 35) received conventional Western therapy (celecoxib, low-purine diet, >2000 mL daily water intake, and sodium bicarbonate); T1 group (n = 35) received conventional therapy plus topical diclofenac diethylamine emulsion; T2 group (n = 34) received conventional therapy plus Jinhuang Ointment. All patients completed 7-day treatment. Baseline data including demographic characteristics, gout history, serum uric acid levels, onset time, and target joint distribution were collected. Primary outcome indicators, including pain improvement, joint tenderness, swelling, and joint mobility in the target joint. Secondary outcomes covered changes in serum uric acid levels and inflammatory markers (CRP, ESR). Adverse events occurring during the treatment period were also documented. Results: Baseline characteristics were comparable across groups. After treatment, all groups showed significant improvements in VAS scores, joint swelling, tenderness, and mobility (P < 0.05). The T2 group exhibited a significantly shorter time to pain improvement compared to both the T1 and control groups (P < 0.05). Both T1 and T2 groups showed better outcomes in joint tenderness, swelling, and joint mobility than the control group (P < 0.05), though only T2 demonstrated significant superiority in swelling reduction (P < 0.05). Laboratory results indicated that CRP and ESR decreased more markedly after treatment in T1 and T2 than in controls (P < 0.05), with no intergroup difference in uric acid reduction. Adverse event rates were similar among groups, with no significant differences observed. Conclusion: Jinhuang Ointment combined with conventional therapy significantly improves joint pain and swelling, accelerates symptom relief, and exhibits particular efficacy in swelling reduction, without increasing safety risks. Its multi-component, multi-target mechanism provides a potential explanation for the clinical efficacy observed, thereby supporting the need for higher-quality studies to further verify its application value."
+        },
+        {
+          "provider": "openalex",
+          "title": "Inhibition Effects of Patchouli Alcohol, Carvacrol, <i>p</i> ‐Cymene, Eucalyptol and Their Formulations Against Influenza Virus Pneumonia Through <scp>TLR4</scp> / <scp>NF</scp> ‐ <scp>κB</scp> / <scp>NLRP3</scp> Signaling Pathway",
+          "url": "https://openalex.org/W4412891937",
+          "year": "2025",
+          "source": "Chemical Biology & Drug Design",
+          "doi": "10.1111/cbdd.70150",
+          "pmid": null,
+          "abstract": "As a kind of drug mostly used historically to treat epidemics, aromatic botanicals have volatile oils as active components. The study aims to evaluate the anti-influenza viral pneumonia effects of volatile monomers patchouli alcohol (PA), carvacrol (CV), p-Cymene (PC), eucalyptol (EC) and their formulations from various aspects through the influenza virus A/PR/8/34 (H1N1) infection experiment in vivo and in vitro and carry out in-depth studies on the anti-inflammatory mechanisms. In this study, we found that all four volatile monomers mentioned above could exert antiviral effects by suppressing pulmonary viral load and lung index and improving lung lesions in mice with influenza pneumonia. In addition, elevated levels of cytokines and chemokines in the serum were suppressed, the proportion of T-lymphocytes in the peripheral blood was altered, and antioxidative stress indices were improved, whose mechanism of action related to anti-inflammation, possibly acting on the Toll-Like Receptor 4/Nuclear Factor-κB/nucleotide-binding domain leucine-rich repeat and pyrin domain-containing receptor 3 (TLR4/NF-κB/NLRP3) pathway. The study provides an experimental basis for volatile monomers and their formulations of aromatic herbs for treating influenza virus pneumonia."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:00.094412"
+    },
+    "pubmed::\"Moroxydini Hydrochloridum\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Moroxydini Hydrochloridum\" toxicity adverse effects",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:04.019394"
+    },
+    "openalex::\"Moroxydini Hydrochloridum\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Moroxydini Hydrochloridum\" toxicity adverse effects",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:07.470068"
+    },
+    "pubmed::\"Cynara cardunculus\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Cynara cardunculus\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "pubmed",
+          "title": "Functional and Therapeutic Potential of Cynara scolymus in Health Benefits.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38542782/",
+          "year": "2024",
+          "source": "Nutrients",
+          "doi": "10.3390/nu16060872",
+          "pmid": "38542782",
+          "abstract": "Dietary supplements enriched with bioactive compounds represent a promising approach to influence physiological processes and enhance longevity and overall health. Cynara cardunculus var. scolymus serves as a functional food supplement with a high concentration of bioactive compounds, which offers various health-promoting benefits. Several chronic diseases have metabolic, genetic, or inflammatory origins, which are frequently interconnected. Pharmacological treatments, although effective, often result in undesirable side effects. In this context, preventive approaches are gaining increased attention. Recent literature indicates that the consumption of bioactive compounds in the diet can positively influence the organism's biological functions. Polyphenols, well-known for their health benefits, are widely recognized as valuable compounds in preventing/combating various pathologies related to lifestyle, metabolism, and aging. The C. scolymus belonging to the Asteraceae family, is widely used in the food and herbal medicine fields for its beneficial properties. Although the inflorescences (capitula) of the artichoke are used for food and culinary purposes, preparations based on artichoke leaves can be used as an active ingredient in herbal medicines. Cynara scolymus shows potential benefits in different domains. Its nutritional value and health benefits make it a promising candidate for improving overall well-being. C. scolymus exhibits anti-inflammatory, antioxidant, liver-protective, bile-expelling, antimicrobial, and lipid-lowering neuroprotective properties. Different studies demonstrate that oxidative stress is the leading cause of the onset and progression of major human health disorders such as cardiovascular, neurological, metabolic, and cancer diseases. The large amount of polyphenol found in C. scolymus has an antioxidant activity, enabling it to neutralize free radicals, preventing cellular damage. This reduces the subsequent risk of developing conditions such as cancer, diabetes, and cardiovascular diseases. Additionally, these polyphenols demonstrate anti-inflammatory activity, which is closely associated with their antioxidant properties. As a result, C. scolymus has the potential to contribute to the treatment of chronic diseases, including intestinal disorders, cardiovascular diseases, and neurodegenerative pathologies. The current review discussed the nutritional profiles, potential benefits, and pharmacological effects of C. scolymus."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Medicinal Plants in Food Supplements for Gastrointestinal Disorders: Critical Assessment of Health Claims on Gastric Acid Regulation.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41373965/",
+          "year": "2025",
+          "source": "Nutrients",
+          "doi": "10.3390/nu17233674",
+          "pmid": "41373965",
+          "abstract": "Gastrointestinal (GI) disorders associated with increased gastric acid secretion, such as gastroesophageal reflux, dyspepsia, bloating, and abdominal pain, significantly impair quality of life and present a substantial healthcare burden. Conventional therapies may have limited efficacy or undesirable side effects, underscoring the need for safe complementary approaches. This study systematically identifies and reviews the medicinal plants used in food supplements (FSs) marketed in Latvia for digestive health, focusing on the conditions linked to excess gastric acid. A structured literature search was conducted to identify European plant species with proven protective effects on the digestive system or the ability to influence gastric acid levels. A market analysis was performed using the Latvian Food and Veterinary Service FS Register. A total of 218 FS-containing medicinal plants were identified, of which 15 species were included in at least ten products. The most frequently used plants were peppermint (Mentha piperita), artichoke (Cynara cardunculus), fennel (Foeniculum vulgare), Milk thistle (Silybum marianum), dandelion (Taraxacum officinale), chamomile (Matricaria chamomilla), psyllium (Plantago ovata), licorice (Glycyrrhiza glabra), caraway (Carum carvi), lemon balm (Melissa officinalis), and chicory (Cichorium intybus). Label claims most often referred to supporting digestion, relieving bloating, and maintaining normal GI function. However, the majority of claims lacked robust clinical substantiation, and were based primarily on traditional use. Discrepancies between product information and available scientific evidence highlight regulatory and consumer protection challenges. This work contributes to the critical evaluation of plant-based FSs for digestive health, emphasizing the need for standardized preparations, harmonized health claim assessment, and further clinical research to establish efficacy and safety."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Biological Effect of Cynara cardunculus on Kidney Status of Hypercholesterolemic Rats.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29142395/",
+          "year": "2017",
+          "source": "Pharmacognosy magazine",
+          "doi": "10.4103/pm.pm_14_17",
+          "pmid": "29142395",
+          "abstract": "Cynara cardunculus or artichoke thistle belongs to the sunflower family and has a variety of cultivable forms. Historically, it was cultivated as a vegetable, but more recently, it is being used in cheese and biofuel preparation. Artichoke leaf extracts are also known for its medicinal purposes, particularly in reducing the elevated cholesterol levels in blood. Hypercholesterolemia (HC) is also associated with other complications such as impaired renal function and diabetes mellitus. A remedy without major side effects for HC and its associated complications is highly desirable. We explored the effect of artichoke on the kidneys of hypercholesterolemic adult male Sprague-Dawley albino rats. Oral administration of 200 mg/kg and 400 mg/kg body weight (b.wt.) of C. cardunculus leaf extract (CCL) and C. cardunculus pulp extract (CCP) was made to male Sprague-Dawley albino hypercholesterolemic rats and investigated the levels of glucose, creatinine, uric acid, and urea in their blood. We observed that both CCL and CCP significantly reduced the creatinine and uric acid levels in the blood in a dose-dependent manner (P < 0.05). Both CCL and CCP significantly reduced the blood glucose levels (P < 0.05). Further, the histopathological investigation of the kidney sections showed that CCL treatment resolved HC-associated kidney damage. CCL not only has cholesterol-reducing capacity but also reduces the blood glucose levels and repairs the impaired kidney functions and damages. These findings are significant particularly because HC results in further complications such as diabetes and kidney damage, both of which can be treated effectively with artichoke. C. cardunculus leaf extract (CCL) not only has cholesterol-reducing capacity but also reduces the blood glucose levels and repairs the impaired kidney functions and damages. This study evaluated the nephroprotective role of CCL and CCP in hypercholesterolemic rats and observed that both CCL and CCP significantly reduced the creatinine and uric acid levels in hypercholesterolemic rats in a dose-dependent manner. Abbreviations used: HC: Hypercholesterolemia, WHO: World Health Organization, BAS: Bile acid sequestrant, PCSK9: Proprotein convertase subtilisin kexin type 9, ALE: Artichoke leaf extract, CCL: Cynara cardunculus leaf extract, CCP: Cynara cardunculus pulp extract, BWG%: Body weight gain%, FER: Food-efficiency ratio."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Cynara cardunculus subsp. cardunculus (Wild Artichoke) Extract: Antimicrobial Activity and Cytotoxicity, Apoptosis Induction, and Chemosensitization in Colon Cancer Cells.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41892235/",
+          "year": "2026",
+          "source": "Biology",
+          "doi": "10.3390/biology15060475",
+          "pmid": "41892235",
+          "abstract": "Colorectal cancer (CRC) is still a leading cause of cancer-related death worldwide, and often, conventional chemotherapeutics exhibit limited efficacy. The hydroalcoholic leaf extract of Cynara cardunculus subsp. cardunculus (wild artichoke) was investigated for its anticancer potential in CRC and effects on enteric pathogens. Nine phenolic compounds were identified by high-performance liquid chromatography with diode-array detection (HPLC-DAD), and spectrophotometric analyses were applied for total phenolic (TPC: 178.33 mg GAE/g) and total flavonoid (TFC: 52.21 mg CE/g) content quantification. The extract exhibited good antioxidant activity on DPPH (IC50: 21.35 μg/mL), -•O2 (IC50: 1.56 μg/mL), and H2O2 (IC50: 314.73 μg/mL) and was found to inhibit the growth of pathogenic enteric bacteria, with Enterococcus faecalis and Staphylococcus aureus being the most sensitive. In CaCo-2 CRC cells, the extract induced a concentration-dependent cytotoxicity (IC50: 13.07 μg/mL at 24 h) through increased production of reactive oxygen species (ROS), upregulation of Nrf2, and induction of apoptosis, as evidenced by elevated p53, Bax, cytochrome c, and caspase-3 levels. No necrosis, measured by lactate dehydrogenase (LDH) release, or toxicity to HFF-1 normal fibroblasts was observed at concentrations up to 50 μg/mL. Additionally, CCE demonstrated synergistic effects with 5-FU (combination index < 0.8). This evidence suggests that CCE exhibits selective antitumor activity and chemosensitizing properties, supporting its possible development as an adjunctive agent in CRC therapy."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Antigenotoxic effect of extract from Cynara cardunculus L.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/17724772/",
+          "year": "2008",
+          "source": "Phytotherapy research : PTR",
+          "doi": "10.1002/ptr.2268",
+          "pmid": "17724772",
+          "abstract": "The extract of artichoke Cynara cardunculus L. (CCE) was investigated for its potential antigenotoxic and antioxidant effects using four experimental model systems. In the Saccharomyces cerevisiae mutagenicity/antimutagenicity assay, CCE significantly reduced the frequency of 4-nitroquinoline-N-oxide-induced revertants at the ilv1 locus and mitotic gene convertants at the trp5 locus in the diploid Saccharomyces cerevisiae tester strain D7. In the simultaneous toxicity and clastogenicity/anticlastogenicity assay, it exerted an anticlastogenic effect against N-nitroso-N'-methylurea-induced clastogenicity in the plant species Vicia sativa L. On the contrary, despite CCE not being mutagenic itself, in the preincubation Ames assay with metabolic activation, it significantly increased the mutagenic effect of 2-aminofluorene in the bacterial strain Salmonella typhimurium TA98. In the 1,1-diphenyl-2-picrylhydrazyl (DPPH) free radical scavenging assay, CCE exhibited considerable antioxidant activity. The SC50 value representing 0.0054% CCE corresponds to an antioxidant activity of 216.8 microm ascorbic acid which was used as a reference compound. Although the mechanism of CCE action still remains to be elucidated, different possible mechanisms are probably involved in the CCE antigenotoxic effects. It could be concluded that CCE is of particular interest as a suitable candidate for an effective chemopreventive agent."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:13.377203"
+    },
+    "openalex::\"Cynara cardunculus\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Cynara cardunculus\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Effects of chelates on plants and soil microbial community: Comparison of EDTA and EDDS for lead phytoextraction",
+          "url": "https://openalex.org/W2050040489",
+          "year": "2008",
+          "source": "The Science of The Total Environment",
+          "doi": "10.1016/j.scitotenv.2008.03.024",
+          "pmid": null,
+          "abstract": null
+        },
+        {
+          "provider": "openalex",
+          "title": "Post emergence herbicides influence the leaf yield, chlorophyll fluorescence and phenolic compounds of artichoke (Cynara cardunculus L.)",
+          "url": "https://openalex.org/W2321029527",
+          "year": "2016",
+          "source": "Scientia Horticulturae",
+          "doi": "10.1016/j.scienta.2016.03.038",
+          "pmid": null,
+          "abstract": null
+        },
+        {
+          "provider": "openalex",
+          "title": "An Overview of Plant Phenolics and Their Involvement in Abiotic Stress Tolerance",
+          "url": "https://openalex.org/W4385650554",
+          "year": "2023",
+          "source": "Stresses",
+          "doi": "10.3390/stresses3030040",
+          "pmid": null,
+          "abstract": "Secondary metabolites, such as phenols and salicylic, play a crucial role in the regulation of development and tolerance mechanisms against a wide range of stresses. During adverse conditions such as biotic and abiotic stresses, plants induce the biosynthesis of phenolic compounds to provide tolerance. Phenolics are secondary aromatic metabolites synthesized through the shikimate/phenylpropanoid pathway or polyketide acetate/malonate pathway, which produce monomeric and polymeric phenolics. Phenolic compounds in plants not only take part in preventing stresses but also in regulating physiological activities. These compounds significantly regulate both below- and above-ground defense mechanisms. Plants synthesize thousands of phenolic compounds throughout their evolution to survive in changing environments. Environmental factors, such as high light, cold, drought, heavy metals, etc., increase the accumulation of phenolics to neutralize any toxic effects. This review focuses on the biosynthesis of phenolic compounds and their updated studies against abiotic stresses."
+        },
+        {
+          "provider": "openalex",
+          "title": "β-Caryophyllene: A Sesquiterpene with Countless Biological Properties",
+          "url": "https://openalex.org/W2995275613",
+          "year": "2019",
+          "source": "Applied Sciences",
+          "doi": "10.3390/app9245420",
+          "pmid": null,
+          "abstract": "β-Caryophyllene (BCP), a natural bicyclic sesquiterpene, is a selective phytocannabinoid agonist of type 2 receptors (CB2-R). It isn’t psychogenic due to the absence of an affinity to cannabinoid receptor type 1 (CB1). Among the various biological activities, BCP exerts anti-inflammatory action via inhibiting the main inflammatory mediators, such as inducible nitric oxide synthase (iNOS), Interleukin 1 beta (IL-1β), Interleukin-6 (IL-6), tumor necrosis factor-alfa (TNF-α), nuclear factor kapp a-light-chain-enhancer of activated B cells (NF-κB), cyclooxygenase 1 (COX-1), cyclooxygenase 2 (COX-2). Peroxisome proliferator-activated receptors alpha (PPAR-α) effects are also mediated by the activation of PPAR-α and PPAR-γ receptors. In detail, many studies, in vitro and in vivo, suggest that the treatment with β-caryophyllene improves the phenotype of animals used to model various inflammatory pathologies, such as nervous system diseases (Parkinson’s disease, Alzheimer’s disease, multiple sclerosis, amyotrophic lateral sclerosis, stroke), atherosclerosis, and tumours (colon, breast, pancreas, lymphoma, melanoma and glioma cancer). Furthermore, pre-clinical data have highlighted that BCP is potentially useful in Streptococcus infections, osteoporosis, steatohepatitis, and exerts anticonvulsant, analgesic, myorelaxing, sedative, and antidepressive effects. BCP is non-toxic in rodents, with a Lethal dose, 50% (LD50) greater than 5000 mg/kg. Nevertheless, it inhibits various cytochrome P450 isoforms (above all, CYP3A4), which metabolise xenobiotics, leading to adverse effects, due to drug levels over therapeutic window. All the reported data have highlighted that both pharmacological and toxicological aspects need to be further investigated with clinical trials."
+        },
+        {
+          "provider": "openalex",
+          "title": "Mild Potassium Chloride Stress Alters the Mineral Composition, Hormone Network, and Phenolic Profile in Artichoke Leaves",
+          "url": "https://openalex.org/W2467664503",
+          "year": "2016",
+          "source": "Frontiers in Plant Science",
+          "doi": "10.3389/fpls.2016.00948",
+          "pmid": null,
+          "abstract": "There is a growing interest among consumers and researchers in the globe artichoke [Cynara cardunculus L. subsp. scolymus (L.) Hegi] leaf extract due to its nutraceutical and therapeutic properties. The application of an abiotic stress such as salinity can activate the stress-signaling pathways, thus enhancing the content of valuable phytochemicals. The aim of this study was to assess the metabolic changes in artichokes by probing the leaf metabolome of artichoke plants grown in a floating system and exposed to a relatively mild (30 mM) potassium chloride (KCl) salt stress. Potassium chloride treatment decreased the leaf dry biomass of artichoke, macro- and microelements in leaves (e.g., Ca, Mg, Mn, Zn, and B) but increased the concentrations of K and Cl. Metabolomics highlighted that the hormonal network of artichokes was strongly imbalanced by KCl. The indole-3-acetic acid conjugates, the brassinosteroids hormone 6-deoxocastasterone, and even more the cytokinin precursor N(6)-(Delta-2-isopentenyl)-adenosine-5'-triphosphate, strongly increased in leaves of KCl-treated plants. Moreover, KCl saline treatment induced accumulation of GA4, a bioactive form additional to the already known GA3. Another specific response to salinity was changes in the phenolic compounds profile, with flavones and isoflavones being decreased by KCl treatment, whereas flavonoid glycosides increased. The osmotic/oxidative stress that salinity generates also induced some expected changes at the biochemical level (e.g., ascorbate degradation, membrane lipid peroxidation, and accumulation of mannitol phosphate). These latter results help explain the molecular/physiological mechanisms that the plant uses to cope with potassium chloride stress exposure."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:16.149396"
+    },
+    "pubmed::\"Trifolium alexandrinum\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Trifolium alexandrinum\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "pubmed",
+          "title": "Abrogation by Trifolium alexandrinum root extract on hepatotoxicity induced by acetaminophen in rats.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24191932/",
+          "year": "2013",
+          "source": "Redox report : communications in free radical research",
+          "doi": "10.1179/1351000213Y.0000000068",
+          "pmid": "24191932",
+          "abstract": "Acetaminophen (APAP) is a substance that harms human health by stimulating free radical production. This study investigated the ability of Trifolium alexandrinum root (TAR) extract to reduce the hepatotoxicity induced by APAP in rats. Animals were classified into four groups and treated for 6 weeks. Group 1: normal control-treated (saline); Group 2: TAR extract-treated (100 mg/kg); Group 3: APAP-treated; Group 4: APAP plus TAR extract. APAP significantly elevated AST (aspartate amino transferase), ALT (amino alanine transferase), ALP (alkaline phosphatase), GGTP (gamma glutamyl transpeptidase), bilirubin, and malondialdehyde with a significant decrease in glutathione, superoxide dismutase, glutathione peroxidase, catalase, and glutathione S-transferase compared with the control group. Administration of TAR extract combined with APAP improved the liver damage induced by APAP. Histopathological evidence, together with observed DNA fragmentation, supported the detrimental effect of APAP and the ameliorating effect of TAR extract on liver toxicity. TAR extract has beneficial properties and can reduce the liver damage and toxicity induced by APAP. Free radical mediated processes have been implicated in the pathogenesis of many diseases. The protective effect of TAR root extract on APAP-induced hepatotoxicity in rats appears to be related to inhibition of lipid peroxidation and enhancement of antioxidant enzyme levels, in addition to a free radical scavenging action."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Effects of exogenous taurine on growth, photosynthesis, oxidative stress, antioxidant enzymes and nutrient accumulation by Trifolium alexandrinum plants under manganese stress.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36165928/",
+          "year": "2022",
+          "source": "Chemosphere",
+          "doi": "10.1016/j.chemosphere.2022.136523",
+          "pmid": "36165928",
+          "abstract": "Plants essentially require manganese (Mn) for their normal metabolic functioning. However, excess Mn in the cellular environment is detrimental to plant growth, development, and physio-biochemical functions. Taurine (TAU) is an amino acid with potent antioxidant and anti-inflammatory properties in animals and humans. However, no previous study has investigated the potential of TAU in plant metal stress tolerance. The current study provides some novel insights into the effect of TAU in modulating the defense system of Trifolium alexandrinum plants under Mn toxicity. Manganese toxicity resulted in higher oxidative stress and membrane damage through increased superoxide radical, hydrogen peroxide, malondialdehyde, and methylglyoxal generation alongside enhanced lipoxygenase (LOX) activity. Mn toxicity also resulted in limited uptake of potassium (K+), phosphorus (P), calcium (Ca2+), and increased the accumulation of Mn in both leaf and roots. However, TAU circumvented the Mn-induced oxidative stress by upregulating the activities of antioxidant enzymes (ascorbate peroxidase, peroxidase, catalase, glutathione reductase, glutathione-S-transferase, and superoxide dismutase) and levels of ascorbic acid, proline, anthocyanins, phenolics, flavonoids and glutathione (GSH). Taurine conspicuously improved the growth, photosynthetic pigments, hydrogen sulphide (H2S), and nitric oxide (NO) levels of Mn stressed plants. Taurine also improved the uptake of K+, Ca2+, P and reduced the Mn content in stressed plants. Overall, exogenous taurine might be a suitable strategy to combat Mn stress in T. alexandrinum plants but applications at field levels for various crops and metal toxicities and economic suitability need to be addressed before final recommendations."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Effect of selenium accumulation on foraging behavior of pollinators and seed yield in Trifolium alexandrinum L.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36478533/",
+          "year": "2022",
+          "source": "Environmental science and pollution research international",
+          "doi": "10.1007/s11356-022-24483-7",
+          "pmid": "36478533",
+          "abstract": "Selenium (Se) is an essential nutrient for both plants and animals and is usually provided as a supplement to livestock. Se bioaccumulation promotes plant growth by enhancing the accumulation of organic solutes and the activation of antioxidant system. In animals, the Se supplements reduce the chances of mastitis and white muscle disease, and improve the immunity, health, and reproduction, particularly in lactating dairy cows. Therefore, the enrichment or biofortification of fodder crops with Se may improve the nutritional quality of forages and thereby reduce malnutrition in cattle. However, Se hyper-accumulation in plants or plant parts can cause direct toxic effects on insects especially bees. Berseem is a highly cross-pollinated fodder crop that attracts a large number of pollinators. However, little or no reports are available regarding the effects of Se biofortification on the foraging behavior of pollinators in berseem. Therefore, the current study was planned to evaluate the effect of exogenous application of Se on the foraging behavior of native pollinators visiting the berseem crop. Five different doses of Se were applied to evaluate its effect on abundance, foraging behavior (visit duration and visitation rate), and single-visit efficacy of native pollinators that may affect berseem seed yield. Our results showed maximum abundance of pollinators in plants supplemented with low Se level, i.e., 5 g ha-1 while the minimum abundance was observed at high Se doses (15 and 20 g ha-1). Also, the seed yield attributes, i.e., the number of seeds per head, seed weight per head, 1000 seed weight, were the highest in plants treated with a low dose of Se, whereas the seed yield of berseem decreased with an increase in Se concentrations. Hence, our study provides evidence that high doses of Se negatively affect the foraging behavior of pollinators (visitation rate and visit duration) in plants. We conclude that the application of moderate Se dose positively influences the pollination ecology of berseem, consequently improving seed yield. HIGHLIGHTS: Selenium (Se) is essential for animals and beneficial for plants and may become toxic at high level. Se is delivered to the environment due to agriculture. Se toxicity affected berseem growth and considerably reduced the seed yield. High dose of Se reduced the abundance of pollinators and negatively affected their foraging behavior."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Potential of guava leaves for mitigating methane emissions and modulating ruminal fermentation characteristics and nutrient degradability.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30203345/",
+          "year": "2018",
+          "source": "Environmental science and pollution research international",
+          "doi": "10.1007/s11356-018-3152-2",
+          "pmid": "30203345",
+          "abstract": "Guava leaves (Psidium guajava, GL), a high-phenolic- and flavonoid-containing plant resource capable of substituting the high-quality forage, may help in mitigating ruminal methane (CH4) emission without adverse impact on nutrient degradability if supplemented at an appropriate level. In order to test this hypothesis, rumen fermentation, CH4 production, and nutrient degradability of GL either solely or as a substitute of berseem hay (Trifolium alexandrinum, BH) were evaluated in a diet containing 50:50 concentrate to roughage. Five different levels of GL (0, 12.5, 25, 37.5, and 50%) were tested in vitro after 24 h incubation using a semi-automated gas production (GP) system. The current findings indicated that merely the presence of GL resulted in significantly lower values for cumulative GP (P < 0.001), CH4 emission (P < 0.05), truly degraded dry matter (TDDM; P < 0.001), truly degraded organic matter (TDOM; P < 0.001), and ammonia nitrogen (NH3-N) concentration (P < 0.001); however, pH (P < 0.001) and partitioning factor (P < 0.001) were higher. The total and individual volatile fatty acid (VFA) concentrations were drastically declined with GL as compared to BH (P < 0.05). A negative linear correlation was recorded between the levels of GL and GP including CH4 production (P < 0.05). The addition of GL up to 25% did not pose any negative effect on both TDDM and TDOM values along with NH3-N concentration. In addition, the inclusion of GL up to 25% did not affect the total or individual VFA concentration. Conclusively, in a medium concentrate diet, use of 25% GL and 25% BH in animal diet could be a promising alternative for mitigating the CH4 production without any deleterious effect on nutrient degradability."
+        },
+        {
+          "provider": "pubmed",
+          "title": "Germination and root elongation bioassays in six different plant species for testing Ni contamination in soil.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24288040/",
+          "year": "2013",
+          "source": "Bulletin of environmental contamination and toxicology",
+          "doi": "10.1007/s00128-013-1166-5",
+          "pmid": "24288040",
+          "abstract": "In vitro short-term chronic phytotoxicity germination and root elongation test were applied to test the effects of nickel (Ni) in seed germination and root elongation in six plants species: Cucumis sativus (Cucurbitaceae), Lepidium sativum and Brassica nigra (Brassicaceae), Trifolium alexandrinum and Medicago sativa (Fabaceae), Phacelia tanacetifolia (Boraginaceae). A naturally Ni rich soil was used to compare the results obtained. Unlike root elongation, germination was not affected by Ni in any of the six species tested. EC50 values, calculated on the root elongation, showed that Ni toxicity decreases in the following order: P. tanacetifolia > B. nigra > C. sativus > L. sativum > M. sativa > T. alexandrinum. The test conducted using soil elutriate revealed a significantly lower effect in both seed germination and root elongation when compared to the results obtained using untreated soil. Conversely, the test performed on soil confirmed the high sensitivity of C. sativus, P. tanacetifolia and L. sativum to Ni."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:27.737298"
+    },
+    "openalex::\"Trifolium alexandrinum\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Trifolium alexandrinum\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Abrogation by<i>Trifolium alexandrinum</i>root extract on hepatotoxicity induced by acetaminophen in rats",
+          "url": "https://openalex.org/W2021374416",
+          "year": "2013",
+          "source": "Redox Report",
+          "doi": "10.1179/1351000213y.0000000068",
+          "pmid": null,
+          "abstract": "OBJECTIVE: Acetaminophen (APAP) is a substance that harms human health by stimulating free radical production. This study investigated the ability of Trifolium alexandrinum root (TAR) extract to reduce the hepatotoxicity induced by APAP in rats. METHODS: Animals were classified into four groups and treated for 6 weeks. Group 1: normal control-treated (saline); Group 2: TAR extract-treated (100 mg/kg); Group 3: APAP-treated; Group 4: APAP plus TAR extract. RESULTS: APAP significantly elevated AST (aspartate amino transferase), ALT (amino alanine transferase), ALP (alkaline phosphatase), GGTP (gamma glutamyl transpeptidase), bilirubin, and malondialdehyde with a significant decrease in glutathione, superoxide dismutase, glutathione peroxidase, catalase, and glutathione S-transferase compared with the control group. Administration of TAR extract combined with APAP improved the liver damage induced by APAP. Histopathological evidence, together with observed DNA fragmentation, supported the detrimental effect of APAP and the ameliorating effect of TAR extract on liver toxicity. CONCLUSION: TAR extract has beneficial properties and can reduce the liver damage and toxicity induced by APAP. DISCUSSION: Free radical mediated processes have been implicated in the pathogenesis of many diseases. The protective effect of TAR root extract on APAP-induced hepatotoxicity in rats appears to be related to inhibition of lipid peroxidation and enhancement of antioxidant enzyme levels, in addition to a free radical scavenging action."
+        },
+        {
+          "provider": "openalex",
+          "title": "Accumulation of Potentially Toxic Metals in Egyptian Alluvial Soils, Berseem Clover (Trifolium alexandrinum L.), and Groundwater after Long-Term Wastewater Irrigation",
+          "url": "https://openalex.org/W3186578457",
+          "year": "2021",
+          "source": "Agriculture",
+          "doi": "10.3390/agriculture11080713",
+          "pmid": null,
+          "abstract": "The reduced availability of water resources in Egypt has imposed the need to intensify the use of wastewater for crop irrigation in the alluvial soils. Relevant effects can derive from contents of potentially toxic metals (PTMs) in supply resources soils, crops, and groundwater in these areas. For this reason the PTM content has to be monitored to evaluate and minimize health hazards. Therefore, in this context, two areas of the SE Nile Delta subjected to 25 year of wastewater irrigation, using agricultural drainage water (ADW) and mixed wastewater (MWW) were chosen and compared with a nearby site irrigated with Nile freshwater (NFW). At each of the three sites, ten samples of irrigation water, topsoil, berseem clover (Trifolium alexandrinum L.) plants, and seven groundwater samples were collected and analyzed for Cr, Co, Cu, Pb, Ni, and Zn. Results indicate that the total contents of Co, Cu, Ni, and Zn in soils collected from the three sampling sites and Pb in the MWW-irrigated soils were higher than their average natural contents in the earth’s crust, indicating potential risks. The DTPA-extractable contents of Cu in the three sites, in addition to Pb and Zn in the MWW-irrigated soils, exceeded the safe limits. The MWW-irrigated soils showed a considerable degree of metal contamination, while the NFW- and ADW-irrigated soils showed moderate and low levels of contamination, respectively. The contents of the six PTMs in the three sites showed low individual ecological risks, except for Pb in the MWW-irrigated soils that showed a moderate risk; however, the overall ecological risk remained low in all samples. The values of Co, Cu, and Ni in berseem shoot in addition to Pb from the MWW-irrigated soils were over the maximum permissible levels for animal feeding. Values of root-to-shoot translocation factor were lower than 1.0 for Cr, Co and Ni but higher than 1.0 for Cu, Pb, and Zn. Berssem plant is a good candidate for phytofiltration of Cr, Co and Ni, while for extracting Cu, Pb and Zn from polluted soils. The groundwater samples collected from the three sampling sites showed lower metal concentrations than the safe limits for drinking standards. Further remediation studies should be taken into account to alleviate potential environmental and health-related risks when using supply resources different from freshwater."
+        },
+        {
+          "provider": "openalex",
+          "title": "Mitigating negative impact of salinity on berseem (Trifolium alexandrinum) by foliar application of salicylic acid",
+          "url": "https://openalex.org/W4393393563",
+          "year": "2024",
+          "source": "Notulae Botanicae Horti Agrobotanici Cluj-Napoca",
+          "doi": "10.15835/nbha52113467",
+          "pmid": null,
+          "abstract": "Salicylic acid (SA) is a plant growth regulator known to take part in defense responses against different types of stresses, including salt stress. In this study, the role of foliar applied SA in improving the growth of berseem variety ‘Anmol’ under salt stress was examined. Plants were sown in plastic pots in the sand. Plants were treated with different concentrations of salinity (0, 60 mM and 120 mM NaCl) and salicylic acid (0, 100 mg L-1 and 150 mg L-1) was applied as a foliar spray. Salinity stress significantly reduced root and shoot fresh and dry weight, root and shoot length, photosynthetic pigments including Chl. a, b, a/b, total soluble proteins, total amino acids and uptake of K+ and Ca2+ ions in root and shoot tissues. Exogenous application of salicylic acid improved growth traits including shoot length, shoot fresh weight, root length, root fresh and weight, shoot dry weight, pigments contents (Chl. a, a/b and carotenoids). Total soluble protein and amino acid contents, activities of antioxidants peroxidase (POD), superoxide dismutase (SOD) and catalase (CAT) were also enhanced by the foliar spray of SA under saline and non-saline conditions. SA played a crucial role in lowering Na+ and Cl− ions content in shoot and root tissues while enhancing the uptake of K+ and Ca2+ ions. The study revealed that 100 mg L-1 SA treatment significantly influenced several plant parameters, including shoot length (8 cm), root length 6.7 cm, chlorophyll (1.2 mg/g FW), total soluble proteins (0.8 mg/g FW) and total amino acids (2.5 mg/g FW), SOD (1.22 U/mg protein), CAT (1.75 U/mg FW), potassium ions (29 mg/g DW), and calcium ions (43 mg/g DW) during salinity stress. Therefore, field use of SA (100 mg L-1) is recommended to enhance the growth of berseem and other fodder crops in saline soils."
+        },
+        {
+          "provider": "openalex",
+          "title": "Neurotherapeutic effects of quercetin-loaded nanoparticles and Biochanin-A extracted from Trifolium alexandrinum on PI3K/Akt/GSK-3β signaling in the cerebral cortex of male diabetic rats",
+          "url": "https://openalex.org/W4396241898",
+          "year": "2024",
+          "source": "PLoS ONE",
+          "doi": "10.1371/journal.pone.0301355",
+          "pmid": null,
+          "abstract": "Diabetes mellitus (DM) is a severe metabolic disease that can have significant consequences for cognitive health. Bioflavonoids such as Trifolium alexandrinum (TA), quercetin (Q), and Biochanin-A (BCA) are known to exert a wide range of pharmacological functions including antihyperglycemic activity. This study aimed to investigate the neurotherapeutic effects of quercetin-loaded nanoparticles (Q-LNP) and BCA extracted from TA against diabetes-induced cerebral cortical damage through modulation of PI3K/Akt/GSK-3β and AMPK signaling pathways. Adult male Wistar albino rats (N = 25) were randomly assigned to one of five groups: control, diabetics fed a high-fat diet (HFD) for 2 weeks and intraperitoneally (i.p.) injected with STZ (40 mg/kg), and diabetics treated with Q-LNP (50 mg/kg BW/day), BCA (10 mg/kg BW/day), or TA extract (200 mg/kg BW/day). Treatments were applied by oral gavage once daily for 35 days. Diabetic rats treated with Q-LNP, BCA, and TA extract showed improvement in cognitive performance, cortical oxidative metabolism, antioxidant parameters, and levels of glucose, insulin, triglyceride, and total cholesterol. In addition, these treatments improved neurochemical levels, including acetylcholine, dopamine, and serotonin levels as well acetylcholinesterase and monoamine oxidase activities. Furthermore, these treatments lowered proinflammatory cytokine production for TNF-α and NF-κB; downregulated the levels of IL-1β, iNOS, APP, and PPAR-γ; and attenuated the expressions of PSEN2, BACE, IR, PI3K, FOXO 1, AKT, AMPK, GSK-3β, and GFAP. The histopathological examinations of the cerebral cortical tissues confirmed the biochemical results. Overall, the present findings suggest the potential therapeutic effects of TA bioflavonoids in modulating diabetes-induced cerebral cortical damage."
+        },
+        {
+          "provider": "openalex",
+          "title": "Improving Reproductive Performance and Health of Mammals Using Honeybee Products",
+          "url": "https://openalex.org/W3129322037",
+          "year": "2021",
+          "source": "Antioxidants",
+          "doi": "10.3390/antiox10030336",
+          "pmid": null,
+          "abstract": "Honeybee products have positive effects on the reproductive performance of mammals. Many honeybee product constituents are biologically active, with antioxidant, antimicrobial, antiviral, anti-inflammatory, immunomodulatory, antifungal, wound-healing, and cardio-protective properties. Honeybee products also improve male and female fertility rates by enhancing gamete cryopreservation, in vitro maturation and fertilization, and embryo development. Previously published studies confirmed their efficacy for alleviating reproductive toxicity caused by contaminants and lifestyle habits that impair overall health and well-being. However, high-dose oral administration of honeybee products may adversely affect the reproductive system, and unfavorable effects were alleviated by treatment cessation. For this reason, this review proposes that bioactive components from bee products can be used as a strategy for improving the reproductive performance and health of mammals."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:30.352710"
+    },
+    "pubmed::\"Isodon melissoides\" toxicity adverse effects": {
+      "provider": "pubmed",
+      "query": "\"Isodon melissoides\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "pubmed",
+          "title": "Melissoidesin G, a diterpenoid purified from Isodon melissoides, induces leukemic-cell apoptosis through induction of redox imbalance and exhibits synergy with other anticancer agents.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/17640057/",
+          "year": "2007",
+          "source": "International journal of cancer",
+          "doi": "10.1002/ijc.22945",
+          "pmid": "17640057",
+          "abstract": "Melissoidesin G (MOG) is a new diterpenoid purified from Isodon melissoides, a plant used in Chinese traditional medicine as antitumor and anti-inflammatory agents. In our study, MOG was shown to specifically inhibit the growth of human leukemia cell lines and primary acute myeloid leukemia (AML) blasts via induction of apoptosis, with the evidence of mitochondrial DeltaPsim loss, reactive oxygen species production, caspases activation and nuclear fragmentation. Furthermore, it was shown that thiol-containing antioxidants completely blocked MOG-induced mitochondrial DeltaPsim loss and subsequent cell apoptosis, while the inhibition of apoptosis by benzyloxy-carbonyl-Val-Ala-Asp-fluoromethylketone only partially attenuated mitochondrial DeltaPsim loss, indicating that MOG-induced redox imbalance is an early event upstream to mitochondrial DeltaPsim loss and caspase-3 activation. Consistently, it was found that MOG rapidly decreased the intracellular glutathione (GSH) content in a dose-dependent manner and the significance of GSH depletion in MOG-induced apoptosis was further supported by the protective effects of tert-butylhydroquinone (tBHQ) and the facilitative effects of DL-buthionine (S,R)-sulfoximine (BSO). Furthermore, it was showed that GSH depletion induced by MOG rendered some leukemia cell lines more sensitive to arsenic trioxide (As2O3), doxorubicin or cisplatin. Additionally, the synergistic apoptotic effects of MOG with As2O3 were detected in HL-60 and primary AML cells, but not in normal cells, suggesting the selective toxicity of their combination to the malignant cells. Together, we proposed that MOG alone or administered with other anticancer agents may provide a novel therapeutic strategy for leukemia."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:36.814287"
+    },
+    "openalex::\"Isodon melissoides\" toxicity adverse effects": {
+      "provider": "openalex",
+      "query": "\"Isodon melissoides\" toxicity adverse effects",
+      "records": [
+        {
+          "provider": "openalex",
+          "title": "Anti-Inflammatory Activity of Thymol and Thymol-Rich Essential Oils: Mechanisms, Applications, and Recent Findings",
+          "url": "https://openalex.org/W4410991297",
+          "year": "2025",
+          "source": "Molecules",
+          "doi": "10.3390/molecules30112450",
+          "pmid": null,
+          "abstract": "Thymol, a monoterpenoid phenol present in the essential oils of several aromatic plants, has attracted considerable attention for its anti-inflammatory effects, often in combination with other bioactive compounds. This work explores the mechanisms behind the anti-inflammatory activity of thymol and thymol-rich essential oils, summarizing recent experimental findings. Inflammation, a key factor in numerous chronic diseases, can be modulated by targeting essential molecular pathways, such as MAPK, NF-κB, JAK/STAT, and arachidonic acid signaling. Thymol has been shown to influence these pathways, reducing the production of pro-inflammatory cytokines and mediators. Beyond its anti-inflammatory effects, thymol also exhibits a broad range of biological activities, including antimicrobial, antioxidant, and anticancer properties. The applications of thymol and thymol-containing essential oils in therapeutic formulations, food additives, and veterinary medicine are also reviewed. Despite promising preclinical results, challenges such as low bioavailability and toxicity at high doses limit their clinical use. Recent developments in drug delivery systems, such as encapsulation in micro- and nanoparticles, are suggested as strategies to enhance efficacy. Additionally, the synergistic effects of thymol with other natural products are examined, offering the potential for improved therapeutic outcomes."
+        },
+        {
+          "provider": "openalex",
+          "title": "Ethnobotanical, Phytochemical, and Pharmacological Properties of the Subfamily Nepetoideae (Lamiaceae) in Inflammatory Diseases",
+          "url": "https://openalex.org/W4388220068",
+          "year": "2023",
+          "source": "Plants",
+          "doi": "10.3390/plants12213752",
+          "pmid": null,
+          "abstract": "Nepetoideae is the most diverse subfamily of Lamiaceae, and some species are well known for their culinary and medicinal uses. In recent years, there has been growing interest in the therapeutic properties of the species of this group regarding inflammatory illnesses. This study aims to collect information on traditional uses through ethnobotanical, pharmacological, and phytochemical information of the subfamily Nepetoideae related to inflammatory diseases. UNAM electronic resources were used to obtain the information. The analysis of the most relevant literature was compiled and organised in tables. From this, about 106 species of the subfamily are traditionally recognised to alleviate chronic pain associated with inflammation. Pharmacological studies have been carried out in vitro and in vivo on approximately 308 species belonging to the genera Salvia, Ocimum, Thymus, Mentha, Origanum, Lavandula, and Melissa. Phytochemical and pharmacological evaluations have been performed and mostly prepared as essential oil or high polarity extracts, whose secondary metabolites are mainly of a phenolic nature. Other interesting and explored metabolites are diterpenes from the abietane, clerodane, and kaurane type; however, they have only been described in some species of the genera Salvia and Isodon. This review reveals that the Nepetoideae subfamily is an important source for therapeutics of the inflammatory process."
+        },
+        {
+          "provider": "openalex",
+          "title": "Volatile oils from Philodendron meridionale Buturi &amp; Sakur: chemical composition and in vitro effect against Ctenocephalides felis and leukemia cells",
+          "url": "https://openalex.org/W3125351191",
+          "year": "2021",
+          "source": "Research Society and Development",
+          "doi": "10.33448/rsd-v10i1.11895",
+          "pmid": null,
+          "abstract": "Essential oils are an important natural source of pesticides and can be suitable used in ectoparasite control. The goal of this paper was to investigate the chemical composition of the volatile oils obtained from leaves and stems of Philodendron meridionale Buturi &amp; Sakur by gas chromatography/mass spectrometry and to evaluate their insecticidal effect against Ctenocephalides felis Bouché adult insects and their cytotoxicity on human Jurkat leukemic T-cells by 3-(4,5-dimethylthiazol-2-yl)-2,5diphenyltetrazoluim bromide (MTT) reduction method. The main compound was ent-kaur-16-ene at concentrations of 20.78 and 22.46% for volatile oils from leaves and stems, respectively. These volatile oils provided insecticidal effect against C. felis with an average knockdown time of 9.61 and 7.35 min for fumigant test performed with the leaves and stems samples, respectively. Considering the topical application, these P. meridionale volatile oils extracted from leaves and stems demonstrated average knockdown values of 14.70 and 20.0 min, respectively. A very low cytotoxic effect of 9.48 and 11.32% was observed for P. meridionale volatile oils from leaves and stems even at the highest tested concentration of 400 μg.mL-1, respectively. Therefore, it is possible to propose a biological selectivity to the volatile oils under study, which guarantees, at the same time, effect against this insect with no evident damage to human biological system."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-24T11:07:40.046085"
+    }
+  },
+  "updated_at": "2026-06-24T11:09:08.402911",
+  "note": "Raw public literature query cache for Table 5 evidence screening. Cached records are candidates only, not verified support."
+}

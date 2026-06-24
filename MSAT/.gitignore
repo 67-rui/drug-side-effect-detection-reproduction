@@ -46,6 +46,8 @@ results/*
 !results/
 !results/*.md
 !results/reproduction_state_audit.json
+!results/table5_literature_evidence_candidates.csv
+!results/table5_literature_evidence_candidates.json
 logs/
 saved_models/
 checkpoints/

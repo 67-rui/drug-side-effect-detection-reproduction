@@ -14,6 +14,7 @@ The current committed `table5_summary.json` is valid and non-stale, but it **doe
 | File | Mode | Candidate pool | Current support |
 | --- | --- | --- | --- |
 | `results/table5_summary.json` | `predictor` | `exclude_all_graph_positives` | `1/15 = 6.7%` |
+| `results/table5_literature_evidence_candidates.json` | PubMed/OpenAlex candidate scan | current Top-15 | `63` review candidates, `0` exact herb+ADR hits |
 
 Therefore Table 5 should be cited as a reproduction gap until the evidence cache is filled from explicit database/literature sources.
 
@@ -44,9 +45,12 @@ Allowed evidence labels:
 | --- | --- |
 | `database_verified` | A row in `data/tcmda_cache.json` whose `adverse_phenotypes` matches the predicted MedDRA PT or a documented synonym |
 | `mechanistic_support` | A visible graph path such as CMM -> compound -> target <- ADR, or a manually cited literature mechanism recorded in `notes` |
+| `literature_candidate` | A PubMed/OpenAlex/Crossref record in `results/table5_literature_evidence_candidates.*`; this is only a screening candidate until manually reviewed |
 | `paper_reference_diagnostic` | Comparison against `data/paper_table5_reference.json`; useful for diagnosis but not independent validation |
 
 Do not treat mechanistic graph paths alone as equivalent to TCMDA. For a paper-style claim, each supported row must expose the evidence source in the JSON/CSV output.
+
+Do not treat `literature_candidate` rows as verified support by default. The current automated scan keeps records that match the herb or ADR text and marks every row with `manual_review_required: true` and `verified_support: false`.
 
 ## Step-by-Step Reproduction
 
@@ -74,7 +78,32 @@ python scripts/import_tcmda_cache.py \
 
 This produces one cache row per Table 5 prediction. For each row, inspect TCMDA and write the observed adverse phenotypes into `adverse_phenotypes`.
 
-3. For each row in `data/tcmda_cache.json`, fill these fields:
+3. Generate public literature screening candidates:
+
+```bash
+python scripts/fetch_table5_literature_evidence.py \
+  --max-query-variants 1 \
+  --max-results-per-provider 5 \
+  --include-toxicity-fallback
+```
+
+Expected outputs:
+
+- `results/table5_literature_evidence_candidates.csv`
+- `results/table5_literature_evidence_candidates.json`
+- `data/table5_literature_cache.json`
+
+Use `--offline` to rebuild the output from the cached API responses without hitting PubMed/OpenAlex again. Crossref is supported but opt-in because it can be slow:
+
+```bash
+python scripts/fetch_table5_literature_evidence.py \
+  --providers pubmed,openalex,crossref \
+  --include-toxicity-fallback
+```
+
+Current scan result: 63 retained candidates, all requiring manual review; 0 records matched both herb text and the predicted ADR PT.
+
+4. For each row in `data/tcmda_cache.json`, fill these fields:
 
 ```json
 {
@@ -91,7 +120,7 @@ This produces one cache row per Table 5 prediction. For each row, inspect TCMDA 
 
 Use the actual TCMDA phenotype text. If no database support is found, leave `adverse_phenotypes` empty and record the query in `notes`.
 
-4. Re-run Table 5 using the filled cache:
+5. Re-run Table 5 using the filled cache:
 
 ```bash
 python scripts/run_table5_validation.py \
@@ -100,7 +129,7 @@ python scripts/run_table5_validation.py \
   --tcmda-cache data/tcmda_cache.json
 ```
 
-5. Regenerate Table 6 from the accepted Table 5 CSV:
+6. Regenerate Table 6 from the accepted Table 5 CSV:
 
 ```bash
 python scripts/run_table6_mapping.py \
@@ -108,7 +137,7 @@ python scripts/run_table6_mapping.py \
   --out results/table6_mapping.csv
 ```
 
-6. Audit the artifacts:
+7. Audit the artifacts:
 
 ```bash
 python scripts/audit_reproduction_state.py \
@@ -123,7 +152,7 @@ Expected audit condition:
 - `table5_summary.json` has `checkpoint.exists: true`
 - `table5_summary.json` has `database_check` pointing to the cache path
 
-7. Report the result honestly:
+8. Report the result honestly:
 
 - If support remains far below `13/15`, report Table 5 as **not reproduced** and include the current support rate.
 - If support approaches the paper claim, attach the cache and note which rows were database-supported, mechanistically supported, or unsupported.

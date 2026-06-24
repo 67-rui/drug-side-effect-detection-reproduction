@@ -33,11 +33,12 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `fig6_summary.json` | Fig.6 测试集不平衡 sweep | AUC/AUPRC 中 MSAT 全胜；F1/MCC 中 HGT 更高 |
 | `faers_only_coldstart_summary.json` | Fig.5a FAERS-only 冷启动 | 可引用；MSAT 在 Precision/MCC/AUC 均优于 GNN baselines |
 | `table5_top15.csv` / `table5_summary.json` | Table 5 Top-15 外部验证 | 产物有效但未复现论文支持率；当前 1/15，TCMDA 证据待补 |
+| `table5_literature_evidence_candidates.csv` / `.json` | Table 5 公开文献候选 | PubMed/OpenAlex 自动候选 63 条；精确 herb+ADR 命中 0 条，仅供人工复核 |
 | `table6_mapping.csv` / `table6_mapping.json` | Table 6 TCM 系统映射 | 产物有效但依赖当前 Table 5；映射规则仍偏粗 |
 | `case_zhishi_diarrhoea.json` | §4.5.1 枳实案例 | 可作为当前 checkpoint 下的案例产物引用；与论文高置信案例仍需逐项说明差异 |
 
 ## 下一步重点
 
-1. 按 `TABLE5_PROTOCOL_DECISION.md` 和 `docs/superpowers/plans/2026-06-24-table5-reproduction.md` 补齐 Table 5 的 TCMDA/文献证据。
+1. 按 `TABLE5_PROTOCOL_DECISION.md` 和 `docs/superpowers/plans/2026-06-24-table5-reproduction.md` 补齐 Table 5 的 TCMDA/文献证据；当前公开文献自动候选未发现精确支持。
 2. 对 Table 3、Table 4、Fig.6 做定点差异分析，不重跑完整流水线。
 3. 更新正文报告时，以本文件和 `reproduction_state_audit.json` 为准，旧摘要文件仅作历史记录。
