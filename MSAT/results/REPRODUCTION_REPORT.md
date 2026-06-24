@@ -23,6 +23,39 @@
 | 2026-06-22 17:15 | **Phase 8H 报告更新**：新增论文逐表对照 §12；标注未完成/部分完成项 |
 | 2026-06-22 17:31 | **Phase 9 启动**：Fig.5a 冷启动协议修复；`paper_herb_display`；Table 6 规则扩展；Table 5 `--use-predictor` |
 | 2026-06-23 17:30 | **状态审计更新**：ML baseline 泄漏与 checkpoint 覆盖已在代码中修复；旧 Table4 ML、Table5/6、枳实案例产物标记为 stale；新增 `audit_reproduction_state.py` |
+| 2026-06-24 10:31 | **最终服务器结果同步并审计通过**：Table 2/3/4、Fig.5a、Fig.6、Phase 9 产物已同步；`reproduction_state_audit.json` 为 `issues: []`；Table 5 仍是最大未复现缺口 |
+
+---
+
+## 0. 当前可引用状态（2026-06-24）
+
+> 本节覆盖旧阶段性描述。下方历史章节保留实验过程记录；正式引用请优先使用本节、`results/README.md` 与 `results/reproduction_state_audit.json`。
+
+### 0.1 已完成并可引用
+
+| 论文目标 | 当前文件 | 当前结论 |
+|----------|----------|----------|
+| Table 2 MSAT 主实验 | `summary.json` | AUC **0.9793**，AUPRC **0.9771**，F1 **0.9315**，MCC **0.8625**；与论文主结果对齐 |
+| Table 2 九基线 | `baseline_summary.json` | MSAT AUC 最高；传统 ML 与 GNN 基线均已在防泄漏协议下重跑 |
+| Fig.5a FAERS-only 冷启动 | `faers_only_coldstart_summary.json` | MSAT 在 Precision、MCC、AUC 三项均优于 GAT/HGT/Simple-HGN |
+| Fig.6 不平衡测试 | `fig6_summary.json` | MSAT 在 1:2、1:5、1:10 的 AUC/AUPRC 均最高 |
+| 结果审计 | `reproduction_state_audit.json` | `issues: []`，无 stale artifact、无缺失协议 metadata、无可疑 ML 泄漏 |
+
+### 0.2 已产出但需解释差异
+
+| 论文目标 | 当前文件 | 差异 |
+|----------|----------|------|
+| Table 3 消融 | `ablation_summary.json` | 7 个变体齐全，但 Full 不是所有指标最高；AUC/AUPRC 最高为 `wo_esa`，F1/MCC 最高为 `only_hsp` |
+| Table 4 全模型 1:10 | `baseline_neg10_summary.json` | MSAT 的 F1/MCC 最高，但 XGB 的 AUC/AUPRC 略高于 MSAT；论文中 MSAT AUC/AUPRC/MCC 最高 |
+| Fig.6 阈值指标 | `fig6_summary.json` | AUC/AUPRC 对齐论文趋势；F1/MCC 当前 HGT 更高，需检查阈值校准与 ratio-specific tau |
+| §4.5.1 枳实案例 | `case_zhishi_diarrhoea.json` | 已使用主 checkpoint 生成，但需要与论文 nobiletin/ABCG2 证据逐项对照 |
+
+### 0.3 尚未复现
+
+| 论文目标 | 当前状态 | 下一步 |
+|----------|----------|--------|
+| Table 5 Top-15 外部验证 | 当前 `table5_summary.json` 支持率 **1/15**；论文为 **13/15** | 按 `TABLE5_PROTOCOL_DECISION.md` 与 `docs/superpowers/plans/2026-06-24-table5-reproduction.md` 补 TCMDA/文献证据 |
+| Table 6 精细 TCM 系统映射 | 当前映射依赖 Table 5 且多数落入粗粒度系统 | Table 5 证据确定后，补 PT/SOC 到 16 TCM 系统的规则与人工复核 |
 
 ---
 
