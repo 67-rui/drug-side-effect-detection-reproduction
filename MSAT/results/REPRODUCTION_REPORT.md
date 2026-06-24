@@ -25,6 +25,7 @@
 | 2026-06-23 17:30 | **状态审计更新**：ML baseline 泄漏与 checkpoint 覆盖已在代码中修复；旧 Table4 ML、Table5/6、枳实案例产物标记为 stale；新增 `audit_reproduction_state.py` |
 | 2026-06-24 10:31 | **最终服务器结果同步并审计通过**：Table 2/3/4、Fig.5a、Fig.6、Phase 9 产物已同步；`reproduction_state_audit.json` 为 `issues: []`；Table 5 仍是最大未复现缺口 |
 | 2026-06-24 11:10 | **Table 5 公开文献候选抓取完成**：新增 PubMed/OpenAlex 候选证据脚本与缓存；当前 63 条药物/毒性背景候选，0 条精确 herb+ADR 命中 |
+| 2026-06-24 11:35 | **Table 5 协议差异诊断更新**：`reproduction_gap_diagnosis.json` 显示论文 Table 5 的 15 个原始配对中仅 1 个进入当前 OOF 分数；旧 paper-seed 13/15 结果为诊断模式，ADR 匹配 0/15 |
 
 ---
 
@@ -55,7 +56,7 @@
 
 | 论文目标 | 当前状态 | 下一步 |
 |----------|----------|--------|
-| Table 5 Top-15 外部验证 | 当前 `table5_summary.json` 支持率 **1/15**；论文为 **13/15**；`table5_literature_evidence_candidates.json` 自动抓取 63 条公开文献候选，但精确 herb+ADR 命中为 **0** | 继续人工核验 TCMDA；若需要论文式 13/15，需回到 Table 5 候选排序/协议差异而不只是补证据 |
+| Table 5 Top-15 外部验证 | 当前 `table5_summary.json` 支持率 **1/15**；论文为 **13/15**；`reproduction_gap_diagnosis.json` 显示论文原始配对仅 **1/15** 进入 OOF 分数；公开文献自动候选精确 herb+ADR 命中为 **0** | 优先反推论文 Table 5 候选生成/排序协议；TCMDA 核验作为第二层证据补充 |
 | Table 6 精细 TCM 系统映射 | 当前映射依赖 Table 5 且多数落入粗粒度系统 | Table 5 证据确定后，补 PT/SOC 到 16 TCM 系统的规则与人工复核 |
 
 ---

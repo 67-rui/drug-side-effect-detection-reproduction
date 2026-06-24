@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -149,14 +150,39 @@ def table5_diagnostics() -> dict:
         collect_oof_scores,
         faers_positive_pairs,
         graph_positive_pairs,
-        literature_positive_pairs,
     )
+    from scripts.run_table5_paper_compare import paper_herb_top1_rows
+    from inference.entity_mapping import EntityNames
 
     summary_path = MSAT_ROOT / 'results' / 'summary.json'
     oof = collect_oof_scores(summary_path)
     faers = faers_positive_pairs()
     all_pos = graph_positive_pairs()
-    lit = literature_positive_pairs()
+    lit = literature_pairs()
+
+    def norm_name(text: str) -> str:
+        return ' '.join(re.sub(r'[^a-z0-9]+', ' ', text.lower()).split())
+
+    adr_by_name = {}
+    names = EntityNames.load()
+    for adr_id, rec in names.adrs.items():
+        for value in (rec.meddra_pt, rec.primary):
+            if value:
+                adr_by_name.setdefault(norm_name(value), adr_id)
+
+    paper_payload = json.loads(
+        (MSAT_ROOT / 'data' / 'paper_table5_reference.json').read_text(encoding='utf-8')
+    )
+    mapped_pairs = []
+    unmapped_adr_pts = []
+    for ref in paper_payload.get('rows', []):
+        herb_id = names.paper_herb_id(ref['latin'])
+        adr_id = adr_by_name.get(norm_name(ref['adr_pt']))
+        if herb_id is None or adr_id is None:
+            if adr_id is None:
+                unmapped_adr_pts.append(ref['adr_pt'])
+            continue
+        mapped_pairs.append((herb_id, adr_id))
 
     def top_k(excluded: set, k=15):
         cands = [(p, s) for p, s in oof.items() if p not in excluded]
@@ -166,6 +192,11 @@ def table5_diagnostics() -> dict:
     oof_top = top_k(all_pos)
     faers_top = top_k(faers)
     lit_in_top = sum(1 for p, _ in faers_top if p in lit)
+    paper_seed_rows = paper_herb_top1_rows(names, oof, all_pos)
+    paper_seed_supported = sum(
+        1 for row in paper_seed_rows if row['database_verified'] or row['mechanistic_support']
+    )
+    paper_seed_adr_matches = sum(1 for row in paper_seed_rows if row['adr_match_paper'])
     return {
         'oof_exclude_all_positives': {
             'top1_score': oof_top[0][1] if oof_top else None,
@@ -175,6 +206,30 @@ def table5_diagnostics() -> dict:
             'top1_score': faers_top[0][1] if faers_top else None,
             'lit_edges_in_top15': lit_in_top,
             'n_lit_in_graph': len(lit),
+        },
+        'paper_seed_top1_oof': {
+            'mode': 'paper_herb_top1_oof',
+            'diagnostic_only': True,
+            'is_table5_reproduction_claim': False,
+            'reason': (
+                'Uses the 15 paper Table 5 herbs as seeds, then picks each herb top-1 '
+                'OOF ADR; it can reproduce paper support labels but not paper pairs.'
+            ),
+            'n_rows': len(paper_seed_rows),
+            'adr_match_paper': paper_seed_adr_matches,
+            'supported_count': paper_seed_supported,
+            'support_rate': paper_seed_supported / len(paper_seed_rows)
+            if paper_seed_rows
+            else 0.0,
+        },
+        'paper_reference_pair_coverage': {
+            'paper_rows': len(paper_payload.get('rows', [])),
+            'mapped_pairs': len(mapped_pairs),
+            'pairs_in_graph': sum(1 for pair in mapped_pairs if pair in all_pos),
+            'pairs_in_faers': sum(1 for pair in mapped_pairs if pair in faers),
+            'pairs_in_literature': sum(1 for pair in mapped_pairs if pair in lit),
+            'pairs_in_oof_scores': sum(1 for pair in mapped_pairs if pair in oof),
+            'unmapped_adr_pts': unmapped_adr_pts,
         },
         'n_faers_pairs': len(faers),
         'n_lit_pairs': len(lit),

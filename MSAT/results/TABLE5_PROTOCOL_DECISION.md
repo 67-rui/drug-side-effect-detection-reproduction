@@ -15,8 +15,11 @@ The current committed `table5_summary.json` is valid and non-stale, but it **doe
 | --- | --- | --- | --- |
 | `results/table5_summary.json` | `predictor` | `exclude_all_graph_positives` | `1/15 = 6.7%` |
 | `results/table5_literature_evidence_candidates.json` | PubMed/OpenAlex candidate scan | current Top-15 | `63` review candidates, `0` exact herb+ADR hits |
+| `results/reproduction_gap_diagnosis.json` | Protocol-difference diagnosis | paper Table 5 reference pairs | `14/15` ADR-mapped, `1/15` appears in OOF scores |
 
 Therefore Table 5 should be cited as a reproduction gap until the evidence cache is filled from explicit database/literature sources.
+
+The current evidence indicates that the gap is not only missing external validation. The paper's original Table 5 pairs mostly do not exist in the current OOF prediction space: only one mapped paper pair appears in `results/summary.json` fold predictions. Reproducing Table 5 therefore requires matching the paper's candidate-generation protocol, not merely searching more literature for the current Top-15.
 
 ## Accepted Table 5 Modes
 
@@ -103,7 +106,19 @@ python scripts/fetch_table5_literature_evidence.py \
 
 Current scan result: 63 retained candidates, all requiring manual review; 0 records matched both herb text and the predicted ADR PT.
 
-4. For each row in `data/tcmda_cache.json`, fill these fields:
+4. Run the Table 5 protocol-difference diagnosis:
+
+```bash
+python scripts/diagnose_reproduction_gaps.py
+```
+
+Expected output:
+
+- `results/reproduction_gap_diagnosis.json`
+
+The `paper_seed_top1_oof` block is diagnostic only. It can reproduce the paper's `13/15` support labels by seeding the 15 paper herbs, but it has `adr_match_paper: 0` and must not be reported as Table 5 reproduction.
+
+5. For each row in `data/tcmda_cache.json`, fill these fields:
 
 ```json
 {
@@ -120,7 +135,7 @@ Current scan result: 63 retained candidates, all requiring manual review; 0 reco
 
 Use the actual TCMDA phenotype text. If no database support is found, leave `adverse_phenotypes` empty and record the query in `notes`.
 
-5. Re-run Table 5 using the filled cache:
+6. Re-run Table 5 using the filled cache:
 
 ```bash
 python scripts/run_table5_validation.py \
@@ -129,7 +144,7 @@ python scripts/run_table5_validation.py \
   --tcmda-cache data/tcmda_cache.json
 ```
 
-6. Regenerate Table 6 from the accepted Table 5 CSV:
+7. Regenerate Table 6 from the accepted Table 5 CSV:
 
 ```bash
 python scripts/run_table6_mapping.py \
@@ -137,7 +152,7 @@ python scripts/run_table6_mapping.py \
   --out results/table6_mapping.csv
 ```
 
-7. Audit the artifacts:
+8. Audit the artifacts:
 
 ```bash
 python scripts/audit_reproduction_state.py \
@@ -152,7 +167,7 @@ Expected audit condition:
 - `table5_summary.json` has `checkpoint.exists: true`
 - `table5_summary.json` has `database_check` pointing to the cache path
 
-8. Report the result honestly:
+9. Report the result honestly:
 
 - If support remains far below `13/15`, report Table 5 as **not reproduced** and include the current support rate.
 - If support approaches the paper claim, attach the cache and note which rows were database-supported, mechanistically supported, or unsupported.

@@ -46,6 +46,7 @@ results/*
 !results/
 !results/*.md
 !results/reproduction_state_audit.json
+!results/reproduction_gap_diagnosis.json
 !results/table5_literature_evidence_candidates.csv
 !results/table5_literature_evidence_candidates.json
 logs/
