@@ -96,6 +96,16 @@
     "n_lit_pairs": 1328,
     "n_all_pos": 27062
   },
+  "checkpoint_provenance": {
+    "table5_summary": "/Users/a67_2024/Desktop/drug-detect/MSAT/results/table5_summary.json",
+    "expected_checkpoint_path": "/root/autodl-tmp/drug-detect-fix/MSAT/saved_models/best_model_for_prediction.pt",
+    "expected_checkpoint_sha256": "506e7fd3a1d81e1fd97651542494e51019be351fb39e73a3d8dd32c335283e95",
+    "local_checkpoint_path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt",
+    "local_checkpoint_exists": true,
+    "local_checkpoint_sha256": "26d65adad1ffe275b938aa89326c113e4bb70b5770f35df5e40ce7a145484e19",
+    "local_checkpoint_matches_expected": false,
+    "warning": "Local checkpoint is not the checkpoint that generated Table 5; do not use it for Table 5 ranking diagnosis."
+  },
   "coldstart_reported": [
     {
       "model": "MSAT",

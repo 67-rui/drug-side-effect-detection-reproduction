@@ -24,11 +24,46 @@ from inference.coldstart import (
     literature_pairs,
     train_herb_degree_for_fold,
 )
+from inference.artifact_manifest import file_manifest
 
 
 def load_summary(name: str) -> dict:
     path = MSAT_ROOT / 'results' / name
     return json.loads(path.read_text())
+
+
+def checkpoint_provenance(
+    table5_summary_path: Path | None = None,
+    local_checkpoint_path: Path | None = None,
+) -> dict:
+    summary_path = table5_summary_path or (MSAT_ROOT / 'results' / 'table5_summary.json')
+    ckpt_path = local_checkpoint_path or (
+        MSAT_ROOT / 'saved_models' / 'best_model_for_prediction.pt'
+    )
+    table5_summary = json.loads(summary_path.read_text(encoding='utf-8'))
+    expected = table5_summary.get('checkpoint') or {}
+    local = file_manifest(ckpt_path)
+    expected_sha = expected.get('sha256')
+    local_sha = local.get('sha256')
+    matches = bool(expected_sha and local_sha and expected_sha == local_sha)
+    warning = None
+    if not local.get('exists'):
+        warning = 'Local checkpoint is missing; Table 5 cannot be recomputed locally.'
+    elif not matches:
+        warning = (
+            'Local checkpoint is not the checkpoint that generated Table 5; '
+            'do not use it for Table 5 ranking diagnosis.'
+        )
+    return {
+        'table5_summary': str(summary_path),
+        'expected_checkpoint_path': expected.get('path'),
+        'expected_checkpoint_sha256': expected_sha,
+        'local_checkpoint_path': str(ckpt_path),
+        'local_checkpoint_exists': bool(local.get('exists')),
+        'local_checkpoint_sha256': local_sha,
+        'local_checkpoint_matches_expected': matches,
+        'warning': warning,
+    }
 
 
 def metrics_at_threshold(y_true, y_score, threshold: float) -> dict:
@@ -286,6 +321,7 @@ def main() -> None:
             {
                 'unseen_cmm': unseen,
                 'table5': t5,
+                'checkpoint_provenance': checkpoint_provenance(),
                 'coldstart_reported': [
                     {k: row[k] for k in ('model', 'precision', 'mcc', 'auc') if k in row}
                     for row in json.loads(cold.read_text()).get('models', [])
