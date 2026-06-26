@@ -1,223 +1,557 @@
-# MSAT Project Memory
+# MSAT 项目外部记忆
 
-Last inspected: 2026-06-23 16:50 CST
-Latest external progress note: `resource_副本/MSAT_SESSION_PROGRESS_2026-06-23.md` (2026-06-23 11:45 CST)
+**最后更新：** 2026-06-26
+**用途：** 作为后续对话、上下文压缩、代码修改和实验判断的长期外部记忆。后续如果上下文被压缩，必须先读本文件，再回答项目状态、复现程度、下一步计划或代码方向问题。
+**项目根目录：** `/Users/a67_2024/Desktop/drug-detect`
+**核心实现目录：** `MSAT/`
 
-## Purpose
+## 0. 使用规则
 
-This project reproduces the paper:
+后续接续本项目时，以本文件作为入口，但不要只依赖本文件。需要按以下顺序交叉核对：
 
-- Shi et al. (2026), "MSAT: a FAERS-informed heterogeneous graph neural network for pharmacovigilance prediction of Chinese materia medica-associated adverse drug reactions", Frontiers in Pharmacology 17:1774128.
-- Local paper PDF: `resource_副本/fphar-17-1774128.pdf`.
-- Local upstream code copy: `resource_副本/MSAT-main/`.
-- Working implementation: `MSAT/`.
+1. `MSAT/results/README.md`：当前结果目录的引用规则和最新状态摘要。
+2. `MSAT/results/reproduction_state_audit.json`：当前结果是否有 stale artifact、缺失 metadata、可疑 ML 泄漏等问题。
+3. `MSAT/results/summary.json`、`baseline_summary.json`、`summary_neg10.json`、`baseline_neg10_summary.json`、`fig6_summary.json`、`faers_only_coldstart_summary.json`：当前可引用数值结果。
+4. `MSAT/results/TABLE5_PROTOCOL_DECISION.md` 与 `MSAT/results/reproduction_gap_diagnosis.json`：Table 5 是否可复现的权威判断。
+5. `MSAT/results/RESEARCH_DIRECTION_TECHNICAL_PROPOSAL.md` 与 `MSAT/results/RESEARCH_DIRECTION_IMPLEMENTATION_PLAN.md`：未来研究方向与实现计划。
+6. `MSAT/results/REPRODUCTION_REPORT.md`、`VERIFICATION_FINDINGS.md`、`PAPER_CODE_AUDIT.md`：历史过程和辅助解释；如果与 2026-06-24 之后的结果目录摘要冲突，以 `results/README.md` 和审计 JSON 为准。
 
-The reproduction goal is not just to run the upstream code, but to match the paper's experimental protocol and reported findings, using the paper, official split file, Zenodo graph data, and the local expanded scripts.
+不要把早期会话、旧报告、旧 `PROJECT_MEMORY.md` 中的判断直接当作当前事实。尤其要注意：6 月 23 日前后的报告曾经记录“结果需重跑”或“产物 stale”，但 6 月 24 日已经同步了新服务器结果并通过结果审计。
 
-## Repository Shape
+## 1. 项目最初需求
 
-- `MSAT/model.py`: MSAT model implementation.
-  - Multi-relation attention over heterogeneous graph node types.
-  - ESA-style gated edge encoder for 6-dim CMM-ADR evidence features.
-  - HSP-style propagation / bottleneck transform.
-  - HCI-style late fusion prediction head: MLP + bilinear + DistMult.
-- `MSAT/train.py`: 10-fold MSAT training/evaluation.
-  - Uses official `10fold_cv_split.pkl`.
-  - Removes held-out test positive CMM-ADR edges from graph in both directions.
-  - Saves fold models and summary metrics.
-- `MSAT/experiments/feature_extractor.py`: graph and split loader.
-  - Loads `experiments_data_clean_final/complete_hetero_graph.pt`.
-  - Supports 1:1, 1:10, and test-only imbalance negative sampling.
-- `MSAT/baselines/`: ML/GNN baseline support.
-- `MSAT/inference/`: cold-start, entity mapping, predictor, TCM mapping, graph path utilities.
-- `MSAT/scripts/`: experiment runners for the paper tables/figures.
-- `MSAT/results/`: current effective outputs and living reports.
-- `MSAT/results/archive_pre_paper_align_2026-06-22/`: historical outputs before paper-protocol realignment; do not cite as final unless explicitly comparing history.
-- `docs/superpowers/plans/`: phase plans, especially Phase 8 and Phase 9 gap-closure notes.
+本项目最初目标是复现论文：
 
-The workspace is now a git repository and has been pushed to GitHub:
+- Shi et al. (2026), **“MSAT: a FAERS-informed heterogeneous graph neural network for pharmacovigilance prediction of Chinese materia medica-associated adverse drug reactions”**, *Frontiers in Pharmacology* 17:1774128.
+- 本地论文 PDF：`resource_副本/fphar-17-1774128.pdf`
+- 官方代码副本：`resource_副本/MSAT-main/`
+- 本地扩展实现：`MSAT/`
 
-- Remote: `git@github.com:67-rui/drug-side-effect-detection-reproduction.git`
-- Public URL: `https://github.com/67-rui/drug-side-effect-detection-reproduction`
-- Initial pushed commit: `ee5e617 Initial reproduction project snapshot`
+最初需求不是简单运行作者代码，而是：
 
-## Paper Protocol Anchors
+1. 对照论文、官方代码、官方数据和本地实现，判断是否真实复现论文结果。
+2. 检查代码是否对齐论文协议和数据，尤其是官方 10 折、归纳式边隐藏、负采样比例、Table 2/3/4/Fig.5/Fig.6/Table 5/Table 6。
+3. 修复代码中的协议偏差、泄漏、checkpoint 覆盖和产物污染问题。
+4. 在服务器上完成必要长训，拉回结果并审计。
+5. 判断当前复现完成度，明确哪些结果可引用、哪些不能引用。
+6. 在复现基础上形成后续研究方向，回应导师提出的方向：因果图、可解释性、负采样、大模型/外部证据。
 
-The paper uses:
+## 2. 仓库和资源状态
 
-- 27,062 CMM-ADR associations.
-- Stratified 10-fold cross-validation.
-- Approximate 81:9:10 train/validation/test split within each fold.
-- Test positive CMM-ADR edges removed from the graph during training/evaluation to avoid topology leakage.
-- Balanced 1:1 negative sampling for primary Table 2/3 evaluation.
-- End-to-end 1:10 sampling for Table 4.
-- Test imbalance sweep for Fig.6.
-- FAERS-only training and literature hold-out evaluation for Fig.5a cold-start.
-- Top-15 high-confidence unlabeled predictions for Table 5.
-- TCM functional system mapping for Table 6.
-- Case study: Zhishi / Citrus aurantium L. -> diarrhoea, with nobiletin (CID 72344) and ABCG2/BCRP path narrative.
+GitHub 仓库：
 
-## Data State
+- Remote：`git@github.com:67-rui/drug-side-effect-detection-reproduction.git`
+- 用户提供链接：`https://github.com/67-rui/drug-side-effect-detection-reproduction.git`
+- 当前工作分支：`codex/fix-reproduction-protocol`
 
-Important local files:
+重要目录：
 
-- `MSAT/data/10fold_cv_split.pkl`: official GitHub split.
-- `experiments_data_clean_final/complete_hetero_graph.pt`: Zenodo graph data, required by tests/training.
-- `MSAT/data/paper_table5_reference.json`: paper Table 5 reference evidence.
-- `MSAT/data/paper_table6_reference.json`: paper Table 6 mapping reference.
-- `MSAT/data/cctcm_herb_index.json` and `MSAT/data/entity_names.json`: entity display/mapping support.
-- `MSAT/data/tcmda_cache.json`: local manual/seeded TCMDA-style evidence cache.
+- `resource_副本/`：论文 PDF、官方最小代码、6 月 23 日 Cursor/会话进度摘要。
+- `MSAT/`：当前真正使用的复现与扩展实现。
+- `MSAT/results/`：当前结果、报告、审计和未来方案文档。
+- `MSAT/data/`：官方 split、实体映射、Table 5/6 参考、TCMDA 缓存。
+- `MSAT/saved_models/`：本地 checkpoint。注意：当前本地 `best_model_for_prediction.pt` 与服务器生成 Table 5 的 checkpoint sha 不一致。
+- `MSAT/server_results_2026-06-24/`：服务器结果包，本地保存但默认不入 Git。
+- `docs/superpowers/plans/`：阶段计划和修复计划，包括 6 月 18 日复现计划、6 月 22 日 Phase 8/9、6 月 23 日协议修复、6 月 24 日 Table 5 计划。
 
-Graph scale recorded in the report:
+当前工作区注意事项：
 
-- herb/CMM nodes: 651, 768-d features.
-- compound nodes: 1,498, 768-d features.
-- target nodes: 21,393, 768-d features.
-- ADR nodes: 5,974, 768-d features.
-- supervised CMM-ADR edges: 27,062, 6-d evidence features.
+- `MSAT/results/RESEARCH_DIRECTION_TECHNICAL_PROPOSAL.md` 已按用户要求调整成可直接发给导师的正式文档，并删除了“与老师建议的对应关系”，把长期阶段计划压缩为“一周内最小验证闭环”。这部分修改当前可能仍未提交，后续不要误以为文件还是最初版本。
+- `MSAT/results/CURRENT_MODEL_CAPABILITY_REPORT.md` 是未跟踪文件。除非用户明确要求，不要自动纳入提交或覆盖。
 
-## Current Progress Snapshot
+## 3. 数据与论文协议锚点
 
-The full paper-aligned AutoDL resume completed on 2026-06-23 16:11 CST. Remote `results/` was synchronized back to local `MSAT/results/` at about 2026-06-23 16:50 CST.
+官方数据和协议锚点：
 
-Remote/local sync facts:
+- 官方图数据：`experiments_data_clean_final/complete_hetero_graph.pt`
+- 官方 10 折：`MSAT/data/10fold_cv_split.pkl`
+- 图节点：
+  - CMM/herb：651，768 维特征
+  - compound：1,498，768 维特征
+  - target：21,393，768 维特征
+  - ADR：5,974，768 维特征
+- 监督 CMM-ADR 边：27,062，带 6 维 evidence feature
+- 其中 FAERS 正边约 25,734，文献正边约 1,328。
 
-- Remote path: `/root/autodl-tmp/MSAT/results`.
-- Local path: `MSAT/results/`.
-- Synced result payload: 103 files, about 328 MB.
-- Remote training processes had stopped and GPU was idle at the final check.
+当前协议版本：
 
-Final local snapshot after the remote sync:
+- `MSAT/reproduction_protocol.py`
+- `PROTOCOL_VERSION = "2026-06-23-val-test-edge-hidden"`
+- 关键含义：validation 和 test 的正向 CMM-ADR 监督正边都应从 message-passing 图中隐藏。
+- prediction checkpoint 按 `best_val_auc` 选择，不按 test AUC 选择。
 
-Strongly reproduced / effectively complete:
+论文主协议：
 
-- Table 2 MSAT main experiment: `summary.json` AUC 0.9792 +/- 0.0018, F1 0.9311, MCC 0.8616. This matches the paper's main MSAT AUC level.
-- Table 3 w/o ablations: Full is best; w/o HCI has lowest AUC among w/o variants.
-- Table 4 MSAT 1:10: `summary_neg10.json` AUC 0.8710 +/- 0.0051, F1 0.5639, MCC 0.5221, close to the paper's reported 1:10 MSAT level.
-- Fig.5b degree stratification: tail/head trend aligns with paper.
-- Fig.5a paper-aligned FAERS-only cold-start: `faers_only_coldstart_summary.json` shows MSAT beats GAT, HGT, and Simple-HGN on Precision, MCC, and AUC, with unseen herb rate 164/170 = 96.47%.
-- Entity mapping sanity for paper seeds: recorded as 16/16 mapped.
+1. Table 2：1:1 负采样，10 折交叉验证。
+2. Table 3：MSAT 模块消融，包括 ESA/HSP/HCI。
+3. Table 4：1:10 不平衡训练/评价。
+4. Fig.5a：FAERS-only 训练，文献 hold-out 冷启动评估，约 96.5% unseen CMM。
+5. Fig.6：测试集负样本比例 1:2、1:5、1:10 的不平衡 sweep。
+6. Table 5：Top-15 高置信未标注 CMM-ADR 预测，依赖 TCMDA/文献/机制证据，不只是训练指标。
+7. Table 6：Table 5 下游的 TCM 功能系统映射。
+8. §4.5.1：枳实 / Citrus aurantium L. 到 diarrhoea 的案例解释，涉及 nobiletin 和 ABCG2/BCRP 叙事。
 
-Partially reproduced / still problematic:
+## 4. 当前复现完成度总览
 
-- Table 3 Only variants: all below Full, but Only HCI is not the lowest as in the paper.
-- Table 4 all-model ranking: GNN baselines are plausible and below MSAT, but ML baselines are invalid right now. LR/RF/XGB produce AUC approximately 1.0 under 1:10, which is a severe anomaly and likely indicates target-edge evidence leakage or pair-feature construction leakage. Do not cite ML baseline rows until fixed.
-- Fig.6 imbalance sweep: MSAT is best only at test negative ratio 10. HGT is slightly higher than MSAT at ratios 2 and 5, so the current Fig.6 result does not fully match the paper trend.
-- Table 5 Top-15: unresolved. Current files and report have version drift:
-  - Current root `table5_summary.json` is `paper_3.5.6_global_top15` / `exclude_all_graph_positives` with support 1/15.
-  - `archive_pre_paper_align_2026-06-22/table5_paper_compare.json` has paper-herb Top-1 support 12/15 but ADR text matches paper 0/15.
-  - External database validation is incomplete because TCMDA has no public API in this workflow.
-- Table 6 TCM mapping: columns are generated, but mapping is still coarse and often defaults to `Qi-Blood-Fluid`; fine-grained paper mappings are not fully reproduced.
-- Zhishi case study:
-  - Current `case_zhishi_diarrhoea.json` still maps herb_id 277 and label includes 枳实 / Citrus aurantium L., with nobiletin CID 72344 paths.
-  - The final synced score is weaker than the earlier local run: score 0.2549, rank 7/5974. This may be caused by later Fig.6/test-negative runs overwriting `saved_models/best_model_for_prediction.pt`; verify checkpoint provenance before citing the case score.
+截至 2026-06-26，应这样概括项目状态：
 
-See `MSAT/results/FINAL_REMOTE_RUN_SUMMARY_2026-06-23.md` for the concise final synced result table and next actions.
+**主实验复现已经成功，完整论文逐表复现尚未完成。**
 
-## Fixes Started After Final Sync
+可以较稳妥引用：
 
-These code fixes were made locally after synchronizing the remote result files. The old JSON metrics in `MSAT/results/` have not yet been regenerated after these fixes.
+1. Table 2 MSAT 主实验：已对齐论文主性能。
+2. Table 2 九基线：当前防泄漏协议下可引用，MSAT AUC 最高。
+3. Fig.5a FAERS-only 冷启动：可引用，MSAT 在 Precision、MCC、AUC 上均优于 GAT/HGT/Simple-HGN。
+4. Fig.6：AUC/AUPRC 趋势可引用，MSAT 在 1:2、1:5、1:10 的 AUC/AUPRC 均最高；F1/MCC 中 HGT 更高，需要解释阈值差异。
+5. `reproduction_state_audit.json`：当前 `issues: []`。
 
-- ML baseline leakage fixed in code:
-  - `baselines.common.pair_features()` now excludes CMM-ADR edge evidence by default.
-  - `baselines.ml_models.run_ml_cv()` records `include_cmm_adr_edge_attr: false` in future ML baseline outputs.
-  - Diagnostic before the fix showed fold 0 1:10 `has_edge_attr == label` accuracy was 1.0 for both train and test, explaining LR/RF/XGB AUC near 1.0.
-- Prediction checkpoint overwrite fixed in code:
-  - Main run still writes `saved_models/best_model_for_prediction.pt`.
-  - Tagged runs now write `saved_models/best_model_for_prediction_<tag>.pt`.
-  - Tagged fold checkpoints now write `saved_models/best_model_fold{fold}_{tag}.pt`; main fold checkpoints keep the legacy `saved_models/best_model_fold{fold}.pt`.
-  - Future Fig.6, ablation, and other tagged runs should no longer overwrite the main predictor checkpoint or the main fold checkpoints used for audit.
-  - Future predictor checkpoints are selected by validation AUC (`best_val_auc`) rather than test AUC.
-- Validation-edge protocol fixed in code:
-  - MSAT training now removes both validation and test positive CMM-ADR edges from the message-passing graph before early stopping, threshold selection, and test evaluation.
-  - GNN baselines use the same validation/test positive-edge removal in `baselines.common.prepare_fold()`.
-  - Local diagnostic after the fix on fold 0: train positives remaining `22005/22005`, validation positives remaining `0/2431`, test positives remaining `0/2626`.
-- Threshold and 1:10 configuration consistency fixed in code:
-  - Saved MSAT `predictions.y_pred` now uses the fold's actual evaluation threshold, not a hard-coded 0.5.
-  - GNN baselines use validation-F1 threshold selection when `TrainingConfig.USE_OPTIMAL_THRESHOLD` is enabled.
-  - `scripts/run_imbalanced.py` and `scripts/run_baselines.py --neg-ratio 10` now set both `DataConfig.NEG_RATIO = 10` and `DataConfig.TEST_NEG_RATIO = 10`.
-- Future MSAT/GNN summaries now include clearer protocol metadata:
-  - MSAT summaries include `test_neg_ratio`.
-  - GNN baseline summaries include data/model/training config fields.
-- Artifact provenance and stale marking are now in place:
-  - `inference/artifact_manifest.py` records path, existence, size, mtime, and SHA-256 for checkpoint/input files.
-  - `run_table5_validation.py`, `run_case_zhishi.py`, `predict.py`, and `run_phase7.py` accept explicit `--checkpoint`.
-  - Future Table 5, Table 6, and Zhishi JSON outputs include artifact status and input/checkpoint provenance.
-  - Existing final-sync `table5_summary.json`, `table6_mapping.json`, and `case_zhishi_diarrhoea.json` are marked stale because they were generated before checkpoint provenance tracking and may have used an overwritten checkpoint.
-  - Server full-retrain script fixed: `scripts/server_paper_retrain.sh`.
-  - Legacy partial helper `scripts/rerun_after_artifact_fix.sh` now requires `ALLOW_PARTIAL_RERUN=1`; it is not sufficient after the validation-edge protocol fix.
-- Regression tests added:
-  - `tests/test_baseline_leakage.py`
-  - `tests/test_checkpoint_paths.py`
-  - `tests/test_artifact_manifest.py`
-  - `tests/test_protocol_edge_isolation.py`
-  - `tests/test_threshold_protocol.py`
-  - `tests/test_script_protocol_config.py`
+需要解释差异：
 
-Verification after these code changes:
+1. Table 3 消融：7 个变体齐全，但 Full 不是所有指标最高；`wo_esa` 的 AUC/AUPRC 略高于 Full，`only_hsp` 的 F1/MCC 较高。可报告趋势差异，不要声称完全复刻。
+2. Table 4 全模型 1:10：MSAT 的 F1/MCC 最高，但 XGB 的 AUC/AUPRC 略高于 MSAT；论文中 MSAT 在更多指标上第一。
+3. Fig.6 阈值指标：AUC/AUPRC 对齐论文趋势，但 F1/MCC 当前 HGT 更高。
+4. 枳实案例：当前 checkpoint 下可生成案例，score 0.6849，rank 1/5974，含 nobiletin 路径；但仍需要与论文 nobiletin/ABCG2 证据逐项说明差异。
 
-- `/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q`: 20 passed.
-- `/Users/a67_2024/opt/anaconda3/bin/python -m py_compile inference/artifact_manifest.py scripts/run_table5_validation.py scripts/run_case_zhishi.py scripts/predict.py scripts/run_phase7.py scripts/run_table6_mapping.py`: passed.
-- A local one-fold LR numerical rerun was attempted but interrupted after more than 2.5 minutes on CPU; rerun corrected ML baselines on the GPU server instead.
+不可声称已复现：
 
-Important consequence: all old MSAT/GNN numeric outputs generated before the validation-edge protocol fix should be treated as stale until rerun. This includes `summary.json`, `summary_neg10.json`, `summary_testneg*.json`, GNN baseline JSON files, Fig.6 summaries, and any downstream Table 5/Table 6/Zhishi artifacts derived from those checkpoints or scores.
+1. Table 5 Top-15 外部验证：当前支持率 1/15，不复现论文 13/15。
+2. Table 6 精细 TCM 系统映射：已生成，但依赖当前 Table 5，规则仍粗。
 
-## Current Reports To Trust
+## 5. 当前关键结果
 
-Use these together; none is fully sufficient alone:
+### 5.1 Table 2 MSAT 主实验
 
-- `resource_副本/MSAT_SESSION_PROGRESS_2026-06-23.md`: latest Cursor/remote-run progress note; authoritative for current AutoDL running state.
-- `MSAT/results/REPRODUCTION_REPORT.md`: broad narrative and paper table overview.
-- `MSAT/results/VERIFICATION_FINDINGS.md`: better for latest gap analysis around Fig.5a, Table 5, and Table 4.
-- `MSAT/results/PAPER_CODE_AUDIT.md`: protocol/code alignment audit.
-- `MSAT/results/faers_only_coldstart_summary.json`: authoritative current Fig.5a FAERS-only result.
-- `MSAT/results/case_zhishi_diarrhoea.json`: authoritative current Zhishi case output.
-- `MSAT/results/table5_summary.json`, `table5_top15.csv`, `table6_mapping.csv`: current root outputs, but verify protocol and timestamps before citing.
+文件：`MSAT/results/summary.json`
 
-## Known Version Drift
+当前主实验指标：
 
-There is a mismatch between some report prose and current root result files:
+| 指标 | mean |
+| --- | ---: |
+| Precision | 0.9286 |
+| Recall | 0.9344 |
+| F1 | 0.9315 |
+| AUC | 0.9793 |
+| AUPRC | 0.9771 |
+| MCC | 0.8625 |
 
-- `REPRODUCTION_REPORT.md` still contains older statements about the Zhishi case and Table 5 support. Current final synced files are authoritative until the report is regenerated.
-- Current `case_zhishi_diarrhoea.json` says score 0.2549/rank 7 and label includes 枳实.
-- Current root `table5_summary.json` records 1/15 support under `exclude_all_graph_positives`.
-- `table6_mapping.csv` appears generated from a different Table 5 input than current `table5_top15.csv`.
+这已经接近论文主实验结果，可作为后续改进方法的稳定基线。
 
-Before publishing any final claim, regenerate Table 5 -> Table 6 in one controlled run and update the report.
+### 5.2 Table 2 基线
 
-## Verification
+文件：`MSAT/results/baseline_summary.json`
 
-Attempted local tests:
+当前 1:1 结果中，MSAT AUC 最高：
 
-- `python3 -m pytest MSAT/tests -q`: failed because default Python has no pytest.
-- Bundled Codex Python also has no pytest.
+| 模型 | AUC | AUPRC | F1 | MCC |
+| --- | ---: | ---: | ---: | ---: |
+| MSAT | 0.9793 | 0.9771 | 0.9315 | 0.8625 |
+| LR | 0.9316 | 0.9247 | 0.8515 | 0.6972 |
+| RF | 0.9202 | 0.9018 | 0.8528 | 0.7021 |
+| XGB | 0.9412 | 0.9364 | 0.8624 | 0.7210 |
+| GCN | 0.9416 | 0.9137 | 0.9275 | 0.8527 |
+| GAT | 0.9738 | 0.9706 | 0.9172 | 0.8348 |
+| RGCN | 0.9694 | 0.9671 | 0.8827 | 0.7846 |
+| HGT | 0.9680 | 0.9670 | 0.8807 | 0.7802 |
+| HetNN | 0.9698 | 0.9668 | 0.8859 | 0.7889 |
+| Simple-HGN | 0.9725 | 0.9691 | 0.9124 | 0.8274 |
 
-No code-level pytest result is available from this inspection. Existing result files indicate prior GPU/server runs succeeded.
+### 5.3 Table 3 消融
 
-## Recommended Next Steps
+文件：`MSAT/results/ablation_summary.json`
 
-1. Push the leakage/checkpoint/protocol fixes to the server and rerun corrected main MSAT, 1:10 MSAT, GNN baselines, and corrected ML baselines.
-   - Priority command target: 1:10 `lr`, `rf`, `xgb`, then regenerate `baseline_neg10_summary.json`.
-   - Do not cite old `summary*.json`, `baseline_*_testneg*.json`, `baseline_lr_neg10.json`, `baseline_rf_neg10.json`, or `baseline_xgb_neg10.json`.
-2. Restore or regenerate a clean main-run predictor checkpoint.
-   - Re-run the main Table 2 MSAT training or copy the intended main checkpoint to `saved_models/best_model_for_prediction.pt`.
-   - Then regenerate Table 5 and the Zhishi case.
-3. Run the full corrected retrain on the server once it is available.
-   - Preferred command: `PY=/root/miniconda3/bin/python bash scripts/server_paper_retrain.sh`.
-   - It reruns main MSAT, Table 2 baselines, ablations, 1:10 experiments, Fig.6, Phase 9 downstream artifacts, and the final audit under the corrected protocol.
-4. Normalize Table 5 protocol and rerun Table 5 -> Table 6 in one pass.
-   - Decide whether the final paper-aligned claim uses exclude-all-positives, FAERS-only exclusion, predictor mode, or paper-herb diagnostic mode.
-   - Write the chosen protocol explicitly into result filenames or metadata.
-5. Re-run Fig.6 only after the checkpoint and metadata fixes are deployed.
-   - Current Fig.6 mismatch may be a real model/protocol result, but the regenerated summaries will be easier to audit.
-6. Improve Table 5 evidence validation.
-   - TCMDA has no public API path here; use explicit manual cache entries or approved external evidence sources only.
-   - Avoid claiming paper's 13/15 unless the same evidence definition is implemented.
-7. Fix Table 6 mapping.
-   - Prefer `paper_table6_reference.json` for paper-comparison rows.
-   - Expand PT/SOC rules for Stomach, Kidney, Liver, etc.
-8. Finish Zhishi readability.
-   - Map target IDs in the nobiletin paths to ABCG2/BCRP where supported.
-   - Ensure report text is updated to current rank/score.
-9. Reconcile report drift.
-   - Update `REPRODUCTION_REPORT.md` sections 10.7, 10.8, 12, and 13 after remote results are pulled back.
+当前 7 个变体齐全：
+
+| 变体 | AUC | AUPRC | F1 | MCC |
+| --- | ---: | ---: | ---: | ---: |
+| full | 0.9793 | 0.9771 | 0.9315 | 0.8625 |
+| wo_esa | 0.9795 | 0.9774 | 0.9311 | 0.8618 |
+| wo_hsp | 0.9781 | 0.9762 | 0.9288 | 0.8566 |
+| wo_hci | 0.9777 | 0.9755 | 0.9331 | 0.8648 |
+| only_esa | 0.9773 | 0.9752 | 0.9301 | 0.8591 |
+| only_hsp | 0.9780 | 0.9758 | 0.9342 | 0.8670 |
+| only_hci | 0.9780 | 0.9760 | 0.9285 | 0.8557 |
+
+报告口径：消融实验完成，但不应写成“完全符合论文排序”。可以写为：Full 保持高性能，去除/仅保留模块的表现差异在 0.001 量级，说明模块贡献趋势存在但与论文表格不完全同序。
+
+### 5.4 Table 4 1:10
+
+MSAT 单模型文件：`MSAT/results/summary_neg10.json`
+
+| 指标 | mean |
+| --- | ---: |
+| Precision | 0.5725 |
+| Recall | 0.5506 |
+| F1 | 0.5604 |
+| AUC | 0.8710 |
+| AUPRC | 0.5917 |
+| MCC | 0.5180 |
+
+全模型 1:10 文件：`MSAT/results/baseline_neg10_summary.json`
+
+关键结论：
+
+- MSAT F1/MCC 最高。
+- XGB AUC 0.8768、AUPRC 0.5922，略高于 MSAT 的 AUC 0.8710、AUPRC 0.5917。
+- GCN 1:10 近似随机，AUC 约 0.4999。
+
+报告口径：Table 4 已生成且可审计，但全模型排名未完全复现论文。
+
+### 5.5 Fig.5a FAERS-only 冷启动
+
+文件：`MSAT/results/faers_only_coldstart_summary.json`
+
+结论：
+
+- 协议：`paper_3.5.4_faers_train_literature_eval`
+- unseen CMM target：0.965
+- `msat_beats_all_gnn: true`
+- MSAT 在 Precision、MCC、AUC 三项均优于 GAT/HGT/Simple-HGN。
+
+不要把早期 10 折 CV 代理冷启动结果与 FAERS-only 结果混读。论文 Fig.5a 对应 FAERS-only 训练和文献 hold-out 评估。
+
+### 5.6 Fig.6 测试不平衡
+
+文件：`MSAT/results/fig6_summary.json`
+
+当前行包括 ratio 2、5、10 下的 MSAT、HGT、Simple-HGN、GAT：
+
+- ratio=2：MSAT AUC 0.8182，AUPRC 0.7351；HGT F1/MCC 更高。
+- ratio=5：MSAT AUC 0.8179，AUPRC 0.5683；HGT F1/MCC 更高。
+- ratio=10：MSAT AUC 0.8172，AUPRC 0.4330；HGT F1/MCC 更高。
+
+报告口径：AUC/AUPRC 复现论文趋势，阈值型指标需要解释校准差异。
+
+### 5.7 Table 5
+
+权威文件：
+
+- `MSAT/results/TABLE5_PROTOCOL_DECISION.md`
+- `MSAT/results/table5_summary.json`
+- `MSAT/results/reproduction_gap_diagnosis.json`
+- `MSAT/results/table5_literature_evidence_candidates.json`
+
+当前结论：
+
+- 当前 Table 5 产物有效且非 stale，但不复现论文支持率。
+- 当前 `table5_summary.json`：
+  - protocol：`paper_3.5.6_global_top15`
+  - scoring_mode：`predictor`
+  - candidate_pool：`exclude_all_graph_positives`
+  - support_rate：1/15 = 0.0667
+  - supported_count：1
+  - checkpoint sha：`506e7fd3a1d81e1fd97651542494e51019be351fb39e73a3d8dd32c335283e95`
+- 文献候选自动抓取：
+  - PubMed/OpenAlex 候选 63 条。
+  - 精确 herb+ADR 命中 0 条。
+  - 全部仅供人工复核，不可默认作为 verified support。
+- 论文 Table 5 参考配对诊断：
+  - paper rows：15
+  - mapped pairs：14
+  - pairs in graph：1
+  - pairs in OOF scores：1
+- `paper_seed_top1_oof` 能得到 13/15 support，但这是诊断模式：
+  - diagnostic_only：true
+  - is_table5_reproduction_claim：false
+  - adr_match_paper：0
+  - 不能写成 Table 5 复现。
+
+当前 Table 5 不可复现的核心原因：
+
+1. 官方公开代码没有 Table 5 导出脚本或 notebook。
+2. OOF fold predictions 无法重建论文 Table 5 候选空间。
+3. 本地 `saved_models/best_model_for_prediction.pt` 与生成当前 Table 5 的服务器 checkpoint sha 不一致。
+4. 服务器结果包没有包含目标 checkpoint，无法从当前本地状态恢复。
+5. TCMDA 证据路径没有可公开 API；目前只能人工缓存或显式证据补充。
+
+报告规则：
+
+- 可以写“当前公开材料下 Table 5 无法纸面等价复现”。
+- 不要写“Table 5 已复现 13/15”。
+- 不要把 paper-seed diagnostic 或 mechanistic path 单独等同于 TCMDA 支持。
+
+### 5.8 Table 6
+
+文件：
+
+- `MSAT/results/table6_mapping.csv`
+- `MSAT/results/table6_mapping.json`
+
+当前结论：
+
+- Table 6 映射产物已生成。
+- 但 Table 6 依赖 Table 5 候选和证据，因此当前只能作为下游 mapping workflow 产物，不能声称复现论文 Table 6。
+- 映射规则仍粗，很多 PT/SOC 会落到泛化系统。
+
+### 5.9 枳实案例
+
+文件：`MSAT/results/case_zhishi_diarrhoea.json`
+
+当前产物：
+
+- artifact_status.stale：false
+- herb_id：277
+- herb_label：枳实（Citrus aurantium L.）
+- adr_label：Watery diarrhoea
+- score：0.6849409937858582
+- rank：1/5974
+- 路径含：nobiletin (CID 72344) 与多个 target id
+- paper_targets：nobiletin_cid 72344；transporter ABCG2 (BCRP)
+
+报告口径：当前 checkpoint 下可以作为案例产物引用，但若写论文式解释，需要补足 target id 到 ABCG2/BCRP 的逐项证据映射。
+
+## 6. 当前实现结构
+
+### 6.1 模型
+
+文件：`MSAT/model.py`
+
+主要类：
+
+- `MSATEdgeEncoder`：处理 6 维 CMM-ADR edge_attr，把 evidence feature 注入 attention logit。
+- `MSATOutputTransform`：输出/瓶颈变换，对应 HSP 风格。
+- `LateFusionPredictor`：MLP、Bilinear、DistMult 三路融合预测，对应 HCI。
+- `MultiTypeGraphAttention`：多类型图注意力。
+- `MultiRelationAttentionLayer`：多关系异构图 message passing。
+- `MSATTCMFSFinal`：最终 MSAT 模型。
+
+### 6.2 训练
+
+文件：`MSAT/train.py`
+
+关键实现：
+
+- 使用官方 `10fold_cv_split.pkl`。
+- 每折将 validation 和 test 的正向 CMM-ADR 监督正边从图中隐藏，含反向边同步处理。
+- 支持主实验和带 tag 的实验，避免 checkpoint 覆盖。
+- 预测 checkpoint 按 `best_val_auc` 选择。
+- summary 中写入协议 metadata、data/model/training config、fold metrics、checkpoint 信息。
+
+### 6.3 数据加载
+
+文件：`MSAT/experiments/feature_extractor.py`
+
+关键实现：
+
+- 读取 Zenodo `complete_hetero_graph.pt`。
+- 支持官方 split、1:1、1:10、test-only imbalance。
+- CMM-ADR edge_attr 应为 6 维。
+
+### 6.4 基线
+
+文件：
+
+- `MSAT/baselines/common.py`
+- `MSAT/baselines/ml_models.py`
+- `MSAT/baselines/gnn_models.py`
+- `MSAT/scripts/run_baselines.py`
+
+关键实现：
+
+- GNN baseline 使用与 MSAT 一致的 val/test 正边隐藏。
+- ML baseline 的 `pair_features()` 默认 `include_edge_attr=False`，避免把 CMM-ADR label-carrying edge_attr 泄漏给 LR/RF/XGB。
+- 旧的 ML baseline AUC≈1.0 是泄漏产物，已经修复并重跑；当前 `baseline_summary.json` 和 `baseline_neg10_summary.json` 可审计。
+
+### 6.5 下游推理与验证
+
+重要文件：
+
+- `MSAT/inference/predictor.py`：加载模型 checkpoint，对 CMM-ADR pair 打分。
+- `MSAT/inference/artifact_manifest.py`：记录文件 size、mtime、sha256，用于 provenance。
+- `MSAT/inference/entity_mapping.py`：实体名称与 paper herb 显示。
+- `MSAT/inference/graph_utils.py`：路径解释辅助。
+- `MSAT/inference/tcmda_validation.py`：TCMDA 缓存证据匹配。
+- `MSAT/inference/literature_evidence.py`：PubMed/OpenAlex/Crossref 证据抓取与解析。
+- `MSAT/inference/tcm_mapping.py`、`paper_tables.py`：Table 6 相关映射。
+
+重要脚本：
+
+- `scripts/audit_reproduction_state.py`：当前最重要的产物审计。
+- `scripts/run_table5_validation.py`：Table 5 候选生成与证据汇总。
+- `scripts/diagnose_reproduction_gaps.py`：Table 5、checkpoint、coldstart 等复现差距诊断。
+- `scripts/fetch_table5_literature_evidence.py`：公开文献候选抓取。
+- `scripts/run_table6_mapping.py`：Table 6 映射。
+- `scripts/run_case_zhishi.py`：枳实案例。
+- `scripts/run_faers_only_coldstart_train.py` 与 `run_faers_only_coldstart_gnn.py`：Fig.5a。
+- `scripts/run_imbalance_sweep.py`：Fig.6。
+
+### 6.6 测试
+
+测试目录：`MSAT/tests/`
+
+关键测试：
+
+- `test_protocol_edge_isolation.py`
+- `test_baseline_leakage.py`
+- `test_checkpoint_paths.py`
+- `test_artifact_manifest.py`
+- `test_threshold_protocol.py`
+- `test_script_protocol_config.py`
+- `test_audit_reproduction_state.py`
+- `test_diagnose_reproduction_gaps.py`
+- `test_fetch_table5_literature_evidence.py`
+- `test_literature_evidence.py`
+
+后续改代码时，至少运行相关测试；涉及复现实验状态时运行：
+
+```bash
+cd /Users/a67_2024/Desktop/drug-detect/MSAT
+python scripts/audit_reproduction_state.py --out results/reproduction_state_audit.json --fail-on-error
+```
+
+如需完整测试，在当前机器通常使用：
+
+```bash
+cd /Users/a67_2024/Desktop/drug-detect/MSAT
+/Users/a67_2024/opt/anaconda3/bin/python -m pytest tests -q
+```
+
+## 7. 已解决的问题
+
+已经处理过的重要问题：
+
+1. 官方 split 对齐：从自写 KFold 切换为官方 `10fold_cv_split.pkl`。
+2. 归纳协议修复：validation/test 正边从 message-passing 图中隐藏。
+3. ML baseline 泄漏修复：默认不使用 CMM-ADR edge_attr 作为 pair feature。
+4. checkpoint 覆盖修复：带 tag 的实验写入独立 checkpoint，主 predictor checkpoint 不再被随意覆盖。
+5. threshold 协议修复：1:10 等实验使用正确阈值配置。
+6. artifact provenance：Table 5、Table 6、枳实案例等结果写入 checkpoint/input manifest。
+7. 产物污染处理：stale 标记、审计脚本、结果目录 README、server result bundle ignore 等。
+8. Table 5 误判修正：明确 13/15 paper-seed 结果只是诊断，不是复现。
+
+## 8. 仍然存在的问题
+
+1. Table 5 论文等价复现无法完成，除非补充作者未公开材料：
+   - 原始 predictor checkpoint，sha256 为 `506e7fd3a1d81e1fd97651542494e51019be351fb39e73a3d8dd32c335283e95`
+   - 作者 Table 5 导出脚本或 notebook
+   - “not included among labeled positives”的精确定义
+   - 每一行 TCMDA/文献证据记录
+2. Table 6 仍依赖 Table 5，因此不能单独声称论文等价复现。
+3. Table 3 与 Table 4 的部分排序和论文不完全一致，需要写成差异分析。
+4. Fig.6 的 AUC/AUPRC 对齐，但 F1/MCC 需要阈值校准解释。
+5. 枳实案例还需补 target 可读化和论文机制证据逐项对照。
+6. 当前未来研究方向文档已经是导师可读版，但尚未把技术实现正式启动到代码层面。
+
+## 9. 未来研究规划
+
+用户已给出导师建议，经过讨论后确定后续研究方向不应继续死磕 Table 5 完全复刻，而应基于复现发现的问题提出模型改进。
+
+当前正式方向：
+
+**基于不完整标签学习与机制解释的中药不良反应预测模型改进研究。**
+
+主线：
+
+1. **可靠负样本选择与 PU Learning**
+   解决“未观测不等于无关联”的核心问题。未观测药物-副作用 pair 不应简单当负样本。
+
+2. **关键机制子图解释与贡献度量化**
+   基于注意力权重、路径约束、扰动贡献或 SHAP-style 方法，解释单个药物-副作用预测由哪些成分、靶点和路径支持。
+
+3. **外部证据辅助验证**
+   使用 PubMed、SIDER、DrugBank、FAERS、说明书等来源构建证据分级。大模型或 DeepSeek 只能作为文献筛选/摘要/辅助判断工具，不能直接作为训练标签或金标准。
+
+4. **因果图作为阶段性扩展**
+   当前数据缺少个体级暴露、合并用药、适应症、人群统计等变量，因此严格因果推断不适合作为第一阶段核心方法。当前只做 DAG 和偏倚分析，后续有真实世界数据后再做因果校正。
+
+当前导师版文档：
+
+- `MSAT/results/RESEARCH_DIRECTION_TECHNICAL_PROPOSAL.md`
+
+用户已明确要求：
+
+- 文档要能直接发给导师。
+- 删除“与老师建议的对应关系”部分。
+- 不要写 8 到 10 周长期计划，改成一周内最小验证闭环。
+
+当前实现计划：
+
+- `MSAT/results/RESEARCH_DIRECTION_IMPLEMENTATION_PLAN.md`
+
+建议实现模块：
+
+- `MSAT/experiments/reliable_negative_sampling.py`
+- `MSAT/experiments/pu_dataset_builder.py`
+- `MSAT/experiments/pu_loss.py`
+- `MSAT/experiments/run_pu_msat_experiment.py`
+- `MSAT/experiments/run_negative_sampling_ablation.py`
+- `MSAT/inference/subgraph_explainer.py`
+- `MSAT/inference/contribution_scoring.py`
+- `MSAT/scripts/run_explanation_case_study.py`
+- `MSAT/scripts/build_evidence_screening_table.py`
+- `MSAT/scripts/summarize_pu_xmsat_results.py`
+
+## 10. 当下近期计划
+
+如果接下来用户说“开始进行”或“按照计划推进”，优先执行一周内最小验证闭环，而不是直接大规模服务器训练。
+
+一周内闭环：
+
+1. 固化原始 MSAT 主实验结果，作为 PU-XMSAT 基线。
+2. 设计并实现一版可靠负样本筛选策略，与原始随机负采样初步对比。
+3. 实现一版加权 PU Loss，在小规模实验中验证训练稳定性。
+4. 选择少量高置信预测案例，初步提取成分、靶点和机制路径。
+5. 汇总一份一周内初步实验结果，判断主线是否值得继续扩展。
+
+不要立即启动长时间训练，除非已经完成本地代码核对、单元测试、smoke test，并确认服务器可用。
+
+## 11. 后续回答注意事项
+
+后续回答用户时要保持以下边界：
+
+1. 不要说“全文 100% 复现”。正确说法是“主实验与多数核心指标已复现，Table 5/6 未论文等价复现”。
+2. 不要说“Table 5 已经 13/15”。13/15 是 paper-seed diagnostic，不是 Table 5 reproduction。
+3. 不要把 Table 5 和 Table 6 当作主实验。它们是外部验证/案例解释/辅助佐证。
+4. 不要忽略 Table 3、Table 4、Fig.6 的差异；要用“差异可解释但不完全同序”描述。
+5. 不要把大模型输出当标注。大模型只能做外部证据辅助。
+6. 不要自动提交或推送未跟踪文件，尤其是 `CURRENT_MODEL_CAPABILITY_REPORT.md`，除非用户明确要求。
+7. 不要在文档给导师时保留过多内部工程话，比如 checkpoint hash、git、产物污染、服务器密码等，除非是技术审计报告。
+8. 服务器 SSH 和密码曾由用户提供，但不要写入仓库、报告或记忆文件。
+9. 回答尽量用中文，并且对导师/科研方向问题保持正式口吻。
+
+## 12. 快速状态句
+
+如果需要一句话回答当前状态：
+
+> 当前项目已经较好复现 MSAT 的主实验和多数核心性能结果，结果目录审计为 `issues: []`；但 Table 5/6 属于外部验证和下游解释，当前公开材料下不能论文等价复现。后续最有价值的研究方向是把复现中暴露出的“未观测不等于负样本”问题转化为可靠负样本选择与 PU Learning，并结合机制子图解释和外部证据分级形成改进模型。
+
+## 13. 关键文件索引
+
+项目记忆与报告：
+
+- `MSAT/PROJECT_MEMORY.md`
+- `MSAT/results/README.md`
+- `MSAT/results/REPRODUCTION_REPORT.md`
+- `MSAT/results/FINAL_REMOTE_RUN_SUMMARY_2026-06-23.md`
+- `MSAT/results/TABLE5_PROTOCOL_DECISION.md`
+- `MSAT/results/RESEARCH_DIRECTION_TECHNICAL_PROPOSAL.md`
+- `MSAT/results/RESEARCH_DIRECTION_IMPLEMENTATION_PLAN.md`
+
+结果：
+
+- `MSAT/results/summary.json`
+- `MSAT/results/baseline_summary.json`
+- `MSAT/results/ablation_summary.json`
+- `MSAT/results/summary_neg10.json`
+- `MSAT/results/baseline_neg10_summary.json`
+- `MSAT/results/fig6_summary.json`
+- `MSAT/results/faers_only_coldstart_summary.json`
+- `MSAT/results/table5_summary.json`
+- `MSAT/results/reproduction_gap_diagnosis.json`
+- `MSAT/results/reproduction_state_audit.json`
+
+核心代码：
+
+- `MSAT/model.py`
+- `MSAT/train.py`
+- `MSAT/reproduction_protocol.py`
+- `MSAT/experiments/feature_extractor.py`
+- `MSAT/baselines/common.py`
+- `MSAT/scripts/audit_reproduction_state.py`
+- `MSAT/scripts/run_table5_validation.py`
+- `MSAT/scripts/diagnose_reproduction_gaps.py`
+
+原始资源：
+
+- `resource_副本/fphar-17-1774128.pdf`
+- `resource_副本/MSAT-main/`
+- `resource_副本/MSAT_SESSION_PROGRESS_2026-06-23.md`
