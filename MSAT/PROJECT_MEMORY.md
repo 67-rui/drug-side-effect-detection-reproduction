@@ -95,6 +95,7 @@ PU-XMSAT 当前实现进度（2026-06-26）：
 - 2026-06-26 按用户授权继续在 AutoDL 跑 fold0 full MSAT PU pilot，结果记录于 `MSAT/results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md`：50e/384p AUC `0.8497` AUPRC `0.8402`；100e/768p AUC `0.8643` AUPRC `0.8511`；200e/1536p AUC `0.8855` AUPRC `0.8745`。三组 best epoch 均等于最大 epoch，说明尚未到明确平台期；但固定 0.5 阈值下 recall 近 1.0、MCC 较低。
 - 2026-06-26 已实现 PU validation threshold calibration：`run_pu_msat_experiment.py` 支持 `--threshold-strategy fixed_0_5|val_f1`，`server_pu_xmsat_run.sh` 支持 `PU_XMSAT_THRESHOLD_STRATEGY`，报告脚本会记录阈值策略和每折 selected threshold。默认仍为 `fixed_0_5`，不改变旧 PU 产物解释。
 - 2026-06-26 已完成 fold0 / 200 epochs / 1,536 pairs / `val_f1` 的三策略对比：`hybrid` AUC `0.8832` AUPRC `0.8706` F1 `0.6585` MCC `0.1037`；`low_score` AUC `0.8313` AUPRC `0.8079` F1 `0.7532` MCC `0.4665`；`random` AUC `0.9167` AUPRC `0.9175` F1 `0.6627` MCC `0.1417`。三者 selected threshold 均为 `0.99`，提示概率校准仍差；`random` 在 fold0 排序指标最好，`low_score` 阈值型指标最好，`hybrid` 未胜出。因此当前不能声称某一负采样策略已最终优越，下一步应做 bounded multi-fold pilot。
+- 2026-06-26 已完成 bounded 3-fold / 200 epochs / 1,536 pairs / `val_f1` 的三策略对比：`hybrid` AUC `0.8696±0.0130` AUPRC `0.8583±0.0220` F1 `0.6953±0.0317` MCC `0.1984±0.1885`；`low_score` AUC `0.8722±0.0311` AUPRC `0.8658±0.0420` F1 `0.6821±0.0181` MCC `0.1644±0.1055`；`random` AUC `0.8852±0.0170` AUPRC `0.8805±0.0207` F1 `0.6739±0.0143` MCC `0.1251±0.0326`。结论：`random` 是当前正式 10 折 ranking 实验首选策略；`hybrid` 可作为阈值指标辅助比较；`low_score` 的 fold0 阈值优势不稳定。所有 3 折 selected threshold 仍为 `0.99`，概率校准问题未解决。
 - 2026-06-26 已新增论文素材进展报告：`MSAT/results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`，用于记录研究动机、实现路径、pilot 结果、阶段性解释和下一步实验计划。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
 - 后续若进入正式长训，仍需先做代码核对、服务器测试和输出命名检查，避免覆盖 baseline 或旧 PU 产物；用户已经允许使用服务器推进，但不要把服务器 SSH、密码或临时密钥写入仓库、报告或记忆文件。
@@ -523,15 +524,15 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 
 ## 10. 当下近期计划
 
-如果接下来用户说“开始进行”或“按照计划推进”，不要直接声称进入正式 10 折结论；优先执行 bounded multi-fold pilot，确认 fold0 中看到的策略差异是否稳定。
+如果接下来用户说“开始进行”或“按照计划推进”，可以进入正式 10 折 PU-XMSAT ranking pilot，但仍不要提前声称 PU-XMSAT 优于 MSAT；要等 10 折结果和报告完成后再判断。
 
 当前最合理的近期实验：
 
-1. 先跑 `random` 与 `low_score` 的 bounded multi-fold pilot，建议 3 折或 5 折，预算沿用 200 epochs / 1,536 pairs / `val_f1`。
-2. 如果算力时间允许，把 `hybrid` 也纳入同一 multi-fold pilot，判断其 fold0 未胜出是否只是折特异现象。
+1. 跑 `random` 的正式 10 折 PU-XMSAT ranking pilot，建议沿用 200 epochs / 1,536 pairs / `val_f1`，输出使用独立文件名，不能覆盖 baseline 或旧 PU 产物。
+2. 如果算力时间允许，跑 `hybrid` 的同协议 10 折辅助比较，用于观察 F1/MCC 是否稳定高于 `random`。
 3. 汇总 mean/std：AUC、AUPRC、F1、MCC、selected threshold、best epoch、runtime。
-4. 如果 `random` 稳定保持 AUC/AUPRC 最强，可把它作为正式 PU-XMSAT ranking baseline；如果 `low_score` 稳定保持 F1/MCC 最强，需要在论文中解释“易负样本/阈值分类”与“排序泛化”的取舍。
-5. 在 multi-fold pilot 稳定后，再锁定一个策略启动正式 10 折 PU-XMSAT。
+4. 与复现出的 MSAT 主实验基线对照，但写作时说明 PU-XMSAT 是 bounded pair-budget extension，不是论文原始 Table 2 的直接复现实验。
+5. 如果 10 折仍全部选择 threshold `0.99`，把概率校准列为后续单独 ablation，而不是混入本轮 ranking 结论。
 
 不要覆盖 baseline 产物；正式运行前必须先完成本地测试、服务器测试、输出命名核对和报告模板更新。
 

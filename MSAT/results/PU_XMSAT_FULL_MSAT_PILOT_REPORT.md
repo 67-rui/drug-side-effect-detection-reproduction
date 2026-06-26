@@ -26,17 +26,27 @@ After the fixed-threshold pilots, the PU runner was extended with explicit valid
 | low_score | 0.8313 | 0.8079 | 0.7532 | 0.4665 | 0.9900 | 0.7610 | 7 | 52.9s |
 | random | 0.9167 | 0.9175 | 0.6627 | 0.1417 | 0.9900 | 0.6748 | 200 | 101.1s |
 
+## Bounded 3-Fold Strategy Comparison
+
+To check whether the fold0 pattern was stable, a bounded 3-fold pilot was run with the same budget: 200 epochs, 1,536 PU pairs, reliable negative weight 0.8, unlabeled weight 0.2, and validation-F1 threshold selection.
+
+| Sampling strategy | AUC mean±std | AUPRC mean±std | F1 mean±std | MCC mean±std | Selected thresholds | Best epochs | Runtime |
+| --- | ---: | ---: | ---: | ---: | --- | --- | ---: |
+| hybrid | 0.8696±0.0130 | 0.8583±0.0220 | 0.6953±0.0317 | 0.1984±0.1885 | 0.99, 0.99, 0.99 | 12, 136, 199 | 253.1s |
+| low_score | 0.8722±0.0311 | 0.8658±0.0420 | 0.6821±0.0181 | 0.1644±0.1055 | 0.99, 0.99, 0.99 | 193, 174, 11 | 252.4s |
+| random | 0.8852±0.0170 | 0.8805±0.0207 | 0.6739±0.0143 | 0.1251±0.0326 | 0.99, 0.99, 0.99 | 200, 200, 162 | 298.7s |
+
 ## Interpretation
 
 The full MSAT PU backend is now operational on GPU. AUC and AUPRC improve as epochs and PU pair count increase, and the best validation AUC occurs at the final epoch for all three runs. This suggests the pilot has not yet reached a clear plateau.
 
 Threshold-dependent metrics need care. Recall is nearly 1.0 at the fixed `0.5` threshold, while precision and MCC remain weak. Validation-threshold calibration improves interpretability of F1/MCC, but all three calibrated runs selected the upper grid boundary (`0.99`), which indicates that probability calibration is still poor and thresholded metrics should be reported as secondary.
 
-The negative-sampling comparison is not yet conclusive. `random` gives the strongest ranking metrics on fold0, while `low_score` gives much stronger thresholded F1/MCC but weaker AUC/AUPRC and reaches its best validation AUC very early. This suggests that `low_score` may produce easier negatives, whereas `random` may better preserve ranking difficulty under the current pilot budget. `hybrid` did not dominate this fold0 comparison and needs either revised scoring weights or multi-fold evidence before being used as the default claim.
+The negative-sampling comparison is now clearer but still not final. In the 3-fold pilot, `random` has the best ranking metrics, while `hybrid` has the best thresholded F1/MCC. The fold0 advantage of `low_score` on F1/MCC does not hold across three folds. This means `random` is currently the stronger candidate for the paper-facing ranking experiment, while `hybrid` remains worth tracking if the study emphasizes thresholded classification quality.
 
 ## Recommendation
 
-Do not start a full formal 10-fold claim yet. First run a bounded multi-fold pilot for at least `random` and `low_score` under the same budget, because fold0 currently points to different winners depending on whether the paper prioritizes ranking metrics or thresholded classification metrics. If the pattern is stable across folds, the next paper-facing experiment should report PU-XMSAT with AUC/AUPRC as primary metrics and F1/MCC as threshold-calibrated secondary metrics.
+Do not claim formal PU-XMSAT superiority yet. The next best experiment is a formal 10-fold run for `random` as the primary ranking strategy, optionally paired with `hybrid` as a secondary threshold-metric comparison if compute time allows. The report should present AUC/AUPRC as primary metrics and F1/MCC as validation-threshold-calibrated secondary metrics.
 
 ## Raw Artifacts
 
@@ -48,3 +58,6 @@ The raw JSON summaries are available locally and on the server but are ignored b
 - `results/pu_training_summary_fold0_hybrid_200e_1536p_valf1.json`
 - `results/pu_training_summary_fold0_low_score_200e_1536p_valf1.json`
 - `results/pu_training_summary_fold0_random_200e_1536p_valf1.json`
+- `results/pu_training_summary_3fold_hybrid_200e_1536p_valf1.json`
+- `results/pu_training_summary_3fold_low_score_200e_1536p_valf1.json`
+- `results/pu_training_summary_3fold_random_200e_1536p_valf1.json`
