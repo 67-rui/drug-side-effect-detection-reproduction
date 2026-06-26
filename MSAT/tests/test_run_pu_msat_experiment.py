@@ -8,6 +8,7 @@ from experiments.full_msat_pu_training import (
 from experiments.reliable_negative_sampling import CandidateScore
 from experiments.run_pu_msat_experiment import (
     build_experiment_config,
+    resolve_training_backend,
     run_weighted_pu_smoke_training,
 )
 
@@ -24,6 +25,27 @@ def test_build_experiment_config_records_protocol():
     assert cfg["sampling_strategy"] == "hybrid"
     assert cfg["loss"] == "weighted_pu_bce"
     assert cfg["max_folds"] == 1
+
+
+def test_build_experiment_config_records_full_backend():
+    cfg = build_experiment_config(
+        sampling_strategy="hybrid",
+        unlabeled_weight=0.2,
+        reliable_negative_weight=0.8,
+        max_folds=1,
+        max_epochs=1,
+        training_backend="full_msat_pu",
+    )
+    assert cfg["training_backend"] == "full_msat_pu"
+
+
+def test_resolve_training_backend_rejects_unknown_backend():
+    try:
+        resolve_training_backend("unknown")
+    except ValueError as exc:
+        assert "unknown backend" in str(exc)
+    else:
+        raise AssertionError("Expected ValueError")
 
 
 def test_run_weighted_pu_smoke_training_executes_epochs():

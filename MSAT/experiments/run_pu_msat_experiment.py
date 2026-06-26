@@ -20,18 +20,30 @@ from experiments.pu_loss import weighted_pu_bce_loss
 from experiments.reliable_negative_sampling import CandidateScore, select_reliable_negatives
 
 
+SUPPORTED_TRAINING_BACKENDS = {"weighted_embedding_smoke", "full_msat_pu"}
+
+
+def resolve_training_backend(training_backend: str) -> str:
+    if training_backend not in SUPPORTED_TRAINING_BACKENDS:
+        supported = ", ".join(sorted(SUPPORTED_TRAINING_BACKENDS))
+        raise ValueError(f"unknown backend: {training_backend}. Supported: {supported}")
+    return training_backend
+
+
 def build_experiment_config(
     sampling_strategy: str,
     unlabeled_weight: float,
     reliable_negative_weight: float,
     max_folds: int,
     max_epochs: int,
+    training_backend: str = "weighted_embedding_smoke",
 ) -> dict:
+    backend = resolve_training_backend(training_backend)
     return {
         "experiment": "pu_xmsat",
         "sampling_strategy": sampling_strategy,
         "loss": "weighted_pu_bce",
-        "training_backend": "weighted_embedding_smoke",
+        "training_backend": backend,
         "unlabeled_weight": unlabeled_weight,
         "reliable_negative_weight": reliable_negative_weight,
         "max_folds": max_folds,
@@ -199,6 +211,11 @@ def build_fold_smoke_arrays(
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--backend",
+        choices=sorted(SUPPORTED_TRAINING_BACKENDS),
+        default="weighted_embedding_smoke",
+    )
     parser.add_argument("--sampling-strategy", default="hybrid")
     parser.add_argument("--unlabeled-weight", type=float, default=0.2)
     parser.add_argument("--reliable-negative-weight", type=float, default=0.8)
@@ -213,13 +230,36 @@ def main() -> None:
     args = parser.parse_args()
 
     start = time.time()
+    backend = resolve_training_backend(args.backend)
     payload = build_experiment_config(
         sampling_strategy=args.sampling_strategy,
         unlabeled_weight=args.unlabeled_weight,
         reliable_negative_weight=args.reliable_negative_weight,
         max_folds=args.max_folds,
         max_epochs=args.max_epochs,
+        training_backend=backend,
     )
+
+    if backend == "full_msat_pu":
+        from experiments.full_msat_pu_training import run_full_msat_pu_experiment
+
+        payload.update(
+            run_full_msat_pu_experiment(
+                sampling_strategy=args.sampling_strategy,
+                unlabeled_weight=args.unlabeled_weight,
+                reliable_negative_weight=args.reliable_negative_weight,
+                max_folds=args.max_folds,
+                max_epochs=args.max_epochs,
+                max_pairs=args.max_pairs,
+                candidate_cache=args.candidate_cache,
+                seed=args.seed,
+            )
+        )
+        out = Path(args.output)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps(payload, ensure_ascii=False, indent=2))
+        print(f"Wrote {out}")
+        return
 
     fold_results = []
     for fold_idx in range(max(1, args.max_folds)):
