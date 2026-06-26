@@ -3,7 +3,7 @@
 **Date:** 2026-06-26  
 **Project branch:** `codex/pu-xmsat-implementation`  
 **Baseline anchor:** `baseline/msat-reproduction-20260626`  
-**Current status:** full MSAT PU backend is runnable; fold0 and bounded 3-fold pilot experiments are complete; formal 10-fold PU-XMSAT claims are not yet complete.
+**Current status:** full MSAT PU backend is runnable; fold0, bounded 3-fold, and bounded 10-fold pilot experiments are complete; PU-XMSAT is not yet a demonstrated performance improvement over the reproduced MSAT baseline.
 
 ## Research Motivation
 
@@ -52,13 +52,24 @@ The fold0 result suggested different winners depending on metric type, so a boun
 | low_score | 0.8722±0.0311 | 0.8658±0.0420 | 0.6821±0.0181 | 0.1644±0.1055 | 0.99, 0.99, 0.99 | 193, 174, 11 | 252.4s |
 | random | 0.8852±0.0170 | 0.8805±0.0207 | 0.6739±0.0143 | 0.1251±0.0326 | 0.99, 0.99, 0.99 | 200, 200, 162 | 298.7s |
 
+### Bounded 10-Fold PU-XMSAT Pilot
+
+The 3-fold pilot was then promoted to a bounded 10-fold run for `random` and `hybrid`. Both runs use 200 epochs, 1,536 PU pairs, reliable negative weight 0.8, unlabeled weight 0.2, and validation-F1 threshold selection.
+
+| Sampling | AUC mean±std | AUPRC mean±std | F1 mean±std | MCC mean±std | Threshold pattern | Runtime |
+| --- | ---: | ---: | ---: | ---: | --- | ---: |
+| hybrid | 0.8998±0.0116 | 0.8989±0.0147 | 0.6758±0.0105 | 0.1350±0.0480 | all 0.99 | 995.6s |
+| random | 0.8805±0.0246 | 0.8745±0.0279 | 0.6845±0.0162 | 0.1845±0.0803 | all 0.99 | 906.3s |
+
 ## Current Interpretation
 
 The most important result is not that one strategy has already won, but that negative sampling changes the behavior of the PU-XMSAT model in measurable ways.
 
-`random` produces the strongest AUC/AUPRC in both fold0 and the bounded 3-fold pilot, so it is currently the best candidate if the paper prioritizes ranking ability. `hybrid` has the best 3-fold F1/MCC after threshold calibration, but its MCC variance is large, so it should be framed as a secondary threshold-metric candidate rather than a definitive winner. `low_score` looked strong on fold0 F1/MCC, but the 3-fold result does not preserve that advantage.
+`random` produces the strongest AUC/AUPRC in fold0 and the bounded 3-fold pilot, but `hybrid` becomes stronger on AUC/AUPRC in the bounded 10-fold pilot. This indicates that fold0 and 3-fold evidence was not sufficient to select a final strategy. In the current 10-fold comparison, `hybrid` is the better ranking strategy, while `random` has better F1/MCC after validation-threshold calibration.
 
-All calibrated runs selected threshold `0.99`, meaning the model is not well calibrated as a probability estimator. Therefore, AUC/AUPRC should remain the primary evaluation metrics in the next paper-facing experiment, while F1/MCC should be clearly described as validation-threshold-calibrated secondary metrics. A later version can add temperature scaling or validation Platt calibration, but calibration should not block the next 10-fold ranking experiment.
+All calibrated runs selected threshold `0.99`, meaning the model is not well calibrated as a probability estimator. Therefore, AUC/AUPRC should remain the primary evaluation metrics, while F1/MCC should be clearly described as validation-threshold-calibrated secondary metrics.
+
+Compared with the reproduced MSAT baseline, the bounded PU-XMSAT pilot is still weaker in raw predictive performance. This is not a reason to discard the direction, but it changes the research interpretation: the current contribution is a working PU-XMSAT pipeline and a diagnosis of reliable-negative sampling behavior. The next performance-oriented step is to remove or enlarge the current 1,536-pair training cap so the PU model sees a training signal closer to the original MSAT protocol.
 
 ## Paper-Writing Notes
 
@@ -68,7 +79,8 @@ The current work can support the following future manuscript statements once mul
 - PU-XMSAT introduces a three-part training set construction: observed positives, reliable negatives, and unlabeled pairs.
 - Preliminary fold0 experiments show that PU training is feasible on the full MSAT architecture and that sampling strategy materially affects both ranking and thresholded metrics.
 - A bounded 3-fold pilot suggests that random reliable-negative sampling is currently stronger for ranking metrics, while hybrid scoring may help thresholded metrics.
-- Threshold calibration is necessary for fair interpretation of F1/MCC under PU training, but ranking metrics should be emphasized before probability calibration is improved.
+- A bounded 10-fold pilot reverses the 3-fold ranking result: hybrid sampling gives stronger AUC/AUPRC, while random sampling gives stronger F1/MCC.
+- Threshold calibration is necessary for fair interpretation of F1/MCC under PU training, but the current threshold grid selecting 0.99 in all folds shows that probability calibration remains unresolved.
 
 The current work should not yet be written as:
 
@@ -78,11 +90,11 @@ The current work should not yet be written as:
 
 ## Next Experimental Plan
 
-1. Run a formal 10-fold PU-XMSAT experiment with `random` sampling, 200 epochs, 1,536 pairs, and `val_f1` threshold reporting.
-2. If compute budget allows, run the same 10-fold protocol for `hybrid` as a secondary comparison focused on thresholded metrics.
-3. Summarize mean and standard deviation for AUC, AUPRC, F1, MCC, selected threshold, best epoch, and runtime.
-4. Compare the selected PU-XMSAT protocol against the reproduced MSAT baseline, while clearly stating that the current PU experiments use a bounded pair budget and are an extension rather than an exact reproduction table.
-5. After the 10-fold ranking result is available, decide whether probability calibration should become a separate ablation.
+1. Add or configure a larger/full PU pair budget so the PU backend can use substantially more observed positives and unlabeled candidates than the current 1,536-pair cap.
+2. Re-run a fold0 budget scaling pilot for `hybrid` first, because it is the current 10-fold ranking leader.
+3. If larger-budget fold0 improves AUC/AUPRC, run a bounded multi-fold check before another 10-fold run.
+4. Add probability calibration as a separate ablation after the ranking experiment improves, because all current `val_f1` runs select the maximum threshold.
+5. Preserve the current 10-fold bounded results as a negative/diagnostic finding for the paper: naive bounded PU training is feasible, but not yet a direct performance improvement over MSAT.
 
 ## Reproducibility Notes
 

@@ -37,12 +37,12 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `table5_literature_evidence_candidates.csv` / `.json` | Table 5 公开文献候选 | PubMed/OpenAlex 自动候选 63 条；精确 herb+ADR 命中 0 条，仅供人工复核 |
 | `table6_mapping.csv` / `table6_mapping.json` | Table 6 TCM 系统映射 | 产物有效但依赖当前 Table 5；映射规则仍偏粗 |
 | `case_zhishi_diarrhoea.json` | §4.5.1 枳实案例 | 可作为当前 checkpoint 下的案例产物引用；与论文高置信案例仍需逐项说明差异 |
-| `PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | PU-XMSAT full-backend pilot | full MSAT PU 后端可运行；3 折 pilot 中 `random` 的 AUC/AUPRC 最高，`hybrid` 的 F1/MCC 最高 |
-| `PU_XMSAT_RESEARCH_PROGRESS_REPORT.md` | 后续论文素材积累 | 记录 PU-XMSAT 研究动机、实现路径、fold0/3-fold pilot 结果、阶段性解释和下一步 10 折实验计划 |
+| `PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | PU-XMSAT full-backend pilot | full MSAT PU 后端可运行；10 折 bounded pilot 中 `hybrid` 的 AUC/AUPRC 最高，`random` 的 F1/MCC 最高，但均未超过原 MSAT 主实验基线 |
+| `PU_XMSAT_RESEARCH_PROGRESS_REPORT.md` | 后续论文素材积累 | 记录 PU-XMSAT 研究动机、实现路径、fold0/3-fold/10-fold pilot 结果、阶段性解释和下一步扩大 pair budget 计划 |
 
 ## 下一步重点
 
 1. Table 5 当前应报告为公开材料下不可复现；若要重开，需要补 sha256 为 `506e7fd3...` 的 predictor checkpoint、Table 5 导出脚本、候选池定义和逐行证据记录。
 2. 对 Table 3、Table 4、Fig.6 做定点差异分析，不重跑完整流水线。
-3. PU-XMSAT 下一步优先做正式 10 折 ranking pilot：首选 `random`，预算建议 200 epochs / 1,536 pairs / `val_f1`；如算力允许再补 `hybrid` 作为阈值指标辅助比较。
+3. PU-XMSAT 下一步不要继续同配置重跑 10 折；应先扩大或解除 1,536-pair cap，优先用 `hybrid` 做 fold0 budget scaling，再决定是否进入新一轮多折。
 4. 更新正文报告时，以本文件、`PROJECT_MEMORY.md` 和 `reproduction_state_audit.json` 为准，旧摘要文件仅作历史记录。
