@@ -98,6 +98,7 @@ PU-XMSAT 当前实现进度（2026-06-26）：
 - 2026-06-26 已完成 bounded 3-fold / 200 epochs / 1,536 pairs / `val_f1` 的三策略对比：`hybrid` AUC `0.8696±0.0130` AUPRC `0.8583±0.0220` F1 `0.6953±0.0317` MCC `0.1984±0.1885`；`low_score` AUC `0.8722±0.0311` AUPRC `0.8658±0.0420` F1 `0.6821±0.0181` MCC `0.1644±0.1055`；`random` AUC `0.8852±0.0170` AUPRC `0.8805±0.0207` F1 `0.6739±0.0143` MCC `0.1251±0.0326`。结论：`random` 是当前正式 10 折 ranking 实验首选策略；`hybrid` 可作为阈值指标辅助比较；`low_score` 的 fold0 阈值优势不稳定。所有 3 折 selected threshold 仍为 `0.99`，概率校准问题未解决。
 - 2026-06-26 已完成 bounded 10-fold / 200 epochs / 1,536 pairs / `val_f1` 的 `hybrid` 与 `random` 对比：`hybrid` AUC `0.8998±0.0116` AUPRC `0.8989±0.0147` F1 `0.6758±0.0105` MCC `0.1350±0.0480`；`random` AUC `0.8805±0.0246` AUPRC `0.8745±0.0279` F1 `0.6845±0.0162` MCC `0.1845±0.0803`。10 折后 `hybrid` 成为 ranking 指标更优策略，`random` 在 F1/MCC 更高；两者均低于原 MSAT 主实验基线，当前不能声称 PU-XMSAT 性能优于 MSAT。所有 10 折 selected threshold 仍为 `0.99`，概率校准问题持续存在。
 - 2026-06-26 完成 candidate cache 审计并发现重要问题：原 tracked `pu_candidate_scores.sample.jsonl` 的 1000 行全部来自 `herb_id=0` 的前缀未观测 pair，因此上述 bounded fold0/3fold/10fold PU 结果应视为训练闭环和运行诊断，不应作为最终负采样策略优劣证据。已修复 `scripts/build_pu_candidate_cache.py`：bounded cache 默认改为 deterministic random sampling，`prefix` 仅作为显式兼容模式；tracked 1000-row sample 已刷新，覆盖 507 个 herbs；本地还生成了 ignored 的 `results/pu_candidate_scores.random50k.jsonl`，覆盖 651 个 herbs 和 5973 个 ADRs，用于下一轮 budget scaling。
+- 2026-06-27 已完成 corrected random-cache `hybrid` budget scaling 与 10-fold pilot：使用 `results/pu_candidate_scores.random50k.jsonl`、200 epochs、`val_f1`。fold0 随 pair budget 提升明显：1536p AUC `0.9028`、3072p AUC `0.9319`、6144p AUC `0.9383`、12288p AUC `0.9563`。3-fold：6144p AUC `0.9446±0.0027` AUPRC `0.9338±0.0094`；12288p AUC `0.9564±0.0039` AUPRC `0.9468±0.0071`。10-fold 12288p：AUC `0.9547±0.0034`、AUPRC `0.9458±0.0066`、F1 `0.9035±0.0033`、MCC `0.8039±0.0049`，selected thresholds 为 `0.29-0.52`，best epochs `23-31`。该结果接近但仍低于原 MSAT 主实验基线（AUC `0.9793`、AUPRC `0.9771`、F1 `0.9315`、MCC `0.8625`），不能声称 PU-XMSAT 已优于 MSAT，但已经证明候选池修复和更大 pair budget 是有效方向。
 - 2026-06-26 已新增论文素材进展报告：`MSAT/results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`，用于记录研究动机、实现路径、pilot 结果、阶段性解释和下一步实验计划。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
 - 后续若进入正式长训，仍需先做代码核对、服务器测试和输出命名检查，避免覆盖 baseline 或旧 PU 产物；用户已经允许使用服务器推进，但不要把服务器 SSH、密码或临时密钥写入仓库、报告或记忆文件。
@@ -530,11 +531,11 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 
 当前最合理的近期实验：
 
-1. 使用随机化后的 50k candidate cache 跑 `hybrid` fold0 budget scaling，优先比较 1,536 / 3,072 / 6,144 pairs，必要时再试 12,288。
-2. 不要把旧 prefix-cache 10-fold 结果当作策略优劣最终证据；它们只能说明训练闭环、运行时间和指标记录流程已经可复现。
-3. 如果 larger-budget fold0 的 AUC/AUPRC 明显提升，再跑 3 折确认稳定性；不要马上重跑 10 折。
-4. 如果 10 折/多折仍全部选择 threshold `0.99`，把概率校准列为后续单独 ablation，而不是混入本轮 ranking 结论。
-5. 写论文时保留当前 bounded 10-fold 作为诊断性结果：PU-XMSAT 训练闭环可复现，但 naive bounded PU 还不能直接超过 MSAT。
+1. 在 corrected 50k candidate cache 下，用同样 12,288-pair budget 跑 `random` 作为对照，判断 `hybrid` 的 corrected 10-fold 优势是否来自策略本身还是更大 budget。
+2. 如果算力允许，探索更大/full-positive budget 的 `hybrid` fold0，看是否能继续缩小与 MSAT 主基线的差距。
+3. 概率校准不再是第一阻塞点，因为 corrected 10-fold thresholds 已回到 `0.29-0.52`；后续可作为单独 ablation。
+4. 不要把旧 prefix-cache 10-fold 结果当作策略优劣最终证据；它们只能说明训练闭环、运行时间和指标记录流程已经可复现。
+5. 写论文时可报告 corrected random-cache 10-fold 作为强 pilot，但必须说明它仍未超过复现出的 MSAT 主实验。
 
 不要覆盖 baseline 产物；正式运行前必须先完成本地测试、服务器测试、输出命名核对和报告模板更新。
 
