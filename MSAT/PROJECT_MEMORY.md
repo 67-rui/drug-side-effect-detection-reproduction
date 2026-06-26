@@ -89,10 +89,10 @@ PU-XMSAT 当前实现进度（2026-06-26）：
   - `MSAT/results/evidence_screening_table.csv`
   - `MSAT/results/PU_XMSAT_EXPERIMENT_REPORT.md`
 - 当前 PU smoke runner 已从配置型 smoke 升级为轻量真实训练 smoke：`pu_training_smoke_summary.json` 中 `training_executed: true`，使用 `weighted_embedding_smoke` 后端在 fold 0 上跑 2 个 epoch，验证 PU dataset、sample weights 和 weighted PU BCE 可以完成反向传播与 loss 下降。该结果仍不是 full MSAT GNN 训练，不能声称已完成真实多折 PU-XMSAT 服务器实验。
-- 为遵守不覆盖基线产物的约束，`scripts/audit_reproduction_state.py` 的 Task 15/17 审计使用 `/tmp/...json` 临时输出预检，未覆盖 `MSAT/results/reproduction_state_audit.json`。预检结果为 `issues: []`。
-- 后续若要进入真实 PU-XMSAT 训练，需要用户明确确认：
+- 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
+- 后续若要进入真实 PU-XMSAT 训练或再次刷新关键结果产物，需要用户明确确认：
   - 是否允许执行本地一折小训练或服务器训练；
-  - 是否允许刷新 `results/reproduction_state_audit.json`；
+  - 是否允许再次刷新 `results/reproduction_state_audit.json`；
   - 是否允许 `server_pu_xmsat_run.sh` 生成/覆盖 `results/pu_training_summary.json`、`results/explanation_case_studies.json`、`results/evidence_screening_summary.json`、`results/evidence_screening_table.csv`、`results/PU_XMSAT_EXPERIMENT_REPORT.md` 等 PU 产物。
 
 ## 3. 数据与论文协议锚点
