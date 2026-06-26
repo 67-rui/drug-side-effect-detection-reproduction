@@ -79,7 +79,8 @@ PU-XMSAT 当前实现进度（2026-06-26）：
   - explanation case study workflow；
   - evidence screening table；
   - PU-XMSAT report summarizer；
-  - server run/monitor scripts。
+  - server run/monitor scripts；
+  - `full_msat_pu` 真实 MSAT GNN 后端与安全服务器 pilot 默认值。
 - Task 15 本地 smoke artifacts 已生成并提交：
   - `MSAT/results/pu_candidate_scores.sample.jsonl`
   - `MSAT/results/pu_negative_sampling_summary.json`
@@ -89,9 +90,11 @@ PU-XMSAT 当前实现进度（2026-06-26）：
   - `MSAT/results/evidence_screening_table.csv`
   - `MSAT/results/PU_XMSAT_EXPERIMENT_REPORT.md`
 - 当前 PU smoke runner 已从配置型 smoke 升级为轻量真实训练 smoke：`pu_training_smoke_summary.json` 中 `training_executed: true`，使用 `weighted_embedding_smoke` 后端在 fold 0 上跑 2 个 epoch，验证 PU dataset、sample weights 和 weighted PU BCE 可以完成反向传播与 loss 下降。该结果仍不是 full MSAT GNN 训练，不能声称已完成真实多折 PU-XMSAT 服务器实验。
+- 2026-06-26 已新增 `full_msat_pu` 后端：`MSAT/experiments/full_msat_pu_training.py` 使用 `MSATTCMFSFinal`、PU sample weights、validation/test positive edge hiding、best validation AUC 选择和独立 PU 输出；`run_pu_msat_experiment.py` 支持 `--backend weighted_embedding_smoke|full_msat_pu`；`server_pu_xmsat_run.sh` 默认改为 bounded full pilot（1 fold、5 epochs、384 pairs），避免误触发 10 折长训。
+- AutoDL RTX 5090 上已完成 `full_msat_pu` pilot：1 fold、1 epoch、96 pairs，`runtime_seconds=3.9474`，`final_loss=0.4689035`，test AUC `0.6391`，AUPRC `0.5876`，F1 `0.6515`，MCC `0.2111`。该结果只证明真实 MSAT GNN PU 路径可运行，不能作为 PU-XMSAT 优于 MSAT 的实验结论。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
-- 后续若要进入真实 PU-XMSAT 训练或再次刷新关键结果产物，需要用户明确确认：
-  - 是否允许执行本地一折小训练或服务器训练；
+- 后续若要进入更长真实 PU-XMSAT 训练或再次刷新关键结果产物，需要用户明确确认：
+  - 是否允许执行服务器 fold0 50-100 epoch pilot 或 10 fold full training；
   - 是否允许再次刷新 `results/reproduction_state_audit.json`；
   - 是否允许 `server_pu_xmsat_run.sh` 生成/覆盖 `results/pu_training_summary.json`、`results/explanation_case_studies.json`、`results/evidence_screening_summary.json`、`results/evidence_screening_table.csv`、`results/PU_XMSAT_EXPERIMENT_REPORT.md` 等 PU 产物。
 
