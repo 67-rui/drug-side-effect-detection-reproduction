@@ -1,0 +1,16 @@
+rank,herb_id,pinyin,latin,chinese,adr_id,adr_pt,score_pct,database_verified,tcmda_evidence,mechanistic_support,path_hint,evidence_grade
+1,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,3989,Altered state of consciousness,99.946,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+2,237,YE CAO MEI,Fragaria vesca?L.,野草莓,3989,Altered state of consciousness,99.939,False,,True,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness,C
+3,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,3698,Spermatogenesis arrest,99.937,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+4,526,LI SHU PI,Castanea mollissima,板栗,3698,Spermatogenesis arrest,99.935,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+5,483,XIANG CHUAN PI,Cortex Citri,香椽皮,3989,Altered state of consciousness,99.934,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+6,237,YE CAO MEI,Fragaria vesca?L.,野草莓,1323,Haemoglobin increased,99.928,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+7,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,4535,Flushing,99.928,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+8,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,4363,Vegetative dystonia,99.926,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+9,526,LI SHU PI,Castanea mollissima,板栗,4363,Vegetative dystonia,99.923,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+10,539,YAN SUAN MA LIN GUA,Moroxydini Hydrochloridum,盐酸吗啉胍,3989,Altered state of consciousness,99.922,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+11,145,CI CAI JI,Cynara cardunculus,刺菜蓟,4535,Flushing,99.922,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+12,237,YE CAO MEI,Fragaria vesca?L.,野草莓,4363,Vegetative dystonia,99.921,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+13,337,AI JI CHE ZHOU CAO,Trifolium alexandrinum,埃及三叶草,3989,Altered state of consciousness,99.921,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+14,234,DUN LIE YIN LIAN HUA,Anemone obtusiloba,,2453,Spina bifida,99.92,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
+15,339,BAO YE XIANG CHA CAI,Isodon melissoides,,3989,Altered state of consciousness,99.92,False,,False,知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）,D
