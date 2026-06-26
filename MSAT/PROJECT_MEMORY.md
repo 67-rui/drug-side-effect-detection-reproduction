@@ -57,7 +57,11 @@ GitHub 仓库：
 当前工作区注意事项：
 
 - `MSAT/results/RESEARCH_DIRECTION_TECHNICAL_PROPOSAL.md` 已按用户要求调整成可直接发给导师的正式文档，并删除了“与老师建议的对应关系”，把长期阶段计划压缩为“一周内最小验证闭环”。这部分修改当前可能仍未提交，后续不要误以为文件还是最初版本。
-- `MSAT/results/CURRENT_MODEL_CAPABILITY_REPORT.md` 是未跟踪文件。除非用户明确要求，不要自动纳入提交或覆盖。
+- 当前重要基线已经提交并打 tag：
+  - baseline branch：`codex/fix-reproduction-protocol`
+  - baseline tag：`baseline/msat-reproduction-20260626`
+  - baseline commit：`e2830f1`
+- 后续 PU-XMSAT 开发应在 `codex/pu-xmsat-implementation` 分支进行。
 
 ## 3. 数据与论文协议锚点
 
@@ -466,6 +470,7 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 当前实现计划：
 
 - `MSAT/results/RESEARCH_DIRECTION_IMPLEMENTATION_PLAN.md`
+- `docs/superpowers/plans/2026-06-26-pu-xmsat-implementation.md`
 
 建议实现模块：
 
