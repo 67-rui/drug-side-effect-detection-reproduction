@@ -2,14 +2,37 @@
   "experiment": "pu_xmsat",
   "sampling_strategy": "hybrid",
   "loss": "weighted_pu_bce",
+  "training_backend": "weighted_embedding_smoke",
   "unlabeled_weight": 0.2,
   "reliable_negative_weight": 0.8,
   "max_folds": 1,
   "max_epochs": 2,
   "baseline": "baseline/msat-reproduction-20260626",
-  "status": "configured",
-  "training_executed": false,
-  "fold_results": [],
-  "mean_metrics": {},
-  "note": "Smoke runner is configured. Enable real one-fold training only after confirming local runtime and checkpoint policy."
+  "status": "completed",
+  "training_executed": true,
+  "fold_results": [
+    {
+      "fold_idx": 0,
+      "num_herbs": 651,
+      "num_adrs": 5974,
+      "positive_pairs": 128,
+      "reliable_negative_pairs": 128,
+      "unlabeled_pairs": 108,
+      "training_executed": true,
+      "backend": "weighted_embedding_smoke",
+      "pair_count": 364,
+      "positive_count": 128,
+      "loss_history": [
+        1.0578358173370361,
+        0.9011843204498291
+      ],
+      "initial_loss": 1.0578358173370361,
+      "final_loss": 0.9011843204498291
+    }
+  ],
+  "mean_metrics": {
+    "final_loss": 0.9011843204498291
+  },
+  "runtime_seconds": 0.0513,
+  "note": "Weighted PU smoke uses a lightweight pair-embedding scorer to verify data construction, sample weights, and loss stability. It is not a full MSAT GNN training result."
 }

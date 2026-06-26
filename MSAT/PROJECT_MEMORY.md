@@ -88,7 +88,7 @@ PU-XMSAT 当前实现进度（2026-06-26）：
   - `MSAT/results/evidence_screening_summary.json`
   - `MSAT/results/evidence_screening_table.csv`
   - `MSAT/results/PU_XMSAT_EXPERIMENT_REPORT.md`
-- 当前 PU smoke runner 是配置型 smoke：`pu_training_smoke_summary.json` 中 `training_executed: false`。因此还不能声称 PU-XMSAT 已完成真实一折或多折训练，只能声称本地最小闭环产物和接口已通过 smoke。
+- 当前 PU smoke runner 已从配置型 smoke 升级为轻量真实训练 smoke：`pu_training_smoke_summary.json` 中 `training_executed: true`，使用 `weighted_embedding_smoke` 后端在 fold 0 上跑 2 个 epoch，验证 PU dataset、sample weights 和 weighted PU BCE 可以完成反向传播与 loss 下降。该结果仍不是 full MSAT GNN 训练，不能声称已完成真实多折 PU-XMSAT 服务器实验。
 - 为遵守不覆盖基线产物的约束，`scripts/audit_reproduction_state.py` 的 Task 15/17 审计使用 `/tmp/...json` 临时输出预检，未覆盖 `MSAT/results/reproduction_state_audit.json`。预检结果为 `issues: []`。
 - 后续若要进入真实 PU-XMSAT 训练，需要用户明确确认：
   - 是否允许执行本地一折小训练或服务器训练；
