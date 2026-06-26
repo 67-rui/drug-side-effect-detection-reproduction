@@ -45,13 +45,19 @@ The next step promoted the strongest 3-fold ranking candidate (`random`) and the
 | hybrid | 0.8998±0.0116 | 0.8989±0.0147 | 0.6758±0.0105 | 0.1350±0.0480 | all 0.99 | 200, 200, 200, 200, 200, 200, 200, 153, 200, 200 | 995.6s |
 | random | 0.8805±0.0246 | 0.8745±0.0279 | 0.6845±0.0162 | 0.1845±0.0803 | all 0.99 | 137, 200, 11, 200, 13, 200, 200, 200, 200, 183 | 906.3s |
 
+## Candidate Cache Caveat
+
+After the bounded 10-fold pilot, the candidate cache generation script was audited and fixed. The original tracked `pu_candidate_scores.sample.jsonl` contained 1,000 prefix-selected unobserved pairs, all from `herb_id=0`. This means the fold0, 3-fold, and 10-fold bounded pilots above are still useful as training-pipeline and runtime diagnostics, but they should not be treated as final negative-sampling strategy evidence.
+
+The cache builder now uses deterministic random bounded sampling by default, and the tracked 1,000-row sample cache has been refreshed to cover 507 herbs. A larger local 50,000-row random cache was also generated for the next budget-scaling experiment.
+
 ## Interpretation
 
 The full MSAT PU backend is now operational on GPU. AUC and AUPRC improve as epochs and PU pair count increase, and the best validation AUC occurs at the final epoch for all three runs. This suggests the pilot has not yet reached a clear plateau.
 
 Threshold-dependent metrics need care. Recall is nearly 1.0 at the fixed `0.5` threshold, while precision and MCC remain weak. Validation-threshold calibration improves interpretability of F1/MCC, but all three calibrated runs selected the upper grid boundary (`0.99`), which indicates that probability calibration is still poor and thresholded metrics should be reported as secondary.
 
-The negative-sampling comparison is now clearer but still not final. In the bounded 10-fold pilot, `hybrid` has the stronger ranking metrics, while `random` has stronger thresholded F1/MCC. This reverses part of the 3-fold signal and shows why the 10-fold check was necessary. Neither bounded PU setting currently approaches the reproduced MSAT baseline AUC/AUPRC, so the result should be written as a validated PU-XMSAT training pipeline and strategy comparison, not as a completed performance improvement over MSAT.
+The negative-sampling comparison is now clearer but still not final. In the bounded 10-fold pilot, `hybrid` has the stronger ranking metrics, while `random` has stronger thresholded F1/MCC. This reverses part of the 3-fold signal and shows why the 10-fold check was necessary. However, because the bounded pilots used the legacy prefix-selected candidate cache, they should be written as validated PU-XMSAT training-pipeline diagnostics, not as final strategy comparisons or as completed performance improvement over MSAT.
 
 ## Recommendation
 

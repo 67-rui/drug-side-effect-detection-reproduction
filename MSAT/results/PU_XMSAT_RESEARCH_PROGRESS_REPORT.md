@@ -3,7 +3,7 @@
 **Date:** 2026-06-26  
 **Project branch:** `codex/pu-xmsat-implementation`  
 **Baseline anchor:** `baseline/msat-reproduction-20260626`  
-**Current status:** full MSAT PU backend is runnable; fold0, bounded 3-fold, and bounded 10-fold pilot experiments are complete; PU-XMSAT is not yet a demonstrated performance improvement over the reproduced MSAT baseline.
+**Current status:** full MSAT PU backend is runnable; fold0, bounded 3-fold, and bounded 10-fold pilot experiments are complete; candidate cache prefix bias has been identified and fixed; PU-XMSAT is not yet a demonstrated performance improvement over the reproduced MSAT baseline.
 
 ## Research Motivation
 
@@ -61,11 +61,17 @@ The 3-fold pilot was then promoted to a bounded 10-fold run for `random` and `hy
 | hybrid | 0.8998±0.0116 | 0.8989±0.0147 | 0.6758±0.0105 | 0.1350±0.0480 | all 0.99 | 995.6s |
 | random | 0.8805±0.0246 | 0.8745±0.0279 | 0.6845±0.0162 | 0.1845±0.0803 | all 0.99 | 906.3s |
 
+### Candidate Cache Audit
+
+After the bounded 10-fold run, the tracked 1,000-row `pu_candidate_scores.sample.jsonl` was inspected and found to contain only prefix-selected pairs from `herb_id=0`. This makes the completed bounded pilots valuable for validating the training loop, logging, runtime, and metric reporting, but it weakens their use as final evidence for negative-sampling strategy selection.
+
+The candidate cache builder has been fixed to use deterministic random bounded sampling by default. The tracked 1,000-row sample cache now covers 507 herbs, and a local 50,000-row random cache covers all 651 herbs and 5,973 ADRs for the next budget-scaling experiment.
+
 ## Current Interpretation
 
 The most important result is not that one strategy has already won, but that negative sampling changes the behavior of the PU-XMSAT model in measurable ways.
 
-`random` produces the strongest AUC/AUPRC in fold0 and the bounded 3-fold pilot, but `hybrid` becomes stronger on AUC/AUPRC in the bounded 10-fold pilot. This indicates that fold0 and 3-fold evidence was not sufficient to select a final strategy. In the current 10-fold comparison, `hybrid` is the better ranking strategy, while `random` has better F1/MCC after validation-threshold calibration.
+`random` produces the strongest AUC/AUPRC in fold0 and the bounded 3-fold pilot, but `hybrid` becomes stronger on AUC/AUPRC in the bounded 10-fold pilot. This indicates that fold0 and 3-fold evidence was not sufficient to select a final strategy. However, because those runs used the legacy prefix-selected candidate cache, the strategy ordering should be treated as provisional until re-tested with the randomized candidate cache.
 
 All calibrated runs selected threshold `0.99`, meaning the model is not well calibrated as a probability estimator. Therefore, AUC/AUPRC should remain the primary evaluation metrics, while F1/MCC should be clearly described as validation-threshold-calibrated secondary metrics.
 
@@ -79,7 +85,8 @@ The current work can support the following future manuscript statements once mul
 - PU-XMSAT introduces a three-part training set construction: observed positives, reliable negatives, and unlabeled pairs.
 - Preliminary fold0 experiments show that PU training is feasible on the full MSAT architecture and that sampling strategy materially affects both ranking and thresholded metrics.
 - A bounded 3-fold pilot suggests that random reliable-negative sampling is currently stronger for ranking metrics, while hybrid scoring may help thresholded metrics.
-- A bounded 10-fold pilot reverses the 3-fold ranking result: hybrid sampling gives stronger AUC/AUPRC, while random sampling gives stronger F1/MCC.
+- A bounded 10-fold pilot reverses the 3-fold ranking result under the legacy candidate cache: hybrid sampling gives stronger AUC/AUPRC, while random sampling gives stronger F1/MCC.
+- Candidate-cache construction matters: a prefix-selected unobserved-pair cache can bias PU negative sampling and should not be used for final strategy comparison.
 - Threshold calibration is necessary for fair interpretation of F1/MCC under PU training, but the current threshold grid selecting 0.99 in all folds shows that probability calibration remains unresolved.
 
 The current work should not yet be written as:
@@ -90,8 +97,8 @@ The current work should not yet be written as:
 
 ## Next Experimental Plan
 
-1. Add or configure a larger/full PU pair budget so the PU backend can use substantially more observed positives and unlabeled candidates than the current 1,536-pair cap.
-2. Re-run a fold0 budget scaling pilot for `hybrid` first, because it is the current 10-fold ranking leader.
+1. Re-run fold0 budget scaling with the randomized 50,000-row candidate cache so the next comparison is not based on prefix-selected unobserved pairs.
+2. Start with `hybrid`, because it is the current 10-fold ranking leader under the legacy cache, but treat this as a retest rather than a confirmed best strategy.
 3. If larger-budget fold0 improves AUC/AUPRC, run a bounded multi-fold check before another 10-fold run.
 4. Add probability calibration as a separate ablation after the ranking experiment improves, because all current `val_f1` runs select the maximum threshold.
 5. Preserve the current 10-fold bounded results as a negative/diagnostic finding for the paper: naive bounded PU training is feasible, but not yet a direct performance improvement over MSAT.

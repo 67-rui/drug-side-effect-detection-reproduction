@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from pathlib import Path
+import random
 import sys
 
 MSAT_ROOT = Path(__file__).resolve().parents[1]
@@ -43,22 +44,43 @@ def _bounded_unobserved_pairs(
     num_adrs: int,
     positive_pairs: set[Pair],
     max_candidates: int,
+    seed: int = DataConfig.RANDOM_SEED,
+    selection: str = "random",
 ) -> list[Pair]:
+    if max_candidates <= 0:
+        return []
+    if selection not in {"random", "prefix"}:
+        raise ValueError(f"unknown candidate selection: {selection}")
+
     pairs: list[Pair] = []
+    rng = random.Random(seed)
+    seen = 0
     for herb_id in range(num_herbs):
         for adr_id in range(num_adrs):
             pair = (herb_id, adr_id)
             if pair in positive_pairs:
                 continue
-            pairs.append(pair)
-            if len(pairs) >= max_candidates:
-                return pairs
-    return pairs
+            if selection == "prefix":
+                pairs.append(pair)
+                if len(pairs) >= max_candidates:
+                    return pairs
+                continue
+
+            seen += 1
+            if len(pairs) < max_candidates:
+                pairs.append(pair)
+            else:
+                replace_idx = rng.randrange(seen)
+                if replace_idx < max_candidates:
+                    pairs[replace_idx] = pair
+    return sorted(pairs)
 
 
 def build_candidate_rows(
     max_candidates: int | None = 1000,
     data_dir: str | Path = DataConfig.DATA_DIR,
+    seed: int = DataConfig.RANDOM_SEED,
+    candidate_selection: str = "random",
 ) -> list[dict]:
     extractor = FeatureExtractor(data_dir=data_dir, fold_split_path=DataConfig.FOLD_SPLIT_PATH)
     data = extractor.get_graph_data()
@@ -74,6 +96,8 @@ def build_candidate_rows(
             num_adrs,
             positive_pairs,
             max_candidates,
+            seed=seed,
+            selection=candidate_selection,
         )
 
     structural_support = {
@@ -94,6 +118,13 @@ def main() -> None:
     parser.add_argument("--output", default="results/pu_candidate_scores.jsonl")
     parser.add_argument("--data-dir", default=str(DataConfig.DATA_DIR))
     parser.add_argument("--max-candidates", type=int, default=1000)
+    parser.add_argument("--seed", type=int, default=DataConfig.RANDOM_SEED)
+    parser.add_argument(
+        "--candidate-selection",
+        choices=["random", "prefix"],
+        default="random",
+        help="How to choose a bounded subset of unobserved pairs.",
+    )
     parser.add_argument(
         "--all-candidates",
         action="store_true",
@@ -105,6 +136,8 @@ def main() -> None:
     rows = build_candidate_rows(
         max_candidates=max_candidates,
         data_dir=args.data_dir,
+        seed=args.seed,
+        candidate_selection=args.candidate_selection,
     )
     write_jsonl(Path(args.output), rows)
     print(f"Wrote {len(rows)} candidate scores to {args.output}")
