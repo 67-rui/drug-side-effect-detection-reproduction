@@ -92,12 +92,12 @@ PU-XMSAT 当前实现进度（2026-06-26）：
 - 当前 PU smoke runner 已从配置型 smoke 升级为轻量真实训练 smoke：`pu_training_smoke_summary.json` 中 `training_executed: true`，使用 `weighted_embedding_smoke` 后端在 fold 0 上跑 2 个 epoch，验证 PU dataset、sample weights 和 weighted PU BCE 可以完成反向传播与 loss 下降。该结果仍不是 full MSAT GNN 训练，不能声称已完成真实多折 PU-XMSAT 服务器实验。
 - 2026-06-26 已新增 `full_msat_pu` 后端：`MSAT/experiments/full_msat_pu_training.py` 使用 `MSATTCMFSFinal`、PU sample weights、validation/test positive edge hiding、best validation AUC 选择和独立 PU 输出；`run_pu_msat_experiment.py` 支持 `--backend weighted_embedding_smoke|full_msat_pu`；`server_pu_xmsat_run.sh` 默认改为 bounded full pilot（1 fold、5 epochs、384 pairs），避免误触发 10 折长训。
 - AutoDL RTX 5090 上已完成 `full_msat_pu` pilot：1 fold、1 epoch、96 pairs，`runtime_seconds=3.9474`，`final_loss=0.4689035`，test AUC `0.6391`，AUPRC `0.5876`，F1 `0.6515`，MCC `0.2111`。该结果只证明真实 MSAT GNN PU 路径可运行，不能作为 PU-XMSAT 优于 MSAT 的实验结论。
-- 2026-06-26 按用户授权继续在 AutoDL 跑 fold0 full MSAT PU pilot，结果记录于 `MSAT/results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md`：50e/384p AUC `0.8497` AUPRC `0.8402`；100e/768p AUC `0.8643` AUPRC `0.8511`；200e/1536p AUC `0.8855` AUPRC `0.8745`。三组 best epoch 均等于最大 epoch，说明尚未到明确平台期；但固定 0.5 阈值下 recall 近 1.0、MCC 较低，正式 10 折前应优先增加 PU validation threshold calibration，并做 `hybrid/low_score/random` fold0 对比。
+- 2026-06-26 按用户授权继续在 AutoDL 跑 fold0 full MSAT PU pilot，结果记录于 `MSAT/results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md`：50e/384p AUC `0.8497` AUPRC `0.8402`；100e/768p AUC `0.8643` AUPRC `0.8511`；200e/1536p AUC `0.8855` AUPRC `0.8745`。三组 best epoch 均等于最大 epoch，说明尚未到明确平台期；但固定 0.5 阈值下 recall 近 1.0、MCC 较低。
+- 2026-06-26 已实现 PU validation threshold calibration：`run_pu_msat_experiment.py` 支持 `--threshold-strategy fixed_0_5|val_f1`，`server_pu_xmsat_run.sh` 支持 `PU_XMSAT_THRESHOLD_STRATEGY`，报告脚本会记录阈值策略和每折 selected threshold。默认仍为 `fixed_0_5`，不改变旧 PU 产物解释。
+- 2026-06-26 已完成 fold0 / 200 epochs / 1,536 pairs / `val_f1` 的三策略对比：`hybrid` AUC `0.8832` AUPRC `0.8706` F1 `0.6585` MCC `0.1037`；`low_score` AUC `0.8313` AUPRC `0.8079` F1 `0.7532` MCC `0.4665`；`random` AUC `0.9167` AUPRC `0.9175` F1 `0.6627` MCC `0.1417`。三者 selected threshold 均为 `0.99`，提示概率校准仍差；`random` 在 fold0 排序指标最好，`low_score` 阈值型指标最好，`hybrid` 未胜出。因此当前不能声称某一负采样策略已最终优越，下一步应做 bounded multi-fold pilot。
+- 2026-06-26 已新增论文素材进展报告：`MSAT/results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`，用于记录研究动机、实现路径、pilot 结果、阶段性解释和下一步实验计划。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
-- 后续若要进入更长真实 PU-XMSAT 训练或再次刷新关键结果产物，需要用户明确确认：
-  - 是否允许执行服务器 fold0 50-100 epoch pilot 或 10 fold full training；
-  - 是否允许再次刷新 `results/reproduction_state_audit.json`；
-  - 是否允许 `server_pu_xmsat_run.sh` 生成/覆盖 `results/pu_training_summary.json`、`results/explanation_case_studies.json`、`results/evidence_screening_summary.json`、`results/evidence_screening_table.csv`、`results/PU_XMSAT_EXPERIMENT_REPORT.md` 等 PU 产物。
+- 后续若进入正式长训，仍需先做代码核对、服务器测试和输出命名检查，避免覆盖 baseline 或旧 PU 产物；用户已经允许使用服务器推进，但不要把服务器 SSH、密码或临时密钥写入仓库、报告或记忆文件。
 
 ## 3. 数据与论文协议锚点
 
@@ -523,17 +523,17 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 
 ## 10. 当下近期计划
 
-如果接下来用户说“开始进行”或“按照计划推进”，优先执行一周内最小验证闭环，而不是直接大规模服务器训练。
+如果接下来用户说“开始进行”或“按照计划推进”，不要直接声称进入正式 10 折结论；优先执行 bounded multi-fold pilot，确认 fold0 中看到的策略差异是否稳定。
 
-一周内闭环：
+当前最合理的近期实验：
 
-1. 固化原始 MSAT 主实验结果，作为 PU-XMSAT 基线。
-2. 设计并实现一版可靠负样本筛选策略，与原始随机负采样初步对比。
-3. 实现一版加权 PU Loss，在小规模实验中验证训练稳定性。
-4. 选择少量高置信预测案例，初步提取成分、靶点和机制路径。
-5. 汇总一份一周内初步实验结果，判断主线是否值得继续扩展。
+1. 先跑 `random` 与 `low_score` 的 bounded multi-fold pilot，建议 3 折或 5 折，预算沿用 200 epochs / 1,536 pairs / `val_f1`。
+2. 如果算力时间允许，把 `hybrid` 也纳入同一 multi-fold pilot，判断其 fold0 未胜出是否只是折特异现象。
+3. 汇总 mean/std：AUC、AUPRC、F1、MCC、selected threshold、best epoch、runtime。
+4. 如果 `random` 稳定保持 AUC/AUPRC 最强，可把它作为正式 PU-XMSAT ranking baseline；如果 `low_score` 稳定保持 F1/MCC 最强，需要在论文中解释“易负样本/阈值分类”与“排序泛化”的取舍。
+5. 在 multi-fold pilot 稳定后，再锁定一个策略启动正式 10 折 PU-XMSAT。
 
-不要立即启动长时间训练，除非已经完成本地代码核对、单元测试、smoke test，并确认服务器可用。
+不要覆盖 baseline 产物；正式运行前必须先完成本地测试、服务器测试、输出命名核对和报告模板更新。
 
 ## 11. 后续回答注意事项
 
