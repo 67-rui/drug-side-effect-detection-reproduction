@@ -1,0 +1,15 @@
+{
+  "experiment": "pu_xmsat",
+  "sampling_strategy": "hybrid",
+  "loss": "weighted_pu_bce",
+  "unlabeled_weight": 0.2,
+  "reliable_negative_weight": 0.8,
+  "max_folds": 1,
+  "max_epochs": 2,
+  "baseline": "baseline/msat-reproduction-20260626",
+  "status": "configured",
+  "training_executed": false,
+  "fold_results": [],
+  "mean_metrics": {},
+  "note": "Smoke runner is configured. Enable real one-fold training only after confirming local runtime and checkpoint policy."
+}

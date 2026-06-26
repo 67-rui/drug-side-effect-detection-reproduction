@@ -1,0 +1,2123 @@
+{
+  "experiment": "negative_sampling_ablation",
+  "strategies": [
+    "random",
+    "low_score",
+    "hybrid"
+  ],
+  "candidate_cache": "results/pu_candidate_scores.sample.jsonl",
+  "selection_counts": {
+    "random": {
+      "negative": 100
+    },
+    "low_score": {
+      "negative": 100
+    },
+    "hybrid": {
+      "reliable_negative": 100
+    }
+  },
+  "output_files": {},
+  "rows": [
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 0,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 1,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 2,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 3,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 4,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 5,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 6,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 7,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 8,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 9,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 10,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 11,
+      "reliability_score": 0.9516666666666667
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 12,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 13,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 14,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 15,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 16,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 17,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 18,
+      "reliability_score": 0.9622222222222222
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 19,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 20,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 21,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 22,
+      "reliability_score": 0.9516666666666667
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 23,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 24,
+      "reliability_score": 0.9677777777777777
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 25,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 26,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 27,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 28,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 29,
+      "reliability_score": 0.9516666666666667
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 30,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 31,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 32,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 33,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 34,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 35,
+      "reliability_score": 0.9516666666666667
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 36,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 37,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 38,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 39,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 40,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 41,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 42,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 43,
+      "reliability_score": 0.955
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 44,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 45,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 46,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 47,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 48,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 49,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 50,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 51,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 52,
+      "reliability_score": 0.9544444444444444
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 53,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 54,
+      "reliability_score": 0.9688888888888888
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 55,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 56,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 57,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 58,
+      "reliability_score": 0.9544444444444444
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 59,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 60,
+      "reliability_score": 0.9522222222222222
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 61,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 62,
+      "reliability_score": 0.9633333333333333
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 63,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 64,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 65,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 66,
+      "reliability_score": 0.9522222222222222
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 67,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 68,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 69,
+      "reliability_score": 0.9522222222222222
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 70,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 71,
+      "reliability_score": 0.9516666666666667
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 72,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 73,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 74,
+      "reliability_score": 0.9538888888888889
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 75,
+      "reliability_score": 0.9644444444444444
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 76,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 77,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 78,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 79,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 80,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 81,
+      "reliability_score": 0.9577777777777777
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 82,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 83,
+      "reliability_score": 0.9516666666666667
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 84,
+      "reliability_score": 0.8500000000000001
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 85,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 86,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 87,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 88,
+      "reliability_score": 0.9533333333333333
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 89,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 90,
+      "reliability_score": 0.951111111111111
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 91,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 92,
+      "reliability_score": 0.9538888888888889
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 93,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 94,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 95,
+      "reliability_score": 0.9522222222222222
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 96,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 97,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 98,
+      "reliability_score": 0.9527777777777777
+    },
+    {
+      "strategy": "random",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 99,
+      "reliability_score": 0.9505555555555555
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 483,
+      "reliability_score": 0.6616666666666667
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 672,
+      "reliability_score": 0.8
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 671,
+      "reliability_score": 0.8005555555555556
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 284,
+      "reliability_score": 0.8011111111111111
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 222,
+      "reliability_score": 0.805
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 286,
+      "reliability_score": 0.8061111111111111
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 747,
+      "reliability_score": 0.8061111111111111
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 630,
+      "reliability_score": 0.8072222222222223
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 362,
+      "reliability_score": 0.8077777777777778
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 262,
+      "reliability_score": 0.8127777777777778
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 844,
+      "reliability_score": 0.8155555555555556
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 132,
+      "reliability_score": 0.8172222222222223
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 990,
+      "reliability_score": 0.8177777777777778
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 161,
+      "reliability_score": 0.8188888888888889
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 888,
+      "reliability_score": 0.8194444444444445
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 209,
+      "reliability_score": 0.8416666666666667
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 84,
+      "reliability_score": 0.8500000000000001
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 5,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 7,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 13,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 20,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 21,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 23,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 26,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 30,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 31,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 32,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 33,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 34,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 45,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 47,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 50,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 51,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 63,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 67,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 68,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 70,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 80,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 86,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 94,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 105,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 106,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 111,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 120,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 124,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 126,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 127,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 129,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 152,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 158,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 164,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 168,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 179,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 180,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 186,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 197,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 198,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 202,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 204,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 220,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 225,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 247,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 254,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 258,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 264,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 269,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 270,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 274,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 275,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 281,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 295,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 299,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 303,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 308,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 309,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 312,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 315,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 316,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 318,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 319,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 329,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 331,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 332,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 335,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 337,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 341,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 343,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 344,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 350,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 359,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 364,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 369,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 370,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 372,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 377,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 381,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 387,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 389,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 405,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "low_score",
+      "pair_type": "negative",
+      "herb_id": 0,
+      "adr_id": 408,
+      "reliability_score": 0.95
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 989,
+      "reliability_score": 0.9883333333333333
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 948,
+      "reliability_score": 0.9794444444444445
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 529,
+      "reliability_score": 0.9777777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 686,
+      "reliability_score": 0.9738888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 457,
+      "reliability_score": 0.9733333333333333
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 727,
+      "reliability_score": 0.9727777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 363,
+      "reliability_score": 0.97
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 641,
+      "reliability_score": 0.9694444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 54,
+      "reliability_score": 0.9688888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 354,
+      "reliability_score": 0.9677777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 24,
+      "reliability_score": 0.9677777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 301,
+      "reliability_score": 0.9672222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 276,
+      "reliability_score": 0.9666666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 176,
+      "reliability_score": 0.9666666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 731,
+      "reliability_score": 0.966111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 637,
+      "reliability_score": 0.9655555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 972,
+      "reliability_score": 0.965
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 923,
+      "reliability_score": 0.965
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 617,
+      "reliability_score": 0.965
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 981,
+      "reliability_score": 0.9644444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 474,
+      "reliability_score": 0.9644444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 419,
+      "reliability_score": 0.9644444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 75,
+      "reliability_score": 0.9644444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 683,
+      "reliability_score": 0.9638888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 151,
+      "reliability_score": 0.9638888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 866,
+      "reliability_score": 0.9633333333333333
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 62,
+      "reliability_score": 0.9633333333333333
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 723,
+      "reliability_score": 0.9627777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 466,
+      "reliability_score": 0.9627777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 241,
+      "reliability_score": 0.9627777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 196,
+      "reliability_score": 0.9622222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 18,
+      "reliability_score": 0.9622222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 420,
+      "reliability_score": 0.9616666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 398,
+      "reliability_score": 0.9616666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 154,
+      "reliability_score": 0.9616666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 510,
+      "reliability_score": 0.961111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 456,
+      "reliability_score": 0.961111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 720,
+      "reliability_score": 0.9605555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 609,
+      "reliability_score": 0.9605555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 430,
+      "reliability_score": 0.96
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 340,
+      "reliability_score": 0.96
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 324,
+      "reliability_score": 0.96
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 190,
+      "reliability_score": 0.96
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 146,
+      "reliability_score": 0.96
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 115,
+      "reliability_score": 0.96
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 921,
+      "reliability_score": 0.9594444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 763,
+      "reliability_score": 0.9594444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 679,
+      "reliability_score": 0.9594444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 662,
+      "reliability_score": 0.9594444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 475,
+      "reliability_score": 0.9594444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 376,
+      "reliability_score": 0.9594444444444444
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 951,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 885,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 841,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 820,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 733,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 566,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 252,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 109,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 91,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 0,
+      "reliability_score": 0.9588888888888888
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 769,
+      "reliability_score": 0.9583333333333333
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 452,
+      "reliability_score": 0.9583333333333333
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 177,
+      "reliability_score": 0.9583333333333333
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 970,
+      "reliability_score": 0.9577777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 678,
+      "reliability_score": 0.9577777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 543,
+      "reliability_score": 0.9577777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 81,
+      "reliability_score": 0.9577777777777777
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 908,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 766,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 677,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 666,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 656,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 619,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 479,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 304,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 237,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 38,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 8,
+      "reliability_score": 0.9572222222222222
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 848,
+      "reliability_score": 0.9566666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 805,
+      "reliability_score": 0.9566666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 708,
+      "reliability_score": 0.9566666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 401,
+      "reliability_score": 0.9566666666666667
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 976,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 764,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 675,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 605,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 584,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 561,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 417,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 294,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 211,
+      "reliability_score": 0.956111111111111
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 978,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 874,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 842,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 793,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 787,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 665,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 657,
+      "reliability_score": 0.9555555555555555
+    },
+    {
+      "strategy": "hybrid",
+      "pair_type": "reliable_negative",
+      "herb_id": 0,
+      "adr_id": 649,
+      "reliability_score": 0.9555555555555555
+    }
+  ]
+}

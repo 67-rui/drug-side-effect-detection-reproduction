@@ -1,0 +1,154 @@
+{
+  "experiment": "explanation_case_study",
+  "rows": [
+    {
+      "herb_id": 277,
+      "adr_id": 2931,
+      "prediction_score": 0.6849409937858582,
+      "paths": [
+        {
+          "path": "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8967 → Watery diarrhoea"
+        },
+        {
+          "path": "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8101 → Watery diarrhoea"
+        },
+        {
+          "path": "枳实（Citrus aurantium L.） → Compound #523 → Target #7802 → Watery diarrhoea"
+        },
+        {
+          "path": "枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea"
+        },
+        {
+          "path": "枳实（Citrus aurantium L.） → Compound #523 → Target #12337 → Watery diarrhoea"
+        },
+        {
+          "path": "枳实（Citrus aurantium L.） → Compound #875 → Target #2432 → Watery diarrhoea"
+        },
+        {
+          "path": "枳实（Citrus aurantium L.） → Compound #875 → Target #14208 → Watery diarrhoea"
+        },
+        {
+          "path": "枳实（Citrus aurantium L.） → Compound #875 → Target #12333 → Watery diarrhoea"
+        },
+        {
+          "path": "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #12337 ← Watery diarrhoea"
+        },
+        {
+          "path": "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #7802 ← Watery diarrhoea"
+        },
+        {
+          "path": "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #2432 ← Watery diarrhoea"
+        },
+        {
+          "path": "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #14208 ← Watery diarrhoea"
+        },
+        {
+          "path": "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8101 ← Watery diarrhoea"
+        },
+        {
+          "path": "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8967 ← Watery diarrhoea"
+        }
+      ],
+      "path_count": 14,
+      "contributions": [
+        {
+          "feature": "nobiletin_cid",
+          "value": 72344
+        },
+        {
+          "feature": "transporter",
+          "value": "ABCG2 (BCRP)"
+        }
+      ],
+      "contribution_count": 2,
+      "rank": 1,
+      "rank_total": 5974,
+      "source": "case_zhishi_diarrhoea"
+    },
+    {
+      "herb_id": 234,
+      "adr_id": 3989,
+      "prediction_score": 0.99946,
+      "paths": [
+        {
+          "path": "知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）"
+        }
+      ],
+      "path_count": 1,
+      "contributions": [],
+      "contribution_count": 0,
+      "rank": 1,
+      "source": "table5_top15",
+      "database_verified": false
+    },
+    {
+      "herb_id": 237,
+      "adr_id": 3989,
+      "prediction_score": 0.9993899999999999,
+      "paths": [
+        {
+          "path": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness"
+        }
+      ],
+      "path_count": 1,
+      "contributions": [
+        {
+          "feature": "mechanistic_support",
+          "score_drop": null
+        }
+      ],
+      "contribution_count": 1,
+      "rank": 2,
+      "source": "table5_top15",
+      "database_verified": false
+    },
+    {
+      "herb_id": 234,
+      "adr_id": 3698,
+      "prediction_score": 0.99937,
+      "paths": [
+        {
+          "path": "知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）"
+        }
+      ],
+      "path_count": 1,
+      "contributions": [],
+      "contribution_count": 0,
+      "rank": 3,
+      "source": "table5_top15",
+      "database_verified": false
+    },
+    {
+      "herb_id": 526,
+      "adr_id": 3698,
+      "prediction_score": 0.9993500000000001,
+      "paths": [
+        {
+          "path": "知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）"
+        }
+      ],
+      "path_count": 1,
+      "contributions": [],
+      "contribution_count": 0,
+      "rank": 4,
+      "source": "table5_top15",
+      "database_verified": false
+    },
+    {
+      "herb_id": 483,
+      "adr_id": 3989,
+      "prediction_score": 0.99934,
+      "paths": [
+        {
+          "path": "知识图谱中未发现该 CMM–ADR 对的显式短路径（模型仍基于嵌入推断）"
+        }
+      ],
+      "path_count": 1,
+      "contributions": [],
+      "contribution_count": 0,
+      "rank": 5,
+      "source": "table5_top15",
+      "database_verified": false
+    }
+  ]
+}

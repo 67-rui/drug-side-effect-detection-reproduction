@@ -8,7 +8,7 @@
 
 ## Current PU-XMSAT Status
 
-- Smoke status: not_generated
+- Smoke status: configured
 - Training executed: False
 - Interpretation: first-round research prototype; full multi-seed training is pending.
 
