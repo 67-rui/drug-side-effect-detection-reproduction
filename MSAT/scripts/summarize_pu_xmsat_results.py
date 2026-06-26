@@ -29,6 +29,29 @@ def _evidence_grade_lines(evidence: dict | None) -> list[str]:
     ]
 
 
+def _threshold_lines(pu_smoke: dict | None) -> list[str]:
+    if not pu_smoke:
+        return []
+    rows = []
+    for row in pu_smoke.get("fold_results", []):
+        threshold = row.get("optimal_threshold")
+        val_f1 = row.get("val_f1_at_threshold")
+        if threshold is None:
+            continue
+        val_f1_text = "NA" if val_f1 is None else f"{float(val_f1):.4f}"
+        rows.append(
+            f"| Fold {row.get('fold', 'NA')} | {float(threshold):.4f} | {val_f1_text} |"
+        )
+    if not rows:
+        return []
+    return [
+        "",
+        "| Fold | Selected threshold | Validation F1 |",
+        "| --- | ---: | ---: |",
+        *rows,
+    ]
+
+
 def build_report(
     baseline: dict,
     pu_smoke: dict | None,
@@ -55,6 +78,9 @@ def build_report(
     training_backend = (
         pu_smoke.get("training_backend", "not_generated") if pu_smoke else "not_generated"
     )
+    threshold_strategy = (
+        pu_smoke.get("threshold_strategy", "not_generated") if pu_smoke else "not_generated"
+    )
 
     lines = [
         "# PU-XMSAT Experiment Report",
@@ -73,8 +99,10 @@ def build_report(
         "",
         f"- Status: {pu_status}",
         f"- Backend: {training_backend}",
+        f"- Threshold strategy: {threshold_strategy}",
         f"- Training executed: {training_executed}",
         "- Interpretation: first-round research prototype; full multi-seed training is pending.",
+        *_threshold_lines(pu_smoke),
         "",
         "## Evidence Screening",
         "",

@@ -37,11 +37,13 @@ def build_experiment_config(
     max_folds: int,
     max_epochs: int,
     training_backend: str = "weighted_embedding_smoke",
+    threshold_strategy: str = "fixed_0_5",
 ) -> dict:
     backend = resolve_training_backend(training_backend)
     return {
         "experiment": "pu_xmsat",
         "sampling_strategy": sampling_strategy,
+        "threshold_strategy": threshold_strategy,
         "loss": "weighted_pu_bce",
         "training_backend": backend,
         "unlabeled_weight": unlabeled_weight,
@@ -217,6 +219,11 @@ def main() -> None:
         default="weighted_embedding_smoke",
     )
     parser.add_argument("--sampling-strategy", default="hybrid")
+    parser.add_argument(
+        "--threshold-strategy",
+        choices=["fixed_0_5", "val_f1"],
+        default="fixed_0_5",
+    )
     parser.add_argument("--unlabeled-weight", type=float, default=0.2)
     parser.add_argument("--reliable-negative-weight", type=float, default=0.8)
     parser.add_argument("--max-folds", type=int, default=1)
@@ -238,6 +245,7 @@ def main() -> None:
         max_folds=args.max_folds,
         max_epochs=args.max_epochs,
         training_backend=backend,
+        threshold_strategy=args.threshold_strategy,
     )
 
     if backend == "full_msat_pu":
@@ -253,6 +261,7 @@ def main() -> None:
                 max_pairs=args.max_pairs,
                 candidate_cache=args.candidate_cache,
                 seed=args.seed,
+                threshold_strategy=args.threshold_strategy,
             )
         )
         out = Path(args.output)

@@ -6,6 +6,7 @@ cd "$(dirname "$0")/.."
 PY="${PY:-python}"
 PU_XMSAT_BACKEND="${PU_XMSAT_BACKEND:-full_msat_pu}"
 PU_XMSAT_SAMPLING_STRATEGY="${PU_XMSAT_SAMPLING_STRATEGY:-hybrid}"
+PU_XMSAT_THRESHOLD_STRATEGY="${PU_XMSAT_THRESHOLD_STRATEGY:-fixed_0_5}"
 PU_XMSAT_UNLABELED_WEIGHT="${PU_XMSAT_UNLABELED_WEIGHT:-0.2}"
 PU_XMSAT_RELIABLE_NEGATIVE_WEIGHT="${PU_XMSAT_RELIABLE_NEGATIVE_WEIGHT:-0.8}"
 PU_XMSAT_MAX_FOLDS="${PU_XMSAT_MAX_FOLDS:-1}"
@@ -20,6 +21,7 @@ mkdir -p results/phase_pu_xmsat_logs
 "$PY" experiments/run_pu_msat_experiment.py \
   --backend "$PU_XMSAT_BACKEND" \
   --sampling-strategy "$PU_XMSAT_SAMPLING_STRATEGY" \
+  --threshold-strategy "$PU_XMSAT_THRESHOLD_STRATEGY" \
   --unlabeled-weight "$PU_XMSAT_UNLABELED_WEIGHT" \
   --reliable-negative-weight "$PU_XMSAT_RELIABLE_NEGATIVE_WEIGHT" \
   --max-folds "$PU_XMSAT_MAX_FOLDS" \

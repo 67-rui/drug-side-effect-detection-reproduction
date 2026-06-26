@@ -42,6 +42,23 @@ class FullMSATPUConfig:
     checkpoint_prefix: str = "pu_xmsat"
     save_checkpoints: bool = False
     checkpoint_dir: Path = Path("saved_models")
+    threshold_strategy: str = "fixed_0_5"
+
+
+def choose_threshold(
+    val_probs,
+    val_labels,
+    strategy: str = "fixed_0_5",
+) -> tuple[float, float | None]:
+    if strategy == "fixed_0_5":
+        return 0.5, None
+    if strategy == "val_f1":
+        threshold, val_f1 = find_optimal_threshold(
+            np.asarray(val_probs),
+            np.asarray(val_labels),
+        )
+        return float(threshold), float(val_f1)
+    raise ValueError(f"unknown threshold strategy: {strategy}")
 
 
 def summarize_full_fold_results(fold_results: list[dict]) -> dict:
@@ -409,22 +426,20 @@ def run_full_msat_pu_fold(
             torch.save(_state_dict_to_cpu(best_state), checkpoint)
             checkpoint_path = str(checkpoint)
 
-    optimal_threshold = 0.5
-    val_f1_at_threshold = None
-    if TrainingConfig.USE_OPTIMAL_THRESHOLD:
-        _, val_probs = evaluate(
-            model,
-            data,
-            val_edges[0],
-            val_edges[1],
-            val_labels,
-            device,
-            threshold=0.5,
-        )
-        optimal_threshold, val_f1_at_threshold = find_optimal_threshold(
-            val_probs,
-            val_labels,
-        )
+    _, val_probs = evaluate(
+        model,
+        data,
+        val_edges[0],
+        val_edges[1],
+        val_labels,
+        device,
+        threshold=0.5,
+    )
+    optimal_threshold, val_f1_at_threshold = choose_threshold(
+        val_probs,
+        val_labels,
+        strategy=config.threshold_strategy,
+    )
 
     test_metrics, test_preds = evaluate(
         model,
@@ -443,6 +458,7 @@ def run_full_msat_pu_fold(
         "best_val_auc": float(best_val_auc),
         "optimal_threshold": float(optimal_threshold),
         "val_f1_at_threshold": val_f1_at_threshold,
+        "threshold_strategy": config.threshold_strategy,
         "pu_pair_counts": pu_metadata,
         "test_metrics": test_metrics,
         "predictions": prediction_payload(
@@ -469,9 +485,14 @@ def run_full_msat_pu_experiment(
     max_pairs: int,
     candidate_cache: str | Path,
     seed: int,
+    threshold_strategy: str = "fixed_0_5",
 ) -> dict:
     start = time.time()
-    config = FullMSATPUConfig(max_epochs=max_epochs, max_pairs=max_pairs)
+    config = FullMSATPUConfig(
+        max_epochs=max_epochs,
+        max_pairs=max_pairs,
+        threshold_strategy=threshold_strategy,
+    )
     fold_count = min(DataConfig.N_FOLDS, max(1, int(max_folds)))
     fold_results = [
         run_full_msat_pu_fold(
@@ -490,6 +511,7 @@ def run_full_msat_pu_experiment(
         "status": "completed",
         "training_executed": True,
         "training_backend": config.training_backend,
+        "threshold_strategy": config.threshold_strategy,
         "fold_results": fold_results,
         "mean_metrics": summarize_full_fold_results(fold_results),
         "runtime_seconds": round(time.time() - start, 4),
