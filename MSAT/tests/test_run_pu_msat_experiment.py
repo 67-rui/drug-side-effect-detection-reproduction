@@ -1,5 +1,6 @@
 import math
 
+import experiments.full_msat_pu_training as full_training
 from experiments.pu_dataset_builder import build_pu_training_arrays
 from experiments.full_msat_pu_training import (
     FullMSATPUConfig,
@@ -93,3 +94,41 @@ def test_summarize_full_fold_results_reports_metric_means():
     assert payload["auc"] == 0.8
     assert payload["auprc"] == 0.7
     assert payload["final_loss"] == 0.7
+
+
+def test_run_full_msat_pu_experiment_aggregates_fold_results(monkeypatch):
+    calls = []
+
+    def fake_run_fold(fold_idx, config, sampling_strategy, unlabeled_weight,
+                      reliable_negative_weight, candidate_cache, seed):
+        calls.append((fold_idx, config.max_epochs, config.max_pairs, sampling_strategy))
+        return {
+            "fold": fold_idx,
+            "test_metrics": {
+                "auc": 0.7 + fold_idx * 0.1,
+                "auprc": 0.6 + fold_idx * 0.1,
+                "f1": 0.5,
+                "mcc": 0.4,
+            },
+            "training_history": {"train_loss": [0.9, 0.8 - fold_idx * 0.1]},
+        }
+
+    monkeypatch.setattr(full_training, "run_full_msat_pu_fold", fake_run_fold)
+
+    result = full_training.run_full_msat_pu_experiment(
+        sampling_strategy="hybrid",
+        unlabeled_weight=0.2,
+        reliable_negative_weight=0.8,
+        max_folds=2,
+        max_epochs=3,
+        max_pairs=96,
+        candidate_cache="results/pu_candidate_scores.sample.jsonl",
+        seed=42,
+    )
+
+    assert calls == [(0, 3, 96, "hybrid"), (1, 3, 96, "hybrid")]
+    assert result["status"] == "completed"
+    assert result["training_executed"] is True
+    assert result["training_backend"] == "full_msat_pu"
+    assert result["mean_metrics"]["auc"] == 0.75
+    assert result["mean_metrics"]["final_loss"] == 0.75
