@@ -38,11 +38,22 @@ def build_report(
         "auc": baseline["overall_metrics"]["auc"]["mean"],
         "auprc": baseline["overall_metrics"]["auprc"]["mean"],
     }
+    pu_metrics = None
+    if pu_smoke:
+        mean_metrics = pu_smoke.get("mean_metrics", {})
+        if mean_metrics.get("auc") is not None and mean_metrics.get("auprc") is not None:
+            pu_metrics = {
+                "auc": float(mean_metrics["auc"]),
+                "auprc": float(mean_metrics["auprc"]),
+            }
     pu_status = (
         pu_smoke.get("status", "unknown") if pu_smoke else "not_generated"
     )
     training_executed = (
         bool(pu_smoke.get("training_executed")) if pu_smoke else False
+    )
+    training_backend = (
+        pu_smoke.get("training_backend", "not_generated") if pu_smoke else "not_generated"
     )
 
     lines = [
@@ -53,10 +64,15 @@ def build_report(
         "| Model | AUC | AUPRC |",
         "| --- | ---: | ---: |",
         markdown_metric_row("MSAT", baseline_metrics),
+    ]
+    if pu_metrics:
+        lines.append(markdown_metric_row("PU-XMSAT", pu_metrics))
+    lines.extend([
         "",
         "## Current PU-XMSAT Status",
         "",
-        f"- Smoke status: {pu_status}",
+        f"- Status: {pu_status}",
+        f"- Backend: {training_backend}",
         f"- Training executed: {training_executed}",
         "- Interpretation: first-round research prototype; full multi-seed training is pending.",
         "",
@@ -68,7 +84,7 @@ def build_report(
         "",
         "- Baseline tag: baseline/msat-reproduction-20260626",
         "- Default MSAT training behavior remains the comparison anchor.",
-    ]
+    ])
     return "\n".join(lines) + "\n"
 
 

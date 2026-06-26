@@ -24,6 +24,8 @@ REQUIRED_SMOKE_FILES = [
     "results/PU_XMSAT_EXPERIMENT_REPORT.md",
 ]
 
+OPTIONAL_TRAINING_SUMMARY = "results/pu_training_summary.json"
+
 
 def default_audit_output() -> Path:
     return Path(tempfile.gettempdir()) / "pu_xmsat_reproduction_state_audit.final.json"
@@ -85,6 +87,41 @@ def verify_smoke_artifacts(root: Path) -> dict:
     return {"ok": ok, **checks}
 
 
+def verify_training_summary(root: Path) -> dict:
+    path = root / OPTIONAL_TRAINING_SUMMARY
+    if not path.exists():
+        return {"ok": True, "present": False}
+
+    training = _load_json(path)
+    fold_results = training.get("fold_results", [])
+    mean_metrics = training.get("mean_metrics", {})
+    backend = training.get("training_backend")
+    final_loss = mean_metrics.get("final_loss")
+    metric_values = {
+        key: mean_metrics.get(key)
+        for key in ["auc", "auprc", "f1", "mcc", "final_loss"]
+        if mean_metrics.get(key) is not None
+    }
+    finite_metrics = all(
+        isinstance(value, int | float) and math.isfinite(float(value))
+        for value in metric_values.values()
+    )
+    ok = (
+        bool(training.get("training_executed"))
+        and backend in {"weighted_embedding_smoke", "full_msat_pu"}
+        and bool(fold_results)
+        and finite_metrics
+    )
+    return {
+        "ok": ok,
+        "present": True,
+        "training_backend": backend,
+        "fold_count": len(fold_results),
+        "final_loss": final_loss,
+        "mean_metrics": metric_values,
+    }
+
+
 def run_reproduction_audit(root: Path, audit_out: Path | None = None) -> dict:
     out = audit_out or default_audit_output()
     result = subprocess.run(
@@ -114,12 +151,19 @@ def run_reproduction_audit(root: Path, audit_out: Path | None = None) -> dict:
 def verify_final(root: Path, audit_out: Path | None = None, run_audit: bool = True) -> dict:
     baseline = verify_baseline(root)
     smoke = verify_smoke_artifacts(root)
+    training_summary = verify_training_summary(root)
     audit = run_reproduction_audit(root, audit_out=audit_out) if run_audit else {"ok": True}
-    ok = baseline.get("ok") is True and smoke.get("ok") is True and audit.get("ok") is True
+    ok = (
+        baseline.get("ok") is True
+        and smoke.get("ok") is True
+        and training_summary.get("ok") is True
+        and audit.get("ok") is True
+    )
     return {
         "ok": ok,
         "baseline": baseline,
         "smoke": smoke,
+        "training_summary": training_summary,
         "audit": audit,
     }
 
