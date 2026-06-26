@@ -42,7 +42,8 @@ GitHub 仓库：
 
 - Remote：`git@github.com:67-rui/drug-side-effect-detection-reproduction.git`
 - 用户提供链接：`https://github.com/67-rui/drug-side-effect-detection-reproduction.git`
-- 当前工作分支：`codex/fix-reproduction-protocol`
+- 基线分支：`codex/fix-reproduction-protocol`
+- 当前 PU-XMSAT 开发分支：`codex/pu-xmsat-implementation`
 
 重要目录：
 
@@ -62,6 +63,37 @@ GitHub 仓库：
   - baseline tag：`baseline/msat-reproduction-20260626`
   - baseline commit：`e2830f1`
 - 后续 PU-XMSAT 开发应在 `codex/pu-xmsat-implementation` 分支进行。
+
+PU-XMSAT 当前实现进度（2026-06-26）：
+
+- 开发分支：`codex/pu-xmsat-implementation`
+- 当前已完成第一轮本地最小闭环的代码与 smoke artifacts，最新阶段包括：
+  - baseline lock 与 verifier；
+  - pair/unobserved-pair/机制支持工具；
+  - reliable negative candidate scoring；
+  - PU dataset builder；
+  - weighted PU BCE loss；
+  - 不修改默认 `train.py` 的 PU training helper；
+  - PU candidate cache、negative sampling ablation、PU smoke runner；
+  - mechanism subgraph explainer、perturbation contribution scoring；
+  - explanation case study workflow；
+  - evidence screening table；
+  - PU-XMSAT report summarizer；
+  - server run/monitor scripts。
+- Task 15 本地 smoke artifacts 已生成并提交：
+  - `MSAT/results/pu_candidate_scores.sample.jsonl`
+  - `MSAT/results/pu_negative_sampling_summary.json`
+  - `MSAT/results/pu_training_smoke_summary.json`
+  - `MSAT/results/explanation_case_studies.json`
+  - `MSAT/results/evidence_screening_summary.json`
+  - `MSAT/results/evidence_screening_table.csv`
+  - `MSAT/results/PU_XMSAT_EXPERIMENT_REPORT.md`
+- 当前 PU smoke runner 是配置型 smoke：`pu_training_smoke_summary.json` 中 `training_executed: false`。因此还不能声称 PU-XMSAT 已完成真实一折或多折训练，只能声称本地最小闭环产物和接口已通过 smoke。
+- 为遵守不覆盖基线产物的约束，`scripts/audit_reproduction_state.py` 的 Task 15/17 审计使用 `/tmp/...json` 临时输出预检，未覆盖 `MSAT/results/reproduction_state_audit.json`。预检结果为 `issues: []`。
+- 后续若要进入真实 PU-XMSAT 训练，需要用户明确确认：
+  - 是否允许执行本地一折小训练或服务器训练；
+  - 是否允许刷新 `results/reproduction_state_audit.json`；
+  - 是否允许 `server_pu_xmsat_run.sh` 生成/覆盖 `results/pu_training_summary.json`、`results/explanation_case_studies.json`、`results/evidence_screening_summary.json`、`results/evidence_screening_table.csv`、`results/PU_XMSAT_EXPERIMENT_REPORT.md` 等 PU 产物。
 
 ## 3. 数据与论文协议锚点
 
