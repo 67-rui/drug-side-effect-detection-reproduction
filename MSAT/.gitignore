@@ -51,6 +51,10 @@ results/*
 !results/pu_xmsat_baseline_comparison.json
 !results/pu_xmsat_seed2026_baseline_comparison.csv
 !results/pu_xmsat_seed2026_baseline_comparison.json
+!results/pu_xmsat_hybrid_seed2026_baseline_comparison.csv
+!results/pu_xmsat_hybrid_seed2026_baseline_comparison.json
+!results/pu_xmsat_hybrid_vs_random_seed2026_comparison.csv
+!results/pu_xmsat_hybrid_vs_random_seed2026_comparison.json
 !results/table5_literature_evidence_candidates.csv
 !results/table5_literature_evidence_candidates.json
 logs/

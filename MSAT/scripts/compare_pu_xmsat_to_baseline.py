@@ -39,6 +39,8 @@ def build_comparison(
     baseline: dict,
     pu: dict,
     metrics: tuple[str, ...] = DEFAULT_METRICS,
+    baseline_label: str = "reproduced MSAT baseline",
+    pu_label: str = "PU-XMSAT",
 ) -> dict:
     rows = []
     fold_count = None
@@ -76,11 +78,13 @@ def build_comparison(
 
     return {
         "fold_count": int(fold_count or 0),
+        "baseline_label": baseline_label,
+        "pu_label": pu_label,
         "metrics": rows,
         "interpretation": (
-            "Use paired fold-level statistics to describe PU-XMSAT relative to the "
-            "reproduced MSAT baseline. Small non-significant mean deltas should be "
-            "reported as baseline-level performance, not definitive superiority."
+            f"Use paired fold-level statistics to describe {pu_label} relative to "
+            f"{baseline_label}. Small non-significant mean deltas should be reported "
+            "cautiously, not as definitive superiority."
         ),
     }
 
@@ -132,11 +136,18 @@ def main() -> None:
     )
     parser.add_argument("--output-json", default="results/pu_xmsat_baseline_comparison.json")
     parser.add_argument("--output-csv", default="results/pu_xmsat_baseline_comparison.csv")
+    parser.add_argument("--baseline-label", default="reproduced MSAT baseline")
+    parser.add_argument("--pu-label", default="PU-XMSAT")
     args = parser.parse_args()
 
     baseline = json.loads(Path(args.baseline).read_text())
     pu = json.loads(Path(args.pu).read_text())
-    comparison = build_comparison(baseline, pu)
+    comparison = build_comparison(
+        baseline,
+        pu,
+        baseline_label=args.baseline_label,
+        pu_label=args.pu_label,
+    )
 
     out_json = Path(args.output_json)
     out_json.parent.mkdir(parents=True, exist_ok=True)

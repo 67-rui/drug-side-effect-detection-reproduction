@@ -39,6 +39,32 @@ def test_build_comparison_reports_paired_fold_statistics():
     assert 0.0 <= row["paired_ttest_p"] <= 1.0
 
 
+def test_build_comparison_keeps_comparison_labels():
+    baseline = _payload([
+        {"auc": 0.80},
+        {"auc": 0.82},
+        {"auc": 0.81},
+    ])
+    pu = _payload([
+        {"auc": 0.81},
+        {"auc": 0.81},
+        {"auc": 0.83},
+    ])
+
+    comparison = build_comparison(
+        baseline,
+        pu,
+        metrics=("auc",),
+        baseline_label="random seed=2026",
+        pu_label="hybrid seed=2026",
+    )
+
+    assert comparison["baseline_label"] == "random seed=2026"
+    assert comparison["pu_label"] == "hybrid seed=2026"
+    assert "hybrid seed=2026" in comparison["interpretation"]
+    assert "random seed=2026" in comparison["interpretation"]
+
+
 def test_csv_rows_include_report_ready_columns():
     comparison = {
         "metrics": [
