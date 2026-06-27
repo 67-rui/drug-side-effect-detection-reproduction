@@ -96,6 +96,8 @@ Compared with the reproduced MSAT baseline, the strongest corrected PU-XMSAT pil
 
 ### Paired Baseline Comparison
 
+This table is generated from `results/pu_xmsat_baseline_comparison.json` and `results/pu_xmsat_baseline_comparison.csv` by `scripts/compare_pu_xmsat_to_baseline.py`.
+
 | Metric | PU-XMSAT full-positive random | MSAT baseline | Mean delta | PU wins/losses by fold | Paired t-test p |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | AUC | 0.9796 | 0.9793 | +0.00035 | 7/3 | 0.324 |
