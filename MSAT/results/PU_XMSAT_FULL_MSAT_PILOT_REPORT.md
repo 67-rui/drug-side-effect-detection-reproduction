@@ -69,6 +69,7 @@ After fixing candidate-cache sampling, `hybrid` was used for budget scaling with
 | 10-fold random full-positive random50k | 66,015 | 10 | 0.9796±0.0015 | 0.9773±0.0020 | 0.9321±0.0042 | 0.8625±0.0070 | 0.27-0.50 | 39-58 | 737.0s |
 | 10-fold random full-positive random50k seed=2026 | 66,015 | 10 | 0.9797±0.0019 | 0.9777±0.0024 | 0.9338±0.0044 | 0.8661±0.0080 | 0.32-0.51 | 36-55 | 714.1s |
 | 10-fold hybrid full-positive random50k seed=2026 | 66,015 | 10 | 0.9804±0.0017 | 0.9779±0.0020 | 0.9351±0.0042 | 0.8684±0.0079 | 0.26-0.46 | 54-79 | 821.6s |
+| 10-fold hybrid full-positive random50k seed=1337 | 66,015 | 10 | 0.9804±0.0015 | 0.9780±0.0024 | 0.9348±0.0035 | 0.8683±0.0058 | 0.36-0.48 | 43-92 | 809.6s |
 
 ## Interpretation
 
@@ -76,13 +77,13 @@ The full MSAT PU backend is now operational on GPU. AUC and AUPRC improve as epo
 
 Threshold-dependent metrics need care. Recall is nearly 1.0 at the fixed `0.5` threshold, while precision and MCC remain weak. Validation-threshold calibration improves interpretability of F1/MCC, but all three calibrated runs selected the upper grid boundary (`0.99`), which indicates that probability calibration is still poor and thresholded metrics should be reported as secondary.
 
-The corrected random-cache runs change the interpretation substantially. The prefix-cache pilots should be treated only as training-pipeline diagnostics. With the randomized 50,000-row candidate cache and a 12,288-pair budget, `random` sampling reaches AUC 0.9748 and AUPRC 0.9719 over 10 folds, while `hybrid` reaches AUC 0.9547 and AUPRC 0.9458. Expanding `random` to the full-positive budget further raises the 10-fold result to AUC 0.9796, AUPRC 0.9773, F1 0.9321, and MCC 0.8625. A repeated-seed run after explicit fold-level NumPy/PyTorch seeding reaches AUC 0.9797, AUPRC 0.9777, F1 0.9338, and MCC 0.8661. Running the full-positive `hybrid` comparator under the same seed-controlled setting reaches AUC 0.9804, AUPRC 0.9779, F1 0.9351, and MCC 0.8684. This confirms that the candidate-cache bias and pair-budget cap were major bottlenecks and that the PU-XMSAT direction remains technically viable.
+The corrected random-cache runs change the interpretation substantially. The prefix-cache pilots should be treated only as training-pipeline diagnostics. With the randomized 50,000-row candidate cache and a 12,288-pair budget, `random` sampling reaches AUC 0.9748 and AUPRC 0.9719 over 10 folds, while `hybrid` reaches AUC 0.9547 and AUPRC 0.9458. Expanding `random` to the full-positive budget further raises the 10-fold result to AUC 0.9796, AUPRC 0.9773, F1 0.9321, and MCC 0.8625. A repeated-seed run after explicit fold-level NumPy/PyTorch seeding reaches AUC 0.9797, AUPRC 0.9777, F1 0.9338, and MCC 0.8661. Running the full-positive `hybrid` comparator under the same seed-controlled setting reaches nearly identical results across two seeds: seed=2026 has AUC 0.9804, AUPRC 0.9779, F1 0.9351, and MCC 0.8684; seed=1337 has AUC 0.9804, AUPRC 0.9780, F1 0.9348, and MCC 0.8683. This confirms that the candidate-cache bias and pair-budget cap were major bottlenecks and that the PU-XMSAT direction remains technically viable.
 
-The strongest corrected PU-XMSAT result is now the full-positive `hybrid` seed=2026 run. Relative to the reproduced MSAT main baseline, it improves mean AUC by +0.00115, AUPRC by +0.00083, F1 by +0.00361, and MCC by +0.00589, with paired t-test p values below 0.05 for all four metrics. Relative to the seed=2026 `random` run, `hybrid` is higher on AUC, F1, and MCC with paired p values below 0.05, while AUPRC is slightly higher but not significant. This is the first corrected PU-XMSAT result that can be described as a statistically promising comparator, but because it is still a single seed-controlled run, the paper-facing claim should remain cautious.
+The strongest corrected PU-XMSAT setting is now full-positive `hybrid`. Relative to the reproduced MSAT main baseline, seed=2026 improves all four metrics with paired p values below 0.05. Seed=1337 reproduces the same mean level and remains significantly higher on AUC, F1, and MCC, while AUPRC is a positive trend just above the 0.05 threshold. The seed-to-seed spread is extremely small: AUC 0.00003, AUPRC 0.00005, F1 0.00030, and MCC 0.00008. This is now stronger than a single-seed comparator, but the paper-facing claim should still mention the limited seed count and preferably add a PU-weight sensitivity check.
 
 ## Recommendation
 
-Do not claim final PU-XMSAT superiority yet. The full-positive `hybrid` comparator is now the strongest result and shows statistically significant paired gains over MSAT in a single seed-controlled run. The next technical step should be focused: either PU-weight sensitivity for the full-positive `hybrid` setting, or a second `hybrid` seed if the paper needs stronger robustness. The paper-facing claim can now be strengthened to: PU-XMSAT is implemented, reproducible, and after correcting candidate-cache sampling and removing the pair-budget cap produces a promising full-positive hybrid result above the reproduced MSAT baseline.
+Do not overstate final PU-XMSAT superiority. The full-positive `hybrid` setting is now the strongest result and is stable across two seeds, with consistent AUC/F1/MCC gains over MSAT and a positive AUPRC trend. The next technical step should be PU-weight sensitivity for the full-positive `hybrid` setting. The paper-facing claim can now be strengthened to: PU-XMSAT is implemented, reproducible, and after correcting candidate-cache sampling and removing the pair-budget cap produces a seed-robust full-positive hybrid result above the reproduced MSAT baseline on the main ranking and thresholded metrics.
 
 ## Raw Artifacts
 
@@ -104,6 +105,7 @@ The raw JSON summaries are available locally and on the server but are ignored b
 - `results/pu_training_summary_10fold_random_200e_66015p_valf1_random50k.json`
 - `results/pu_training_summary_10fold_random_seed2026_200e_66015p_valf1_random50k.json`
 - `results/pu_training_summary_10fold_hybrid_seed2026_200e_66015p_valf1_random50k.json`
+- `results/pu_training_summary_10fold_hybrid_seed1337_200e_66015p_valf1_random50k.json`
 - `results/pu_training_summary_3fold_hybrid_200e_12288p_valf1_random50k.json`
 - `results/pu_training_summary_3fold_hybrid_200e_6144p_valf1_random50k.json`
 - `results/pu_training_summary_fold0_hybrid_200e_12288p_valf1_random50k.json`

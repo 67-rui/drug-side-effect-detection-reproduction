@@ -1,0 +1,80 @@
+{
+  "baseline_label": "reproduced MSAT baseline",
+  "run_count": 2,
+  "fold_count": 10,
+  "runs": [
+    {
+      "label": "hybrid seed=2026",
+      "metrics": {
+        "auc": {
+          "mean": 0.9804203731594349,
+          "std": 0.0016541960224624745,
+          "delta_vs_baseline": 0.0011491677224310104
+        },
+        "auprc": {
+          "mean": 0.9779286270388552,
+          "std": 0.0020294373887556694,
+          "delta_vs_baseline": 0.0008340370208168579
+        },
+        "f1": {
+          "mean": 0.9350642142036277,
+          "std": 0.0041609562619277845,
+          "delta_vs_baseline": 0.0036134761254310588
+        },
+        "mcc": {
+          "mean": 0.8684089438114027,
+          "std": 0.007948236154006885,
+          "delta_vs_baseline": 0.00588922693909133
+        }
+      }
+    },
+    {
+      "label": "hybrid seed=1337",
+      "metrics": {
+        "auc": {
+          "mean": 0.9803921801571366,
+          "std": 0.001528181158845012,
+          "delta_vs_baseline": 0.001120974720132728
+        },
+        "auprc": {
+          "mean": 0.977982962282678,
+          "std": 0.0023928897379091206,
+          "delta_vs_baseline": 0.0008883722646396697
+        },
+        "f1": {
+          "mean": 0.9347671651403737,
+          "std": 0.0034687587824880455,
+          "delta_vs_baseline": 0.003316427062177052
+        },
+        "mcc": {
+          "mean": 0.8683307285560508,
+          "std": 0.005781185509431566,
+          "delta_vs_baseline": 0.005811011683739431
+        }
+      }
+    }
+  ],
+  "seed_spread": {
+    "auc": {
+      "min": 0.9803921801571366,
+      "max": 0.9804203731594349,
+      "range": 2.8193002298282366e-05
+    },
+    "auprc": {
+      "min": 0.9779286270388552,
+      "max": 0.977982962282678,
+      "range": 5.433524382281174e-05
+    },
+    "f1": {
+      "min": 0.9347671651403737,
+      "max": 0.9350642142036277,
+      "range": 0.0002970490632540068
+    },
+    "mcc": {
+      "min": 0.8683307285560508,
+      "max": 0.8684089438114027,
+      "range": 7.821525535189888e-05
+    }
+  },
+  "interpretation": "Use this summary to describe whether the same PU-XMSAT setting remains stable across seeds. Small seed-spread values support robustness, but do not replace protocol checks or paired fold-level comparisons."
+}

@@ -3,7 +3,7 @@
 **Date:** 2026-06-27
 **Project branch:** `codex/pu-xmsat-implementation`  
 **Baseline anchor:** `baseline/msat-reproduction-20260626`  
-**Current status:** full MSAT PU backend is runnable; prefix-cache pilots, candidate-cache audit, corrected random-cache budget scaling, corrected 10-fold `hybrid`, bounded corrected 10-fold `random`, full-positive corrected 10-fold `random`, one repeated-seed robustness run, and a full-positive `hybrid` comparator are complete. PU-XMSAT now reaches baseline-level performance in the full-positive random setting, and the seed-controlled full-positive hybrid run is the current strongest result. Because this stronger hybrid result is still a single-seed comparator, it should be written as promising evidence rather than a final superiority claim.
+**Current status:** full MSAT PU backend is runnable; prefix-cache pilots, candidate-cache audit, corrected random-cache budget scaling, corrected 10-fold `hybrid`, bounded corrected 10-fold `random`, full-positive corrected 10-fold `random`, repeated-seed `random`, and two full-positive `hybrid` seeds are complete. PU-XMSAT now reaches baseline-level performance in the full-positive random setting, and the seed-controlled full-positive hybrid setting is the current strongest result. The hybrid gain is stable across two seeds, but final claims should still mention the limited seed count and the need for a focused weight-sensitivity check.
 
 ## Research Motivation
 
@@ -85,6 +85,7 @@ After candidate-cache sampling was fixed, `hybrid` was re-tested with a randomiz
 | random 10-fold full-positive | 66,015 | 10 | 0.9796±0.0015 | 0.9773±0.0020 | 0.9321±0.0042 | 0.8625±0.0070 | 0.27-0.50 | 737.0s |
 | random 10-fold full-positive seed=2026 | 66,015 | 10 | 0.9797±0.0019 | 0.9777±0.0024 | 0.9338±0.0044 | 0.8661±0.0080 | 0.32-0.51 | 714.1s |
 | hybrid 10-fold full-positive seed=2026 | 66,015 | 10 | 0.9804±0.0017 | 0.9779±0.0020 | 0.9351±0.0042 | 0.8684±0.0079 | 0.26-0.46 | 821.6s |
+| hybrid 10-fold full-positive seed=1337 | 66,015 | 10 | 0.9804±0.0015 | 0.9780±0.0024 | 0.9348±0.0035 | 0.8683±0.0058 | 0.36-0.48 | 809.6s |
 
 ## Current Interpretation
 
@@ -98,7 +99,9 @@ Compared with the reproduced MSAT baseline, the strongest corrected PU-XMSAT pil
 
 A repeated-seed robustness run was then performed after explicitly seeding NumPy and PyTorch before each full MSAT PU fold. With seed=2026 and the same full-positive `random` setting, PU-XMSAT reached AUC 0.9797, AUPRC 0.9777, F1 0.9338, and MCC 0.8661. Relative to MSAT, the mean deltas are AUC +0.00046, AUPRC +0.00057, F1 +0.00233, and MCC +0.00353. Fold-level paired tests still remain above the 0.05 threshold, so this result strengthens the baseline-level robustness claim but should still be framed cautiously.
 
-The full-positive `hybrid` comparator with seed=2026 is now the strongest corrected PU-XMSAT run. It reaches AUC 0.9804, AUPRC 0.9779, F1 0.9351, and MCC 0.8684. Relative to MSAT, the mean deltas are AUC +0.00115, AUPRC +0.00083, F1 +0.00361, and MCC +0.00589, with paired t-test p values below 0.05 for all four metrics. Relative to the seed=2026 `random` run, `hybrid` is higher on AUC, F1, and MCC with paired p values below 0.05; AUPRC is slightly higher but not significant. This supports keeping mechanism-aware reliable-negative scoring in the method narrative, while still requiring at least one robustness pass before a final superiority claim.
+The full-positive `hybrid` comparator with seed=2026 is the strongest corrected PU-XMSAT run. It reaches AUC 0.9804, AUPRC 0.9779, F1 0.9351, and MCC 0.8684. Relative to MSAT, the mean deltas are AUC +0.00115, AUPRC +0.00083, F1 +0.00361, and MCC +0.00589, with paired t-test p values below 0.05 for all four metrics. Relative to the seed=2026 `random` run, `hybrid` is higher on AUC, F1, and MCC with paired p values below 0.05; AUPRC is slightly higher but not significant.
+
+A second full-positive `hybrid` run with seed=1337 closely reproduces the same result: AUC 0.9804, AUPRC 0.9780, F1 0.9348, and MCC 0.8683. The difference between the two hybrid seed means is tiny: AUC range 0.00003, AUPRC range 0.00005, F1 range 0.00030, and MCC range 0.00008. Against MSAT, seed=1337 remains significantly higher on AUC, F1, and MCC, while AUPRC is a positive trend just above 0.05 (p=0.056). This supports keeping mechanism-aware reliable-negative scoring in the method narrative and strengthens the robustness of the hybrid improvement claim.
 
 ### Paired Baseline Comparison
 
@@ -134,6 +137,21 @@ The full-positive `hybrid` comparator uses the same seed-controlled fold setup a
 | hybrid seed=2026 vs random seed=2026 | AUPRC | +0.00027 | 5/5 | 0.5150 |
 | hybrid seed=2026 vs random seed=2026 | F1 | +0.00129 | 8/2 | 0.0270 |
 | hybrid seed=2026 vs random seed=2026 | MCC | +0.00236 | 8/2 | 0.0372 |
+| hybrid seed=1337 vs MSAT | AUC | +0.00112 | 9/1 | 0.0016 |
+| hybrid seed=1337 vs MSAT | AUPRC | +0.00089 | 6/4 | 0.0563 |
+| hybrid seed=1337 vs MSAT | F1 | +0.00332 | 9/1 | 0.0087 |
+| hybrid seed=1337 vs MSAT | MCC | +0.00581 | 8/2 | 0.0153 |
+
+### Hybrid Seed Robustness Summary
+
+The two full-positive `hybrid` seeds are summarized by `scripts/summarize_pu_xmsat_seed_robustness.py` in `results/pu_xmsat_hybrid_seed_robustness_summary.json` and `results/pu_xmsat_hybrid_seed_robustness_summary.csv`.
+
+| Metric | seed=2026 mean | seed=1337 mean | seed range | Interpretation |
+| --- | ---: | ---: | ---: | --- |
+| AUC | 0.980420 | 0.980392 | 0.000028 | stable positive gain |
+| AUPRC | 0.977929 | 0.977983 | 0.000054 | stable positive gain; seed=1337 p=0.056 vs MSAT |
+| F1 | 0.935064 | 0.934767 | 0.000297 | stable positive gain |
+| MCC | 0.868409 | 0.868331 | 0.000078 | stable positive gain |
 
 ## Paper-Writing Notes
 
@@ -146,7 +164,7 @@ The current work can support the following future manuscript statements once mul
 - A bounded 10-fold pilot reverses the 3-fold ranking result under the legacy candidate cache: hybrid sampling gives stronger AUC/AUPRC, while random sampling gives stronger F1/MCC.
 - Candidate-cache construction matters: a prefix-selected unobserved-pair cache can bias PU negative sampling and should not be used for final strategy comparison.
 - After correcting candidate-cache sampling and removing the bounded pair cap, `random` reaches 10-fold AUC 0.9796 and AUPRC 0.9773, with validation-selected thresholds in a reasonable range. A repeated-seed run reaches AUC 0.9797 and AUPRC 0.9777. These are robust baseline-level results.
-- Under the same seed-controlled full-positive setting, `hybrid` reaches AUC 0.9804 and AUPRC 0.9779, with significant paired gains over MSAT in this single-seed comparator. This is the current strongest PU-XMSAT evidence, but should be replicated or supported by a weight-sensitivity pass before being written as definitive superiority.
+- Under the same seed-controlled full-positive setting, `hybrid` reaches AUC about 0.9804 and AUPRC about 0.9780 across two seeds. The two seeds have extremely small metric spread and reproduce the AUC/F1/MCC gains over MSAT, while AUPRC remains positive with one seed just above the 0.05 p-value threshold. This is the current strongest PU-XMSAT evidence, but should still be supported by a weight-sensitivity pass before being written as definitive superiority.
 - Threshold calibration is necessary for fair interpretation of F1/MCC under PU training, but after cache correction it no longer collapses to the 0.99 boundary.
 
 The current work should not yet be written as:
@@ -159,9 +177,9 @@ The current work should not yet be written as:
 
 1. Do not repeat the completed 12,288-pair or 66,015-pair corrected 10-fold `random` runs unless a code or data bug is found.
 2. Keep the paired fold comparison table and repeated-seed note in the paper-facing analysis, because the mean gains are small and not statistically significant.
-3. The repeated-seed `random` robustness pass and the full-positive `hybrid` comparator are complete. Next consider one additional ablation at a time: PU weight sensitivity for the full-positive `hybrid` setting, or a second seed for `hybrid` if the paper needs a stronger superiority claim.
+3. The repeated-seed `random` robustness pass and two full-positive `hybrid` seeds are complete. Next consider one additional ablation at a time: PU weight sensitivity for the full-positive `hybrid` setting is now the most useful complement.
 4. Preserve the legacy prefix-cache results as a methodological caution: candidate-cache construction can materially change PU learning conclusions.
-5. Do not write PU-XMSAT as definitively outperforming MSAT until the full-positive `hybrid` gain is backed by one additional robustness check.
+5. Do not write PU-XMSAT as definitively outperforming MSAT without noting that the current support is two seeds plus paired fold statistics; a PU-weight sensitivity pass would make the claim cleaner.
 
 ## Reproducibility Notes
 
