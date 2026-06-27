@@ -101,7 +101,8 @@ PU-XMSAT 当前实现进度（2026-06-27）：
 - 2026-06-27 已完成 corrected random-cache `hybrid` budget scaling 与 10-fold pilot：使用 `results/pu_candidate_scores.random50k.jsonl`、200 epochs、`val_f1`。fold0 随 pair budget 提升明显：1536p AUC `0.9028`、3072p AUC `0.9319`、6144p AUC `0.9383`、12288p AUC `0.9563`。3-fold：6144p AUC `0.9446±0.0027` AUPRC `0.9338±0.0094`；12288p AUC `0.9564±0.0039` AUPRC `0.9468±0.0071`。10-fold 12288p：AUC `0.9547±0.0034`、AUPRC `0.9458±0.0066`、F1 `0.9035±0.0033`、MCC `0.8039±0.0049`，selected thresholds 为 `0.29-0.52`，best epochs `23-31`。该结果接近但仍低于原 MSAT 主实验基线（AUC `0.9793`、AUPRC `0.9771`、F1 `0.9315`、MCC `0.8625`），不能声称 PU-XMSAT 已优于 MSAT，但已经证明候选池修复和更大 pair budget 是有效方向。
 - 2026-06-27 已完成 corrected random-cache `random` 10-fold pilot：使用 `results/pu_candidate_scores.random50k.jsonl`、200 epochs、12,288 pairs、`val_f1`、`full_msat_pu` 后端。结果为 AUC `0.9748±0.0016`、AUPRC `0.9719±0.0020`、F1 `0.9272±0.0039`、MCC `0.8521±0.0069`，selected thresholds `0.28-0.51`，best epochs `23-37`，runtime `643.8s`。这是当前最强 corrected PU-XMSAT 结果，已经非常接近但仍略低于原 MSAT 主实验基线（AUC `0.9793`、AUPRC `0.9771`、F1 `0.9315`、MCC `0.8625`）。报告中可以写“near-baseline corrected 10-fold PU-XMSAT pilot”，不能写“PU-XMSAT outperforms MSAT”。
 - 2026-06-27 已完成 corrected random-cache `random` full-positive budget pilot：fold0 使用 66,015 pairs（22,005 positive/reliable negative/unlabeled），AUC `0.9804`、AUPRC `0.9774`、F1 `0.9290`、MCC `0.8602`，runtime `68.6s`；10-fold 使用同一 66,015-pair cap，AUC `0.9796±0.0015`、AUPRC `0.9773±0.0020`、F1 `0.9321±0.0042`、MCC `0.8625±0.0070`，thresholds `0.27-0.50`，best epochs `39-58`，runtime `737.0s`。相对 MSAT 主基线均值差：AUC `+0.00035`、AUPRC `+0.00018`、F1 `+0.00067`、MCC `-0.00001`；配对 t-test 不显著（AUC p=`0.324`、AUPRC p=`0.695`、F1 p=`0.565`、MCC p=`0.996`）。当前可以写“baseline-level corrected PU-XMSAT”，不要写“显著优于 MSAT”。
-- 2026-06-27 已新增 `MSAT/scripts/compare_pu_xmsat_to_baseline.py`，并生成 tracked paired comparison 产物 `MSAT/results/pu_xmsat_baseline_comparison.json` 与 `.csv`。后续论文表格或统计口径应优先引用该产物，而不是手工重算。
+- 2026-06-27 修复 full MSAT PU fold 训练的随机种子控制：`experiments/full_msat_pu_training.py` 会在每折模型初始化前显式设置 NumPy 和 PyTorch seed，测试 `test_seed_fold_training_resets_numpy_and_torch_rng` 已覆盖。随后完成 corrected random-cache `random` full-positive seed=`2026` 10-fold 稳健性复跑：AUC `0.9797±0.0019`、AUPRC `0.9777±0.0024`、F1 `0.9338±0.0044`、MCC `0.8661±0.0080`，thresholds `0.32-0.51`，best epochs `36-55`，runtime `714.1s`。相对 MSAT 主基线均值差：AUC `+0.00046`、AUPRC `+0.00057`、F1 `+0.00233`、MCC `+0.00353`；配对 t-test 仍未过 0.05（AUC p=`0.247`、AUPRC p=`0.326`、F1 p=`0.066`、MCC p=`0.133`）。这支持“robust baseline-level”，仍不要写“显著优于 MSAT”。
+- 2026-06-27 已新增 `MSAT/scripts/compare_pu_xmsat_to_baseline.py`，并生成 tracked paired comparison 产物 `MSAT/results/pu_xmsat_baseline_comparison.json`、`.csv` 以及 seed=2026 稳健性复跑产物 `MSAT/results/pu_xmsat_seed2026_baseline_comparison.json`、`.csv`。后续论文表格或统计口径应优先引用这些产物，而不是手工重算。
 - 2026-06-26 已新增论文素材进展报告：`MSAT/results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`，用于记录研究动机、实现路径、pilot 结果、阶段性解释和下一步实验计划。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
 - 后续若进入正式长训，仍需先做代码核对、服务器测试和输出命名检查，避免覆盖 baseline 或旧 PU 产物；用户已经允许使用服务器推进，但不要把服务器 SSH、密码或临时密钥写入仓库、报告或记忆文件。
@@ -531,15 +532,15 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 
 ## 10. 当下近期计划
 
-如果接下来用户说“开始进行”或“按照计划推进”，不要继续用旧 prefix cache、1,536-pair cap、12,288-pair corrected 10-fold 设置，或同样 66,015-pair full-positive corrected `random` 设置反复重跑；当前关键 corrected `random` 对照已经完成。
+如果接下来用户说“开始进行”或“按照计划推进”，不要继续用旧 prefix cache、1,536-pair cap、12,288-pair corrected 10-fold 设置、66,015-pair full-positive corrected `random` seed=42 设置，或 seed=2026 repeated-seed 设置反复重跑；当前关键 corrected `random` 对照和一次 repeated-seed 稳健性实验已经完成。
 
 当前最合理的近期实验：
 
 1. paired fold comparison / statistical note 已由 `scripts/compare_pu_xmsat_to_baseline.py` 生成；后续如果改结果，先重跑该脚本刷新 `pu_xmsat_baseline_comparison.json/.csv`。
-2. 可选做一个稳健性实验：`random` repeated seed、PU weight sensitivity，或 full-positive `hybrid` comparator；一次只做一个，避免实验树发散。
+2. 可选做下一个互补实验：PU weight sensitivity，或 full-positive `hybrid` comparator；一次只做一个，避免实验树发散。`random` repeated seed 已完成一次，不要马上重复。
 3. 概率校准不再是第一阻塞点，因为 corrected 10-fold thresholds 已回到 `0.27-0.50`；后续可作为单独 calibration/PU weight ablation。
 4. 不要把旧 prefix-cache 10-fold 结果当作策略优劣最终证据；它们只能说明训练闭环、运行时间和指标记录流程已经可复现。
-5. 写论文时可报告 corrected random-cache full-positive `random` 10-fold 作为 baseline-level 强结果，但必须说明均值提升很小且当前未达统计显著。
+5. 写论文时可报告 corrected random-cache full-positive `random` 10-fold 作为 robust baseline-level 强结果，并补充 seed=2026 复跑；但必须说明均值提升很小且当前未达统计显著。
 
 不要覆盖 baseline 产物；正式运行前必须先完成本地测试、服务器测试、输出命名核对和报告模板更新。
 

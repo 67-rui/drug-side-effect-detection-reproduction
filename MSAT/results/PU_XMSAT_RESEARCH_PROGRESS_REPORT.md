@@ -3,7 +3,7 @@
 **Date:** 2026-06-27
 **Project branch:** `codex/pu-xmsat-implementation`  
 **Baseline anchor:** `baseline/msat-reproduction-20260626`  
-**Current status:** full MSAT PU backend is runnable; prefix-cache pilots, candidate-cache audit, corrected random-cache budget scaling, corrected 10-fold `hybrid`, bounded corrected 10-fold `random`, and full-positive corrected 10-fold `random` are complete. PU-XMSAT now reaches baseline-level performance, with marginal mean gains over the reproduced MSAT baseline on AUC, AUPRC, and F1, but the fold-level paired differences are small and not statistically significant.
+**Current status:** full MSAT PU backend is runnable; prefix-cache pilots, candidate-cache audit, corrected random-cache budget scaling, corrected 10-fold `hybrid`, bounded corrected 10-fold `random`, full-positive corrected 10-fold `random`, and one repeated-seed robustness run are complete. PU-XMSAT now reaches baseline-level performance, with small mean gains over the reproduced MSAT baseline in the full-positive random setting, but the fold-level paired differences remain small and should not yet be written as statistically significant superiority.
 
 ## Research Motivation
 
@@ -83,6 +83,7 @@ After candidate-cache sampling was fixed, `hybrid` was re-tested with a randomiz
 | random 10-fold | 12,288 | 10 | 0.9748±0.0016 | 0.9719±0.0020 | 0.9272±0.0039 | 0.8521±0.0069 | 0.28-0.51 | 643.8s |
 | random fold0 full-positive | 66,015 | 1 | 0.9804 | 0.9774 | 0.9290 | 0.8602 | 0.42 | 68.6s |
 | random 10-fold full-positive | 66,015 | 10 | 0.9796±0.0015 | 0.9773±0.0020 | 0.9321±0.0042 | 0.8625±0.0070 | 0.27-0.50 | 737.0s |
+| random 10-fold full-positive seed=2026 | 66,015 | 10 | 0.9797±0.0019 | 0.9777±0.0024 | 0.9338±0.0044 | 0.8661±0.0080 | 0.32-0.51 | 714.1s |
 
 ## Current Interpretation
 
@@ -93,6 +94,8 @@ The legacy prefix-cache runs are useful as training-pipeline diagnostics, but th
 The corrected runs also improve threshold behavior. Instead of selecting the `0.99` boundary in every fold, corrected 10-fold `random` selects thresholds between 0.28 and 0.51, and corrected 10-fold `hybrid` selects thresholds between 0.29 and 0.52. This suggests that the earlier threshold pathology was at least partly caused by candidate-cache bias and too-small pair budgets.
 
 Compared with the reproduced MSAT baseline, the strongest corrected PU-XMSAT pilot is now baseline-level: full-positive `random` has AUC 0.9796, AUPRC 0.9773, F1 0.9321, and MCC 0.8625, while MSAT has AUC 0.9793, AUPRC 0.9771, F1 0.9315, and MCC 0.8625. The mean deltas are AUC +0.00035, AUPRC +0.00018, F1 +0.00067, and MCC -0.00001. Paired t-tests over the same 10 folds are not significant, so this should be treated as a baseline-level result and a strong feasibility signal, not yet as definitive superiority.
+
+A repeated-seed robustness run was then performed after explicitly seeding NumPy and PyTorch before each full MSAT PU fold. With seed=2026 and the same full-positive `random` setting, PU-XMSAT reached AUC 0.9797, AUPRC 0.9777, F1 0.9338, and MCC 0.8661. Relative to MSAT, the mean deltas are AUC +0.00046, AUPRC +0.00057, F1 +0.00233, and MCC +0.00353. Fold-level paired tests still remain above the 0.05 threshold, so this result strengthens the baseline-level robustness claim but should still be framed cautiously.
 
 ### Paired Baseline Comparison
 
@@ -105,6 +108,15 @@ This table is generated from `results/pu_xmsat_baseline_comparison.json` and `re
 | F1 | 0.9321 | 0.9315 | +0.00067 | 5/5 | 0.565 |
 | MCC | 0.8625 | 0.8625 | -0.00001 | 4/6 | 0.996 |
 
+### Repeated-Seed Robustness Check
+
+The seed=2026 run is a post-seed-control robustness check. Its paired statistics are exported to `results/pu_xmsat_seed2026_baseline_comparison.json` and `results/pu_xmsat_seed2026_baseline_comparison.csv`. It should be used to show that the full-positive `random` PU-XMSAT setting remains stable after changing the random seed, not as a single best-seed replacement for the baseline comparison.
+
+| Run | AUC mean±std | AUPRC mean±std | F1 mean±std | MCC mean±std | Mean delta vs MSAT | Paired t-test p values |
+| --- | ---: | ---: | ---: | ---: | --- | --- |
+| full-positive random seed=42 | 0.9796±0.0015 | 0.9773±0.0020 | 0.9321±0.0042 | 0.8625±0.0070 | AUC +0.00035; AUPRC +0.00018; F1 +0.00067; MCC -0.00001 | AUC 0.324; AUPRC 0.695; F1 0.565; MCC 0.996 |
+| full-positive random seed=2026 | 0.9797±0.0019 | 0.9777±0.0024 | 0.9338±0.0044 | 0.8661±0.0080 | AUC +0.00046; AUPRC +0.00057; F1 +0.00233; MCC +0.00353 | AUC 0.247; AUPRC 0.326; F1 0.066; MCC 0.133 |
+
 ## Paper-Writing Notes
 
 The current work can support the following future manuscript statements once multi-fold validation is complete:
@@ -115,7 +127,7 @@ The current work can support the following future manuscript statements once mul
 - A bounded 3-fold pilot suggests that random reliable-negative sampling is currently stronger for ranking metrics, while hybrid scoring may help thresholded metrics.
 - A bounded 10-fold pilot reverses the 3-fold ranking result under the legacy candidate cache: hybrid sampling gives stronger AUC/AUPRC, while random sampling gives stronger F1/MCC.
 - Candidate-cache construction matters: a prefix-selected unobserved-pair cache can bias PU negative sampling and should not be used for final strategy comparison.
-- After correcting candidate-cache sampling and removing the bounded pair cap, `random` reaches 10-fold AUC 0.9796 and AUPRC 0.9773, with validation-selected thresholds in a reasonable range. This is baseline-level relative to the reproduced MSAT result, with marginal non-significant mean gains on AUC, AUPRC, and F1.
+- After correcting candidate-cache sampling and removing the bounded pair cap, `random` reaches 10-fold AUC 0.9796 and AUPRC 0.9773, with validation-selected thresholds in a reasonable range. A repeated-seed run reaches AUC 0.9797 and AUPRC 0.9777. These are baseline-level results relative to the reproduced MSAT result, with small non-significant mean gains.
 - Threshold calibration is necessary for fair interpretation of F1/MCC under PU training, but after cache correction it no longer collapses to the 0.99 boundary.
 
 The current work should not yet be written as:
@@ -127,8 +139,8 @@ The current work should not yet be written as:
 ## Next Experimental Plan
 
 1. Do not repeat the completed 12,288-pair or 66,015-pair corrected 10-fold `random` runs unless a code or data bug is found.
-2. Add a compact paired fold comparison table and statistical note to the paper-facing analysis, because the mean gains are small and not statistically significant.
-3. Consider one robustness ablation at a time: repeated seed for `random`, PU weight sensitivity, or a full-positive `hybrid` comparator if the mechanism-aware reliable-negative story needs direct support.
+2. Keep the paired fold comparison table and repeated-seed note in the paper-facing analysis, because the mean gains are small and not statistically significant.
+3. The repeated-seed `random` robustness pass is complete. Next consider one additional ablation at a time: PU weight sensitivity or a full-positive `hybrid` comparator if the mechanism-aware reliable-negative story needs direct support.
 4. Preserve the legacy prefix-cache results as a methodological caution: candidate-cache construction can materially change PU learning conclusions.
 5. Do not write PU-XMSAT as significantly outperforming MSAT unless a robustness pass provides stronger evidence than the current single corrected 10-fold run.
 
