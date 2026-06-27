@@ -53,7 +53,7 @@ The cache builder now uses deterministic random bounded sampling by default, and
 
 ## Corrected Random-Cache Budget Scaling
 
-After fixing candidate-cache sampling, `hybrid` was used for budget scaling with the randomized 50,000-row candidate cache, and `random` was then promoted to a corrected 10-fold run at the strongest bounded budget. These corrected runs should be treated as the current valid PU-XMSAT pilots, while the prefix-cache results above remain diagnostic.
+After fixing candidate-cache sampling, `hybrid` was used for budget scaling with the randomized 50,000-row candidate cache, and `random` was then promoted from the strongest bounded budget to a full-positive-budget run. These corrected runs should be treated as the current valid PU-XMSAT pilots, while the prefix-cache results above remain diagnostic.
 
 | Run | PU pairs | Folds | AUC mean±std | AUPRC mean±std | F1 mean±std | MCC mean±std | Thresholds | Best epochs | Runtime |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- | ---: |
@@ -65,6 +65,8 @@ After fixing candidate-cache sampling, `hybrid` was used for budget scaling with
 | hybrid 3-fold random50k | 12,288 | 3 | 0.9564±0.0039 | 0.9468±0.0071 | 0.9057±0.0062 | 0.8074±0.0089 | 0.42, 0.40, 0.37 | 28, 37, 27 | 193.2s |
 | 10-fold hybrid random50k | 12,288 | 10 | 0.9547±0.0034 | 0.9458±0.0066 | 0.9035±0.0033 | 0.8039±0.0049 | 0.29-0.52 | 23-31 | 632.1s |
 | 10-fold random random50k | 12,288 | 10 | 0.9748±0.0016 | 0.9719±0.0020 | 0.9272±0.0039 | 0.8521±0.0069 | 0.28-0.51 | 23-37 | 643.8s |
+| fold0 random full-positive random50k | 66,015 | 1 | 0.9804 | 0.9774 | 0.9290 | 0.8602 | 0.42 | 37 | 68.6s |
+| 10-fold random full-positive random50k | 66,015 | 10 | 0.9796±0.0015 | 0.9773±0.0020 | 0.9321±0.0042 | 0.8625±0.0070 | 0.27-0.50 | 39-58 | 737.0s |
 
 ## Interpretation
 
@@ -72,13 +74,13 @@ The full MSAT PU backend is now operational on GPU. AUC and AUPRC improve as epo
 
 Threshold-dependent metrics need care. Recall is nearly 1.0 at the fixed `0.5` threshold, while precision and MCC remain weak. Validation-threshold calibration improves interpretability of F1/MCC, but all three calibrated runs selected the upper grid boundary (`0.99`), which indicates that probability calibration is still poor and thresholded metrics should be reported as secondary.
 
-The corrected random-cache runs change the interpretation substantially. The prefix-cache pilots should be treated only as training-pipeline diagnostics. With the randomized 50,000-row candidate cache and a 12,288-pair budget, `random` sampling reaches AUC 0.9748 and AUPRC 0.9719 over 10 folds, while `hybrid` reaches AUC 0.9547 and AUPRC 0.9458. This confirms that the candidate-cache bias was a major bottleneck and that the PU-XMSAT direction remains technically viable.
+The corrected random-cache runs change the interpretation substantially. The prefix-cache pilots should be treated only as training-pipeline diagnostics. With the randomized 50,000-row candidate cache and a 12,288-pair budget, `random` sampling reaches AUC 0.9748 and AUPRC 0.9719 over 10 folds, while `hybrid` reaches AUC 0.9547 and AUPRC 0.9458. Expanding `random` to the full-positive budget further raises the 10-fold result to AUC 0.9796, AUPRC 0.9773, F1 0.9321, and MCC 0.8625. This confirms that the candidate-cache bias and pair-budget cap were major bottlenecks and that the PU-XMSAT direction remains technically viable.
 
-The strongest corrected PU-XMSAT result is still slightly below the reproduced MSAT main baseline: AUC 0.9793, AUPRC 0.9771, F1 0.9315, MCC 0.8625. Therefore it should be described as a near-baseline corrected pilot and not yet as a final performance improvement.
+The strongest corrected PU-XMSAT result is now baseline-level relative to the reproduced MSAT main baseline: MSAT has AUC 0.9793, AUPRC 0.9771, F1 0.9315, and MCC 0.8625. PU-XMSAT full-positive `random` is marginally higher on mean AUC, AUPRC, and F1, and effectively tied on MCC. The paired fold-level differences are small and not statistically significant in a paired t-test, so this should be described as a baseline-level corrected result rather than a definitive superiority claim.
 
 ## Recommendation
 
-Do not claim PU-XMSAT superiority yet. The next technical step should explore an even larger/full-positive budget for `random`, because it is now the strongest corrected strategy and is already close to the MSAT baseline. The paper-facing claim can now be strengthened to: PU-XMSAT is implemented, reproducible, and after correcting candidate-cache sampling reaches a near-baseline 10-fold result.
+Do not claim statistically significant PU-XMSAT superiority yet. The next technical step should be a focused robustness pass: paired fold comparison, optional repeated seed or PU-weight ablation, and a mechanism-aware `hybrid` comparator only if the paper narrative needs it. The paper-facing claim can now be strengthened to: PU-XMSAT is implemented, reproducible, and after correcting candidate-cache sampling and removing the pair-budget cap reaches baseline-level 10-fold performance.
 
 ## Raw Artifacts
 
@@ -97,9 +99,11 @@ The raw JSON summaries are available locally and on the server but are ignored b
 - `results/pu_training_summary_10fold_random_200e_1536p_valf1.json`
 - `results/pu_training_summary_10fold_hybrid_200e_12288p_valf1_random50k.json`
 - `results/pu_training_summary_10fold_random_200e_12288p_valf1_random50k.json`
+- `results/pu_training_summary_10fold_random_200e_66015p_valf1_random50k.json`
 - `results/pu_training_summary_3fold_hybrid_200e_12288p_valf1_random50k.json`
 - `results/pu_training_summary_3fold_hybrid_200e_6144p_valf1_random50k.json`
 - `results/pu_training_summary_fold0_hybrid_200e_12288p_valf1_random50k.json`
 - `results/pu_training_summary_fold0_hybrid_200e_1536p_valf1_random50k.json`
 - `results/pu_training_summary_fold0_hybrid_200e_3072p_valf1_random50k.json`
 - `results/pu_training_summary_fold0_hybrid_200e_6144p_valf1_random50k.json`
+- `results/pu_training_summary_fold0_random_200e_66015p_valf1_random50k.json`
