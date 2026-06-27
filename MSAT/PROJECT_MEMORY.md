@@ -108,6 +108,7 @@ PU-XMSAT 当前实现进度（2026-06-27）：
 - 2026-06-27 已泛化 `MSAT/scripts/compare_pu_xmsat_to_baseline.py` 的 comparison label，并新增 `MSAT/scripts/summarize_pu_xmsat_seed_robustness.py` 和 `MSAT/scripts/summarize_pu_xmsat_weight_sensitivity.py`。当前 tracked 统计产物包括 `MSAT/results/pu_xmsat_baseline_comparison.json`、`.csv`、`MSAT/results/pu_xmsat_seed2026_baseline_comparison.json`、`.csv`、`MSAT/results/pu_xmsat_hybrid_seed2026_baseline_comparison.json`、`.csv`、`MSAT/results/pu_xmsat_hybrid_vs_random_seed2026_comparison.json`、`.csv`、`MSAT/results/pu_xmsat_hybrid_seed1337_baseline_comparison.json`、`.csv`、`MSAT/results/pu_xmsat_hybrid_seed1337_vs_random_seed2026_comparison.json`、`.csv`、`MSAT/results/pu_xmsat_hybrid_seed_robustness_summary.json`、`.csv`、`MSAT/results/pu_xmsat_hybrid_weight_sensitivity_summary.json`、`.csv` 以及相关 weight-sensitivity paired comparison。后续论文表格或统计口径应优先引用这些产物，而不是手工重算。
 - 2026-06-27 已新增 `MSAT/results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`，把当前 PU-XMSAT 的主结果表、hybrid vs MSAT paired statistics、two-seed robustness、weight sensitivity、推荐论文措辞和禁用措辞整理成一份论文写作入口。后续写正文或答辩材料时优先从该文件提取结果表和 claim 边界。
 - 2026-06-27 已新增 `MSAT/results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`，把 PU-XMSAT 的 Methods、Results、Discussion 写成英文正文草稿。该文件明确写入：full-positive hybrid two-seed result 是当前最强证据；AUPRC 是稳定正向但较小/边界显著；Table 5/6 不属于主性能实验。后续论文正文润色应从该文件继续。
+- 2026-06-27 已新增 `MSAT/results/PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`，作为可直接用于导师沟通的中文阶段汇报草稿。该文件整合了 MSAT 主实验复现完成度、Table 5/6 边界、PU-XMSAT 动机、hybrid two-seed 结果、PU 权重敏感性、结论边界和下一步建议；后续给导师汇报时优先从该文件继续润色。
 - 2026-06-26 已新增论文素材进展报告：`MSAT/results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`，用于记录研究动机、实现路径、pilot 结果、阶段性解释和下一步实验计划。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
 - 后续若进入正式长训，仍需先做代码核对、服务器测试和输出命名检查，避免覆盖 baseline 或旧 PU 产物；用户已经允许使用服务器推进，但不要把服务器 SSH、密码或临时密钥写入仓库、报告或记忆文件。
@@ -542,7 +543,7 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 当前最合理的近期实验：
 
 1. paired fold comparison / statistical note 已由 `scripts/compare_pu_xmsat_to_baseline.py` 生成；后续如果改结果，先重跑该脚本刷新 `pu_xmsat_baseline_comparison.json/.csv`。
-2. 不建议继续长训，除非用户明确要求。论文结果表和 claim 边界已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`，Methods/Results/Discussion 正文草稿已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`；下一步优先润色正文、补外部证据/案例分析，或把草稿改写成中文汇报版。
+2. 不建议继续长训，除非用户明确要求。论文结果表和 claim 边界已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`，Methods/Results/Discussion 正文草稿已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`，导师沟通版中文汇报已整理到 `MSAT/results/PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`；下一步优先润色正文、补外部证据/案例分析，或把中文汇报压缩成口头汇报稿。
 3. 概率校准不再是第一阻塞点，因为 corrected 10-fold thresholds 已回到 `0.27-0.50`；后续可作为单独 calibration/PU weight ablation。
 4. 不要把旧 prefix-cache 10-fold 结果当作策略优劣最终证据；它们只能说明训练闭环、运行时间和指标记录流程已经可复现。
 5. 写论文时可报告 corrected random-cache full-positive `hybrid` two-seed + weight-sensitivity result 作为当前最强 PU-XMSAT 证据，并说明两 seed 在 AUC/F1/MCC 上稳定优于 MSAT，AUPRC 为稳定正向趋势；默认 `u0.2/rn0.8` 经权重敏感性验证为平衡设置。
