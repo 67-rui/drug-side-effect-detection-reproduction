@@ -37,18 +37,19 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `table5_literature_evidence_candidates.csv` / `.json` | Table 5 公开文献候选 | PubMed/OpenAlex 自动候选 63 条；精确 herb+ADR 命中 0 条，仅供人工复核 |
 | `table6_mapping.csv` / `table6_mapping.json` | Table 6 TCM 系统映射 | 产物有效但依赖当前 Table 5；映射规则仍偏粗 |
 | `case_zhishi_diarrhoea.json` | §4.5.1 枳实案例 | 可作为当前 checkpoint 下的案例产物引用；与论文高置信案例仍需逐项说明差异 |
-| `PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | PU-XMSAT full-backend pilot | full MSAT PU 后端可运行；corrected random50k full-positive random/10-fold seed=42 达到 AUC 0.9796、AUPRC 0.9773、F1 0.9321、MCC 0.8625；seed=2026 random 达到 AUC 0.9797、AUPRC 0.9777、F1 0.9338、MCC 0.8661；full-positive hybrid 两个 seed 稳定在 AUC 0.9804、AUPRC 0.9780、F1 0.9348-0.9351、MCC 0.8683-0.8684，是当前最强 PU-XMSAT 设置 |
-| `PU_XMSAT_RESEARCH_PROGRESS_REPORT.md` | 后续论文素材积累 | 记录 PU-XMSAT 研究动机、prefix-cache caveat、corrected random50k budget scaling、10-fold corrected hybrid/random/full-positive pilot、repeated-seed robustness、full-positive hybrid two-seed comparator 和下一步稳健性计划 |
+| `PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | PU-XMSAT full-backend pilot | full MSAT PU 后端可运行；corrected random50k full-positive random/10-fold seed=42 达到 AUC 0.9796、AUPRC 0.9773、F1 0.9321、MCC 0.8625；seed=2026 random 达到 AUC 0.9797、AUPRC 0.9777、F1 0.9338、MCC 0.8661；full-positive hybrid 两个 seed 稳定在 AUC 0.9804、AUPRC 0.9780、F1 0.9348-0.9351、MCC 0.8683-0.8684；权重敏感性支持默认 u0.2/rn0.8 是平衡设置 |
+| `PU_XMSAT_RESEARCH_PROGRESS_REPORT.md` | 后续论文素材积累 | 记录 PU-XMSAT 研究动机、prefix-cache caveat、corrected random50k budget scaling、10-fold corrected hybrid/random/full-positive pilot、repeated-seed robustness、full-positive hybrid two-seed comparator、PU weight sensitivity 和下一步论文整理计划 |
 | `pu_xmsat_baseline_comparison.json` / `.csv` | PU-XMSAT vs MSAT paired fold comparison | 可引用；full-positive random 相对 MSAT 的 AUC/AUPRC/F1 均值略高，MCC 持平，paired t-test 均不显著 |
 | `pu_xmsat_seed2026_baseline_comparison.json` / `.csv` | PU-XMSAT seed=2026 vs MSAT paired fold comparison | 可引用为稳健性复跑统计；AUC/AUPRC/F1/MCC 均值均略高于 MSAT，但 paired t-test 仍未过 0.05 |
 | `pu_xmsat_hybrid_seed2026_baseline_comparison.json` / `.csv` | PU-XMSAT hybrid seed=2026 vs MSAT paired fold comparison | 可引用为当前最强比较；AUC/AUPRC/F1/MCC 均值均高于 MSAT，paired t-test 均过 0.05，但仍需额外稳健性支持最终 superiority claim |
 | `pu_xmsat_hybrid_vs_random_seed2026_comparison.json` / `.csv` | PU-XMSAT hybrid vs random seed=2026 strategy comparison | 可引用为采样策略比较；hybrid 在 AUC/F1/MCC 上显著高于 random，AUPRC 略高但不显著 |
 | `pu_xmsat_hybrid_seed1337_baseline_comparison.json` / `.csv` | PU-XMSAT hybrid seed=1337 vs MSAT paired fold comparison | 可引用为第二 seed 稳健性；AUC/F1/MCC 显著高于 MSAT，AUPRC 正向但 p=0.056 |
 | `pu_xmsat_hybrid_seed_robustness_summary.json` / `.csv` | PU-XMSAT hybrid two-seed robustness summary | 可引用为稳健性汇总；两个 hybrid seed 的 AUC/AUPRC/F1/MCC 均值范围分别只有 0.000028/0.000054/0.000297/0.000078 |
+| `pu_xmsat_hybrid_weight_sensitivity_summary.json` / `.csv` | PU-XMSAT hybrid PU weight sensitivity | 可引用为权重敏感性；u0.1 低于默认，u0.4 与默认接近但 F1/MCC 略低，支持默认 u0.2/rn0.8 |
 
 ## 下一步重点
 
 1. Table 5 当前应报告为公开材料下不可复现；若要重开，需要补 sha256 为 `506e7fd3...` 的 predictor checkpoint、Table 5 导出脚本、候选池定义和逐行证据记录。
 2. 对 Table 3、Table 4、Fig.6 做定点差异分析，不重跑完整流水线。
-3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache，也不要重复已完成的 corrected 12,288-pair、66,015-pair `random` 10-fold 对照、seed=2026 repeated-seed run、full-positive `hybrid` seed=2026 comparator 或 seed=1337 comparator；后续优先选择 full-positive `hybrid` 的 PU weight sensitivity。
+3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache，也不要重复已完成的 corrected 12,288-pair、66,015-pair `random` 10-fold 对照、seed=2026 repeated-seed run、full-positive `hybrid` seed=2026/1337 comparator 或 u0.1/u0.4 weight sensitivity；后续优先整理论文结果表、方法叙事和外部证据。
 4. 更新正文报告时，以本文件、`PROJECT_MEMORY.md` 和 `reproduction_state_audit.json` 为准，旧摘要文件仅作历史记录。

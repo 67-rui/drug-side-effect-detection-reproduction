@@ -1,0 +1,102 @@
+{
+  "baseline_label": "reproduced MSAT baseline",
+  "reference_label": "u0.2 rn0.8",
+  "run_count": 3,
+  "fold_count": 10,
+  "runs": [
+    {
+      "label": "u0.1 rn0.8",
+      "unlabeled_weight": 0.1,
+      "reliable_negative_weight": 0.8,
+      "metrics": {
+        "auc": {
+          "mean": 0.9799316897447123,
+          "std": 0.001582105547331866,
+          "delta_vs_baseline": 0.0006604843077084865,
+          "delta_vs_reference": -0.0004604904124242415
+        },
+        "auprc": {
+          "mean": 0.9773675327056562,
+          "std": 0.002545860773352828,
+          "delta_vs_baseline": 0.0002729426876179053,
+          "delta_vs_reference": -0.0006154295770217644
+        },
+        "f1": {
+          "mean": 0.9339563444390204,
+          "std": 0.00401175778040475,
+          "delta_vs_baseline": 0.0025056063608237533,
+          "delta_vs_reference": -0.0008108207013532986
+        },
+        "mcc": {
+          "mean": 0.866775300589529,
+          "std": 0.0068998861063812745,
+          "delta_vs_baseline": 0.004255583717217681,
+          "delta_vs_reference": -0.0015554279665217496
+        }
+      }
+    },
+    {
+      "label": "u0.2 rn0.8",
+      "unlabeled_weight": 0.2,
+      "reliable_negative_weight": 0.8,
+      "metrics": {
+        "auc": {
+          "mean": 0.9803921801571366,
+          "std": 0.001528181158845012,
+          "delta_vs_baseline": 0.001120974720132728,
+          "delta_vs_reference": 0.0
+        },
+        "auprc": {
+          "mean": 0.977982962282678,
+          "std": 0.0023928897379091206,
+          "delta_vs_baseline": 0.0008883722646396697,
+          "delta_vs_reference": 0.0
+        },
+        "f1": {
+          "mean": 0.9347671651403737,
+          "std": 0.0034687587824880455,
+          "delta_vs_baseline": 0.003316427062177052,
+          "delta_vs_reference": 0.0
+        },
+        "mcc": {
+          "mean": 0.8683307285560508,
+          "std": 0.005781185509431566,
+          "delta_vs_baseline": 0.005811011683739431,
+          "delta_vs_reference": 0.0
+        }
+      }
+    },
+    {
+      "label": "u0.4 rn0.8",
+      "unlabeled_weight": 0.4,
+      "reliable_negative_weight": 0.8,
+      "metrics": {
+        "auc": {
+          "mean": 0.9804736885680548,
+          "std": 0.0015591553767963515,
+          "delta_vs_baseline": 0.0012024831310509798,
+          "delta_vs_reference": 8.150841091825178e-05
+        },
+        "auprc": {
+          "mean": 0.9779023584987211,
+          "std": 0.002423992919901872,
+          "delta_vs_baseline": 0.0008077684806827579,
+          "delta_vs_reference": -8.060378395691181e-05
+        },
+        "f1": {
+          "mean": 0.9344101210062812,
+          "std": 0.00485979196674513,
+          "delta_vs_baseline": 0.0029593829280845085,
+          "delta_vs_reference": -0.00035704413409254343
+        },
+        "mcc": {
+          "mean": 0.8674101509297929,
+          "std": 0.008046412443839301,
+          "delta_vs_baseline": 0.004890434057481574,
+          "delta_vs_reference": -0.0009205776262578569
+        }
+      }
+    }
+  ],
+  "interpretation": "Use this summary to describe whether the PU-XMSAT full-positive hybrid result is sensitive to PU sample weights. Prefer settings that preserve baseline gains while keeping thresholded metrics stable."
+}
