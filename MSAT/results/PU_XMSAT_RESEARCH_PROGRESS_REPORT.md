@@ -3,7 +3,7 @@
 **Date:** 2026-06-27
 **Project branch:** `codex/pu-xmsat-implementation`  
 **Baseline anchor:** `baseline/msat-reproduction-20260626`  
-**Current status:** full MSAT PU backend is runnable; prefix-cache pilots, candidate-cache audit, corrected random-cache budget scaling, and a corrected 10-fold PU-XMSAT pilot are complete. PU-XMSAT is now technically strong but still not a demonstrated performance improvement over the reproduced MSAT baseline.
+**Current status:** full MSAT PU backend is runnable; prefix-cache pilots, candidate-cache audit, corrected random-cache budget scaling, corrected 10-fold `hybrid`, and corrected 10-fold `random` are complete. PU-XMSAT is now technically strong and near the reproduced MSAT baseline, but still not a demonstrated performance improvement over it.
 
 ## Research Motivation
 
@@ -69,27 +69,28 @@ The candidate cache builder has been fixed to use deterministic random bounded s
 
 ### Corrected Random-Cache Budget Scaling
 
-After candidate-cache sampling was fixed, `hybrid` was re-tested with a randomized 50,000-row candidate cache. This corrected setting is the current most reliable PU-XMSAT evidence.
+After candidate-cache sampling was fixed, `hybrid` was re-tested with a randomized 50,000-row candidate cache for budget scaling. The strongest bounded budget was then used for a corrected 10-fold `random` run. These corrected settings are the current most reliable PU-XMSAT evidence.
 
 | Run | PU pairs | Folds | AUC mean±std | AUPRC mean±std | F1 mean±std | MCC mean±std | Threshold pattern | Runtime |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | ---: |
-| fold0 | 1,536 | 1 | 0.9028 | 0.8968 | 0.8398 | 0.6860 | 0.66 | 68.1s |
-| fold0 | 3,072 | 1 | 0.9319 | 0.9215 | 0.8734 | 0.7484 | 0.36 | 80.3s |
-| fold0 | 6,144 | 1 | 0.9383 | 0.9197 | 0.8861 | 0.7738 | 0.46 | 60.1s |
-| fold0 | 12,288 | 1 | 0.9563 | 0.9450 | 0.8952 | 0.7963 | 0.59 | 62.6s |
-| 3-fold | 6,144 | 3 | 0.9446±0.0027 | 0.9338±0.0094 | 0.8927±0.0076 | 0.7811±0.0110 | 0.37, 0.44, 0.55 | 187.2s |
-| 3-fold | 12,288 | 3 | 0.9564±0.0039 | 0.9468±0.0071 | 0.9057±0.0062 | 0.8074±0.0089 | 0.42, 0.40, 0.37 | 193.2s |
-| 10-fold | 12,288 | 10 | 0.9547±0.0034 | 0.9458±0.0066 | 0.9035±0.0033 | 0.8039±0.0049 | 0.29-0.52 | 632.1s |
+| hybrid fold0 | 1,536 | 1 | 0.9028 | 0.8968 | 0.8398 | 0.6860 | 0.66 | 68.1s |
+| hybrid fold0 | 3,072 | 1 | 0.9319 | 0.9215 | 0.8734 | 0.7484 | 0.36 | 80.3s |
+| hybrid fold0 | 6,144 | 1 | 0.9383 | 0.9197 | 0.8861 | 0.7738 | 0.46 | 60.1s |
+| hybrid fold0 | 12,288 | 1 | 0.9563 | 0.9450 | 0.8952 | 0.7963 | 0.59 | 62.6s |
+| hybrid 3-fold | 6,144 | 3 | 0.9446±0.0027 | 0.9338±0.0094 | 0.8927±0.0076 | 0.7811±0.0110 | 0.37, 0.44, 0.55 | 187.2s |
+| hybrid 3-fold | 12,288 | 3 | 0.9564±0.0039 | 0.9468±0.0071 | 0.9057±0.0062 | 0.8074±0.0089 | 0.42, 0.40, 0.37 | 193.2s |
+| hybrid 10-fold | 12,288 | 10 | 0.9547±0.0034 | 0.9458±0.0066 | 0.9035±0.0033 | 0.8039±0.0049 | 0.29-0.52 | 632.1s |
+| random 10-fold | 12,288 | 10 | 0.9748±0.0016 | 0.9719±0.0020 | 0.9272±0.0039 | 0.8521±0.0069 | 0.28-0.51 | 643.8s |
 
 ## Current Interpretation
 
 The most important result is not that one strategy has already won, but that negative sampling changes the behavior of the PU-XMSAT model in measurable ways.
 
-The legacy prefix-cache runs are useful as training-pipeline diagnostics, but the corrected random-cache run should be treated as the current valid pilot. Candidate-cache construction had a major effect: after replacing prefix-selected pairs with a randomized 50,000-row cache and increasing the pair budget to 12,288, 10-fold AUC rose to 0.9547 and AUPRC rose to 0.9458.
+The legacy prefix-cache runs are useful as training-pipeline diagnostics, but the corrected random-cache runs should be treated as the current valid pilots. Candidate-cache construction had a major effect: after replacing prefix-selected pairs with a randomized 50,000-row cache and increasing the pair budget to 12,288, corrected 10-fold `random` reached AUC 0.9748 and AUPRC 0.9719, while corrected 10-fold `hybrid` reached AUC 0.9547 and AUPRC 0.9458.
 
-The corrected run also improves threshold behavior. Instead of selecting the `0.99` boundary in every fold, the 10-fold corrected run selects thresholds between 0.29 and 0.52. This suggests that the earlier threshold pathology was at least partly caused by candidate-cache bias and too-small pair budgets.
+The corrected runs also improve threshold behavior. Instead of selecting the `0.99` boundary in every fold, corrected 10-fold `random` selects thresholds between 0.28 and 0.51, and corrected 10-fold `hybrid` selects thresholds between 0.29 and 0.52. This suggests that the earlier threshold pathology was at least partly caused by candidate-cache bias and too-small pair budgets.
 
-Compared with the reproduced MSAT baseline, the corrected PU-XMSAT pilot is still weaker in raw predictive performance: MSAT has AUC 0.9793, AUPRC 0.9771, F1 0.9315, and MCC 0.8625. This is not a reason to discard the direction; it means the current contribution is a corrected, reproducible PU-XMSAT pipeline that is approaching but not yet exceeding the reproduced baseline.
+Compared with the reproduced MSAT baseline, the strongest corrected PU-XMSAT pilot is still slightly weaker in raw predictive performance: corrected `random` has AUC 0.9748, AUPRC 0.9719, F1 0.9272, and MCC 0.8521, while MSAT has AUC 0.9793, AUPRC 0.9771, F1 0.9315, and MCC 0.8625. This is not a reason to discard the direction; it means the current contribution is a corrected, reproducible PU-XMSAT pipeline that is approaching but not yet exceeding the reproduced baseline.
 
 ## Paper-Writing Notes
 
@@ -101,7 +102,7 @@ The current work can support the following future manuscript statements once mul
 - A bounded 3-fold pilot suggests that random reliable-negative sampling is currently stronger for ranking metrics, while hybrid scoring may help thresholded metrics.
 - A bounded 10-fold pilot reverses the 3-fold ranking result under the legacy candidate cache: hybrid sampling gives stronger AUC/AUPRC, while random sampling gives stronger F1/MCC.
 - Candidate-cache construction matters: a prefix-selected unobserved-pair cache can bias PU negative sampling and should not be used for final strategy comparison.
-- After correcting candidate-cache sampling and increasing the PU pair budget, `hybrid` reaches 10-fold AUC 0.9547 and AUPRC 0.9458, with validation-selected thresholds in a reasonable range.
+- After correcting candidate-cache sampling and increasing the PU pair budget, `random` reaches 10-fold AUC 0.9748 and AUPRC 0.9719, with validation-selected thresholds in a reasonable range. This is close to, but still below, the reproduced MSAT baseline.
 - Threshold calibration is necessary for fair interpretation of F1/MCC under PU training, but after cache correction it no longer collapses to the 0.99 boundary.
 
 The current work should not yet be written as:
@@ -112,11 +113,12 @@ The current work should not yet be written as:
 
 ## Next Experimental Plan
 
-1. Compare `hybrid` and `random` under the corrected 50,000-row candidate cache at the same 12,288-pair budget, because only `hybrid` has been retested at this corrected budget so far.
-2. If compute allows, test a larger/full-positive budget for `hybrid` to see whether the remaining gap to MSAT is due to the artificial pair cap.
-3. Run a calibration ablation only after the ranking experiment is finalized, because corrected-cache thresholds are already much healthier than the legacy-cache thresholds.
-4. Preserve the legacy prefix-cache results as a methodological caution: candidate-cache construction can materially change PU learning conclusions.
-5. Do not write PU-XMSAT as outperforming MSAT unless a corrected-cache multi-fold result actually exceeds the reproduced baseline.
+1. Do not repeat the completed 12,288-pair corrected 10-fold comparison unless a code or data bug is found.
+2. If compute allows, test a larger/full-positive budget for `random` first, because it is now the strongest corrected strategy and is closest to the reproduced MSAT baseline.
+3. Use `hybrid` as a secondary mechanism-aware comparator, especially if the research question shifts from pure predictive ranking toward interpretable reliable-negative selection.
+4. Run calibration or PU weight ablations only after the larger-budget ranking question is settled, because corrected-cache thresholds are already much healthier than the legacy-cache thresholds.
+5. Preserve the legacy prefix-cache results as a methodological caution: candidate-cache construction can materially change PU learning conclusions.
+6. Do not write PU-XMSAT as outperforming MSAT unless a corrected-cache multi-fold result actually exceeds the reproduced baseline.
 
 ## Reproducibility Notes
 

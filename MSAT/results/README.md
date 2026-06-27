@@ -1,6 +1,6 @@
 # MSAT 复现结果目录
 
-更新时间：2026-06-26
+更新时间：2026-06-27
 
 ## 目录说明
 
@@ -37,12 +37,12 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `table5_literature_evidence_candidates.csv` / `.json` | Table 5 公开文献候选 | PubMed/OpenAlex 自动候选 63 条；精确 herb+ADR 命中 0 条，仅供人工复核 |
 | `table6_mapping.csv` / `table6_mapping.json` | Table 6 TCM 系统映射 | 产物有效但依赖当前 Table 5；映射规则仍偏粗 |
 | `case_zhishi_diarrhoea.json` | §4.5.1 枳实案例 | 可作为当前 checkpoint 下的案例产物引用；与论文高置信案例仍需逐项说明差异 |
-| `PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | PU-XMSAT full-backend pilot | full MSAT PU 后端可运行；corrected random50k 10-fold hybrid/12288p 达到 AUC 0.9547、AUPRC 0.9458，但仍未超过原 MSAT 主实验基线 |
-| `PU_XMSAT_RESEARCH_PROGRESS_REPORT.md` | 后续论文素材积累 | 记录 PU-XMSAT 研究动机、prefix-cache caveat、corrected random50k budget scaling、10-fold corrected pilot 和下一步对照计划 |
+| `PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | PU-XMSAT full-backend pilot | full MSAT PU 后端可运行；corrected random50k 10-fold random/12288p 达到 AUC 0.9748、AUPRC 0.9719，接近但仍未超过原 MSAT 主实验基线 |
+| `PU_XMSAT_RESEARCH_PROGRESS_REPORT.md` | 后续论文素材积累 | 记录 PU-XMSAT 研究动机、prefix-cache caveat、corrected random50k budget scaling、10-fold corrected hybrid/random pilot 和下一步更大预算计划 |
 
 ## 下一步重点
 
 1. Table 5 当前应报告为公开材料下不可复现；若要重开，需要补 sha256 为 `506e7fd3...` 的 predictor checkpoint、Table 5 导出脚本、候选池定义和逐行证据记录。
 2. 对 Table 3、Table 4、Fig.6 做定点差异分析，不重跑完整流水线。
-3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache；应在 corrected 50k candidate cache 下用 12,288-pair budget 跑 `random` 对照，或测试更大/full-positive `hybrid` budget。
+3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache，也不要重复已完成的 corrected 12,288-pair 10-fold 对照；应优先测试更大/full-positive `random` budget，或做 PU weight/calibration ablation。
 4. 更新正文报告时，以本文件、`PROJECT_MEMORY.md` 和 `reproduction_state_audit.json` 为准，旧摘要文件仅作历史记录。
