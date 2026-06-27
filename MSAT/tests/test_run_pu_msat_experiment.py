@@ -80,6 +80,19 @@ def test_full_msat_pu_config_uses_pu_checkpoint_names():
     assert cfg.threshold_strategy == "fixed_0_5"
 
 
+def test_seed_fold_training_resets_numpy_and_torch_rng():
+    full_training._seed_fold_training(123)
+    first_numpy = full_training.np.random.rand(3)
+    first_torch = full_training.torch.rand(3)
+
+    full_training._seed_fold_training(123)
+    second_numpy = full_training.np.random.rand(3)
+    second_torch = full_training.torch.rand(3)
+
+    assert (first_numpy == second_numpy).all()
+    assert full_training.torch.equal(first_torch, second_torch)
+
+
 def test_choose_threshold_can_use_validation_f1():
     threshold, val_f1 = choose_threshold(
         val_probs=[0.2, 0.45, 0.55, 0.9],

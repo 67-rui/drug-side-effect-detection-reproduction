@@ -31,6 +31,14 @@ from train import (
 MSAT_ROOT = Path(__file__).resolve().parents[1]
 
 
+def _seed_fold_training(seed: int) -> None:
+    seed = int(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
 @dataclass(frozen=True)
 class FullMSATPUConfig:
     max_epochs: int
@@ -286,6 +294,7 @@ def run_full_msat_pu_fold(
     seed: int,
 ) -> dict:
     fold_start_time = time.time()
+    _seed_fold_training(seed + fold_idx)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     extractor = FeatureExtractor(
