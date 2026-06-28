@@ -1,0 +1,46 @@
+{
+  "experiment": "case_evidence_manual_review",
+  "created_at": "2026-06-28",
+  "scope": "manual audit of Grade C rows from PU_XMSAT_CASE_EVIDENCE_REPORT.md",
+  "summary": {
+    "reviewed_grade_c_rows": 2,
+    "upgraded_to_grade_b_or_a": 0,
+    "externally_unsupported": 1,
+    "mechanism_relevant_direction_conflicting": 1
+  },
+  "rows": [
+    {
+      "herb_id": 237,
+      "herb_latin": "Fragaria vesca L.",
+      "adr_id": 3989,
+      "adr_pt": "Altered state of consciousness",
+      "previous_grade": "C",
+      "manual_review_status": "external_not_supported",
+      "updated_grade_recommendation": "C",
+      "paper_use": "negative screening example only",
+      "rationale": "Local exact PubMed/OpenAlex cache has no direct herb-ADR records; EMA wild strawberry leaf page covers urinary-tract use and mild diarrhoea, not neurological adverse reactions.",
+      "sources": [
+        "https://www.ema.europa.eu/en/medicines/herbal/fragariae-folium",
+        "MSAT/data/table5_literature_cache.json"
+      ]
+    },
+    {
+      "herb_id": 277,
+      "herb_latin": "Citrus aurantium L.",
+      "adr_id": 2931,
+      "adr_pt": "Watery diarrhoea",
+      "previous_grade": "C",
+      "manual_review_status": "mechanism_relevant_direction_conflicting",
+      "updated_grade_recommendation": "C",
+      "paper_use": "hypothesis-generating mechanistic discussion only",
+      "rationale": "Citrus aurantium/nobiletin evidence supports gastrointestinal and transporter relevance, but the strongest accessible diarrhoea-related source points toward alleviation/regulation rather than adverse diarrhoea induction.",
+      "sources": [
+        "https://www.mdpi.com/1422-0067/19/10/3057",
+        "https://pubmed.ncbi.nlm.nih.gov/15830849/",
+        "https://www.mdpi.com/2072-6643/14/19/4019",
+        "https://www.genecards.org/card/ABCG2",
+        "https://doi.org/10.1124/mol.65.5.1208"
+      ]
+    }
+  ]
+}

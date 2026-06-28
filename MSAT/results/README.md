@@ -47,6 +47,7 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `PU_XMSAT_SLIDES_OUTLINE_CN.md` | PU-XMSAT 组会/答辩 slides 大纲 | 10-12 页 PPT 结构草稿；逐页给出标题、核心信息、建议视觉和讲稿提示 |
 | `PU_XMSAT_SLIDES_DRAFT_CN.pptx` | PU-XMSAT 组会/答辩 PPT 初稿 | 由 slides 大纲生成的 12 页可编辑 PowerPoint；已渲染检查主要表格/图表页，适合继续人工美化或直接用于组会初稿 |
 | `PU_XMSAT_CASE_EVIDENCE_REPORT.md` / `case_evidence_report.json` / `.csv` | 机制解释与外部证据分级最小闭环 | 当前 16 行案例候选中 2 行有机制支持（Grade C）、14 行为预测候选（Grade D）；8 行有自动检索记录，但 0 行具备人工核验直接文献强证据 |
+| `PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` / `case_evidence_manual_review.json` | Grade C 人工证据核验 | 两个 Grade C 均不应升级：野草莓-意识状态改变外部证据不支持；枳实-水样腹泻有胃肠机制相关证据但方向冲突 |
 | `pu_xmsat_baseline_comparison.json` / `.csv` | PU-XMSAT vs MSAT paired fold comparison | 可引用；full-positive random 相对 MSAT 的 AUC/AUPRC/F1 均值略高，MCC 持平，paired t-test 均不显著 |
 | `pu_xmsat_seed2026_baseline_comparison.json` / `.csv` | PU-XMSAT seed=2026 vs MSAT paired fold comparison | 可引用为稳健性复跑统计；AUC/AUPRC/F1/MCC 均值均略高于 MSAT，但 paired t-test 仍未过 0.05 |
 | `pu_xmsat_hybrid_seed2026_baseline_comparison.json` / `.csv` | PU-XMSAT hybrid seed=2026 vs MSAT paired fold comparison | 可引用为当前最强比较；AUC/AUPRC/F1/MCC 均值均高于 MSAT，paired t-test 均过 0.05，但仍需额外稳健性支持最终 superiority claim |
@@ -59,5 +60,5 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 
 1. Table 5 当前应报告为公开材料下不可复现；若要重开，需要补 sha256 为 `506e7fd3...` 的 predictor checkpoint、Table 5 导出脚本、候选池定义和逐行证据记录。
 2. 对 Table 3、Table 4、Fig.6 做定点差异分析，不重跑完整流水线。
-3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache，也不要重复已完成的 corrected 12,288-pair、66,015-pair `random` 10-fold 对照、seed=2026 repeated-seed run、full-positive `hybrid` seed=2026/1337 comparator 或 u0.1/u0.4 weight sensitivity；后续优先从 `PU_XMSAT_DELIVERABLE_INDEX_CN.md` 选择入口，再基于 `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`、`PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`、`PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`、`PU_XMSAT_ORAL_BRIEF_CN.md`、`PU_XMSAT_SLIDES_OUTLINE_CN.md`、`PU_XMSAT_SLIDES_DRAFT_CN.pptx` 和 `PU_XMSAT_CASE_EVIDENCE_REPORT.md` 润色论文正文、中文汇报、组会 slides 和外部证据。
+3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache，也不要重复已完成的 corrected 12,288-pair、66,015-pair `random` 10-fold 对照、seed=2026 repeated-seed run、full-positive `hybrid` seed=2026/1337 comparator 或 u0.1/u0.4 weight sensitivity；后续优先从 `PU_XMSAT_DELIVERABLE_INDEX_CN.md` 选择入口，再基于 `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`、`PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`、`PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`、`PU_XMSAT_ORAL_BRIEF_CN.md`、`PU_XMSAT_SLIDES_OUTLINE_CN.md`、`PU_XMSAT_SLIDES_DRAFT_CN.pptx`、`PU_XMSAT_CASE_EVIDENCE_REPORT.md` 和 `PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` 润色论文正文、中文汇报、组会 slides 和外部证据。
 4. 更新正文报告时，以本文件、`PROJECT_MEMORY.md` 和 `reproduction_state_audit.json` 为准，旧摘要文件仅作历史记录。

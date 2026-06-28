@@ -75,8 +75,9 @@ Current status:
 | Grade D rows | 14 | Prediction-only candidates; retain for manual screening, not as evidence-backed claims |
 | Rows with automated literature records | 8 | Search hits exist, but they do not meet the verified direct-support criterion |
 | Rows with manually verified direct literature support | 0 | No row should currently be promoted to Grade B |
+| Grade C rows after manual audit | 2 | Neither should be upgraded: one is externally unsupported, and one is mechanism-relevant but direction-conflicting |
 
-This artifact should be used as the minimal mechanism/external-evidence workflow, not as a claim that Table 5/6 has been equivalently reproduced. The strongest next paper-facing step is manual verification of the two Grade C rows before expanding the candidate set.
+This artifact should be used as the minimal mechanism/external-evidence workflow, not as a claim that Table 5/6 has been equivalently reproduced. The Grade C manual audit is stored in `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`; it confirms that the current Grade C rows support only hypothesis generation and screening, not confirmed external validation.
 
 ## Recommended Manuscript Wording
 
@@ -91,6 +92,7 @@ Avoid:
 - Do not use legacy prefix-cache pilots as strategy-selection evidence.
 - Do not treat Table 5 or Table 6 as part of the main performance experiment.
 - Do not promote automated literature search hits to direct evidence unless `verified_support=True` is backed by manual source review.
+- Do not present the current Grade C cases as confirmed adverse-reaction evidence after manual review.
 
 ## Source Files
 
@@ -105,7 +107,9 @@ Primary tracked sources:
 - `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`
 - `results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md`
 - `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`
+- `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`
 - `results/case_evidence_report.json`
 - `results/case_evidence_report.csv`
+- `results/case_evidence_manual_review.json`
 
 Raw PU training JSON files are retained locally and on the server for auditability, but they are intentionally ignored by git unless promoted into curated exports.

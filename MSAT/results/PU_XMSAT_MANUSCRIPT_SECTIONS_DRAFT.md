@@ -55,7 +55,7 @@ The focused PU weight sensitivity analysis tested unlabeled weights 0.1, 0.2, an
 
 ### Case-Level Mechanism and Evidence Screening
 
-As a first paper-facing explanation loop, we generated a case evidence report from the existing MSAT/Table 5-style candidate artifacts and curated case-study outputs. Among 16 candidate rows, two rows had mechanistic graph/path support and were assigned Grade C, while 14 rows remained prediction-only Grade D candidates. Eight rows had automated literature search records, but none had manually verified direct literature support, so no row should currently be promoted to Grade B. This result should be interpreted as an explanation and screening workflow rather than an equivalent reproduction of the original Table 5/6 evidence tables.
+As a first paper-facing explanation loop, we generated a case evidence report from the existing MSAT/Table 5-style candidate artifacts and curated case-study outputs. Among 16 candidate rows, two rows had mechanistic graph/path support and were assigned Grade C, while 14 rows remained prediction-only Grade D candidates. Eight rows had automated literature search records, but none had manually verified direct literature support, so no row should currently be promoted to Grade B. A manual audit of the two Grade C rows did not identify direct external support: one case remained externally unsupported, and the other showed gastrointestinal and transporter-related mechanistic relevance but with direction-conflicting evidence. This result should be interpreted as an explanation and screening workflow rather than an equivalent reproduction of the original Table 5/6 evidence tables.
 
 ## Discussion Draft
 
@@ -75,7 +75,7 @@ The current evidence supports a statistically promising and seed-robust PU-XMSAT
 
 First, PU-XMSAT still depends on the quality of the reliable-negative scoring function. Although the corrected random candidate cache removed a clear prefix-selection artifact, the candidate score is heuristic and should be further validated with external evidence. Second, the two-seed robustness analysis supports stability but does not exhaust all sources of stochastic variation. Third, Table 5 and Table 6 in the original MSAT paper remain external validation and interpretation analyses, not main performance experiments. The current public-material reproduction does not fully recover the paper's Table 5 support rate, so PU-XMSAT performance claims should be separated from Table 5 external evidence claims.
 
-The current case-level evidence report also remains intentionally conservative. Automated literature records are useful for screening, but they are not direct evidence until a human reviewer confirms the specific herb-ADR or mechanism claim. Grade C rows can support mechanistic discussion, whereas Grade D rows should be retained only as candidate predictions for future review.
+The current case-level evidence report also remains intentionally conservative. Automated literature records are useful for screening, but they are not direct evidence until a human reviewer confirms the specific herb-ADR or mechanism claim. The Grade C manual audit indicates that the present cases should not be used as confirmed external validation. They can support discussion of mechanism extraction and evidence triage, whereas Grade D rows should be retained only as candidate predictions for future review.
 
 ### Next Manuscript Step
 

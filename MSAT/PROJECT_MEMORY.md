@@ -115,6 +115,7 @@ PU-XMSAT 当前实现进度（2026-06-27）：
 - 2026-06-27 已生成 `MSAT/results/PU_XMSAT_SLIDES_DRAFT_CN.pptx`，作为 12 页可编辑 PowerPoint 初稿。该 PPTX 由 artifact-tool 生成，采用白底黑灰和橙色强调的学术汇报风格，已渲染检查关键页并修正表格换行、图表坐标格式和协议日期换行问题；由于 `MSAT/results/*` 默认被忽略，提交时需 `git add -f` 该 PPTX。
 - 2026-06-26 已新增论文素材进展报告：`MSAT/results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`，用于记录研究动机、实现路径、pilot 结果、阶段性解释和下一步实验计划。
 - 2026-06-28 已新增 `MSAT/scripts/build_case_evidence_report.py` 和 `MSAT/results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`，把现有 MSAT/Table 5 风格候选、枳实案例、机制路径/贡献度和文献候选缓存合并为论文可用的“机制解释 + 外部证据分级”最小闭环。当前 16 行案例候选中 2 行为 Grade C（有机制支持但无人工核验直接证据）、14 行为 Grade D；8 行存在自动检索记录，但 0 行具备 `verified_support=True` 的直接文献强证据。该产物只能作为解释/证据筛选 workflow，不是 Table 5/6 等价复现，也不是新的 PU-XMSAT top-ranking 导出。
+- 2026-06-28 已新增 `MSAT/results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` 和 `MSAT/results/case_evidence_manual_review.json`，对两条 Grade C 进行人工核验：`Fragaria vesca L. -> Altered state of consciousness` 外部证据不支持；`Citrus aurantium L. -> Watery diarrhoea` 有胃肠/ABCG2 机制相关证据，但方向更接近调节/缓解而非证明导致水样腹泻。因此两条都不能升级为 Grade B/A，论文中只能作为机制提取和证据筛选示例。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
 - 后续若进入正式长训，仍需先做代码核对、服务器测试和输出命名检查，避免覆盖 baseline 或旧 PU 产物；用户已经允许使用服务器推进，但不要把服务器 SSH、密码或临时密钥写入仓库、报告或记忆文件。
 
@@ -548,10 +549,10 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 当前最合理的近期实验：
 
 1. paired fold comparison / statistical note 已由 `scripts/compare_pu_xmsat_to_baseline.py` 生成；后续如果改结果，先重跑该脚本刷新 `pu_xmsat_baseline_comparison.json/.csv`。
-2. 不建议继续长训，除非用户明确要求。当前交付物总入口为 `MSAT/results/PU_XMSAT_DELIVERABLE_INDEX_CN.md`；论文结果表和 claim 边界已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`，Methods/Results/Discussion 正文草稿已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`，导师沟通版中文汇报已整理到 `MSAT/results/PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`，3-5 分钟口头稿已整理到 `MSAT/results/PU_XMSAT_ORAL_BRIEF_CN.md`，组会/答辩 slides 大纲已整理到 `MSAT/results/PU_XMSAT_SLIDES_OUTLINE_CN.md`，PPT 初稿已生成到 `MSAT/results/PU_XMSAT_SLIDES_DRAFT_CN.pptx`，解释/证据闭环已整理到 `MSAT/results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`；下一步优先润色论文正文、对 Grade C 案例做人工证据核验，或人工美化 PPT。
+2. 不建议继续长训，除非用户明确要求。当前交付物总入口为 `MSAT/results/PU_XMSAT_DELIVERABLE_INDEX_CN.md`；论文结果表和 claim 边界已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`，Methods/Results/Discussion 正文草稿已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`，导师沟通版中文汇报已整理到 `MSAT/results/PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`，3-5 分钟口头稿已整理到 `MSAT/results/PU_XMSAT_ORAL_BRIEF_CN.md`，组会/答辩 slides 大纲已整理到 `MSAT/results/PU_XMSAT_SLIDES_OUTLINE_CN.md`，PPT 初稿已生成到 `MSAT/results/PU_XMSAT_SLIDES_DRAFT_CN.pptx`，解释/证据闭环已整理到 `MSAT/results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`，Grade C 人工核验已整理到 `MSAT/results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`；下一步若要增强案例证据，应寻找更合适的高置信候选，而不是继续盲目长训或扩大无目的检索。
 3. 概率校准不再是第一阻塞点，因为 corrected 10-fold thresholds 已回到 `0.27-0.50`；后续可作为单独 calibration/PU weight ablation。
 4. 不要把旧 prefix-cache 10-fold 结果当作策略优劣最终证据；它们只能说明训练闭环、运行时间和指标记录流程已经可复现。
-5. 写论文时可报告 corrected random-cache full-positive `hybrid` two-seed + weight-sensitivity result 作为当前最强 PU-XMSAT 证据，并说明两 seed 在 AUC/F1/MCC 上稳定优于 MSAT，AUPRC 为稳定正向趋势；默认 `u0.2/rn0.8` 经权重敏感性验证为平衡设置。案例解释/外部证据只能报告为“最小筛选闭环”：2 行 Grade C、14 行 Grade D、0 行人工核验直接文献支持。
+5. 写论文时可报告 corrected random-cache full-positive `hybrid` two-seed + weight-sensitivity result 作为当前最强 PU-XMSAT 证据，并说明两 seed 在 AUC/F1/MCC 上稳定优于 MSAT，AUPRC 为稳定正向趋势；默认 `u0.2/rn0.8` 经权重敏感性验证为平衡设置。案例解释/外部证据只能报告为“最小筛选闭环”：2 行 Grade C、14 行 Grade D、0 行人工核验直接文献支持；两条 Grade C 经人工核验后均不能升级。
 
 不要覆盖 baseline 产物；正式运行前必须先完成本地测试、服务器测试、输出命名核对和报告模板更新。
 
@@ -564,16 +565,17 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 3. 不要把 Table 5 和 Table 6 当作主实验。它们是外部验证/案例解释/辅助佐证。
 4. 不要忽略 Table 3、Table 4、Fig.6 的差异；要用“差异可解释但不完全同序”描述。
 5. 不要把大模型输出当标注。大模型只能做外部证据辅助。
-6. 不要自动提交或推送未跟踪文件，尤其是 `CURRENT_MODEL_CAPABILITY_REPORT.md`，除非用户明确要求。
-7. 不要在文档给导师时保留过多内部工程话，比如 checkpoint hash、git、产物污染、服务器密码等，除非是技术审计报告。
-8. 服务器 SSH 和密码曾由用户提供，但不要写入仓库、报告或记忆文件。
-9. 回答尽量用中文，并且对导师/科研方向问题保持正式口吻。
+6. 不要把当前两条 Grade C 案例写成“外部验证成功”；野草莓案例不支持，枳实案例方向冲突。
+7. 不要自动提交或推送未跟踪文件，尤其是 `CURRENT_MODEL_CAPABILITY_REPORT.md`，除非用户明确要求。
+8. 不要在文档给导师时保留过多内部工程话，比如 checkpoint hash、git、产物污染、服务器密码等，除非是技术审计报告。
+9. 服务器 SSH 和密码曾由用户提供，但不要写入仓库、报告或记忆文件。
+10. 回答尽量用中文，并且对导师/科研方向问题保持正式口吻。
 
 ## 12. 快速状态句
 
 如果需要一句话回答当前状态：
 
-> 当前项目已经较好复现 MSAT 的主实验和多数核心性能结果，结果目录审计为 `issues: []`；Table 5/6 属于外部验证和下游解释，当前公开材料下不能论文等价复现。PU-XMSAT 已完成可靠负样本选择与 PU Learning 主实验，并已补上机制子图解释与外部证据分级的最小论文闭环；当前外部证据仍偏弱，适合继续做人工核验而不是盲目长训。
+> 当前项目已经较好复现 MSAT 的主实验和多数核心性能结果，结果目录审计为 `issues: []`；Table 5/6 属于外部验证和下游解释，当前公开材料下不能论文等价复现。PU-XMSAT 已完成可靠负样本选择与 PU Learning 主实验，并已补上机制子图解释与外部证据分级的最小论文闭环；两条 Grade C 经人工核验后仍不能升级为强证据，后续若要增强论文案例部分，应寻找更合适的高置信候选。
 
 ## 13. 关键文件索引
 
