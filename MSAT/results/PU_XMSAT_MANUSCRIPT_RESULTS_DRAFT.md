@@ -1,6 +1,6 @@
 # PU-XMSAT Manuscript Results Draft
 
-**Date:** 2026-06-27  
+**Date:** 2026-06-28  
 **Branch:** `codex/pu-xmsat-implementation`  
 **Baseline anchor:** `baseline/msat-reproduction-20260626`  
 **Purpose:** paper-facing result tables and wording for the PU-XMSAT extension. This document summarizes curated tracked result exports only; raw training JSON files remain ignored by git.
@@ -79,11 +79,32 @@ Current status:
 
 This artifact should be used as the minimal mechanism/external-evidence workflow, not as a claim that Table 5/6 has been equivalently reproduced. The Grade C manual audit is stored in `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`; it confirms that the current Grade C rows support only hypothesis generation and screening, not confirmed external validation. The case-selection decision in `results/PU_XMSAT_CASE_SELECTION_DECISION.md` records that the current project does not yet have a strong positive external-validation case suitable for a Table 5-style claim.
 
+## Mechanism Subgraph and Contribution Quantification
+
+The explanation layer now includes a local perturbation-based contribution report in `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, with structured exports in `results/contribution_quantification.json` and `results/contribution_quantification.csv`. The procedure extracts a key mechanism subgraph from the available paths, then zeroes selected compound/target node input features or all node features in a path and re-scores the same CMM-ADR pair with the local trained predictor checkpoint.
+
+Current status:
+
+| Case | Source | Key subgraph | Top node drop | Top path drop | Interpretation |
+| --- | --- | ---: | ---: | ---: | --- |
+| herb 277 -> ADR 2931 | `case_zhishi_diarrhoea` | 11 nodes / 8 edges / 14 paths | `target:3223`, 0.009835 | `compound:523 -> target:3223`, 0.010074 | A concrete perturbation-sensitive target/path is identified, but the external evidence remains direction-conflicting |
+| herb 237 -> ADR 3989 | `table5_top15` | 2 nodes / 1 edge / 1 path | `compound:1073`, 0.000021 | `compound:1073 -> target:2586`, 0.000021 | The graph path exists, but local perturbation sensitivity is nearly zero and manual evidence review remains unsupported |
+
+This should be described as a subgraph- and path-level sensitivity analysis rather than SHAP, causal attribution, or confirmed biological mechanism. Negative score drops mean the model score increased after masking; they are suppressive or non-supportive sensitivity signals, not confirmed protective biology. The report currently uses the local `saved_models/best_model_for_prediction.pt` checkpoint, so it should not be claimed as final full-positive hybrid PU-XMSAT checkpoint attribution unless a PU predictor checkpoint is explicitly exported and re-scored.
+
 ## Recommended Manuscript Wording
 
 Use:
 
 > To address incomplete-label noise in unobserved CMM-ADR pairs, we extended MSAT with a positive-unlabeled training protocol that separates observed positives, reliable negatives, and unlabeled pairs. After correcting candidate-cache construction and using the full-positive pair budget, the mechanism-aware hybrid PU-XMSAT setting achieved seed-robust improvements over the reproduced MSAT baseline on AUC, F1, and MCC, with a consistent positive AUPRC trend. Across two seeds, hybrid PU-XMSAT reached AUC approximately 0.9804, AUPRC approximately 0.9780, F1 approximately 0.9348-0.9351, and MCC approximately 0.8683-0.8684. A focused PU-weight sensitivity analysis supported `unlabeled_weight=0.2` and `reliable_negative_weight=0.8` as a balanced default.
+
+For the explanation layer:
+
+> As a conservative mechanism-interpretation workflow, we further quantified local node sensitivity for selected mechanism-supported cases by zeroing compound or target node input features and re-scoring the same CMM-ADR pair. This analysis identified a perturbation-sensitive target in the Zhishi-diarrhoea case, while the Fragaria case showed negligible local sensitivity. These outputs support mechanism triage and case prioritization, but should not be interpreted as causal effects or externally validated adverse-reaction evidence.
+
+Expanded wording:
+
+> We extracted key mechanism subgraphs and quantified both node-level and path-level perturbation sensitivity for selected cases. In the Zhishi-diarrhoea case, the highest local sensitivity was concentrated on the `compound:523 -> target:3223` path, whereas the Fragaria case showed negligible perturbation sensitivity. This provides a transparent mechanism-prioritization layer, but it does not by itself validate the biological direction or replace external evidence review.
 
 Avoid:
 
@@ -93,6 +114,7 @@ Avoid:
 - Do not treat Table 5 or Table 6 as part of the main performance experiment.
 - Do not promote automated literature search hits to direct evidence unless `verified_support=True` is backed by manual source review.
 - Do not present the current Grade C cases as confirmed adverse-reaction evidence after manual review.
+- Do not present perturbation score drops as SHAP values, causal effects, or final hybrid PU checkpoint attributions.
 
 ## Source Files
 
@@ -109,8 +131,11 @@ Primary tracked sources:
 - `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`
 - `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`
 - `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
+- `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`
 - `results/case_evidence_report.json`
 - `results/case_evidence_report.csv`
 - `results/case_evidence_manual_review.json`
+- `results/contribution_quantification.json`
+- `results/contribution_quantification.csv`
 
 Raw PU training JSON files are retained locally and on the server for auditability, but they are intentionally ignored by git unless promoted into curated exports.

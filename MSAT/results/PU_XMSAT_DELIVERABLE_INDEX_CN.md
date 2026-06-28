@@ -21,7 +21,7 @@
 | 修改 PPT 内容结构 | `results/PU_XMSAT_SLIDES_OUTLINE_CN.md` | PPT 页级大纲，包含每页标题、核心信息、建议视觉和讲稿提示 |
 | 写论文结果表 | `results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` | PU-XMSAT 主结果表、paired statistics、seed robustness、weight sensitivity、案例证据边界和建议措辞 |
 | 写英文 Methods/Results/Discussion | `results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` | 英文正文段落草稿 |
-| 写解释性/外部证据案例 | `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`results/PU_XMSAT_CASE_SELECTION_DECISION.md` | 机制子图、外部证据分级、Grade C 人工核验和案例选择决策；当前没有强外部验证正向案例 |
+| 写解释性/外部证据案例 | `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`results/PU_XMSAT_CASE_SELECTION_DECISION.md`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md` | 机制子图、外部证据分级、Grade C 人工核验、案例选择决策，以及成分/靶点/路径扰动贡献量化；当前没有强外部验证正向案例 |
 | 追溯完整实验过程 | `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`、`results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | 记录 candidate cache 修正、budget scaling、10-fold pilot、two-seed 和 weight sensitivity |
 | 检查复现状态是否干净 | `results/reproduction_state_audit.json` | 当前审计结果应保持 `issues: []` |
 
@@ -41,6 +41,7 @@
 | 机制解释与证据分级案例 | `results/case_evidence_report.json`、`results/case_evidence_report.csv`、`results/PU_XMSAT_CASE_EVIDENCE_REPORT.md` |
 | Grade C 人工核验证据 | `results/case_evidence_manual_review.json`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` |
 | 案例是否可写成强验证 | `results/PU_XMSAT_CASE_SELECTION_DECISION.md` |
+| 关键机制子图与贡献量化 | `results/contribution_quantification.json`、`results/contribution_quantification.csv`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md` |
 
 ## 4. 当前可以说的结论
 
@@ -53,6 +54,7 @@
 5. AUPRC 保持正向趋势，但提升幅度较小，其中一个 seed 相对 MSAT 的 AUPRC paired p 值为边界显著。
 6. 权重敏感性支持 `u0.2/rn0.8` 作为当前默认设置。
 7. 机制解释与外部证据分级已经形成最小闭环：当前 16 行案例候选中，2 行有机制支持（Grade C），14 行仍为预测候选（Grade D）；Grade C 人工核验后仍不能升级为 Grade B/A，因此当前没有强外部验证正向案例。
+8. 关键机制子图与贡献量化已经形成可运行产物：当前 2 个机制案例完成子图抽取、成分/靶点节点置零和路径置零扰动评分。枳实案例子图含 11 个节点/8 条边，最高节点为 `target:3223`（drop 0.009835），最高路径为 `compound:523 -> target:3223`（drop 0.010074）；野草莓案例扰动下降接近 0。该结果只能解释本地 predictor checkpoint 的局部敏感性，不能写成因果效应或最终 PU checkpoint 归因。
 
 不要说：
 
@@ -63,6 +65,7 @@
 5. 不要隐藏 AUPRC 的边界和较小提升。
 6. 不要把自动检索到但未人工核验的文献记录当成 Grade B 强证据。
 7. 不要把枳实案例写成“已证明导致水样腹泻”；当前外部证据更适合写成胃肠/转运体机制相关但方向未确认。
+8. 不要把贡献量化中的 score drop 写成 SHAP 值、因果贡献或临床机制证明；它只是输入节点/路径置零后的局部扰动敏感性。
 
 ## 5. 推荐下一步顺序
 
@@ -70,8 +73,8 @@
 
 1. **PPT 人工美化。** 以 `PU_XMSAT_SLIDES_DRAFT_CN.pptx` 为基础，补充学校/课题组模板、页脚、图例细节和口头节奏。
 2. **论文正文整理。** 以 `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` 和 `PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` 为基础，形成正式论文 Methods/Results/Discussion。
-3. **筛选更合适的案例候选。** Grade C 已完成首轮人工核验，当前不能升级为强证据；如要增强论文案例部分，应优先寻找“模型高分 + 明确机制路径 + PubMed/数据库直接证据”的候选，而不是继续扩大无目的批量检索。
-4. **下一代模型方向。** 结合导师建议，继续调研因果混杂控制、SHAP/注意力解释和更严格可靠负样本策略。
+3. **筛选更合适的案例候选。** Grade C 已完成首轮人工核验、关键子图抽取和首轮节点/路径扰动量化，当前不能升级为强证据；如要增强论文案例部分，应优先寻找“模型高分 + 明确机制路径 + PubMed/数据库直接证据”的候选，而不是继续扩大无目的批量检索。
+4. **下一代模型方向。** 结合导师建议，继续调研因果混杂控制、更严格的 SHAP/注意力归因和可靠负样本策略。
 
 ## 6. 每次修改结果后要跑的检查
 
@@ -79,6 +82,7 @@
 cd /Users/a67_2024/Desktop/drug-detect/MSAT
 PYTHONPATH=. pytest tests -q
 PYTHONPATH=. python scripts/build_case_evidence_report.py
+PYTHONPATH=. python scripts/run_contribution_quantification.py --max-cases 2 --max-features 6 --device cpu
 PYTHONPATH=. python scripts/verify_pu_xmsat_baseline.py
 PYTHONPATH=. python scripts/audit_reproduction_state.py --out results/reproduction_state_audit.json --fail-on-error
 ```

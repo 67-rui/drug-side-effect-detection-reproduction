@@ -1,6 +1,6 @@
 # PU-XMSAT Manuscript Sections Draft
 
-**Date:** 2026-06-27
+**Date:** 2026-06-28
 **Branch:** `codex/pu-xmsat-implementation`
 **Baseline anchor:** `baseline/msat-reproduction-20260626`
 **Purpose:** draft Methods, Results, and Discussion text for the PU-XMSAT extension. The text below is intentionally conservative and should be edited for journal style before submission.
@@ -28,6 +28,12 @@ To improve reproducibility of the full MSAT PU backend, NumPy and PyTorch random
 Three reliable-negative sampling strategies were evaluated during pilot development: `random`, `low_score`, and `hybrid`. Final manuscript claims should focus on the corrected randomized candidate cache and the full-positive budget. The strongest setting was the mechanism-aware `hybrid` sampling strategy, which selects reliable negatives by the combined candidate score.
 
 To check whether the result depended on a single PU weight choice, a focused sensitivity analysis was run for the full-positive hybrid setting using seed 1337 and reliable-negative weight 0.8. The tested unlabeled weights were 0.1, 0.2, and 0.4. The default `unlabeled_weight=0.2` setting was retained because it provided the best balance between ranking metrics and thresholded metrics.
+
+### Mechanism Subgraph and Local Contribution Quantification
+
+For case-level interpretation, we added a perturbation-based contribution quantification step. For each selected mechanism-supported CMM-ADR case, compound and target node identifiers were extracted from the available mechanism paths and assembled into a key mechanism subgraph. We then quantified two levels of local sensitivity. First, the input feature vector of one candidate compound or target node was zeroed while keeping the graph structure and the queried CMM-ADR pair fixed. Second, all parsed compound and target nodes in a single mechanism path were zeroed together. The same local predictor checkpoint was used to re-score the pair after each perturbation. The contribution score was defined as the original score minus the masked score.
+
+This score should be interpreted only as local perturbation sensitivity. It is not a SHAP value, a causal effect, or direct evidence that the biological entity causes the adverse reaction. Negative score drops indicate that the score increased after masking and should be treated as suppressive or non-supportive sensitivity signals. The current contribution report uses the local `saved_models/best_model_for_prediction.pt` predictor checkpoint; final full-positive hybrid PU-XMSAT attribution would require exporting and re-scoring an explicit PU predictor checkpoint.
 
 ### Statistical Comparison
 
@@ -57,6 +63,10 @@ The focused PU weight sensitivity analysis tested unlabeled weights 0.1, 0.2, an
 
 As a first paper-facing explanation loop, we generated a case evidence report from the existing MSAT/Table 5-style candidate artifacts and curated case-study outputs. Among 16 candidate rows, two rows had mechanistic graph/path support and were assigned Grade C, while 14 rows remained prediction-only Grade D candidates. Eight rows had automated literature search records, but none had manually verified direct literature support, so no row should currently be promoted to Grade B. A manual audit of the two Grade C rows did not identify direct external support: one case remained externally unsupported, and the other showed gastrointestinal and transporter-related mechanistic relevance but with direction-conflicting evidence. This result should be interpreted as an explanation and screening workflow rather than an equivalent reproduction of the original Table 5/6 evidence tables.
 
+### Subgraph and Path Contribution Quantification Highlights Mechanism Candidates Without Confirming Them
+
+The perturbation contribution report quantified two mechanism-supported cases. In the Zhishi-diarrhoea case, the extracted key subgraph contained 11 nodes, 8 edges, and 14 mechanism paths. The largest node-level score drop was observed for target `3223` (drop 0.009835), and the largest path-level drop was observed for the `compound:523 -> target:3223` path (drop 0.010074). Several paths involving compound `875` had negative drops, indicating that masking those paths increased the local score rather than supporting the prediction. In the Fragaria-altered-consciousness case, the key subgraph contained only one parsed path, and the largest drop was 0.000021 for compound `1073`. These results are useful for prioritizing mechanism nodes and paths for review, but they do not change the conservative external-evidence conclusion: neither case should currently be presented as confirmed adverse-reaction evidence.
+
 ## Discussion Draft
 
 ### Main Interpretation
@@ -77,9 +87,11 @@ First, PU-XMSAT still depends on the quality of the reliable-negative scoring fu
 
 The current case-level evidence report also remains intentionally conservative. Automated literature records are useful for screening, but they are not direct evidence until a human reviewer confirms the specific herb-ADR or mechanism claim. The Grade C manual audit indicates that the present cases should not be used as confirmed external validation. They can support discussion of mechanism extraction and evidence triage, whereas Grade D rows should be retained only as candidate predictions for future review.
 
+The contribution quantification analysis has the same boundary. It identifies which graph nodes and paths affect a local model score when perturbed, but the resulting score drop is not a causal estimate and does not validate the direction of an adverse reaction. The current report is best used to support a transparent interpretation workflow and to select candidates for stronger future evidence review.
+
 ### Next Manuscript Step
 
-The next writing step should be to integrate these sections with the existing MSAT reproduction narrative. The paper should first establish that the reproduced MSAT baseline is protocol-aligned, then motivate incomplete-label noise, then introduce PU-XMSAT as a targeted extension. The Results section should report the full-positive hybrid two-seed table, the paired comparisons, the weight-sensitivity table, and the conservative case evidence screening table. The Discussion should emphasize that PU-XMSAT strengthens the reproduced baseline under incomplete-label assumptions while preserving a conservative claim boundary.
+The next writing step should be to integrate these sections with the existing MSAT reproduction narrative. The paper should first establish that the reproduced MSAT baseline is protocol-aligned, then motivate incomplete-label noise, then introduce PU-XMSAT as a targeted extension. The Results section should report the full-positive hybrid two-seed table, the paired comparisons, the weight-sensitivity table, the conservative case evidence screening table, and the mechanism subgraph/node/path contribution table. The Discussion should emphasize that PU-XMSAT strengthens the reproduced baseline under incomplete-label assumptions while preserving a conservative claim boundary.
 
 ## Source Mapping
 
@@ -91,3 +103,5 @@ Use these tracked files when editing the final manuscript:
 - Hybrid versus random statistics: `results/pu_xmsat_hybrid_vs_random_seed2026_comparison.csv`
 - Weight sensitivity: `results/pu_xmsat_hybrid_weight_sensitivity_summary.csv`
 - Full progress context: `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`
+- Case evidence screening: `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`, `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`, `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
+- Contribution quantification: `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, `results/contribution_quantification.csv`

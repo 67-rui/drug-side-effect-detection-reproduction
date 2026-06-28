@@ -1,6 +1,6 @@
 # MSAT 项目外部记忆
 
-**最后更新：** 2026-06-27
+**最后更新：** 2026-06-28
 **用途：** 作为后续对话、上下文压缩、代码修改和实验判断的长期外部记忆。后续如果上下文被压缩，必须先读本文件，再回答项目状态、复现程度、下一步计划或代码方向问题。
 **项目根目录：** `/Users/a67_2024/Desktop/drug-detect`
 **核心实现目录：** `MSAT/`
@@ -117,6 +117,7 @@ PU-XMSAT 当前实现进度（2026-06-27）：
 - 2026-06-28 已新增 `MSAT/scripts/build_case_evidence_report.py` 和 `MSAT/results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`，把现有 MSAT/Table 5 风格候选、枳实案例、机制路径/贡献度和文献候选缓存合并为论文可用的“机制解释 + 外部证据分级”最小闭环。当前 16 行案例候选中 2 行为 Grade C（有机制支持但无人工核验直接证据）、14 行为 Grade D；8 行存在自动检索记录，但 0 行具备 `verified_support=True` 的直接文献强证据。该产物只能作为解释/证据筛选 workflow，不是 Table 5/6 等价复现，也不是新的 PU-XMSAT top-ranking 导出。
 - 2026-06-28 已新增 `MSAT/results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` 和 `MSAT/results/case_evidence_manual_review.json`，对两条 Grade C 进行人工核验：`Fragaria vesca L. -> Altered state of consciousness` 外部证据不支持；`Citrus aurantium L. -> Watery diarrhoea` 有胃肠/ABCG2 机制相关证据，但方向更接近调节/缓解而非证明导致水样腹泻。因此两条都不能升级为 Grade B/A，论文中只能作为机制提取和证据筛选示例。
 - 2026-06-28 已新增 `MSAT/results/PU_XMSAT_CASE_SELECTION_DECISION.md`，明确当前没有强外部验证正向案例；论文案例部分应写成“预测-机制-证据分级的保守筛选流程”，不要写成确认性验证。如果未来必须补强案例，应定向筛选“高分 + 明确机制路径 + 直接数据库/文献证据”的候选，而不是继续长训或扩大无目的检索。
+- 2026-06-28 已新增 `MSAT/scripts/run_contribution_quantification.py`、`MSAT/results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`、`MSAT/results/contribution_quantification.json` 和 `.csv`，完成解释层的首轮关键机制子图与贡献量化。方法是从机制路径抽取 compound/target 节点，形成机制子图，并分别进行节点置零与路径置零重评分。当前量化 2 个案例：枳实-水样腹泻子图含 11 个节点、8 条边和 14 条路径，最高节点为 `target:3223`（drop 0.009835），最高路径为 `compound:523 -> target:3223`（drop 0.010074）；野草莓-意识状态改变子图含 2 个节点、1 条边和 1 条路径，最大下降仅 0.000021。负的 score drop 表示遮蔽后分数反而上升，不能解释为保护性生物学。该结果只能写作本地 `saved_models/best_model_for_prediction.pt` predictor checkpoint 下的局部敏感性分析，不是 SHAP、不是因果效应，也不是最终 full-positive hybrid PU checkpoint 的归因。若未来要写“PU-XMSAT 归因”，需要先导出明确的 PU predictor checkpoint 并重新运行该脚本。
 - 用户已明确允许刷新 `MSAT/results/reproduction_state_audit.json`。Task 17 原始审计命令已执行，当前审计文件 `created_at` 为 2026-06-26 13:39:17，结果为 `issues: []`；刷新内容仅更新审计时间戳，summary 未出现异常。
 - 后续若进入正式长训，仍需先做代码核对、服务器测试和输出命名检查，避免覆盖 baseline 或旧 PU 产物；用户已经允许使用服务器推进，但不要把服务器 SSH、密码或临时密钥写入仓库、报告或记忆文件。
 
@@ -550,7 +551,7 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
 当前最合理的近期实验：
 
 1. paired fold comparison / statistical note 已由 `scripts/compare_pu_xmsat_to_baseline.py` 生成；后续如果改结果，先重跑该脚本刷新 `pu_xmsat_baseline_comparison.json/.csv`。
-2. 不建议继续长训，除非用户明确要求。当前交付物总入口为 `MSAT/results/PU_XMSAT_DELIVERABLE_INDEX_CN.md`；论文结果表和 claim 边界已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`，Methods/Results/Discussion 正文草稿已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`，导师沟通版中文汇报已整理到 `MSAT/results/PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`，3-5 分钟口头稿已整理到 `MSAT/results/PU_XMSAT_ORAL_BRIEF_CN.md`，组会/答辩 slides 大纲已整理到 `MSAT/results/PU_XMSAT_SLIDES_OUTLINE_CN.md`，PPT 初稿已生成到 `MSAT/results/PU_XMSAT_SLIDES_DRAFT_CN.pptx`，解释/证据闭环已整理到 `MSAT/results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`，Grade C 人工核验已整理到 `MSAT/results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`，案例选择决策已整理到 `MSAT/results/PU_XMSAT_CASE_SELECTION_DECISION.md`；下一步若要增强案例证据，应寻找更合适的高置信候选，而不是继续盲目长训或扩大无目的检索。
+2. 不建议继续长训，除非用户明确要求。当前交付物总入口为 `MSAT/results/PU_XMSAT_DELIVERABLE_INDEX_CN.md`；论文结果表和 claim 边界已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`，Methods/Results/Discussion 正文草稿已整理到 `MSAT/results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`，导师沟通版中文汇报已整理到 `MSAT/results/PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`，3-5 分钟口头稿已整理到 `MSAT/results/PU_XMSAT_ORAL_BRIEF_CN.md`，组会/答辩 slides 大纲已整理到 `MSAT/results/PU_XMSAT_SLIDES_OUTLINE_CN.md`，PPT 初稿已生成到 `MSAT/results/PU_XMSAT_SLIDES_DRAFT_CN.pptx`，解释/证据闭环已整理到 `MSAT/results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`，Grade C 人工核验已整理到 `MSAT/results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`，案例选择决策已整理到 `MSAT/results/PU_XMSAT_CASE_SELECTION_DECISION.md`，关键机制子图与节点/路径扰动贡献量化已整理到 `MSAT/results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`；下一步若要增强案例证据，应寻找更合适的高置信候选，而不是继续盲目长训或扩大无目的检索。
 3. 概率校准不再是第一阻塞点，因为 corrected 10-fold thresholds 已回到 `0.27-0.50`；后续可作为单独 calibration/PU weight ablation。
 4. 不要把旧 prefix-cache 10-fold 结果当作策略优劣最终证据；它们只能说明训练闭环、运行时间和指标记录流程已经可复现。
 5. 写论文时可报告 corrected random-cache full-positive `hybrid` two-seed + weight-sensitivity result 作为当前最强 PU-XMSAT 证据，并说明两 seed 在 AUC/F1/MCC 上稳定优于 MSAT，AUPRC 为稳定正向趋势；默认 `u0.2/rn0.8` 经权重敏感性验证为平衡设置。案例解释/外部证据只能报告为“最小筛选闭环”：2 行 Grade C、14 行 Grade D、0 行人工核验直接文献支持；两条 Grade C 经人工核验后均不能升级。
