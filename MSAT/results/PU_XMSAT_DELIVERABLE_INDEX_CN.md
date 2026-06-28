@@ -21,7 +21,7 @@
 | 修改 PPT 内容结构 | `results/PU_XMSAT_SLIDES_OUTLINE_CN.md` | PPT 页级大纲，包含每页标题、核心信息、建议视觉和讲稿提示 |
 | 写论文结果表 | `results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` | PU-XMSAT 主结果表、paired statistics、seed robustness、weight sensitivity、案例证据边界和建议措辞 |
 | 写英文 Methods/Results/Discussion | `results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` | 英文正文段落草稿 |
-| 写解释性/外部证据案例 | `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` | 机制子图、外部证据分级和 Grade C 人工核验；当前 2 行 Grade C 均不能升级为直接强证据 |
+| 写解释性/外部证据案例 | `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`results/PU_XMSAT_CASE_SELECTION_DECISION.md` | 机制子图、外部证据分级、Grade C 人工核验和案例选择决策；当前没有强外部验证正向案例 |
 | 追溯完整实验过程 | `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`、`results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | 记录 candidate cache 修正、budget scaling、10-fold pilot、two-seed 和 weight sensitivity |
 | 检查复现状态是否干净 | `results/reproduction_state_audit.json` | 当前审计结果应保持 `issues: []` |
 
@@ -40,6 +40,7 @@
 | PU 权重敏感性 | `results/pu_xmsat_hybrid_weight_sensitivity_summary.csv` |
 | 机制解释与证据分级案例 | `results/case_evidence_report.json`、`results/case_evidence_report.csv`、`results/PU_XMSAT_CASE_EVIDENCE_REPORT.md` |
 | Grade C 人工核验证据 | `results/case_evidence_manual_review.json`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` |
+| 案例是否可写成强验证 | `results/PU_XMSAT_CASE_SELECTION_DECISION.md` |
 
 ## 4. 当前可以说的结论
 
@@ -51,7 +52,7 @@
 4. Full-positive hybrid PU-XMSAT 是当前最强设置，在两个 seed 下对 AUC、F1、MCC 有稳定提升。
 5. AUPRC 保持正向趋势，但提升幅度较小，其中一个 seed 相对 MSAT 的 AUPRC paired p 值为边界显著。
 6. 权重敏感性支持 `u0.2/rn0.8` 作为当前默认设置。
-7. 机制解释与外部证据分级已经形成最小闭环：当前 16 行案例候选中，2 行有机制支持（Grade C），14 行仍为预测候选（Grade D）；Grade C 人工核验后仍不能升级为 Grade B/A。
+7. 机制解释与外部证据分级已经形成最小闭环：当前 16 行案例候选中，2 行有机制支持（Grade C），14 行仍为预测候选（Grade D）；Grade C 人工核验后仍不能升级为 Grade B/A，因此当前没有强外部验证正向案例。
 
 不要说：
 

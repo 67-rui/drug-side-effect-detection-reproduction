@@ -77,7 +77,7 @@ Current status:
 | Rows with manually verified direct literature support | 0 | No row should currently be promoted to Grade B |
 | Grade C rows after manual audit | 2 | Neither should be upgraded: one is externally unsupported, and one is mechanism-relevant but direction-conflicting |
 
-This artifact should be used as the minimal mechanism/external-evidence workflow, not as a claim that Table 5/6 has been equivalently reproduced. The Grade C manual audit is stored in `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`; it confirms that the current Grade C rows support only hypothesis generation and screening, not confirmed external validation.
+This artifact should be used as the minimal mechanism/external-evidence workflow, not as a claim that Table 5/6 has been equivalently reproduced. The Grade C manual audit is stored in `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`; it confirms that the current Grade C rows support only hypothesis generation and screening, not confirmed external validation. The case-selection decision in `results/PU_XMSAT_CASE_SELECTION_DECISION.md` records that the current project does not yet have a strong positive external-validation case suitable for a Table 5-style claim.
 
 ## Recommended Manuscript Wording
 
@@ -108,6 +108,7 @@ Primary tracked sources:
 - `results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md`
 - `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`
 - `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`
+- `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
 - `results/case_evidence_report.json`
 - `results/case_evidence_report.csv`
 - `results/case_evidence_manual_review.json`
