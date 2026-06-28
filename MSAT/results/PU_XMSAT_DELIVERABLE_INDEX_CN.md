@@ -1,6 +1,6 @@
 # PU-XMSAT 当前交付物索引
 
-**日期：** 2026-06-27
+**日期：** 2026-06-28
 **分支：** `codex/pu-xmsat-implementation`
 **用途：** 作为当前 PU-XMSAT 研究阶段的交付物入口。后续写论文、组会汇报、导师沟通或继续开发时，优先从本文件选择应打开的材料。
 
@@ -19,8 +19,9 @@
 | 3-5 分钟口头汇报 | `results/PU_XMSAT_ORAL_BRIEF_CN.md` | 可直接照着讲的口头稿 |
 | 做组会或答辩 PPT | `results/PU_XMSAT_SLIDES_DRAFT_CN.pptx` | 12 页可编辑 PowerPoint 初稿 |
 | 修改 PPT 内容结构 | `results/PU_XMSAT_SLIDES_OUTLINE_CN.md` | PPT 页级大纲，包含每页标题、核心信息、建议视觉和讲稿提示 |
-| 写论文结果表 | `results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` | PU-XMSAT 主结果表、paired statistics、seed robustness、weight sensitivity 和建议措辞 |
+| 写论文结果表 | `results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` | PU-XMSAT 主结果表、paired statistics、seed robustness、weight sensitivity、案例证据边界和建议措辞 |
 | 写英文 Methods/Results/Discussion | `results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` | 英文正文段落草稿 |
+| 写解释性/外部证据案例 | `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md` | 机制子图和外部证据分级最小闭环；当前 16 行候选中 2 行 Grade C、14 行 Grade D |
 | 追溯完整实验过程 | `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`、`results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | 记录 candidate cache 修正、budget scaling、10-fold pilot、two-seed 和 weight sensitivity |
 | 检查复现状态是否干净 | `results/reproduction_state_audit.json` | 当前审计结果应保持 `issues: []` |
 
@@ -37,6 +38,7 @@
 | hybrid vs random | `results/pu_xmsat_hybrid_vs_random_seed2026_comparison.csv` |
 | hybrid two-seed robustness | `results/pu_xmsat_hybrid_seed_robustness_summary.csv` |
 | PU 权重敏感性 | `results/pu_xmsat_hybrid_weight_sensitivity_summary.csv` |
+| 机制解释与证据分级案例 | `results/case_evidence_report.json`、`results/case_evidence_report.csv`、`results/PU_XMSAT_CASE_EVIDENCE_REPORT.md` |
 
 ## 4. 当前可以说的结论
 
@@ -48,6 +50,7 @@
 4. Full-positive hybrid PU-XMSAT 是当前最强设置，在两个 seed 下对 AUC、F1、MCC 有稳定提升。
 5. AUPRC 保持正向趋势，但提升幅度较小，其中一个 seed 相对 MSAT 的 AUPRC paired p 值为边界显著。
 6. 权重敏感性支持 `u0.2/rn0.8` 作为当前默认设置。
+7. 机制解释与外部证据分级已经形成最小闭环：当前 16 行案例候选中，2 行有机制支持（Grade C），14 行仍为预测候选（Grade D），未发现人工核验的直接文献强证据。
 
 不要说：
 
@@ -56,6 +59,7 @@
 3. 不要说 PU-XMSAT 全面、绝对、无条件优于 MSAT。
 4. 不要把旧 prefix-cache pilot 当作策略优劣证据。
 5. 不要隐藏 AUPRC 的边界和较小提升。
+6. 不要把自动检索到但未人工核验的文献记录当成 Grade B 强证据。
 
 ## 5. 推荐下一步顺序
 
@@ -63,14 +67,15 @@
 
 1. **PPT 人工美化。** 以 `PU_XMSAT_SLIDES_DRAFT_CN.pptx` 为基础，补充学校/课题组模板、页脚、图例细节和口头节奏。
 2. **论文正文整理。** 以 `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` 和 `PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` 为基础，形成正式论文 Methods/Results/Discussion。
-3. **外部证据和案例分析。** 不再强行宣称 Table 5 等价复现，而是把 Table 5/6 作为外部验证难点和解释性分析入口。
-4. **下一代模型方向。** 结合导师建议，继续调研因果混杂控制、关键子图解释、SHAP/注意力解释和更严格可靠负样本策略。
+3. **外部证据人工核验。** 基于 `PU_XMSAT_CASE_EVIDENCE_REPORT.md`，优先核验 Grade C 的机制支持案例是否能升级为直接文献/数据库证据；不要扩大到无目的批量检索。
+4. **下一代模型方向。** 结合导师建议，继续调研因果混杂控制、SHAP/注意力解释和更严格可靠负样本策略。
 
 ## 6. 每次修改结果后要跑的检查
 
 ```bash
 cd /Users/a67_2024/Desktop/drug-detect/MSAT
 PYTHONPATH=. pytest tests -q
+PYTHONPATH=. python scripts/build_case_evidence_report.py
 PYTHONPATH=. python scripts/verify_pu_xmsat_baseline.py
 PYTHONPATH=. python scripts/audit_reproduction_state.py --out results/reproduction_state_audit.json --fail-on-error
 ```

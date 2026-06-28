@@ -53,6 +53,10 @@ Under seed 2026, hybrid PU-XMSAT improved over random PU-XMSAT on AUC, F1, and M
 
 The focused PU weight sensitivity analysis tested unlabeled weights 0.1, 0.2, and 0.4 with reliable-negative weight fixed at 0.8. The default u0.2/rn0.8 setting achieved AUC 0.980392, AUPRC 0.977983, F1 0.934767, and MCC 0.868331. Reducing unlabeled weight to 0.1 weakened all four metrics, with significant decreases in AUC and AUPRC relative to the default. Increasing unlabeled weight to 0.4 produced a similar AUC but slightly lower AUPRC, F1, and MCC. These results support u0.2/rn0.8 as the balanced default and indicate that the hybrid result is not a fragile artifact of a single weight choice.
 
+### Case-Level Mechanism and Evidence Screening
+
+As a first paper-facing explanation loop, we generated a case evidence report from the existing MSAT/Table 5-style candidate artifacts and curated case-study outputs. Among 16 candidate rows, two rows had mechanistic graph/path support and were assigned Grade C, while 14 rows remained prediction-only Grade D candidates. Eight rows had automated literature search records, but none had manually verified direct literature support, so no row should currently be promoted to Grade B. This result should be interpreted as an explanation and screening workflow rather than an equivalent reproduction of the original Table 5/6 evidence tables.
+
 ## Discussion Draft
 
 ### Main Interpretation
@@ -71,9 +75,11 @@ The current evidence supports a statistically promising and seed-robust PU-XMSAT
 
 First, PU-XMSAT still depends on the quality of the reliable-negative scoring function. Although the corrected random candidate cache removed a clear prefix-selection artifact, the candidate score is heuristic and should be further validated with external evidence. Second, the two-seed robustness analysis supports stability but does not exhaust all sources of stochastic variation. Third, Table 5 and Table 6 in the original MSAT paper remain external validation and interpretation analyses, not main performance experiments. The current public-material reproduction does not fully recover the paper's Table 5 support rate, so PU-XMSAT performance claims should be separated from Table 5 external evidence claims.
 
+The current case-level evidence report also remains intentionally conservative. Automated literature records are useful for screening, but they are not direct evidence until a human reviewer confirms the specific herb-ADR or mechanism claim. Grade C rows can support mechanistic discussion, whereas Grade D rows should be retained only as candidate predictions for future review.
+
 ### Next Manuscript Step
 
-The next writing step should be to integrate these sections with the existing MSAT reproduction narrative. The paper should first establish that the reproduced MSAT baseline is protocol-aligned, then motivate incomplete-label noise, then introduce PU-XMSAT as a targeted extension. The Results section should report the full-positive hybrid two-seed table, the paired comparisons, and the weight-sensitivity table. The Discussion should emphasize that PU-XMSAT strengthens the reproduced baseline under incomplete-label assumptions while preserving a conservative claim boundary.
+The next writing step should be to integrate these sections with the existing MSAT reproduction narrative. The paper should first establish that the reproduced MSAT baseline is protocol-aligned, then motivate incomplete-label noise, then introduce PU-XMSAT as a targeted extension. The Results section should report the full-positive hybrid two-seed table, the paired comparisons, the weight-sensitivity table, and the conservative case evidence screening table. The Discussion should emphasize that PU-XMSAT strengthens the reproduced baseline under incomplete-label assumptions while preserving a conservative claim boundary.
 
 ## Source Mapping
 

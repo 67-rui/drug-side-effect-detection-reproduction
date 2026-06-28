@@ -62,6 +62,22 @@ All rows use full-positive `hybrid`, seed `1337`, and reliable-negative weight `
 | u0.2/rn0.8 | 0.980392 | 0.977983 | 0.934767 | 0.868331 | reference | balanced default |
 | u0.4/rn0.8 | 0.980474 | 0.977902 | 0.934410 | 0.867410 | AUC +0.000082; AUPRC -0.000081; F1 -0.000357; MCC -0.000921 | similar AUC, slightly weaker thresholded metrics |
 
+## Case Explanation and Evidence Screening Status
+
+The paper-facing explanation/evidence loop is now represented by `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`, with structured exports in `results/case_evidence_report.json` and `results/case_evidence_report.csv`.
+
+Current status:
+
+| Scope | Count | Interpretation |
+| --- | ---: | --- |
+| Case rows | 16 | 15 existing MSAT/Table 5-style candidates plus one curated Zhishi-diarrhoea case |
+| Grade C rows | 2 | Mechanistic graph/path support is available, but direct external evidence is not verified |
+| Grade D rows | 14 | Prediction-only candidates; retain for manual screening, not as evidence-backed claims |
+| Rows with automated literature records | 8 | Search hits exist, but they do not meet the verified direct-support criterion |
+| Rows with manually verified direct literature support | 0 | No row should currently be promoted to Grade B |
+
+This artifact should be used as the minimal mechanism/external-evidence workflow, not as a claim that Table 5/6 has been equivalently reproduced. The strongest next paper-facing step is manual verification of the two Grade C rows before expanding the candidate set.
+
 ## Recommended Manuscript Wording
 
 Use:
@@ -74,6 +90,7 @@ Avoid:
 - Do not hide that the AUPRC gain is smaller and one hybrid seed has a borderline paired p value versus MSAT.
 - Do not use legacy prefix-cache pilots as strategy-selection evidence.
 - Do not treat Table 5 or Table 6 as part of the main performance experiment.
+- Do not promote automated literature search hits to direct evidence unless `verified_support=True` is backed by manual source review.
 
 ## Source Files
 
@@ -87,5 +104,8 @@ Primary tracked sources:
 - `results/pu_xmsat_hybrid_weight_sensitivity_summary.csv`
 - `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`
 - `results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md`
+- `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`
+- `results/case_evidence_report.json`
+- `results/case_evidence_report.csv`
 
 Raw PU training JSON files are retained locally and on the server for auditability, but they are intentionally ignored by git unless promoted into curated exports.
