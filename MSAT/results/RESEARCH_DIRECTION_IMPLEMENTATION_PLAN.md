@@ -8,6 +8,24 @@
 
 ---
 
+## 0. 2026-06-28 Status Addendum
+
+This implementation plan was written before the full PU-XMSAT experiments and paper-facing reports were completed. The authoritative current completion audit is:
+
+```text
+MSAT/results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md
+```
+
+Current status:
+
+1. Reliable negative sampling and PU training have been implemented and evaluated through full-positive hybrid two-seed experiments.
+2. Mechanism explanation now includes key subgraph extraction, compound/target node perturbation, and path-level perturbation.
+3. External evidence grading and Grade C manual review are complete as a conservative screening workflow.
+4. Causal graph work is complete at the current data-supported level as a causal-bias framework, not as causal effect estimation.
+5. Remaining work should focus on manuscript integration and targeted evidence/case strengthening, not blind expansion or repeated long training.
+
+---
+
 ## 1. 实施原则
 
 1. 不修改已经验证过的原始 MSAT 复现基线，除非为了增加兼容参数，并且必须保持默认行为不变。

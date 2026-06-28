@@ -35,6 +35,10 @@ For case-level interpretation, we added a perturbation-based contribution quanti
 
 This score should be interpreted only as local perturbation sensitivity. It is not a SHAP value, a causal effect, or direct evidence that the biological entity causes the adverse reaction. Negative score drops indicate that the score increased after masking and should be treated as suppressive or non-supportive sensitivity signals. The current contribution report uses the local `saved_models/best_model_for_prediction.pt` predictor checkpoint; final full-positive hybrid PU-XMSAT attribution would require exporting and re-scoring an explicit PU predictor checkpoint.
 
+### Causal Bias Framework
+
+We used a causal-bias framework to define the interpretation boundary of PU-XMSAT. The framework identifies incomplete labels, co-medication, indication bias, reporting bias, exposure population, dose or preparation quality, and database curation as possible sources of bias in CMM-ADR prediction. The current graph data support mitigation of incomplete-label bias through reliable-negative and PU training, but they do not include patient-level co-medication, indication, exposure denominator, dose, or reporting propensity. Therefore, PU-XMSAT outputs are interpreted as pharmacovigilance risk signals and local mechanism-prioritization scores, not as causal effect estimates.
+
 ### Statistical Comparison
 
 All primary comparisons used the same 10 official folds as the reproduced MSAT baseline. Mean metrics were computed over fold-level test results. Paired fold-level t-tests were used to compare PU-XMSAT against the reproduced MSAT baseline and, where relevant, to compare hybrid against random PU sampling under the same seed-controlled setting. These paired tests should be interpreted as evidence for the reproduced experimental protocol rather than as a claim of universal superiority.
@@ -81,6 +85,8 @@ The hybrid reliable-negative strategy performed better than random sampling in t
 
 The current evidence supports a statistically promising and seed-robust PU-XMSAT improvement under the reproduced MSAT protocol. The claim should remain precise. It is appropriate to state that full-positive hybrid PU-XMSAT improved AUC, F1, and MCC over the reproduced MSAT baseline across two seeds, with a stable positive AUPRC trend. It is not appropriate to claim universal superiority on every metric or under every possible sampling and weight setting. The AUPRC gain is smaller than the AUC/F1/MCC gains, and one seed has a borderline paired p value for AUPRC versus MSAT.
 
+The causal interpretation should be equally conservative. PU-XMSAT changes the supervision assumption from observed-positive versus sampled-unobserved-negative to observed-positive versus reliable-negative versus down-weighted-unlabeled. This is an incomplete-label mitigation strategy. It does not adjust for co-medication, indication bias, reporting bias, exposure population, dose, or preparation quality. Model scores and perturbation drops should therefore be described as risk-signal and sensitivity measures, not as causal estimates.
+
 ### Limitations
 
 First, PU-XMSAT still depends on the quality of the reliable-negative scoring function. Although the corrected random candidate cache removed a clear prefix-selection artifact, the candidate score is heuristic and should be further validated with external evidence. Second, the two-seed robustness analysis supports stability but does not exhaust all sources of stochastic variation. Third, Table 5 and Table 6 in the original MSAT paper remain external validation and interpretation analyses, not main performance experiments. The current public-material reproduction does not fully recover the paper's Table 5 support rate, so PU-XMSAT performance claims should be separated from Table 5 external evidence claims.
@@ -105,3 +111,5 @@ Use these tracked files when editing the final manuscript:
 - Full progress context: `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`
 - Case evidence screening: `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`, `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`, `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
 - Contribution quantification: `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, `results/contribution_quantification.csv`
+- Causal-bias framework: `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md`
+- Research closure audit: `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md`

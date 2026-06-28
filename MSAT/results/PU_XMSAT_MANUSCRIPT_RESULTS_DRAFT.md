@@ -106,6 +106,10 @@ Expanded wording:
 
 > We extracted key mechanism subgraphs and quantified both node-level and path-level perturbation sensitivity for selected cases. In the Zhishi-diarrhoea case, the highest local sensitivity was concentrated on the `compound:523 -> target:3223` path, whereas the Fragaria case showed negligible perturbation sensitivity. This provides a transparent mechanism-prioritization layer, but it does not by itself validate the biological direction or replace external evidence review.
 
+For causal-bias boundaries:
+
+> A causal-bias framework was used to define the interpretation boundary of PU-XMSAT. The method mitigates incomplete-label bias by separating observed positives, reliable negatives, and unlabeled pairs, but the current graph data do not include patient-level co-medication, indication, exposure denominator, dose, or reporting propensity. Therefore, model outputs should be interpreted as pharmacovigilance risk signals and local sensitivity measures rather than causal effect estimates.
+
 Avoid:
 
 - Do not write that PU-XMSAT universally or definitively outperforms MSAT on every metric.
@@ -115,6 +119,7 @@ Avoid:
 - Do not promote automated literature search hits to direct evidence unless `verified_support=True` is backed by manual source review.
 - Do not present the current Grade C cases as confirmed adverse-reaction evidence after manual review.
 - Do not present perturbation score drops as SHAP values, causal effects, or final hybrid PU checkpoint attributions.
+- Do not claim that PU-XMSAT controls co-medication, indication bias, reporting bias, exposure population, dose, or preparation quality.
 
 ## Source Files
 
@@ -132,6 +137,8 @@ Primary tracked sources:
 - `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`
 - `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
 - `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`
+- `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md`
+- `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md`
 - `results/case_evidence_report.json`
 - `results/case_evidence_report.csv`
 - `results/case_evidence_manual_review.json`
