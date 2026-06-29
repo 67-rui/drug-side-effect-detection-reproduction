@@ -1,0 +1,281 @@
+aggregate_type,feature,display_name,name_source,node_type,node_id,path_features,path_display_features,case_count,occurrence_count,mean_score_drop,max_score_drop,positive_drop_count,near_zero_drop_count,negative_drop_count
+pathway,path:1,,,,,target:15721,Target #15721,1,1,0.0011743903,0.0011743903,1,0,0
+pathway,path:2,,,,,compound:821;target:11486,Compound #821;Target #11486,1,1,0.0003195405,0.0003195405,1,0,0
+pathway,path:1,,,,,compound:821;target:469,Compound #821;Target #469,1,1,0.0003153086,0.0003153086,1,0,0
+pathway,path:1,,,,,compound:761;target:7802,Compound #761;Target #7802,2,2,0.0003143549,0.0003178716,2,0,0
+pathway,path:6,,,,,compound:761;target:2432,Compound #761;Target #2432,1,1,0.0003102422,0.0003102422,1,0,0
+pathway,path:4,,,,,compound:761;target:19336,Compound #761;Target #19336,1,1,0.0002995729,0.0002995729,1,0,0
+pathway,path:1,,,,,compound:821;target:19336,Compound #821;Target #19336,1,1,0.0002631545,0.0002631545,1,0,0
+pathway,path:2,,,,,compound:821;target:1774,Compound #821;Target #1774,1,1,0.0002136827,0.0002136827,1,0,0
+pathway,path:1,,,,,compound:821;target:2586,Compound #821;Target #2586,2,2,0.0002096295,0.0002143979,2,0,0
+pathway,path:2,,,,,compound:1073;target:15692,Compound #1073;Target #15692,1,1,0.0001240373,0.0001240373,1,0,0
+pathway,path:4,,,,,compound:965;target:15692,Compound #965;Target #15692,1,1,0.0001021624,0.0001021624,1,0,0
+pathway,path:5,,,,,compound:1023;target:1782,Compound #1023;Target #1782,1,1,9.7096e-05,9.7096e-05,0,1,0
+pathway,path:2,,,,,compound:480;target:11486,Compound #480;Target #11486,1,1,4.56572e-05,4.56572e-05,0,1,0
+pathway,path:1,,,,,compound:480;target:7213,Compound #480;Target #7213,2,2,4.43757e-05,4.44651e-05,0,2,0
+pathway,path:2,,,,,compound:480;target:1933,Compound #480;Target #1933,1,1,3.78489e-05,3.78489e-05,0,1,0
+pathway,path:2,,,,,compound:480;target:13438,Compound #480;Target #13438,1,1,3.76105e-05,3.76105e-05,0,1,0
+pathway,path:1,,,,,compound:480;target:19336,Compound #480;Target #19336,1,1,3.74913e-05,3.74913e-05,0,1,0
+pathway,path:2,,,,,compound:480;target:2432,Compound #480;Target #2432,1,1,3.52263e-05,3.52263e-05,0,1,0
+pathway,path:1,,,,,compound:480;target:7938,Compound #480;Target #7938,1,1,3.36766e-05,3.36766e-05,0,1,0
+pathway,path:2,,,,,compound:480;target:2586,Compound #480;Target #2586,1,1,3.35574e-05,3.35574e-05,0,1,0
+pathway,path:1,,,,,compound:480;target:17098,Compound #480;Target #17098,1,1,3.29614e-05,3.29614e-05,0,1,0
+pathway,path:2,,,,,compound:1073;target:20703,Compound #1073;Target #20703,1,1,2.91467e-05,2.91467e-05,0,1,0
+pathway,path:1,,,,,compound:1073;target:9880,Compound #1073;Target #9880,1,1,2.84314e-05,2.84314e-05,0,1,0
+pathway,path:1,,,,,compound:1073;target:7260,Compound #1073;Target #7260,1,1,2.46763e-05,2.46763e-05,0,1,0
+pathway,path:3,,,,,compound:1073;target:19382,Compound #1073;Target #19382,1,1,2.43783e-05,2.43783e-05,0,1,0
+pathway,path:2,,,,,compound:1073;target:7213,Compound #1073;Target #7213,1,1,1.75238e-05,1.75238e-05,0,1,0
+pathway,path:1,,,,,compound:1073;target:2586,Compound #1073;Target #2586,1,1,1.45435e-05,1.45435e-05,0,1,0
+pathway,path:2,,,,,compound:1121;target:2146,Compound #1121;Target #2146,1,1,1.32918e-05,1.32918e-05,0,1,0
+pathway,path:3,,,,,compound:1121;target:7260,Compound #1121;Target #7260,1,1,1.32918e-05,1.32918e-05,0,1,0
+pathway,path:8,,,,,compound:1243;target:1933,Compound #1243;Target #1933,1,1,6.7353e-06,6.7353e-06,0,1,0
+pathway,path:1,,,,,compound:132;target:2432,Compound #132;Target #2432,1,1,6.1989e-06,6.1989e-06,0,1,0
+pathway,path:5,,,,,compound:1257;target:1933,Compound #1257;Target #1933,1,1,5.6624e-06,5.6624e-06,0,1,0
+pathway,path:7,,,,,compound:876;target:1933,Compound #876;Target #1933,1,1,5.3048e-06,5.3048e-06,0,1,0
+pathway,path:3,,,,,compound:435;target:11486,Compound #435;Target #11486,1,1,5.126e-06,5.126e-06,0,1,0
+pathway,path:4,,,,,compound:965;target:7213,Compound #965;Target #7213,1,1,4.8876e-06,4.8876e-06,0,1,0
+pathway,path:1,,,,,target:13357,Target #13357,1,1,4.8876e-06,4.8876e-06,0,1,0
+pathway,path:5,,,,,compound:278;target:11486,Compound #278;Target #11486,1,1,4.7684e-06,4.7684e-06,0,1,0
+pathway,path:1,,,,,compound:745;target:19336,Compound #745;Target #19336,2,2,4.0532e-06,4.6492e-06,0,2,0
+pathway,path:1,,,,,compound:610;target:11486,Compound #610;Target #11486,1,1,3.6955e-06,3.6955e-06,0,1,0
+pathway,path:4,,,,,compound:613;target:19496,Compound #613;Target #19496,1,1,3.3379e-06,3.3379e-06,0,1,0
+pathway,path:4,,,,,compound:613;target:1774,Compound #613;Target #1774,1,1,2.9802e-06,2.9802e-06,0,1,0
+pathway,path:3,,,,,compound:613;target:1933,Compound #613;Target #1933,1,1,2.9802e-06,2.9802e-06,0,1,0
+pathway,path:3,,,,,compound:965;target:2586,Compound #965;Target #2586,1,1,2.0266e-06,2.0266e-06,0,1,0
+pathway,path:5,,,,,compound:1023;target:7213,Compound #1023;Target #7213,1,1,1.9073e-06,1.9073e-06,0,1,0
+pathway,path:4,,,,,compound:435;target:590,Compound #435;Target #590,1,1,1.5497e-06,1.5497e-06,0,1,0
+pathway,path:3,,,,,compound:1257;target:19336,Compound #1257;Target #19336,1,1,1.4305e-06,1.4305e-06,0,1,0
+pathway,path:6,,,,,compound:435;target:19336,Compound #435;Target #19336,1,1,1.3113e-06,1.3113e-06,0,1,0
+pathway,path:5,,,,,compound:1023;target:13438,Compound #1023;Target #13438,1,1,1.1921e-06,1.1921e-06,0,1,0
+pathway,path:6,,,,,compound:876;target:7938,Compound #876;Target #7938,1,1,1.1921e-06,1.1921e-06,0,1,0
+pathway,path:5,,,,,compound:699;target:19336,Compound #699;Target #19336,1,1,9.537e-07,9.537e-07,0,1,0
+pathway,path:4,,,,,compound:876;target:19336,Compound #876;Target #19336,1,1,9.537e-07,9.537e-07,0,1,0
+pathway,path:5,,,,,compound:435;target:974,Compound #435;Target #974,1,1,5.96e-07,5.96e-07,0,1,0
+pathway,path:4,,,,,compound:876;target:5720,Compound #876;Target #5720,1,1,4.768e-07,4.768e-07,0,1,0
+pathway,path:1,,,,,compound:610;target:7213,Compound #610;Target #7213,1,1,4.172e-07,4.172e-07,0,1,0
+pathway,path:5,,,,,compound:1243;target:19336,Compound #1243;Target #19336,1,1,2.384e-07,2.384e-07,0,1,0
+pathway,path:6,,,,,compound:278;target:20366,Compound #278;Target #20366,1,1,2.384e-07,2.384e-07,0,1,0
+pathway,path:1,,,,,compound:965;target:14492,Compound #965;Target #14492,1,1,1.192e-07,1.192e-07,0,1,0
+pathway,path:2,,,,,compound:965;target:6814,Compound #965;Target #6814,1,1,1.192e-07,1.192e-07,0,1,0
+pathway,path:2,,,,,target:10658,Target #10658,1,1,1.192e-07,1.192e-07,0,1,0
+pathway,path:2,,,,,compound:610;target:1774,Compound #610;Target #1774,1,1,0.0,0.0,0,1,0
+pathway,path:1,,,,,target:19817,Target #19817,1,1,0.0,0.0,0,1,0
+pathway,path:3,,,,,target:5663,Target #5663,1,1,0.0,0.0,0,1,0
+pathway,path:3,,,,,target:7684,Target #7684,1,1,0.0,0.0,0,1,0
+pathway,path:5,,,,,compound:1019;target:18046,Compound #1019;Target #18046,1,1,-1.192e-07,-1.192e-07,0,1,0
+pathway,path:4,,,,,compound:1019;target:7213,Compound #1019;Target #7213,1,1,-1.192e-07,-1.192e-07,0,1,0
+pathway,path:6,,,,,compound:278;target:4,Compound #278;Target #4,1,1,-2.384e-07,-2.384e-07,0,1,0
+pathway,path:2,,,,,target:2606,Target #2606,1,1,-3.576e-07,-3.576e-07,0,1,0
+pathway,path:6,,,,,compound:1023;target:6478,Compound #1023;Target #6478,1,1,-1.4305e-06,-1.4305e-06,0,1,0
+pathway,path:3,,,,,compound:613;target:17098,Compound #613;Target #17098,1,1,-2.1458e-06,-2.1458e-06,0,1,0
+pathway,path:2,,,,,compound:1023;target:19336,Compound #1023;Target #19336,2,2,-2.7418e-06,1.1921e-06,0,2,0
+pathway,path:7,,,,,compound:1329;target:19496,Compound #1329;Target #19496,1,1,-5.1856e-06,-5.1856e-06,0,1,0
+pathway,path:5,,,,,compound:1243;target:19496,Compound #1243;Target #19496,1,1,-5.3048e-06,-5.3048e-06,0,1,0
+pathway,path:4,,,,,compound:1023;target:7260,Compound #1023;Target #7260,1,1,-6.4373e-06,-6.4373e-06,0,1,0
+pathway,path:6,,,,,compound:1243;target:12639,Compound #1243;Target #12639,1,1,-1.18613e-05,-1.18613e-05,0,1,0
+pathway,path:8,,,,,compound:443;target:7213,Compound #443;Target #7213,1,1,-3.01003e-05,-3.01003e-05,0,1,0
+pathway,path:7,,,,,compound:443;target:15692,Compound #443;Target #15692,1,1,-3.16501e-05,-3.16501e-05,0,1,0
+pathway,path:8,,,,,compound:443;target:2197,Compound #443;Target #2197,1,1,-3.33786e-05,-3.33786e-05,0,1,0
+pathway,path:7,,,,,compound:443;target:4,Compound #443;Target #4,1,1,-3.38554e-05,-3.38554e-05,0,1,0
+pathway,path:8,,,,,compound:443;target:9481,Compound #443;Target #9481,1,1,-4.29749e-05,-4.29749e-05,0,1,0
+pathway,path:7,,,,,compound:443;target:19336,Compound #443;Target #19336,1,1,-4.30942e-05,-4.30942e-05,0,1,0
+pathway,path:8,,,,,compound:443;target:19496,Compound #443;Target #19496,1,1,-4.58956e-05,-4.58956e-05,0,1,0
+target,target:15721,Target #15721,unmapped_graph_id,target,15721,,,1,1,0.0011743903,0.0011743903,1,0,0
+target,target:1782,Target #1782,unmapped_graph_id,target,1782,,,1,1,9.59039e-05,9.59039e-05,0,1,0
+target,target:15692,Target #15692,unmapped_graph_id,target,15692,,,2,2,5.19156e-05,0.0001020432,1,1,0
+target,target:19496,Target #19496,unmapped_graph_id,target,19496,,,1,1,7.391e-06,7.391e-06,0,1,0
+target,target:1933,Target #1933,unmapped_graph_id,target,1933,,,1,1,5.3048e-06,5.3048e-06,0,1,0
+target,target:13357,Target #13357,unmapped_graph_id,target,13357,,,1,1,4.8876e-06,4.8876e-06,0,1,0
+target,target:11486,Target #11486,unmapped_graph_id,target,11486,,,3,3,4.669e-06,5.1856e-06,0,3,0
+target,target:7213,Target #7213,unmapped_graph_id,target,7213,,,5,5,4.6492e-06,1.44839e-05,0,5,0
+target,target:19382,Target #19382,unmapped_graph_id,target,19382,,,1,1,4.4107e-06,4.4107e-06,0,1,0
+target,target:2432,Target #2432,unmapped_graph_id,target,2432,,,3,3,3.6359e-06,5.722e-06,0,3,0
+target,target:1774,Target #1774,unmapped_graph_id,target,1774,,,3,3,3.3776e-06,5.1856e-06,0,3,0
+target,target:7260,Target #7260,unmapped_graph_id,target,7260,,,1,1,2.5034e-06,2.5034e-06,0,1,0
+target,target:2146,Target #2146,unmapped_graph_id,target,2146,,,1,1,2.3842e-06,2.3842e-06,0,1,0
+target,target:2586,Target #2586,unmapped_graph_id,target,2586,,,4,4,2.2054e-06,5.4836e-06,0,4,0
+target,target:469,Target #469,unmapped_graph_id,target,469,,,1,1,1.5497e-06,1.5497e-06,0,1,0
+target,target:6478,Target #6478,unmapped_graph_id,target,6478,,,1,1,1.4305e-06,1.4305e-06,0,1,0
+target,target:590,Target #590,unmapped_graph_id,target,590,,,1,1,1.3113e-06,1.3113e-06,0,1,0
+target,target:7938,Target #7938,unmapped_graph_id,target,7938,,,1,1,1.3113e-06,1.3113e-06,0,1,0
+target,target:9481,Target #9481,unmapped_graph_id,target,9481,,,1,1,1.1921e-06,1.1921e-06,0,1,0
+target,target:12639,Target #12639,unmapped_graph_id,target,12639,,,1,1,8.345e-07,8.345e-07,0,1,0
+target,target:20703,Target #20703,unmapped_graph_id,target,20703,,,1,1,8.345e-07,8.345e-07,0,1,0
+target,target:5720,Target #5720,unmapped_graph_id,target,5720,,,1,1,5.96e-07,5.96e-07,0,1,0
+target,target:19336,Target #19336,unmapped_graph_id,target,19336,,,5,5,5.841e-07,1.1921e-06,0,5,0
+target,target:13438,Target #13438,unmapped_graph_id,target,13438,,,2,2,4.769e-07,1.1921e-06,0,2,0
+target,target:20366,Target #20366,unmapped_graph_id,target,20366,,,1,1,3.576e-07,3.576e-07,0,1,0
+target,target:974,Target #974,unmapped_graph_id,target,974,,,1,1,3.576e-07,3.576e-07,0,1,0
+target,target:2197,Target #2197,unmapped_graph_id,target,2197,,,1,1,2.384e-07,2.384e-07,0,1,0
+target,target:10658,Target #10658,unmapped_graph_id,target,10658,,,1,1,1.192e-07,1.192e-07,0,1,0
+target,target:17098,Target #17098,unmapped_graph_id,target,17098,,,1,1,1.192e-07,1.192e-07,0,1,0
+target,target:18046,Target #18046,unmapped_graph_id,target,18046,,,1,1,0.0,0.0,0,1,0
+target,target:19817,Target #19817,unmapped_graph_id,target,19817,,,1,1,0.0,0.0,0,1,0
+target,target:5663,Target #5663,unmapped_graph_id,target,5663,,,1,1,0.0,0.0,0,1,0
+target,target:7684,Target #7684,unmapped_graph_id,target,7684,,,1,1,0.0,0.0,0,1,0
+target,target:9880,Target #9880,unmapped_graph_id,target,9880,,,1,1,0.0,0.0,0,1,0
+target,target:7802,Target #7802,unmapped_graph_id,target,7802,,,2,2,-1.192e-07,2.384e-07,0,2,0
+target,target:14492,Target #14492,unmapped_graph_id,target,14492,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+target,target:4,Target #4,unmapped_graph_id,target,4,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+target,target:6814,Target #6814,unmapped_graph_id,target,6814,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+target,target:2606,Target #2606,unmapped_graph_id,target,2606,,,1,1,-3.576e-07,-3.576e-07,0,1,0
+component,compound:761,Compound #761,unmapped_graph_id,compound,761,,,3,3,0.0003090699,0.0003184676,3,0,0
+component,compound:821,Compound #821,unmapped_graph_id,compound,821,,,4,4,0.0002468973,0.0003134012,4,0,0
+component,compound:480,Compound #480,unmapped_graph_id,compound,480,,,5,5,3.44515e-05,4.08292e-05,0,5,0
+component,compound:1073,Compound #1073,unmapped_graph_id,compound,1073,,,4,4,2.07871e-05,2.83122e-05,0,4,0
+component,compound:1121,Compound #1121,unmapped_graph_id,compound,1121,,,1,1,1.07884e-05,1.07884e-05,0,1,0
+component,compound:745,Compound #745,unmapped_graph_id,compound,745,,,2,2,4.1127e-06,4.7684e-06,0,2,0
+component,compound:132,Compound #132,unmapped_graph_id,compound,132,,,1,1,4.768e-07,4.768e-07,0,1,0
+component,compound:1257,Compound #1257,unmapped_graph_id,compound,1257,,,2,2,3.576e-07,3.576e-07,0,2,0
+component,compound:965,Compound #965,unmapped_graph_id,compound,965,,,3,3,1.987e-07,2.384e-07,0,3,0
+component,compound:435,Compound #435,unmapped_graph_id,compound,435,,,3,3,1.589e-07,2.384e-07,0,3,0
+component,compound:278,Compound #278,unmapped_graph_id,compound,278,,,2,2,-5.96e-08,0.0,0,2,0
+component,compound:876,Compound #876,unmapped_graph_id,compound,876,,,3,3,-7.95e-08,0.0,0,3,0
+component,compound:1019,Compound #1019,unmapped_graph_id,compound,1019,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+component,compound:610,Compound #610,unmapped_graph_id,compound,610,,,2,2,-2.384e-07,-2.384e-07,0,2,0
+component,compound:699,Compound #699,unmapped_graph_id,compound,699,,,1,1,-2.384e-07,-2.384e-07,0,1,0
+component,compound:613,Compound #613,unmapped_graph_id,compound,613,,,3,3,-2.8809e-06,-2.3842e-06,0,3,0
+component,compound:1023,Compound #1023,unmapped_graph_id,compound,1023,,,5,5,-3.1948e-06,1.4305e-06,0,5,0
+component,compound:1243,Compound #1243,unmapped_graph_id,compound,1243,,,3,3,-3.9737e-06,1.4305e-06,0,3,0
+component,compound:1329,Compound #1329,unmapped_graph_id,compound,1329,,,1,1,-1.2517e-05,-1.2517e-05,0,1,0
+component,compound:443,Compound #443,unmapped_graph_id,compound,443,,,4,4,-4.10676e-05,-3.34382e-05,0,4,0
+path,path:1,,,,,target:15721,Target #15721,1,1,0.0011743903,0.0011743903,1,0,0
+path,path:2,,,,,compound:821;target:11486,Compound #821;Target #11486,1,1,0.0003195405,0.0003195405,1,0,0
+path,path:1,,,,,compound:821;target:469,Compound #821;Target #469,1,1,0.0003153086,0.0003153086,1,0,0
+path,path:1,,,,,compound:761;target:7802,Compound #761;Target #7802,2,2,0.0003143549,0.0003178716,2,0,0
+path,path:6,,,,,compound:761;target:2432,Compound #761;Target #2432,1,1,0.0003102422,0.0003102422,1,0,0
+path,path:4,,,,,compound:761;target:19336,Compound #761;Target #19336,1,1,0.0002995729,0.0002995729,1,0,0
+path,path:1,,,,,compound:821;target:19336,Compound #821;Target #19336,1,1,0.0002631545,0.0002631545,1,0,0
+path,path:2,,,,,compound:821;target:1774,Compound #821;Target #1774,1,1,0.0002136827,0.0002136827,1,0,0
+path,path:1,,,,,compound:821;target:2586,Compound #821;Target #2586,2,2,0.0002096295,0.0002143979,2,0,0
+path,path:2,,,,,compound:1073;target:15692,Compound #1073;Target #15692,1,1,0.0001240373,0.0001240373,1,0,0
+path,path:4,,,,,compound:965;target:15692,Compound #965;Target #15692,1,1,0.0001021624,0.0001021624,1,0,0
+path,path:5,,,,,compound:1023;target:1782,Compound #1023;Target #1782,1,1,9.7096e-05,9.7096e-05,0,1,0
+path,path:2,,,,,compound:480;target:11486,Compound #480;Target #11486,1,1,4.56572e-05,4.56572e-05,0,1,0
+path,path:1,,,,,compound:480;target:7213,Compound #480;Target #7213,2,2,4.43757e-05,4.44651e-05,0,2,0
+path,path:2,,,,,compound:480;target:1933,Compound #480;Target #1933,1,1,3.78489e-05,3.78489e-05,0,1,0
+path,path:2,,,,,compound:480;target:13438,Compound #480;Target #13438,1,1,3.76105e-05,3.76105e-05,0,1,0
+path,path:1,,,,,compound:480;target:19336,Compound #480;Target #19336,1,1,3.74913e-05,3.74913e-05,0,1,0
+path,path:2,,,,,compound:480;target:2432,Compound #480;Target #2432,1,1,3.52263e-05,3.52263e-05,0,1,0
+path,path:1,,,,,compound:480;target:7938,Compound #480;Target #7938,1,1,3.36766e-05,3.36766e-05,0,1,0
+path,path:2,,,,,compound:480;target:2586,Compound #480;Target #2586,1,1,3.35574e-05,3.35574e-05,0,1,0
+path,path:1,,,,,compound:480;target:17098,Compound #480;Target #17098,1,1,3.29614e-05,3.29614e-05,0,1,0
+path,path:2,,,,,compound:1073;target:20703,Compound #1073;Target #20703,1,1,2.91467e-05,2.91467e-05,0,1,0
+path,path:1,,,,,compound:1073;target:9880,Compound #1073;Target #9880,1,1,2.84314e-05,2.84314e-05,0,1,0
+path,path:1,,,,,compound:1073;target:7260,Compound #1073;Target #7260,1,1,2.46763e-05,2.46763e-05,0,1,0
+path,path:3,,,,,compound:1073;target:19382,Compound #1073;Target #19382,1,1,2.43783e-05,2.43783e-05,0,1,0
+path,path:2,,,,,compound:1073;target:7213,Compound #1073;Target #7213,1,1,1.75238e-05,1.75238e-05,0,1,0
+path,path:1,,,,,compound:1073;target:2586,Compound #1073;Target #2586,1,1,1.45435e-05,1.45435e-05,0,1,0
+path,path:2,,,,,compound:1121;target:2146,Compound #1121;Target #2146,1,1,1.32918e-05,1.32918e-05,0,1,0
+path,path:3,,,,,compound:1121;target:7260,Compound #1121;Target #7260,1,1,1.32918e-05,1.32918e-05,0,1,0
+path,path:8,,,,,compound:1243;target:1933,Compound #1243;Target #1933,1,1,6.7353e-06,6.7353e-06,0,1,0
+path,path:1,,,,,compound:132;target:2432,Compound #132;Target #2432,1,1,6.1989e-06,6.1989e-06,0,1,0
+path,path:5,,,,,compound:1257;target:1933,Compound #1257;Target #1933,1,1,5.6624e-06,5.6624e-06,0,1,0
+path,path:7,,,,,compound:876;target:1933,Compound #876;Target #1933,1,1,5.3048e-06,5.3048e-06,0,1,0
+path,path:3,,,,,compound:435;target:11486,Compound #435;Target #11486,1,1,5.126e-06,5.126e-06,0,1,0
+path,path:4,,,,,compound:965;target:7213,Compound #965;Target #7213,1,1,4.8876e-06,4.8876e-06,0,1,0
+path,path:1,,,,,target:13357,Target #13357,1,1,4.8876e-06,4.8876e-06,0,1,0
+path,path:5,,,,,compound:278;target:11486,Compound #278;Target #11486,1,1,4.7684e-06,4.7684e-06,0,1,0
+path,path:1,,,,,compound:745;target:19336,Compound #745;Target #19336,2,2,4.0532e-06,4.6492e-06,0,2,0
+path,path:1,,,,,compound:610;target:11486,Compound #610;Target #11486,1,1,3.6955e-06,3.6955e-06,0,1,0
+path,path:4,,,,,compound:613;target:19496,Compound #613;Target #19496,1,1,3.3379e-06,3.3379e-06,0,1,0
+path,path:4,,,,,compound:613;target:1774,Compound #613;Target #1774,1,1,2.9802e-06,2.9802e-06,0,1,0
+path,path:3,,,,,compound:613;target:1933,Compound #613;Target #1933,1,1,2.9802e-06,2.9802e-06,0,1,0
+path,path:3,,,,,compound:965;target:2586,Compound #965;Target #2586,1,1,2.0266e-06,2.0266e-06,0,1,0
+path,path:5,,,,,compound:1023;target:7213,Compound #1023;Target #7213,1,1,1.9073e-06,1.9073e-06,0,1,0
+path,path:4,,,,,compound:435;target:590,Compound #435;Target #590,1,1,1.5497e-06,1.5497e-06,0,1,0
+path,path:3,,,,,compound:1257;target:19336,Compound #1257;Target #19336,1,1,1.4305e-06,1.4305e-06,0,1,0
+path,path:6,,,,,compound:435;target:19336,Compound #435;Target #19336,1,1,1.3113e-06,1.3113e-06,0,1,0
+path,path:5,,,,,compound:1023;target:13438,Compound #1023;Target #13438,1,1,1.1921e-06,1.1921e-06,0,1,0
+path,path:6,,,,,compound:876;target:7938,Compound #876;Target #7938,1,1,1.1921e-06,1.1921e-06,0,1,0
+path,path:5,,,,,compound:699;target:19336,Compound #699;Target #19336,1,1,9.537e-07,9.537e-07,0,1,0
+path,path:4,,,,,compound:876;target:19336,Compound #876;Target #19336,1,1,9.537e-07,9.537e-07,0,1,0
+path,path:5,,,,,compound:435;target:974,Compound #435;Target #974,1,1,5.96e-07,5.96e-07,0,1,0
+path,path:4,,,,,compound:876;target:5720,Compound #876;Target #5720,1,1,4.768e-07,4.768e-07,0,1,0
+path,path:1,,,,,compound:610;target:7213,Compound #610;Target #7213,1,1,4.172e-07,4.172e-07,0,1,0
+path,path:5,,,,,compound:1243;target:19336,Compound #1243;Target #19336,1,1,2.384e-07,2.384e-07,0,1,0
+path,path:6,,,,,compound:278;target:20366,Compound #278;Target #20366,1,1,2.384e-07,2.384e-07,0,1,0
+path,path:1,,,,,compound:965;target:14492,Compound #965;Target #14492,1,1,1.192e-07,1.192e-07,0,1,0
+path,path:2,,,,,compound:965;target:6814,Compound #965;Target #6814,1,1,1.192e-07,1.192e-07,0,1,0
+path,path:2,,,,,target:10658,Target #10658,1,1,1.192e-07,1.192e-07,0,1,0
+path,path:2,,,,,compound:610;target:1774,Compound #610;Target #1774,1,1,0.0,0.0,0,1,0
+path,path:1,,,,,target:19817,Target #19817,1,1,0.0,0.0,0,1,0
+path,path:3,,,,,target:5663,Target #5663,1,1,0.0,0.0,0,1,0
+path,path:3,,,,,target:7684,Target #7684,1,1,0.0,0.0,0,1,0
+path,path:5,,,,,compound:1019;target:18046,Compound #1019;Target #18046,1,1,-1.192e-07,-1.192e-07,0,1,0
+path,path:4,,,,,compound:1019;target:7213,Compound #1019;Target #7213,1,1,-1.192e-07,-1.192e-07,0,1,0
+path,path:6,,,,,compound:278;target:4,Compound #278;Target #4,1,1,-2.384e-07,-2.384e-07,0,1,0
+path,path:2,,,,,target:2606,Target #2606,1,1,-3.576e-07,-3.576e-07,0,1,0
+path,path:6,,,,,compound:1023;target:6478,Compound #1023;Target #6478,1,1,-1.4305e-06,-1.4305e-06,0,1,0
+path,path:3,,,,,compound:613;target:17098,Compound #613;Target #17098,1,1,-2.1458e-06,-2.1458e-06,0,1,0
+path,path:2,,,,,compound:1023;target:19336,Compound #1023;Target #19336,2,2,-2.7418e-06,1.1921e-06,0,2,0
+path,path:7,,,,,compound:1329;target:19496,Compound #1329;Target #19496,1,1,-5.1856e-06,-5.1856e-06,0,1,0
+path,path:5,,,,,compound:1243;target:19496,Compound #1243;Target #19496,1,1,-5.3048e-06,-5.3048e-06,0,1,0
+path,path:4,,,,,compound:1023;target:7260,Compound #1023;Target #7260,1,1,-6.4373e-06,-6.4373e-06,0,1,0
+path,path:6,,,,,compound:1243;target:12639,Compound #1243;Target #12639,1,1,-1.18613e-05,-1.18613e-05,0,1,0
+path,path:8,,,,,compound:443;target:7213,Compound #443;Target #7213,1,1,-3.01003e-05,-3.01003e-05,0,1,0
+path,path:7,,,,,compound:443;target:15692,Compound #443;Target #15692,1,1,-3.16501e-05,-3.16501e-05,0,1,0
+path,path:8,,,,,compound:443;target:2197,Compound #443;Target #2197,1,1,-3.33786e-05,-3.33786e-05,0,1,0
+path,path:7,,,,,compound:443;target:4,Compound #443;Target #4,1,1,-3.38554e-05,-3.38554e-05,0,1,0
+path,path:8,,,,,compound:443;target:9481,Compound #443;Target #9481,1,1,-4.29749e-05,-4.29749e-05,0,1,0
+path,path:7,,,,,compound:443;target:19336,Compound #443;Target #19336,1,1,-4.30942e-05,-4.30942e-05,0,1,0
+path,path:8,,,,,compound:443;target:19496,Compound #443;Target #19496,1,1,-4.58956e-05,-4.58956e-05,0,1,0
+node,target:15721,Target #15721,unmapped_graph_id,target,15721,,,1,1,0.0011743903,0.0011743903,1,0,0
+node,compound:761,Compound #761,unmapped_graph_id,compound,761,,,3,3,0.0003090699,0.0003184676,3,0,0
+node,compound:821,Compound #821,unmapped_graph_id,compound,821,,,4,4,0.0002468973,0.0003134012,4,0,0
+node,target:1782,Target #1782,unmapped_graph_id,target,1782,,,1,1,9.59039e-05,9.59039e-05,0,1,0
+node,target:15692,Target #15692,unmapped_graph_id,target,15692,,,2,2,5.19156e-05,0.0001020432,1,1,0
+node,compound:480,Compound #480,unmapped_graph_id,compound,480,,,5,5,3.44515e-05,4.08292e-05,0,5,0
+node,compound:1073,Compound #1073,unmapped_graph_id,compound,1073,,,4,4,2.07871e-05,2.83122e-05,0,4,0
+node,compound:1121,Compound #1121,unmapped_graph_id,compound,1121,,,1,1,1.07884e-05,1.07884e-05,0,1,0
+node,target:19496,Target #19496,unmapped_graph_id,target,19496,,,1,1,7.391e-06,7.391e-06,0,1,0
+node,target:1933,Target #1933,unmapped_graph_id,target,1933,,,1,1,5.3048e-06,5.3048e-06,0,1,0
+node,target:13357,Target #13357,unmapped_graph_id,target,13357,,,1,1,4.8876e-06,4.8876e-06,0,1,0
+node,target:11486,Target #11486,unmapped_graph_id,target,11486,,,3,3,4.669e-06,5.1856e-06,0,3,0
+node,target:7213,Target #7213,unmapped_graph_id,target,7213,,,5,5,4.6492e-06,1.44839e-05,0,5,0
+node,target:19382,Target #19382,unmapped_graph_id,target,19382,,,1,1,4.4107e-06,4.4107e-06,0,1,0
+node,compound:745,Compound #745,unmapped_graph_id,compound,745,,,2,2,4.1127e-06,4.7684e-06,0,2,0
+node,target:2432,Target #2432,unmapped_graph_id,target,2432,,,3,3,3.6359e-06,5.722e-06,0,3,0
+node,target:1774,Target #1774,unmapped_graph_id,target,1774,,,3,3,3.3776e-06,5.1856e-06,0,3,0
+node,target:7260,Target #7260,unmapped_graph_id,target,7260,,,1,1,2.5034e-06,2.5034e-06,0,1,0
+node,target:2146,Target #2146,unmapped_graph_id,target,2146,,,1,1,2.3842e-06,2.3842e-06,0,1,0
+node,target:2586,Target #2586,unmapped_graph_id,target,2586,,,4,4,2.2054e-06,5.4836e-06,0,4,0
+node,target:469,Target #469,unmapped_graph_id,target,469,,,1,1,1.5497e-06,1.5497e-06,0,1,0
+node,target:6478,Target #6478,unmapped_graph_id,target,6478,,,1,1,1.4305e-06,1.4305e-06,0,1,0
+node,target:590,Target #590,unmapped_graph_id,target,590,,,1,1,1.3113e-06,1.3113e-06,0,1,0
+node,target:7938,Target #7938,unmapped_graph_id,target,7938,,,1,1,1.3113e-06,1.3113e-06,0,1,0
+node,target:9481,Target #9481,unmapped_graph_id,target,9481,,,1,1,1.1921e-06,1.1921e-06,0,1,0
+node,target:12639,Target #12639,unmapped_graph_id,target,12639,,,1,1,8.345e-07,8.345e-07,0,1,0
+node,target:20703,Target #20703,unmapped_graph_id,target,20703,,,1,1,8.345e-07,8.345e-07,0,1,0
+node,target:5720,Target #5720,unmapped_graph_id,target,5720,,,1,1,5.96e-07,5.96e-07,0,1,0
+node,target:19336,Target #19336,unmapped_graph_id,target,19336,,,5,5,5.841e-07,1.1921e-06,0,5,0
+node,target:13438,Target #13438,unmapped_graph_id,target,13438,,,2,2,4.769e-07,1.1921e-06,0,2,0
+node,compound:132,Compound #132,unmapped_graph_id,compound,132,,,1,1,4.768e-07,4.768e-07,0,1,0
+node,compound:1257,Compound #1257,unmapped_graph_id,compound,1257,,,2,2,3.576e-07,3.576e-07,0,2,0
+node,target:20366,Target #20366,unmapped_graph_id,target,20366,,,1,1,3.576e-07,3.576e-07,0,1,0
+node,target:974,Target #974,unmapped_graph_id,target,974,,,1,1,3.576e-07,3.576e-07,0,1,0
+node,target:2197,Target #2197,unmapped_graph_id,target,2197,,,1,1,2.384e-07,2.384e-07,0,1,0
+node,compound:965,Compound #965,unmapped_graph_id,compound,965,,,3,3,1.987e-07,2.384e-07,0,3,0
+node,compound:435,Compound #435,unmapped_graph_id,compound,435,,,3,3,1.589e-07,2.384e-07,0,3,0
+node,target:10658,Target #10658,unmapped_graph_id,target,10658,,,1,1,1.192e-07,1.192e-07,0,1,0
+node,target:17098,Target #17098,unmapped_graph_id,target,17098,,,1,1,1.192e-07,1.192e-07,0,1,0
+node,target:18046,Target #18046,unmapped_graph_id,target,18046,,,1,1,0.0,0.0,0,1,0
+node,target:19817,Target #19817,unmapped_graph_id,target,19817,,,1,1,0.0,0.0,0,1,0
+node,target:5663,Target #5663,unmapped_graph_id,target,5663,,,1,1,0.0,0.0,0,1,0
+node,target:7684,Target #7684,unmapped_graph_id,target,7684,,,1,1,0.0,0.0,0,1,0
+node,target:9880,Target #9880,unmapped_graph_id,target,9880,,,1,1,0.0,0.0,0,1,0
+node,compound:278,Compound #278,unmapped_graph_id,compound,278,,,2,2,-5.96e-08,0.0,0,2,0
+node,compound:876,Compound #876,unmapped_graph_id,compound,876,,,3,3,-7.95e-08,0.0,0,3,0
+node,target:7802,Target #7802,unmapped_graph_id,target,7802,,,2,2,-1.192e-07,2.384e-07,0,2,0
+node,compound:1019,Compound #1019,unmapped_graph_id,compound,1019,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+node,target:14492,Target #14492,unmapped_graph_id,target,14492,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+node,target:4,Target #4,unmapped_graph_id,target,4,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+node,target:6814,Target #6814,unmapped_graph_id,target,6814,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+node,compound:610,Compound #610,unmapped_graph_id,compound,610,,,2,2,-2.384e-07,-2.384e-07,0,2,0
+node,compound:699,Compound #699,unmapped_graph_id,compound,699,,,1,1,-2.384e-07,-2.384e-07,0,1,0
+node,target:2606,Target #2606,unmapped_graph_id,target,2606,,,1,1,-3.576e-07,-3.576e-07,0,1,0
+node,compound:613,Compound #613,unmapped_graph_id,compound,613,,,3,3,-2.8809e-06,-2.3842e-06,0,3,0
+node,compound:1023,Compound #1023,unmapped_graph_id,compound,1023,,,5,5,-3.1948e-06,1.4305e-06,0,5,0
+node,compound:1243,Compound #1243,unmapped_graph_id,compound,1243,,,3,3,-3.9737e-06,1.4305e-06,0,3,0
+node,compound:1329,Compound #1329,unmapped_graph_id,compound,1329,,,1,1,-1.2517e-05,-1.2517e-05,0,1,0
+node,compound:443,Compound #443,unmapped_graph_id,compound,443,,,4,4,-4.10676e-05,-3.34382e-05,0,4,0

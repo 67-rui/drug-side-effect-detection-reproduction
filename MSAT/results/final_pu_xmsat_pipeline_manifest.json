@@ -1,0 +1,174 @@
+{
+  "experiment": "final_pu_xmsat_interpretability_pipeline",
+  "created_at": "2026-06-29T06:25:20.313092+00:00",
+  "dry_run": false,
+  "final_checkpoint_path": "saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt",
+  "training_output": "results/pu_xmsat_final_hybrid_seed2026_checkpoint_export.json",
+  "config": {
+    "backend": "full_msat_pu",
+    "sampling_strategy": "hybrid",
+    "seed": 2026,
+    "max_folds": 10,
+    "max_epochs": 200,
+    "max_pairs": 66015,
+    "threshold_strategy": "val_f1",
+    "unlabeled_weight": 0.2,
+    "reliable_negative_weight": 0.8,
+    "top_k": 50,
+    "max_cases": 50,
+    "allow_nonfinal_config": false
+  },
+  "commands": [
+    {
+      "name": "train_final_checkpoint",
+      "argv": [
+        "/root/miniconda3/bin/python",
+        "experiments/run_pu_msat_experiment.py",
+        "--backend",
+        "full_msat_pu",
+        "--sampling-strategy",
+        "hybrid",
+        "--seed",
+        "2026",
+        "--max-folds",
+        "10",
+        "--max-epochs",
+        "200",
+        "--max-pairs",
+        "66015",
+        "--threshold-strategy",
+        "val_f1",
+        "--unlabeled-weight",
+        "0.2",
+        "--reliable-negative-weight",
+        "0.8",
+        "--candidate-cache",
+        "results/pu_candidate_scores.random50k.jsonl",
+        "--save-checkpoints",
+        "--checkpoint-dir",
+        "saved_models/pu_xmsat_formal",
+        "--checkpoint-prefix",
+        "pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8",
+        "--output",
+        "results/pu_xmsat_final_hybrid_seed2026_checkpoint_export.json"
+      ]
+    },
+    {
+      "name": "export_top_predictions",
+      "argv": [
+        "/root/miniconda3/bin/python",
+        "scripts/export_pu_xmsat_top_predictions.py",
+        "--checkpoint",
+        "saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt",
+        "--checkpoint-is-final-pu-xmsat",
+        "--top-k",
+        "50",
+        "--score-batch-size",
+        "2048",
+        "--device",
+        "cuda",
+        "--output-json",
+        "results/pu_xmsat_top_predictions.json",
+        "--output-csv",
+        "results/pu_xmsat_top_predictions.csv",
+        "--output-md",
+        "results/PU_XMSAT_TOP_PREDICTIONS_EXPORT.md"
+      ]
+    },
+    {
+      "name": "quantify_contributions",
+      "argv": [
+        "/root/miniconda3/bin/python",
+        "scripts/run_contribution_quantification.py",
+        "--input",
+        "results/pu_xmsat_top_predictions.json",
+        "--checkpoint",
+        "saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt",
+        "--checkpoint-is-final-pu",
+        "--max-cases",
+        "50",
+        "--max-features",
+        "0",
+        "--device",
+        "cuda",
+        "--output-json",
+        "results/contribution_quantification.json",
+        "--output-csv",
+        "results/contribution_quantification.csv",
+        "--output-md",
+        "results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md"
+      ]
+    },
+    {
+      "name": "run_batch_interpretability",
+      "argv": [
+        "/root/miniconda3/bin/python",
+        "scripts/run_batch_mechanism_interpretability.py",
+        "--top-k",
+        "50",
+        "--final-predictions",
+        "results/pu_xmsat_top_predictions.json",
+        "--contribution",
+        "results/contribution_quantification.json",
+        "--checkpoint",
+        "saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt",
+        "--checkpoint-is-final-pu",
+        "--output-json",
+        "results/batch_mechanism_interpretability.json",
+        "--output-csv",
+        "results/batch_mechanism_interpretability.csv",
+        "--output-md",
+        "results/PU_XMSAT_BATCH_MECHANISM_INTERPRETABILITY.md"
+      ]
+    },
+    {
+      "name": "summarize_contributions",
+      "argv": [
+        "/root/miniconda3/bin/python",
+        "scripts/summarize_contribution_quantification.py",
+        "--input",
+        "results/batch_mechanism_interpretability.json",
+        "--output-json",
+        "results/contribution_aggregate_summary.json",
+        "--output-csv",
+        "results/contribution_aggregate_summary.csv",
+        "--output-md",
+        "results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md",
+        "--top-k",
+        "10"
+      ]
+    },
+    {
+      "name": "build_mechanism_explanation_layer",
+      "argv": [
+        "/root/miniconda3/bin/python",
+        "scripts/build_mechanism_explanation_layer.py",
+        "--input",
+        "results/contribution_quantification.json",
+        "--output-json",
+        "results/mechanism_explanation_layer.json",
+        "--output-csv",
+        "results/mechanism_explanation_layer.csv",
+        "--output-md",
+        "results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER.md",
+        "--top-k",
+        "10"
+      ]
+    },
+    {
+      "name": "build_direction3_review_queue",
+      "argv": [
+        "/root/miniconda3/bin/python",
+        "scripts/build_direction3_targeted_review_queue.py",
+        "--contribution",
+        "results/batch_mechanism_interpretability.json",
+        "--output-json",
+        "results/direction3_targeted_review_queue.json",
+        "--output-csv",
+        "results/direction3_targeted_review_queue.csv",
+        "--output-md",
+        "results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE.md"
+      ]
+    }
+  ]
+}

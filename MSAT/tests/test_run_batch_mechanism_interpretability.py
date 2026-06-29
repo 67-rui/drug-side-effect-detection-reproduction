@@ -3,6 +3,7 @@ import json
 
 from scripts.run_batch_mechanism_interpretability import (
     build_batch_payload_from_contributions,
+    compute_topk_mechanism_coverage,
     select_top_mechanism_candidates,
     write_batch_artifacts,
 )
@@ -102,6 +103,213 @@ def test_select_top_mechanism_candidates_uses_transitional_sources_and_explicit_
     assert [(row["herb_id"], row["adr_id"]) for row in selected] == [(1, 10), (3, 30)]
 
 
+def test_select_top_mechanism_candidates_keeps_nonfinal_top_prediction_boundary():
+    final_predictions = {
+        "checkpoint_context": {
+            "is_final_10fold_export": False,
+            "scope_limitations": "fold-scoped pilot export; not final 10-fold export",
+        },
+        "rows": [
+            {
+                "rank": 1,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 9,
+                "adr_id": 90,
+                "prediction_score": 0.97,
+                "top_mechanism_paths": [
+                    "Herb C -> Compound #13 -> Target #23 <- ADR C",
+                ],
+            }
+        ],
+    }
+
+    selected, metadata = select_top_mechanism_candidates(
+        final_predictions_payload=final_predictions,
+        case_evidence_payload=_case_evidence_payload(),
+        table5_payload={},
+        explanation_payload={},
+        structured_mechanism_payload={},
+        top_k=20,
+    )
+
+    assert [(row["herb_id"], row["adr_id"]) for row in selected] == [(9, 90)]
+    assert metadata["candidate_source"] == "pu_xmsat_top_predictions_nonfinal_export"
+    assert metadata["is_final_pu_top_ranking_export"] is False
+    assert "not final" in metadata["candidate_source_note"].lower()
+
+
+def test_select_top_mechanism_candidates_tracks_final_top_prediction_path_coverage():
+    final_predictions = {
+        "checkpoint_context": {"is_final_10fold_export": True},
+        "rows": [
+            {
+                "rank": 1,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 9,
+                "adr_id": 90,
+                "prediction_score": 0.99,
+                "top_mechanism_paths": [],
+            },
+            {
+                "rank": 2,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 8,
+                "adr_id": 80,
+                "prediction_score": 0.98,
+                "top_mechanism_paths": [
+                    "Herb C -> Compound #13 -> Target #23 <- ADR C",
+                ],
+            },
+        ],
+    }
+
+    selected, metadata = select_top_mechanism_candidates(
+        final_predictions_payload=final_predictions,
+        case_evidence_payload={},
+        table5_payload={},
+        explanation_payload={},
+        structured_mechanism_payload={},
+        top_k=20,
+    )
+
+    assert [(row["herb_id"], row["adr_id"]) for row in selected] == [(8, 80)]
+    assert metadata["candidate_source"] == "final_pu_xmsat_top_predictions"
+    assert metadata["top_prediction_candidate_count"] == 2
+    assert metadata["explicit_path_candidate_count"] == 1
+    assert metadata["coverage_missing_candidate_count"] == 1
+    assert metadata["coverage_missing_candidates"][0]["coverage_status"] == "missing_explicit_mechanism_path"
+
+
+def test_topk_coverage_counts_explicit_paths_across_multiple_cutoffs():
+    final_predictions = {
+        "rows": [
+            {
+                "rank": 1,
+                "herb_id": 1,
+                "adr_id": 10,
+                "prediction_score": 0.99,
+                "top_mechanism_paths": [],
+            },
+            {
+                "rank": 2,
+                "herb_id": 2,
+                "adr_id": 20,
+                "prediction_score": 0.98,
+                "top_mechanism_paths": "Herb -> Compound #12 -> Target #22 <- ADR",
+            },
+            {
+                "rank": 3,
+                "herb_id": 3,
+                "adr_id": 30,
+                "prediction_score": 0.97,
+                "top_mechanism_paths": "知识图谱中未发现该 CMM–ADR 对的显式短路径",
+            },
+        ]
+    }
+
+    coverage = compute_topk_mechanism_coverage(final_predictions, cutoffs=(1, 2, 3, 5))
+
+    assert coverage == [
+        {"top_k": 1, "candidate_count": 1, "explicit_path_candidate_count": 0, "coverage_rate": 0.0},
+        {"top_k": 2, "candidate_count": 2, "explicit_path_candidate_count": 1, "coverage_rate": 0.5},
+        {"top_k": 3, "candidate_count": 3, "explicit_path_candidate_count": 1, "coverage_rate": 1 / 3},
+        {"top_k": 5, "candidate_count": 3, "explicit_path_candidate_count": 1, "coverage_rate": 1 / 3},
+    ]
+
+
+def test_select_top_mechanism_candidates_can_search_wider_pool_than_requested_top_k():
+    final_predictions = {
+        "checkpoint_context": {"is_final_10fold_export": True},
+        "rows": [
+            {
+                "rank": 1,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 1,
+                "adr_id": 10,
+                "prediction_score": 0.99,
+                "top_mechanism_paths": [],
+            },
+            {
+                "rank": 2,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 2,
+                "adr_id": 20,
+                "prediction_score": 0.98,
+                "top_mechanism_paths": [],
+            },
+            {
+                "rank": 3,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 3,
+                "adr_id": 30,
+                "prediction_score": 0.97,
+                "top_mechanism_paths": "Herb -> Compound #31 -> Target #41 <- ADR",
+            },
+        ],
+    }
+
+    selected, metadata = select_top_mechanism_candidates(
+        final_predictions_payload=final_predictions,
+        case_evidence_payload={},
+        table5_payload={},
+        explanation_payload={},
+        structured_mechanism_payload={},
+        top_k=1,
+        candidate_pool_top_k=3,
+        coverage_cutoffs=(1, 3),
+    )
+
+    assert [(row["herb_id"], row["adr_id"]) for row in selected] == [(3, 30)]
+    assert metadata["requested_top_k"] == 1
+    assert metadata["candidate_pool_top_k"] == 3
+    assert metadata["top_prediction_available_count"] == 3
+    assert metadata["candidate_pool_missing_count"] == 0
+    assert metadata["candidate_pool_is_complete"] is True
+    assert metadata["mechanism_coverage_by_topk"][0]["explicit_path_candidate_count"] == 0
+    assert metadata["mechanism_coverage_by_topk"][1]["explicit_path_candidate_count"] == 1
+
+
+def test_select_top_mechanism_candidates_marks_incomplete_candidate_pool():
+    final_predictions = {
+        "checkpoint_context": {"is_final_10fold_export": True},
+        "rows": [
+            {
+                "rank": 1,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 1,
+                "adr_id": 10,
+                "prediction_score": 0.99,
+                "top_mechanism_paths": "Herb -> Compound #31 -> Target #41 <- ADR",
+            },
+            {
+                "rank": 2,
+                "source": "pu_xmsat_global_unobserved_pairs",
+                "herb_id": 2,
+                "adr_id": 20,
+                "prediction_score": 0.98,
+                "top_mechanism_paths": [],
+            },
+        ],
+    }
+
+    _, metadata = select_top_mechanism_candidates(
+        final_predictions_payload=final_predictions,
+        case_evidence_payload={},
+        table5_payload={},
+        explanation_payload={},
+        structured_mechanism_payload={},
+        top_k=1,
+        candidate_pool_top_k=5000,
+        coverage_cutoffs=(50, 5000),
+    )
+
+    assert metadata["candidate_pool_top_k"] == 5000
+    assert metadata["top_prediction_available_count"] == 2
+    assert metadata["candidate_pool_missing_count"] == 4998
+    assert metadata["candidate_pool_is_complete"] is False
+    assert metadata["mechanism_coverage_by_topk"][0]["candidate_count"] == 2
+
+
 def test_select_top_mechanism_candidates_excludes_unparseable_placeholder_paths():
     payload = {
         "rows": [
@@ -154,14 +362,49 @@ def test_build_batch_payload_from_existing_contributions_marks_context_and_drop_
     assert payload["candidate_source"] == "transitional_mechanism_supported_artifacts"
     assert payload["checkpoint_is_final_pu_xmsat"] is False
     assert payload["summary"]["quantified_case_count"] == 2
+    assert payload["summary"]["coverage_missing_candidate_count"] == 0
     assert payload["summary"]["cases_with_explicit_mechanism_paths"] == 2
     assert payload["summary"]["near_zero_sensitivity_case_count"] == 1
     assert payload["summary"]["negative_score_drop_case_count"] == 1
     assert payload["component_contributions"][0]["feature"] == "compound:11"
+    assert payload["component_contributions"][0]["display_name"] == "Compound #11"
+    assert payload["component_contributions"][0]["name_source"] == "unmapped_graph_id"
     assert payload["target_contributions"][0]["feature"] == "target:21"
+    assert payload["target_contributions"][0]["display_name"] == "Target #21"
     assert payload["pathway_contributions"][0]["path_features"] == "compound:11;target:21"
+    assert payload["pathway_contributions"][0]["path_display_features"] == "Compound #11;Target #21"
     assert payload["cases"][1]["sensitivity_class"] == "near_zero"
     assert payload["cases"][1]["has_negative_score_drop"] is True
+
+
+def test_build_batch_payload_includes_random_control_summary_when_available():
+    candidates, metadata = select_top_mechanism_candidates(
+        {},
+        _case_evidence_payload(),
+        {},
+        {},
+        {},
+        top_k=20,
+    )
+    contribution = _contribution_payload()
+    contribution["random_controls"] = {
+        "component": [{"score_drop": 0.01}, {"score_drop": 0.02}],
+        "target": [{"score_drop": 0.03}],
+        "pathway": [{"score_drop": 0.04}, {"score_drop": 0.06}],
+    }
+
+    payload = build_batch_payload_from_contributions(
+        candidates,
+        metadata,
+        contribution,
+        checkpoint_path="saved_models/best_model_for_prediction.pt",
+        checkpoint_is_final_pu=False,
+    )
+
+    assert payload["random_control_summary"]["component"]["count"] == 2
+    assert payload["random_control_summary"]["component"]["mean_score_drop"] == 0.015
+    assert payload["random_control_summary"]["pathway"]["mean_score_drop"] == 0.05
+    assert payload["summary"]["has_random_perturbation_controls"] is True
 
 
 def test_write_batch_artifacts_outputs_json_csv_and_bounded_markdown(tmp_path):

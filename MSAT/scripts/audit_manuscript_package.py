@@ -355,7 +355,7 @@ def write_audit_outputs(audit: dict[str, Any], output_json: Path, output_md: Pat
             "- confirmed external validation of the current case studies;",
             "- SHAP-equivalent or causal attribution from perturbation score drops;",
             "- patient-level causal risk adjustment;",
-            "- final full-positive hybrid PU-XMSAT checkpoint attribution unless an explicit PU predictor checkpoint is exported and used for re-scoring.",
+            "- broad mechanism validation beyond the final-checkpoint top-prediction cases that have explicit mechanism paths.",
             "",
             "## Packaging Rule",
             "",

@@ -181,6 +181,26 @@ def test_batch_review_queue_sorts_by_path_then_target_then_component_drop():
     assert queue["summary"]["ready_strong_evidence_count"] == 0
 
 
+def test_batch_review_queue_uses_max_node_drop_after_path_drop():
+    payload = _batch_payload()
+    payload["cases"][0]["pathway_contributions"][0]["score_drop"] = 0.0
+    payload["cases"][0]["target_contributions"][0]["score_drop"] = 0.15
+    payload["cases"][0]["component_contributions"][0]["score_drop"] = 0.1
+    payload["cases"][1]["pathway_contributions"][0]["score_drop"] = 0.0
+    payload["cases"][1]["target_contributions"][0]["score_drop"] = 0.05
+    payload["cases"][1]["component_contributions"][0]["score_drop"] = 0.6
+
+    queue = build_targeted_review_queue(
+        payload,
+        _case_evidence_payload(),
+        _manual_review_payload(),
+    )
+
+    assert [row["herb_id"] for row in queue["rows"]] == [2, 1]
+    assert queue["rows"][0]["max_node_score_drop"] == 0.6
+    assert queue["rows"][0]["ready_for_strong_evidence_writeup"] is False
+
+
 def test_automated_direct_support_does_not_make_ready_without_manual_grade():
     evidence = _case_evidence_payload()
     evidence["rows"][0]["evidence_grade"] = "A"

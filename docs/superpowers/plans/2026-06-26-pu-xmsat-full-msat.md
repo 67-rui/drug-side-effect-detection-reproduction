@@ -519,8 +519,8 @@ Expected: `results/pu_training_summary.json` has `training_backend: full_msat_pu
 - [ ] **Step 4: Pull server pilot results and inspect**
 
 ```bash
-rsync -azP -e "ssh -i /tmp/codex_autodl_key -p 32565 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/tmp/codex_known_hosts_autodl" \
-  root@connect.westb.seetacloud.com:/root/autodl-tmp/drug-detect/MSAT/results/pu_training_summary.json \
+rsync -azP -e "ssh -i /tmp/codex_autodl_key -p <PORT> -o StrictHostKeyChecking=no -o UserKnownHostsFile=/tmp/codex_known_hosts_autodl" \
+  root@<REMOTE_HOST>:/root/autodl-tmp/drug-detect/MSAT/results/pu_training_summary.json \
   /Users/a67_2024/Desktop/drug-detect/MSAT/results/pu_training_summary.json
 ```
 

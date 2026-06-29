@@ -1,29 +1,19 @@
 case_index,contribution_type,source,herb_id,adr_id,original_score,feature,node_type,node_id,path_index,path_text,path_features,masked_score,score_drop
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:3223,target,3223,,,,0.4664551317691803,0.0098346472
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,compound:523,compound,523,,,,0.4760511517524719,0.0002386272
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,compound:435,compound,435,,,,0.47607624530792236,0.0002135336
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:8101,target,8101,,,,0.4762183427810669,7.14362e-05
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:12337,target,12337,,,,0.47626176476478577,2.80142e-05
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:8967,target,8967,,,,0.4762618839740753,2.7895e-05
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:2432,target,2432,,,,0.4762842059135437,5.573e-06
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:12333,target,12333,,,,0.47628679871559143,2.9802e-06
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:7802,target,7802,,,,0.4762877821922302,1.9968e-06
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:14208,target,14208,,,,0.47628945112228394,3.278e-07
-1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,compound:875,compound,875,,,,0.481732040643692,-0.0054422617
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:4,,,4,枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea,compound:523;target:3223,0.4662156105041504,0.0100741684
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:13,,,13,成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8101 ← Watery diarrhoea,compound:435;target:8101,0.47600480914115906,0.0002849698
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:5,,,5,枳实（Citrus aurantium L.） → Compound #523 → Target #12337 → Watery diarrhoea,compound:523;target:12337,0.4760230779647827,0.000266701
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:9,,,9,成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #12337 ← Watery diarrhoea,compound:523;target:12337,0.4760230779647827,0.000266701
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:14,,,14,成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8967 ← Watery diarrhoea,compound:435;target:8967,0.4760482907295227,0.0002414882
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:10,,,10,成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #7802 ← Watery diarrhoea,compound:523;target:7802,0.4760492146015167,0.0002405643
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:3,,,3,枳实（Citrus aurantium L.） → Compound #523 → Target #7802 → Watery diarrhoea,compound:523;target:7802,0.4760492146015167,0.0002405643
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:2,,,2,枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8101 → Watery diarrhoea,target:8101,0.4762183427810669,7.14362e-05
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:1,,,1,枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8967 → Watery diarrhoea,target:8967,0.4762618839740753,2.7895e-05
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:11,,,11,成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #2432 ← Watery diarrhoea,compound:875;target:2432,0.48172643780708313,-0.0054366589
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:6,,,6,枳实（Citrus aurantium L.） → Compound #875 → Target #2432 → Watery diarrhoea,compound:875;target:2432,0.48172643780708313,-0.0054366589
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:8,,,8,枳实（Citrus aurantium L.） → Compound #875 → Target #12333 → Watery diarrhoea,compound:875;target:12333,0.48172903060913086,-0.0054392517
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:12,,,12,成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #14208 ← Watery diarrhoea,compound:875;target:14208,0.48173171281814575,-0.0054419339
-1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:7,,,7,枳实（Citrus aurantium L.） → Compound #875 → Target #14208 → Watery diarrhoea,compound:875;target:14208,0.48173171281814575,-0.0054419339
-2,node,table5_top15,237,3989,0.999184787273407,compound:1073,compound,1073,,,,0.9991635084152222,2.12789e-05
-2,node,table5_top15,237,3989,0.999184787273407,target:2586,target,2586,,,,0.999184787273407,0.0
-2,path,table5_top15,237,3989,0.999184787273407,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness,compound:1073;target:2586,0.9991635084152222,2.12789e-05
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,compound:1073,compound,1073,,,,0.9989585876464844,1.26362e-05
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,target:7213,target,7213,,,,0.9989664554595947,4.7684e-06
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,target:2586,target,2586,,,,0.998969316482544,1.9073e-06
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,target:6478,target,6478,,,,0.9989697933197021,1.4305e-06
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,compound:965,compound,965,,,,0.9989711046218872,1.192e-07
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,compound:1023,compound,1023,,,,0.998974084854126,-2.861e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:2,,,2,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness,compound:1073;target:7213,0.9989537000656128,1.75238e-05
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:8,,,8,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness,compound:1073;target:7213,0.9989537000656128,1.75238e-05
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness,compound:1073;target:2586,0.9989566802978516,1.45435e-05
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:7,,,7,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness,compound:1073;target:2586,0.9989566802978516,1.45435e-05
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:10,,,10,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness,compound:965;target:7213,0.9989663362503052,4.8876e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:4,,,4,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness,compound:965;target:7213,0.9989663362503052,4.8876e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:3,,,3,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness,compound:965;target:2586,0.9989691972732544,2.0266e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:9,,,9,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness,compound:965;target:2586,0.9989691972732544,2.0266e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:11,,,11,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness,compound:1023;target:7213,0.998969316482544,1.9073e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:5,,,5,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness,compound:1023;target:7213,0.998969316482544,1.9073e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:12,,,12,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness,compound:1023;target:6478,0.9989726543426514,-1.4305e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:6,,,6,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness,compound:1023;target:6478,0.9989726543426514,-1.4305e-06

@@ -43,6 +43,7 @@ CSV_FIELDS = [
     "evidence_grade",
     "updated_grade_recommendation",
     "manual_review_status",
+    "ready_for_strong_evidence_writeup",
     "paper_use",
     "direct_literature_support",
     "literature_record_count",
@@ -129,6 +130,14 @@ def _review_action(
     return "low_priority_screening"
 
 
+def _ready_for_strong_evidence_writeup(
+    evidence: dict[str, Any],
+    manual: dict[str, Any],
+) -> bool:
+    updated_grade = str(manual.get("updated_grade_recommendation") or "").upper()
+    return bool(manual) and updated_grade in {"A", "B"}
+
+
 def _queue_row(
     case: dict[str, Any],
     evidence_by_pair: dict[tuple[int, int], dict[str, Any]],
@@ -146,6 +155,7 @@ def _queue_row(
     max_target_drop = max(0.0, _float(best_target.get("score_drop")))
     max_component_drop = max(0.0, _float(best_component.get("score_drop")))
     priority_score = max(max_path_drop, max_target_drop, max_component_drop, max_node_drop)
+    ready_for_strong_evidence = _ready_for_strong_evidence_writeup(evidence, manual)
 
     return {
         "herb_id": pair[0],
@@ -167,6 +177,7 @@ def _queue_row(
         "evidence_grade": evidence.get("evidence_grade", ""),
         "updated_grade_recommendation": manual.get("updated_grade_recommendation", ""),
         "manual_review_status": manual.get("manual_review_status", ""),
+        "ready_for_strong_evidence_writeup": ready_for_strong_evidence,
         "paper_use": manual.get("paper_use", ""),
         "direct_literature_support": _truthy(evidence.get("direct_literature_support")),
         "literature_record_count": int(evidence.get("literature_record_count", 0) or 0),
@@ -193,6 +204,7 @@ def build_targeted_review_queue(
     rows.sort(
         key=lambda row: (
             -_float(row.get("max_path_score_drop")),
+            -_float(row.get("max_node_score_drop")),
             -_float(row.get("max_target_score_drop")),
             -_float(row.get("max_component_score_drop")),
             -_float(row.get("original_score")),

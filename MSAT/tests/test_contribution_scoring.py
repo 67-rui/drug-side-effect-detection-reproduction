@@ -1,5 +1,6 @@
 from inference.contribution_scoring import (
     build_key_mechanism_subgraph,
+    enrich_feature_refs,
     extract_node_refs_from_path,
     extract_node_refs_from_paths,
     rank_score_drops,
@@ -86,6 +87,56 @@ def test_build_key_mechanism_subgraph_dedupes_nodes_and_edges():
         {"source": "compound:10", "target": "target:21", "path_indices": [2]},
     ]
     assert subgraph["paths"][0]["features"] == ["compound:10", "target:20"]
+
+
+def test_enrich_feature_refs_adds_readable_display_names_with_fallbacks():
+    class Names:
+        def compound_display(self, node_id):
+            return {10: "Naringin"}.get(node_id, f"Compound #{node_id}")
+
+        def compound_source(self, node_id):
+            return "unit" if node_id == 10 else "unmapped_graph_id"
+
+        def target_display(self, node_id):
+            return {20: "ABCB1"}.get(node_id, f"Target #{node_id}")
+
+        def target_source(self, node_id):
+            return "unit" if node_id == 20 else "unmapped_graph_id"
+
+    refs = [
+        {"feature": "compound:10", "node_type": "compound", "node_id": 10},
+        {"feature": "target:99", "node_type": "target", "node_id": 99},
+    ]
+
+    enriched = enrich_feature_refs(refs, Names())
+
+    assert enriched[0]["display_name"] == "Naringin"
+    assert enriched[0]["name_source"] == "unit"
+    assert enriched[1]["display_name"] == "Target #99"
+    assert enriched[1]["name_source"] == "unmapped_graph_id"
+
+
+def test_build_key_mechanism_subgraph_enriches_nodes_when_names_are_available():
+    class Names:
+        def compound_display(self, node_id):
+            return "Naringin" if node_id == 10 else f"Compound #{node_id}"
+
+        def compound_source(self, node_id):
+            return "unit" if node_id == 10 else "unmapped_graph_id"
+
+        def target_display(self, node_id):
+            return "ABCB1" if node_id == 20 else f"Target #{node_id}"
+
+        def target_source(self, node_id):
+            return "unit" if node_id == 20 else "unmapped_graph_id"
+
+    subgraph = build_key_mechanism_subgraph(
+        ["Herb -> Compound #10 -> Target #20 <- ADR"],
+        entity_names=Names(),
+    )
+
+    assert subgraph["nodes"][0]["display_name"] == "Naringin"
+    assert subgraph["nodes"][1]["display_name"] == "ABCB1"
 
 
 def test_zero_x_dict_node_features_only_clones_selected_node_type():

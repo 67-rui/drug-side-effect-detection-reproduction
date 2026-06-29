@@ -11,9 +11,12 @@ from typing import Any
 CSV_FIELDS = [
     "aggregate_type",
     "feature",
+    "display_name",
+    "name_source",
     "node_type",
     "node_id",
     "path_features",
+    "path_display_features",
     "case_count",
     "occurrence_count",
     "mean_score_drop",
@@ -46,6 +49,13 @@ def _path_features(row: dict[str, Any]) -> str:
     if features:
         return str(features)
     return str(row.get("path_features", ""))
+
+
+def _path_display_features(row: dict[str, Any]) -> str:
+    display = row.get("display_features") or row.get("path_display_features")
+    if isinstance(display, list):
+        return ";".join(str(feature) for feature in display)
+    return str(display or "")
 
 
 def _empty_bucket(**metadata: Any) -> dict[str, Any]:
@@ -134,9 +144,12 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
                 _empty_bucket(
                     aggregate_type="node",
                     feature=feature,
+                    display_name=str(row.get("display_name", "")),
+                    name_source=str(row.get("name_source", "")),
                     node_type=node_type,
                     node_id=node_id,
                     path_features="",
+                    path_display_features="",
                 ),
             )
             score_drop = float(row.get("score_drop", 0.0))
@@ -163,9 +176,12 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
                     _empty_bucket(
                         aggregate_type=group_name,
                         feature=feature,
+                        display_name=str(row.get("display_name", "")),
+                        name_source=str(row.get("name_source", "")),
                         node_type=node_type,
                         node_id=node_id,
                         path_features="",
+                        path_display_features="",
                     ),
                 )
                 score_drop = float(row.get("score_drop", 0.0))
@@ -192,14 +208,18 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
 
         for row in path_rows:
             path_features = _path_features(row)
+            path_display_features = _path_display_features(row)
             bucket = path_buckets.setdefault(
                 path_features,
                 _empty_bucket(
                     aggregate_type="path",
                     feature=str(row.get("feature", "")),
+                    display_name="",
+                    name_source="",
                     node_type="",
                     node_id="",
                     path_features=path_features,
+                    path_display_features=path_display_features,
                 ),
             )
             score_drop = float(row.get("score_drop", 0.0))
@@ -214,14 +234,18 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
 
         for row in case.get("pathway_contributions", []):
             path_features = _path_features(row)
+            path_display_features = _path_display_features(row)
             bucket = pathway_buckets.setdefault(
                 path_features,
                 _empty_bucket(
                     aggregate_type="pathway",
                     feature=str(row.get("feature", "")),
+                    display_name="",
+                    name_source="",
                     node_type="",
                     node_id="",
                     path_features=path_features,
+                    path_display_features=path_display_features,
                 ),
             )
             score_drop = float(row.get("score_drop", 0.0))
@@ -234,26 +258,32 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
             else:
                 near_zero_pathway_count += 1
 
-    top_nodes = _sort_aggregates(
+    all_nodes = _sort_aggregates(
         [_finalize_bucket(bucket) for bucket in node_buckets.values()],
         "feature",
-    )[:top_k]
-    top_paths = _sort_aggregates(
+    )
+    all_paths = _sort_aggregates(
         [_finalize_bucket(bucket) for bucket in path_buckets.values()],
         "path_features",
-    )[:top_k]
-    top_components = _sort_aggregates(
+    )
+    all_components = _sort_aggregates(
         [_finalize_bucket(bucket) for bucket in component_buckets.values()],
         "feature",
-    )[:top_k]
-    top_targets = _sort_aggregates(
+    )
+    all_targets = _sort_aggregates(
         [_finalize_bucket(bucket) for bucket in target_buckets.values()],
         "feature",
-    )[:top_k]
-    top_pathways = _sort_aggregates(
+    )
+    all_pathways = _sort_aggregates(
         [_finalize_bucket(bucket) for bucket in pathway_buckets.values()],
         "path_features",
-    )[:top_k]
+    )
+
+    top_nodes = all_nodes[:top_k]
+    top_paths = all_paths[:top_k]
+    top_components = all_components[:top_k]
+    top_targets = all_targets[:top_k]
+    top_pathways = all_pathways[:top_k]
 
     return {
         "experiment": "contribution_aggregate_summary",
@@ -273,6 +303,14 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
             "candidate_count",
             len(payload.get("cases", [])),
         ),
+        "top_prediction_candidate_count": payload.get("summary", {}).get(
+            "top_prediction_candidate_count",
+            0,
+        ),
+        "coverage_missing_candidate_count": payload.get("summary", {}).get(
+            "coverage_missing_candidate_count",
+            0,
+        ),
         "positive_node_count": positive_node_count,
         "near_zero_node_count": near_zero_node_count,
         "negative_node_count": negative_node_count,
@@ -290,6 +328,11 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
         "negative_pathway_count": negative_pathway_count,
         "fewer_than_top_k_reason": payload.get("summary", {}).get("fewer_than_top_k_reason", ""),
         "top_k": top_k,
+        "all_nodes": all_nodes,
+        "all_paths": all_paths,
+        "all_components": all_components,
+        "all_targets": all_targets,
+        "all_pathways": all_pathways,
         "top_nodes": top_nodes,
         "top_paths": top_paths,
         "top_components": top_components,
@@ -300,11 +343,11 @@ def summarize_contributions(payload: dict, top_k: int = 10) -> dict:
 
 def _write_csv(path: Path, summary: dict) -> None:
     rows = []
-    rows.extend(summary.get("top_pathways", []))
-    rows.extend(summary.get("top_targets", []))
-    rows.extend(summary.get("top_components", []))
-    rows.extend(summary.get("top_paths", []))
-    rows.extend(summary.get("top_nodes", []))
+    rows.extend(summary.get("all_pathways") or summary.get("top_pathways", []))
+    rows.extend(summary.get("all_targets") or summary.get("top_targets", []))
+    rows.extend(summary.get("all_components") or summary.get("top_components", []))
+    rows.extend(summary.get("all_paths") or summary.get("top_paths", []))
+    rows.extend(summary.get("all_nodes") or summary.get("top_nodes", []))
     with path.open("w", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS, lineterminator="\n")
         writer.writeheader()
@@ -319,12 +362,13 @@ def _format_float(value: Any) -> str:
 def _markdown_table(rows: list[dict[str, Any]], aggregate_type: str) -> list[str]:
     if aggregate_type == "path":
         lines = [
-            "| Rank | Path features | Cases | Occurrences | Mean drop | Max drop | Positive | Near-zero | Negative |",
-            "| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+            "| Rank | Path features | Display path | Cases | Occurrences | Mean drop | Max drop | Positive | Near-zero | Negative |",
+            "| ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
         ]
         for index, row in enumerate(rows, start=1):
+            display_path = row.get("path_display_features", "")
             lines.append(
-                f"| {index} | `{row['path_features']}` | {row['case_count']} | "
+                f"| {index} | `{row['path_features']}` | {display_path or ''} | {row['case_count']} | "
                 f"{row['occurrence_count']} | {_format_float(row['mean_score_drop'])} | "
                 f"{_format_float(row['max_score_drop'])} | {row['positive_drop_count']} | "
                 f"{row.get('near_zero_drop_count', 0)} | {row['negative_drop_count']} |"
@@ -332,12 +376,13 @@ def _markdown_table(rows: list[dict[str, Any]], aggregate_type: str) -> list[str
         return lines
 
     lines = [
-        "| Rank | Feature | Type | Cases | Occurrences | Mean drop | Max drop | Positive | Near-zero | Negative |",
-        "| ---: | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| Rank | Feature | Display name | Name source | Type | Cases | Occurrences | Mean drop | Max drop | Positive | Near-zero | Negative |",
+        "| ---: | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for index, row in enumerate(rows, start=1):
         lines.append(
-            f"| {index} | `{row['feature']}` | `{row['node_type']}` | {row['case_count']} | "
+            f"| {index} | `{row['feature']}` | {row.get('display_name', '')} | "
+            f"`{row.get('name_source', '')}` | `{row['node_type']}` | {row['case_count']} | "
             f"{row['occurrence_count']} | {_format_float(row['mean_score_drop'])} | "
             f"{_format_float(row['max_score_drop'])} | {row['positive_drop_count']} | "
             f"{row.get('near_zero_drop_count', 0)} | {row['negative_drop_count']} |"
@@ -352,6 +397,8 @@ def _write_markdown(path: Path, summary: dict) -> None:
         "This report summarizes node-level and path-level perturbation sensitivity across quantified mechanism cases.",
         "",
         f"- Batch candidates summarized: {summary.get('candidate_count', summary['case_count'])}",
+        f"- Top-prediction candidates checked: {summary.get('top_prediction_candidate_count', 0)}",
+        f"- Coverage-missing top-prediction candidates: {summary.get('coverage_missing_candidate_count', 0)}",
         f"- Perturbation-quantified cases: {summary.get('quantified_case_count', summary['case_count'])}",
         f"- Positive node perturbation rows: {summary['positive_node_count']}",
         f"- Near-zero node perturbation rows: {summary.get('near_zero_node_count', 0)}",
@@ -362,6 +409,8 @@ def _write_markdown(path: Path, summary: dict) -> None:
         f"- Checkpoint: `{summary.get('checkpoint_path', 'unknown')}`",
         f"- Checkpoint context: {summary.get('checkpoint_context', 'not specified')}",
         f"- Candidate source: `{summary.get('candidate_source') or 'not recorded'}`",
+        f"- All node aggregates retained: {len(summary.get('all_nodes', summary.get('top_nodes', [])))}",
+        f"- All path aggregates retained: {len(summary.get('all_paths', summary.get('top_paths', [])))}",
         "",
         summary["claim_boundary"],
         "They are not causal effects, not SHAP-equivalent values, and not external clinical validation.",

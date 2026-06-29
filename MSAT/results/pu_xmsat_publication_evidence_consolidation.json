@@ -1,0 +1,132 @@
+{
+  "experiment": "pu_xmsat_publication_evidence_consolidation",
+  "baseline": {
+    "label": "reproduced MSAT baseline",
+    "metrics": {
+      "auc": 0.9792712054370039,
+      "auprc": 0.9770945900180383,
+      "f1": 0.9314507380781967,
+      "mcc": 0.8625197168723113
+    }
+  },
+  "main_runs": [
+    {
+      "label": "hybrid_seed2026",
+      "metrics": {
+        "auc": {
+          "mean": 0.9804203731594349,
+          "std": 0.0016541960224624745,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.0011491677224310104
+        },
+        "auprc": {
+          "mean": 0.9779286270388552,
+          "std": 0.0020294373887556694,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.0008340370208168579
+        },
+        "f1": {
+          "mean": 0.9350642142036277,
+          "std": 0.0041609562619277845,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.0036134761254310588
+        },
+        "mcc": {
+          "mean": 0.8684089438114027,
+          "std": 0.007948236154006885,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.00588922693909133
+        }
+      }
+    },
+    {
+      "label": "hybrid_seed1337",
+      "metrics": {
+        "auc": {
+          "mean": 0.9803921801571366,
+          "std": 0.001528181158845012,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.001120974720132728
+        },
+        "auprc": {
+          "mean": 0.977982962282678,
+          "std": 0.0023928897379091206,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.0008883722646396697
+        },
+        "f1": {
+          "mean": 0.9347671651403737,
+          "std": 0.0034687587824880455,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.003316427062177052
+        },
+        "mcc": {
+          "mean": 0.8683307285560508,
+          "std": 0.005781185509431566,
+          "fold_count": 10,
+          "delta_vs_baseline": 0.005811011683739431
+        }
+      }
+    }
+  ],
+  "ablation": {
+    "run_count": 1,
+    "runs": [
+      {
+        "label": "random_seed2026",
+        "metrics": {
+          "auc": {
+            "mean": 0.979731906784434,
+            "std": 0.0019012642322105736,
+            "fold_count": 10,
+            "delta_vs_baseline": 0.000460701347430148
+          },
+          "auprc": {
+            "mean": 0.9776621033163213,
+            "std": 0.0024383928627156807,
+            "fold_count": 10,
+            "delta_vs_baseline": 0.0005675132982829734
+          },
+          "f1": {
+            "mean": 0.9337760655376354,
+            "std": 0.004443953856436505,
+            "fold_count": 10,
+            "delta_vs_baseline": 0.0023253274594386975
+          },
+          "mcc": {
+            "mean": 0.8660513636765597,
+            "std": 0.008040412886697141,
+            "fold_count": 10,
+            "delta_vs_baseline": 0.003531646804248334
+          }
+        }
+      }
+    ]
+  },
+  "seed_robustness": {
+    "metrics": {
+      "auc": 2.8193002298282366e-05,
+      "auprc": 5.433524382281174e-05,
+      "f1": 0.0002970490632540068,
+      "mcc": 7.821525535189888e-05
+    },
+    "max_seed_spread": 0.0002970490632540068,
+    "source_available": true
+  },
+  "weight_sensitivity": {
+    "reference_label": "u0.2 rn0.8",
+    "run_count": 3,
+    "source_available": true
+  },
+  "main_claim": {
+    "supported_metrics": [
+      "auc",
+      "auprc",
+      "f1",
+      "mcc"
+    ],
+    "unsupported_or_borderline_metrics": [],
+    "claim_text": "Full-positive hybrid PU-XMSAT shows positive reproduced-protocol deltas on the supported metrics across the consolidated main runs."
+  },
+  "claim_boundary": "PU-XMSAT evidence supports incomplete-label mitigation and risk-prioritization under the reproduced MSAT protocol; it is not causal validation, clinical confirmation, or proof that unobserved pairs are true negatives."
+}

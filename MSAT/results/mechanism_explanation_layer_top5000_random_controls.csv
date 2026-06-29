@@ -1,0 +1,61 @@
+contribution_group,rank,feature,display_name,name_source,node_type,node_id,path_features,path_display_features,case_count,occurrence_count,mean_score_drop,max_score_drop,positive_drop_count,near_zero_drop_count,negative_drop_count
+component,1,compound:761,Compound #761,unmapped_graph_id,compound,761,,,3,3,0.0003090699,0.0003184676,3,0,0
+component,2,compound:821,Compound #821,unmapped_graph_id,compound,821,,,4,4,0.0002468973,0.0003134012,4,0,0
+component,3,compound:480,Compound #480,unmapped_graph_id,compound,480,,,5,5,3.44515e-05,4.08292e-05,0,5,0
+component,4,compound:1073,Compound #1073,unmapped_graph_id,compound,1073,,,4,4,2.07871e-05,2.83122e-05,0,4,0
+component,5,compound:1121,Compound #1121,unmapped_graph_id,compound,1121,,,1,1,1.07884e-05,1.07884e-05,0,1,0
+component,6,compound:745,Compound #745,unmapped_graph_id,compound,745,,,2,2,4.1127e-06,4.7684e-06,0,2,0
+component,7,compound:132,Compound #132,unmapped_graph_id,compound,132,,,1,1,4.768e-07,4.768e-07,0,1,0
+component,8,compound:1257,Compound #1257,unmapped_graph_id,compound,1257,,,2,2,3.576e-07,3.576e-07,0,2,0
+component,9,compound:965,Compound #965,unmapped_graph_id,compound,965,,,3,3,1.987e-07,2.384e-07,0,3,0
+component,10,compound:435,Compound #435,unmapped_graph_id,compound,435,,,3,3,1.589e-07,2.384e-07,0,3,0
+component,11,compound:278,Compound #278,unmapped_graph_id,compound,278,,,2,2,-5.96e-08,0.0,0,2,0
+component,12,compound:876,Compound #876,unmapped_graph_id,compound,876,,,3,3,-7.95e-08,0.0,0,3,0
+component,13,compound:1019,Compound #1019,unmapped_graph_id,compound,1019,,,1,1,-1.192e-07,-1.192e-07,0,1,0
+component,14,compound:610,Compound #610,unmapped_graph_id,compound,610,,,2,2,-2.384e-07,-2.384e-07,0,2,0
+component,15,compound:699,Compound #699,unmapped_graph_id,compound,699,,,1,1,-2.384e-07,-2.384e-07,0,1,0
+component,16,compound:613,Compound #613,unmapped_graph_id,compound,613,,,3,3,-2.8809e-06,-2.3842e-06,0,3,0
+component,17,compound:1023,Compound #1023,unmapped_graph_id,compound,1023,,,5,5,-3.1948e-06,1.4305e-06,0,5,0
+component,18,compound:1243,Compound #1243,unmapped_graph_id,compound,1243,,,3,3,-3.9737e-06,1.4305e-06,0,3,0
+component,19,compound:1329,Compound #1329,unmapped_graph_id,compound,1329,,,1,1,-1.2517e-05,-1.2517e-05,0,1,0
+component,20,compound:443,Compound #443,unmapped_graph_id,compound,443,,,4,4,-4.10676e-05,-3.34382e-05,0,4,0
+target,1,target:15721,Target #15721,unmapped_graph_id,target,15721,,,1,1,0.0011743903,0.0011743903,1,0,0
+target,2,target:1782,Target #1782,unmapped_graph_id,target,1782,,,1,1,9.59039e-05,9.59039e-05,0,1,0
+target,3,target:15692,Target #15692,unmapped_graph_id,target,15692,,,2,2,5.19156e-05,0.0001020432,1,1,0
+target,4,target:19496,Target #19496,unmapped_graph_id,target,19496,,,1,1,7.391e-06,7.391e-06,0,1,0
+target,5,target:1933,Target #1933,unmapped_graph_id,target,1933,,,1,1,5.3048e-06,5.3048e-06,0,1,0
+target,6,target:13357,Target #13357,unmapped_graph_id,target,13357,,,1,1,4.8876e-06,4.8876e-06,0,1,0
+target,7,target:11486,Target #11486,unmapped_graph_id,target,11486,,,3,3,4.669e-06,5.1856e-06,0,3,0
+target,8,target:7213,Target #7213,unmapped_graph_id,target,7213,,,5,5,4.6492e-06,1.44839e-05,0,5,0
+target,9,target:19382,Target #19382,unmapped_graph_id,target,19382,,,1,1,4.4107e-06,4.4107e-06,0,1,0
+target,10,target:2432,Target #2432,unmapped_graph_id,target,2432,,,3,3,3.6359e-06,5.722e-06,0,3,0
+target,11,target:1774,Target #1774,unmapped_graph_id,target,1774,,,3,3,3.3776e-06,5.1856e-06,0,3,0
+target,12,target:7260,Target #7260,unmapped_graph_id,target,7260,,,1,1,2.5034e-06,2.5034e-06,0,1,0
+target,13,target:2146,Target #2146,unmapped_graph_id,target,2146,,,1,1,2.3842e-06,2.3842e-06,0,1,0
+target,14,target:2586,Target #2586,unmapped_graph_id,target,2586,,,4,4,2.2054e-06,5.4836e-06,0,4,0
+target,15,target:469,Target #469,unmapped_graph_id,target,469,,,1,1,1.5497e-06,1.5497e-06,0,1,0
+target,16,target:6478,Target #6478,unmapped_graph_id,target,6478,,,1,1,1.4305e-06,1.4305e-06,0,1,0
+target,17,target:590,Target #590,unmapped_graph_id,target,590,,,1,1,1.3113e-06,1.3113e-06,0,1,0
+target,18,target:7938,Target #7938,unmapped_graph_id,target,7938,,,1,1,1.3113e-06,1.3113e-06,0,1,0
+target,19,target:9481,Target #9481,unmapped_graph_id,target,9481,,,1,1,1.1921e-06,1.1921e-06,0,1,0
+target,20,target:12639,Target #12639,unmapped_graph_id,target,12639,,,1,1,8.345e-07,8.345e-07,0,1,0
+pathway,1,path:1,,,,,target:15721,Target #15721,1,1,0.0011743903,0.0011743903,1,0,0
+pathway,2,path:2,,,,,compound:821;target:11486,Compound #821;Target #11486,1,1,0.0003195405,0.0003195405,1,0,0
+pathway,3,path:1,,,,,compound:821;target:469,Compound #821;Target #469,1,1,0.0003153086,0.0003153086,1,0,0
+pathway,4,path:1,,,,,compound:761;target:7802,Compound #761;Target #7802,2,2,0.0003143549,0.0003178716,2,0,0
+pathway,5,path:6,,,,,compound:761;target:2432,Compound #761;Target #2432,1,1,0.0003102422,0.0003102422,1,0,0
+pathway,6,path:4,,,,,compound:761;target:19336,Compound #761;Target #19336,1,1,0.0002995729,0.0002995729,1,0,0
+pathway,7,path:1,,,,,compound:821;target:19336,Compound #821;Target #19336,1,1,0.0002631545,0.0002631545,1,0,0
+pathway,8,path:2,,,,,compound:821;target:1774,Compound #821;Target #1774,1,1,0.0002136827,0.0002136827,1,0,0
+pathway,9,path:1,,,,,compound:821;target:2586,Compound #821;Target #2586,2,2,0.0002096295,0.0002143979,2,0,0
+pathway,10,path:2,,,,,compound:1073;target:15692,Compound #1073;Target #15692,1,1,0.0001240373,0.0001240373,1,0,0
+pathway,11,path:4,,,,,compound:965;target:15692,Compound #965;Target #15692,1,1,0.0001021624,0.0001021624,1,0,0
+pathway,12,path:5,,,,,compound:1023;target:1782,Compound #1023;Target #1782,1,1,9.7096e-05,9.7096e-05,0,1,0
+pathway,13,path:2,,,,,compound:480;target:11486,Compound #480;Target #11486,1,1,4.56572e-05,4.56572e-05,0,1,0
+pathway,14,path:1,,,,,compound:480;target:7213,Compound #480;Target #7213,2,2,4.43757e-05,4.44651e-05,0,2,0
+pathway,15,path:2,,,,,compound:480;target:1933,Compound #480;Target #1933,1,1,3.78489e-05,3.78489e-05,0,1,0
+pathway,16,path:2,,,,,compound:480;target:13438,Compound #480;Target #13438,1,1,3.76105e-05,3.76105e-05,0,1,0
+pathway,17,path:1,,,,,compound:480;target:19336,Compound #480;Target #19336,1,1,3.74913e-05,3.74913e-05,0,1,0
+pathway,18,path:2,,,,,compound:480;target:2432,Compound #480;Target #2432,1,1,3.52263e-05,3.52263e-05,0,1,0
+pathway,19,path:1,,,,,compound:480;target:7938,Compound #480;Target #7938,1,1,3.36766e-05,3.36766e-05,0,1,0
+pathway,20,path:2,,,,,compound:480;target:2586,Compound #480;Target #2586,1,1,3.35574e-05,3.35574e-05,0,1,0

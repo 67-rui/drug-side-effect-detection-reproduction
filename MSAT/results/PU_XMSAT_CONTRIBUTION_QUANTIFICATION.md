@@ -2,77 +2,48 @@
 
 This report quantifies local contribution by zeroing input feature vectors for mechanism nodes or whole mechanism paths, then re-scoring the same CMM-ADR pair with the trained MSAT predictor.
 
-- Cases quantified: 2
-- Generated at: 2026-06-29T12:19:30.908063
-- Checkpoint: `/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt`
-- Checkpoint context: Local predictor checkpoint sensitivity analysis. This is not final full-positive hybrid PU-XMSAT checkpoint attribution unless an explicit PU predictor checkpoint is exported and used.
+- Cases quantified: 1
+- Generated at: 2026-06-29T14:43:41.817720
+- Checkpoint: `saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt`
+- Checkpoint context: Final full-positive hybrid PU-XMSAT checkpoint perturbation sensitivity. This remains local model sensitivity, not causal or external validation.
 
 Perturbation score drops are local sensitivity signals, not causal effects.
 Negative score drops mean the score increased after masking; they should be interpreted as suppressive or non-supportive sensitivity signals, not as confirmed protective biology.
 
-## Case 1: herb 277 -> ADR 2931
+## Case 1: herb 237 -> ADR 3989
 
-- Source: `case_zhishi_diarrhoea`
-- Original score: 0.476290
-- Key subgraph nodes: 11
-- Key subgraph edges: 8
-- Quantified node refs: 11/11
+- Source: `pu_xmsat_global_unobserved_pairs`
+- Original score: 0.998971
+- Key subgraph nodes: 6
+- Key subgraph edges: 6
+- Quantified node refs: 6/6
 - Node refs truncated: no
 
 ### Node Contributions
 
 | Feature | Type | Masked score | Score drop |
 | --- | --- | ---: | ---: |
-| `target:3223` | `target` | 0.466455 | 0.009835 |
-| `compound:523` | `compound` | 0.476051 | 0.000239 |
-| `compound:435` | `compound` | 0.476076 | 0.000214 |
-| `target:8101` | `target` | 0.476218 | 0.000071 |
-| `target:12337` | `target` | 0.476262 | 0.000028 |
-| `target:8967` | `target` | 0.476262 | 0.000028 |
-| `target:2432` | `target` | 0.476284 | 0.000006 |
-| `target:12333` | `target` | 0.476287 | 0.000003 |
-| `target:7802` | `target` | 0.476288 | 0.000002 |
-| `target:14208` | `target` | 0.476289 | 0.000000 |
-| `compound:875` | `compound` | 0.481732 | -0.005442 |
+| `compound:1073` | `compound` | 0.998959 | 0.000013 |
+| `target:7213` | `target` | 0.998966 | 0.000005 |
+| `target:2586` | `target` | 0.998969 | 0.000002 |
+| `target:6478` | `target` | 0.998970 | 0.000001 |
+| `compound:965` | `compound` | 0.998971 | 0.000000 |
+| `compound:1023` | `compound` | 0.998974 | -0.000003 |
 
 ### Path Contributions
 
 | Path | Features | Masked score | Score drop |
 | --- | --- | ---: | ---: |
-| `path:4` | `compound:523`, `target:3223` | 0.466216 | 0.010074 |
-| `path:13` | `compound:435`, `target:8101` | 0.476005 | 0.000285 |
-| `path:5` | `compound:523`, `target:12337` | 0.476023 | 0.000267 |
-| `path:9` | `compound:523`, `target:12337` | 0.476023 | 0.000267 |
-| `path:14` | `compound:435`, `target:8967` | 0.476048 | 0.000241 |
-| `path:10` | `compound:523`, `target:7802` | 0.476049 | 0.000241 |
-| `path:3` | `compound:523`, `target:7802` | 0.476049 | 0.000241 |
-| `path:2` | `target:8101` | 0.476218 | 0.000071 |
-| `path:1` | `target:8967` | 0.476262 | 0.000028 |
-| `path:11` | `compound:875`, `target:2432` | 0.481726 | -0.005437 |
-| `path:6` | `compound:875`, `target:2432` | 0.481726 | -0.005437 |
-| `path:8` | `compound:875`, `target:12333` | 0.481729 | -0.005439 |
-| `path:12` | `compound:875`, `target:14208` | 0.481732 | -0.005442 |
-| `path:7` | `compound:875`, `target:14208` | 0.481732 | -0.005442 |
-
-## Case 2: herb 237 -> ADR 3989
-
-- Source: `table5_top15`
-- Original score: 0.999185
-- Key subgraph nodes: 2
-- Key subgraph edges: 1
-- Quantified node refs: 2/2
-- Node refs truncated: no
-
-### Node Contributions
-
-| Feature | Type | Masked score | Score drop |
-| --- | --- | ---: | ---: |
-| `compound:1073` | `compound` | 0.999164 | 0.000021 |
-| `target:2586` | `target` | 0.999185 | 0.000000 |
-
-### Path Contributions
-
-| Path | Features | Masked score | Score drop |
-| --- | --- | ---: | ---: |
-| `path:1` | `compound:1073`, `target:2586` | 0.999164 | 0.000021 |
+| `path:2` | `compound:1073`, `target:7213` | 0.998954 | 0.000018 |
+| `path:8` | `compound:1073`, `target:7213` | 0.998954 | 0.000018 |
+| `path:1` | `compound:1073`, `target:2586` | 0.998957 | 0.000015 |
+| `path:7` | `compound:1073`, `target:2586` | 0.998957 | 0.000015 |
+| `path:10` | `compound:965`, `target:7213` | 0.998966 | 0.000005 |
+| `path:4` | `compound:965`, `target:7213` | 0.998966 | 0.000005 |
+| `path:3` | `compound:965`, `target:2586` | 0.998969 | 0.000002 |
+| `path:9` | `compound:965`, `target:2586` | 0.998969 | 0.000002 |
+| `path:11` | `compound:1023`, `target:7213` | 0.998969 | 0.000002 |
+| `path:5` | `compound:1023`, `target:7213` | 0.998969 | 0.000002 |
+| `path:12` | `compound:1023`, `target:6478` | 0.998973 | -0.000001 |
+| `path:6` | `compound:1023`, `target:6478` | 0.998973 | -0.000001 |
 

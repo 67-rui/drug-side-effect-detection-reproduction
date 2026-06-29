@@ -107,6 +107,17 @@ def test_summarize_contributions_aggregates_repeated_nodes_and_paths():
     assert summary["top_paths"][0]["case_count"] == 2
     assert summary["top_paths"][0]["occurrence_count"] == 2
     assert summary["top_paths"][0]["negative_drop_count"] == 0
+    assert len(summary["all_nodes"]) == 3
+    assert len(summary["all_paths"]) == 2
+
+
+def test_summarize_contributions_keeps_all_aggregates_when_top_k_is_small():
+    summary = summarize_contributions(_contribution_payload(), top_k=1)
+
+    assert len(summary["top_nodes"]) == 1
+    assert len(summary["top_paths"]) == 1
+    assert len(summary["all_nodes"]) == 3
+    assert len(summary["all_paths"]) == 2
 
 
 def test_summarize_batch_payload_splits_component_target_pathway_groups():
@@ -116,7 +127,12 @@ def test_summarize_batch_payload_splits_component_target_pathway_groups():
         "checkpoint_context": "fallback contribution rows",
         "candidate_source": "transitional_mechanism_supported_artifacts",
         "candidate_source_note": "not final PU-XMSAT top-ranking export",
-        "summary": {"requested_top_k": 20, "quantified_case_count": 1},
+        "summary": {
+            "requested_top_k": 20,
+            "top_prediction_candidate_count": 20,
+            "coverage_missing_candidate_count": 19,
+            "quantified_case_count": 1,
+        },
         "cases": [
             {
                 "case_index": 1,
@@ -140,10 +156,61 @@ def test_summarize_batch_payload_splits_component_target_pathway_groups():
 
     assert summary["source_experiment"] == "batch_mechanism_interpretability"
     assert summary["candidate_source"] == "transitional_mechanism_supported_artifacts"
+    assert summary["top_prediction_candidate_count"] == 20
+    assert summary["coverage_missing_candidate_count"] == 19
     assert summary["top_components"][0]["feature"] == "compound:10"
     assert summary["top_targets"][0]["feature"] == "target:20"
     assert summary["top_pathways"][0]["path_features"] == "compound:10;target:20"
     assert summary["negative_pathway_count"] == 1
+
+
+def test_summarize_batch_payload_preserves_display_names_and_sources():
+    batch_payload = {
+        "experiment": "batch_mechanism_interpretability",
+        "cases": [
+            {
+                "case_index": 1,
+                "herb_id": 1,
+                "adr_id": 2,
+                "source": "case_a",
+                "component_contributions": [
+                    {
+                        "feature": "compound:10",
+                        "display_name": "Naringin",
+                        "name_source": "unit",
+                        "node_type": "compound",
+                        "node_id": 10,
+                        "score_drop": 0.1,
+                    }
+                ],
+                "target_contributions": [
+                    {
+                        "feature": "target:20",
+                        "display_name": "ABCB1",
+                        "name_source": "unit",
+                        "node_type": "target",
+                        "node_id": 20,
+                        "score_drop": 0.2,
+                    }
+                ],
+                "pathway_contributions": [
+                    {
+                        "path_features": "compound:10;target:20",
+                        "path_display_features": "Naringin;ABCB1",
+                        "features": ["compound:10", "target:20"],
+                        "score_drop": 0.3,
+                    }
+                ],
+            }
+        ],
+    }
+
+    summary = summarize_contributions(batch_payload, top_k=3)
+
+    assert summary["top_components"][0]["display_name"] == "Naringin"
+    assert summary["top_components"][0]["name_source"] == "unit"
+    assert summary["top_targets"][0]["display_name"] == "ABCB1"
+    assert summary["top_pathways"][0]["path_display_features"] == "Naringin;ABCB1"
 
 
 def test_summary_artifacts_preserve_claim_boundaries(tmp_path):

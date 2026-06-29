@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-06-29T12:58:38.575774",
+  "created_at": "2026-06-29T16:21:50.315517",
   "ok": true,
   "manuscript_dir": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf",
   "zip_path": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf.zip",
@@ -20,7 +20,7 @@
       "tools/",
       "tools/build_figures.py"
     ],
-    "page_count": 12,
+    "page_count": 13,
     "page_size": "612 x 792 pts (letter)",
     "failed_check_count": 0,
     "warning_check_count": 1
@@ -77,7 +77,7 @@
     {
       "name": "pdf_page_count",
       "status": "pass",
-      "details": "pages=12"
+      "details": "pages=13"
     },
     {
       "name": "pdf_letter_paper",

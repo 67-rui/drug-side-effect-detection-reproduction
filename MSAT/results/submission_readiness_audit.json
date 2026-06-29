@@ -1,6 +1,6 @@
 {
   "experiment": "submission_readiness_audit",
-  "created_at": "2026-06-29T12:58:47.754993",
+  "created_at": "2026-06-29T16:21:50.350959",
   "manuscript_dir": "../Template/PU-XMSAT-Overleaf",
   "main_tex": "../Template/PU-XMSAT-Overleaf/main.tex",
   "ready_for_submission": false,

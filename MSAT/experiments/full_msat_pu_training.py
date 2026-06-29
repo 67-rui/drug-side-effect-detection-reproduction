@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import copy
 from dataclasses import dataclass
+import json
 from pathlib import Path
+import re
 import time
 
 import numpy as np
@@ -12,6 +14,11 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 
 from config import DataConfig, ModelConfig, TrainingConfig
 from experiments.feature_extractor import FeatureExtractor
+from experiments.cluster_holdout_generalization import (
+    build_cluster_holdout_split,
+    cluster_herb_features,
+    summarize_cluster_holdout_split,
+)
 from experiments.pu_data_utils import read_jsonl
 from experiments.pu_dataset_builder import build_pu_training_arrays
 from experiments.pu_training import train_one_epoch_weighted_probabilities
@@ -49,12 +56,34 @@ class FullMSATPUConfig:
     training_backend: str = "full_msat_pu"
     checkpoint_prefix: str = "pu_xmsat"
     save_checkpoints: bool = False
-    checkpoint_dir: Path = Path("saved_models")
+    checkpoint_dir: Path = Path("saved_models/pu_xmsat_formal")
     threshold_strategy: str = "fixed_0_5"
+    allow_checkpoint_overwrite: bool = False
+    split_mode: str = "official_fold"
+    n_clusters: int = 10
+    cluster_feature: str = "herb_x"
 
 
 def _safe_float_token(value: float) -> str:
     return str(float(value)).replace(".", "p").replace("-", "m")
+
+
+def _safe_name_token(value: str) -> str:
+    token = re.sub(r"[^A-Za-z0-9]+", "_", str(value).strip())
+    token = re.sub(r"_+", "_", token).strip("_")
+    return token or "unknown"
+
+
+def _safe_int_token(value: int) -> str:
+    return str(int(value)).replace("-", "m")
+
+
+def _compact_threshold_token(threshold_strategy: str) -> str:
+    if threshold_strategy == "val_f1":
+        return "valf1"
+    if threshold_strategy == "fixed_0_5":
+        return "fixed0p5"
+    return _safe_name_token(threshold_strategy)
 
 
 def formal_checkpoint_prefix(
@@ -67,9 +96,11 @@ def formal_checkpoint_prefix(
     reliable_negative_weight: float,
 ) -> str:
     return (
-        f"{backend}_strategy-{sampling_strategy}_seed-{int(seed)}_pairs-{int(max_pairs)}_"
-        f"threshold-{threshold_strategy}_uw-{_safe_float_token(unlabeled_weight)}_"
-        f"rnw-{_safe_float_token(reliable_negative_weight)}"
+        f"pu_xmsat_{_safe_name_token(backend)}_{_safe_name_token(sampling_strategy)}_"
+        f"seed{_safe_int_token(seed)}_pairs{_safe_int_token(max_pairs)}_"
+        f"{_compact_threshold_token(threshold_strategy)}_"
+        f"u{_safe_float_token(unlabeled_weight)}_"
+        f"rn{_safe_float_token(reliable_negative_weight)}"
     )
 
 
@@ -136,11 +167,16 @@ def _positive_pairs_from_train_data(
     train_data: dict,
     train_indices: np.ndarray,
     limit: int,
+    allowed_train_herbs: set[int] | None = None,
 ) -> list[tuple[int, int]]:
     positives = [
         (int(train_data["herb_indices"][idx]), int(train_data["adr_indices"][idx]))
         for idx in train_indices
         if int(train_data["labels"][idx]) == 1
+        and (
+            allowed_train_herbs is None
+            or int(train_data["herb_indices"][idx]) in allowed_train_herbs
+        )
     ]
     return positives[:limit]
 
@@ -181,11 +217,13 @@ def _first_unobserved_pairs(
     positive_pairs: set[tuple[int, int]],
     excluded_pairs: set[tuple[int, int]],
     count: int,
+    allowed_herbs: set[int] | None = None,
 ) -> list[tuple[int, int]]:
     pairs: list[tuple[int, int]] = []
     if count <= 0:
         return pairs
-    for herb_id in range(num_herbs):
+    herb_ids = sorted(allowed_herbs) if allowed_herbs is not None else range(num_herbs)
+    for herb_id in herb_ids:
         for adr_id in range(num_adrs):
             pair = (herb_id, adr_id)
             if pair in positive_pairs or pair in excluded_pairs:
@@ -222,12 +260,14 @@ def build_full_fold_pu_arrays(
     candidate_cache: str | Path,
     sampling_strategy: str,
     seed: int,
+    allowed_train_herbs: set[int] | None = None,
 ) -> tuple[dict[str, np.ndarray], dict]:
     per_type = max(1, int(max_pairs) // 3)
     positive_pairs = _positive_pairs_from_train_data(
         train_data,
         train_indices,
         limit=per_type,
+        allowed_train_herbs=allowed_train_herbs,
     )
     positive_pair_set = set(positive_pairs)
 
@@ -237,6 +277,7 @@ def build_full_fold_pu_arrays(
         if 0 <= row.herb_id < num_herbs
         and 0 <= row.adr_id < num_adrs
         and (row.herb_id, row.adr_id) not in all_positive_pairs
+        and (allowed_train_herbs is None or row.herb_id in allowed_train_herbs)
     ]
     reliable_negatives = _select_candidate_scores(
         candidates,
@@ -261,6 +302,7 @@ def build_full_fold_pu_arrays(
             positive_pairs=all_positive_pairs,
             excluded_pairs=excluded_pairs,
             count=per_type - len(reliable_negatives),
+            allowed_herbs=allowed_train_herbs,
         )
         reliable_negatives.extend(
             CandidateScore(herb_id=h, adr_id=a, reliability_score=0.0)
@@ -277,6 +319,7 @@ def build_full_fold_pu_arrays(
                 positive_pairs=all_positive_pairs,
                 excluded_pairs=excluded_pairs,
                 count=per_type - len(candidate_unlabeled),
+                allowed_herbs=allowed_train_herbs,
             )
         )
 
@@ -293,15 +336,150 @@ def build_full_fold_pu_arrays(
         "unlabeled_pairs": len(candidate_unlabeled),
         "total_pairs": int(len(arrays["label"])),
         "sampling_strategy": sampling_strategy,
+        "allowed_train_herb_count": (
+            len(allowed_train_herbs) if allowed_train_herbs is not None else num_herbs
+        ),
+        "excluded_herb_count": (
+            num_herbs - len(allowed_train_herbs) if allowed_train_herbs is not None else 0
+        ),
     }
     return arrays, metadata
+
+
+def _cluster_holdout_fold_data(
+    data,
+    all_positive_pairs: set[tuple[int, int]],
+    fold_idx: int,
+    config: FullMSATPUConfig,
+    seed: int,
+) -> tuple[dict, dict, dict, set[int]]:
+    if config.cluster_feature != "herb_x":
+        raise ValueError("cluster_feature currently supports only 'herb_x'")
+    herb_features = data["herb"].x.detach().cpu().numpy()
+    cluster_labels = cluster_herb_features(
+        herb_features,
+        n_clusters=int(config.n_clusters),
+        seed=int(seed),
+    )
+    holdout_cluster = int(fold_idx) % int(config.n_clusters)
+    positive_pairs = np.asarray(sorted(all_positive_pairs), dtype=np.int64)
+    split = build_cluster_holdout_split(
+        positive_pairs=positive_pairs,
+        cluster_labels=cluster_labels,
+        holdout_cluster=holdout_cluster,
+        num_adrs=int(data["adr"].x.size(0)),
+        neg_ratio=DataConfig.TEST_NEG_RATIO,
+        seed=int(seed) + int(fold_idx),
+    )
+    summary = summarize_cluster_holdout_split(split)
+    summary.update(
+        {
+            "n_clusters": int(config.n_clusters),
+            "cluster_feature": config.cluster_feature,
+            "cluster_label_counts": {
+                str(label): int((cluster_labels == label).sum())
+                for label in sorted(set(cluster_labels.tolist()))
+            },
+        }
+    )
+    allowed_train_herbs = set(range(int(data["herb"].x.size(0)))) - set(split["heldout_herbs"])
+    return split["train_data"], split["test_data"], summary, allowed_train_herbs
 
 
 def _checkpoint_path(config: FullMSATPUConfig, fold_idx: int) -> Path:
     checkpoint_dir = config.checkpoint_dir
     if not checkpoint_dir.is_absolute():
         checkpoint_dir = MSAT_ROOT / checkpoint_dir
-    return checkpoint_dir / f"{config.checkpoint_prefix}_best_model_fold{fold_idx}.pt"
+    return checkpoint_dir / f"{config.checkpoint_prefix}_fold{fold_idx}.pt"
+
+
+def _checkpoint_metadata_path(checkpoint_path: Path) -> Path:
+    return checkpoint_path.with_suffix(".metadata.json")
+
+
+def build_checkpoint_metadata(
+    checkpoint_path: str | Path,
+    backend: str,
+    sampling_strategy: str,
+    seed: int,
+    fold_idx: int,
+    max_pairs: int,
+    threshold_strategy: str,
+    unlabeled_weight: float,
+    reliable_negative_weight: float,
+    best_epoch: int,
+    best_val_auc: float,
+) -> dict:
+    checkpoint_path = Path(checkpoint_path)
+    metadata_path = _checkpoint_metadata_path(checkpoint_path)
+    protocol = protocol_metadata()
+    return {
+        "backend": backend,
+        "sampling_strategy": sampling_strategy,
+        "seed": int(seed),
+        "fold": int(fold_idx),
+        "pair_budget": int(max_pairs),
+        "threshold_strategy": threshold_strategy,
+        "unlabeled_weight": float(unlabeled_weight),
+        "reliable_negative_weight": float(reliable_negative_weight),
+        "best_epoch": int(best_epoch),
+        "best_val_auc": float(best_val_auc),
+        "validation_best_epoch": int(best_epoch),
+        "validation_auc": float(best_val_auc),
+        "protocol_version": protocol["version"],
+        "protocol": protocol,
+        "checkpoint_path": str(checkpoint_path),
+        "metadata_path": str(metadata_path),
+    }
+
+
+def write_checkpoint_metadata(metadata: dict, checkpoint_path: str | Path) -> Path:
+    metadata_path = _checkpoint_metadata_path(Path(checkpoint_path))
+    metadata_path.write_text(
+        json.dumps(metadata, ensure_ascii=False, indent=2, sort_keys=True),
+        encoding="utf-8",
+    )
+    return metadata_path
+
+
+def _export_checkpoint(
+    best_state: dict,
+    config: FullMSATPUConfig,
+    fold_idx: int,
+    sampling_strategy: str,
+    seed: int,
+    unlabeled_weight: float,
+    reliable_negative_weight: float,
+    best_epoch: int,
+    best_val_auc: float,
+) -> tuple[Path, Path]:
+    checkpoint_path = _checkpoint_path(config, fold_idx)
+    checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+    metadata_path = _checkpoint_metadata_path(checkpoint_path)
+    if not config.allow_checkpoint_overwrite:
+        existing_paths = [path for path in (checkpoint_path, metadata_path) if path.exists()]
+        if existing_paths:
+            existing = ", ".join(str(path) for path in existing_paths)
+            raise FileExistsError(
+                "refusing to overwrite existing PU-XMSAT checkpoint artifact(s): "
+                f"{existing}. Use allow_checkpoint_overwrite=True only for an intentional rerun."
+            )
+    torch.save(_state_dict_to_cpu(best_state), checkpoint_path)
+    metadata = build_checkpoint_metadata(
+        checkpoint_path=checkpoint_path,
+        backend=config.training_backend,
+        sampling_strategy=sampling_strategy,
+        seed=seed,
+        fold_idx=fold_idx,
+        max_pairs=config.max_pairs,
+        threshold_strategy=config.threshold_strategy,
+        unlabeled_weight=unlabeled_weight,
+        reliable_negative_weight=reliable_negative_weight,
+        best_epoch=best_epoch,
+        best_val_auc=best_val_auc,
+    )
+    metadata_path = write_checkpoint_metadata(metadata, checkpoint_path)
+    return checkpoint_path, metadata_path
 
 
 def run_full_msat_pu_fold(
@@ -327,7 +505,20 @@ def run_full_msat_pu_fold(
     )
     data = copy.deepcopy(extractor.get_graph_data())
     all_positive_pairs = _all_positive_pairs(data)
-    train_data, test_data = extractor.load_fold_data(fold_idx)
+    cluster_protocol = {}
+    allowed_train_herbs = None
+    if config.split_mode == "official_fold":
+        train_data, test_data = extractor.load_fold_data(fold_idx)
+    elif config.split_mode == "cluster_holdout":
+        train_data, test_data, cluster_protocol, allowed_train_herbs = _cluster_holdout_fold_data(
+            data=data,
+            all_positive_pairs=all_positive_pairs,
+            fold_idx=fold_idx,
+            config=config,
+            seed=seed,
+        )
+    else:
+        raise ValueError(f"unknown split_mode: {config.split_mode}")
 
     rng = np.random.RandomState(TrainingConfig.RANDOM_STATE + fold_idx)
     indices = rng.permutation(len(train_data["labels"]))
@@ -359,6 +550,7 @@ def run_full_msat_pu_fold(
         candidate_cache=candidate_cache,
         sampling_strategy=sampling_strategy,
         seed=seed + fold_idx,
+        allowed_train_herbs=allowed_train_herbs,
     )
 
     data = data.to(device)
@@ -447,13 +639,23 @@ def run_full_msat_pu_fold(
 
     train_time = time.time() - train_start_time
     checkpoint_path = None
+    metadata_path = None
     if best_state is not None:
         model.load_state_dict(best_state)
         if config.save_checkpoints:
-            checkpoint = _checkpoint_path(config, fold_idx)
-            checkpoint.parent.mkdir(parents=True, exist_ok=True)
-            torch.save(_state_dict_to_cpu(best_state), checkpoint)
+            checkpoint, metadata = _export_checkpoint(
+                best_state=best_state,
+                config=config,
+                fold_idx=fold_idx,
+                sampling_strategy=sampling_strategy,
+                seed=seed,
+                unlabeled_weight=unlabeled_weight,
+                reliable_negative_weight=reliable_negative_weight,
+                best_epoch=best_epoch,
+                best_val_auc=best_val_auc,
+            )
             checkpoint_path = str(checkpoint)
+            metadata_path = str(metadata)
 
     _, val_probs = evaluate(
         model,
@@ -482,6 +684,8 @@ def run_full_msat_pu_fold(
 
     return {
         "fold": fold_idx,
+        "split_mode": config.split_mode,
+        "cluster_protocol": cluster_protocol,
         "training_backend": config.training_backend,
         "best_epoch": best_epoch,
         "best_val_auc": float(best_val_auc),
@@ -497,6 +701,7 @@ def run_full_msat_pu_fold(
         ),
         "training_history": train_history,
         "checkpoint_path": checkpoint_path,
+        "metadata_path": metadata_path,
         "resource_usage": {
             "train_time_seconds": float(train_time),
             "total_time_seconds": float(time.time() - fold_start_time),
@@ -517,7 +722,11 @@ def run_full_msat_pu_experiment(
     threshold_strategy: str = "fixed_0_5",
     save_checkpoints: bool = False,
     checkpoint_prefix: str | None = None,
-    checkpoint_dir: str | Path = Path("saved_models"),
+    checkpoint_dir: str | Path = Path("saved_models/pu_xmsat_formal"),
+    allow_checkpoint_overwrite: bool = False,
+    split_mode: str = "official_fold",
+    n_clusters: int = 10,
+    cluster_feature: str = "herb_x",
 ) -> dict:
     start = time.time()
     resolved_checkpoint_prefix = checkpoint_prefix or formal_checkpoint_prefix(
@@ -536,8 +745,13 @@ def run_full_msat_pu_experiment(
         save_checkpoints=save_checkpoints,
         checkpoint_prefix=resolved_checkpoint_prefix,
         checkpoint_dir=Path(checkpoint_dir),
+        allow_checkpoint_overwrite=allow_checkpoint_overwrite,
+        split_mode=split_mode,
+        n_clusters=int(n_clusters),
+        cluster_feature=cluster_feature,
     )
-    fold_count = min(DataConfig.N_FOLDS, max(1, int(max_folds)))
+    max_available_folds = int(n_clusters) if split_mode == "cluster_holdout" else DataConfig.N_FOLDS
+    fold_count = min(max_available_folds, max(1, int(max_folds)))
     fold_results = [
         run_full_msat_pu_fold(
             fold_idx=fold_idx,
@@ -555,6 +769,16 @@ def run_full_msat_pu_experiment(
         "status": "completed",
         "training_executed": True,
         "training_backend": config.training_backend,
+        "split_mode": config.split_mode,
+        "cluster_protocol": {
+            "n_clusters": int(config.n_clusters),
+            "cluster_feature": config.cluster_feature,
+            "fold_count": int(fold_count),
+            "claim_boundary": (
+                "Cluster-held-out runs test held-out herb-cluster generalization, "
+                "not external clinical validation or causal transportability."
+            ),
+        } if config.split_mode == "cluster_holdout" else {},
         "threshold_strategy": config.threshold_strategy,
         "fold_results": fold_results,
         "mean_metrics": summarize_full_fold_results(fold_results),
@@ -563,6 +787,7 @@ def run_full_msat_pu_experiment(
             "save_checkpoints": bool(save_checkpoints),
             "checkpoint_dir": str(config.checkpoint_dir),
             "checkpoint_prefix": config.checkpoint_prefix,
+            "allow_checkpoint_overwrite": bool(config.allow_checkpoint_overwrite),
             "checkpoint_naming_contract": (
                 "filename includes backend, strategy, seed, pair budget, threshold "
                 "strategy, unlabeled weight, reliable-negative weight, and fold index"
@@ -571,6 +796,11 @@ def run_full_msat_pu_experiment(
                 row.get("checkpoint_path")
                 for row in fold_results
                 if row.get("checkpoint_path")
+            ],
+            "checkpoint_metadata_paths": [
+                row.get("metadata_path")
+                for row in fold_results
+                if row.get("metadata_path")
             ],
         },
         "protocol": protocol_metadata(),

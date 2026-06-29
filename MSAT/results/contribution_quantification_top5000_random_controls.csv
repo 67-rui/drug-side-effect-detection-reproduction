@@ -1,0 +1,199 @@
+case_index,contribution_type,source,herb_id,adr_id,original_score,feature,node_type,node_id,path_index,path_text,path_features,masked_score,score_drop
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,compound:1073,compound,1073,,,,0.9989585876464844,1.26362e-05
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,target:7213,target,7213,,,,0.9989664554595947,4.7684e-06
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,target:2586,target,2586,,,,0.998969316482544,1.9073e-06
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,target:6478,target,6478,,,,0.9989697933197021,1.4305e-06
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,compound:965,compound,965,,,,0.9989711046218872,1.192e-07
+1,node,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,compound:1023,compound,1023,,,,0.998974084854126,-2.861e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:2,,,2,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness,compound:1073;target:7213,0.9989537000656128,1.75238e-05
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness,compound:1073;target:2586,0.9989566802978516,1.45435e-05
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:4,,,4,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness,compound:965;target:7213,0.9989663362503052,4.8876e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:3,,,3,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness,compound:965;target:2586,0.9989691972732544,2.0266e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:5,,,5,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness,compound:1023;target:7213,0.998969316482544,1.9073e-06
+1,path,pu_xmsat_global_unobserved_pairs,237,3989,0.9989712238311768,path:6,,,6,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness,compound:1023;target:6478,0.9989726543426514,-1.4305e-06
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,target:15692,target,15692,,,,0.9981958270072937,0.0001020432
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,target:1782,target,1782,,,,0.9982019662857056,9.59039e-05
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,compound:1073,compound,1073,,,,0.9982779026031494,1.99676e-05
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,target:2432,target,2432,,,,0.9982921481132507,5.722e-06
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,target:19382,target,19382,,,,0.9982934594154358,4.4107e-06
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,compound:1023,compound,1023,,,,0.9982969164848328,9.537e-07
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,compound:132,compound,132,,,,0.998297393321991,4.768e-07
+2,node,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,compound:965,compound,965,,,,0.9982976317405701,2.384e-07
+2,path,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,path:2,,,2,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #15692 ← Leukopenia,compound:1073;target:15692,0.9981738328933716,0.0001240373
+2,path,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,path:4,,,4,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #15692 ← Leukopenia,compound:965;target:15692,0.9981957077980042,0.0001021624
+2,path,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,path:5,,,5,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #1782 ← Leukopenia,compound:1023;target:1782,0.9982007741928101,9.7096e-05
+2,path,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,path:3,,,3,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #19382 ← Leukopenia,compound:1073;target:19382,0.998273491859436,2.43783e-05
+2,path,pu_xmsat_global_unobserved_pairs,237,2481,0.9982978701591492,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #132 → Target #2432 ← Leukopenia,compound:132;target:2432,0.9982916712760925,6.1989e-06
+3,node,pu_xmsat_global_unobserved_pairs,495,3989,0.998244047164917,compound:821,compound,821,,,,0.9980359673500061,0.0002080798
+3,node,pu_xmsat_global_unobserved_pairs,495,3989,0.998244047164917,target:2586,target,2586,,,,0.9982385635375977,5.4836e-06
+3,node,pu_xmsat_global_unobserved_pairs,495,3989,0.998244047164917,target:1774,target,1774,,,,0.9982391595840454,4.8876e-06
+3,path,pu_xmsat_global_unobserved_pairs,495,3989,0.998244047164917,path:1,,,1,成分介导：荷兰种植番红花（Crocus antalyensis cv） → Compound #821 → Target #2586 ← Altered state of consciousness,compound:821;target:2586,0.9980296492576599,0.0002143979
+3,path,pu_xmsat_global_unobserved_pairs,495,3989,0.998244047164917,path:2,,,2,成分介导：荷兰种植番红花（Crocus antalyensis cv） → Compound #821 → Target #1774 ← Altered state of consciousness,compound:821;target:1774,0.9980303645133972,0.0002136827
+4,node,pu_xmsat_global_unobserved_pairs,237,24,0.9982417821884155,compound:745,compound,745,,,,0.9982383251190186,3.4571e-06
+4,node,pu_xmsat_global_unobserved_pairs,237,24,0.9982417821884155,target:19336,target,19336,,,,0.9982417821884155,0.0
+4,node,pu_xmsat_global_unobserved_pairs,237,24,0.9982417821884155,compound:1023,compound,1023,,,,0.9982484579086304,-6.6757e-06
+4,path,pu_xmsat_global_unobserved_pairs,237,24,0.9982417821884155,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #745 → Target #19336 ← Lymph node tenderness,compound:745;target:19336,0.9982383251190186,3.4571e-06
+4,path,pu_xmsat_global_unobserved_pairs,237,24,0.9982417821884155,path:2,,,2,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #19336 ← Lymph node tenderness,compound:1023;target:19336,0.9982484579086304,-6.6757e-06
+5,node,pu_xmsat_global_unobserved_pairs,500,3989,0.9982326030731201,target:7213,target,7213,,,,0.9982319474220276,6.557e-07
+5,node,pu_xmsat_global_unobserved_pairs,500,3989,0.9982326030731201,target:1774,target,1774,,,,0.9982325434684753,5.96e-08
+5,node,pu_xmsat_global_unobserved_pairs,500,3989,0.9982326030731201,compound:610,compound,610,,,,0.9982328414916992,-2.384e-07
+5,path,pu_xmsat_global_unobserved_pairs,500,3989,0.9982326030731201,path:1,,,1,成分介导：同形裂片胡枝子（Lespedeza homoloba） → Compound #610 → Target #7213 ← Altered state of consciousness,compound:610;target:7213,0.9982321858406067,4.172e-07
+5,path,pu_xmsat_global_unobserved_pairs,500,3989,0.9982326030731201,path:2,,,2,成分介导：同形裂片胡枝子（Lespedeza homoloba） → Compound #610 → Target #1774 ← Altered state of consciousness,compound:610;target:1774,0.9982326030731201,0.0
+6,node,pu_xmsat_global_unobserved_pairs,495,4997,0.9981611371040344,compound:821,compound,821,,,,0.9979569911956787,0.0002041459
+6,node,pu_xmsat_global_unobserved_pairs,495,4997,0.9981611371040344,target:2586,target,2586,,,,0.9981604218482971,7.153e-07
+6,path,pu_xmsat_global_unobserved_pairs,495,4997,0.9981611371040344,path:1,,,1,成分介导：荷兰种植番红花（Crocus antalyensis cv） → Compound #821 → Target #2586 ← Jaundice,compound:821;target:2586,0.9979562759399414,0.0002048612
+7,node,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,compound:1073,compound,1073,,,,0.9980872273445129,2.22325e-05
+7,node,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,compound:1121,compound,1121,,,,0.9980986714363098,1.07884e-05
+7,node,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,target:7260,target,7260,,,,0.9981069564819336,2.5034e-06
+7,node,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,target:2146,target,2146,,,,0.9981070756912231,2.3842e-06
+7,node,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,compound:1023,compound,1023,,,,0.9981182813644409,-8.8215e-06
+7,path,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7260 ← Spina bifida,compound:1073;target:7260,0.9980847835540771,2.46763e-05
+7,path,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,path:2,,,2,成分介导：野草莓（Fragaria vesca?L.） → Compound #1121 → Target #2146 ← Spina bifida,compound:1121;target:2146,0.9980961680412292,1.32918e-05
+7,path,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,path:3,,,3,成分介导：野草莓（Fragaria vesca?L.） → Compound #1121 → Target #7260 ← Spina bifida,compound:1121;target:7260,0.9980961680412292,1.32918e-05
+7,path,pu_xmsat_global_unobserved_pairs,237,2453,0.9981094598770142,path:4,,,4,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7260 ← Spina bifida,compound:1023;target:7260,0.9981158971786499,-6.4373e-06
+8,node,pu_xmsat_global_unobserved_pairs,237,3387,0.998056173324585,compound:1073,compound,1073,,,,0.9980278611183167,2.83122e-05
+8,node,pu_xmsat_global_unobserved_pairs,237,3387,0.998056173324585,target:20703,target,20703,,,,0.9980553388595581,8.345e-07
+8,node,pu_xmsat_global_unobserved_pairs,237,3387,0.998056173324585,target:9880,target,9880,,,,0.998056173324585,0.0
+8,path,pu_xmsat_global_unobserved_pairs,237,3387,0.998056173324585,path:2,,,2,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #20703 ← Light anaesthesia,compound:1073;target:20703,0.9980270266532898,2.91467e-05
+8,path,pu_xmsat_global_unobserved_pairs,237,3387,0.998056173324585,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #9880 ← Light anaesthesia,compound:1073;target:9880,0.9980277419090271,2.84314e-05
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,compound:480,compound,480,,,,0.9979656934738159,3.27229e-05
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,target:2586,target,2586,,,,0.9979977011680603,7.153e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,target:5720,target,5720,,,,0.9979978203773499,5.96e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,target:974,target,974,,,,0.997998058795929,3.576e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,target:2197,target,2197,,,,0.9979981780052185,2.384e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,compound:435,compound,435,,,,0.9979982972145081,1.192e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,target:17098,target,17098,,,,0.9979982972145081,1.192e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,compound:278,compound,278,,,,0.9979985356330872,-1.192e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,compound:876,compound,876,,,,0.9979985356330872,-1.192e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,target:4,target,4,,,,0.9979985356330872,-1.192e-07
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,compound:613,compound,613,,,,0.9980008006095886,-2.3842e-06
+9,node,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,compound:443,compound,443,,,,0.9980321526527405,-3.37362e-05
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:2,,,2,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #2586 ← Jaundice,compound:480;target:2586,0.9979648590087891,3.35574e-05
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:1,,,1,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #17098 ← Jaundice,compound:480;target:17098,0.9979654550552368,3.29614e-05
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:5,,,5,成分介导：地钱（Marchantia polymorpha） → Compound #435 → Target #974 ← Jaundice,compound:435;target:974,0.9979978203773499,5.96e-07
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:4,,,4,成分介导：地钱（Marchantia polymorpha） → Compound #876 → Target #5720 ← Jaundice,compound:876;target:5720,0.9979979395866394,4.768e-07
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:6,,,6,成分介导：地钱（Marchantia polymorpha） → Compound #278 → Target #4 ← Jaundice,compound:278;target:4,0.9979986548423767,-2.384e-07
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:3,,,3,成分介导：地钱（Marchantia polymorpha） → Compound #613 → Target #17098 ← Jaundice,compound:613;target:17098,0.9980005621910095,-2.1458e-06
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:8,,,8,成分介导：地钱（Marchantia polymorpha） → Compound #443 → Target #2197 ← Jaundice,compound:443;target:2197,0.9980317950248718,-3.33786e-05
+9,path,pu_xmsat_global_unobserved_pairs,618,4997,0.9979984164237976,path:7,,,7,成分介导：地钱（Marchantia polymorpha） → Compound #443 → Target #4 ← Jaundice,compound:443;target:4,0.99803227186203,-3.38554e-05
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,compound:480,compound,480,,,,0.997880220413208,3.23653e-05
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,target:1933,target,1933,,,,0.997907280921936,5.3048e-06
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,target:1774,target,1774,,,,0.9979074001312256,5.1856e-06
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,compound:1243,compound,1243,,,,0.9979111552238464,1.4305e-06
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,target:7938,target,7938,,,,0.997911274433136,1.3113e-06
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,compound:1257,compound,1257,,,,0.9979122281074524,3.576e-07
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,compound:876,compound,876,,,,0.997912585735321,0.0
+10,node,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,compound:613,compound,613,,,,0.9979149699211121,-2.3842e-06
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:2,,,2,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #1933 ← Altered state of consciousness,compound:480;target:1933,0.9978747367858887,3.78489e-05
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:1,,,1,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #7938 ← Altered state of consciousness,compound:480;target:7938,0.997878909111023,3.36766e-05
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:8,,,8,成分介导：地钱（Marchantia polymorpha） → Compound #1243 → Target #1933 ← Altered state of consciousness,compound:1243;target:1933,0.9979058504104614,6.7353e-06
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:5,,,5,成分介导：地钱（Marchantia polymorpha） → Compound #1257 → Target #1933 ← Altered state of consciousness,compound:1257;target:1933,0.9979069232940674,5.6624e-06
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:7,,,7,成分介导：地钱（Marchantia polymorpha） → Compound #876 → Target #1933 ← Altered state of consciousness,compound:876;target:1933,0.997907280921936,5.3048e-06
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:3,,,3,成分介导：地钱（Marchantia polymorpha） → Compound #613 → Target #1933 ← Altered state of consciousness,compound:613;target:1933,0.9979096055030823,2.9802e-06
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:4,,,4,成分介导：地钱（Marchantia polymorpha） → Compound #613 → Target #1774 ← Altered state of consciousness,compound:613;target:1774,0.9979096055030823,2.9802e-06
+10,path,pu_xmsat_global_unobserved_pairs,618,3989,0.997912585735321,path:6,,,6,成分介导：地钱（Marchantia polymorpha） → Compound #876 → Target #7938 ← Altered state of consciousness,compound:876;target:7938,0.9979113936424255,1.1921e-06
+11,node,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,compound:745,compound,745,,,,0.9977635145187378,4.7684e-06
+11,node,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,compound:1023,compound,1023,,,,0.9977668523788452,1.4305e-06
+11,node,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,compound:965,compound,965,,,,0.9977680444717407,2.384e-07
+11,node,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,target:14492,target,14492,,,,0.9977684020996094,-1.192e-07
+11,node,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,target:6814,target,6814,,,,0.9977684020996094,-1.192e-07
+11,node,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,target:13438,target,13438,,,,0.9977685213088989,-2.384e-07
+11,node,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,target:19336,target,19336,,,,0.9977685213088989,-2.384e-07
+11,path,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,path:3,,,3,成分介导：野草莓（Fragaria vesca?L.） → Compound #745 → Target #19336 ← Mucosal haemorrhage,compound:745;target:19336,0.9977636337280273,4.6492e-06
+11,path,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,path:4,,,4,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #19336 ← Mucosal haemorrhage,compound:1023;target:19336,0.9977670907974243,1.1921e-06
+11,path,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,path:5,,,5,成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #13438 ← Mucosal haemorrhage,compound:1023;target:13438,0.9977670907974243,1.1921e-06
+11,path,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,path:1,,,1,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #14492 ← Mucosal haemorrhage,compound:965;target:14492,0.9977681636810303,1.192e-07
+11,path,pu_xmsat_global_unobserved_pairs,237,2540,0.9977682828903198,path:2,,,2,成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #6814 ← Mucosal haemorrhage,compound:965;target:6814,0.9977681636810303,1.192e-07
+12,node,pu_xmsat_global_unobserved_pairs,373,4230,0.9977574944496155,compound:761,compound,761,,,,0.9974390268325806,0.0003184676
+12,node,pu_xmsat_global_unobserved_pairs,373,4230,0.9977574944496155,target:7802,target,7802,,,,0.9977579712867737,-4.768e-07
+12,path,pu_xmsat_global_unobserved_pairs,373,4230,0.9977574944496155,path:1,,,1,成分介导：甜根多足蕨（Polypodium glycyrrhiza） → Compound #761 → Target #7802 ← Anorectal discomfort,compound:761;target:7802,0.9974396228790283,0.0003178716
+13,node,pu_xmsat_global_unobserved_pairs,495,1810,0.9976300001144409,compound:821,compound,821,,,,0.9973680377006531,0.0002619624
+13,node,pu_xmsat_global_unobserved_pairs,495,1810,0.9976300001144409,target:19336,target,19336,,,,0.9976291060447693,8.941e-07
+13,path,pu_xmsat_global_unobserved_pairs,495,1810,0.9976300001144409,path:1,,,1,成分介导：荷兰种植番红花（Crocus antalyensis cv） → Compound #821 → Target #19336 ← Proteinuria,compound:821;target:19336,0.9973668456077576,0.0002631545
+14,node,pu_xmsat_global_unobserved_pairs,500,5468,0.9976262450218201,target:11486,target,11486,,,,0.9976223111152649,3.9339e-06
+14,node,pu_xmsat_global_unobserved_pairs,500,5468,0.9976262450218201,compound:610,compound,610,,,,0.9976264834403992,-2.384e-07
+14,path,pu_xmsat_global_unobserved_pairs,500,5468,0.9976262450218201,path:1,,,1,成分介导：同形裂片胡枝子（Lespedeza homoloba） → Compound #610 → Target #11486 ← Liver injury,compound:610;target:11486,0.997622549533844,3.6955e-06
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,target:15721,target,15721,,,,0.9963328838348389,0.0011743903
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,compound:761,compound,761,,,,0.9971967935562134,0.0003104806
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,target:7802,target,7802,,,,0.9975070357322693,2.384e-07
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,target:10658,target,10658,,,,0.9975071549415588,1.192e-07
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,target:18046,target,18046,,,,0.9975072741508484,0.0
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,target:7213,target,7213,,,,0.9975072741508484,0.0
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,target:7684,target,7684,,,,0.9975072741508484,0.0
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,compound:1019,compound,1019,,,,0.9975073933601379,-1.192e-07
+15,node,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,target:2432,target,2432,,,,0.9975074529647827,-1.788e-07
+15,path,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,path:1,,,1,共享靶点：甜根多足蕨（Polypodium glycyrrhiza） → Target #15721 ← Watery diarrhoea,target:15721,0.9963328838348389,0.0011743903
+15,path,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,path:7,,,7,成分介导：甜根多足蕨（Polypodium glycyrrhiza） → Compound #761 → Target #7802 ← Watery diarrhoea,compound:761;target:7802,0.9971964359283447,0.0003108382
+15,path,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,path:6,,,6,成分介导：甜根多足蕨（Polypodium glycyrrhiza） → Compound #761 → Target #2432 ← Watery diarrhoea,compound:761;target:2432,0.9971970319747925,0.0003102422
+15,path,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,path:2,,,2,共享靶点：甜根多足蕨（Polypodium glycyrrhiza） → Target #10658 ← Watery diarrhoea,target:10658,0.9975071549415588,1.192e-07
+15,path,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,path:3,,,3,共享靶点：甜根多足蕨（Polypodium glycyrrhiza） → Target #7684 ← Watery diarrhoea,target:7684,0.9975072741508484,0.0
+15,path,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,path:4,,,4,成分介导：甜根多足蕨（Polypodium glycyrrhiza） → Compound #1019 → Target #7213 ← Watery diarrhoea,compound:1019;target:7213,0.9975073933601379,-1.192e-07
+15,path,pu_xmsat_global_unobserved_pairs,373,2931,0.9975072741508484,path:5,,,5,成分介导：甜根多足蕨（Polypodium glycyrrhiza） → Compound #1019 → Target #18046 ← Watery diarrhoea,compound:1019;target:18046,0.9975073933601379,-1.192e-07
+16,node,pu_xmsat_global_unobserved_pairs,495,2095,0.9974880218505859,compound:821,compound,821,,,,0.9971746206283569,0.0003134012
+16,node,pu_xmsat_global_unobserved_pairs,495,2095,0.9974880218505859,target:11486,target,11486,,,,0.9974828362464905,5.1856e-06
+16,node,pu_xmsat_global_unobserved_pairs,495,2095,0.9974880218505859,target:469,target,469,,,,0.9974864721298218,1.5497e-06
+16,path,pu_xmsat_global_unobserved_pairs,495,2095,0.9974880218505859,path:2,,,2,成分介导：荷兰种植番红花（Crocus antalyensis cv） → Compound #821 → Target #11486 ← Dry cough,compound:821;target:11486,0.9971684813499451,0.0003195405
+16,path,pu_xmsat_global_unobserved_pairs,495,2095,0.9974880218505859,path:1,,,1,成分介导：荷兰种植番红花（Crocus antalyensis cv） → Compound #821 → Target #469 ← Dry cough,compound:821;target:469,0.9971727132797241,0.0003153086
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,compound:480,compound,480,,,,0.9974395036697388,3.64184e-05
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,target:13438,target,13438,,,,0.997474730014801,1.1921e-06
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,target:9481,target,9481,,,,0.997474730014801,1.1921e-06
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,target:19336,target,19336,,,,0.9974748492240906,1.0729e-06
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,compound:1257,compound,1257,,,,0.9974755644798279,3.576e-07
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,compound:435,compound,435,,,,0.997475802898407,1.192e-07
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,compound:876,compound,876,,,,0.9974760413169861,-1.192e-07
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,compound:1243,compound,1243,,,,0.9974767565727234,-8.345e-07
+17,node,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,compound:443,compound,443,,,,0.9975200295448303,-4.41074e-05
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:2,,,2,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #13438 ← Proteinuria,compound:480;target:13438,0.9974383115768433,3.76105e-05
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:1,,,1,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #19336 ← Proteinuria,compound:480;target:19336,0.9974384307861328,3.74913e-05
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:3,,,3,成分介导：地钱（Marchantia polymorpha） → Compound #1257 → Target #19336 ← Proteinuria,compound:1257;target:19336,0.9974744915962219,1.4305e-06
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:6,,,6,成分介导：地钱（Marchantia polymorpha） → Compound #435 → Target #19336 ← Proteinuria,compound:435;target:19336,0.9974746108055115,1.3113e-06
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:4,,,4,成分介导：地钱（Marchantia polymorpha） → Compound #876 → Target #19336 ← Proteinuria,compound:876;target:19336,0.9974749684333801,9.537e-07
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:5,,,5,成分介导：地钱（Marchantia polymorpha） → Compound #1243 → Target #19336 ← Proteinuria,compound:1243;target:19336,0.9974756836891174,2.384e-07
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:8,,,8,成分介导：地钱（Marchantia polymorpha） → Compound #443 → Target #9481 ← Proteinuria,compound:443;target:9481,0.9975188970565796,-4.29749e-05
+17,path,pu_xmsat_global_unobserved_pairs,618,1810,0.9974759221076965,path:7,,,7,成分介导：地钱（Marchantia polymorpha） → Compound #443 → Target #19336 ← Proteinuria,compound:443;target:19336,0.9975190162658691,-4.30942e-05
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,compound:480,compound,480,,,,0.9974297881126404,4.08292e-05
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,target:11486,target,11486,,,,0.9974657297134399,4.8876e-06
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,target:7213,target,7213,,,,0.9974672794342041,3.3379e-06
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,target:15692,target,15692,,,,0.9974688291549683,1.7881e-06
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,target:590,target,590,,,,0.9974693059921265,1.3113e-06
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,target:20366,target,20366,,,,0.9974702596664429,3.576e-07
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,compound:435,compound,435,,,,0.9974703788757324,2.384e-07
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,compound:278,compound,278,,,,0.9974706172943115,0.0
+18,node,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,compound:443,compound,443,,,,0.9975040555000305,-3.34382e-05
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:2,,,2,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #11486 ← Dry cough,compound:480;target:11486,0.9974249601364136,4.56572e-05
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:1,,,1,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #7213 ← Dry cough,compound:480;target:7213,0.9974263310432434,4.42863e-05
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:3,,,3,成分介导：地钱（Marchantia polymorpha） → Compound #435 → Target #11486 ← Dry cough,compound:435;target:11486,0.9974654912948608,5.126e-06
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:5,,,5,成分介导：地钱（Marchantia polymorpha） → Compound #278 → Target #11486 ← Dry cough,compound:278;target:11486,0.9974658489227295,4.7684e-06
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:4,,,4,成分介导：地钱（Marchantia polymorpha） → Compound #435 → Target #590 ← Dry cough,compound:435;target:590,0.9974690675735474,1.5497e-06
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:6,,,6,成分介导：地钱（Marchantia polymorpha） → Compound #278 → Target #20366 ← Dry cough,compound:278;target:20366,0.9974703788757324,2.384e-07
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:8,,,8,成分介导：地钱（Marchantia polymorpha） → Compound #443 → Target #7213 ← Dry cough,compound:443;target:7213,0.9975007176399231,-3.01003e-05
+18,path,pu_xmsat_global_unobserved_pairs,618,2095,0.9974706172943115,path:7,,,7,成分介导：地钱（Marchantia polymorpha） → Compound #443 → Target #15692 ← Dry cough,compound:443;target:15692,0.9975022673606873,-3.16501e-05
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,compound:480,compound,480,,,,0.9973264932632446,2.99215e-05
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,target:7213,target,7213,,,,0.9973419308662415,1.44839e-05
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,target:19496,target,19496,,,,0.9973490238189697,7.391e-06
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,target:2432,target,2432,,,,0.9973510503768921,5.3644e-06
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,target:13357,target,13357,,,,0.9973515272140503,4.8876e-06
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,target:12639,target,12639,,,,0.997355580329895,8.345e-07
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,compound:613,compound,613,,,,0.9973602890968323,-3.8743e-06
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,compound:1243,compound,1243,,,,0.9973689317703247,-1.2517e-05
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,compound:1329,compound,1329,,,,0.9973689317703247,-1.2517e-05
+19,node,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,compound:443,compound,443,,,,0.9974094033241272,-5.29885e-05
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:3,,,3,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #7213 ← Essential thrombocythaemia,compound:480;target:7213,0.9973119497299194,4.44651e-05
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:2,,,2,成分介导：地钱（Marchantia polymorpha） → Compound #480 → Target #2432 ← Essential thrombocythaemia,compound:480;target:2432,0.9973211884498596,3.52263e-05
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:1,,,1,共享靶点：地钱（Marchantia polymorpha） → Target #13357 ← Essential thrombocythaemia,target:13357,0.9973515272140503,4.8876e-06
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:4,,,4,成分介导：地钱（Marchantia polymorpha） → Compound #613 → Target #19496 ← Essential thrombocythaemia,compound:613;target:19496,0.9973530769348145,3.3379e-06
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:7,,,7,成分介导：地钱（Marchantia polymorpha） → Compound #1329 → Target #19496 ← Essential thrombocythaemia,compound:1329;target:19496,0.9973616003990173,-5.1856e-06
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:5,,,5,成分介导：地钱（Marchantia polymorpha） → Compound #1243 → Target #19496 ← Essential thrombocythaemia,compound:1243;target:19496,0.9973617196083069,-5.3048e-06
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:6,,,6,成分介导：地钱（Marchantia polymorpha） → Compound #1243 → Target #12639 ← Essential thrombocythaemia,compound:1243;target:12639,0.9973682761192322,-1.18613e-05
+19,path,pu_xmsat_global_unobserved_pairs,618,4759,0.9973564147949219,path:8,,,8,成分介导：地钱（Marchantia polymorpha） → Compound #443 → Target #19496 ← Essential thrombocythaemia,compound:443;target:19496,0.9974023103713989,-4.58956e-05
+20,node,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,compound:761,compound,761,,,,0.9970453381538391,0.0002982616
+20,node,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,target:19336,target,19336,,,,0.9973424077033997,1.1921e-06
+20,node,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,target:19817,target,19817,,,,0.9973435997962952,0.0
+20,node,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,target:5663,target,5663,,,,0.9973435997962952,0.0
+20,node,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,compound:699,compound,699,,,,0.9973438382148743,-2.384e-07
+20,node,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,target:2606,target,2606,,,,0.9973439574241638,-3.576e-07
+20,path,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,path:4,,,4,成分介导：甜根多足蕨（Polypodium glycyrrhiza） → Compound #761 → Target #19336 ← Sulphaemoglobinaemia,compound:761;target:19336,0.997044026851654,0.0002995729
+20,path,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,path:5,,,5,成分介导：甜根多足蕨（Polypodium glycyrrhiza） → Compound #699 → Target #19336 ← Sulphaemoglobinaemia,compound:699;target:19336,0.9973426461219788,9.537e-07
+20,path,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,path:1,,,1,共享靶点：甜根多足蕨（Polypodium glycyrrhiza） → Target #19817 ← Sulphaemoglobinaemia,target:19817,0.9973435997962952,0.0
+20,path,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,path:3,,,3,共享靶点：甜根多足蕨（Polypodium glycyrrhiza） → Target #5663 ← Sulphaemoglobinaemia,target:5663,0.9973435997962952,0.0
+20,path,pu_xmsat_global_unobserved_pairs,373,1155,0.9973435997962952,path:2,,,2,共享靶点：甜根多足蕨（Polypodium glycyrrhiza） → Target #2606 ← Sulphaemoglobinaemia,target:2606,0.9973439574241638,-3.576e-07

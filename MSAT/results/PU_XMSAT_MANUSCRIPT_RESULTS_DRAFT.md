@@ -79,26 +79,50 @@ Current status:
 
 This artifact should be used as the minimal mechanism/external-evidence workflow, not as a claim that Table 5/6 has been equivalently reproduced. The Grade C manual audit is stored in `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`; it confirms that the current Grade C rows support only hypothesis generation and screening, not confirmed external validation. The case-selection decision in `results/PU_XMSAT_CASE_SELECTION_DECISION.md` records that the current project does not yet have a strong positive external-validation case suitable for a Table 5-style claim.
 
-## Mechanism Subgraph and Contribution Quantification
+## Cluster-Held-Out Generalization
 
-The explanation layer now includes a local perturbation-based contribution report in `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, with structured exports in `results/contribution_quantification.json` and `results/contribution_quantification.csv`. A paper-facing aggregate summary is also available in `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`, with structured exports in `results/contribution_aggregate_summary.json` and `results/contribution_aggregate_summary.csv`. The most direct handoff for writing and mentor review is `results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER.md`, with structured exports in `results/mechanism_explanation_layer.json` and `results/mechanism_explanation_layer.csv`. The procedure extracts a key mechanism subgraph from the available paths, then zeroes every parsed compound/target node input feature in the selected subgraphs or all node features in a path and re-scores the same CMM-ADR pair with the local trained predictor checkpoint.
+The mentor-requested cluster-held-out experiment is now represented by `results/PU_XMSAT_CLUSTER_HOLDOUT_GENERALIZATION.md`, with structured exports in `results/cluster_holdout_generalization_summary.json` and `results/pu_xmsat_cluster_holdout_hybrid_seed2026_10cluster_200e_66015p_valf1.json`. This experiment uses the full-positive hybrid PU-XMSAT setting with seed 2026, 10 herb/CMM clusters, 10 heldout-cluster folds, 200 epochs, `max_pairs=66015`, and validation-F1 thresholding.
 
 Current status:
 
-| Case | Source | Key subgraph | Top node drop | Top path drop | Interpretation |
-| --- | --- | ---: | ---: | ---: | --- |
-| herb 277 -> ADR 2931 | `case_zhishi_diarrhoea` | 11 nodes / 8 edges / 14 paths; node coverage 11/11 | `target:3223`, 0.009835 | `compound:523 -> target:3223`, 0.010074 | A concrete perturbation-sensitive target/path is identified, but the external evidence remains direction-conflicting |
-| herb 237 -> ADR 3989 | `table5_top15` | 2 nodes / 1 edge / 1 path; node coverage 2/2 | `compound:1073`, 0.000021 | `compound:1073 -> target:2586`, 0.000021 | The graph path exists, but local perturbation sensitivity is nearly zero and manual evidence review remains unsupported |
+| Protocol | Folds | AUC | AUPRC | F1 | MCC | Interpretation |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| cluster-heldout, hybrid seed=2026 | 10 | 0.889069 | 0.903219 | 0.176976 | 0.191914 | Harder new-CMM/herb-cluster generalization stress test; ranking signal remains, thresholded metrics degrade sharply |
+
+Important caveats:
+
+- Heldout herbs are filtered from PU training positives, reliable negatives, and unlabeled arrays through `allowed_train_herbs`.
+- Validation/test positive CMM-ADR edges are hidden during evaluation.
+- Mechanism edges are retained because the protocol tests structural generalization to held-out herb/CMM clusters, not blind removal of all biological annotations.
+- Cluster sizes are imbalanced: heldout herb counts range from 1 to 207, and 3 heldout clusters contain fewer than 5 herbs. Macro means should therefore be read together with fold-level cluster sizes.
+- This result should be written as a stricter generalization boundary, not as evidence of equally strong deployment performance on unseen herb clusters.
+
+## Mechanism Subgraph and Contribution Quantification
+
+The explanation layer now includes a final-checkpoint-aware perturbation-based contribution report in `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION_TOP5000_RANDOM_CONTROLS.md`, with structured exports in `results/contribution_quantification_top5000_random_controls.json` and `results/contribution_quantification_top5000_random_controls.csv`. A paper-facing aggregate summary is also available in `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY_TOP5000_RANDOM_CONTROLS.md`, with structured exports in `results/contribution_aggregate_summary_top5000_random_controls.json` and `results/contribution_aggregate_summary_top5000_random_controls.csv`. The most direct handoff for writing and mentor review is `results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER_TOP5000_RANDOM_CONTROLS.md`, with structured exports in `results/mechanism_explanation_layer_top5000_random_controls.json` and `results/mechanism_explanation_layer_top5000_random_controls.csv`. The procedure extracts key mechanism subgraphs from parseable final top-5000 prediction paths, then zeroes parsed compound/target node input features in the selected subgraphs or all node features in a path and re-scores the same CMM-ADR pair with the formal full-positive hybrid PU-XMSAT checkpoint.
+
+Current status:
+
+| Scope | Count / value | Interpretation |
+| --- | ---: | --- |
+| Final top predictions checked | 5000 | Complete final PU-XMSAT top-ranking export |
+| Explicit-path candidates | 391 / 5000 | Sparse but systematically measured mechanism coverage |
+| Top-50 / Top-100 / Top-500 / Top-1000 coverage | 1/50; 8/100; 31/500; 64/1000 | Top-ranked predictions are mostly not covered by explicit mechanism paths |
+| Mechanism-supported candidates selected | 20 | Batch-level contribution quantification target set |
+| Quantified cases | 20 | All selected mechanism-supported cases were perturbed |
+| Near-zero sensitivity cases | 12 | Most selected cases show small local sensitivity |
+| Negative case-level score_drop cases | 0 | No selected case had negative case-level score_drop |
+| Ready strong external evidence cases | 0 | Perturbation does not upgrade evidence grade |
 
 Aggregate summary:
 
 | Aggregate | Top feature/path | Cases | Occurrences | Mean drop | Max drop | Interpretation |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
-| Component | `compound:523` | 1 | 1 | 0.000239 | 0.000239 | Strongest current ingredient/component sensitivity |
-| Target | `target:3223` | 1 | 1 | 0.009835 | 0.009835 | Strongest current perturbation-sensitive target |
-| Path | `compound:523;target:3223` | 1 | 1 | 0.010074 | 0.010074 | Strongest current perturbation-sensitive path, from the Zhishi-diarrhoea case |
+| Component | `compound:761` / `Compound #761` | 3 | 3 | 0.000309 | 0.000318 | Top component sensitivity; display is an unmapped graph-id fallback |
+| Target | `target:15721` / `Target #15721` | 1 | 1 | 0.001174 | 0.001174 | Top target sensitivity; display is an unmapped graph-id fallback |
+| Path | `target:15721` / `Target #15721` | 1 | 1 | 0.001174 | 0.001174 | Top pathway sensitivity; should remain a local perturbation signal |
 
-The split explanation-layer summary contains 4 component features, 9 target features, and 10 mechanism-path features. Positive entries are 3 component features, 8 target features, and 8 mechanism-path features; the aggregate contribution files contain 11 positive node perturbation rows and 10 positive path perturbation rows. This should be described as a subgraph-, component-, target-, and path-level sensitivity analysis rather than SHAP, causal attribution, or confirmed biological mechanism. Negative score drops mean the model score increased after masking; they are suppressive or non-supportive sensitivity signals, not confirmed protective biology. The report currently uses the local `saved_models/best_model_for_prediction.pt` checkpoint, so it should not be claimed as final full-positive hybrid PU-XMSAT checkpoint attribution unless a PU predictor checkpoint is explicitly exported and re-scored.
+Random controls are available for component, target, and pathway perturbations. The control counts are 100, 100, and 86, with maximum score drops 0.0000004768, 0.0000010729, and 0.0000299215, respectively. The split explanation-layer summary contains 20 component features, 20 target features, and 20 pathway feature groups. The completion audit records 20 subgraph cases and `all_subgraph_nodes_quantified=true`. This should be described as a final-checkpoint-aware subgraph-, component-, target-, and path-level sensitivity screen with random-control context rather than SHAP, causal attribution, or confirmed biological mechanism. Negative score drops mean the model score increased after masking; they are suppressive or non-supportive sensitivity signals, not confirmed protective biology.
 
 ## Recommended Manuscript Wording
 
@@ -108,11 +132,15 @@ Use:
 
 For the explanation layer:
 
-> As a conservative mechanism-interpretation workflow, we further extracted key mechanism subgraphs and quantified local sensitivity for selected mechanism-supported cases by zeroing parsed compound or target node input features and re-scoring the same CMM-ADR pair. This analysis identified a perturbation-sensitive target and path in the Zhishi-diarrhoea case, while the Fragaria case showed negligible local sensitivity. The explanation-layer handoff separates component, target, and mechanism-path contributions for triage, but these outputs should not be interpreted as causal effects or externally validated adverse-reaction evidence.
+> As a conservative mechanism-interpretation workflow, we further exported a formal full-positive hybrid PU-XMSAT checkpoint, ranked the top-5000 unobserved CMM-ADR predictions, and quantified local sensitivity for 20 candidates with parseable explicit mechanism paths. Explicit-path coverage was sparse but measurable: 391 of 5000 top-ranked candidates had parseable paths. The explanation-layer handoff separates component, target, and mechanism-path contributions and includes random perturbation controls, but these outputs should not be interpreted as SHAP values, causal effects, or externally validated adverse-reaction evidence.
 
 Expanded wording:
 
-> We extracted key mechanism subgraphs and quantified node-level, component-level, target-level, and path-level perturbation sensitivity for selected cases. In the Zhishi-diarrhoea case, all 11 parsed subgraph nodes were quantified and the highest local sensitivity was concentrated on the `compound:523 -> target:3223` path, whereas the Fragaria case showed negligible perturbation sensitivity. This provides a transparent mechanism-prioritization layer, but it does not by itself validate the biological direction or replace external evidence review.
+> We extracted key mechanism subgraphs and quantified node-level, component-level, target-level, and path-level perturbation sensitivity under the formal PU-XMSAT checkpoint. Among the top-5000 final predictions, 391 candidates had parseable explicit mechanism paths, and 20 mechanism-supported candidates were selected for perturbation scoring. The largest aggregate target/pathway sensitivity involved `target:15721` with mean/max drop 0.001174, while the largest component sensitivity involved `compound:761` with mean drop 0.000309. These identifiers currently use unmapped graph-id fallback names, so the result should be interpreted as checkpoint-aware mechanism prioritization rather than validated biological naming or external evidence.
+
+For cluster-held-out generalization:
+
+> To probe generalization beyond the official random-like folds, we evaluated full-positive hybrid PU-XMSAT under a cluster-held-out protocol that held out one herb/CMM cluster per fold. The model retained ranking signal under this stricter setting (AUC 0.8891, AUPRC 0.9032), but thresholded metrics dropped substantially (F1 0.1770, MCC 0.1919). This indicates that new-cluster generalization is a harder deployment setting and should be reported as a stress test rather than as equivalent performance to the official-fold protocol.
 
 For causal-bias boundaries:
 
@@ -126,7 +154,9 @@ Avoid:
 - Do not treat Table 5 or Table 6 as part of the main performance experiment.
 - Do not promote automated literature search hits to direct evidence unless `verified_support=True` is backed by manual source review.
 - Do not present the current Grade C cases as confirmed adverse-reaction evidence after manual review.
-- Do not present perturbation score drops as SHAP values, causal effects, or final hybrid PU checkpoint attributions.
+- Do not present perturbation score drops as SHAP values, causal effects, or external validation evidence.
+- Do not hide that explicit mechanism coverage is sparse: only 391/5000 top predictions had parseable paths.
+- Do not hide cluster-heldout caveats: three heldout clusters have fewer than 5 herbs and F1/MCC are weak.
 - Do not claim that PU-XMSAT controls co-medication, indication bias, reporting bias, exposure population, dose, or preparation quality.
 
 ## Source Files
@@ -139,6 +169,11 @@ Primary tracked sources:
 - `results/pu_xmsat_hybrid_vs_random_seed2026_comparison.csv`
 - `results/pu_xmsat_hybrid_seed_robustness_summary.csv`
 - `results/pu_xmsat_hybrid_weight_sensitivity_summary.csv`
+- `results/PU_XMSAT_PUBLICATION_EVIDENCE_CONSOLIDATION.md`
+- `results/PU_XMSAT_CLUSTER_HOLDOUT_GENERALIZATION.md`
+- `results/PU_XMSAT_BATCH_MECHANISM_INTERPRETABILITY_TOP5000_RANDOM_CONTROLS.md`
+- `results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER_TOP5000_RANDOM_CONTROLS.md`
+- `results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE_TOP5000_RANDOM_CONTROLS.md`
 - `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`
 - `results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md`
 - `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`

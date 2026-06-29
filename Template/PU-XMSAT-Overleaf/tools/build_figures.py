@@ -193,16 +193,16 @@ def mechanism_workflow():
 
     c.setFillColor(colors.HexColor("#111827"))
     c.setFont("Helvetica-Bold", 8.2)
-    c.drawString(42, 98, "Current case-study outcome")
+    c.drawString(42, 98, "Current final-checkpoint outcome")
     c.setStrokeColor(colors.HexColor("#9ca3af"))
     c.setLineWidth(0.8)
     c.roundRect(40, 36, 640, 52, 7, stroke=1, fill=0)
     c.setFont("Helvetica", 7.1)
     c.setFillColor(colors.HexColor("#374151"))
     lines = [
-        "Zhishi--diarrhoea: 11 nodes / 8 edges / 14 paths; top path drop 0.010074, but external evidence remains direction-conflicting.",
-        "Fragaria--altered-consciousness: one parsed path; top path drop 0.000021, so mechanism sensitivity is negligible.",
-        "Interpretation: useful for triage and hypothesis generation; insufficient for confirmed external validation or causal effect claims.",
+        "Formal PU-XMSAT checkpoint export completed for 10 folds; top-5000 final predictions were exported for mechanism screening.",
+        "Explicit-path coverage remains sparse: 391/5000 candidates; 20 mechanism-supported cases were perturbation-quantified.",
+        "Interpretation: checkpoint-aware triage with random controls; not SHAP, external validation, or causal evidence.",
     ]
     t = c.beginText(55, 75)
     t.setLeading(11)

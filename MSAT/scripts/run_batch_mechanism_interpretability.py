@@ -25,6 +25,10 @@ TRANSITIONAL_NOTE = (
     "Current candidates come from mechanism-supported transitional artifacts, not final "
     "PU-XMSAT top-ranking export."
 )
+NONFINAL_TOP_PREDICTION_NOTE = (
+    "Candidates come from a PU-XMSAT top-prediction export, but this is not final "
+    "10-fold PU-XMSAT top-ranking export unless the source artifact explicitly marks it."
+)
 
 CSV_FIELDS = [
     "row_type",
@@ -34,9 +38,12 @@ CSV_FIELDS = [
     "herb_id",
     "adr_id",
     "feature",
+    "display_name",
+    "name_source",
     "node_type",
     "node_id",
     "path_features",
+    "path_display_features",
     "path_text",
     "score_drop",
     "masked_score",
@@ -87,6 +94,24 @@ def _candidate_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
     if isinstance(rows, list):
         return [row for row in rows if isinstance(row, dict)]
     return []
+
+
+def _coverage_missing_candidate(row: dict[str, Any], source: str) -> dict[str, Any] | None:
+    if row.get("herb_id") in (None, "") or row.get("adr_id") in (None, ""):
+        return None
+    paths = _path_texts(row)
+    status = "missing_explicit_mechanism_path"
+    if paths and not extract_node_refs_from_paths(paths):
+        status = "unparseable_explicit_mechanism_path"
+    return {
+        "source": row.get("source") or source,
+        "rank": row.get("rank", ""),
+        "herb_id": int(row["herb_id"]),
+        "adr_id": int(row["adr_id"]),
+        "score": _row_score(row),
+        "coverage_status": status,
+        "explicit_mechanism_path_count": len(paths),
+    }
 
 
 def _normal_candidate(row: dict[str, Any], source: str, priority: int) -> dict[str, Any] | None:
@@ -141,6 +166,38 @@ def _collect_from_payload(payload: dict[str, Any], source: str, priority: int) -
     return candidates
 
 
+def compute_topk_mechanism_coverage(
+    final_predictions_payload: dict[str, Any],
+    cutoffs: tuple[int, ...] = (50, 100, 500, 1000, 5000),
+) -> list[dict[str, Any]]:
+    rows = _candidate_rows(final_predictions_payload)
+    coverage_rows = []
+    for cutoff in cutoffs:
+        top_rows = rows[: max(0, int(cutoff))]
+        candidate_count = len(top_rows)
+        explicit_count = sum(
+            1
+            for row in top_rows
+            if _normal_candidate(row, "pu_xmsat_top_predictions", 0) is not None
+        )
+        coverage_rows.append(
+            {
+                "top_k": int(cutoff),
+                "candidate_count": candidate_count,
+                "explicit_path_candidate_count": explicit_count,
+                "coverage_rate": (explicit_count / candidate_count) if candidate_count else 0.0,
+            }
+        )
+    return coverage_rows
+
+
+def _is_final_top_prediction_export(payload: dict[str, Any]) -> bool:
+    checkpoint_context = payload.get("checkpoint_context") or {}
+    if isinstance(checkpoint_context, dict):
+        return bool(checkpoint_context.get("is_final_10fold_export"))
+    return bool(payload.get("checkpoint_is_final_pu_xmsat"))
+
+
 def select_top_mechanism_candidates(
     final_predictions_payload: dict[str, Any],
     case_evidence_payload: dict[str, Any],
@@ -148,17 +205,68 @@ def select_top_mechanism_candidates(
     explanation_payload: dict[str, Any],
     structured_mechanism_payload: dict[str, Any],
     top_k: int = DEFAULT_TOP_K,
+    candidate_pool_top_k: int | None = None,
+    coverage_cutoffs: tuple[int, ...] = (50, 100, 500, 1000, 5000),
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    requested_top_k = max(DEFAULT_TOP_K, int(top_k))
-    final_candidates = _dedupe_candidates(
-        _collect_from_payload(final_predictions_payload, "final_pu_xmsat_top_predictions", 0)
+    requested_top_k = max(1, int(top_k))
+    pool_top_k = max(requested_top_k, int(candidate_pool_top_k or requested_top_k))
+    available_top_prediction_rows = _candidate_rows(final_predictions_payload)
+    top_prediction_rows = available_top_prediction_rows[:pool_top_k]
+    top_prediction_available_count = len(available_top_prediction_rows)
+    candidate_pool_missing_count = max(0, pool_top_k - top_prediction_available_count)
+    candidate_pool_is_complete = candidate_pool_missing_count == 0
+    coverage_by_topk = compute_topk_mechanism_coverage(
+        final_predictions_payload,
+        cutoffs=coverage_cutoffs,
     )
+    final_candidates = _dedupe_candidates(
+        _collect_from_payload(
+            {"rows": top_prediction_rows},
+            "pu_xmsat_top_predictions",
+            0,
+        )
+    )
+    coverage_missing_candidates: list[dict[str, Any]] = []
+    if top_prediction_rows:
+        for row in top_prediction_rows:
+            if _normal_candidate(row, "pu_xmsat_top_predictions", 0) is None:
+                missing = _coverage_missing_candidate(row, "pu_xmsat_top_predictions")
+                if missing:
+                    coverage_missing_candidates.append(missing)
+
     if final_candidates:
         selected = final_candidates[:requested_top_k]
+        is_final_export = _is_final_top_prediction_export(final_predictions_payload)
         metadata = {
-            "candidate_source": "final_pu_xmsat_top_predictions",
-            "candidate_source_note": "Final PU-XMSAT top-ranking export.",
-            "is_final_pu_top_ranking_export": True,
+            "candidate_source": (
+                "final_pu_xmsat_top_predictions"
+                if is_final_export
+                else "pu_xmsat_top_predictions_nonfinal_export"
+            ),
+            "candidate_source_note": (
+                "Final PU-XMSAT top-ranking export."
+                if is_final_export
+                else NONFINAL_TOP_PREDICTION_NOTE
+            ),
+            "is_final_pu_top_ranking_export": is_final_export,
+            "top_prediction_checkpoint_context": final_predictions_payload.get(
+                "checkpoint_context",
+                {},
+            ),
+            "top_prediction_candidate_count": len(
+                [
+                    row
+                    for row in top_prediction_rows
+                    if row.get("herb_id") not in (None, "") and row.get("adr_id") not in (None, "")
+                ]
+            ),
+            "top_prediction_available_count": top_prediction_available_count,
+            "candidate_pool_top_k": pool_top_k,
+            "candidate_pool_missing_count": candidate_pool_missing_count,
+            "candidate_pool_is_complete": candidate_pool_is_complete,
+            "mechanism_coverage_by_topk": coverage_by_topk,
+            "coverage_missing_candidate_count": len(coverage_missing_candidates),
+            "coverage_missing_candidates": coverage_missing_candidates,
         }
     else:
         transitional = []
@@ -177,6 +285,14 @@ def select_top_mechanism_candidates(
             "candidate_source": "transitional_mechanism_supported_artifacts",
             "candidate_source_note": TRANSITIONAL_NOTE,
             "is_final_pu_top_ranking_export": False,
+            "top_prediction_candidate_count": 0,
+            "top_prediction_available_count": top_prediction_available_count,
+            "candidate_pool_top_k": pool_top_k,
+            "candidate_pool_missing_count": candidate_pool_missing_count,
+            "candidate_pool_is_complete": candidate_pool_is_complete,
+            "mechanism_coverage_by_topk": coverage_by_topk,
+            "coverage_missing_candidate_count": 0,
+            "coverage_missing_candidates": [],
         }
 
     metadata.update(
@@ -192,6 +308,26 @@ def select_top_mechanism_candidates(
         }
     )
     return selected, metadata
+
+
+def _summarize_random_controls(random_controls: Any) -> dict[str, dict[str, Any]]:
+    if not isinstance(random_controls, dict):
+        return {}
+    summary = {}
+    for group, rows in random_controls.items():
+        if not isinstance(rows, list):
+            continue
+        drops = [
+            float(row.get("score_drop", 0.0))
+            for row in rows
+            if isinstance(row, dict) and row.get("score_drop") not in (None, "")
+        ]
+        summary[str(group)] = {
+            "count": len(drops),
+            "mean_score_drop": round(mean(drops), 10) if drops else 0.0,
+            "max_score_drop": round(max(drops), 10) if drops else 0.0,
+        }
+    return summary
 
 
 def _case_key(row: dict[str, Any]) -> tuple[int, int]:
@@ -214,6 +350,49 @@ def _path_features(row: dict[str, Any]) -> str:
     return str(features or "")
 
 
+def _feature_display(feature: Any) -> str:
+    text = str(feature or "")
+    if ":" not in text:
+        return text
+    node_type, node_id = text.split(":", 1)
+    if node_type == "compound":
+        return f"Compound #{node_id}"
+    if node_type == "target":
+        return f"Target #{node_id}"
+    return text
+
+
+def _feature_source(feature: Any) -> str:
+    text = str(feature or "")
+    if text.startswith(("compound:", "target:")):
+        return "unmapped_graph_id"
+    return ""
+
+
+def _with_node_display(row: dict[str, Any]) -> dict[str, Any]:
+    feature = row.get("feature")
+    output = dict(row)
+    if not output.get("display_name"):
+        output["display_name"] = _feature_display(feature)
+    if not output.get("name_source"):
+        output["name_source"] = _feature_source(feature)
+    return output
+
+
+def _path_display_features(row: dict[str, Any]) -> str:
+    display = row.get("display_features") or row.get("path_display_features")
+    if isinstance(display, list):
+        return ";".join(str(feature) for feature in display)
+    if display:
+        return str(display)
+    features = row.get("features") or row.get("path_features")
+    if isinstance(features, list):
+        return ";".join(_feature_display(feature) for feature in features)
+    if isinstance(features, str) and features:
+        return ";".join(_feature_display(feature) for feature in features.split(";"))
+    return ""
+
+
 def _aggregate(rows: list[dict[str, Any]], aggregate_type: str, key_field: str) -> list[dict[str, Any]]:
     buckets: dict[str, dict[str, Any]] = {}
     for row in rows:
@@ -225,9 +404,12 @@ def _aggregate(rows: list[dict[str, Any]], aggregate_type: str, key_field: str) 
             {
                 "aggregate_type": aggregate_type,
                 "feature": row.get("feature", ""),
+                "display_name": row.get("display_name", ""),
+                "name_source": row.get("name_source", ""),
                 "node_type": row.get("node_type", ""),
                 "node_id": row.get("node_id", ""),
                 "path_features": row.get("path_features", ""),
+                "path_display_features": row.get("path_display_features", ""),
                 "case_keys": set(),
                 "score_drops": [],
             },
@@ -293,7 +475,9 @@ def build_batch_payload_from_contributions(
         component_rows = []
         target_rows = []
         for row in contribution_case.get("node_contributions", []):
-            normalized = {**row, "drop_class": _drop_class(float(row.get("score_drop", 0.0)))}
+            normalized = _with_node_display(
+                {**row, "drop_class": _drop_class(float(row.get("score_drop", 0.0)))}
+            )
             if row.get("node_type") == "compound":
                 component_rows.append(normalized)
             elif row.get("node_type") == "target":
@@ -303,6 +487,7 @@ def build_batch_payload_from_contributions(
             normalized = {
                 **row,
                 "path_features": _path_features(row),
+                "path_display_features": _path_display_features(row),
                 "drop_class": _drop_class(float(row.get("score_drop", 0.0))),
             }
             pathway_rows.append(normalized)
@@ -353,6 +538,11 @@ def build_batch_payload_from_contributions(
     component_contributions = _aggregate(flat_components, "component", "feature")
     target_contributions = _aggregate(flat_targets, "target", "feature")
     pathway_contributions = _aggregate(flat_pathways, "pathway", "path_features")
+    random_control_summary = _summarize_random_controls(
+        contribution_payload.get("random_controls")
+    )
+    explicit_unquantified_count = sum(1 for case in cases if not case["has_perturbation_rows"])
+    coverage_missing_count = int(candidate_metadata.get("coverage_missing_candidate_count", 0))
     final_checkpoint = bool(checkpoint_is_final_pu)
     checkpoint_context = (
         "Final full-positive hybrid PU-XMSAT checkpoint attribution."
@@ -374,11 +564,16 @@ def build_batch_payload_from_contributions(
         "fallback_contribution_source": contribution_payload.get("experiment", "unknown"),
         "summary": {
             "requested_top_k": candidate_metadata.get("requested_top_k", DEFAULT_TOP_K),
+            "top_prediction_candidate_count": candidate_metadata.get("top_prediction_candidate_count", 0),
+            "top_prediction_available_count": candidate_metadata.get("top_prediction_available_count", 0),
+            "candidate_pool_top_k": candidate_metadata.get("candidate_pool_top_k", 0),
+            "candidate_pool_missing_count": candidate_metadata.get("candidate_pool_missing_count", 0),
+            "candidate_pool_is_complete": bool(candidate_metadata.get("candidate_pool_is_complete", False)),
+            "coverage_missing_candidate_count": coverage_missing_count,
             "candidate_count": len(candidates),
             "quantified_case_count": sum(1 for case in cases if case["has_perturbation_rows"]),
-            "unquantified_candidate_count": sum(
-                1 for case in cases if not case["has_perturbation_rows"]
-            ),
+            "unquantified_candidate_count": explicit_unquantified_count + coverage_missing_count,
+            "unquantified_explicit_path_candidate_count": explicit_unquantified_count,
             "cases_with_explicit_mechanism_paths": sum(
                 1 for case in cases if case["explicit_mechanism_path_count"] > 0
             ),
@@ -392,9 +587,13 @@ def build_batch_payload_from_contributions(
                 for case in cases
                 if case["has_perturbation_rows"] and case["has_negative_score_drop"]
             ),
+            "has_random_perturbation_controls": bool(random_control_summary),
             "fewer_than_top_k_reason": candidate_metadata.get("fewer_than_top_k_reason", ""),
         },
         "cases": cases,
+        "coverage_missing_candidates": candidate_metadata.get("coverage_missing_candidates", []),
+        "mechanism_coverage_by_topk": candidate_metadata.get("mechanism_coverage_by_topk", []),
+        "random_control_summary": random_control_summary,
         "component_contributions": component_contributions,
         "target_contributions": target_contributions,
         "pathway_contributions": pathway_contributions,
@@ -416,18 +615,50 @@ def _write_markdown(payload: dict[str, Any], output_md: Path) -> None:
         f"- Checkpoint is final PU-XMSAT: {'yes' if payload.get('checkpoint_is_final_pu_xmsat') else 'no'}",
         f"- Checkpoint context: {payload.get('checkpoint_context', 'not specified')}",
         f"- Quantified case count: {payload['summary']['quantified_case_count']}",
-        f"- Unquantified explicit-path candidates: {payload['summary'].get('unquantified_candidate_count', 0)}",
+        f"- Top-prediction candidates checked: {payload['summary'].get('top_prediction_candidate_count', 0)}",
+        f"- Top-prediction rows available: {payload['summary'].get('top_prediction_available_count', 0)}",
+        f"- Requested candidate pool top-K: {payload['summary'].get('candidate_pool_top_k', 0)}",
+        f"- Candidate pool complete: {'yes' if payload['summary'].get('candidate_pool_is_complete') else 'no'}",
+        f"- Candidate pool missing rows: {payload['summary'].get('candidate_pool_missing_count', 0)}",
+        f"- Coverage-missing top-prediction candidates: {payload['summary'].get('coverage_missing_candidate_count', 0)}",
+        f"- Unquantified explicit-path candidates: {payload['summary'].get('unquantified_explicit_path_candidate_count', 0)}",
         f"- Cases with explicit mechanism paths: {payload['summary']['cases_with_explicit_mechanism_paths']}",
         f"- Near-zero sensitivity cases: {payload['summary']['near_zero_sensitivity_case_count']}",
         f"- Negative score_drop cases: {payload['summary']['negative_score_drop_case_count']}",
     ]
     if payload["summary"].get("fewer_than_top_k_reason"):
         lines.append(f"- Fewer than requested top-K: {payload['summary']['fewer_than_top_k_reason']}")
+    if payload.get("coverage_missing_candidates"):
+        lines.append(
+            "- Coverage boundary: top-prediction candidates without parseable explicit mechanism "
+            "paths were counted as coverage-missing, not silently dropped."
+        )
+    if payload.get("mechanism_coverage_by_topk"):
+        lines.append(
+            "- Mechanism coverage by top-K: reported separately so mechanism-supported "
+            "cases are not treated as representative of all top-ranked predictions."
+        )
+    if payload["summary"].get("has_random_perturbation_controls"):
+        lines.append("- Random perturbation controls: available for score-drop context.")
     lines.extend(
         [
             "",
             payload["claim_boundary"],
             "Negative score_drop is not protective biology; it means the score increased after masking.",
+            "",
+            "## Explicit Mechanism Path Coverage",
+            "",
+            "| Top K | Candidates checked | Explicit-path candidates | Coverage rate |",
+            "| ---: | ---: | ---: | ---: |",
+        ]
+    )
+    for row in payload.get("mechanism_coverage_by_topk", []):
+        lines.append(
+            f"| {row['top_k']} | {row['candidate_count']} | "
+            f"{row['explicit_path_candidate_count']} | {_format_float(row['coverage_rate'])} |"
+        )
+    lines.extend(
+        [
             "",
             "## Top Component/Compound Contributions",
             "",
@@ -436,8 +667,9 @@ def _write_markdown(payload: dict[str, Any], output_md: Path) -> None:
         ]
     )
     for index, row in enumerate(payload.get("component_contributions", [])[:10], start=1):
+        label = row.get("display_name") or row["feature"]
         lines.append(
-            f"| {index} | `{row['feature']}` | {row['case_count']} | "
+            f"| {index} | `{row['feature']}` ({label}) | {row['case_count']} | "
             f"{_format_float(row['mean_score_drop'])} | {_format_float(row['max_score_drop'])} | "
             f"{row['positive_drop_count']} | {row['near_zero_drop_count']} | {row['negative_drop_count']} |"
         )
@@ -451,8 +683,9 @@ def _write_markdown(payload: dict[str, Any], output_md: Path) -> None:
         ]
     )
     for index, row in enumerate(payload.get("target_contributions", [])[:10], start=1):
+        label = row.get("display_name") or row["feature"]
         lines.append(
-            f"| {index} | `{row['feature']}` | {row['case_count']} | "
+            f"| {index} | `{row['feature']}` ({label}) | {row['case_count']} | "
             f"{_format_float(row['mean_score_drop'])} | {_format_float(row['max_score_drop'])} | "
             f"{row['positive_drop_count']} | {row['near_zero_drop_count']} | {row['negative_drop_count']} |"
         )
@@ -466,8 +699,9 @@ def _write_markdown(payload: dict[str, Any], output_md: Path) -> None:
         ]
     )
     for index, row in enumerate(payload.get("pathway_contributions", [])[:10], start=1):
+        label = row.get("path_display_features") or row["path_features"]
         lines.append(
-            f"| {index} | `{row['path_features']}` | {row['case_count']} | "
+            f"| {index} | `{row['path_features']}` ({label}) | {row['case_count']} | "
             f"{_format_float(row['mean_score_drop'])} | {_format_float(row['max_score_drop'])} | "
             f"{row['positive_drop_count']} | {row['near_zero_drop_count']} | {row['negative_drop_count']} |"
         )
@@ -487,6 +721,35 @@ def _write_markdown(payload: dict[str, Any], output_md: Path) -> None:
     else:
         lines.append("- none")
 
+    lines.extend(["", "## Random Perturbation Controls", ""])
+    random_controls = payload.get("random_control_summary", {})
+    if random_controls:
+        lines.extend(
+            [
+                "| Group | Count | Mean drop | Max drop |",
+                "| --- | ---: | ---: | ---: |",
+            ]
+        )
+        for group, row in sorted(random_controls.items()):
+            lines.append(
+                f"| {group} | {row['count']} | {_format_float(row['mean_score_drop'])} | "
+                f"{_format_float(row['max_score_drop'])} |"
+            )
+    else:
+        lines.append("- not available in the current contribution payload")
+
+    lines.extend(["", "## Coverage-Missing Top-Prediction Candidates", ""])
+    if payload.get("coverage_missing_candidates"):
+        for candidate in payload["coverage_missing_candidates"][:20]:
+            rank = candidate.get("rank", "")
+            rank_text = f"rank {rank}, " if rank not in (None, "") else ""
+            lines.append(
+                f"- {rank_text}`{candidate['source']}` herb {candidate['herb_id']} -> "
+                f"ADR {candidate['adr_id']}: {candidate['coverage_status']}."
+            )
+    else:
+        lines.append("- none")
+
     lines.extend(["", "## Case-Level Explanation Examples", ""])
     for case in payload["cases"][:5]:
         top = case.get("top_explanation", {})
@@ -502,12 +765,27 @@ def _write_markdown(payload: dict[str, Any], output_md: Path) -> None:
                 f"- `{case['source']}` herb {case['herb_id']} -> ADR {case['adr_id']}: "
                 "explicit mechanism path selected, but no reusable perturbation row under the current fallback checkpoint."
             )
+    if payload.get("checkpoint_is_final_pu_xmsat") and payload.get("candidate_source") == "final_pu_xmsat_top_predictions":
+        boundary_text = (
+            "This batch uses the final PU-XMSAT top-ranking export and an explicit final "
+            "PU-XMSAT checkpoint. Perturbation sensitivity remains local model sensitivity: "
+            "it is not causal evidence, not SHAP, not clinical validation, and cannot "
+            "upgrade evidence grades."
+        )
+    else:
+        boundary_text = (
+            "This batch uses mechanism-supported candidate artifacts rather than final "
+            "PU-XMSAT top-ranking export when no final export is present. It also uses "
+            "the local predictor checkpoint unless an explicit final PU checkpoint is "
+            "supplied. Perturbation sensitivity is not causal evidence, not SHAP, not "
+            "clinical validation, and cannot upgrade evidence grades."
+        )
     lines.extend(
         [
             "",
             "## Claim Boundary",
             "",
-            "This batch uses mechanism-supported candidate artifacts rather than final PU-XMSAT top-ranking export when no final export is present. It also uses the local predictor checkpoint unless an explicit final PU checkpoint is supplied. Perturbation sensitivity is not causal evidence, not SHAP, not clinical validation, and cannot upgrade evidence grades.",
+            boundary_text,
             "",
         ]
     )
@@ -551,6 +829,10 @@ def write_batch_artifacts(
                         "herb_id": case["herb_id"],
                         "adr_id": case["adr_id"],
                         "path_features": row.get("path_features", _path_features(row)),
+                        "path_display_features": row.get(
+                            "path_display_features",
+                            _path_display_features(row),
+                        ),
                         **row,
                     }
                 )
@@ -565,6 +847,17 @@ def write_batch_artifacts(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run batch-level mechanism interpretability")
     parser.add_argument("--top-k", type=int, default=DEFAULT_TOP_K)
+    parser.add_argument(
+        "--candidate-pool-top-k",
+        type=int,
+        default=None,
+        help="Search this many top-ranked predictions for mechanism-supported candidates.",
+    )
+    parser.add_argument(
+        "--coverage-cutoffs",
+        default="50,100,500,1000,5000",
+        help="Comma-separated top-K cutoffs for explicit mechanism path coverage.",
+    )
     parser.add_argument("--final-predictions", default="results/pu_xmsat_top_predictions.json")
     parser.add_argument("--case-evidence", default="results/case_evidence_report.json")
     parser.add_argument("--table5", default="results/table5_top15.json")
@@ -585,6 +878,12 @@ def main() -> None:
         explanation_payload=_load_json(args.explanation),
         structured_mechanism_payload=_load_json(args.structured_mechanism),
         top_k=args.top_k,
+        candidate_pool_top_k=args.candidate_pool_top_k,
+        coverage_cutoffs=tuple(
+            int(item.strip())
+            for item in str(args.coverage_cutoffs).split(",")
+            if item.strip()
+        ),
     )
     contribution_payload = _load_json(args.contribution)
     payload = build_batch_payload_from_contributions(

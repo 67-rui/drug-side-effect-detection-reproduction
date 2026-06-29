@@ -1,816 +1,51 @@
 {
   "experiment": "contribution_quantification",
-  "created_at": "2026-06-29T12:19:30.908063",
-  "input": "results/explanation_case_studies.json",
-  "checkpoint_path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt",
-  "checkpoint_context": "Local predictor checkpoint sensitivity analysis. This is not final full-positive hybrid PU-XMSAT checkpoint attribution unless an explicit PU predictor checkpoint is exported and used.",
+  "created_at": "2026-06-29T14:43:41.817720",
+  "input": "results/pu_xmsat_top_predictions.json",
+  "checkpoint_path": "saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt",
+  "checkpoint_context": "Final full-positive hybrid PU-XMSAT checkpoint perturbation sensitivity. This remains local model sensitivity, not causal or external validation.",
+  "checkpoint_is_final_pu_xmsat": true,
   "method": "zero node input features and re-score the same pair",
   "claim_boundary": "Perturbation score drops are local sensitivity signals, not causal effects.",
   "cases": [
     {
-      "herb_id": 277,
-      "adr_id": 2931,
-      "source": "case_zhishi_diarrhoea",
-      "original_score": 0.4762897789478302,
-      "path_count": 14,
-      "available_node_ref_count": 11,
-      "quantified_node_ref_count": 11,
-      "node_refs_truncated": false,
-      "feature_count": 11,
-      "paths": [
-        "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8967 → Watery diarrhoea",
-        "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8101 → Watery diarrhoea",
-        "枳实（Citrus aurantium L.） → Compound #523 → Target #7802 → Watery diarrhoea",
-        "枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea",
-        "枳实（Citrus aurantium L.） → Compound #523 → Target #12337 → Watery diarrhoea",
-        "枳实（Citrus aurantium L.） → Compound #875 → Target #2432 → Watery diarrhoea",
-        "枳实（Citrus aurantium L.） → Compound #875 → Target #14208 → Watery diarrhoea",
-        "枳实（Citrus aurantium L.） → Compound #875 → Target #12333 → Watery diarrhoea",
-        "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #12337 ← Watery diarrhoea",
-        "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #7802 ← Watery diarrhoea",
-        "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #2432 ← Watery diarrhoea",
-        "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #14208 ← Watery diarrhoea",
-        "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8101 ← Watery diarrhoea",
-        "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8967 ← Watery diarrhoea"
-      ],
-      "mechanism_subgraph": {
-        "nodes": [
-          {
-            "feature": "compound:435",
-            "node_type": "compound",
-            "node_id": 435,
-            "label": "Compound #435"
-          },
-          {
-            "feature": "compound:523",
-            "node_type": "compound",
-            "node_id": 523,
-            "label": "Compound #523"
-          },
-          {
-            "feature": "compound:875",
-            "node_type": "compound",
-            "node_id": 875,
-            "label": "Compound #875"
-          },
-          {
-            "feature": "target:2432",
-            "node_type": "target",
-            "node_id": 2432,
-            "label": "Target #2432"
-          },
-          {
-            "feature": "target:3223",
-            "node_type": "target",
-            "node_id": 3223,
-            "label": "Target #3223"
-          },
-          {
-            "feature": "target:7802",
-            "node_type": "target",
-            "node_id": 7802,
-            "label": "Target #7802"
-          },
-          {
-            "feature": "target:8101",
-            "node_type": "target",
-            "node_id": 8101,
-            "label": "Target #8101"
-          },
-          {
-            "feature": "target:8967",
-            "node_type": "target",
-            "node_id": 8967,
-            "label": "Target #8967"
-          },
-          {
-            "feature": "target:12333",
-            "node_type": "target",
-            "node_id": 12333,
-            "label": "Target #12333"
-          },
-          {
-            "feature": "target:12337",
-            "node_type": "target",
-            "node_id": 12337,
-            "label": "Target #12337"
-          },
-          {
-            "feature": "target:14208",
-            "node_type": "target",
-            "node_id": 14208,
-            "label": "Target #14208"
-          }
-        ],
-        "edges": [
-          {
-            "source": "compound:435",
-            "target": "target:8101",
-            "path_indices": [
-              13
-            ]
-          },
-          {
-            "source": "compound:435",
-            "target": "target:8967",
-            "path_indices": [
-              14
-            ]
-          },
-          {
-            "source": "compound:523",
-            "target": "target:12337",
-            "path_indices": [
-              5,
-              9
-            ]
-          },
-          {
-            "source": "compound:523",
-            "target": "target:3223",
-            "path_indices": [
-              4
-            ]
-          },
-          {
-            "source": "compound:523",
-            "target": "target:7802",
-            "path_indices": [
-              3,
-              10
-            ]
-          },
-          {
-            "source": "compound:875",
-            "target": "target:12333",
-            "path_indices": [
-              8
-            ]
-          },
-          {
-            "source": "compound:875",
-            "target": "target:14208",
-            "path_indices": [
-              7,
-              12
-            ]
-          },
-          {
-            "source": "compound:875",
-            "target": "target:2432",
-            "path_indices": [
-              6,
-              11
-            ]
-          }
-        ],
-        "paths": [
-          {
-            "path_index": 1,
-            "path_text": "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8967 → Watery diarrhoea",
-            "features": [
-              "target:8967"
-            ],
-            "feature_refs": [
-              {
-                "feature": "target:8967",
-                "node_type": "target",
-                "node_id": 8967,
-                "label": "Target #8967"
-              }
-            ]
-          },
-          {
-            "path_index": 2,
-            "path_text": "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8101 → Watery diarrhoea",
-            "features": [
-              "target:8101"
-            ],
-            "feature_refs": [
-              {
-                "feature": "target:8101",
-                "node_type": "target",
-                "node_id": 8101,
-                "label": "Target #8101"
-              }
-            ]
-          },
-          {
-            "path_index": 3,
-            "path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #7802 → Watery diarrhoea",
-            "features": [
-              "compound:523",
-              "target:7802"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:523",
-                "node_type": "compound",
-                "node_id": 523,
-                "label": "Compound #523"
-              },
-              {
-                "feature": "target:7802",
-                "node_type": "target",
-                "node_id": 7802,
-                "label": "Target #7802"
-              }
-            ]
-          },
-          {
-            "path_index": 4,
-            "path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea",
-            "features": [
-              "compound:523",
-              "target:3223"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:523",
-                "node_type": "compound",
-                "node_id": 523,
-                "label": "Compound #523"
-              },
-              {
-                "feature": "target:3223",
-                "node_type": "target",
-                "node_id": 3223,
-                "label": "Target #3223"
-              }
-            ]
-          },
-          {
-            "path_index": 5,
-            "path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #12337 → Watery diarrhoea",
-            "features": [
-              "compound:523",
-              "target:12337"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:523",
-                "node_type": "compound",
-                "node_id": 523,
-                "label": "Compound #523"
-              },
-              {
-                "feature": "target:12337",
-                "node_type": "target",
-                "node_id": 12337,
-                "label": "Target #12337"
-              }
-            ]
-          },
-          {
-            "path_index": 6,
-            "path_text": "枳实（Citrus aurantium L.） → Compound #875 → Target #2432 → Watery diarrhoea",
-            "features": [
-              "compound:875",
-              "target:2432"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:875",
-                "node_type": "compound",
-                "node_id": 875,
-                "label": "Compound #875"
-              },
-              {
-                "feature": "target:2432",
-                "node_type": "target",
-                "node_id": 2432,
-                "label": "Target #2432"
-              }
-            ]
-          },
-          {
-            "path_index": 7,
-            "path_text": "枳实（Citrus aurantium L.） → Compound #875 → Target #14208 → Watery diarrhoea",
-            "features": [
-              "compound:875",
-              "target:14208"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:875",
-                "node_type": "compound",
-                "node_id": 875,
-                "label": "Compound #875"
-              },
-              {
-                "feature": "target:14208",
-                "node_type": "target",
-                "node_id": 14208,
-                "label": "Target #14208"
-              }
-            ]
-          },
-          {
-            "path_index": 8,
-            "path_text": "枳实（Citrus aurantium L.） → Compound #875 → Target #12333 → Watery diarrhoea",
-            "features": [
-              "compound:875",
-              "target:12333"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:875",
-                "node_type": "compound",
-                "node_id": 875,
-                "label": "Compound #875"
-              },
-              {
-                "feature": "target:12333",
-                "node_type": "target",
-                "node_id": 12333,
-                "label": "Target #12333"
-              }
-            ]
-          },
-          {
-            "path_index": 9,
-            "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #12337 ← Watery diarrhoea",
-            "features": [
-              "compound:523",
-              "target:12337"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:523",
-                "node_type": "compound",
-                "node_id": 523,
-                "label": "Compound #523"
-              },
-              {
-                "feature": "target:12337",
-                "node_type": "target",
-                "node_id": 12337,
-                "label": "Target #12337"
-              }
-            ]
-          },
-          {
-            "path_index": 10,
-            "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #7802 ← Watery diarrhoea",
-            "features": [
-              "compound:523",
-              "target:7802"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:523",
-                "node_type": "compound",
-                "node_id": 523,
-                "label": "Compound #523"
-              },
-              {
-                "feature": "target:7802",
-                "node_type": "target",
-                "node_id": 7802,
-                "label": "Target #7802"
-              }
-            ]
-          },
-          {
-            "path_index": 11,
-            "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #2432 ← Watery diarrhoea",
-            "features": [
-              "compound:875",
-              "target:2432"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:875",
-                "node_type": "compound",
-                "node_id": 875,
-                "label": "Compound #875"
-              },
-              {
-                "feature": "target:2432",
-                "node_type": "target",
-                "node_id": 2432,
-                "label": "Target #2432"
-              }
-            ]
-          },
-          {
-            "path_index": 12,
-            "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #14208 ← Watery diarrhoea",
-            "features": [
-              "compound:875",
-              "target:14208"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:875",
-                "node_type": "compound",
-                "node_id": 875,
-                "label": "Compound #875"
-              },
-              {
-                "feature": "target:14208",
-                "node_type": "target",
-                "node_id": 14208,
-                "label": "Target #14208"
-              }
-            ]
-          },
-          {
-            "path_index": 13,
-            "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8101 ← Watery diarrhoea",
-            "features": [
-              "compound:435",
-              "target:8101"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:435",
-                "node_type": "compound",
-                "node_id": 435,
-                "label": "Compound #435"
-              },
-              {
-                "feature": "target:8101",
-                "node_type": "target",
-                "node_id": 8101,
-                "label": "Target #8101"
-              }
-            ]
-          },
-          {
-            "path_index": 14,
-            "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8967 ← Watery diarrhoea",
-            "features": [
-              "compound:435",
-              "target:8967"
-            ],
-            "feature_refs": [
-              {
-                "feature": "compound:435",
-                "node_type": "compound",
-                "node_id": 435,
-                "label": "Compound #435"
-              },
-              {
-                "feature": "target:8967",
-                "node_type": "target",
-                "node_id": 8967,
-                "label": "Target #8967"
-              }
-            ]
-          }
-        ]
-      },
-      "node_contributions": [
-        {
-          "feature": "target:3223",
-          "node_type": "target",
-          "node_id": 3223,
-          "label": "Target #3223",
-          "masked_score": 0.4664551317691803,
-          "score_drop": 0.0098346472
-        },
-        {
-          "feature": "compound:523",
-          "node_type": "compound",
-          "node_id": 523,
-          "label": "Compound #523",
-          "masked_score": 0.4760511517524719,
-          "score_drop": 0.0002386272
-        },
-        {
-          "feature": "compound:435",
-          "node_type": "compound",
-          "node_id": 435,
-          "label": "Compound #435",
-          "masked_score": 0.47607624530792236,
-          "score_drop": 0.0002135336
-        },
-        {
-          "feature": "target:8101",
-          "node_type": "target",
-          "node_id": 8101,
-          "label": "Target #8101",
-          "masked_score": 0.4762183427810669,
-          "score_drop": 7.14362e-05
-        },
-        {
-          "feature": "target:12337",
-          "node_type": "target",
-          "node_id": 12337,
-          "label": "Target #12337",
-          "masked_score": 0.47626176476478577,
-          "score_drop": 2.80142e-05
-        },
-        {
-          "feature": "target:8967",
-          "node_type": "target",
-          "node_id": 8967,
-          "label": "Target #8967",
-          "masked_score": 0.4762618839740753,
-          "score_drop": 2.7895e-05
-        },
-        {
-          "feature": "target:2432",
-          "node_type": "target",
-          "node_id": 2432,
-          "label": "Target #2432",
-          "masked_score": 0.4762842059135437,
-          "score_drop": 5.573e-06
-        },
-        {
-          "feature": "target:12333",
-          "node_type": "target",
-          "node_id": 12333,
-          "label": "Target #12333",
-          "masked_score": 0.47628679871559143,
-          "score_drop": 2.9802e-06
-        },
-        {
-          "feature": "target:7802",
-          "node_type": "target",
-          "node_id": 7802,
-          "label": "Target #7802",
-          "masked_score": 0.4762877821922302,
-          "score_drop": 1.9968e-06
-        },
-        {
-          "feature": "target:14208",
-          "node_type": "target",
-          "node_id": 14208,
-          "label": "Target #14208",
-          "masked_score": 0.47628945112228394,
-          "score_drop": 3.278e-07
-        },
-        {
-          "feature": "compound:875",
-          "node_type": "compound",
-          "node_id": 875,
-          "label": "Compound #875",
-          "masked_score": 0.481732040643692,
-          "score_drop": -0.0054422617
-        }
-      ],
-      "path_contributions": [
-        {
-          "feature": "path:4",
-          "path_index": 4,
-          "path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea",
-          "features": [
-            "compound:523",
-            "target:3223"
-          ],
-          "masked_score": 0.4662156105041504,
-          "score_drop": 0.0100741684
-        },
-        {
-          "feature": "path:13",
-          "path_index": 13,
-          "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8101 ← Watery diarrhoea",
-          "features": [
-            "compound:435",
-            "target:8101"
-          ],
-          "masked_score": 0.47600480914115906,
-          "score_drop": 0.0002849698
-        },
-        {
-          "feature": "path:5",
-          "path_index": 5,
-          "path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #12337 → Watery diarrhoea",
-          "features": [
-            "compound:523",
-            "target:12337"
-          ],
-          "masked_score": 0.4760230779647827,
-          "score_drop": 0.000266701
-        },
-        {
-          "feature": "path:9",
-          "path_index": 9,
-          "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #12337 ← Watery diarrhoea",
-          "features": [
-            "compound:523",
-            "target:12337"
-          ],
-          "masked_score": 0.4760230779647827,
-          "score_drop": 0.000266701
-        },
-        {
-          "feature": "path:14",
-          "path_index": 14,
-          "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8967 ← Watery diarrhoea",
-          "features": [
-            "compound:435",
-            "target:8967"
-          ],
-          "masked_score": 0.4760482907295227,
-          "score_drop": 0.0002414882
-        },
-        {
-          "feature": "path:10",
-          "path_index": 10,
-          "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #523 → Target #7802 ← Watery diarrhoea",
-          "features": [
-            "compound:523",
-            "target:7802"
-          ],
-          "masked_score": 0.4760492146015167,
-          "score_drop": 0.0002405643
-        },
-        {
-          "feature": "path:3",
-          "path_index": 3,
-          "path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #7802 → Watery diarrhoea",
-          "features": [
-            "compound:523",
-            "target:7802"
-          ],
-          "masked_score": 0.4760492146015167,
-          "score_drop": 0.0002405643
-        },
-        {
-          "feature": "path:2",
-          "path_index": 2,
-          "path_text": "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8101 → Watery diarrhoea",
-          "features": [
-            "target:8101"
-          ],
-          "masked_score": 0.4762183427810669,
-          "score_drop": 7.14362e-05
-        },
-        {
-          "feature": "path:1",
-          "path_index": 1,
-          "path_text": "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8967 → Watery diarrhoea",
-          "features": [
-            "target:8967"
-          ],
-          "masked_score": 0.4762618839740753,
-          "score_drop": 2.7895e-05
-        },
-        {
-          "feature": "path:11",
-          "path_index": 11,
-          "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #2432 ← Watery diarrhoea",
-          "features": [
-            "compound:875",
-            "target:2432"
-          ],
-          "masked_score": 0.48172643780708313,
-          "score_drop": -0.0054366589
-        },
-        {
-          "feature": "path:6",
-          "path_index": 6,
-          "path_text": "枳实（Citrus aurantium L.） → Compound #875 → Target #2432 → Watery diarrhoea",
-          "features": [
-            "compound:875",
-            "target:2432"
-          ],
-          "masked_score": 0.48172643780708313,
-          "score_drop": -0.0054366589
-        },
-        {
-          "feature": "path:8",
-          "path_index": 8,
-          "path_text": "枳实（Citrus aurantium L.） → Compound #875 → Target #12333 → Watery diarrhoea",
-          "features": [
-            "compound:875",
-            "target:12333"
-          ],
-          "masked_score": 0.48172903060913086,
-          "score_drop": -0.0054392517
-        },
-        {
-          "feature": "path:12",
-          "path_index": 12,
-          "path_text": "成分介导：枳实（Citrus aurantium L.） → Compound #875 → Target #14208 ← Watery diarrhoea",
-          "features": [
-            "compound:875",
-            "target:14208"
-          ],
-          "masked_score": 0.48173171281814575,
-          "score_drop": -0.0054419339
-        },
-        {
-          "feature": "path:7",
-          "path_index": 7,
-          "path_text": "枳实（Citrus aurantium L.） → Compound #875 → Target #14208 → Watery diarrhoea",
-          "features": [
-            "compound:875",
-            "target:14208"
-          ],
-          "masked_score": 0.48173171281814575,
-          "score_drop": -0.0054419339
-        }
-      ],
-      "contributions": [
-        {
-          "feature": "target:3223",
-          "node_type": "target",
-          "node_id": 3223,
-          "label": "Target #3223",
-          "masked_score": 0.4664551317691803,
-          "score_drop": 0.0098346472
-        },
-        {
-          "feature": "compound:523",
-          "node_type": "compound",
-          "node_id": 523,
-          "label": "Compound #523",
-          "masked_score": 0.4760511517524719,
-          "score_drop": 0.0002386272
-        },
-        {
-          "feature": "compound:435",
-          "node_type": "compound",
-          "node_id": 435,
-          "label": "Compound #435",
-          "masked_score": 0.47607624530792236,
-          "score_drop": 0.0002135336
-        },
-        {
-          "feature": "target:8101",
-          "node_type": "target",
-          "node_id": 8101,
-          "label": "Target #8101",
-          "masked_score": 0.4762183427810669,
-          "score_drop": 7.14362e-05
-        },
-        {
-          "feature": "target:12337",
-          "node_type": "target",
-          "node_id": 12337,
-          "label": "Target #12337",
-          "masked_score": 0.47626176476478577,
-          "score_drop": 2.80142e-05
-        },
-        {
-          "feature": "target:8967",
-          "node_type": "target",
-          "node_id": 8967,
-          "label": "Target #8967",
-          "masked_score": 0.4762618839740753,
-          "score_drop": 2.7895e-05
-        },
-        {
-          "feature": "target:2432",
-          "node_type": "target",
-          "node_id": 2432,
-          "label": "Target #2432",
-          "masked_score": 0.4762842059135437,
-          "score_drop": 5.573e-06
-        },
-        {
-          "feature": "target:12333",
-          "node_type": "target",
-          "node_id": 12333,
-          "label": "Target #12333",
-          "masked_score": 0.47628679871559143,
-          "score_drop": 2.9802e-06
-        },
-        {
-          "feature": "target:7802",
-          "node_type": "target",
-          "node_id": 7802,
-          "label": "Target #7802",
-          "masked_score": 0.4762877821922302,
-          "score_drop": 1.9968e-06
-        },
-        {
-          "feature": "target:14208",
-          "node_type": "target",
-          "node_id": 14208,
-          "label": "Target #14208",
-          "masked_score": 0.47628945112228394,
-          "score_drop": 3.278e-07
-        },
-        {
-          "feature": "compound:875",
-          "node_type": "compound",
-          "node_id": 875,
-          "label": "Compound #875",
-          "masked_score": 0.481732040643692,
-          "score_drop": -0.0054422617
-        }
-      ]
-    },
-    {
       "herb_id": 237,
       "adr_id": 3989,
-      "source": "table5_top15",
-      "original_score": 0.999184787273407,
-      "path_count": 1,
-      "available_node_ref_count": 2,
-      "quantified_node_ref_count": 2,
+      "source": "pu_xmsat_global_unobserved_pairs",
+      "original_score": 0.9989712238311768,
+      "path_count": 12,
+      "available_node_ref_count": 6,
+      "quantified_node_ref_count": 6,
       "node_refs_truncated": false,
-      "feature_count": 2,
+      "feature_count": 6,
       "paths": [
-        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness"
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness",
+        "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness"
       ],
       "mechanism_subgraph": {
         "nodes": [
+          {
+            "feature": "compound:965",
+            "node_type": "compound",
+            "node_id": 965,
+            "label": "Compound #965"
+          },
+          {
+            "feature": "compound:1023",
+            "node_type": "compound",
+            "node_id": 1023,
+            "label": "Compound #1023"
+          },
           {
             "feature": "compound:1073",
             "node_type": "compound",
@@ -822,14 +57,67 @@
             "node_type": "target",
             "node_id": 2586,
             "label": "Target #2586"
+          },
+          {
+            "feature": "target:6478",
+            "node_type": "target",
+            "node_id": 6478,
+            "label": "Target #6478"
+          },
+          {
+            "feature": "target:7213",
+            "node_type": "target",
+            "node_id": 7213,
+            "label": "Target #7213"
           }
         ],
         "edges": [
           {
+            "source": "compound:1023",
+            "target": "target:6478",
+            "path_indices": [
+              6,
+              12
+            ]
+          },
+          {
+            "source": "compound:1023",
+            "target": "target:7213",
+            "path_indices": [
+              5,
+              11
+            ]
+          },
+          {
             "source": "compound:1073",
             "target": "target:2586",
             "path_indices": [
-              1
+              1,
+              7
+            ]
+          },
+          {
+            "source": "compound:1073",
+            "target": "target:7213",
+            "path_indices": [
+              2,
+              8
+            ]
+          },
+          {
+            "source": "compound:965",
+            "target": "target:2586",
+            "path_indices": [
+              3,
+              9
+            ]
+          },
+          {
+            "source": "compound:965",
+            "target": "target:7213",
+            "path_indices": [
+              4,
+              10
             ]
           }
         ],
@@ -855,6 +143,248 @@
                 "label": "Target #2586"
               }
             ]
+          },
+          {
+            "path_index": 2,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness",
+            "features": [
+              "compound:1073",
+              "target:7213"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:1073",
+                "node_type": "compound",
+                "node_id": 1073,
+                "label": "Compound #1073"
+              },
+              {
+                "feature": "target:7213",
+                "node_type": "target",
+                "node_id": 7213,
+                "label": "Target #7213"
+              }
+            ]
+          },
+          {
+            "path_index": 3,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness",
+            "features": [
+              "compound:965",
+              "target:2586"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:965",
+                "node_type": "compound",
+                "node_id": 965,
+                "label": "Compound #965"
+              },
+              {
+                "feature": "target:2586",
+                "node_type": "target",
+                "node_id": 2586,
+                "label": "Target #2586"
+              }
+            ]
+          },
+          {
+            "path_index": 4,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness",
+            "features": [
+              "compound:965",
+              "target:7213"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:965",
+                "node_type": "compound",
+                "node_id": 965,
+                "label": "Compound #965"
+              },
+              {
+                "feature": "target:7213",
+                "node_type": "target",
+                "node_id": 7213,
+                "label": "Target #7213"
+              }
+            ]
+          },
+          {
+            "path_index": 5,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness",
+            "features": [
+              "compound:1023",
+              "target:7213"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:1023",
+                "node_type": "compound",
+                "node_id": 1023,
+                "label": "Compound #1023"
+              },
+              {
+                "feature": "target:7213",
+                "node_type": "target",
+                "node_id": 7213,
+                "label": "Target #7213"
+              }
+            ]
+          },
+          {
+            "path_index": 6,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness",
+            "features": [
+              "compound:1023",
+              "target:6478"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:1023",
+                "node_type": "compound",
+                "node_id": 1023,
+                "label": "Compound #1023"
+              },
+              {
+                "feature": "target:6478",
+                "node_type": "target",
+                "node_id": 6478,
+                "label": "Target #6478"
+              }
+            ]
+          },
+          {
+            "path_index": 7,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness",
+            "features": [
+              "compound:1073",
+              "target:2586"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:1073",
+                "node_type": "compound",
+                "node_id": 1073,
+                "label": "Compound #1073"
+              },
+              {
+                "feature": "target:2586",
+                "node_type": "target",
+                "node_id": 2586,
+                "label": "Target #2586"
+              }
+            ]
+          },
+          {
+            "path_index": 8,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness",
+            "features": [
+              "compound:1073",
+              "target:7213"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:1073",
+                "node_type": "compound",
+                "node_id": 1073,
+                "label": "Compound #1073"
+              },
+              {
+                "feature": "target:7213",
+                "node_type": "target",
+                "node_id": 7213,
+                "label": "Target #7213"
+              }
+            ]
+          },
+          {
+            "path_index": 9,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness",
+            "features": [
+              "compound:965",
+              "target:2586"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:965",
+                "node_type": "compound",
+                "node_id": 965,
+                "label": "Compound #965"
+              },
+              {
+                "feature": "target:2586",
+                "node_type": "target",
+                "node_id": 2586,
+                "label": "Target #2586"
+              }
+            ]
+          },
+          {
+            "path_index": 10,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness",
+            "features": [
+              "compound:965",
+              "target:7213"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:965",
+                "node_type": "compound",
+                "node_id": 965,
+                "label": "Compound #965"
+              },
+              {
+                "feature": "target:7213",
+                "node_type": "target",
+                "node_id": 7213,
+                "label": "Target #7213"
+              }
+            ]
+          },
+          {
+            "path_index": 11,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness",
+            "features": [
+              "compound:1023",
+              "target:7213"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:1023",
+                "node_type": "compound",
+                "node_id": 1023,
+                "label": "Compound #1023"
+              },
+              {
+                "feature": "target:7213",
+                "node_type": "target",
+                "node_id": 7213,
+                "label": "Target #7213"
+              }
+            ]
+          },
+          {
+            "path_index": 12,
+            "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness",
+            "features": [
+              "compound:1023",
+              "target:6478"
+            ],
+            "feature_refs": [
+              {
+                "feature": "compound:1023",
+                "node_type": "compound",
+                "node_id": 1023,
+                "label": "Compound #1023"
+              },
+              {
+                "feature": "target:6478",
+                "node_type": "target",
+                "node_id": 6478,
+                "label": "Target #6478"
+              }
+            ]
           }
         ]
       },
@@ -864,19 +394,73 @@
           "node_type": "compound",
           "node_id": 1073,
           "label": "Compound #1073",
-          "masked_score": 0.9991635084152222,
-          "score_drop": 2.12789e-05
+          "masked_score": 0.9989585876464844,
+          "score_drop": 1.26362e-05
+        },
+        {
+          "feature": "target:7213",
+          "node_type": "target",
+          "node_id": 7213,
+          "label": "Target #7213",
+          "masked_score": 0.9989664554595947,
+          "score_drop": 4.7684e-06
         },
         {
           "feature": "target:2586",
           "node_type": "target",
           "node_id": 2586,
           "label": "Target #2586",
-          "masked_score": 0.999184787273407,
-          "score_drop": 0.0
+          "masked_score": 0.998969316482544,
+          "score_drop": 1.9073e-06
+        },
+        {
+          "feature": "target:6478",
+          "node_type": "target",
+          "node_id": 6478,
+          "label": "Target #6478",
+          "masked_score": 0.9989697933197021,
+          "score_drop": 1.4305e-06
+        },
+        {
+          "feature": "compound:965",
+          "node_type": "compound",
+          "node_id": 965,
+          "label": "Compound #965",
+          "masked_score": 0.9989711046218872,
+          "score_drop": 1.192e-07
+        },
+        {
+          "feature": "compound:1023",
+          "node_type": "compound",
+          "node_id": 1023,
+          "label": "Compound #1023",
+          "masked_score": 0.998974084854126,
+          "score_drop": -2.861e-06
         }
       ],
       "path_contributions": [
+        {
+          "feature": "path:2",
+          "path_index": 2,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness",
+          "features": [
+            "compound:1073",
+            "target:7213"
+          ],
+          "masked_score": 0.9989537000656128,
+          "score_drop": 1.75238e-05
+        },
+        {
+          "feature": "path:8",
+          "path_index": 8,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness",
+          "features": [
+            "compound:1073",
+            "target:7213"
+          ],
+          "masked_score": 0.9989537000656128,
+          "score_drop": 1.75238e-05
+        },
         {
           "feature": "path:1",
           "path_index": 1,
@@ -885,8 +469,107 @@
             "compound:1073",
             "target:2586"
           ],
-          "masked_score": 0.9991635084152222,
-          "score_drop": 2.12789e-05
+          "masked_score": 0.9989566802978516,
+          "score_drop": 1.45435e-05
+        },
+        {
+          "feature": "path:7",
+          "path_index": 7,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness",
+          "features": [
+            "compound:1073",
+            "target:2586"
+          ],
+          "masked_score": 0.9989566802978516,
+          "score_drop": 1.45435e-05
+        },
+        {
+          "feature": "path:10",
+          "path_index": 10,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness",
+          "features": [
+            "compound:965",
+            "target:7213"
+          ],
+          "masked_score": 0.9989663362503052,
+          "score_drop": 4.8876e-06
+        },
+        {
+          "feature": "path:4",
+          "path_index": 4,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #7213 ← Altered state of consciousness",
+          "features": [
+            "compound:965",
+            "target:7213"
+          ],
+          "masked_score": 0.9989663362503052,
+          "score_drop": 4.8876e-06
+        },
+        {
+          "feature": "path:3",
+          "path_index": 3,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness",
+          "features": [
+            "compound:965",
+            "target:2586"
+          ],
+          "masked_score": 0.9989691972732544,
+          "score_drop": 2.0266e-06
+        },
+        {
+          "feature": "path:9",
+          "path_index": 9,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #965 → Target #2586 ← Altered state of consciousness",
+          "features": [
+            "compound:965",
+            "target:2586"
+          ],
+          "masked_score": 0.9989691972732544,
+          "score_drop": 2.0266e-06
+        },
+        {
+          "feature": "path:11",
+          "path_index": 11,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness",
+          "features": [
+            "compound:1023",
+            "target:7213"
+          ],
+          "masked_score": 0.998969316482544,
+          "score_drop": 1.9073e-06
+        },
+        {
+          "feature": "path:5",
+          "path_index": 5,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #7213 ← Altered state of consciousness",
+          "features": [
+            "compound:1023",
+            "target:7213"
+          ],
+          "masked_score": 0.998969316482544,
+          "score_drop": 1.9073e-06
+        },
+        {
+          "feature": "path:12",
+          "path_index": 12,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness",
+          "features": [
+            "compound:1023",
+            "target:6478"
+          ],
+          "masked_score": 0.9989726543426514,
+          "score_drop": -1.4305e-06
+        },
+        {
+          "feature": "path:6",
+          "path_index": 6,
+          "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1023 → Target #6478 ← Altered state of consciousness",
+          "features": [
+            "compound:1023",
+            "target:6478"
+          ],
+          "masked_score": 0.9989726543426514,
+          "score_drop": -1.4305e-06
         }
       ],
       "contributions": [
@@ -895,16 +578,48 @@
           "node_type": "compound",
           "node_id": 1073,
           "label": "Compound #1073",
-          "masked_score": 0.9991635084152222,
-          "score_drop": 2.12789e-05
+          "masked_score": 0.9989585876464844,
+          "score_drop": 1.26362e-05
+        },
+        {
+          "feature": "target:7213",
+          "node_type": "target",
+          "node_id": 7213,
+          "label": "Target #7213",
+          "masked_score": 0.9989664554595947,
+          "score_drop": 4.7684e-06
         },
         {
           "feature": "target:2586",
           "node_type": "target",
           "node_id": 2586,
           "label": "Target #2586",
-          "masked_score": 0.999184787273407,
-          "score_drop": 0.0
+          "masked_score": 0.998969316482544,
+          "score_drop": 1.9073e-06
+        },
+        {
+          "feature": "target:6478",
+          "node_type": "target",
+          "node_id": 6478,
+          "label": "Target #6478",
+          "masked_score": 0.9989697933197021,
+          "score_drop": 1.4305e-06
+        },
+        {
+          "feature": "compound:965",
+          "node_type": "compound",
+          "node_id": 965,
+          "label": "Compound #965",
+          "masked_score": 0.9989711046218872,
+          "score_drop": 1.192e-07
+        },
+        {
+          "feature": "compound:1023",
+          "node_type": "compound",
+          "node_id": 1023,
+          "label": "Compound #1023",
+          "masked_score": 0.998974084854126,
+          "score_drop": -2.861e-06
         }
       ]
     }

@@ -40,7 +40,11 @@ def build_experiment_config(
     threshold_strategy: str = "fixed_0_5",
     save_checkpoints: bool = False,
     checkpoint_prefix: str | None = None,
-    checkpoint_dir: str = "saved_models",
+    checkpoint_dir: str = "saved_models/pu_xmsat_formal",
+    allow_checkpoint_overwrite: bool = False,
+    split_mode: str = "official_fold",
+    n_clusters: int = 10,
+    cluster_feature: str = "herb_x",
 ) -> dict:
     backend = resolve_training_backend(training_backend)
     return {
@@ -50,6 +54,10 @@ def build_experiment_config(
         "save_checkpoints": bool(save_checkpoints),
         "checkpoint_prefix": checkpoint_prefix,
         "checkpoint_dir": checkpoint_dir,
+        "allow_checkpoint_overwrite": bool(allow_checkpoint_overwrite),
+        "split_mode": split_mode,
+        "n_clusters": int(n_clusters),
+        "cluster_feature": cluster_feature,
         "loss": "weighted_pu_bce",
         "training_backend": backend,
         "unlabeled_weight": unlabeled_weight,
@@ -241,6 +249,19 @@ def main() -> None:
     parser.add_argument("--learning-rate", type=float, default=0.05)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument(
+        "--split-mode",
+        choices=["official_fold", "cluster_holdout"],
+        default="official_fold",
+        help="Evaluation split protocol for the full_msat_pu backend.",
+    )
+    parser.add_argument("--n-clusters", type=int, default=10)
+    parser.add_argument(
+        "--cluster-feature",
+        choices=["herb_x"],
+        default="herb_x",
+        help="Label-free herb feature source for cluster_holdout.",
+    )
+    parser.add_argument(
         "--save-checkpoints",
         action="store_true",
         help="Export best full_msat_pu fold checkpoints with formal non-baseline names.",
@@ -259,6 +280,14 @@ def main() -> None:
         default="saved_models/pu_xmsat_formal",
         help="Checkpoint directory used only when --save-checkpoints is set.",
     )
+    parser.add_argument(
+        "--overwrite-checkpoints",
+        action="store_true",
+        help=(
+            "Allow overwriting an existing formal PU-XMSAT checkpoint. Default is "
+            "to refuse overwrites so manuscript checkpoints are not polluted."
+        ),
+    )
     args = parser.parse_args()
 
     start = time.time()
@@ -274,6 +303,10 @@ def main() -> None:
         save_checkpoints=args.save_checkpoints,
         checkpoint_prefix=args.checkpoint_prefix,
         checkpoint_dir=args.checkpoint_dir,
+        allow_checkpoint_overwrite=args.overwrite_checkpoints,
+        split_mode=args.split_mode,
+        n_clusters=args.n_clusters,
+        cluster_feature=args.cluster_feature,
     )
 
     if backend == "full_msat_pu":
@@ -293,6 +326,10 @@ def main() -> None:
                 save_checkpoints=args.save_checkpoints,
                 checkpoint_prefix=args.checkpoint_prefix,
                 checkpoint_dir=args.checkpoint_dir,
+                allow_checkpoint_overwrite=args.overwrite_checkpoints,
+                split_mode=args.split_mode,
+                n_clusters=args.n_clusters,
+                cluster_feature=args.cluster_feature,
             )
         )
         out = Path(args.output)

@@ -1,0 +1,169 @@
+{
+  "experiment": "pu_xmsat_cluster_holdout_generalization",
+  "split_mode": "cluster_holdout",
+  "fold_count": 10,
+  "mean_metrics": {
+    "auc": 0.8890690396614096,
+    "auprc": 0.9032192842691891,
+    "f1": 0.17697649570627685,
+    "mcc": 0.19191354647585124
+  },
+  "cluster_balance": {
+    "min_heldout_herb_count": 1,
+    "max_heldout_herb_count": 207,
+    "tiny_holdout_cluster_threshold": 5,
+    "tiny_holdout_cluster_count": 3
+  },
+  "interpretation_caveats": [
+    "3 tiny heldout clusters have fewer than 5 herbs; macro mean metrics should be read together with fold-level cluster sizes.",
+    "Thresholded F1 is low under cluster-held-out evaluation; this supports a harder generalization setting rather than a simple success claim."
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "holdout_cluster": 0,
+      "heldout_herb_count": 207,
+      "test_positive_count": 14977,
+      "hidden_eval_positive_pair_count": 14977,
+      "excluded_herb_count": 207,
+      "metrics": {
+        "auc": 0.8081608086261524,
+        "auprc": 0.8302122250102991,
+        "f1": 0.09805289528762605,
+        "mcc": 0.15750150392779066
+      }
+    },
+    {
+      "fold": 1,
+      "holdout_cluster": 1,
+      "heldout_herb_count": 1,
+      "test_positive_count": 9,
+      "hidden_eval_positive_pair_count": 9,
+      "excluded_herb_count": 1,
+      "metrics": {
+        "auc": 0.9876543209876543,
+        "auprc": 0.9888888888888889,
+        "f1": 0.5,
+        "mcc": 0.4472135954999579
+      }
+    },
+    {
+      "fold": 2,
+      "holdout_cluster": 2,
+      "heldout_herb_count": 1,
+      "test_positive_count": 5,
+      "hidden_eval_positive_pair_count": 5,
+      "excluded_herb_count": 1,
+      "metrics": {
+        "auc": 1.0,
+        "auprc": 1.0,
+        "f1": 0.75,
+        "mcc": 0.6546536707079772
+      }
+    },
+    {
+      "fold": 3,
+      "holdout_cluster": 3,
+      "heldout_herb_count": 1,
+      "test_positive_count": 5,
+      "hidden_eval_positive_pair_count": 5,
+      "excluded_herb_count": 1,
+      "metrics": {
+        "auc": 1.0,
+        "auprc": 1.0,
+        "f1": 0.0,
+        "mcc": 0.0
+      }
+    },
+    {
+      "fold": 4,
+      "holdout_cluster": 4,
+      "heldout_herb_count": 20,
+      "test_positive_count": 213,
+      "hidden_eval_positive_pair_count": 213,
+      "excluded_herb_count": 20,
+      "metrics": {
+        "auc": 0.8914897837730609,
+        "auprc": 0.9117246093658908,
+        "f1": 0.0,
+        "mcc": 0.0
+      }
+    },
+    {
+      "fold": 5,
+      "holdout_cluster": 5,
+      "heldout_herb_count": 65,
+      "test_positive_count": 107,
+      "hidden_eval_positive_pair_count": 107,
+      "excluded_herb_count": 65,
+      "metrics": {
+        "auc": 0.8824351471744257,
+        "auprc": 0.9010684727382697,
+        "f1": 0.17094017094017094,
+        "mcc": 0.22140372138502382
+      }
+    },
+    {
+      "fold": 6,
+      "holdout_cluster": 6,
+      "heldout_herb_count": 33,
+      "test_positive_count": 937,
+      "hidden_eval_positive_pair_count": 937,
+      "excluded_herb_count": 33,
+      "metrics": {
+        "auc": 0.850245282008818,
+        "auprc": 0.8711138850640359,
+        "f1": 0.04179728317659352,
+        "mcc": 0.1038628254749593
+      }
+    },
+    {
+      "fold": 7,
+      "holdout_cluster": 7,
+      "heldout_herb_count": 71,
+      "test_positive_count": 3294,
+      "hidden_eval_positive_pair_count": 3294,
+      "excluded_herb_count": 71,
+      "metrics": {
+        "auc": 0.8629431573072271,
+        "auprc": 0.8757617027065966,
+        "f1": 0.1849201981287837,
+        "mcc": 0.22778656983656026
+      }
+    },
+    {
+      "fold": 8,
+      "holdout_cluster": 8,
+      "heldout_herb_count": 112,
+      "test_positive_count": 4186,
+      "hidden_eval_positive_pair_count": 4186,
+      "excluded_herb_count": 112,
+      "metrics": {
+        "auc": 0.8083976255573091,
+        "auprc": 0.8304605690305706,
+        "f1": 0.006191950464396285,
+        "mcc": 0.03943615033625495
+      }
+    },
+    {
+      "fold": 9,
+      "holdout_cluster": 9,
+      "heldout_herb_count": 140,
+      "test_positive_count": 3329,
+      "hidden_eval_positive_pair_count": 3329,
+      "excluded_herb_count": 140,
+      "metrics": {
+        "auc": 0.7993642711794484,
+        "auprc": 0.8229624898873386,
+        "f1": 0.017862459065197976,
+        "mcc": 0.06727742758998839
+      }
+    }
+  ],
+  "leakage_controls": {
+    "heldout_herbs_filtered_from_pu_training": true,
+    "eval_positive_edges_hidden": true,
+    "mechanism_edges_retained": true
+  },
+  "claim_boundary": "Cluster-held-out evaluation probes generalization to held-out herb/CMM clusters; it is not external clinical validation, causal transportability, or evidence that all unobserved pairs are true negatives."
+}

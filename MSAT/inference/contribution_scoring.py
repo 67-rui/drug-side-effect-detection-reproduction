@@ -66,13 +66,51 @@ def extract_node_refs_from_paths(paths: list[str]) -> list[dict]:
     return refs
 
 
-def build_key_mechanism_subgraph(paths: list[str]) -> dict:
+def _fallback_display(node_type: str, node_id: int) -> str:
+    return f"{node_type.title()} #{int(node_id)}"
+
+
+def _display_for_ref(ref: dict, entity_names=None) -> tuple[str, str]:
+    node_type = ref["node_type"]
+    node_id = int(ref["node_id"])
+    if entity_names is not None:
+        display_method = getattr(entity_names, f"{node_type}_display", None)
+        source_method = getattr(entity_names, f"{node_type}_source", None)
+        if callable(display_method):
+            display = str(display_method(node_id))
+            source = (
+                str(source_method(node_id))
+                if callable(source_method)
+                else "entity_names"
+            )
+            return display, source
+    return _fallback_display(node_type, node_id), "unmapped_graph_id"
+
+
+def enrich_feature_refs(refs: list[dict], entity_names=None) -> list[dict]:
+    enriched = []
+    for ref in refs:
+        display_name, name_source = _display_for_ref(ref, entity_names)
+        enriched.append(
+            {
+                **ref,
+                "display_name": display_name,
+                "name_source": name_source,
+            }
+        )
+    return enriched
+
+
+def build_key_mechanism_subgraph(paths: list[str], entity_names=None) -> dict:
     node_by_feature: dict[str, dict] = {}
     edge_paths: dict[tuple[str, str], set[int]] = {}
     path_rows: list[dict] = []
 
     for path_index, path_text in enumerate(paths, start=1):
-        refs = extract_node_refs_from_path(path_text)
+        refs = enrich_feature_refs(
+            extract_node_refs_from_path(path_text),
+            entity_names=entity_names,
+        )
         for ref in refs:
             node_by_feature.setdefault(ref["feature"], dict(ref))
 
@@ -159,6 +197,10 @@ def score_path_perturbations(
                 "path_index": int(path["path_index"]),
                 "path_text": path["path_text"],
                 "features": list(path["features"]),
+                "display_features": [
+                    ref.get("display_name", ref.get("feature", ""))
+                    for ref in path.get("feature_refs", [])
+                ],
                 "masked_score": masked_score,
                 "score_drop": round(float(original_score) - masked_score, 10),
             }

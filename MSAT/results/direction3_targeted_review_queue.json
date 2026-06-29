@@ -1,9 +1,9 @@
 {
   "experiment": "direction3_targeted_review_queue",
-  "created_at": "2026-06-29T12:56:24.642063",
+  "created_at": "2026-06-29T15:14:29.397821",
   "source_experiment": "batch_mechanism_interpretability",
-  "checkpoint_path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt",
-  "checkpoint_context": "Fallback batch interpretability reuses existing contribution rows from the local predictor checkpoint because no final full-positive hybrid PU-XMSAT predictor checkpoint is available.",
+  "checkpoint_path": "saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt",
+  "checkpoint_context": "Final full-positive hybrid PU-XMSAT checkpoint attribution.",
   "source_claim_boundary": "Perturbation score drops are local sensitivity signals for mechanism triage; they are not causal effects, not SHAP values, and not external clinical validation.",
   "claim_boundary": "This queue prioritizes external-evidence review based on local perturbation sensitivity. It is not external validation and does not upgrade evidence grades without manual source review.",
   "review_boundaries": [
@@ -14,75 +14,49 @@
     "No manual direct evidence means no Grade A/B."
   ],
   "summary": {
-    "case_count": 2,
-    "manual_reviewed_count": 2,
+    "case_count": 1,
+    "manual_reviewed_count": 1,
     "ready_strong_evidence_count": 0,
     "target_external_evidence_review_count": 0,
-    "boundary_case_count": 2,
+    "boundary_case_count": 1,
     "evidence_grade_counts": {
-      "C": 2
+      "C": 1
     },
     "updated_grade_recommendation_counts": {
-      "C": 2
+      "C": 1
     },
     "review_action_counts": {
-      "preserve_as_mechanism_screening_boundary": 2
+      "preserve_as_mechanism_screening_boundary": 1
     }
   },
   "rows": [
-    {
-      "herb_id": 277,
-      "adr_id": 2931,
-      "herb_latin": "Citrus aurantium L.",
-      "adr_pt": "Watery diarrhoea",
-      "source": "case_zhishi_diarrhoea",
-      "original_score": 0.4762897789478302,
-      "priority_score": 0.0100741684,
-      "max_path_score_drop": 0.0100741684,
-      "max_target_score_drop": 0.0098346472,
-      "max_component_score_drop": 0.0002386272,
-      "top_path_features": "compound:523;target:3223",
-      "top_path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea",
-      "max_node_score_drop": 0.0098346472,
-      "top_node_feature": "target:3223",
-      "top_node_type": "target",
-      "evidence_grade": "C",
-      "updated_grade_recommendation": "C",
-      "manual_review_status": "mechanism_relevant_direction_conflicting",
-      "paper_use": "hypothesis-generating mechanistic discussion only",
-      "direct_literature_support": false,
-      "literature_record_count": 0,
-      "literature_support_candidate_count": 0,
-      "verified_literature_count": 0,
-      "review_action": "preserve_as_mechanism_screening_boundary",
-      "rank": 1
-    },
     {
       "herb_id": 237,
       "adr_id": 3989,
       "herb_latin": "Fragaria vesca L.",
       "adr_pt": "Altered state of consciousness",
-      "source": "table5_top15",
-      "original_score": 0.999184787273407,
-      "priority_score": 2.12789e-05,
-      "max_path_score_drop": 2.12789e-05,
-      "max_target_score_drop": 0.0,
-      "max_component_score_drop": 2.12789e-05,
-      "top_path_features": "compound:1073;target:2586",
-      "top_path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness",
-      "max_node_score_drop": 2.12789e-05,
+      "source": "pu_xmsat_global_unobserved_pairs",
+      "original_score": 0.9989712238311768,
+      "priority_score": 1.75238e-05,
+      "max_path_score_drop": 1.75238e-05,
+      "max_target_score_drop": 4.7684e-06,
+      "max_component_score_drop": 1.26362e-05,
+      "top_path_features": "compound:1073;target:7213",
+      "top_path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #7213 ← Altered state of consciousness",
+      "max_node_score_drop": 1.26362e-05,
       "top_node_feature": "compound:1073",
       "top_node_type": "compound",
       "evidence_grade": "C",
       "updated_grade_recommendation": "C",
       "manual_review_status": "external_not_supported",
+      "ready_for_strong_evidence_writeup": false,
       "paper_use": "negative screening example only",
       "direct_literature_support": false,
       "literature_record_count": 9,
       "literature_support_candidate_count": 0,
       "verified_literature_count": 0,
       "review_action": "preserve_as_mechanism_screening_boundary",
-      "rank": 2
+      "rank": 1
     }
   ]
 }

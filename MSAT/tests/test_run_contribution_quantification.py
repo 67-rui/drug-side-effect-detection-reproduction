@@ -2,6 +2,8 @@ import json
 
 from scripts.run_contribution_quantification import (
     build_case_contribution_payload,
+    infer_checkpoint_context,
+    sample_random_node_refs,
     select_mechanistic_cases,
     write_outputs,
 )
@@ -59,6 +61,60 @@ def test_select_mechanistic_cases_can_quantify_all_subgraph_node_refs():
     assert cases[0]["node_refs_truncated"] is False
 
 
+def test_select_mechanistic_cases_accepts_top_prediction_mechanism_paths():
+    payload = {
+        "rows": [
+            {
+                "herb_id": 5,
+                "adr_id": 6,
+                "top_mechanism_paths": [
+                    "Herb -> Compound #77 -> Target #88 <- ADR",
+                ],
+            }
+        ]
+    }
+
+    cases = select_mechanistic_cases(payload, max_cases=5)
+
+    assert len(cases) == 1
+    assert cases[0]["path_texts"] == ["Herb -> Compound #77 -> Target #88 <- ADR"]
+    assert [ref["feature"] for ref in cases[0]["node_refs"]] == [
+        "compound:77",
+        "target:88",
+    ]
+
+
+def test_select_mechanistic_cases_deduplicates_top_and_explicit_paths():
+    payload = {
+        "rows": [
+            {
+                "herb_id": 5,
+                "adr_id": 6,
+                "top_mechanism_paths": [
+                    "Herb -> Compound #77 -> Target #88 <- ADR",
+                ],
+                "explicit_mechanism_paths": [
+                    "Herb -> Compound #77 -> Target #88 <- ADR",
+                ],
+            }
+        ]
+    }
+
+    cases = select_mechanistic_cases(payload, max_cases=5)
+
+    assert cases[0]["path_texts"] == ["Herb -> Compound #77 -> Target #88 <- ADR"]
+
+
+def test_infer_checkpoint_context_keeps_pu_fold_checkpoint_nonfinal():
+    context = infer_checkpoint_context(
+        "saved_models/pu_xmsat_formal/pu_xmsat_full_msat_pu_hybrid_seed2026_pairs66015_valf1_u0p2_rn0p8_fold0.pt",
+        checkpoint_is_final_pu=False,
+    )
+
+    assert "PU-XMSAT checkpoint" in context
+    assert "not final" in context.lower()
+
+
 def test_build_case_contribution_payload_contains_ranked_rows():
     case = {
         "herb_id": 1,
@@ -85,11 +141,70 @@ def test_build_case_contribution_payload_contains_ranked_rows():
     assert payload["adr_id"] == 2
     assert payload["original_score"] == 0.8
     assert payload["node_contributions"][0]["feature"] == "compound:10"
+    assert payload["node_contributions"][0]["display_name"] == "Compound #10"
+    assert payload["node_contributions"][0]["name_source"] == "unmapped_graph_id"
     assert payload["node_contributions"][0]["score_drop"] == 0.4
     assert payload["path_contributions"][0]["feature"] == "path:1"
     assert payload["path_contributions"][0]["score_drop"] == 0.2
     assert payload["mechanism_subgraph"]["nodes"][0]["feature"] == "compound:10"
     assert json.loads(json.dumps(payload))
+
+
+def test_build_case_contribution_payload_can_include_random_controls():
+    case = {
+        "herb_id": 1,
+        "adr_id": 2,
+        "source": "unit",
+        "path_texts": ["Herb -> Compound #10 -> Target #20 <- ADR"],
+        "node_refs": [
+            {"feature": "compound:10", "node_type": "compound", "node_id": 10, "label": "Compound #10"},
+        ],
+    }
+
+    payload = build_case_contribution_payload(
+        case,
+        original_score=0.8,
+        score_masked=lambda ref: 0.7,
+        score_masked_path=lambda path: 0.6,
+        random_node_refs=[
+            {"feature": "compound:11", "node_type": "compound", "node_id": 11, "label": "Compound #11"},
+            {"feature": "target:21", "node_type": "target", "node_id": 21, "label": "Target #21"},
+        ],
+        random_path_controls=[
+            {
+                "path_index": 1,
+                "path_text": "random same-type path control",
+                "features": ["compound:11", "target:21"],
+                "feature_refs": [
+                    {"feature": "compound:11", "node_type": "compound", "node_id": 11},
+                    {"feature": "target:21", "node_type": "target", "node_id": 21},
+                ],
+            }
+        ],
+    )
+
+    assert payload["random_controls"]["component"][0]["feature"] == "compound:11"
+    assert payload["random_controls"]["target"][0]["feature"] == "target:21"
+    assert payload["random_controls"]["pathway"][0]["features"] == ["compound:11", "target:21"]
+
+
+def test_sample_random_node_refs_uses_same_node_type_and_excludes_case_nodes():
+    import torch
+
+    refs = [
+        {"feature": "compound:1", "node_type": "compound", "node_id": 1},
+        {"feature": "target:2", "node_type": "target", "node_id": 2},
+    ]
+    sampled = sample_random_node_refs(
+        refs,
+        {"compound": torch.zeros((4, 2)), "target": torch.zeros((5, 2))},
+        seed=3,
+        controls_per_type=1,
+    )
+
+    assert {row["node_type"] for row in sampled} == {"compound", "target"}
+    assert ("compound", 1) not in {(row["node_type"], row["node_id"]) for row in sampled}
+    assert ("target", 2) not in {(row["node_type"], row["node_id"]) for row in sampled}
 
 
 def test_write_outputs_records_checkpoint_metadata(tmp_path):

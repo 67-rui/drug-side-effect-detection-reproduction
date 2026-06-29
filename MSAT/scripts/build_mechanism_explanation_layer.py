@@ -13,20 +13,25 @@ CSV_FIELDS = [
     "contribution_group",
     "rank",
     "feature",
+    "display_name",
+    "name_source",
     "node_type",
     "node_id",
     "path_features",
+    "path_display_features",
     "case_count",
     "occurrence_count",
     "mean_score_drop",
     "max_score_drop",
     "positive_drop_count",
+    "near_zero_drop_count",
     "negative_drop_count",
 ]
 
 CLAIM_BOUNDARY_CN = (
     "本报告只解释当前已量化案例中的局部扰动敏感性；不是因果效应、不是 SHAP 值、不是外部临床验证。"
 )
+NEAR_ZERO_THRESHOLD = 1e-4
 
 
 def load_contribution_payload(path: str | Path) -> dict[str, Any]:
@@ -50,6 +55,50 @@ def _path_features(row: dict[str, Any]) -> str:
     return str(row.get("path_features", ""))
 
 
+def _fallback_display(feature: str, node_type: str = "", node_id: str = "") -> tuple[str, str]:
+    node_id = str(node_id or "")
+    if node_type == "compound" or feature.startswith("compound:"):
+        value = node_id or feature.split(":", 1)[-1]
+        return f"Compound #{value}", "unmapped_graph_id"
+    if node_type == "target" or feature.startswith("target:"):
+        value = node_id or feature.split(":", 1)[-1]
+        return f"Target #{value}", "unmapped_graph_id"
+    return feature, "feature_id"
+
+
+def _row_display(row: dict[str, Any], feature: str, node_type: str = "", node_id: str = "") -> tuple[str, str]:
+    display = str(row.get("display_name") or row.get("label") or "").strip()
+    source = str(row.get("name_source") or "").strip()
+    if display:
+        if not source:
+            source = "unmapped_graph_id" if "#" in display else "row_label"
+        return display, source
+    return _fallback_display(feature, node_type=node_type, node_id=node_id)
+
+
+def _case_display_map(case: dict[str, Any]) -> dict[str, str]:
+    mapping: dict[str, str] = {}
+    for node in case.get("mechanism_subgraph", {}).get("nodes", []):
+        feature = str(node.get("feature", ""))
+        if not feature:
+            continue
+        display, _source = _row_display(
+            node,
+            feature=feature,
+            node_type=str(node.get("node_type", "")),
+            node_id=str(node.get("node_id", "")),
+        )
+        mapping[feature] = display
+    return mapping
+
+
+def _path_display_features(path_features: str, display_map: dict[str, str]) -> str:
+    features = [feature for feature in str(path_features).split(";") if feature]
+    if not features:
+        return ""
+    return ";".join(display_map.get(feature, _fallback_display(feature)[0]) for feature in features)
+
+
 def _empty_bucket(**metadata: Any) -> dict[str, Any]:
     return {
         **metadata,
@@ -60,8 +109,9 @@ def _empty_bucket(**metadata: Any) -> dict[str, Any]:
 
 def _finalize_bucket(bucket: dict[str, Any]) -> dict[str, Any]:
     drops = [float(value) for value in bucket["score_drops"]]
-    positive = [value for value in drops if value > 0]
-    negative = [value for value in drops if value < 0]
+    positive = [value for value in drops if value > NEAR_ZERO_THRESHOLD]
+    near_zero = [value for value in drops if abs(value) <= NEAR_ZERO_THRESHOLD]
+    negative = [value for value in drops if value < -NEAR_ZERO_THRESHOLD]
     output = {
         key: value
         for key, value in bucket.items()
@@ -74,6 +124,7 @@ def _finalize_bucket(bucket: dict[str, Any]) -> dict[str, Any]:
             "mean_score_drop": _rounded(mean(drops)) if drops else 0.0,
             "max_score_drop": _rounded(max(drops)) if drops else 0.0,
             "positive_drop_count": len(positive),
+            "near_zero_drop_count": len(near_zero),
             "negative_drop_count": len(negative),
         }
     )
@@ -104,13 +155,17 @@ def _aggregate_nodes(
                 continue
             feature = str(row.get("feature", ""))
             node_id = str(row.get("node_id", ""))
+            display_name, name_source = _row_display(row, feature, node_type=node_type, node_id=node_id)
             bucket = buckets.setdefault(
                 (feature, node_id),
                 _empty_bucket(
                     feature=feature,
+                    display_name=display_name,
+                    name_source=name_source,
                     node_type=node_type,
                     node_id=node_id,
                     path_features="",
+                    path_display_features="",
                 ),
             )
             bucket["case_keys"].add(case_key)
@@ -122,15 +177,22 @@ def _aggregate_pathways(payload: dict[str, Any], top_k: int) -> list[dict[str, A
     buckets: dict[str, dict[str, Any]] = {}
     for case_index, case in enumerate(payload.get("cases", []), start=1):
         case_key = _case_key(case_index, case)
+        display_map = _case_display_map(case)
         for row in case.get("path_contributions", []):
             path_features = _path_features(row)
+            path_display = str(row.get("path_display_features") or "").strip()
+            if not path_display:
+                path_display = _path_display_features(path_features, display_map)
             bucket = buckets.setdefault(
                 path_features,
                 _empty_bucket(
                     feature=str(row.get("feature", "")),
+                    display_name=str(row.get("display_name", "")),
+                    name_source=str(row.get("name_source", "")),
                     node_type="",
                     node_id="",
                     path_features=path_features,
+                    path_display_features=path_display,
                 ),
             )
             bucket["case_keys"].add(case_key)
@@ -147,7 +209,13 @@ def _top_row(rows: list[dict[str, Any]]) -> dict[str, Any] | None:
 def _feature_label(row: dict[str, Any] | None, fallback: str = "none") -> str:
     if not row:
         return fallback
-    if row.get("path_features"):
+    if row.get("path_display_features"):
+        label = str(row["path_display_features"])
+    elif row.get("display_name"):
+        label = str(row["display_name"])
+    elif row.get("label"):
+        label = str(row["label"])
+    elif row.get("path_features"):
         label = str(row["path_features"])
     else:
         label = str(row.get("feature", fallback))
@@ -199,6 +267,14 @@ def _positive_feature_count(rows: list[dict[str, Any]]) -> int:
     return sum(1 for row in rows if int(row.get("positive_drop_count", 0)) > 0)
 
 
+def _near_zero_feature_count(rows: list[dict[str, Any]]) -> int:
+    return sum(1 for row in rows if int(row.get("near_zero_drop_count", 0)) > 0)
+
+
+def _negative_feature_count(rows: list[dict[str, Any]]) -> int:
+    return sum(1 for row in rows if int(row.get("negative_drop_count", 0)) > 0)
+
+
 def build_mechanism_explanation_layer(
     contribution_payload: dict[str, Any],
     top_k: int = 10,
@@ -219,6 +295,12 @@ def build_mechanism_explanation_layer(
         "positive_component_count": _positive_feature_count(component_contributions),
         "positive_target_count": _positive_feature_count(target_contributions),
         "positive_pathway_count": _positive_feature_count(pathway_contributions),
+        "near_zero_component_count": _near_zero_feature_count(component_contributions),
+        "near_zero_target_count": _near_zero_feature_count(target_contributions),
+        "near_zero_pathway_count": _near_zero_feature_count(pathway_contributions),
+        "negative_component_count": _negative_feature_count(component_contributions),
+        "negative_target_count": _negative_feature_count(target_contributions),
+        "negative_pathway_count": _negative_feature_count(pathway_contributions),
     }
 
     return {
@@ -258,18 +340,21 @@ def _markdown_contribution_table(rows: list[dict[str, Any]], label: str) -> list
     lines = [
         f"## {label}",
         "",
-        "| Rank | Feature | Cases | Occurrences | Mean drop | Max drop | Positive | Negative |",
-        "| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| Rank | Feature | Display | Source | Cases | Occurrences | Mean drop | Max drop | Positive | Near-zero | Negative |",
+        "| ---: | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for rank, row in enumerate(rows, start=1):
         feature = row.get("path_features") or row.get("feature")
+        display = row.get("path_display_features") or row.get("display_name") or ""
+        source = row.get("name_source") or ""
         lines.append(
-            f"| {rank} | `{feature}` | {row['case_count']} | {row['occurrence_count']} | "
+            f"| {rank} | `{feature}` | {display} | {source} | {row['case_count']} | {row['occurrence_count']} | "
             f"{_format_float(row['mean_score_drop'])} | {_format_float(row['max_score_drop'])} | "
-            f"{row['positive_drop_count']} | {row['negative_drop_count']} |"
+            f"{row['positive_drop_count']} | {row.get('near_zero_drop_count', 0)} | "
+            f"{row['negative_drop_count']} |"
         )
     if not rows:
-        lines.append("| 0 | `none` | 0 | 0 | 0.000000 | 0.000000 | 0 | 0 |")
+        lines.append("| 0 | `none` |  |  | 0 | 0 | 0.000000 | 0.000000 | 0 | 0 | 0 |")
     lines.append("")
     return lines
 
@@ -287,6 +372,12 @@ def _write_markdown(path: Path, layer: dict[str, Any]) -> None:
         f"- 正向成分贡献条目: {completion['positive_component_count']}",
         f"- 正向靶点贡献条目: {completion['positive_target_count']}",
         f"- 正向机制路径贡献条目: {completion['positive_pathway_count']}",
+        f"- Near-zero 成分贡献条目: {completion.get('near_zero_component_count', 0)}",
+        f"- Near-zero 靶点贡献条目: {completion.get('near_zero_target_count', 0)}",
+        f"- Near-zero 机制路径贡献条目: {completion.get('near_zero_pathway_count', 0)}",
+        f"- 负向成分贡献条目: {completion.get('negative_component_count', 0)}",
+        f"- 负向靶点贡献条目: {completion.get('negative_target_count', 0)}",
+        f"- 负向机制路径贡献条目: {completion.get('negative_pathway_count', 0)}",
         f"- Checkpoint: `{layer.get('checkpoint_path', 'unknown')}`",
         f"- Checkpoint context: {layer.get('checkpoint_context', 'not specified')}",
         "",
@@ -318,9 +409,9 @@ def _write_markdown(path: Path, layer: dict[str, Any]) -> None:
         [
             "## 论文写作边界",
             "",
-            "- 可以写：当前两个机制案例均完成关键子图抽取，并对成分、靶点、机制路径进行局部置零扰动评分。",
-            "- 可以写：score drop 为原始预测分数减去遮蔽后分数，正值表示遮蔽后模型分数下降。",
-            "- 不要写：这些贡献是因果贡献、SHAP 归因、临床机制证明，或最终 PU checkpoint 的严格归因。",
+            "- 可以写：当前已量化机制案例完成关键子图抽取，并对成分、靶点、机制路径进行局部置零扰动评分。",
+            f"- 可以写：score drop 为原始预测分数减去遮蔽后分数；绝对值不超过 {NEAR_ZERO_THRESHOLD:g} 的扰动归为 near-zero。",
+            "- 不要写：这些贡献是因果贡献、SHAP 归因、临床机制证明，或可自动升级外部证据等级。",
             "",
         ]
     )
