@@ -51,3 +51,11 @@ tmp/
 build/
 dist/
 *.egg-info/
+
+# Local manuscript/template workspace
+# Keep the generated PU-XMSAT Overleaf source and upload zip tracked, while
+# leaving the provided raw template bundle and local preview artifacts untracked.
+Template/.DS_Store
+Template/文件*
+Template/PU-XMSAT-Overleaf/main.pdf
+c8e3d252c197e482b037715c32fb3e70.zip
