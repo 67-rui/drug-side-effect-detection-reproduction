@@ -38,12 +38,18 @@ def build_experiment_config(
     max_epochs: int,
     training_backend: str = "weighted_embedding_smoke",
     threshold_strategy: str = "fixed_0_5",
+    save_checkpoints: bool = False,
+    checkpoint_prefix: str | None = None,
+    checkpoint_dir: str = "saved_models",
 ) -> dict:
     backend = resolve_training_backend(training_backend)
     return {
         "experiment": "pu_xmsat",
         "sampling_strategy": sampling_strategy,
         "threshold_strategy": threshold_strategy,
+        "save_checkpoints": bool(save_checkpoints),
+        "checkpoint_prefix": checkpoint_prefix,
+        "checkpoint_dir": checkpoint_dir,
         "loss": "weighted_pu_bce",
         "training_backend": backend,
         "unlabeled_weight": unlabeled_weight,
@@ -234,6 +240,25 @@ def main() -> None:
     parser.add_argument("--embedding-dim", type=int, default=8)
     parser.add_argument("--learning-rate", type=float, default=0.05)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--save-checkpoints",
+        action="store_true",
+        help="Export best full_msat_pu fold checkpoints with formal non-baseline names.",
+    )
+    parser.add_argument(
+        "--checkpoint-prefix",
+        default=None,
+        help=(
+            "Optional checkpoint prefix. If omitted for full_msat_pu, a formal prefix "
+            "including backend, strategy, seed, pair budget, threshold strategy, and PU "
+            "weights is generated."
+        ),
+    )
+    parser.add_argument(
+        "--checkpoint-dir",
+        default="saved_models/pu_xmsat_formal",
+        help="Checkpoint directory used only when --save-checkpoints is set.",
+    )
     args = parser.parse_args()
 
     start = time.time()
@@ -246,6 +271,9 @@ def main() -> None:
         max_epochs=args.max_epochs,
         training_backend=backend,
         threshold_strategy=args.threshold_strategy,
+        save_checkpoints=args.save_checkpoints,
+        checkpoint_prefix=args.checkpoint_prefix,
+        checkpoint_dir=args.checkpoint_dir,
     )
 
     if backend == "full_msat_pu":
@@ -262,6 +290,9 @@ def main() -> None:
                 candidate_cache=args.candidate_cache,
                 seed=args.seed,
                 threshold_strategy=args.threshold_strategy,
+                save_checkpoints=args.save_checkpoints,
+                checkpoint_prefix=args.checkpoint_prefix,
+                checkpoint_dir=args.checkpoint_dir,
             )
         )
         out = Path(args.output)

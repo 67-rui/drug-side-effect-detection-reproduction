@@ -53,6 +53,26 @@ class FullMSATPUConfig:
     threshold_strategy: str = "fixed_0_5"
 
 
+def _safe_float_token(value: float) -> str:
+    return str(float(value)).replace(".", "p").replace("-", "m")
+
+
+def formal_checkpoint_prefix(
+    backend: str,
+    sampling_strategy: str,
+    seed: int,
+    max_pairs: int,
+    threshold_strategy: str,
+    unlabeled_weight: float,
+    reliable_negative_weight: float,
+) -> str:
+    return (
+        f"{backend}_strategy-{sampling_strategy}_seed-{int(seed)}_pairs-{int(max_pairs)}_"
+        f"threshold-{threshold_strategy}_uw-{_safe_float_token(unlabeled_weight)}_"
+        f"rnw-{_safe_float_token(reliable_negative_weight)}"
+    )
+
+
 def choose_threshold(
     val_probs,
     val_labels,
@@ -495,12 +515,27 @@ def run_full_msat_pu_experiment(
     candidate_cache: str | Path,
     seed: int,
     threshold_strategy: str = "fixed_0_5",
+    save_checkpoints: bool = False,
+    checkpoint_prefix: str | None = None,
+    checkpoint_dir: str | Path = Path("saved_models"),
 ) -> dict:
     start = time.time()
+    resolved_checkpoint_prefix = checkpoint_prefix or formal_checkpoint_prefix(
+        backend="full_msat_pu",
+        sampling_strategy=sampling_strategy,
+        seed=seed,
+        max_pairs=max_pairs,
+        threshold_strategy=threshold_strategy,
+        unlabeled_weight=unlabeled_weight,
+        reliable_negative_weight=reliable_negative_weight,
+    )
     config = FullMSATPUConfig(
         max_epochs=max_epochs,
         max_pairs=max_pairs,
         threshold_strategy=threshold_strategy,
+        save_checkpoints=save_checkpoints,
+        checkpoint_prefix=resolved_checkpoint_prefix,
+        checkpoint_dir=Path(checkpoint_dir),
     )
     fold_count = min(DataConfig.N_FOLDS, max(1, int(max_folds)))
     fold_results = [
@@ -524,6 +559,20 @@ def run_full_msat_pu_experiment(
         "fold_results": fold_results,
         "mean_metrics": summarize_full_fold_results(fold_results),
         "runtime_seconds": round(time.time() - start, 4),
+        "checkpoint_export": {
+            "save_checkpoints": bool(save_checkpoints),
+            "checkpoint_dir": str(config.checkpoint_dir),
+            "checkpoint_prefix": config.checkpoint_prefix,
+            "checkpoint_naming_contract": (
+                "filename includes backend, strategy, seed, pair budget, threshold "
+                "strategy, unlabeled weight, reliable-negative weight, and fold index"
+            ),
+            "checkpoint_paths": [
+                row.get("checkpoint_path")
+                for row in fold_results
+                if row.get("checkpoint_path")
+            ],
+        },
         "protocol": protocol_metadata(),
         "note": (
             "Full MSAT PU backend trains MSATTCMFSFinal with PU sample weights. "

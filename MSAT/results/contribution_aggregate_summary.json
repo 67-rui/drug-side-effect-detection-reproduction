@@ -1,13 +1,31 @@
 {
   "experiment": "contribution_aggregate_summary",
-  "source_experiment": "contribution_quantification",
+  "source_experiment": "batch_mechanism_interpretability",
   "checkpoint_path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt",
-  "checkpoint_context": "Local predictor checkpoint sensitivity analysis. This is not final full-positive hybrid PU-XMSAT checkpoint attribution unless an explicit PU predictor checkpoint is exported and used.",
-  "source_claim_boundary": "Perturbation score drops are local sensitivity signals, not causal effects.",
+  "checkpoint_context": "Fallback batch interpretability reuses existing contribution rows from the local predictor checkpoint because no final full-positive hybrid PU-XMSAT predictor checkpoint is available.",
+  "candidate_source": "transitional_mechanism_supported_artifacts",
+  "candidate_source_note": "Current candidates come from mechanism-supported transitional artifacts, not final PU-XMSAT top-ranking export.",
+  "source_claim_boundary": "Perturbation score drops are local sensitivity signals for mechanism triage; they are not causal effects, not SHAP values, and not external clinical validation.",
   "claim_boundary": "These are perturbation sensitivity aggregates, not causal or SHAP attributions.",
   "case_count": 2,
-  "positive_node_count": 11,
-  "positive_path_count": 10,
+  "quantified_case_count": 2,
+  "candidate_count": 2,
+  "positive_node_count": 3,
+  "near_zero_node_count": 9,
+  "negative_node_count": 1,
+  "positive_path_count": 7,
+  "near_zero_path_count": 3,
+  "negative_path_count": 5,
+  "positive_component_count": 2,
+  "near_zero_component_count": 1,
+  "negative_component_count": 1,
+  "positive_target_count": 1,
+  "near_zero_target_count": 8,
+  "negative_target_count": 0,
+  "positive_pathway_count": 7,
+  "near_zero_pathway_count": 3,
+  "negative_pathway_count": 5,
+  "fewer_than_top_k_reason": "Only 2 candidates with explicit mechanism paths were available.",
   "top_k": 10,
   "top_nodes": [
     {
@@ -21,6 +39,7 @@
       "mean_score_drop": 0.0098346472,
       "max_score_drop": 0.0098346472,
       "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -34,6 +53,7 @@
       "mean_score_drop": 0.0002386272,
       "max_score_drop": 0.0002386272,
       "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -47,6 +67,7 @@
       "mean_score_drop": 0.0002135336,
       "max_score_drop": 0.0002135336,
       "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -59,7 +80,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 7.14362e-05,
       "max_score_drop": 7.14362e-05,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -72,7 +94,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 2.80142e-05,
       "max_score_drop": 2.80142e-05,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -85,7 +108,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 2.7895e-05,
       "max_score_drop": 2.7895e-05,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -98,7 +122,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 2.12789e-05,
       "max_score_drop": 2.12789e-05,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -111,7 +136,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 5.573e-06,
       "max_score_drop": 5.573e-06,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -124,7 +150,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 2.9802e-06,
       "max_score_drop": 2.9802e-06,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -137,7 +164,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 1.9968e-06,
       "max_score_drop": 1.9968e-06,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     }
   ],
@@ -153,6 +181,7 @@
       "mean_score_drop": 0.0100741684,
       "max_score_drop": 0.0100741684,
       "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -166,6 +195,7 @@
       "mean_score_drop": 0.0002849698,
       "max_score_drop": 0.0002849698,
       "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -179,6 +209,7 @@
       "mean_score_drop": 0.000266701,
       "max_score_drop": 0.000266701,
       "positive_drop_count": 2,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -192,6 +223,7 @@
       "mean_score_drop": 0.0002414882,
       "max_score_drop": 0.0002414882,
       "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -205,6 +237,7 @@
       "mean_score_drop": 0.0002405643,
       "max_score_drop": 0.0002405643,
       "positive_drop_count": 2,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 0
     },
     {
@@ -217,7 +250,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 7.14362e-05,
       "max_score_drop": 7.14362e-05,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -230,7 +264,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 2.7895e-05,
       "max_score_drop": 2.7895e-05,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -243,7 +278,8 @@
       "occurrence_count": 1,
       "mean_score_drop": 2.12789e-05,
       "max_score_drop": 2.12789e-05,
-      "positive_drop_count": 1,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
       "negative_drop_count": 0
     },
     {
@@ -257,6 +293,7 @@
       "mean_score_drop": -0.0054366589,
       "max_score_drop": -0.0054366589,
       "positive_drop_count": 0,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 2
     },
     {
@@ -270,6 +307,335 @@
       "mean_score_drop": -0.0054392517,
       "max_score_drop": -0.0054392517,
       "positive_drop_count": 0,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 1
+    }
+  ],
+  "top_components": [
+    {
+      "aggregate_type": "component",
+      "feature": "compound:523",
+      "node_type": "compound",
+      "node_id": "523",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0002386272,
+      "max_score_drop": 0.0002386272,
+      "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "component",
+      "feature": "compound:435",
+      "node_type": "compound",
+      "node_id": "435",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0002135336,
+      "max_score_drop": 0.0002135336,
+      "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "component",
+      "feature": "compound:1073",
+      "node_type": "compound",
+      "node_id": "1073",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.12789e-05,
+      "max_score_drop": 2.12789e-05,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "component",
+      "feature": "compound:875",
+      "node_type": "compound",
+      "node_id": "875",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": -0.0054422617,
+      "max_score_drop": -0.0054422617,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 1
+    }
+  ],
+  "top_targets": [
+    {
+      "aggregate_type": "target",
+      "feature": "target:3223",
+      "node_type": "target",
+      "node_id": "3223",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0098346472,
+      "max_score_drop": 0.0098346472,
+      "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:8101",
+      "node_type": "target",
+      "node_id": "8101",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 7.14362e-05,
+      "max_score_drop": 7.14362e-05,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:12337",
+      "node_type": "target",
+      "node_id": "12337",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.80142e-05,
+      "max_score_drop": 2.80142e-05,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:8967",
+      "node_type": "target",
+      "node_id": "8967",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.7895e-05,
+      "max_score_drop": 2.7895e-05,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:2432",
+      "node_type": "target",
+      "node_id": "2432",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 5.573e-06,
+      "max_score_drop": 5.573e-06,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:12333",
+      "node_type": "target",
+      "node_id": "12333",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.9802e-06,
+      "max_score_drop": 2.9802e-06,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:7802",
+      "node_type": "target",
+      "node_id": "7802",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 1.9968e-06,
+      "max_score_drop": 1.9968e-06,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:14208",
+      "node_type": "target",
+      "node_id": "14208",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 3.278e-07,
+      "max_score_drop": 3.278e-07,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "target",
+      "feature": "target:2586",
+      "node_type": "target",
+      "node_id": "2586",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0,
+      "max_score_drop": 0.0,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    }
+  ],
+  "top_pathways": [
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:4",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:523;target:3223",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0100741684,
+      "max_score_drop": 0.0100741684,
+      "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:13",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:435;target:8101",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0002849698,
+      "max_score_drop": 0.0002849698,
+      "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:5",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:523;target:12337",
+      "case_count": 1,
+      "occurrence_count": 2,
+      "mean_score_drop": 0.000266701,
+      "max_score_drop": 0.000266701,
+      "positive_drop_count": 2,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:14",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:435;target:8967",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0002414882,
+      "max_score_drop": 0.0002414882,
+      "positive_drop_count": 1,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:10",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:523;target:7802",
+      "case_count": 1,
+      "occurrence_count": 2,
+      "mean_score_drop": 0.0002405643,
+      "max_score_drop": 0.0002405643,
+      "positive_drop_count": 2,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:2",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "target:8101",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 7.14362e-05,
+      "max_score_drop": 7.14362e-05,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:1",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "target:8967",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.7895e-05,
+      "max_score_drop": 2.7895e-05,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:1",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:1073;target:2586",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.12789e-05,
+      "max_score_drop": 2.12789e-05,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:11",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:875;target:2432",
+      "case_count": 1,
+      "occurrence_count": 2,
+      "mean_score_drop": -0.0054366589,
+      "max_score_drop": -0.0054366589,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 0,
+      "negative_drop_count": 2
+    },
+    {
+      "aggregate_type": "pathway",
+      "feature": "path:8",
+      "node_type": "",
+      "node_id": "",
+      "path_features": "compound:875;target:12333",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": -0.0054392517,
+      "max_score_drop": -0.0054392517,
+      "positive_drop_count": 0,
+      "near_zero_drop_count": 0,
       "negative_drop_count": 1
     }
   ]

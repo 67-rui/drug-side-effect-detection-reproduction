@@ -5,6 +5,7 @@ from experiments.pu_dataset_builder import build_pu_training_arrays
 from experiments.full_msat_pu_training import (
     FullMSATPUConfig,
     choose_threshold,
+    formal_checkpoint_prefix,
     summarize_full_fold_results,
 )
 from experiments.reliable_negative_sampling import CandidateScore
@@ -80,6 +81,23 @@ def test_full_msat_pu_config_uses_pu_checkpoint_names():
     assert cfg.threshold_strategy == "fixed_0_5"
 
 
+def test_formal_checkpoint_prefix_includes_reproducibility_parameters():
+    prefix = formal_checkpoint_prefix(
+        backend="full_msat_pu",
+        sampling_strategy="hybrid",
+        seed=1337,
+        max_pairs=66015,
+        threshold_strategy="val_f1",
+        unlabeled_weight=0.2,
+        reliable_negative_weight=0.8,
+    )
+
+    assert prefix == (
+        "full_msat_pu_strategy-hybrid_seed-1337_pairs-66015_"
+        "threshold-val_f1_uw-0p2_rnw-0p8"
+    )
+
+
 def test_seed_fold_training_resets_numpy_and_torch_rng():
     full_training._seed_fold_training(123)
     first_numpy = full_training.np.random.rand(3)
@@ -145,6 +163,8 @@ def test_run_full_msat_pu_experiment_aggregates_fold_results(monkeypatch):
                 config.max_pairs,
                 sampling_strategy,
                 config.threshold_strategy,
+                config.save_checkpoints,
+                config.checkpoint_prefix,
             )
         )
         return {
@@ -170,12 +190,20 @@ def test_run_full_msat_pu_experiment_aggregates_fold_results(monkeypatch):
         candidate_cache="results/pu_candidate_scores.sample.jsonl",
         seed=42,
         threshold_strategy="val_f1",
+        save_checkpoints=True,
+        checkpoint_prefix="safe_prefix",
+        checkpoint_dir="saved_models/pu_xmsat_formal",
     )
 
-    assert calls == [(0, 3, 96, "hybrid", "val_f1"), (1, 3, 96, "hybrid", "val_f1")]
+    assert calls == [
+        (0, 3, 96, "hybrid", "val_f1", True, "safe_prefix"),
+        (1, 3, 96, "hybrid", "val_f1", True, "safe_prefix"),
+    ]
     assert result["status"] == "completed"
     assert result["training_executed"] is True
     assert result["training_backend"] == "full_msat_pu"
     assert result["threshold_strategy"] == "val_f1"
+    assert result["checkpoint_export"]["save_checkpoints"] is True
+    assert result["checkpoint_export"]["checkpoint_prefix"] == "safe_prefix"
     assert result["mean_metrics"]["auc"] == 0.75
     assert result["mean_metrics"]["final_loss"] == 0.75

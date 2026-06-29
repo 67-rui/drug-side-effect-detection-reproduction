@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 
+DEFAULT_BATCH_PATH = Path("results/batch_mechanism_interpretability.json")
 DEFAULT_CONTRIBUTION_PATH = Path("results/contribution_quantification.json")
 DEFAULT_CASE_EVIDENCE_PATH = Path("results/case_evidence_report.json")
 DEFAULT_MANUAL_REVIEW_PATH = Path("results/case_evidence_manual_review.json")
@@ -32,6 +33,8 @@ CSV_FIELDS = [
     "original_score",
     "priority_score",
     "max_path_score_drop",
+    "max_target_score_drop",
+    "max_component_score_drop",
     "top_path_features",
     "top_path_text",
     "max_node_score_drop",
@@ -83,17 +86,26 @@ def _index_rows(payload: dict[str, Any]) -> dict[tuple[int, int], dict[str, Any]
 
 
 def _best_path(case: dict[str, Any]) -> dict[str, Any]:
-    paths = list(case.get("path_contributions", []))
+    paths = list(case.get("pathway_contributions", []) or case.get("path_contributions", []))
     if not paths:
         return {}
-    return max(paths, key=lambda row: _float(row.get("score_drop")))
+    return max(paths, key=lambda row: max(0.0, _float(row.get("score_drop"))))
 
 
-def _best_node(case: dict[str, Any]) -> dict[str, Any]:
-    nodes = list(case.get("node_contributions", []) or case.get("contributions", []))
+def _best_node(case: dict[str, Any], node_type: str | None = None) -> dict[str, Any]:
+    if node_type == "target":
+        nodes = list(case.get("target_contributions", []))
+    elif node_type == "component":
+        nodes = list(case.get("component_contributions", []))
+    else:
+        nodes = list(case.get("node_contributions", []) or case.get("contributions", []))
+        if not nodes:
+            nodes = list(case.get("target_contributions", [])) + list(
+                case.get("component_contributions", [])
+            )
     if not nodes:
         return {}
-    return max(nodes, key=lambda row: _float(row.get("score_drop")))
+    return max(nodes, key=lambda row: max(0.0, _float(row.get("score_drop"))))
 
 
 def _join_features(features: Any) -> str:
@@ -107,11 +119,8 @@ def _review_action(
     manual: dict[str, Any],
     priority_score: float,
 ) -> str:
-    current_grade = str(evidence.get("evidence_grade") or "")
-    updated_grade = str(manual.get("updated_grade_recommendation") or "")
-    if current_grade in {"A", "B"} or updated_grade in {"A", "B"} or _truthy(
-        evidence.get("direct_literature_support")
-    ):
+    updated_grade = str(manual.get("updated_grade_recommendation") or "").upper()
+    if updated_grade in {"A", "B"}:
         return "ready_for_strong_evidence_writeup"
     if manual:
         return "preserve_as_mechanism_screening_boundary"
@@ -130,9 +139,13 @@ def _queue_row(
     manual = manual_by_pair.get(pair, {})
     best_path = _best_path(case)
     best_node = _best_node(case)
-    max_path_drop = _float(best_path.get("score_drop"))
-    max_node_drop = _float(best_node.get("score_drop"))
-    priority_score = max(max_path_drop, max_node_drop)
+    best_target = _best_node(case, "target")
+    best_component = _best_node(case, "component")
+    max_path_drop = max(0.0, _float(best_path.get("score_drop")))
+    max_node_drop = max(0.0, _float(best_node.get("score_drop")))
+    max_target_drop = max(0.0, _float(best_target.get("score_drop")))
+    max_component_drop = max(0.0, _float(best_component.get("score_drop")))
+    priority_score = max(max_path_drop, max_target_drop, max_component_drop, max_node_drop)
 
     return {
         "herb_id": pair[0],
@@ -143,7 +156,10 @@ def _queue_row(
         "original_score": case.get("original_score"),
         "priority_score": priority_score,
         "max_path_score_drop": max_path_drop,
-        "top_path_features": _join_features(best_path.get("features")),
+        "max_target_score_drop": max_target_drop,
+        "max_component_score_drop": max_component_drop,
+        "top_path_features": _join_features(best_path.get("features"))
+        or str(best_path.get("path_features", "")),
         "top_path_text": best_path.get("path_text", ""),
         "max_node_score_drop": max_node_drop,
         "top_node_feature": best_node.get("feature", ""),
@@ -176,7 +192,9 @@ def build_targeted_review_queue(
     ]
     rows.sort(
         key=lambda row: (
-            -_float(row.get("priority_score")),
+            -_float(row.get("max_path_score_drop")),
+            -_float(row.get("max_target_score_drop")),
+            -_float(row.get("max_component_score_drop")),
             -_float(row.get("original_score")),
             row.get("herb_id", 0),
             row.get("adr_id", 0),
@@ -200,6 +218,13 @@ def build_targeted_review_queue(
         "checkpoint_context": contribution_payload.get("checkpoint_context", ""),
         "source_claim_boundary": contribution_payload.get("claim_boundary", ""),
         "claim_boundary": CLAIM_BOUNDARY,
+        "review_boundaries": [
+            "Perturbation high cannot upgrade evidence grade.",
+            "Grade C is not external validation.",
+            "Negative score_drop is not protective evidence.",
+            "No causal claims.",
+            "No manual direct evidence means no Grade A/B.",
+        ],
         "summary": {
             "case_count": len(rows),
             "manual_reviewed_count": sum(1 for row in rows if row["manual_review_status"]),
@@ -235,7 +260,7 @@ def write_queue_artifacts(
 
     output_json.write_text(json.dumps(queue, ensure_ascii=False, indent=2))
     with output_csv.open("w", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS)
+        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS, lineterminator="\n")
         writer.writeheader()
         for row in queue["rows"]:
             writer.writerow({field: row.get(field, "") for field in CSV_FIELDS})
@@ -271,6 +296,15 @@ def write_queue_artifacts(
     lines.extend(
         [
             "",
+            "## Boundaries",
+            "",
+        ]
+    )
+    for boundary in queue.get("review_boundaries", []):
+        lines.append(f"- {boundary}")
+    lines.extend(
+        [
+            "",
             "## Use In Manuscript",
             "",
             "Use this artifact to explain how Direction 2 perturbation sensitivity selects cases for Direction 3 review. Do not present queued cases as external validation unless the row is manually upgraded to Grade A or B with direct source evidence.",
@@ -284,7 +318,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build a Direction 3 targeted evidence-review queue from contribution sensitivity."
     )
-    parser.add_argument("--contribution", default=str(DEFAULT_CONTRIBUTION_PATH))
+    parser.add_argument(
+        "--contribution",
+        default=None,
+        help=(
+            "Contribution or batch interpretability JSON. Defaults to batch results "
+            "when present, otherwise contribution_quantification.json."
+        ),
+    )
     parser.add_argument("--case-evidence", default=str(DEFAULT_CASE_EVIDENCE_PATH))
     parser.add_argument("--manual-review", default=str(DEFAULT_MANUAL_REVIEW_PATH))
     parser.add_argument("--output-json", default=str(DEFAULT_OUTPUT_JSON))
@@ -293,8 +334,11 @@ def main() -> None:
     parser.add_argument("--top-k", type=int, default=None)
     args = parser.parse_args()
 
+    contribution_path = args.contribution
+    if contribution_path is None:
+        contribution_path = str(DEFAULT_BATCH_PATH if DEFAULT_BATCH_PATH.exists() else DEFAULT_CONTRIBUTION_PATH)
     queue = build_targeted_review_queue(
-        _load_json(args.contribution),
+        _load_json(contribution_path),
         _load_json(args.case_evidence),
         _load_json(args.manual_review),
         top_k=args.top_k,

@@ -73,6 +73,8 @@ results/*
 !results/pu_xmsat_hybrid_weight_sensitivity_summary.json
 !results/table5_literature_evidence_candidates.csv
 !results/table5_literature_evidence_candidates.json
+!results/batch_mechanism_interpretability.csv
+!results/batch_mechanism_interpretability.json
 logs/
 saved_models/
 checkpoints/

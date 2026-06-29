@@ -1,21 +1,23 @@
 {
-  "created_at": "2026-06-29T12:23:24.906918",
+  "created_at": "2026-06-29T12:58:38.575774",
   "ok": true,
   "manuscript_dir": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf",
   "zip_path": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf.zip",
   "summary": {
     "figure_count": 3,
     "description_count": 3,
-    "zip_entry_count": 9,
+    "zip_entry_count": 11,
     "zip_entries": [
       "README.md",
       "acmart.cls",
+      "figures/",
       "figures/README.md",
       "figures/mechanism_workflow.pdf",
       "figures/method_overview.pdf",
       "figures/metric_delta.pdf",
       "main.tex",
       "references.bib",
+      "tools/",
       "tools/build_figures.py"
     ],
     "page_count": 12,
@@ -65,7 +67,7 @@
     {
       "name": "zip_required_entries",
       "status": "pass",
-      "details": "entries=9"
+      "details": "entries=11"
     },
     {
       "name": "zip_forbidden_entries",

@@ -95,6 +95,9 @@ def test_summarize_contributions_aggregates_repeated_nodes_and_paths():
     assert summary["case_count"] == 2
     assert summary["positive_node_count"] == 3
     assert summary["positive_path_count"] == 2
+    assert summary["near_zero_node_count"] == 0
+    assert summary["negative_node_count"] == 1
+    assert summary["negative_path_count"] == 1
     assert summary["top_nodes"][0]["feature"] == "target:20"
     assert summary["top_nodes"][0]["case_count"] == 2
     assert summary["top_nodes"][0]["occurrence_count"] == 2
@@ -104,6 +107,43 @@ def test_summarize_contributions_aggregates_repeated_nodes_and_paths():
     assert summary["top_paths"][0]["case_count"] == 2
     assert summary["top_paths"][0]["occurrence_count"] == 2
     assert summary["top_paths"][0]["negative_drop_count"] == 0
+
+
+def test_summarize_batch_payload_splits_component_target_pathway_groups():
+    batch_payload = {
+        "experiment": "batch_mechanism_interpretability",
+        "checkpoint_path": "saved_models/local.pt",
+        "checkpoint_context": "fallback contribution rows",
+        "candidate_source": "transitional_mechanism_supported_artifacts",
+        "candidate_source_note": "not final PU-XMSAT top-ranking export",
+        "summary": {"requested_top_k": 20, "quantified_case_count": 1},
+        "cases": [
+            {
+                "case_index": 1,
+                "herb_id": 1,
+                "adr_id": 2,
+                "source": "case_a",
+                "component_contributions": [
+                    {"feature": "compound:10", "node_type": "compound", "node_id": 10, "score_drop": 0.1}
+                ],
+                "target_contributions": [
+                    {"feature": "target:20", "node_type": "target", "node_id": 20, "score_drop": 0.2}
+                ],
+                "pathway_contributions": [
+                    {"path_features": "compound:10;target:20", "features": ["compound:10", "target:20"], "score_drop": -0.1}
+                ],
+            }
+        ],
+    }
+
+    summary = summarize_contributions(batch_payload, top_k=3)
+
+    assert summary["source_experiment"] == "batch_mechanism_interpretability"
+    assert summary["candidate_source"] == "transitional_mechanism_supported_artifacts"
+    assert summary["top_components"][0]["feature"] == "compound:10"
+    assert summary["top_targets"][0]["feature"] == "target:20"
+    assert summary["top_pathways"][0]["path_features"] == "compound:10;target:20"
+    assert summary["negative_pathway_count"] == 1
 
 
 def test_summary_artifacts_preserve_claim_boundaries(tmp_path):
