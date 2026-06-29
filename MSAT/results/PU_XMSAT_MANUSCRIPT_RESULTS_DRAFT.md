@@ -1,6 +1,6 @@
 # PU-XMSAT Manuscript Results Draft
 
-**Date:** 2026-06-28  
+**Date:** 2026-06-29  
 **Branch:** `codex/pu-xmsat-implementation`  
 **Baseline anchor:** `baseline/msat-reproduction-20260626`  
 **Purpose:** paper-facing result tables and wording for the PU-XMSAT extension. This document summarizes curated tracked result exports only; raw training JSON files remain ignored by git.
@@ -81,7 +81,7 @@ This artifact should be used as the minimal mechanism/external-evidence workflow
 
 ## Mechanism Subgraph and Contribution Quantification
 
-The explanation layer now includes a local perturbation-based contribution report in `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, with structured exports in `results/contribution_quantification.json` and `results/contribution_quantification.csv`. The procedure extracts a key mechanism subgraph from the available paths, then zeroes selected compound/target node input features or all node features in a path and re-scores the same CMM-ADR pair with the local trained predictor checkpoint.
+The explanation layer now includes a local perturbation-based contribution report in `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, with structured exports in `results/contribution_quantification.json` and `results/contribution_quantification.csv`. A paper-facing aggregate summary is also available in `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`, with structured exports in `results/contribution_aggregate_summary.json` and `results/contribution_aggregate_summary.csv`. The procedure extracts a key mechanism subgraph from the available paths, then zeroes selected compound/target node input features or all node features in a path and re-scores the same CMM-ADR pair with the local trained predictor checkpoint.
 
 Current status:
 
@@ -89,6 +89,13 @@ Current status:
 | --- | --- | ---: | ---: | ---: | --- |
 | herb 277 -> ADR 2931 | `case_zhishi_diarrhoea` | 11 nodes / 8 edges / 14 paths | `target:3223`, 0.009835 | `compound:523 -> target:3223`, 0.010074 | A concrete perturbation-sensitive target/path is identified, but the external evidence remains direction-conflicting |
 | herb 237 -> ADR 3989 | `table5_top15` | 2 nodes / 1 edge / 1 path | `compound:1073`, 0.000021 | `compound:1073 -> target:2586`, 0.000021 | The graph path exists, but local perturbation sensitivity is nearly zero and manual evidence review remains unsupported |
+
+Aggregate summary:
+
+| Aggregate | Top feature/path | Cases | Occurrences | Mean drop | Max drop | Interpretation |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| Path | `compound:523;target:3223` | 1 | 1 | 0.010074 | 0.010074 | Strongest current perturbation-sensitive path, from the Zhishi-diarrhoea case |
+| Node | `target:3223` | 1 | 1 | 0.009835 | 0.009835 | Strongest current perturbation-sensitive target |
 
 This should be described as a subgraph- and path-level sensitivity analysis rather than SHAP, causal attribution, or confirmed biological mechanism. Negative score drops mean the model score increased after masking; they are suppressive or non-supportive sensitivity signals, not confirmed protective biology. The report currently uses the local `saved_models/best_model_for_prediction.pt` checkpoint, so it should not be claimed as final full-positive hybrid PU-XMSAT checkpoint attribution unless a PU predictor checkpoint is explicitly exported and re-scored.
 
@@ -137,6 +144,7 @@ Primary tracked sources:
 - `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`
 - `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
 - `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`
+- `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`
 - `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md`
 - `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md`
 - `results/case_evidence_report.json`
@@ -144,5 +152,7 @@ Primary tracked sources:
 - `results/case_evidence_manual_review.json`
 - `results/contribution_quantification.json`
 - `results/contribution_quantification.csv`
+- `results/contribution_aggregate_summary.json`
+- `results/contribution_aggregate_summary.csv`
 
 Raw PU training JSON files are retained locally and on the server for auditability, but they are intentionally ignored by git unless promoted into curated exports.

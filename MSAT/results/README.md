@@ -1,6 +1,6 @@
 # MSAT 复现结果目录
 
-更新时间：2026-06-28
+更新时间：2026-06-29
 
 ## 目录说明
 
@@ -50,6 +50,7 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md` / `case_evidence_manual_review.json` | Grade C 人工证据核验 | 两个 Grade C 均不应升级：野草莓-意识状态改变外部证据不支持；枳实-水样腹泻有胃肠机制相关证据但方向冲突 |
 | `PU_XMSAT_CASE_SELECTION_DECISION.md` | 案例选择决策 | 当前没有强外部验证正向案例；案例部分应写成保守筛选流程，而非确认性验证 |
 | `PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md` / `contribution_quantification.json` / `.csv` | 关键机制子图与贡献量化 | 已完成 2 个机制案例的关键子图、节点置零和路径置零扰动评分；枳实案例子图含 11 个节点/8 条边，最高节点为 `target:3223`（drop 0.009835），最高路径为 `compound:523 -> target:3223`（drop 0.010074）；野草莓案例扰动下降接近 0；这是本地 predictor checkpoint 下的敏感性分析，不是因果效应，也不是最终 PU checkpoint 归因 |
+| `PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md` / `contribution_aggregate_summary.json` / `.csv` | 贡献量化聚合摘要 | 已把 2 个机制案例的节点/路径扰动结果聚合成 top path 和 top node 表；当前共有 7 条正向 node 扰动、10 条正向 path 扰动，最强路径仍为 `compound:523;target:3223`（mean/max drop 0.010074），最强节点为 `target:3223`（drop 0.009835）；该聚合仍是本地 predictor checkpoint 下的 perturbation sensitivity，不是因果、SHAP 或外部验证 |
 | `PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` | 因果偏倚框架 | 已完成当前数据条件下的 DAG/混杂因素边界说明；用于讨论 co-medication、indication、reporting bias、exposure population 等不能由当前图数据严格校正的因素 |
 | `PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` | 研究闭环审计 | 将 `RESEARCH_DIRECTION_TECHNICAL_PROPOSAL.md` 的训练、解释、验证和因果边界要求逐项映射到当前产物；明确当前已形成最小论文闭环，但不能声称 Table 5/6 完整复现或因果效应 |
 | `pu_xmsat_baseline_comparison.json` / `.csv` | PU-XMSAT vs MSAT paired fold comparison | 可引用；full-positive random 相对 MSAT 的 AUC/AUPRC/F1 均值略高，MCC 持平，paired t-test 均不显著 |
@@ -64,5 +65,5 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 
 1. Table 5 当前应报告为公开材料下不可复现；若要重开，需要补 sha256 为 `506e7fd3...` 的 predictor checkpoint、Table 5 导出脚本、候选池定义和逐行证据记录。
 2. 对 Table 3、Table 4、Fig.6 做定点差异分析，不重跑完整流水线。
-3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache，也不要重复已完成的 corrected 12,288-pair、66,015-pair `random` 10-fold 对照、seed=2026 repeated-seed run、full-positive `hybrid` seed=2026/1337 comparator 或 u0.1/u0.4 weight sensitivity；后续优先从 `PU_XMSAT_DELIVERABLE_INDEX_CN.md` 选择入口，再基于 `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`、`PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`、`PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`、`PU_XMSAT_ORAL_BRIEF_CN.md`、`PU_XMSAT_SLIDES_OUTLINE_CN.md`、`PU_XMSAT_SLIDES_DRAFT_CN.pptx`、`PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`PU_XMSAT_CASE_SELECTION_DECISION.md`、`PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`、`PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` 和 `PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` 润色论文正文、中文汇报、组会 slides、外部证据和解释层结果。
+3. PU-XMSAT 下一步不要继续使用旧 prefix candidate cache，也不要重复已完成的 corrected 12,288-pair、66,015-pair `random` 10-fold 对照、seed=2026 repeated-seed run、full-positive `hybrid` seed=2026/1337 comparator 或 u0.1/u0.4 weight sensitivity；后续优先从 `PU_XMSAT_DELIVERABLE_INDEX_CN.md` 选择入口，再基于 `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md`、`PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md`、`PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md`、`PU_XMSAT_ORAL_BRIEF_CN.md`、`PU_XMSAT_SLIDES_OUTLINE_CN.md`、`PU_XMSAT_SLIDES_DRAFT_CN.pptx`、`PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`PU_XMSAT_CASE_SELECTION_DECISION.md`、`PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`、`PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`、`PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` 和 `PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` 润色论文正文、中文汇报、组会 slides、外部证据和解释层结果。
 4. 更新正文报告时，以本文件、`PROJECT_MEMORY.md` 和 `reproduction_state_audit.json` 为准，旧摘要文件仅作历史记录。

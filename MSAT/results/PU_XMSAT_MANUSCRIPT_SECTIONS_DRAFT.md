@@ -1,6 +1,6 @@
 # PU-XMSAT Manuscript Sections Draft
 
-**Date:** 2026-06-28
+**Date:** 2026-06-29
 **Branch:** `codex/pu-xmsat-implementation`
 **Baseline anchor:** `baseline/msat-reproduction-20260626`
 **Purpose:** draft Methods, Results, and Discussion text for the PU-XMSAT extension. The text below is intentionally conservative and should be edited for journal style before submission.
@@ -69,7 +69,7 @@ As a first paper-facing explanation loop, we generated a case evidence report fr
 
 ### Subgraph and Path Contribution Quantification Highlights Mechanism Candidates Without Confirming Them
 
-The perturbation contribution report quantified two mechanism-supported cases. In the Zhishi-diarrhoea case, the extracted key subgraph contained 11 nodes, 8 edges, and 14 mechanism paths. The largest node-level score drop was observed for target `3223` (drop 0.009835), and the largest path-level drop was observed for the `compound:523 -> target:3223` path (drop 0.010074). Several paths involving compound `875` had negative drops, indicating that masking those paths increased the local score rather than supporting the prediction. In the Fragaria-altered-consciousness case, the key subgraph contained only one parsed path, and the largest drop was 0.000021 for compound `1073`. These results are useful for prioritizing mechanism nodes and paths for review, but they do not change the conservative external-evidence conclusion: neither case should currently be presented as confirmed adverse-reaction evidence.
+The perturbation contribution report quantified two mechanism-supported cases and was further summarized into an aggregate node/path table. In the Zhishi-diarrhoea case, the extracted key subgraph contained 11 nodes, 8 edges, and 14 mechanism paths. Across the aggregate summary, the largest node-level score drop was observed for target `3223` (drop 0.009835), and the largest path-level drop was observed for the `compound:523;target:3223` path (mean/max drop 0.010074). The current aggregate contains 7 positive node perturbation rows and 10 positive path perturbation rows, but most positive signals are still concentrated in the Zhishi case rather than repeated across a larger case cohort. Several paths involving compound `875` had negative drops, indicating that masking those paths increased the local score rather than supporting the prediction. In the Fragaria-altered-consciousness case, the key subgraph contained only one parsed path, and the largest drop was 0.000021 for compound `1073`. These results are useful for prioritizing mechanism nodes and paths for review, but they do not change the conservative external-evidence conclusion: neither case should currently be presented as confirmed adverse-reaction evidence.
 
 ## Discussion Draft
 
@@ -110,6 +110,6 @@ Use these tracked files when editing the final manuscript:
 - Weight sensitivity: `results/pu_xmsat_hybrid_weight_sensitivity_summary.csv`
 - Full progress context: `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`
 - Case evidence screening: `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`, `results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`, `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
-- Contribution quantification: `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, `results/contribution_quantification.csv`
+- Contribution quantification: `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, `results/contribution_quantification.csv`, `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`, `results/contribution_aggregate_summary.csv`
 - Causal-bias framework: `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md`
 - Research closure audit: `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md`
