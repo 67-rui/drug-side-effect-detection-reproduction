@@ -1,6 +1,6 @@
 # PU-XMSAT Manuscript Package Audit
 
-**Generated at:** 2026-06-29T16:21:50.315517
+**Generated at:** 2026-06-29T22:41:53.201583
 **Overall status:** OK
 
 ## Package Location
@@ -13,7 +13,7 @@
 - Figures: 3
 - Figure descriptions: 3
 - Zip entries: 11
-- PDF pages: 13
+- PDF pages: 15
 - PDF page size: 612 x 792 pts (letter)
 - Failed checks: 0
 - Warning checks: 1
@@ -30,7 +30,7 @@
 | `zip_exists` | pass | /Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf.zip |
 | `zip_required_entries` | pass | entries=11 |
 | `zip_forbidden_entries` | pass | no preview/auxiliary files |
-| `pdf_page_count` | pass | pages=13 |
+| `pdf_page_count` | pass | pages=15 |
 | `pdf_letter_paper` | pass | 612 x 792 pts (letter) |
 | `latex_log_clean` | pass | no LaTeX errors, undefined refs/citations, or overfull boxes |
 | `human_submission_items` | warn | confirm_author_affiliation_email, confirm_acm_ccs, confirm_venue_metadata, confirm_ai_assistance_disclosure, confirm_funding_and_acknowledgments, confirm_double_blind_requirement |

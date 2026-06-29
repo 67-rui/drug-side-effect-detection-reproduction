@@ -345,6 +345,23 @@ The initial case evidence report contained 16 rows: 15 existing \msat{} Table 5-
 
 After final-checkpoint top-5000 interpretation, we performed a first-pass external evidence review for the 20 mechanism-supported candidates. No candidate qualified as strong external validation of a complete herb--compound--target--ADR chain. One candidate had moderate indirect support: the \textit{Polypodium glycyrrhiza}--watery diarrhoea path aligns only with a broad gastrointestinal direction, because EMA monographs for polypody rhizome discuss a mild laxative effect and occasional-constipation use for related polypody material \cite{ema_polypodii,ema_polypodii_assessment}. This is not direct species-level or target-level validation. Two candidates had weak or boundary-level support. In particular, \textit{Fragaria vesca} is better treated as a boundary case because EMA's wild-strawberry leaf summary does not report notable adverse effects and lists traditional uses rather than support for the predicted adverse-event terms \cite{ema_fragariae}. We then expanded review prioritization from the 20 quantified cases back to the 391 explicit-path pool and generated a 30-row evidence-aware queue. A PubMed-only first-pass screen retained two text-matched records for \textit{Marchantia polymorpha}--liver injury, but both records are closer to hepatoprotective or chemically induced liver-injury model evidence than to an adverse-reaction confirmation. Therefore, the current evidence workflow should be described as screening and prioritization rather than external validation equivalent to the original Table 5 or Table 6 analyses.
 
+Table~\ref{tab:case-study-triage} summarizes three case-study roles used for manuscript interpretation. The cases were selected to show different outcomes of the same workflow: a positive mechanism-triage example, a direction-conflict evidence-review example, and a boundary example. The \textit{Marchantia polymorpha}--liver injury row is intentionally reported as evidence review rather than completed perturbation evidence, because it was selected from the evidence-aware review queue after the 20-case perturbation batch and does not yet have a matched targeted-perturbation row in the current result package.
+
+\begin{table*}[t]
+\caption{Case-study triage examples connecting prediction, mechanism paths, local perturbation status, and external-evidence boundary.}
+\label{tab:case-study-triage}
+\footnotesize
+\begin{tabularx}{\textwidth}{Y Y r Y Y}
+\toprule
+Role & Candidate & Rank / paths & Perturbation status & Evidence boundary \\
+\midrule
+Positive mechanism triage & \textit{Polypodium glycyrrhiza}--watery diarrhoea & 224 / 7 & Quantified. Top path \texttt{target:15721}, drop 0.001174; top component \texttt{compound:761}, drop 0.000310. & Moderate indirect gastrointestinal-direction support from EMA polypody material; not species-, compound-, target-, or adverse-reaction validation. \\
+Direction-conflict review & \textit{Marchantia polymorpha}--liver injury & 414 / 8 & Not included in the 20-case perturbation batch; targeted perturbation for this exact pair remains a pending follow-up. & PubMed records co-mention the herb and liver injury but describe hepatoprotective or chemically induced liver-injury models \cite{marchantia_flavonoids_liver,marchantia_metabolic_hepatoprotective}; not adverse-reaction validation. \\
+Boundary / negative evidence & \textit{Fragaria vesca}--altered state of consciousness & 2 / 6 & Quantified. Top path combines \texttt{compound:1073} and \texttt{target:7213}, drop 0.0000175; top component \texttt{compound:1073}, drop 0.0000126. & Weak-to-negative boundary: EMA wild-strawberry leaf material does not support notable adverse-event evidence for the predicted term \cite{ema_fragariae}. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
 \section{Discussion}
 
 \subsection{Main Findings}
