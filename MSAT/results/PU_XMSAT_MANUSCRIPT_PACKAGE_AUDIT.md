@@ -1,67 +1,48 @@
 # PU-XMSAT Manuscript Package Audit
 
-**Date:** 2026-06-29
-**Purpose:** Preserve the current paper package state outside the chat context and make the Overleaf manuscript handoff auditable.
+**Generated at:** 2026-06-29T11:46:37.969815
+**Overall status:** OK
 
 ## Package Location
 
-The current English ACM-style manuscript source is:
+- Manuscript source: `/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf`
+- Overleaf zip: `/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf.zip`
 
-- `Template/PU-XMSAT-Overleaf/main.tex`
-- `Template/PU-XMSAT-Overleaf/references.bib`
-- `Template/PU-XMSAT-Overleaf/acmart.cls`
-- `Template/PU-XMSAT-Overleaf/figures/*.pdf`
-- `Template/PU-XMSAT-Overleaf/tools/build_figures.py`
-- `Template/PU-XMSAT-Overleaf/README.md`
+## Summary
 
-The current Overleaf upload archive is:
+- Figures: 3
+- Figure descriptions: 3
+- Zip entries: 11
+- PDF pages: 12
+- PDF page size: 612 x 792 pts (letter)
+- Failed checks: 0
+- Warning checks: 1
 
-- `Template/PU-XMSAT-Overleaf.zip`
+## Checks
 
-The zip intentionally excludes `main.pdf` and LaTeX auxiliary files. Overleaf should compile `main.tex` from source.
+| Check | Status | Details |
+| --- | --- | --- |
+| `main_tex_exists` | pass | /Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf/main.tex |
+| `documentclass_acm_review` | pass | options=['manuscript', 'review', 'screen'] |
+| `required_source_files` | pass | all required source files present |
+| `figure_files` | pass | figures=3 |
+| `figure_descriptions` | pass | includegraphics=3, descriptions=3 |
+| `zip_exists` | pass | /Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf.zip |
+| `zip_required_entries` | pass | entries=11 |
+| `zip_forbidden_entries` | pass | no preview/auxiliary files |
+| `pdf_page_count` | pass | pages=12 |
+| `pdf_letter_paper` | pass | 612 x 792 pts (letter) |
+| `latex_log_clean` | pass | no LaTeX errors, undefined refs/citations, or overfull boxes |
+| `human_submission_items` | warn | confirm_author_affiliation_email, confirm_acm_ccs, confirm_venue_metadata, confirm_ai_assistance_disclosure, confirm_funding_and_acknowledgments, confirm_double_blind_requirement |
 
-## Current Manuscript State
+## Pending Human Items
 
-The manuscript is an English ACM review-style draft using the provided `acmart.cls` template. It integrates:
-
-1. the reproduced MSAT baseline and protocol boundary;
-2. full-positive hybrid PU-XMSAT two-seed results;
-3. PU weight sensitivity;
-4. case evidence grading;
-5. mechanism subgraph, local node/path perturbation, and aggregate sensitivity ranking;
-6. causal-bias and validity boundaries.
-
-Current strongest supported claim:
-
-> Under the reproduced MSAT protocol, full-positive hybrid PU-XMSAT shows seed-robust gains over the reproduced MSAT baseline on AUC, F1, and MCC, with a stable positive but smaller AUPRC trend. The method also provides a conservative interpretation workflow combining mechanism subgraphs, local perturbation sensitivity, aggregate sensitivity ranking, evidence grading, and causal-bias claim boundaries.
-
-## Template Compliance Snapshot
-
-Verified on 2026-06-29:
-
-- `latexmk -pdf -interaction=nonstopmode main.tex` exits 0.
-- Rendered PDF has 12 pages.
-- Page size is Letter: `612 x 792 pts`.
-- Final log check found no `LaTeX Error`, undefined citations/references, or overfull boxes.
-- Rendered checks of pages 7-10 showed no obvious overlap, clipped table text, or figure placement issue around the updated mechanism section.
-- All manuscript figures include ACM `\Description{}` entries.
-
-Known environment-only noise:
-
-- MiKTeX may print locale/update warnings. These are local environment messages and are not manuscript errors.
-- `pdftoppm` may print a Fontconfig config warning while still rendering PNG pages.
-
-## Still Required Before Submission
-
-The manuscript is not a final submission package until the student and supervisor confirm:
-
-1. author names, affiliations, and corresponding author details;
-2. target conference/journal metadata;
-3. double-blind setting (`anonymous` option if required);
-4. ACM CCS concepts;
-5. funding and acknowledgments;
-6. final generative-AI assistance disclosure;
-7. venue-specific citation, page, and policy requirements.
+- `confirm_author_affiliation_email`
+- `confirm_acm_ccs`
+- `confirm_venue_metadata`
+- `confirm_ai_assistance_disclosure`
+- `confirm_funding_and_acknowledgments`
+- `confirm_double_blind_requirement`
 
 ## Claim Boundaries To Preserve
 
@@ -75,7 +56,7 @@ Do not claim:
 
 ## Packaging Rule
 
-Track the generated `Template/PU-XMSAT-Overleaf` source folder and `Template/PU-XMSAT-Overleaf.zip`.
+Track the generated `Template/PU-XMSAT-Overleaf` source folder, `Template/PU-XMSAT-Overleaf.zip`, and this audit output.
 
 Do not track:
 
@@ -84,3 +65,7 @@ Do not track:
 - `Template/PU-XMSAT-Overleaf/main.pdf`;
 - LaTeX auxiliary files;
 - unrelated shared archives such as `c8e3d252c197e482b037715c32fb3e70.zip`.
+
+## Claim Boundary
+
+This audit verifies package structure and template-facing checks only. It does not replace supervisor review, target-venue policy checks, or final author/metadata confirmation.

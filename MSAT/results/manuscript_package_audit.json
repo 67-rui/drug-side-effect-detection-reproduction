@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-06-29T11:46:37.969815",
+  "ok": true,
+  "manuscript_dir": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf",
+  "zip_path": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf.zip",
+  "summary": {
+    "figure_count": 3,
+    "description_count": 3,
+    "zip_entry_count": 11,
+    "zip_entries": [
+      "README.md",
+      "acmart.cls",
+      "figures/",
+      "figures/README.md",
+      "figures/mechanism_workflow.pdf",
+      "figures/method_overview.pdf",
+      "figures/metric_delta.pdf",
+      "main.tex",
+      "references.bib",
+      "tools/",
+      "tools/build_figures.py"
+    ],
+    "page_count": 12,
+    "page_size": "612 x 792 pts (letter)",
+    "failed_check_count": 0,
+    "warning_check_count": 1
+  },
+  "pending_human_items": [
+    "confirm_author_affiliation_email",
+    "confirm_acm_ccs",
+    "confirm_venue_metadata",
+    "confirm_ai_assistance_disclosure",
+    "confirm_funding_and_acknowledgments",
+    "confirm_double_blind_requirement"
+  ],
+  "checks": [
+    {
+      "name": "main_tex_exists",
+      "status": "pass",
+      "details": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf/main.tex"
+    },
+    {
+      "name": "documentclass_acm_review",
+      "status": "pass",
+      "details": "options=['manuscript', 'review', 'screen']"
+    },
+    {
+      "name": "required_source_files",
+      "status": "pass",
+      "details": "all required source files present"
+    },
+    {
+      "name": "figure_files",
+      "status": "pass",
+      "details": "figures=3"
+    },
+    {
+      "name": "figure_descriptions",
+      "status": "pass",
+      "details": "includegraphics=3, descriptions=3"
+    },
+    {
+      "name": "zip_exists",
+      "status": "pass",
+      "details": "/Users/a67_2024/Desktop/drug-detect/Template/PU-XMSAT-Overleaf.zip"
+    },
+    {
+      "name": "zip_required_entries",
+      "status": "pass",
+      "details": "entries=11"
+    },
+    {
+      "name": "zip_forbidden_entries",
+      "status": "pass",
+      "details": "no preview/auxiliary files"
+    },
+    {
+      "name": "pdf_page_count",
+      "status": "pass",
+      "details": "pages=12"
+    },
+    {
+      "name": "pdf_letter_paper",
+      "status": "pass",
+      "details": "612 x 792 pts (letter)"
+    },
+    {
+      "name": "latex_log_clean",
+      "status": "pass",
+      "details": "no LaTeX errors, undefined refs/citations, or overfull boxes"
+    },
+    {
+      "name": "human_submission_items",
+      "status": "warn",
+      "details": "confirm_author_affiliation_email, confirm_acm_ccs, confirm_venue_metadata, confirm_ai_assistance_disclosure, confirm_funding_and_acknowledgments, confirm_double_blind_requirement"
+    }
+  ]
+}
