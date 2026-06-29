@@ -14,6 +14,38 @@
     "tiny_holdout_cluster_threshold": 5,
     "tiny_holdout_cluster_count": 3
   },
+  "non_tiny_robust_summary": {
+    "description": "Size-filtered summary excluding heldout clusters with fewer than 5 herbs. This is a robustness view, not a replacement for the full stress-test summary.",
+    "included_fold_count": 7,
+    "excluded_tiny_fold_count": 3,
+    "included_folds": [
+      0,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "mean_metrics": {
+      "auc": 0.8432908679466345,
+      "auprc": 0.8633291362575716,
+      "f1": 0.07425213672325263,
+      "mcc": 0.11675259979293963
+    },
+    "std_metrics": {
+      "auc": 0.03519576226726076,
+      "auprc": 0.03335542153226503,
+      "f1": 0.07225070826237442,
+      "mcc": 0.08208341994041242
+    },
+    "weighted_by_test_positive_metrics": {
+      "auc": 0.8161958001788544,
+      "auprc": 0.837245978337264,
+      "f1": 0.08211010719439642,
+      "mcc": 0.13383444635510186
+    }
+  },
   "interpretation_caveats": [
     "3 tiny heldout clusters have fewer than 5 herbs; macro mean metrics should be read together with fold-level cluster sizes.",
     "Thresholded F1 is low under cluster-held-out evaluation; this supports a harder generalization setting rather than a simple success claim."

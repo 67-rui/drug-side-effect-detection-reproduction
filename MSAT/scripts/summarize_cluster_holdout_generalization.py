@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from statistics import mean
+from statistics import mean, pstdev
 from typing import Any
 
 
@@ -19,7 +19,7 @@ CLAIM_BOUNDARY = (
 def summarize_cluster_holdout_run(payload: dict[str, Any]) -> dict[str, Any]:
     fold_rows = []
     metric_values = {metric: [] for metric in METRICS}
-    for result in payload.get("fold_results", []):
+    for fold_index, result in enumerate(payload.get("fold_results", [])):
         protocol = result.get("cluster_protocol") or {}
         metrics = result.get("test_metrics") or {}
         for metric in METRICS:
@@ -27,7 +27,7 @@ def summarize_cluster_holdout_run(payload: dict[str, Any]) -> dict[str, Any]:
                 metric_values[metric].append(float(metrics[metric]))
         fold_rows.append(
             {
-                "fold": result.get("fold"),
+                "fold": result.get("fold", fold_index),
                 "holdout_cluster": protocol.get("holdout_cluster"),
                 "heldout_herb_count": protocol.get("heldout_herb_count", 0),
                 "test_positive_count": protocol.get("test_positive_count", 0),
@@ -68,12 +68,61 @@ def summarize_cluster_holdout_run(payload: dict[str, Any]) -> dict[str, Any]:
             "Thresholded F1 is low under cluster-held-out evaluation; this supports a "
             "harder generalization setting rather than a simple success claim."
         )
+    non_tiny_rows = [
+        row
+        for row in fold_rows
+        if int(row["heldout_herb_count"]) >= TINY_HOLDOUT_CLUSTER_THRESHOLD
+    ]
+    non_tiny_metric_values = {
+        metric: [
+            float(row["metrics"][metric])
+            for row in non_tiny_rows
+            if row["metrics"].get(metric) is not None
+        ]
+        for metric in METRICS
+    }
+    non_tiny_mean_metrics = {
+        metric: float(mean(values)) if values else None
+        for metric, values in non_tiny_metric_values.items()
+    }
+    non_tiny_std_metrics = {
+        metric: float(pstdev(values)) if len(values) > 1 else (0.0 if values else None)
+        for metric, values in non_tiny_metric_values.items()
+    }
+    weighted_metrics = {}
+    for metric in METRICS:
+        weighted_sum = 0.0
+        total_weight = 0
+        for row in non_tiny_rows:
+            value = row["metrics"].get(metric)
+            if value is None:
+                continue
+            weight = int(row.get("test_positive_count") or 0)
+            if weight <= 0:
+                continue
+            weighted_sum += float(value) * weight
+            total_weight += weight
+        weighted_metrics[metric] = (weighted_sum / total_weight) if total_weight else None
+    non_tiny_robust_summary = {
+        "description": (
+            "Size-filtered summary excluding heldout clusters with fewer than "
+            f"{TINY_HOLDOUT_CLUSTER_THRESHOLD} herbs. This is a robustness view, "
+            "not a replacement for the full stress-test summary."
+        ),
+        "included_fold_count": len(non_tiny_rows),
+        "excluded_tiny_fold_count": len(fold_rows) - len(non_tiny_rows),
+        "included_folds": [row.get("fold") for row in non_tiny_rows],
+        "mean_metrics": non_tiny_mean_metrics,
+        "std_metrics": non_tiny_std_metrics,
+        "weighted_by_test_positive_metrics": weighted_metrics,
+    }
     return {
         "experiment": "pu_xmsat_cluster_holdout_generalization",
         "split_mode": payload.get("split_mode"),
         "fold_count": len(fold_rows),
         "mean_metrics": mean_metrics,
         "cluster_balance": cluster_balance,
+        "non_tiny_robust_summary": non_tiny_robust_summary,
         "interpretation_caveats": interpretation_caveats,
         "folds": fold_rows,
         "leakage_controls": {
@@ -127,6 +176,28 @@ def write_summary(summary: dict[str, Any], output_json: str | Path, output_md: s
     ])
     for metric in METRICS:
         lines.append(f"| {metric.upper()} | {_fmt(summary['mean_metrics'].get(metric))} |")
+    robust = summary.get("non_tiny_robust_summary") or {}
+    lines.extend(
+        [
+            "",
+            "## Non-Tiny Robust Summary",
+            "",
+            robust.get("description", ""),
+            "",
+            f"- Included folds: {robust.get('included_fold_count', 0)}",
+            f"- Excluded tiny folds: {robust.get('excluded_tiny_fold_count', 0)}",
+            f"- Included fold IDs: {', '.join(str(item) for item in robust.get('included_folds', []))}",
+            "",
+            "| Metric | Mean | Std | Test-positive weighted mean |",
+            "| --- | ---: | ---: | ---: |",
+        ]
+    )
+    for metric in METRICS:
+        lines.append(
+            f"| {metric.upper()} | {_fmt((robust.get('mean_metrics') or {}).get(metric))} | "
+            f"{_fmt((robust.get('std_metrics') or {}).get(metric))} | "
+            f"{_fmt((robust.get('weighted_by_test_positive_metrics') or {}).get(metric))} |"
+        )
     lines.extend(
         [
             "",

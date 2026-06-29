@@ -20,12 +20,13 @@
 | 做组会或答辩 PPT | `results/PU_XMSAT_SLIDES_DRAFT_CN.pptx` | 12 页可编辑 PowerPoint 初稿 |
 | 修改 PPT 内容结构 | `results/PU_XMSAT_SLIDES_OUTLINE_CN.md` | PPT 页级大纲，包含每页标题、核心信息、建议视觉和讲稿提示 |
 | 写论文结果表 | `results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` | PU-XMSAT 主结果表、paired statistics、seed robustness、weight sensitivity、案例证据边界和建议措辞 |
+| 做投稿前总审阅 | `results/PU_XMSAT_NEXT_PUBLICATION_ACTION_REPORT.md` | 当前已完成内容、论文可写内容、解释性完成度、case-study 候选、投稿前 todo、等待原作者事项和提交/推送建议 |
 | 检查投稿级主结果证据 | `results/PU_XMSAT_PUBLICATION_EVIDENCE_CONSOLIDATION.md`、`results/pu_xmsat_publication_evidence_consolidation.json` | Package A：整合 baseline、hybrid two-seed、random comparator、seed robustness 和 weight sensitivity，作为正文数字核对入口 |
-| 检查聚类留类泛化实验 | `results/PU_XMSAT_CLUSTER_HOLDOUT_GENERALIZATION.md`、`results/cluster_holdout_generalization_summary.json`、`results/pu_xmsat_cluster_holdout_hybrid_seed2026_10cluster_200e_66015p_valf1.json` | Package B：正式 10-cluster/10-fold/200-epoch cluster-heldout 已完成；用于写新中药簇泛化压力测试和 claim boundary |
+| 检查聚类留类泛化实验 | `results/PU_XMSAT_CLUSTER_HOLDOUT_GENERALIZATION.md`、`results/cluster_holdout_generalization_summary.json`、`results/pu_xmsat_cluster_holdout_hybrid_seed2026_10cluster_200e_66015p_valf1.json` | Package B：正式 10-cluster/10-fold/200-epoch cluster-heldout 已完成；all-fold 与 non-tiny robust summary 均已生成，用于写新中药簇泛化压力测试和 claim boundary |
 | 写英文 Methods/Results/Discussion | `results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` | 英文正文段落草稿 |
 | 检查 Overleaf 论文包 | `results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md`、`results/manuscript_package_audit.json`、`../Template/PU-XMSAT-Overleaf/README.md` | 当前 ACM 模板稿件位置、上传 zip、模板验证状态、PDF/LaTeX/zip 审计、占位项和打包规则 |
 | 判断是否可以正式投稿 | `results/PU_XMSAT_SUBMISSION_READINESS_AUDIT.md`、`results/submission_readiness_audit.json` | 区分机器可验证 package 状态和必须由学生/导师确认的最终投稿 blockers |
-| 写解释性/外部证据案例 | `results/PU_XMSAT_FINAL_CHECKPOINT_EXPORT_REPORT.md`、`results/PU_XMSAT_INTERPRETABILITY_GAP_AUDIT.md`、`results/PU_XMSAT_TOP_PREDICTIONS_TOP5000_EXPORT.md`、`results/PU_XMSAT_BATCH_MECHANISM_INTERPRETABILITY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`results/PU_XMSAT_CASE_SELECTION_DECISION.md`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE_TOP5000_RANDOM_CONTROLS.md` | final checkpoint export、top5000 top prediction、batch 机制解释、机制子图、外部证据分级、成分/靶点/路径扰动贡献量化、random controls、fallback display/name_source，以及方向三定向复核队列；当前没有强外部验证正向案例 |
+| 写解释性/外部证据案例 | `results/PU_XMSAT_FINAL_CHECKPOINT_EXPORT_REPORT.md`、`results/PU_XMSAT_INTERPRETABILITY_GAP_AUDIT.md`、`results/PU_XMSAT_TOP_PREDICTIONS_TOP5000_EXPORT.md`、`results/PU_XMSAT_BATCH_MECHANISM_INTERPRETABILITY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_TOP20_ENTITY_MAPPING_QUEUE.md`、`results/PU_XMSAT_TOP20_TARGET_NAME_CANDIDATES.md`、`results/PU_XMSAT_ENTITY_MAPPING_AUDIT_AND_CANDIDATES.md`、`results/PU_XMSAT_TOP20_EXTERNAL_EVIDENCE_REVIEW.md`、`results/PU_XMSAT_EVIDENCE_AWARE_MECHANISM_CANDIDATE_QUEUE.md`、`results/PU_XMSAT_EVIDENCE_AWARE_LITERATURE_SIGNAL_REVIEW.md`、`results/PU_XMSAT_ORIGINAL_AUTHOR_MAPPING_REQUEST.md`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE_TOP5000_RANDOM_CONTROLS.md` | final checkpoint export、top5000 top prediction、batch 机制解释、机制子图、成分/靶点/路径扰动贡献量化、random controls、实体映射缺口审计、target 候选名称、top20 外部证据 first-pass 复核、391 候选 evidence-aware 重排序、PubMed 信号筛查、原作者映射请求和方向三定向复核队列；当前没有强完整链外部验证案例 |
 | 写因果/局限性边界 | `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` | 当前数据条件下的 DAG/混杂因素框架；说明哪些偏倚只能讨论、不能严格校正 |
 | 判断计划是否闭环 | `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` | 把研究方案中的训练、解释、验证、因果边界逐项映射到当前证据 |
 | 追溯完整实验过程 | `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`、`results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | 记录 candidate cache 修正、budget scaling、10-fold pilot、two-seed 和 weight sensitivity |
@@ -45,6 +46,7 @@
 | hybrid two-seed robustness | `results/pu_xmsat_hybrid_seed_robustness_summary.csv` |
 | PU 权重敏感性 | `results/pu_xmsat_hybrid_weight_sensitivity_summary.csv` |
 | 投稿级主结果整合 | `results/pu_xmsat_publication_evidence_consolidation.json`、`results/PU_XMSAT_PUBLICATION_EVIDENCE_CONSOLIDATION.md` |
+| 投稿前推进与 case-study 候选 | `results/PU_XMSAT_NEXT_PUBLICATION_ACTION_REPORT.md` |
 | cluster-heldout 正式泛化实验 | `results/pu_xmsat_cluster_holdout_hybrid_seed2026_10cluster_200e_66015p_valf1.json`、`results/cluster_holdout_generalization_summary.json`、`results/PU_XMSAT_CLUSTER_HOLDOUT_GENERALIZATION.md` |
 | cluster-heldout pilot | `results/cluster_holdout_pilot.json`、`results/cluster_holdout_pilot_summary.json`、`results/PU_XMSAT_CLUSTER_HOLDOUT_PILOT_SUMMARY.md` |
 | 机制解释与证据分级案例 | `results/case_evidence_report.json`、`results/case_evidence_report.csv`、`results/PU_XMSAT_CASE_EVIDENCE_REPORT.md` |
@@ -58,6 +60,13 @@
 | 贡献量化聚合摘要正式 top5000/random controls | `results/contribution_aggregate_summary_top5000_random_controls.json`、`results/contribution_aggregate_summary_top5000_random_controls.csv`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY_TOP5000_RANDOM_CONTROLS.md` |
 | 解释层正式总入口 | `results/mechanism_explanation_layer_top5000_random_controls.json`、`results/mechanism_explanation_layer_top5000_random_controls.csv`、`results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER_TOP5000_RANDOM_CONTROLS.md` |
 | 方向三定向证据复核队列正式 top5000/random controls | `results/direction3_targeted_review_queue_top5000_random_controls.json`、`results/direction3_targeted_review_queue_top5000_random_controls.csv`、`results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE_TOP5000_RANDOM_CONTROLS.md` |
+| top20 实体映射队列 | `results/top20_entity_mapping_queue.json`、`results/top20_entity_mapping_queue.csv`、`results/PU_XMSAT_TOP20_ENTITY_MAPPING_QUEUE.md` |
+| top20 target 候选名称 | `results/top20_target_name_candidates.json`、`results/top20_target_name_candidates.csv`、`results/PU_XMSAT_TOP20_TARGET_NAME_CANDIDATES.md` |
+| 实体映射审计与候选边界 | `results/PU_XMSAT_ENTITY_MAPPING_AUDIT_AND_CANDIDATES.md` |
+| top20 外部证据 first-pass 复核 | `results/top20_external_evidence_review.json`、`results/PU_XMSAT_TOP20_EXTERNAL_EVIDENCE_REVIEW.md` |
+| evidence-aware top30 复核队列 | `results/evidence_aware_mechanism_candidate_queue.json`、`results/evidence_aware_mechanism_candidate_queue.csv`、`results/PU_XMSAT_EVIDENCE_AWARE_MECHANISM_CANDIDATE_QUEUE.md` |
+| evidence-aware PubMed 信号筛查 | `results/evidence_aware_literature_candidates.json`、`results/evidence_aware_literature_candidates.csv`、`results/PU_XMSAT_EVIDENCE_AWARE_LITERATURE_SIGNAL_REVIEW.md` |
+| 原作者数据/脚本请求 | `results/PU_XMSAT_ORIGINAL_AUTHOR_MAPPING_REQUEST.md`、GitHub issue `BowenShiGDPU/MSAT#1`，已补充 Table 5/6 所需材料 |
 | 因果偏倚框架 | `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` |
 | 研究闭环审计 | `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` |
 | Overleaf 论文包审计 | `results/manuscript_package_audit.json`、`results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md` |
@@ -74,11 +83,13 @@
 5. AUPRC 保持正向趋势，但提升幅度较小，其中一个 seed 相对 MSAT 的 AUPRC paired p 值为边界显著。
 6. 权重敏感性支持 `u0.2/rn0.8` 作为当前默认设置。
 7. 机制解释与外部证据分级已经形成正式 batch-level 解释闭环：final top5000 中显式机制路径覆盖为 391/5000（7.82%），其中 top-50/top-100/top-500/top-1000 覆盖为 1/50、8/100、31/500、64/1000；20 个 mechanism-supported candidates 已完成扰动量化和 random-control 对照；方向三复核队列中 Grade A/B 强外部证据仍为 0，`ready_strong_evidence_count=0`。
-8. 解释层已经完成 formal checkpoint-aware top5000/random-control 重跑：seed=2026 full-positive hybrid PU-XMSAT 10-fold checkpoint export 完成，mean AUC/AUPRC/F1/MCC 为 0.980281/0.977907/0.934326/0.867061；top component 为 `compound:761`，top target 为 `target:15721`，top pathway 为 `target:15721`，但这些实体目前多为 `unmapped_graph_id` fallback display，不能伪装成已命名真实机制。可以写成 checkpoint-aware batch-level mechanism triage，不能写成广泛系统机制确认、因果效应、SHAP、临床验证或强外部证据。
-9. Package A 已新增投稿级证据整合入口，避免主结果、ablation、seed robustness 和 weight sensitivity 数字漂移；Package B 已完成 10-cluster/10-fold/200-epoch cluster-heldout 正式实验，mean AUC/AUPRC/F1/MCC 为 0.8891/0.9032/0.1770/0.1919，应写成新中药簇泛化压力测试而非简单胜利；Package C 已完成 top5000 coverage、20 个 mechanism-supported candidates、子图提取、贡献量化、random controls、fallback display/name_source 和 evidence queue。
-10. 因果图方向已经完成当前阶段的边界化处理：当前只能建立 co-medication、indication、reporting bias、exposure population 等混杂因素的 DAG/偏倚框架，不能声称已经进行严格因果校正。
-11. 研究方案已经形成最小论文闭环：训练层、解释层、验证层和因果边界都有对应产物；后续重点应转向论文整合和必要的定向补强，而不是盲目扩展。
-12. Overleaf 论文工程已经整理到 `Template/PU-XMSAT-Overleaf`，上传包为 `Template/PU-XMSAT-Overleaf.zip`；`scripts/audit_manuscript_package.py` 当前审计结果为 `ok: true`、failed checks 0、warning checks 1；PDF 编译为 12 页 Letter 纸。投稿就绪审计显示 package OK 且 machine failures 0，但 ready for submission 仍为 no，因为作者、机构、目标 venue、CCS、基金、AI 声明、双盲策略和参考/图件范围仍需学生/导师确认。
+8. 解释层已经完成 formal checkpoint-aware top5000/random-control 重跑：seed=2026 full-positive hybrid PU-XMSAT 10-fold checkpoint export 完成，mean AUC/AUPRC/F1/MCC 为 0.980281/0.977907/0.934326/0.867061；top component 为 `compound:761`，top target 为 `target:15721`，top pathway 为 `target:15721`。后续新增 top20 实体映射审计显示 20 个 compound 和 39 个 target 均无 confirmed 本地真实名称映射；HGNC/BioBERT 只生成 target `candidate_only` 候选，不能伪装成已命名真实机制。可以写成 checkpoint-aware batch-level mechanism triage，不能写成广泛系统机制确认、因果效应、SHAP、临床验证或强外部证据。
+9. Top20 外部证据 first-pass 复核已经完成：强完整链证据 0/20，中等间接支持 1/20，弱/边界支持 2/20。最适合论文讨论的是 `Polypodium glycyrrhiza` 胃肠方向 triage case；`Fragaria vesca L.` 更适合写成边界/负例，说明扰动敏感性不能替代外部验证。
+10. Package A 已新增投稿级证据整合入口，避免主结果、ablation、seed robustness 和 weight sensitivity 数字漂移；Package B 已完成 10-cluster/10-fold/200-epoch cluster-heldout 正式实验，all-fold mean AUC/AUPRC/F1/MCC 为 0.8891/0.9032/0.1770/0.1919，排除少于 5 味中药 heldout clusters 后的 non-tiny robust mean 为 0.8433/0.8633/0.0743/0.1168，应写成新中药簇泛化压力测试而非简单胜利；Package C 已完成 top5000 coverage、20 个 mechanism-supported candidates、子图提取、贡献量化、random controls、fallback display/name_source、实体映射审计、target 候选名称、top20 evidence review 和 391 候选 evidence-aware top30 重排序。PubMed exact-query first-pass 在 top30 中保留 2 条 `Marchantia polymorpha` -> liver injury 文本匹配，但方向更像护肝/损伤模型，不能升级为强外部验证。
+11. 原始 compound/target 映射桥已确认是当前生物语义解释的硬短板：Zenodo API 显示公开 record 仅含 `complete_hetero_graph.pt`，GitHub API 显示公开仓库 `data/` 仅含 `10fold_cv_split.pkl`，图内部 compound/target 节点 store 只有 `x`。已向原作者提交 GitHub issue 请求 local row index 到 PubChem/SMILES/HGNC/UniProt/source ID 的映射表，并追加 Table 5 导出脚本/checkpoint/候选池定义/逐行证据记录与 Table 6 PT/SOC->TCM 系统映射规则请求：https://github.com/BowenShiGDPU/MSAT/issues/1。
+12. 因果图方向已经完成当前阶段的边界化处理：当前只能建立 co-medication、indication、reporting bias、exposure population 等混杂因素的 DAG/偏倚框架，不能声称已经进行严格因果校正。
+13. 研究方案已经形成最小论文闭环：训练层、解释层、验证层和因果边界都有对应产物；后续重点应转向论文整合和必要的定向补强，而不是盲目扩展。
+14. Overleaf 论文工程已经整理到 `Template/PU-XMSAT-Overleaf`，上传包为 `Template/PU-XMSAT-Overleaf.zip`；`scripts/audit_manuscript_package.py` 当前审计结果为 `ok: true`、failed checks 0、warning checks 1；PDF 编译为 12 页 Letter 纸。投稿就绪审计显示 package OK 且 machine failures 0，但 ready for submission 仍为 no，因为作者、机构、目标 venue、CCS、基金、AI 声明、双盲策略和参考/图件范围仍需学生/导师确认。
 
 不要说：
 
@@ -97,10 +108,10 @@
 
 导师新增建议后，当前最合理的推进顺序是先补强解释层，再把“聚类留一类测试”作为独立泛化实验设计，二者不要混在同一段结果里：
 
-1. **论文正文合并。** 将 Package A/B/C 写进 Overleaf：主性能作为核心贡献，cluster-heldout 作为严格泛化边界，top5000 解释作为机制 triage。
-2. **外部证据复核。** 当前 final-checkpoint top5000 队列仍为 ready strong 0；如果要增强案例部分，优先对 19 个 `target_external_evidence_review` 候选做人工文献/数据库核验。
-3. **实体名映射补强。** 当前 top component/target/pathway 多为 unmapped graph id；如时间允许，应补 compound/target id 到真实名称的映射，但不能在未核实时人工猜名。
-4. **更严格泛化补强。** 如果导师继续追问泛化，可考虑 cluster-balanced holdout 或重复不同聚类种子；当前 10-cluster 结果已足够说明 cold-cluster 明显更难。
+1. **论文正文合并。** 将 Package A/B/C 与新增 top20 entity/evidence 审计写进 Overleaf：主性能作为核心贡献，cluster-heldout 作为严格泛化边界，top5000 解释作为机制 triage。
+2. **解释性段落保守重写。** 不再追求“强解释性”措辞；改写成 key mechanism subgraph extraction + perturbation-based component/target/pathway sensitivity + evidence-aware candidate triage。
+3. **更严格泛化补强。** 如果导师继续追问泛化，可考虑 cluster-balanced holdout 或重复不同聚类种子；当前 10-cluster all-fold 与 non-tiny robust summary 已足够说明 cold-cluster 明显更难。
+4. **实体名映射长期补强。** 若能获得原作者节点字典或可复现 ccTCM/ETCM source-ID bridge，再把 candidate_only target/compound 升级为 confirmed mapping；在此之前不要人工猜名。
 
 ## 6. 每次修改结果后要跑的检查
 

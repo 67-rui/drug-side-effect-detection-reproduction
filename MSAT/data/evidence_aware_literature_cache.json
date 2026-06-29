@@ -1,0 +1,237 @@
+{
+  "queries": {
+    "pubmed::\"Polypodium glycyrrhiza\" \"Watery diarrhoea\"": {
+      "provider": "pubmed",
+      "query": "\"Polypodium glycyrrhiza\" \"Watery diarrhoea\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:24.994740"
+    },
+    "pubmed::\"Marchantia polymorpha\" \"Dry cough\"": {
+      "provider": "pubmed",
+      "query": "\"Marchantia polymorpha\" \"Dry cough\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:26.323474"
+    },
+    "pubmed::\"Marchantia polymorpha\" \"Jaundice\"": {
+      "provider": "pubmed",
+      "query": "\"Marchantia polymorpha\" \"Jaundice\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:28.071763"
+    },
+    "pubmed::\"Marchantia polymorpha\" \"Proteinuria\"": {
+      "provider": "pubmed",
+      "query": "\"Marchantia polymorpha\" \"Proteinuria\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:30.150385"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Leukopenia\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Leukopenia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:32.421225"
+    },
+    "pubmed::\"Marchantia polymorpha\" \"Liver injury\"": {
+      "provider": "pubmed",
+      "query": "\"Marchantia polymorpha\" \"Liver injury\"",
+      "records": [
+        {
+          "provider": "pubmed",
+          "title": "Marchantia polymorpha L. Flavonoids Protect Liver From CCl4-Induced Injury by Antioxidant and Gene-Regulatory Effects.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33128532/",
+          "year": "2022",
+          "source": "Alternative therapies in health and medicine",
+          "doi": null,
+          "pmid": "33128532",
+          "abstract": "Marchantia polymorpha L. (MPL), a common type of liverwort, has been used as herbal medicine to improve liver function in China for many years. Although modern studies revealed that MPL contains various polyphenols, terpenoids, and bis[bibenzyls], its biological effects on liver function have never been systemically studied in any animal model. In this study, flavonoids were extracted from MPL and the components in the MPL flavonoids as well as the antioxidant capacity of MPL flavonoids were analysed. A rat model of liver injury was induced by intraperitoneal injection of 10% carbon tetrachloride (CCl4). MPL flavonoids were administered daily at a dose of 50, 100, and 200 mg/kg body weight to the rats for 2 weeks prior to injection of CC14. Treatment with MPL flavonoids, especially at a dose of 200 mg/kg, attenuated CCl4-induced increases in alanine aminotransferase, aspartate aminotransferase, alkaline phosphatase, γ-glutamyl transpeptidase, nitric oxide, malondialdehyde, tumour necrosis factor-α, interleukin-1β, and interleukin-6, as well as reductions in superoxide dismutase and glutathione peroxidase. Microarray analyses showed that co-treatment with MPL flavonoids and CCl4 up-regulated many antioxidant and anti-apoptotic genes, but down-regulated several pro-inflammatory genes, compared to treatment with CCl4 alone. PCR and western blot assays further identified that MPL flavonoids increased GPX1, TMX1, TXN, and XIAP expression, but decreased IL-1 and IL1RAP expression and inhibited Jak/stat3 signalling. In conclusion, MPL flavonoids exerted hepatoprotective effects via antioxidant and gene regulatory mechanisms. (Altern Ther Health Med."
+        },
+        {
+          "provider": "pubmed",
+          "title": "UHPLC-QTOF-MS Metabolic Profiling of Marchantia polymorpha and Evaluation of Its Hepatoprotective Activity Using Paracetamol-Induced Liver Injury in Mice.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37273612/",
+          "year": "2023",
+          "source": "ACS omega",
+          "doi": "10.1021/acsomega.3c01867",
+          "pmid": "37273612",
+          "abstract": "Marchantia species were traditionally used to treat liver failure. Marchantia polymorpha chloroform extract showed a marked hepatoprotective activity in a dose-dependent manner in paracetamol-induced extensive liver damage in mice. At a dose of 500 mg/kg (MP-500), it resulted in a reduction in aspartate transaminase by 49.44%, alanine transaminase by 44.11%, and alkaline phosphatase by 24.4% with significant elevation in total proteins by 58.69% with respect to the diseased group. It showed significant reductions in total bilirubin, total cholesterol, triglycerides, low density lipoprotein (LDL), very LDL, total lipids, and to high density lipoprotein ratio (CH/HDL) by 53.42, 30.14, 35.02, 45.79, 34.74, 41.45, and 49.52%, respectively, together with a 37.69% increase in HDL with respect to the diseased group. It also showed an elevation of superoxide dismutase by 28.09% and in glutathione peroxidase by 81.83% in addition to the reduction of lipid peroxidation by 17.95% as compared to the paracetamol only treated group. This was further supported by histopathological examination that showed normal liver architecture and a normal sinusoidal gap. Metabolic profiling by ultrahigh performance liquid chromatography coupled with quadrupole time-of-flight mass spectrometer (UHPLC-QTOF/MS) led to the tentative identification of 28 compounds belonging to phenols, quinolones, phenylpropanoid, acylaminosugars, terpenoids, lipids, and fatty acids to which the activity was attributed. Four compounds were detected in the negative ionization mode which are neoacrimarine J, marchantin A, chitobiose, and phellodensin F, while the rest were detected in the positive mode. Thus, it can be concluded that this plant could serve as a valuable choice for the treatment of hepatotoxicity that further consolidated its traditional use."
+        }
+      ],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:37.036435"
+    },
+    "pubmed::\"Semen Astragali Complati\" \"Jaundice\"": {
+      "provider": "pubmed",
+      "query": "\"Semen Astragali Complati\" \"Jaundice\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:38.515598"
+    },
+    "pubmed::\"Davallia mariesii\" \"Jaundice\"": {
+      "provider": "pubmed",
+      "query": "\"Davallia mariesii\" \"Jaundice\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:41.993327"
+    },
+    "pubmed::\"Semen Astragali Complati\" \"Dry cough\"": {
+      "provider": "pubmed",
+      "query": "\"Semen Astragali Complati\" \"Dry cough\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:43.832914"
+    },
+    "pubmed::\"Woodfordia fruticosa\" \"Jaundice\"": {
+      "provider": "pubmed",
+      "query": "\"Woodfordia fruticosa\" \"Jaundice\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:46.109583"
+    },
+    "pubmed::\"Woodwardia virginica\" \"Vomiting\"": {
+      "provider": "pubmed",
+      "query": "\"Woodwardia virginica\" \"Vomiting\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:48.547306"
+    },
+    "pubmed::\"Os Sepiellae seu Sepiae\" \"Proteinuria\"": {
+      "provider": "pubmed",
+      "query": "\"Os Sepiellae seu Sepiae\" \"Proteinuria\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:50.055780"
+    },
+    "pubmed::\"Os Sepiellae seu Sepiae\" \"Liver injury\"": {
+      "provider": "pubmed",
+      "query": "\"Os Sepiellae seu Sepiae\" \"Liver injury\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:52.148517"
+    },
+    "pubmed::\"Woodfordia fruticosa\" \"Tinnitus\"": {
+      "provider": "pubmed",
+      "query": "\"Woodfordia fruticosa\" \"Tinnitus\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:53.563306"
+    },
+    "pubmed::\"Woodfordia fruticosa\" \"Dry cough\"": {
+      "provider": "pubmed",
+      "query": "\"Woodfordia fruticosa\" \"Dry cough\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:54.980619"
+    },
+    "pubmed::\"Marchantia polymorpha\" \"Sedation\"": {
+      "provider": "pubmed",
+      "query": "\"Marchantia polymorpha\" \"Sedation\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:57.054079"
+    },
+    "pubmed::\"Polypodium glycyrrhiza\" \"Constipation\"": {
+      "provider": "pubmed",
+      "query": "\"Polypodium glycyrrhiza\" \"Constipation\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:01:58.468192"
+    },
+    "pubmed::\"Semen Astragali Complati\" \"Liver injury\"": {
+      "provider": "pubmed",
+      "query": "\"Semen Astragali Complati\" \"Liver injury\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:00.623351"
+    },
+    "pubmed::\"Woodwardia virginica\" \"Watery diarrhoea\"": {
+      "provider": "pubmed",
+      "query": "\"Woodwardia virginica\" \"Watery diarrhoea\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:02.695847"
+    },
+    "pubmed::\"Woodfordia fruticosa\" \"Watery diarrhoea\"": {
+      "provider": "pubmed",
+      "query": "\"Woodfordia fruticosa\" \"Watery diarrhoea\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:04.754935"
+    },
+    "pubmed::\"Woodfordia fruticosa\" \"Persistent vomiting\"": {
+      "provider": "pubmed",
+      "query": "\"Woodfordia fruticosa\" \"Persistent vomiting\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:06.903907"
+    },
+    "pubmed::\"Polypodium glycyrrhiza\" \"Mucosal haemorrhage\"": {
+      "provider": "pubmed",
+      "query": "\"Polypodium glycyrrhiza\" \"Mucosal haemorrhage\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:09.115180"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Mucosal haemorrhage\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Mucosal haemorrhage\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:10.495526"
+    },
+    "pubmed::\"Polypodium glycyrrhiza\" \"Somnolence\"": {
+      "provider": "pubmed",
+      "query": "\"Polypodium glycyrrhiza\" \"Somnolence\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:12.068396"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Myasthenia gravis\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Myasthenia gravis\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:13.880585"
+    },
+    "pubmed::\"Polypodium glycyrrhiza\" \"Sulphaemoglobinaemia\"": {
+      "provider": "pubmed",
+      "query": "\"Polypodium glycyrrhiza\" \"Sulphaemoglobinaemia\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:15.477780"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Gastric disorder\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Gastric disorder\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:20.006441"
+    },
+    "pubmed::\"Fragaria vesca L.\" \"Liver disorder\"": {
+      "provider": "pubmed",
+      "query": "\"Fragaria vesca L.\" \"Liver disorder\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:21.384358"
+    },
+    "pubmed::\"Os Sepiellae seu Sepiae\" \"Drowsiness\"": {
+      "provider": "pubmed",
+      "query": "\"Os Sepiellae seu Sepiae\" \"Drowsiness\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:22.908258"
+    },
+    "pubmed::\"Woodwardia virginica\" \"Anorectal discomfort\"": {
+      "provider": "pubmed",
+      "query": "\"Woodwardia virginica\" \"Anorectal discomfort\"",
+      "records": [],
+      "error": null,
+      "fetched_at": "2026-06-29T18:02:24.951595"
+    }
+  },
+  "updated_at": "2026-06-29T18:02:25.003756",
+  "note": "Raw public literature query cache for Table 5 evidence screening. Cached records are candidates only, not verified support."
+}

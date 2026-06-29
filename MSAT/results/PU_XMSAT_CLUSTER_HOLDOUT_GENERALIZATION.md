@@ -22,6 +22,21 @@
 | F1 | 0.176976 |
 | MCC | 0.191914 |
 
+## Non-Tiny Robust Summary
+
+Size-filtered summary excluding heldout clusters with fewer than 5 herbs. This is a robustness view, not a replacement for the full stress-test summary.
+
+- Included folds: 7
+- Excluded tiny folds: 3
+- Included fold IDs: 0, 4, 5, 6, 7, 8, 9
+
+| Metric | Mean | Std | Test-positive weighted mean |
+| --- | ---: | ---: | ---: |
+| AUC | 0.843291 | 0.035196 | 0.816196 |
+| AUPRC | 0.863329 | 0.033355 | 0.837246 |
+| F1 | 0.074252 | 0.072251 | 0.082110 |
+| MCC | 0.116753 | 0.082083 | 0.133834 |
+
 ## Fold Summary
 
 | Fold | Holdout cluster | Heldout herbs | Test positives | Hidden eval positives | AUC | AUPRC | F1 | MCC |
