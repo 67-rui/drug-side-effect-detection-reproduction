@@ -29,6 +29,36 @@ def test_select_mechanistic_cases_keeps_rows_with_explicit_node_refs():
     assert cases[0]["node_refs"][0]["feature"] == "compound:10"
 
 
+def test_select_mechanistic_cases_can_quantify_all_subgraph_node_refs():
+    payload = {
+        "rows": [
+            {
+                "herb_id": 1,
+                "adr_id": 2,
+                "paths": [
+                    {"path": "Herb -> Compound #10 -> Target #20 <- ADR"},
+                    {"path": "Herb -> Compound #30 -> Target #40 <- ADR"},
+                    {"path": "Herb -> Compound #50 -> Target #60 <- ADR"},
+                ],
+            }
+        ]
+    }
+
+    cases = select_mechanistic_cases(payload, max_cases=1, max_features=0)
+
+    assert [ref["feature"] for ref in cases[0]["node_refs"]] == [
+        "compound:10",
+        "target:20",
+        "compound:30",
+        "target:40",
+        "compound:50",
+        "target:60",
+    ]
+    assert cases[0]["available_node_ref_count"] == 6
+    assert cases[0]["quantified_node_ref_count"] == 6
+    assert cases[0]["node_refs_truncated"] is False
+
+
 def test_build_case_contribution_payload_contains_ranked_rows():
     case = {
         "herb_id": 1,

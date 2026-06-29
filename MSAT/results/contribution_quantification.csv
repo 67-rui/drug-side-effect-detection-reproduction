@@ -1,10 +1,15 @@
 case_index,contribution_type,source,herb_id,adr_id,original_score,feature,node_type,node_id,path_index,path_text,path_features,masked_score,score_drop
 1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:3223,target,3223,,,,0.4664551317691803,0.0098346472
 1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,compound:523,compound,523,,,,0.4760511517524719,0.0002386272
+1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,compound:435,compound,435,,,,0.47607624530792236,0.0002135336
 1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:8101,target,8101,,,,0.4762183427810669,7.14362e-05
 1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:12337,target,12337,,,,0.47626176476478577,2.80142e-05
 1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:8967,target,8967,,,,0.4762618839740753,2.7895e-05
+1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:2432,target,2432,,,,0.4762842059135437,5.573e-06
+1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:12333,target,12333,,,,0.47628679871559143,2.9802e-06
 1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:7802,target,7802,,,,0.4762877821922302,1.9968e-06
+1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,target:14208,target,14208,,,,0.47628945112228394,3.278e-07
+1,node,case_zhishi_diarrhoea,277,2931,0.4762897789478302,compound:875,compound,875,,,,0.481732040643692,-0.0054422617
 1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:4,,,4,枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea,compound:523;target:3223,0.4662156105041504,0.0100741684
 1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:13,,,13,成分介导：枳实（Citrus aurantium L.） → Compound #435 → Target #8101 ← Watery diarrhoea,compound:435;target:8101,0.47600480914115906,0.0002849698
 1,path,case_zhishi_diarrhoea,277,2931,0.4762897789478302,path:5,,,5,枳实（Citrus aurantium L.） → Compound #523 → Target #12337 → Watery diarrhoea,compound:523;target:12337,0.4760230779647827,0.000266701

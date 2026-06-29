@@ -1,0 +1,102 @@
+{
+  "experiment": "submission_readiness_audit",
+  "created_at": "2026-06-29T12:23:31.790845",
+  "manuscript_dir": "../Template/PU-XMSAT-Overleaf",
+  "main_tex": "../Template/PU-XMSAT-Overleaf/main.tex",
+  "ready_for_submission": false,
+  "summary": {
+    "package_ok": true,
+    "machine_check_count": 5,
+    "machine_fail_count": 0,
+    "human_blocker_count": 7
+  },
+  "machine_checks": [
+    {
+      "id": "package_audit_ok",
+      "status": "pass",
+      "owner": "codex",
+      "evidence": "failed=0, warnings=1",
+      "action": "Run scripts/audit_manuscript_package.py and fix package failures."
+    },
+    {
+      "id": "acm_review_documentclass",
+      "status": "pass",
+      "owner": "codex",
+      "evidence": "options=['manuscript', 'review', 'screen']",
+      "action": "Use the provided acmart review manuscript documentclass."
+    },
+    {
+      "id": "keywords_present",
+      "status": "pass",
+      "owner": "codex",
+      "evidence": "keywords command found",
+      "action": "Add target-venue appropriate keywords."
+    },
+    {
+      "id": "ai_disclosure_section_present",
+      "status": "pass",
+      "owner": "codex",
+      "evidence": "AI assistance section found",
+      "action": "Add or confirm the venue-required AI assistance disclosure."
+    },
+    {
+      "id": "acks_section_present",
+      "status": "pass",
+      "owner": "codex",
+      "evidence": "acks environment found",
+      "action": "Use the ACM acknowledgments environment if funding or institutional support is declared."
+    }
+  ],
+  "human_blockers": [
+    {
+      "id": "author_metadata",
+      "status": "blocked",
+      "owner": "student/supervisor",
+      "evidence": "author, institution, or example email placeholders remain",
+      "action": "Replace names, affiliations, cities/countries, emails, corresponding-author details, and shortauthors after supervisor confirmation."
+    },
+    {
+      "id": "venue_metadata",
+      "status": "blocked",
+      "owner": "student/supervisor",
+      "evidence": "conference/proceedings/DOI/ISBN placeholders remain",
+      "action": "Fill venue, dates, location, DOI, ISBN, copyright, and ACM reference metadata from the target venue."
+    },
+    {
+      "id": "ccs_confirmation",
+      "status": "blocked",
+      "owner": "student/supervisor",
+      "evidence": "source still asks to verify ACM CCS concepts",
+      "action": "Confirm CCS concepts with the ACM CCS tool and supervisor before submission."
+    },
+    {
+      "id": "funding_acknowledgments",
+      "status": "blocked",
+      "owner": "student/supervisor",
+      "evidence": "acknowledgments still contain TODO text",
+      "action": "Replace the acknowledgments placeholder with final funding, institutional support, and supervisor acknowledgments, or remove it if not applicable."
+    },
+    {
+      "id": "ai_disclosure_policy",
+      "status": "blocked",
+      "owner": "student/supervisor",
+      "evidence": "AI assistance statement explicitly says it needs final venue-policy revision",
+      "action": "Confirm whether the target venue requires, forbids, or provides specific wording for AI assistance disclosure."
+    },
+    {
+      "id": "double_blind_policy",
+      "status": "blocked",
+      "owner": "student/supervisor",
+      "evidence": "documentclass does not include anonymous; target review policy is not confirmed",
+      "action": "If the target venue is double-blind, add anonymous and remove identifying metadata from the review version."
+    },
+    {
+      "id": "reference_and_figure_scope",
+      "status": "blocked",
+      "owner": "student/supervisor",
+      "evidence": "source TODO asks for target-venue figure/reference confirmation",
+      "action": "Confirm whether references, figure styling, and scope satisfy supervisor and target-venue expectations."
+    }
+  ],
+  "claim_boundary": "This audit separates machine-verifiable package checks from student/supervisor submission decisions. A clean package is not the same as final submission readiness."
+}

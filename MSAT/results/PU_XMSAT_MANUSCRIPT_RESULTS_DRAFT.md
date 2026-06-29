@@ -81,23 +81,24 @@ This artifact should be used as the minimal mechanism/external-evidence workflow
 
 ## Mechanism Subgraph and Contribution Quantification
 
-The explanation layer now includes a local perturbation-based contribution report in `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, with structured exports in `results/contribution_quantification.json` and `results/contribution_quantification.csv`. A paper-facing aggregate summary is also available in `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`, with structured exports in `results/contribution_aggregate_summary.json` and `results/contribution_aggregate_summary.csv`. The procedure extracts a key mechanism subgraph from the available paths, then zeroes selected compound/target node input features or all node features in a path and re-scores the same CMM-ADR pair with the local trained predictor checkpoint.
+The explanation layer now includes a local perturbation-based contribution report in `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`, with structured exports in `results/contribution_quantification.json` and `results/contribution_quantification.csv`. A paper-facing aggregate summary is also available in `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`, with structured exports in `results/contribution_aggregate_summary.json` and `results/contribution_aggregate_summary.csv`. The most direct handoff for writing and mentor review is `results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER.md`, with structured exports in `results/mechanism_explanation_layer.json` and `results/mechanism_explanation_layer.csv`. The procedure extracts a key mechanism subgraph from the available paths, then zeroes every parsed compound/target node input feature in the selected subgraphs or all node features in a path and re-scores the same CMM-ADR pair with the local trained predictor checkpoint.
 
 Current status:
 
 | Case | Source | Key subgraph | Top node drop | Top path drop | Interpretation |
 | --- | --- | ---: | ---: | ---: | --- |
-| herb 277 -> ADR 2931 | `case_zhishi_diarrhoea` | 11 nodes / 8 edges / 14 paths | `target:3223`, 0.009835 | `compound:523 -> target:3223`, 0.010074 | A concrete perturbation-sensitive target/path is identified, but the external evidence remains direction-conflicting |
-| herb 237 -> ADR 3989 | `table5_top15` | 2 nodes / 1 edge / 1 path | `compound:1073`, 0.000021 | `compound:1073 -> target:2586`, 0.000021 | The graph path exists, but local perturbation sensitivity is nearly zero and manual evidence review remains unsupported |
+| herb 277 -> ADR 2931 | `case_zhishi_diarrhoea` | 11 nodes / 8 edges / 14 paths; node coverage 11/11 | `target:3223`, 0.009835 | `compound:523 -> target:3223`, 0.010074 | A concrete perturbation-sensitive target/path is identified, but the external evidence remains direction-conflicting |
+| herb 237 -> ADR 3989 | `table5_top15` | 2 nodes / 1 edge / 1 path; node coverage 2/2 | `compound:1073`, 0.000021 | `compound:1073 -> target:2586`, 0.000021 | The graph path exists, but local perturbation sensitivity is nearly zero and manual evidence review remains unsupported |
 
 Aggregate summary:
 
 | Aggregate | Top feature/path | Cases | Occurrences | Mean drop | Max drop | Interpretation |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
+| Component | `compound:523` | 1 | 1 | 0.000239 | 0.000239 | Strongest current ingredient/component sensitivity |
+| Target | `target:3223` | 1 | 1 | 0.009835 | 0.009835 | Strongest current perturbation-sensitive target |
 | Path | `compound:523;target:3223` | 1 | 1 | 0.010074 | 0.010074 | Strongest current perturbation-sensitive path, from the Zhishi-diarrhoea case |
-| Node | `target:3223` | 1 | 1 | 0.009835 | 0.009835 | Strongest current perturbation-sensitive target |
 
-This should be described as a subgraph- and path-level sensitivity analysis rather than SHAP, causal attribution, or confirmed biological mechanism. Negative score drops mean the model score increased after masking; they are suppressive or non-supportive sensitivity signals, not confirmed protective biology. The report currently uses the local `saved_models/best_model_for_prediction.pt` checkpoint, so it should not be claimed as final full-positive hybrid PU-XMSAT checkpoint attribution unless a PU predictor checkpoint is explicitly exported and re-scored.
+The split explanation-layer summary contains 4 component features, 9 target features, and 10 mechanism-path features. Positive entries are 3 component features, 8 target features, and 8 mechanism-path features; the aggregate contribution files contain 11 positive node perturbation rows and 10 positive path perturbation rows. This should be described as a subgraph-, component-, target-, and path-level sensitivity analysis rather than SHAP, causal attribution, or confirmed biological mechanism. Negative score drops mean the model score increased after masking; they are suppressive or non-supportive sensitivity signals, not confirmed protective biology. The report currently uses the local `saved_models/best_model_for_prediction.pt` checkpoint, so it should not be claimed as final full-positive hybrid PU-XMSAT checkpoint attribution unless a PU predictor checkpoint is explicitly exported and re-scored.
 
 ## Recommended Manuscript Wording
 
@@ -107,11 +108,11 @@ Use:
 
 For the explanation layer:
 
-> As a conservative mechanism-interpretation workflow, we further quantified local node sensitivity for selected mechanism-supported cases by zeroing compound or target node input features and re-scoring the same CMM-ADR pair. This analysis identified a perturbation-sensitive target in the Zhishi-diarrhoea case, while the Fragaria case showed negligible local sensitivity. These outputs support mechanism triage and case prioritization, but should not be interpreted as causal effects or externally validated adverse-reaction evidence.
+> As a conservative mechanism-interpretation workflow, we further extracted key mechanism subgraphs and quantified local sensitivity for selected mechanism-supported cases by zeroing parsed compound or target node input features and re-scoring the same CMM-ADR pair. This analysis identified a perturbation-sensitive target and path in the Zhishi-diarrhoea case, while the Fragaria case showed negligible local sensitivity. The explanation-layer handoff separates component, target, and mechanism-path contributions for triage, but these outputs should not be interpreted as causal effects or externally validated adverse-reaction evidence.
 
 Expanded wording:
 
-> We extracted key mechanism subgraphs and quantified both node-level and path-level perturbation sensitivity for selected cases. In the Zhishi-diarrhoea case, the highest local sensitivity was concentrated on the `compound:523 -> target:3223` path, whereas the Fragaria case showed negligible perturbation sensitivity. This provides a transparent mechanism-prioritization layer, but it does not by itself validate the biological direction or replace external evidence review.
+> We extracted key mechanism subgraphs and quantified node-level, component-level, target-level, and path-level perturbation sensitivity for selected cases. In the Zhishi-diarrhoea case, all 11 parsed subgraph nodes were quantified and the highest local sensitivity was concentrated on the `compound:523 -> target:3223` path, whereas the Fragaria case showed negligible perturbation sensitivity. This provides a transparent mechanism-prioritization layer, but it does not by itself validate the biological direction or replace external evidence review.
 
 For causal-bias boundaries:
 
@@ -145,6 +146,7 @@ Primary tracked sources:
 - `results/PU_XMSAT_CASE_SELECTION_DECISION.md`
 - `results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`
 - `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`
+- `results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER.md`
 - `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md`
 - `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md`
 - `results/case_evidence_report.json`
@@ -154,5 +156,7 @@ Primary tracked sources:
 - `results/contribution_quantification.csv`
 - `results/contribution_aggregate_summary.json`
 - `results/contribution_aggregate_summary.csv`
+- `results/mechanism_explanation_layer.json`
+- `results/mechanism_explanation_layer.csv`
 
 Raw PU training JSON files are retained locally and on the server for auditability, but they are intentionally ignored by git unless promoted into curated exports.

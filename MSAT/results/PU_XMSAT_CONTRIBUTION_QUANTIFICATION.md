@@ -3,7 +3,7 @@
 This report quantifies local contribution by zeroing input feature vectors for mechanism nodes or whole mechanism paths, then re-scoring the same CMM-ADR pair with the trained MSAT predictor.
 
 - Cases quantified: 2
-- Generated at: 2026-06-28T21:24:20.279254
+- Generated at: 2026-06-29T12:19:30.908063
 - Checkpoint: `/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt`
 - Checkpoint context: Local predictor checkpoint sensitivity analysis. This is not final full-positive hybrid PU-XMSAT checkpoint attribution unless an explicit PU predictor checkpoint is exported and used.
 
@@ -16,6 +16,8 @@ Negative score drops mean the score increased after masking; they should be inte
 - Original score: 0.476290
 - Key subgraph nodes: 11
 - Key subgraph edges: 8
+- Quantified node refs: 11/11
+- Node refs truncated: no
 
 ### Node Contributions
 
@@ -23,10 +25,15 @@ Negative score drops mean the score increased after masking; they should be inte
 | --- | --- | ---: | ---: |
 | `target:3223` | `target` | 0.466455 | 0.009835 |
 | `compound:523` | `compound` | 0.476051 | 0.000239 |
+| `compound:435` | `compound` | 0.476076 | 0.000214 |
 | `target:8101` | `target` | 0.476218 | 0.000071 |
 | `target:12337` | `target` | 0.476262 | 0.000028 |
 | `target:8967` | `target` | 0.476262 | 0.000028 |
+| `target:2432` | `target` | 0.476284 | 0.000006 |
+| `target:12333` | `target` | 0.476287 | 0.000003 |
 | `target:7802` | `target` | 0.476288 | 0.000002 |
+| `target:14208` | `target` | 0.476289 | 0.000000 |
+| `compound:875` | `compound` | 0.481732 | -0.005442 |
 
 ### Path Contributions
 
@@ -53,6 +60,8 @@ Negative score drops mean the score increased after masking; they should be inte
 - Original score: 0.999185
 - Key subgraph nodes: 2
 - Key subgraph edges: 1
+- Quantified node refs: 2/2
+- Node refs truncated: no
 
 ### Node Contributions
 

@@ -54,14 +54,31 @@ def _path_texts(row: dict) -> list[str]:
     return texts
 
 
-def select_mechanistic_cases(payload: dict, max_cases: int = 2, max_features: int = 6) -> list[dict]:
+def _select_node_refs(node_refs: list[dict], max_features: int | None) -> tuple[list[dict], bool]:
+    if max_features is None or int(max_features) <= 0:
+        return list(node_refs), False
+    selected = node_refs[: int(max_features)]
+    return selected, len(selected) < len(node_refs)
+
+
+def select_mechanistic_cases(payload: dict, max_cases: int = 2, max_features: int = 0) -> list[dict]:
     cases: list[dict] = []
     for row in payload.get("rows", []):
         paths = _path_texts(row)
         node_refs = extract_node_refs_from_paths(paths)
         if not node_refs:
             continue
-        cases.append({**row, "path_texts": paths, "node_refs": node_refs[:max_features]})
+        selected_refs, truncated = _select_node_refs(node_refs, max_features)
+        cases.append(
+            {
+                **row,
+                "path_texts": paths,
+                "node_refs": selected_refs,
+                "available_node_ref_count": len(node_refs),
+                "quantified_node_ref_count": len(selected_refs),
+                "node_refs_truncated": truncated,
+            }
+        )
         if len(cases) >= max_cases:
             break
     return cases
@@ -92,6 +109,9 @@ def build_case_contribution_payload(
         "source": case.get("source", "unknown"),
         "original_score": float(original_score),
         "path_count": len(path_texts),
+        "available_node_ref_count": int(case.get("available_node_ref_count", len(case["node_refs"]))),
+        "quantified_node_ref_count": int(case.get("quantified_node_ref_count", len(case["node_refs"]))),
+        "node_refs_truncated": bool(case.get("node_refs_truncated", False)),
         "feature_count": len(case["node_refs"]),
         "paths": path_texts,
         "mechanism_subgraph": mechanism_subgraph,
@@ -177,7 +197,7 @@ def write_outputs(payload: dict, output_json: Path, output_csv: Path, output_md:
                 }
             )
     with output_csv.open("w", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS)
+        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows([{field: row.get(field, "") for field in CSV_FIELDS} for row in rows])
 
@@ -207,6 +227,8 @@ def write_outputs(payload: dict, output_json: Path, output_csv: Path, output_md:
                 f"- Original score: {case['original_score']:.6f}",
                 f"- Key subgraph nodes: {len(case['mechanism_subgraph']['nodes'])}",
                 f"- Key subgraph edges: {len(case['mechanism_subgraph']['edges'])}",
+                f"- Quantified node refs: {case.get('quantified_node_ref_count', len(case['node_contributions']))}/{case.get('available_node_ref_count', len(case['node_contributions']))}",
+                f"- Node refs truncated: {'yes' if case.get('node_refs_truncated') else 'no'}",
                 "",
                 "### Node Contributions",
                 "",
@@ -243,7 +265,12 @@ def main() -> None:
     parser.add_argument("--output-csv", default="results/contribution_quantification.csv")
     parser.add_argument("--output-md", default="results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md")
     parser.add_argument("--max-cases", type=int, default=2)
-    parser.add_argument("--max-features", type=int, default=6)
+    parser.add_argument(
+        "--max-features",
+        type=int,
+        default=0,
+        help="Maximum mechanism node refs to perturb per case; <=0 quantifies all parsed refs.",
+    )
     parser.add_argument("--device", default=None)
     parser.add_argument("--checkpoint", default=None)
     args = parser.parse_args()

@@ -32,6 +32,8 @@ Use `PU-XMSAT-Overleaf.zip` for upload; Overleaf should compile the source files
 
 ## Must-Fix Items Before Submission
 
+See `MSAT/results/PU_XMSAT_SUBMISSION_READINESS_AUDIT.md` for the current machine-readable handoff checklist. The current package is compile/package-clean, but it is not final-submission-ready until the student and supervisor resolve those human blockers.
+
 - Replace author, affiliation, email, conference, DOI, ISBN, and copyright placeholders.
 - Check whether the current reference set is sufficient for the target venue and add domain-specific CMM safety references if requested by the supervisor.
 - Verify ACM CCS concepts using the ACM CCS tool.

@@ -164,7 +164,7 @@ def _write_csv(path: Path, summary: dict) -> None:
     rows.extend(summary.get("top_paths", []))
     rows.extend(summary.get("top_nodes", []))
     with path.open("w", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS)
+        writer = csv.DictWriter(fh, fieldnames=CSV_FIELDS, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow({field: row.get(field, "") for field in CSV_FIELDS})

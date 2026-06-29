@@ -1,6 +1,6 @@
 {
   "experiment": "contribution_quantification",
-  "created_at": "2026-06-28T21:24:20.279254",
+  "created_at": "2026-06-29T12:19:30.908063",
   "input": "results/explanation_case_studies.json",
   "checkpoint_path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt",
   "checkpoint_context": "Local predictor checkpoint sensitivity analysis. This is not final full-positive hybrid PU-XMSAT checkpoint attribution unless an explicit PU predictor checkpoint is exported and used.",
@@ -13,7 +13,10 @@
       "source": "case_zhishi_diarrhoea",
       "original_score": 0.4762897789478302,
       "path_count": 14,
-      "feature_count": 6,
+      "available_node_ref_count": 11,
+      "quantified_node_ref_count": 11,
+      "node_refs_truncated": false,
+      "feature_count": 11,
       "paths": [
         "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8967 → Watery diarrhoea",
         "枳实（Citrus aurantium L.） → nobiletin (CID 72344) → Target #8101 → Watery diarrhoea",
@@ -476,6 +479,14 @@
           "score_drop": 0.0002386272
         },
         {
+          "feature": "compound:435",
+          "node_type": "compound",
+          "node_id": 435,
+          "label": "Compound #435",
+          "masked_score": 0.47607624530792236,
+          "score_drop": 0.0002135336
+        },
+        {
           "feature": "target:8101",
           "node_type": "target",
           "node_id": 8101,
@@ -500,12 +511,44 @@
           "score_drop": 2.7895e-05
         },
         {
+          "feature": "target:2432",
+          "node_type": "target",
+          "node_id": 2432,
+          "label": "Target #2432",
+          "masked_score": 0.4762842059135437,
+          "score_drop": 5.573e-06
+        },
+        {
+          "feature": "target:12333",
+          "node_type": "target",
+          "node_id": 12333,
+          "label": "Target #12333",
+          "masked_score": 0.47628679871559143,
+          "score_drop": 2.9802e-06
+        },
+        {
           "feature": "target:7802",
           "node_type": "target",
           "node_id": 7802,
           "label": "Target #7802",
           "masked_score": 0.4762877821922302,
           "score_drop": 1.9968e-06
+        },
+        {
+          "feature": "target:14208",
+          "node_type": "target",
+          "node_id": 14208,
+          "label": "Target #14208",
+          "masked_score": 0.47628945112228394,
+          "score_drop": 3.278e-07
+        },
+        {
+          "feature": "compound:875",
+          "node_type": "compound",
+          "node_id": 875,
+          "label": "Compound #875",
+          "masked_score": 0.481732040643692,
+          "score_drop": -0.0054422617
         }
       ],
       "path_contributions": [
@@ -680,6 +723,14 @@
           "score_drop": 0.0002386272
         },
         {
+          "feature": "compound:435",
+          "node_type": "compound",
+          "node_id": 435,
+          "label": "Compound #435",
+          "masked_score": 0.47607624530792236,
+          "score_drop": 0.0002135336
+        },
+        {
           "feature": "target:8101",
           "node_type": "target",
           "node_id": 8101,
@@ -704,12 +755,44 @@
           "score_drop": 2.7895e-05
         },
         {
+          "feature": "target:2432",
+          "node_type": "target",
+          "node_id": 2432,
+          "label": "Target #2432",
+          "masked_score": 0.4762842059135437,
+          "score_drop": 5.573e-06
+        },
+        {
+          "feature": "target:12333",
+          "node_type": "target",
+          "node_id": 12333,
+          "label": "Target #12333",
+          "masked_score": 0.47628679871559143,
+          "score_drop": 2.9802e-06
+        },
+        {
           "feature": "target:7802",
           "node_type": "target",
           "node_id": 7802,
           "label": "Target #7802",
           "masked_score": 0.4762877821922302,
           "score_drop": 1.9968e-06
+        },
+        {
+          "feature": "target:14208",
+          "node_type": "target",
+          "node_id": 14208,
+          "label": "Target #14208",
+          "masked_score": 0.47628945112228394,
+          "score_drop": 3.278e-07
+        },
+        {
+          "feature": "compound:875",
+          "node_type": "compound",
+          "node_id": 875,
+          "label": "Compound #875",
+          "masked_score": 0.481732040643692,
+          "score_drop": -0.0054422617
         }
       ]
     },
@@ -719,6 +802,9 @@
       "source": "table5_top15",
       "original_score": 0.999184787273407,
       "path_count": 1,
+      "available_node_ref_count": 2,
+      "quantified_node_ref_count": 2,
+      "node_refs_truncated": false,
       "feature_count": 2,
       "paths": [
         "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness"

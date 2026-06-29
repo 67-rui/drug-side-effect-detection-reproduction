@@ -1,6 +1,6 @@
 # PU-XMSAT Direction 3 Targeted Review Queue
 
-**Generated at:** 2026-06-29T11:58:38.778130
+**Generated at:** 2026-06-29T12:19:47.996148
 **Claim boundary:** This queue prioritizes external-evidence review based on local perturbation sensitivity. It is not external validation and does not upgrade evidence grades without manual source review.
 
 ## Summary

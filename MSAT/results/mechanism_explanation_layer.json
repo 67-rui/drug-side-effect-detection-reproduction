@@ -1,30 +1,109 @@
 {
-  "experiment": "contribution_aggregate_summary",
+  "experiment": "mechanism_explanation_layer",
+  "created_at": "2026-06-29T12:19:40.557109",
   "source_experiment": "contribution_quantification",
   "checkpoint_path": "/Users/a67_2024/Desktop/drug-detect/MSAT/saved_models/best_model_for_prediction.pt",
   "checkpoint_context": "Local predictor checkpoint sensitivity analysis. This is not final full-positive hybrid PU-XMSAT checkpoint attribution unless an explicit PU predictor checkpoint is exported and used.",
   "source_claim_boundary": "Perturbation score drops are local sensitivity signals, not causal effects.",
-  "claim_boundary": "These are perturbation sensitivity aggregates, not causal or SHAP attributions.",
-  "case_count": 2,
-  "positive_node_count": 11,
-  "positive_path_count": 10,
+  "claim_boundary": "本报告只解释当前已量化案例中的局部扰动敏感性；不是因果效应、不是 SHAP 值、不是外部临床验证。",
   "top_k": 10,
-  "top_nodes": [
+  "completion": {
+    "case_count": 2,
+    "subgraph_case_count": 2,
+    "all_subgraph_nodes_quantified": true,
+    "component_count": 4,
+    "target_count": 9,
+    "pathway_count": 10,
+    "positive_component_count": 3,
+    "positive_target_count": 8,
+    "positive_pathway_count": 8
+  },
+  "case_summaries": [
     {
-      "aggregate_type": "node",
-      "feature": "target:3223",
-      "node_type": "target",
-      "node_id": "3223",
-      "path_features": "",
-      "case_count": 1,
-      "occurrence_count": 1,
-      "mean_score_drop": 0.0098346472,
-      "max_score_drop": 0.0098346472,
-      "positive_drop_count": 1,
-      "negative_drop_count": 0
+      "source": "case_zhishi_diarrhoea",
+      "herb_id": 277,
+      "adr_id": 2931,
+      "original_score": 0.4762897789478302,
+      "subgraph_node_count": 11,
+      "compound_node_count": 3,
+      "target_node_count": 8,
+      "edge_count": 8,
+      "path_count": 14,
+      "quantified_node_count": 11,
+      "node_quantification_coverage": "11/11",
+      "all_subgraph_nodes_quantified": true,
+      "top_component": {
+        "feature": "compound:523",
+        "node_type": "compound",
+        "node_id": 523,
+        "label": "Compound #523",
+        "masked_score": 0.4760511517524719,
+        "score_drop": 0.0002386272
+      },
+      "top_target": {
+        "feature": "target:3223",
+        "node_type": "target",
+        "node_id": 3223,
+        "label": "Target #3223",
+        "masked_score": 0.4664551317691803,
+        "score_drop": 0.0098346472
+      },
+      "top_pathway": {
+        "feature": "path:4",
+        "path_index": 4,
+        "path_text": "枳实（Citrus aurantium L.） → Compound #523 → Target #3223 → Watery diarrhoea",
+        "features": [
+          "compound:523",
+          "target:3223"
+        ],
+        "masked_score": 0.4662156105041504,
+        "score_drop": 0.0100741684
+      }
     },
     {
-      "aggregate_type": "node",
+      "source": "table5_top15",
+      "herb_id": 237,
+      "adr_id": 3989,
+      "original_score": 0.999184787273407,
+      "subgraph_node_count": 2,
+      "compound_node_count": 1,
+      "target_node_count": 1,
+      "edge_count": 1,
+      "path_count": 1,
+      "quantified_node_count": 2,
+      "node_quantification_coverage": "2/2",
+      "all_subgraph_nodes_quantified": true,
+      "top_component": {
+        "feature": "compound:1073",
+        "node_type": "compound",
+        "node_id": 1073,
+        "label": "Compound #1073",
+        "masked_score": 0.9991635084152222,
+        "score_drop": 2.12789e-05
+      },
+      "top_target": {
+        "feature": "target:2586",
+        "node_type": "target",
+        "node_id": 2586,
+        "label": "Target #2586",
+        "masked_score": 0.999184787273407,
+        "score_drop": 0.0
+      },
+      "top_pathway": {
+        "feature": "path:1",
+        "path_index": 1,
+        "path_text": "成分介导：野草莓（Fragaria vesca?L.） → Compound #1073 → Target #2586 ← Altered state of consciousness",
+        "features": [
+          "compound:1073",
+          "target:2586"
+        ],
+        "masked_score": 0.9991635084152222,
+        "score_drop": 2.12789e-05
+      }
+    }
+  ],
+  "component_contributions": [
+    {
       "feature": "compound:523",
       "node_type": "compound",
       "node_id": "523",
@@ -37,7 +116,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "node",
       "feature": "compound:435",
       "node_type": "compound",
       "node_id": "435",
@@ -50,46 +128,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "node",
-      "feature": "target:8101",
-      "node_type": "target",
-      "node_id": "8101",
-      "path_features": "",
-      "case_count": 1,
-      "occurrence_count": 1,
-      "mean_score_drop": 7.14362e-05,
-      "max_score_drop": 7.14362e-05,
-      "positive_drop_count": 1,
-      "negative_drop_count": 0
-    },
-    {
-      "aggregate_type": "node",
-      "feature": "target:12337",
-      "node_type": "target",
-      "node_id": "12337",
-      "path_features": "",
-      "case_count": 1,
-      "occurrence_count": 1,
-      "mean_score_drop": 2.80142e-05,
-      "max_score_drop": 2.80142e-05,
-      "positive_drop_count": 1,
-      "negative_drop_count": 0
-    },
-    {
-      "aggregate_type": "node",
-      "feature": "target:8967",
-      "node_type": "target",
-      "node_id": "8967",
-      "path_features": "",
-      "case_count": 1,
-      "occurrence_count": 1,
-      "mean_score_drop": 2.7895e-05,
-      "max_score_drop": 2.7895e-05,
-      "positive_drop_count": 1,
-      "negative_drop_count": 0
-    },
-    {
-      "aggregate_type": "node",
       "feature": "compound:1073",
       "node_type": "compound",
       "node_id": "1073",
@@ -102,7 +140,68 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "node",
+      "feature": "compound:875",
+      "node_type": "compound",
+      "node_id": "875",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": -0.0054422617,
+      "max_score_drop": -0.0054422617,
+      "positive_drop_count": 0,
+      "negative_drop_count": 1
+    }
+  ],
+  "target_contributions": [
+    {
+      "feature": "target:3223",
+      "node_type": "target",
+      "node_id": "3223",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0098346472,
+      "max_score_drop": 0.0098346472,
+      "positive_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "feature": "target:8101",
+      "node_type": "target",
+      "node_id": "8101",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 7.14362e-05,
+      "max_score_drop": 7.14362e-05,
+      "positive_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "feature": "target:12337",
+      "node_type": "target",
+      "node_id": "12337",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.80142e-05,
+      "max_score_drop": 2.80142e-05,
+      "positive_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "feature": "target:8967",
+      "node_type": "target",
+      "node_id": "8967",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 2.7895e-05,
+      "max_score_drop": 2.7895e-05,
+      "positive_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
       "feature": "target:2432",
       "node_type": "target",
       "node_id": "2432",
@@ -115,7 +214,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "node",
       "feature": "target:12333",
       "node_type": "target",
       "node_id": "12333",
@@ -128,7 +226,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "node",
       "feature": "target:7802",
       "node_type": "target",
       "node_id": "7802",
@@ -139,11 +236,34 @@
       "max_score_drop": 1.9968e-06,
       "positive_drop_count": 1,
       "negative_drop_count": 0
+    },
+    {
+      "feature": "target:14208",
+      "node_type": "target",
+      "node_id": "14208",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 3.278e-07,
+      "max_score_drop": 3.278e-07,
+      "positive_drop_count": 1,
+      "negative_drop_count": 0
+    },
+    {
+      "feature": "target:2586",
+      "node_type": "target",
+      "node_id": "2586",
+      "path_features": "",
+      "case_count": 1,
+      "occurrence_count": 1,
+      "mean_score_drop": 0.0,
+      "max_score_drop": 0.0,
+      "positive_drop_count": 0,
+      "negative_drop_count": 0
     }
   ],
-  "top_paths": [
+  "pathway_contributions": [
     {
-      "aggregate_type": "path",
       "feature": "path:4",
       "node_type": "",
       "node_id": "",
@@ -156,7 +276,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:13",
       "node_type": "",
       "node_id": "",
@@ -169,7 +288,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:5",
       "node_type": "",
       "node_id": "",
@@ -182,7 +300,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:14",
       "node_type": "",
       "node_id": "",
@@ -195,7 +312,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:10",
       "node_type": "",
       "node_id": "",
@@ -208,7 +324,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:2",
       "node_type": "",
       "node_id": "",
@@ -221,7 +336,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:1",
       "node_type": "",
       "node_id": "",
@@ -234,7 +348,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:1",
       "node_type": "",
       "node_id": "",
@@ -247,7 +360,6 @@
       "negative_drop_count": 0
     },
     {
-      "aggregate_type": "path",
       "feature": "path:11",
       "node_type": "",
       "node_id": "",
@@ -260,7 +372,6 @@
       "negative_drop_count": 2
     },
     {
-      "aggregate_type": "path",
       "feature": "path:8",
       "node_type": "",
       "node_id": "",
