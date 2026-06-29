@@ -39,6 +39,22 @@ Avoid:
 
 > PU-XMSAT proves causal mechanisms, validates clinical adverse reactions, or provides SHAP-equivalent explanation.
 
+## Current Execution Status
+
+As of 2026-06-29, Direction 2 has a reproducible aggregate contribution report:
+
+- `results/contribution_aggregate_summary.json`
+- `results/contribution_aggregate_summary.csv`
+- `results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`
+
+Direction 3 now has a targeted review queue derived from the Direction 2 perturbation outputs:
+
+- `results/direction3_targeted_review_queue.json`
+- `results/direction3_targeted_review_queue.csv`
+- `results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE.md`
+
+The queue ranks the Zhishi--diarrhoea case first and the Fragaria--altered-consciousness case second, but both remain Grade C boundary cases after manual review. It contains zero ready strong-evidence cases, so the manuscript should continue to describe this layer as screening and prioritization, not external validation.
+
 ## Stop Conditions
 
 Stop expanding Direction 2 when the project has:

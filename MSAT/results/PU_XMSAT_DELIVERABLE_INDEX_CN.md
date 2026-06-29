@@ -22,7 +22,7 @@
 | 写论文结果表 | `results/PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` | PU-XMSAT 主结果表、paired statistics、seed robustness、weight sensitivity、案例证据边界和建议措辞 |
 | 写英文 Methods/Results/Discussion | `results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` | 英文正文段落草稿 |
 | 检查 Overleaf 论文包 | `results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md`、`results/manuscript_package_audit.json`、`../Template/PU-XMSAT-Overleaf/README.md` | 当前 ACM 模板稿件位置、上传 zip、模板验证状态、PDF/LaTeX/zip 审计、占位项和打包规则 |
-| 写解释性/外部证据案例 | `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`results/PU_XMSAT_CASE_SELECTION_DECISION.md`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md` | 机制子图、外部证据分级、Grade C 人工核验、案例选择决策，以及成分/靶点/路径扰动贡献量化和聚合摘要；当前没有强外部验证正向案例 |
+| 写解释性/外部证据案例 | `results/PU_XMSAT_CASE_EVIDENCE_REPORT.md`、`results/PU_XMSAT_GRADE_C_MANUAL_EVIDENCE_AUDIT.md`、`results/PU_XMSAT_CASE_SELECTION_DECISION.md`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md`、`results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE.md` | 机制子图、外部证据分级、Grade C 人工核验、案例选择决策、成分/靶点/路径扰动贡献量化和聚合摘要，以及方向三定向复核队列；当前没有强外部验证正向案例 |
 | 写因果/局限性边界 | `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` | 当前数据条件下的 DAG/混杂因素框架；说明哪些偏倚只能讨论、不能严格校正 |
 | 判断计划是否闭环 | `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` | 把研究方案中的训练、解释、验证、因果边界逐项映射到当前证据 |
 | 追溯完整实验过程 | `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`、`results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | 记录 candidate cache 修正、budget scaling、10-fold pilot、two-seed 和 weight sensitivity |
@@ -46,6 +46,7 @@
 | 案例是否可写成强验证 | `results/PU_XMSAT_CASE_SELECTION_DECISION.md` |
 | 关键机制子图与贡献量化 | `results/contribution_quantification.json`、`results/contribution_quantification.csv`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION.md` |
 | 贡献量化聚合摘要 | `results/contribution_aggregate_summary.json`、`results/contribution_aggregate_summary.csv`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md` |
+| 方向三定向证据复核队列 | `results/direction3_targeted_review_queue.json`、`results/direction3_targeted_review_queue.csv`、`results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE.md` |
 | 因果偏倚框架 | `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` |
 | 研究闭环审计 | `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` |
 | Overleaf 论文包审计 | `results/manuscript_package_audit.json`、`results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md` |
@@ -60,7 +61,7 @@
 4. Full-positive hybrid PU-XMSAT 是当前最强设置，在两个 seed 下对 AUC、F1、MCC 有稳定提升。
 5. AUPRC 保持正向趋势，但提升幅度较小，其中一个 seed 相对 MSAT 的 AUPRC paired p 值为边界显著。
 6. 权重敏感性支持 `u0.2/rn0.8` 作为当前默认设置。
-7. 机制解释与外部证据分级已经形成最小闭环：当前 16 行案例候选中，2 行有机制支持（Grade C），14 行仍为预测候选（Grade D）；Grade C 人工核验后仍不能升级为 Grade B/A，因此当前没有强外部验证正向案例。
+7. 机制解释与外部证据分级已经形成最小闭环：当前 16 行案例候选中，2 行有机制支持（Grade C），14 行仍为预测候选（Grade D）；Grade C 人工核验后仍不能升级为 Grade B/A。方向三定向复核队列按扰动敏感性把枳实-水样腹泻排第 1、野草莓-意识状态改变排第 2，但 ready strong-evidence cases 仍为 0，因此当前没有强外部验证正向案例。
 8. 关键机制子图与贡献量化已经形成可运行产物并已有聚合摘要：当前 2 个机制案例完成子图抽取、成分/靶点节点置零和路径置零扰动评分。聚合后共有 7 条正向 node 扰动、10 条正向 path 扰动；最强节点为 `target:3223`（drop 0.009835），最强路径为 `compound:523;target:3223`（mean/max drop 0.010074）；野草莓案例扰动下降接近 0。该结果只能解释本地 predictor checkpoint 的局部敏感性，不能写成因果效应、SHAP 或最终 PU checkpoint 归因。
 9. 因果图方向已经完成当前阶段的边界化处理：当前只能建立 co-medication、indication、reporting bias、exposure population 等混杂因素的 DAG/偏倚框架，不能声称已经进行严格因果校正。
 10. 研究方案已经形成最小论文闭环：训练层、解释层、验证层和因果边界都有对应产物；后续重点应转向论文整合和必要的定向补强，而不是盲目扩展。
@@ -85,7 +86,7 @@
 1. **PPT 人工美化。** 以 `PU_XMSAT_SLIDES_DRAFT_CN.pptx` 为基础，补充学校/课题组模板、页脚、图例细节和口头节奏。
 2. **论文正文整理。** 以 `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` 和 `PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` 为基础，形成正式论文 Methods/Results/Discussion。
 3. **Overleaf 包导师协作。** 以 `Template/PU-XMSAT-Overleaf.zip` 上传 Overleaf，并按 `PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md` 的占位项逐项确认。
-4. **筛选更合适的案例候选。** Grade C 已完成首轮人工核验、关键子图抽取和首轮节点/路径扰动量化，当前不能升级为强证据；如要增强论文案例部分，应优先寻找“模型高分 + 明确机制路径 + PubMed/数据库直接证据”的候选，而不是继续扩大无目的批量检索。
+4. **筛选更合适的案例候选。** Grade C 已完成首轮人工核验、关键子图抽取、首轮节点/路径扰动量化和方向三定向复核队列，当前不能升级为强证据；如要增强论文案例部分，应优先寻找“模型高分 + 明确机制路径 + PubMed/数据库直接证据”的新候选，而不是继续扩大无目的批量检索。
 5. **论文闭环整合。** 以 `PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` 为总审计入口，把训练结果、解释结果、证据分级和因果边界整合进论文正文。
 6. **下一代模型方向。** 结合导师建议，继续调研真正需要额外数据的因果混杂控制、更严格的 SHAP/注意力归因和可靠负样本策略。
 
@@ -97,6 +98,7 @@ PYTHONPATH=. pytest tests -q
 PYTHONPATH=. python scripts/build_case_evidence_report.py
 PYTHONPATH=. python scripts/run_contribution_quantification.py --max-cases 2 --max-features 6 --device cpu
 PYTHONPATH=. python scripts/summarize_contribution_quantification.py --input results/contribution_quantification.json --output-json results/contribution_aggregate_summary.json --output-csv results/contribution_aggregate_summary.csv --output-md results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY.md --top-k 10
+PYTHONPATH=. python scripts/build_direction3_targeted_review_queue.py --contribution results/contribution_quantification.json --case-evidence results/case_evidence_report.json --manual-review results/case_evidence_manual_review.json --output-json results/direction3_targeted_review_queue.json --output-csv results/direction3_targeted_review_queue.csv --output-md results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE.md
 PYTHONPATH=. python scripts/audit_manuscript_package.py --output-json results/manuscript_package_audit.json --output-md results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md
 PYTHONPATH=. python scripts/verify_pu_xmsat_baseline.py
 PYTHONPATH=. python scripts/audit_reproduction_state.py --out results/reproduction_state_audit.json --fail-on-error
