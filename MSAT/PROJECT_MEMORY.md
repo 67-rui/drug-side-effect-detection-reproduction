@@ -1,6 +1,6 @@
 # MSAT 项目外部记忆
 
-**最后更新：** 2026-06-29
+**最后更新：** 2026-06-30
 **用途：** 作为后续对话、上下文压缩、代码修改和实验判断的长期外部记忆。后续如果上下文被压缩，必须先读本文件，再回答项目状态、复现程度、下一步计划或代码方向问题。
 **项目根目录：** `/Users/a67_2024/Desktop/drug-detect`
 **核心实现目录：** `MSAT/`
@@ -124,7 +124,7 @@ PU-XMSAT 当前实现进度（2026-06-27）：
 - 2026-06-29 正式 Package C 证据队列：`direction3_targeted_review_queue_top5000_random_controls.json` 中 case_count=20，manual_reviewed_count=1，target_external_evidence_review_count=19，ready_strong_evidence_count=0，Grade A/B 强外部证据为 0。扰动高低不能自动升级 evidence grade，Grade C 不能写成外部验证，negative score_drop 不能解释成保护机制。
 - 2026-06-29 已完成 top20 解释候选实体映射审计与 first-pass 外部证据复核：新增 `PU_XMSAT_TOP20_ENTITY_MAPPING_QUEUE.md`、`PU_XMSAT_TOP20_TARGET_NAME_CANDIDATES.md`、`PU_XMSAT_ENTITY_MAPPING_AUDIT_AND_CANDIDATES.md`、`PU_XMSAT_TOP20_EXTERNAL_EVIDENCE_REVIEW.md` 和 `top20_external_evidence_review.json`。结论：top20 机制队列包含 20 个 compound 和 39 个 target，confirmed mapped_count=0、unmapped_count=59；公开 MSAT/Zenodo/GitHub/Frontiers 资源未提供 compound/target local ID 字典，ccTCM/ETCM/HGNC/ADReCS 只能用于候选或外部证据，不能证明本地 ID。HGNC/BioBERT 为 39 个 target 生成 `candidate_only` 名称候选，但不能写成确认映射。外部证据 first-pass 结果为强完整链证据 0/20、中等间接支持 1/20、弱/边界支持 2/20；最适合论文的是 `Polypodium glycyrrhiza` 胃肠方向 triage case 和 `Fragaria vesca L.` 边界案例。后续 Overleaf 解释性段落应写成机制 triage，不要写强解释性、完整机制验证或外部临床验证。
 - `run_pu_msat_experiment.py` 现在暴露 `--save-checkpoints`、`--checkpoint-dir`、`--checkpoint-prefix` 和 `--overwrite-checkpoints`；默认 formal checkpoint prefix 包含 backend、strategy、seed、pair budget、threshold strategy、unlabeled weight 和 reliable-negative weight，文件名追加 fold。默认不覆盖同名 formal checkpoint 或 metadata，避免污染旧结果或 baseline checkpoint；只有显式 `--overwrite-checkpoints` 才允许 intentional rerun。
-- 2026-06-29 已将英文 ACM 风格论文工程持久化到 `Template/PU-XMSAT-Overleaf/`，并保留上传包 `Template/PU-XMSAT-Overleaf.zip`。新增 `MSAT/scripts/audit_manuscript_package.py`、`MSAT/results/manuscript_package_audit.json` 和 `MSAT/results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md`，把论文包位置、模板合规、PDF 页数/纸张、LaTeX 日志、zip 必要/禁止条目和人工待确认项变成可重复审计。当前真实审计为 `ok: true`、failed checks `0`、warning checks `1`；warning 仅来自作者/机构/CCS/venue/funding/AI disclosure/double-blind policy 等提交前人工确认项。当前稿件编译为 12 页 Letter PDF；源码使用提供的 `acmart.cls`，zip 不包含 `main.pdf` 或 LaTeX 辅助产物。`.gitignore` 只忽略原始模板包 `Template/文件*`、本地预览 `Template/PU-XMSAT-Overleaf/main.pdf`、`.DS_Store` 和无关共享 zip，避免把用户提供的原始模板附件或本地编译产物混进提交。
+- 2026-06-29 已将英文 ACM 风格论文工程持久化到 `Template/PU-XMSAT-Overleaf/`，并保留上传包 `Template/PU-XMSAT-Overleaf.zip`。新增 `MSAT/scripts/audit_manuscript_package.py`、`MSAT/results/manuscript_package_audit.json` 和 `MSAT/results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md`，把论文包位置、模板合规、PDF 页数/纸张、LaTeX 日志、zip 必要/禁止条目和人工待确认项变成可重复审计。当前真实审计为 `ok: true`、failed checks `0`、warning checks `1`；warning 仅来自作者/机构/CCS/venue/funding/AI disclosure/double-blind policy 等提交前人工确认项。当前稿件编译为 15 页 Letter PDF；源码使用提供的 `acmart.cls`，zip 不包含 `main.pdf` 或 LaTeX 辅助产物。`.gitignore` 只忽略原始模板包 `Template/文件*`、本地预览 `Template/PU-XMSAT-Overleaf/main.pdf`、`.DS_Store` 和无关共享 zip，避免把用户提供的原始模板附件或本地编译产物混进提交。
 - 2026-06-29 已新增 `MSAT/scripts/audit_submission_readiness.py`、`MSAT/results/submission_readiness_audit.json` 和 `MSAT/results/PU_XMSAT_SUBMISSION_READINESS_AUDIT.md`，把最终投稿状态拆成机器可验证项和学生/导师人工确认项。当前 package audit OK、machine failures 0，但 `ready_for_submission=false`，human blockers 7：author metadata、venue metadata、CCS confirmation、funding acknowledgments、AI disclosure policy、double-blind policy、reference/figure scope。该审计说明当前 Overleaf 包可以协作/预审，但不能声称最终可投稿。
 - 2026-06-28 已新增 `MSAT/results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md`，把导师建议中的因果图方向落实为当前阶段可支撑的 DAG/混杂因素边界。当前可说：PU-XMSAT 缓解 incomplete-label bias；不能说：已经控制合并用药、适应症偏倚、报告偏倚、暴露人群差异、剂量或炮制质量。严格因果估计需要额外 patient-level exposure、co-medication、indication、onset time、dose 和 reporting propensity 数据。
 - 2026-06-28 已新增 `MSAT/results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md`，将 `RESEARCH_DIRECTION_TECHNICAL_PROPOSAL.md` 中的训练层、解释层、验证层和因果边界逐项映射到当前产物。结论：当前已经形成最小、保守、可写论文的研究闭环；剩余工作主要是论文整合、人工润色和未来数据/证据补强，不建议继续盲目长训。
@@ -517,7 +517,7 @@ cd /Users/a67_2024/Desktop/drug-detect/MSAT
    解决“未观测不等于无关联”的核心问题。未观测药物-副作用 pair 不应简单当负样本。
 
 2. **关键机制子图解释与贡献度量化**
-   基于注意力权重、路径约束、扰动贡献或 SHAP-style 方法，解释单个药物-副作用预测由哪些成分、靶点和路径支持。
+   基于路径约束、关键机制子图和局部扰动敏感性，保守解释单个药物-副作用预测由哪些 graph-local 成分、靶点和路径支持；当前不能写成 SHAP 等价解释、因果贡献或真实机制证明。
 
 3. **外部证据辅助验证**
    使用 PubMed、SIDER、DrugBank、FAERS、说明书等来源构建证据分级。大模型或 DeepSeek 只能作为文献筛选/摘要/辅助判断工具，不能直接作为训练标签或金标准。

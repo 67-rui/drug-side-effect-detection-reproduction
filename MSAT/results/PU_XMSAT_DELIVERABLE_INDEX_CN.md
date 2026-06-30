@@ -1,6 +1,6 @@
 # PU-XMSAT 当前交付物索引
 
-**日期：** 2026-06-29
+**日期：** 2026-06-30
 **分支：** `codex/pu-xmsat-implementation`
 **用途：** 作为当前 PU-XMSAT 研究阶段的交付物入口。后续写论文、组会汇报、导师沟通或继续开发时，优先从本文件选择应打开的材料。
 
@@ -24,9 +24,9 @@
 | 检查投稿级主结果证据 | `results/PU_XMSAT_PUBLICATION_EVIDENCE_CONSOLIDATION.md`、`results/pu_xmsat_publication_evidence_consolidation.json` | Package A：整合 baseline、hybrid two-seed、random comparator、seed robustness 和 weight sensitivity，作为正文数字核对入口 |
 | 检查聚类留类泛化实验 | `results/PU_XMSAT_CLUSTER_HOLDOUT_GENERALIZATION.md`、`results/cluster_holdout_generalization_summary.json`、`results/pu_xmsat_cluster_holdout_hybrid_seed2026_10cluster_200e_66015p_valf1.json` | Package B：正式 10-cluster/10-fold/200-epoch cluster-heldout 已完成；all-fold 与 non-tiny robust summary 均已生成，用于写新中药簇泛化压力测试和 claim boundary |
 | 写英文 Methods/Results/Discussion | `results/PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` | 英文正文段落草稿 |
-| 检查 Overleaf 论文包 | `results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md`、`results/manuscript_package_audit.json`、`../Template/PU-XMSAT-Overleaf/README.md` | 当前 ACM 模板稿件位置、上传 zip、模板验证状态、PDF/LaTeX/zip 审计、占位项和打包规则 |
+| 检查 Overleaf 论文包 | `results/PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md`、`results/manuscript_package_audit.json`、`results/PU_XMSAT_MANUSCRIPT_CLAIM_AUDIT.md`、`../Template/PU-XMSAT-Overleaf/README.md` | 当前 ACM 模板稿件位置、上传 zip、模板验证状态、PDF/LaTeX/zip 审计、论文 claim boundary、占位项和打包规则 |
 | 判断是否可以正式投稿 | `results/PU_XMSAT_SUBMISSION_READINESS_AUDIT.md`、`results/submission_readiness_audit.json` | 区分机器可验证 package 状态和必须由学生/导师确认的最终投稿 blockers |
-| 写解释性/外部证据案例 | `results/PU_XMSAT_FINAL_CHECKPOINT_EXPORT_REPORT.md`、`results/PU_XMSAT_INTERPRETABILITY_GAP_AUDIT.md`、`results/PU_XMSAT_TOP_PREDICTIONS_TOP5000_EXPORT.md`、`results/PU_XMSAT_BATCH_MECHANISM_INTERPRETABILITY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_TOP20_ENTITY_MAPPING_QUEUE.md`、`results/PU_XMSAT_TOP20_TARGET_NAME_CANDIDATES.md`、`results/PU_XMSAT_ENTITY_MAPPING_AUDIT_AND_CANDIDATES.md`、`results/PU_XMSAT_TOP20_EXTERNAL_EVIDENCE_REVIEW.md`、`results/PU_XMSAT_EVIDENCE_AWARE_MECHANISM_CANDIDATE_QUEUE.md`、`results/PU_XMSAT_EVIDENCE_AWARE_LITERATURE_SIGNAL_REVIEW.md`、`results/PU_XMSAT_CASE_STUDY_TRIAGE_TABLE.md`、`results/PU_XMSAT_ORIGINAL_AUTHOR_MAPPING_REQUEST.md`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE_TOP5000_RANDOM_CONTROLS.md` | final checkpoint export、top5000 top prediction、batch 机制解释、机制子图、成分/靶点/路径扰动贡献量化、random controls、实体映射缺口审计、target 候选名称、top20 外部证据 first-pass 复核、391 候选 evidence-aware 重排序、PubMed 信号筛查、case-study triage 表、原作者映射请求和方向三定向复核队列；当前没有强完整链外部验证案例 |
+| 写解释性/外部证据案例 | `results/PU_XMSAT_FINAL_CHECKPOINT_EXPORT_REPORT.md`、`results/PU_XMSAT_INTERPRETABILITY_GAP_AUDIT.md`、`results/PU_XMSAT_TOP_PREDICTIONS_TOP5000_EXPORT.md`、`results/PU_XMSAT_BATCH_MECHANISM_INTERPRETABILITY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_MECHANISM_EXPLANATION_LAYER_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_TOP20_ENTITY_MAPPING_QUEUE.md`、`results/PU_XMSAT_TOP20_TARGET_NAME_CANDIDATES.md`、`results/PU_XMSAT_ENTITY_MAPPING_AUDIT_AND_CANDIDATES.md`、`results/PU_XMSAT_TOP20_EXTERNAL_EVIDENCE_REVIEW.md`、`results/PU_XMSAT_EVIDENCE_AWARE_MECHANISM_CANDIDATE_QUEUE.md`、`results/PU_XMSAT_EVIDENCE_AWARE_LITERATURE_SIGNAL_REVIEW.md`、`results/PU_XMSAT_TOP30_MANUAL_EVIDENCE_REVIEW.md`、`results/top30_manual_evidence_review.csv`、`results/PU_XMSAT_CASE_STUDY_TRIAGE_TABLE.md`、`results/PU_XMSAT_ORIGINAL_AUTHOR_MAPPING_REQUEST.md`、`results/PU_XMSAT_CONTRIBUTION_QUANTIFICATION_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_CONTRIBUTION_AGGREGATE_SUMMARY_TOP5000_RANDOM_CONTROLS.md`、`results/PU_XMSAT_DIRECTION3_TARGETED_REVIEW_QUEUE_TOP5000_RANDOM_CONTROLS.md` | final checkpoint export、top5000 top prediction、batch 机制解释、机制子图、成分/靶点/路径扰动贡献量化、random controls、实体映射缺口审计、target 候选名称、top20 外部证据 first-pass 复核、391 候选 evidence-aware 重排序、PubMed 信号筛查、top30 手工证据复核模板、case-study triage 表、原作者映射请求和方向三定向复核队列；当前没有强完整链外部验证案例 |
 | 写因果/局限性边界 | `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` | 当前数据条件下的 DAG/混杂因素框架；说明哪些偏倚只能讨论、不能严格校正 |
 | 判断计划是否闭环 | `results/PU_XMSAT_RESEARCH_CLOSURE_AUDIT.md` | 把研究方案中的训练、解释、验证、因果边界逐项映射到当前证据 |
 | 追溯完整实验过程 | `results/PU_XMSAT_RESEARCH_PROGRESS_REPORT.md`、`results/PU_XMSAT_FULL_MSAT_PILOT_REPORT.md` | 记录 candidate cache 修正、budget scaling、10-fold pilot、two-seed 和 weight sensitivity |
@@ -66,6 +66,7 @@
 | top20 外部证据 first-pass 复核 | `results/top20_external_evidence_review.json`、`results/PU_XMSAT_TOP20_EXTERNAL_EVIDENCE_REVIEW.md` |
 | evidence-aware top30 复核队列 | `results/evidence_aware_mechanism_candidate_queue.json`、`results/evidence_aware_mechanism_candidate_queue.csv`、`results/PU_XMSAT_EVIDENCE_AWARE_MECHANISM_CANDIDATE_QUEUE.md` |
 | evidence-aware PubMed 信号筛查 | `results/evidence_aware_literature_candidates.json`、`results/evidence_aware_literature_candidates.csv`、`results/PU_XMSAT_EVIDENCE_AWARE_LITERATURE_SIGNAL_REVIEW.md` |
+| top30 手工证据复核模板 | `results/PU_XMSAT_TOP30_MANUAL_EVIDENCE_REVIEW.md`、`results/top30_manual_evidence_review.csv` |
 | 论文 case-study triage 表 | `results/PU_XMSAT_CASE_STUDY_TRIAGE_TABLE.md` |
 | 原作者数据/脚本请求 | `results/PU_XMSAT_ORIGINAL_AUTHOR_MAPPING_REQUEST.md`、GitHub issue `BowenShiGDPU/MSAT#1`，已补充 Table 5/6 所需材料 |
 | 因果偏倚框架 | `results/PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` |
@@ -90,7 +91,7 @@
 11. 原始 compound/target 映射桥已确认是当前生物语义解释的硬短板：Zenodo API 显示公开 record 仅含 `complete_hetero_graph.pt`，GitHub API 显示公开仓库 `data/` 仅含 `10fold_cv_split.pkl`，图内部 compound/target 节点 store 只有 `x`。已向原作者提交 GitHub issue 请求 local row index 到 PubChem/SMILES/HGNC/UniProt/source ID 的映射表，并追加 Table 5 导出脚本/checkpoint/候选池定义/逐行证据记录与 Table 6 PT/SOC->TCM 系统映射规则请求：https://github.com/BowenShiGDPU/MSAT/issues/1。
 12. 因果图方向已经完成当前阶段的边界化处理：当前只能建立 co-medication、indication、reporting bias、exposure population 等混杂因素的 DAG/偏倚框架，不能声称已经进行严格因果校正。
 13. 研究方案已经形成最小论文闭环：训练层、解释层、验证层和因果边界都有对应产物；后续重点应转向论文整合和必要的定向补强，而不是盲目扩展。
-14. Overleaf 论文工程已经整理到 `Template/PU-XMSAT-Overleaf`，上传包为 `Template/PU-XMSAT-Overleaf.zip`；`scripts/audit_manuscript_package.py` 当前审计结果为 `ok: true`、failed checks 0、warning checks 1；PDF 编译为 12 页 Letter 纸。投稿就绪审计显示 package OK 且 machine failures 0，但 ready for submission 仍为 no，因为作者、机构、目标 venue、CCS、基金、AI 声明、双盲策略和参考/图件范围仍需学生/导师确认。
+14. Overleaf 论文工程已经整理到 `Template/PU-XMSAT-Overleaf`，上传包为 `Template/PU-XMSAT-Overleaf.zip`；`scripts/audit_manuscript_package.py` 当前审计结果为 `ok: true`、failed checks 0、warning checks 1；PDF 编译为 15 页 Letter 纸。投稿就绪审计显示 package OK 且 machine failures 0，但 ready for submission 仍为 no，因为作者、机构、目标 venue、CCS、基金、AI 声明、双盲策略和参考/图件范围仍需学生/导师确认。
 
 不要说：
 

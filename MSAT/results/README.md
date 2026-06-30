@@ -1,6 +1,6 @@
 # MSAT 复现结果目录
 
-更新时间：2026-06-29
+更新时间：2026-06-30
 
 ## 目录说明
 
@@ -43,6 +43,7 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `PU_XMSAT_RESEARCH_PROGRESS_REPORT.md` | 后续论文素材积累 | 记录 PU-XMSAT 研究动机、prefix-cache caveat、corrected random50k budget scaling、10-fold corrected hybrid/random/full-positive pilot、repeated-seed robustness、full-positive hybrid two-seed comparator、PU weight sensitivity 和下一步论文整理计划 |
 | `PU_XMSAT_MANUSCRIPT_RESULTS_DRAFT.md` | PU-XMSAT 论文结果草稿 | 论文可用结果表、paired statistics、seed robustness、weight sensitivity 和建议/禁用措辞；后续写正文优先引用 |
 | `PU_XMSAT_MANUSCRIPT_SECTIONS_DRAFT.md` | PU-XMSAT 正文段落草稿 | Methods、Results、Discussion 英文正文草稿；适合作为论文正文初稿继续润色 |
+| `PU_XMSAT_MANUSCRIPT_CLAIM_AUDIT.md` | PU-XMSAT 论文 claim 审计 | 将 main.tex 的核心 claim 映射到证据源、允许措辞和禁用措辞，确保全文统一为 PU learning + checkpoint-aware mechanism triage + evidence-aware prioritization |
 | `PU_XMSAT_MANUSCRIPT_PACKAGE_AUDIT.md` / `manuscript_package_audit.json` | Overleaf 论文包审计 | 由 `scripts/audit_manuscript_package.py` 生成；当前审计 `ok: true`、failed checks 0、warning checks 1，记录 `Template/PU-XMSAT-Overleaf` 源码、上传 zip、PDF 页数/纸张、LaTeX 日志、zip 必要/禁止条目和仍需导师确认的占位项 |
 | `PU_XMSAT_SUBMISSION_READINESS_AUDIT.md` / `submission_readiness_audit.json` | 投稿就绪审计 | 由 `scripts/audit_submission_readiness.py` 生成；当前 package OK 且 machine failures 0，但 ready for submission 为 no，仍有 7 个 student/supervisor human blockers |
 | `PU_XMSAT_MENTOR_PROGRESS_BRIEF_CN.md` | PU-XMSAT 中文阶段汇报 | 可直接用于导师沟通的中文汇报草稿；概括 MSAT 主实验复现、Table 5/6 边界、PU-XMSAT 动机、主要结果、结论边界和下一步建议 |
@@ -70,6 +71,7 @@ python scripts/audit_reproduction_state.py --out results/reproduction_state_audi
 | `PU_XMSAT_TOP20_EXTERNAL_EVIDENCE_REVIEW.md` / `top20_external_evidence_review.json` | top-20 外部证据第一轮复核 | 20 个 mechanism-supported candidates 完成 first-pass 人工/网页证据筛查；强完整链证据 0/20，中等间接支持 1/20，弱/边界支持 2/20；建议把 Polypodium 胃肠方向写成 triage case，把 Fragaria 写成边界案例 |
 | `PU_XMSAT_EVIDENCE_AWARE_MECHANISM_CANDIDATE_QUEUE.md` / `evidence_aware_mechanism_candidate_queue.json` / `.csv` | 391 显式路径候选 evidence-aware 重排序 | 从 final top5000 的 391 个显式机制路径候选中按模型分数、路径覆盖、已有扰动贡献、证据可检索性和 herb 多样性筛出 top30；队列覆盖 8 个 herbs，作为人工外部证据复核入口，不是验证结论 |
 | `PU_XMSAT_EVIDENCE_AWARE_LITERATURE_SIGNAL_REVIEW.md` / `evidence_aware_literature_candidates.json` / `.csv` | top30 PubMed 文献信号筛查 | PubMed exact-query first-pass 缓存 30 个查询，保留 2 条 herb+ADR 文本匹配，均指向 `Marchantia polymorpha` 与 liver-injury 模型/护肝方向；这是生物相关或方向冲突信号，不是强外部验证 |
+| `PU_XMSAT_TOP30_MANUAL_EVIDENCE_REVIEW.md` / `top30_manual_evidence_review.csv` | top30 手工证据复核模板 | 以 evidence-aware top30 为主体，预填 Polypodium 胃肠方向、Marchantia dry-cough 队列案例、Marchantia liver-injury 方向冲突证据，并把 Fragaria altered-state 作为已有人工作业边界种子；未核验命中不升级为 Grade A/B |
 | `PU_XMSAT_CASE_STUDY_TRIAGE_TABLE.md` | 论文 case-study 表 | 整理 Polypodium 胃肠方向、Marchantia liver-injury 方向冲突、Fragaria 边界/负例三例；Marchantia liver injury 有显式路径和 PubMed 冲突证据，但本地缺 formal final `.pt` 权重，不能写成已完成 final targeted perturbation |
 | `PU_XMSAT_ORIGINAL_AUTHOR_MAPPING_REQUEST.md` | 原作者数据/脚本请求 | 已确认公开 Zenodo 仅含 `complete_hetero_graph.pt`，GitHub `data/` 仅含 `10fold_cv_split.pkl`，图内部 compound/target 节点只有 `x` 特征矩阵；已通过 GitHub issue 向原作者请求 local row index 到 PubChem/SMILES/HGNC/UniProt/source ID 的映射表，并补充请求 Table 5 导出脚本/checkpoint/候选池定义/逐行证据记录与 Table 6 PT/SOC->TCM 系统映射规则：https://github.com/BowenShiGDPU/MSAT/issues/1 |
 | `PU_XMSAT_CAUSAL_BIAS_FRAMEWORK.md` | 因果偏倚框架 | 已完成当前数据条件下的 DAG/混杂因素边界说明；用于讨论 co-medication、indication、reporting bias、exposure population 等不能由当前图数据严格校正的因素 |
